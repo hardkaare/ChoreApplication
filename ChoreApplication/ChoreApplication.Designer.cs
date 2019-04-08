@@ -50,15 +50,16 @@
             this.button1.TabIndex = 1;
             this.button1.Text = "button1";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // Form1
+            // ChoreApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.checkBox1);
-            this.Name = "Form1";
+            this.Name = "ChoreApplication";
             this.Text = "ChoreApplication";
             this.ResumeLayout(false);
             this.PerformLayout();
