@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
-     abstract class User
+    class Reward
     {
-        public string FirstName { get; set; }
-        public int Pincode { get; set; }
+        public string Name { get; set; }
+        public int PointsRequired { get; set; }
+        public Child Assignment { get; set; }
 
     }
 }

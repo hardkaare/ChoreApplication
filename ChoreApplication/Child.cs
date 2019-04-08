@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
-     abstract class User
+    class Child : User
     {
-        public string FirstName { get; set; }
-        public int Pincode { get; set; }
-
+        public int Points { get; set; }
     }
 }

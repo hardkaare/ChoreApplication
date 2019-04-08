@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
-     abstract class User
+    class Parent : User
     {
-        public string FirstName { get; set; }
-        public int Pincode { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+        public string Lastname { get; set; }
 
     }
 }

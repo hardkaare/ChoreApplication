@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
-     abstract class User
+    class Notification
     {
-        public string FirstName { get; set; }
-        public int Pincode { get; set; }
+        public string Description { get; set; }
+        public User Assignment { get; set; }
 
     }
 }
