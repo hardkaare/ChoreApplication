@@ -11,7 +11,7 @@ namespace ChoreApplication
         public int TestProp {get; set;}
         public void Hello()
         {
-
+            Console.WriteLine("Jeg har hørt man skal skrive Hello World! her");
         }
 
     }
