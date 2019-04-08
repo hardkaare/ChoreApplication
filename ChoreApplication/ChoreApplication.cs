@@ -19,7 +19,25 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("hello motherfucker");
+            // Initializes the variables to pass to the MessageBox.Show method.
+            string message = "You click my button u lill shit";
+            string caption = "Error Detected in Input";
+            MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+            DialogResult result;
+
+            // Displays the MessageBox.
+            result = MessageBox.Show(message, caption, buttons);
+            if (result == System.Windows.Forms.DialogResult.No)
+            {
+                // Closes the parent form.
+                message = "you look like shit";
+                result = MessageBox.Show(message, caption, buttons);
+
+            }
+            else
+            {
+                this.Close();
+            }
         }
     }
 }
