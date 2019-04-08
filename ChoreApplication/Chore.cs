@@ -8,5 +8,6 @@ namespace ChoreApplication
 {
     class Chore
     {
+
     }
 }
