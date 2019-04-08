@@ -6,7 +6,10 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
-    class TryMeBitch
+    public class TryMeBitch
     {
+        public int TestProp {get; set;}
+        public void Hello()
+
     }
 }
