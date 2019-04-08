@@ -9,7 +9,11 @@ namespace ChoreApplication
     public class TryMeBitch
     {
         public int TestProp {get; set;}
-        public void Hello()
+        public void Hello(string hej)
+        {
+            Console.WriteLine(hej);
+            
+        }
 
     }
 }
