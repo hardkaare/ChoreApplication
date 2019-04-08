@@ -9,10 +9,9 @@ namespace ChoreApplication
     public class TryMeBitch
     {
         public int TestProp {get; set;}
-        public void Hello(string hej)
+        public void Hello()
         {
-            Console.WriteLine(hej);
-            
+            Console.WriteLine("Jeg har hørt man skal skrive Hello World! her");
         }
 
     }
