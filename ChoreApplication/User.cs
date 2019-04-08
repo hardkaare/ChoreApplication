@@ -11,5 +11,9 @@ namespace ChoreApplication
         public string FirstName { get; set; }
         public int Pincode { get; set; }
 
+        public User()
+        {
+
+        }
     }
 }
