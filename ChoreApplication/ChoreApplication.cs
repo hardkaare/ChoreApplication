@@ -15,11 +15,12 @@ namespace ChoreApplication
         public ChoreApplication()
         {
             InitializeComponent();
-        }
+
+    }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Console.WriteLine("hello motherfucker");
-        }
+
+    }
     }
 }
