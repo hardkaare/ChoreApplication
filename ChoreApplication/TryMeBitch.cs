@@ -10,6 +10,9 @@ namespace ChoreApplication
     {
         public int TestProp {get; set;}
         public void Hello()
+        {
+
+        }
 
     }
 }
