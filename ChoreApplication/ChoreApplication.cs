@@ -27,8 +27,14 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
-            ChildUser testChild = new ChildUser("Phillip", 1234);
-            TestLabelJoenler.Text = testChild.ToString();
+            //Notification testNotification = new Notification("You have a new reward available", "Phillip");
+            //TestLabelJoenler.Text = testNotification.ToString();
+            //Reward testReward = new Reward("A good spanking", 100, "Phillip");
+            //TestLabelJoenler.Text = testReward.ToString();
+            //ParentUser testParent = new ParentUser("Hansen@lort.dk", "12334", "Hansen", "Jan", 1234);
+            //TestLabelJoenler.Text = testParent.ToString();
+            //ChildUser testChild = new ChildUser("Phillip", 1234);
+            //TestLabelJoenler.Text = testChild.ToString();
         }
     }
 }
