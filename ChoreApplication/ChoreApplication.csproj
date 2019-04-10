@@ -46,7 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Child.cs" />
+    <Compile Include="ChildUser.cs" />
     <Compile Include="Chore.cs" />
     <Compile Include="ChoreApplication.cs">
       <SubType>Form</SubType>
@@ -55,7 +55,7 @@
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification.cs" />
-    <Compile Include="Parent.cs" />
+    <Compile Include="ParentUser.cs" />
     <Compile Include="Reward.cs" />
     <Compile Include="TestChore.cs" />
     <Compile Include="Program.cs" />

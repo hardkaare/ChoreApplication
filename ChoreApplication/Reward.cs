@@ -10,6 +10,6 @@ namespace ChoreApplication
     {
         public string Name { get; set; }
         public int PointsRequired { get; set; }
-        public Child Assignment { get; set; }
+        public ChildUser Assignment { get; set; }
     }
 }

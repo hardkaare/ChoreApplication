@@ -26,8 +26,8 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
-            Chore testchore2 = new Chore("Gør badeværelse rent", "Vask gulv, rengør kumme", 15, "Hans");
-            TestLabelJoenler.Text = testchore2.ToString();
+            ChildUser testChild = new ChildUser("Phillip", 1234);
+            TestLabelJoenler.Text = testChild.ToString();
         }
     }
 }
