@@ -19,10 +19,14 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Repeatable testchore1 = new Repeatable("Gå tur med hunden", "Husk poser og snor", 5, "Hans");
-            TestLabelLuten.Text = testchore1.ToString();
-            testchore1.GenerateConcreteChore();
-            
+            List<string> testlist = new List<string>();
+            testlist.Add("Mon");
+            testlist.Add("Wed");
+            testlist.Add("Fri");
+
+            Reocurring testchore1 = new Reocurring("Gå tur med hunden", "Husk poser og snor", 5, 
+                "Hans", "17:30", testlist);
+            TestLabelLuten.Text = testchore1.ToString();            
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)

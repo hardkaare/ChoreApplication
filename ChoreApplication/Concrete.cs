@@ -59,6 +59,5 @@ namespace ChoreApplication
                 name, description, points, assignment, dueDate, status, approvalDate);
         }
         #endregion
-
     }
 }

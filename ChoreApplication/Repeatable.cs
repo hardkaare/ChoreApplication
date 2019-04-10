@@ -6,16 +6,36 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
+    /// <summary>
+    /// Repeatable chores. Inherits from the Chore class. Contains the limit of times the chore can be completed
+    /// a day and how many times it has been completed at the moment. Contains a method to generate 
+    /// Concrete versions of the Chore
+    /// </summary>
     class Repeatable : Chore
     {
+        #region Properties
+
+        //Number of times the chore can be completed a day
         public int limit { get; protected set; }
+
+        //How many times it has been completed currently
         public int completions { get; protected set; }
 
-        public Repeatable(string _name, string _desc, int _points, string _assignment) : base(_name, _desc, _points, _assignment)
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Passes variables to construct the chore. Sets limit. Sets completions to 0
+        /// </summary>
+        public Repeatable(string _name, string _desc, int _points, string _assignment, int _limit) : 
+            base(_name, _desc, _points, _assignment)
         {
-            limit = 0;
+            limit = _limit;
             completions = 0;
         }
+
+        #endregion
 
         #region Public helpers
 
