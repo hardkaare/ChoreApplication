@@ -25,7 +25,16 @@ namespace ChoreApplication
 
         #region Constructor
 
-        //Sets the properties of the concrete chore and creates and constructs a chore
+        /// <summary>
+        /// Sets the properties of the concrete chore and creates and constructs a chore
+        /// </summary>
+        /// <param name="_name">Name of the chore</param>
+        /// <param name="_desc">Description of the chore</param>
+        /// <param name="_points">How many points are earned by completing the chore</param>
+        /// <param name="_assignment">Who the chore is assigned to</param>
+        /// <param name="_dueDate">When the chore is due</param>
+        /// <param name="_status">What state the chore is in. Can be active, approval pending, approved and overdue</param>
+        /// <param name="_approvalDate">What date the chore is approved. Empty string if not approved</param>
         public Concrete(string _name, string _desc, int _points, string _assignment, string _dueDate, string _status, string _approvalDate) : 
             base(_name, _desc, _points, _assignment)
         {

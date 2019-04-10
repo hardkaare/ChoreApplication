@@ -15,13 +15,14 @@ namespace ChoreApplication
         public ChoreApplication()
         {
             InitializeComponent();
-
-    }
+        }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Concrete testchore = new Concrete("Gør badeværelse rent", "Vask gulv, rengør kumme", 15, "Hans", "03-02-2019", "Active", "");
-            TestLabelLuten.Text = testchore.ToString();
+            Repeatable testchore1 = new Repeatable("Gå tur med hunden", "Husk poser og snor", 5, "Hans");
+            TestLabelLuten.Text = testchore1.ToString();
+            testchore1.GenerateConcreteChore();
+            
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)

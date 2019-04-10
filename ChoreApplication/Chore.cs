@@ -10,7 +10,7 @@ namespace ChoreApplication
     /// Class for chore objects. Contains name of the chore, description of it, how many points it gives and 
     /// who it's assigned to. 
     /// </summary>
-    class Chore
+    abstract class Chore
     {
         #region Properties
 
