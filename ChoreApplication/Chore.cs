@@ -10,18 +10,18 @@ namespace ChoreApplication
     /// Class for chore objects. Contains name of the chore, description of it, how many points it gives and 
     /// who it's assigned to. 
     /// </summary>
-    class Chore
+    abstract class Chore
     {
         #region Properties
 
         //Name of the chore
-        public string name { get; }
+        public string name { get; protected set; }
         //Description of how to do the chore
-        public string description { get; }
+        public string description { get; protected set; }
         //How many points is earned by completing the chore
-        public int points { get; }
+        public int points { get; protected set; }
         //Who the chore's assigned to
-        public string assignment { get; }
+        public string assignment { get; protected set; }
 
         #endregion
 

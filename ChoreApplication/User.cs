@@ -6,17 +6,27 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
-    class User
+    abstract class User
     {
-        public string FirstName { get; set; }
-        public int Pincode { get; set; }
+        #region Properties
 
+        // Derived classes can set the firstname and the public can get it. 
+        public string FirstName { get; protected set; }
+
+        // Everyone can get the pincode (reconsider this later). Derived classes can set it.
+        public int Pincode { get; protected set; }
+
+        #endregion
+
+        #region Constructors
+
+        // The base constructor for ParentUser and ChildUser. Makes sure every object of ParentUser and ChildUser has a firstname and pincode.
         public User(string firstName, int pincode)
         {
             FirstName = firstName;
             Pincode = pincode;
         }
 
-        
+        #endregion
     }
 }
