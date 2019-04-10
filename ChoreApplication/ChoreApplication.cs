@@ -20,7 +20,7 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Chore testchore = new Chore("Rengør værelse", "Ryd op, tør støv af og støvsug", 10, "Mikkel");
+            Concrete testchore = new Concrete("Gør badeværelse rent", "Vask gulv, rengør kumme", 15, "Hans", "03-02-2019", "Active", "");
             TestLabelLuten.Text = testchore.ToString();
         }
 

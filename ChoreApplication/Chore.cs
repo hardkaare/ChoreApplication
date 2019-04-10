@@ -15,13 +15,13 @@ namespace ChoreApplication
         #region Properties
 
         //Name of the chore
-        private string name { get; set; }
+        public string name { get; }
         //Description of how to do the chore
-        private string description { get; set; }
+        public string description { get; }
         //How many points is earned by completing the chore
-        private int points { get; set; }
+        public int points { get; }
         //Who the chore's assigned to
-        private string assignment { get; set; }
+        public string assignment { get; }
 
         #endregion
 
