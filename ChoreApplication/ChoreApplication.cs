@@ -26,8 +26,10 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
-            ChildUser testChild = new ChildUser("Phillip", 1234);
-            TestLabelJoenler.Text = testChild.ToString();
+            ParentUser testParent = new ParentUser("Hansen@lort.dk", "12334", "Hansen", "Jan", 1234);
+            TestLabelJoenler.Text = testParent.ToString();
+            //ChildUser testChild = new ChildUser("Phillip", 1234);
+            //TestLabelJoenler.Text = testChild.ToString();
         }
     }
 }
