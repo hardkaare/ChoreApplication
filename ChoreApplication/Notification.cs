@@ -10,6 +10,5 @@ namespace ChoreApplication
     {
         public string Description { get; set; }
         public User Assignment { get; set; }
-
     }
 }

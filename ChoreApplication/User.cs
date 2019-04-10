@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 
 namespace ChoreApplication
 {
-     abstract class User
+    class User
     {
         public string FirstName { get; set; }
         public int Pincode { get; set; }
 
-        public User()
+        public User(string firstName, int pincode)
         {
-
+            FirstName = firstName;
+            Pincode = pincode;
         }
+
+        
     }
 }
