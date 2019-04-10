@@ -29,5 +29,11 @@ namespace ChoreApplication
             ChildUser testChild = new ChildUser("Phillip", 1234);
             TestLabelJoenler.Text = testChild.ToString();
         }
+
+        private void Interface1_Click(object sender, EventArgs e)
+        {
+            ParentInterface P1 = new ParentInterface();
+            P1.Show();
+        }
     }
 }
