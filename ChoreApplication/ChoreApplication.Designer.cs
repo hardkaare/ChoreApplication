@@ -28,59 +28,68 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.TestButtonLuten = new System.Windows.Forms.Button();
+            this.TestLabelLuten = new System.Windows.Forms.Label();
+            this.TestButtonJoenler = new System.Windows.Forms.Button();
+            this.TestLabelJoenler = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // checkBox1
+            // TestButtonLuten
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(236, 120);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(80, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "checkBox1";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.TestButtonLuten.Location = new System.Drawing.Point(55, 143);
+            this.TestButtonLuten.Name = "TestButtonLuten";
+            this.TestButtonLuten.Size = new System.Drawing.Size(106, 23);
+            this.TestButtonLuten.TabIndex = 1;
+            this.TestButtonLuten.Text = "Test button Luten";
+            this.TestButtonLuten.UseVisualStyleBackColor = true;
+            this.TestButtonLuten.Click += new System.EventHandler(this.Button1_Click);
             // 
-            // button1
+            // TestLabelLuten
             // 
-            this.button1.Location = new System.Drawing.Point(241, 266);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Button1_Click);
+            this.TestLabelLuten.Location = new System.Drawing.Point(52, 185);
+            this.TestLabelLuten.Name = "TestLabelLuten";
+            this.TestLabelLuten.Size = new System.Drawing.Size(212, 223);
+            this.TestLabelLuten.TabIndex = 2;
+            this.TestLabelLuten.Text = "Test label Luten";
             // 
-            // label1
+            // TestButtonJoenler
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(38, 196);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(0, 13);
-            this.label1.TabIndex = 2;
+            this.TestButtonJoenler.Location = new System.Drawing.Point(313, 143);
+            this.TestButtonJoenler.Name = "TestButtonJoenler";
+            this.TestButtonJoenler.Size = new System.Drawing.Size(106, 23);
+            this.TestButtonJoenler.TabIndex = 3;
+            this.TestButtonJoenler.Text = "Test button Joenler";
+            this.TestButtonJoenler.UseVisualStyleBackColor = true;
+            this.TestButtonJoenler.Click += new System.EventHandler(this.TestButtonJoenler_Click);
+            // 
+            // TestLabelJoenler
+            // 
+            this.TestLabelJoenler.Location = new System.Drawing.Point(310, 185);
+            this.TestLabelJoenler.Name = "TestLabelJoenler";
+            this.TestLabelJoenler.Size = new System.Drawing.Size(212, 223);
+            this.TestLabelJoenler.TabIndex = 4;
+            this.TestLabelJoenler.Text = "Test label Joenler";
             // 
             // ChoreApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.TestLabelJoenler);
+            this.Controls.Add(this.TestButtonJoenler);
+            this.Controls.Add(this.TestLabelLuten);
+            this.Controls.Add(this.TestButtonLuten);
             this.Name = "ChoreApplication";
             this.Text = "ChoreApplication";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button TestButtonLuten;
+        private System.Windows.Forms.Label TestLabelLuten;
+        private System.Windows.Forms.Button TestButtonJoenler;
+        private System.Windows.Forms.Label TestLabelJoenler;
     }
 }
 

@@ -21,7 +21,13 @@ namespace ChoreApplication
         private void Button1_Click(object sender, EventArgs e)
         {
             Chore testchore = new Chore("Rengør værelse", "Ryd op, tør støv af og støvsug", 10, "Mikkel");
-            label1.Text = testchore.ToString();
+            TestLabelLuten.Text = testchore.ToString();
+        }
+
+        private void TestButtonJoenler_Click(object sender, EventArgs e)
+        {
+            Chore testchore2 = new Chore("Gør badeværelse rent", "Vask gulv, rengør kumme", 15, "Hans");
+            TestLabelJoenler.Text = testchore2.ToString();
         }
     }
 }
