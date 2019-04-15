@@ -31,6 +31,8 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
+            DatabaseFunctions.Connection();
+            //TestLabelJoenler.Text = DatabaseFunctions.RunQuery("SELECT * FROM dbo.chore");
             //Notification testNotification = new Notification("You have a new reward available", "Phillip");
             //TestLabelJoenler.Text = testNotification.ToString();
             //Reward testReward = new Reward("A good spanking", 100, "Phillip");
@@ -39,6 +41,12 @@ namespace ChoreApplication
             //TestLabelJoenler.Text = testParent.ToString();
             //ChildUser testChild = new ChildUser("Phillip", 1234);
             //TestLabelJoenler.Text = testChild.ToString();
+        }
+
+        private void Interface1_Click(object sender, EventArgs e)
+        {
+            ParentInterface P1 = new ParentInterface();
+            P1.Show();
         }
     }
 }

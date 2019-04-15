@@ -32,6 +32,7 @@
             this.TestLabelLuten = new System.Windows.Forms.Label();
             this.TestButtonJoenler = new System.Windows.Forms.Button();
             this.TestLabelJoenler = new System.Windows.Forms.Label();
+            this.interface1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestButtonLuten
@@ -70,11 +71,22 @@
             this.TestLabelJoenler.TabIndex = 4;
             this.TestLabelJoenler.Text = "Test label Joenler";
             // 
+            // interface1
+            // 
+            this.interface1.Location = new System.Drawing.Point(12, 415);
+            this.interface1.Name = "interface1";
+            this.interface1.Size = new System.Drawing.Size(159, 23);
+            this.interface1.TabIndex = 5;
+            this.interface1.Text = "Test button interface team 69";
+            this.interface1.UseVisualStyleBackColor = true;
+            this.interface1.Click += new System.EventHandler(this.Interface1_Click);
+            // 
             // ChoreApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
+            this.Controls.Add(this.interface1);
             this.Controls.Add(this.TestLabelJoenler);
             this.Controls.Add(this.TestButtonJoenler);
             this.Controls.Add(this.TestLabelLuten);
@@ -90,6 +102,7 @@
         private System.Windows.Forms.Label TestLabelLuten;
         private System.Windows.Forms.Button TestButtonJoenler;
         private System.Windows.Forms.Label TestLabelJoenler;
+        private System.Windows.Forms.Button interface1;
     }
 }
 
