@@ -15,11 +15,11 @@ namespace ChoreApplication
         #region Properties
 
         //Date and time of when the chore is due
-        private string dueDate { get; set; }
+        private DateTime DueDate { get; set; }
         //Status of the chore. Can be active, approval pending, approved and overdue
         private string status { get; set; }
         //Date of approval. Empty if not approved yet
-        private string approvalDate { get; set; }
+        private DateTime approvalDate { get; set; }
 
         #endregion
 
@@ -35,10 +35,10 @@ namespace ChoreApplication
         /// <param name="_dueDate">When the chore is due</param>
         /// <param name="_status">What state the chore is in. Can be active, approval pending, approved and overdue</param>
         /// <param name="_approvalDate">What date the chore is approved. Empty string if not approved</param>
-        public Concrete(string _name, string _desc, int _points, string _assignment, string _dueDate, string _status, string _approvalDate) : 
+        public Concrete(string _name, string _desc, int _points, string _assignment, DateTime _dueDate, string _status, DateTime _approvalDate) : 
             base(_name, _desc, _points, _assignment)
         {
-            dueDate = _dueDate;
+            DueDate = _dueDate;
             status = _status;
             approvalDate = _approvalDate;
         }
@@ -56,7 +56,7 @@ namespace ChoreApplication
         {
             return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
-                name, description, points, assignment, dueDate, status, approvalDate);
+                name, description, points, assignment, DueDate, status, approvalDate);
         }
         #endregion
     }
