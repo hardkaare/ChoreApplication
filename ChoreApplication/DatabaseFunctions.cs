@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
@@ -13,6 +14,9 @@ namespace ChoreApplication
     {
         public static void Connection()
         {
+            List<object> objectList = new List<object>();
+            var i = 0;
+            var readerOutput = 0;
             try
             {
                 SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
@@ -35,8 +39,13 @@ namespace ChoreApplication
                         {
                             while (reader.Read())
                             {
-                                MessageBox.Show(reader.GetString(1));
-                                MessageBox.Show(Convert.ToString(reader.GetInt32(0)));
+                                
+                                objectList.Add(reader.GetValue(0));
+                                readerOutput = Convert.ToInt32(objectList[i]);
+                                readerOutput++;
+                                MessageBox.Show(Convert.ToString(objectList[i]));
+                                i++;
+                               
                             }
                         }
                     }
@@ -50,62 +59,6 @@ namespace ChoreApplication
         }
 
 
-        //public static string RunQuery(string sql)
-        //{
-        //    Connection();
-        //    using (SqlCommand = new SqlCommand(sql, connection))
-        //    {
-
-        //    }
-        //}
-
-        /*
-        public static MySqlConnection Connection()
-        {
-            MySqlConnection con = null;
-            string myConnectionString = "Server=127.0.0.1;Database=world;User ID=root;Password=999;Connection Timeout=30;";
-
-            try
-            {
-                con = new MySqlConnection();
-                con.ConnectionString = myConnectionString;
-                con.Open();
-                MessageBox.Show("Connection Succesful");
-                return con;
-            }
-            catch (MySql.Data.MySqlClient.MySqlException)
-            {
-               
-            }
-            finally
-            {
-                if(con != null)
-                {
-                    con.Clone();
-                }   
-            }
-            return con;
-        }
-        */
-        /*
-        public static string RunQuery(string query)
-        {
-            var result = "";
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.CommandText = query;
-            cmd.Connection = Connection();
-            MySqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-            {
-                for (int i = 0; i < reader.FieldCount; i++)
-                {
-                    result += reader[i];
-                }
-            }
-            return result;
-
-        }
-        */
     }
 }
 
