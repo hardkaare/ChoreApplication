@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using MySql.Data.MySqlClient; //Use MySQL stuff
 
 namespace ChoreApplication
 {
@@ -23,10 +24,9 @@ namespace ChoreApplication
             testlist.Add("Mon");
             testlist.Add("Wed");
             testlist.Add("Fri");
-
             Reocurring testchore1 = new Reocurring("Gå tur med hunden", "Husk poser og snor", 5, 
-                "Hans", "17:30", testlist);
-            TestLabelLuten.Text = testchore1.ToString();            
+                "Hans", DateTime.Now, testlist);
+            TestLabelLuten.Text = testchore1.ToString();
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)

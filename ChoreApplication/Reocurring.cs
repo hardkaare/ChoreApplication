@@ -15,7 +15,7 @@ namespace ChoreApplication
         #region Properties
 
         //What time of the day it should set the due time to when it generates Concrete Chores
-        public string dueTime { get; protected set; }
+        public DateTime dueTime { get; protected set; }
 
         //What days it should generate a Concrete Chore
         public List<string> days { get; protected set; }
@@ -27,7 +27,7 @@ namespace ChoreApplication
         /// <summary>
         /// Constructs the chore. Passes variables to the Chore constructer. Sets due time and days.
         /// </summary>
-        public Reocurring(string _name, string _desc, int _points, string _assignment, string _duetime, List<string> _days) : 
+        public Reocurring(string _name, string _desc, int _points, string _assignment, DateTime _duetime, List<string> _days) : 
             base(_name, _desc, _points, _assignment)
         {
             dueTime = _duetime;
@@ -48,7 +48,7 @@ namespace ChoreApplication
             //Formats the string with varables from this and base class
             var sum = string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nDue time: {4} \nDays: ",
-                name, description, points, assignment, dueTime);
+                name, description, points, assignment, dueTime.ToString("T"));
 
             //Adds each day to the list
             foreach (string day in days)
