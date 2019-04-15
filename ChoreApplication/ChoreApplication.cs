@@ -31,6 +31,8 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
+            DatabaseFunctions.Connection();
+            //TestLabelJoenler.Text = DatabaseFunctions.RunQuery("SELECT * FROM dbo.chore");
             //Notification testNotification = new Notification("You have a new reward available", "Phillip");
             //TestLabelJoenler.Text = testNotification.ToString();
             //Reward testReward = new Reward("A good spanking", 100, "Phillip");
