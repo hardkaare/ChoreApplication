@@ -11,7 +11,7 @@ using System.Data.SqlClient;
 namespace ChoreApplication
 {
     /// <summary>
-    /// Functions for interacting with the DB. Inkludes a function run once that initializes the connection
+    /// Functions for interacting with the DB. Includes a function run once that initializes the connection
     /// to the DB.
     /// </summary>
     class DatabaseFunctions
@@ -27,7 +27,7 @@ namespace ChoreApplication
         //Password
         private const String PASSWORD = "Tuborg123";
         //Sql connection
-        private static SqlConnection dbConn;
+        public static SqlConnection dbConn;
 
         #endregion
 
