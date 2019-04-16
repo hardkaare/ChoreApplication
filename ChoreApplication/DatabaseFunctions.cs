@@ -8,53 +8,49 @@ using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
+
+
 namespace ChoreApplication
 {
     class DatabaseFunctions
     {
-        public static SqlConnectionStringBuilder Connection()
+        private const String DATASOURCE = "choreapplication.database.windows.net";
+        private const String INITIALCATALOG = "ChoreApplication";
+        private const String UID = "bi408f19";
+        private const String PASSWORD = "Tuborg123";
+        private static SqlConnection dbConn;
+
+        public static void InitializeDB()
         {
-
-
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "choreapplication.database.windows.net";
-            builder.UserID = "bi408f19";
-            builder.Password = "Tuborg123";
-            builder.InitialCatalog = "ChoreApplication";
+            builder.DataSource = DATASOURCE;
+            builder.UserID = UID;
+            builder.Password = PASSWORD;
+            builder.InitialCatalog = INITIALCATALOG;
 
-            return builder;
+            String connString = builder.ToString();
 
+            builder = null;
 
-        }
-        public static void RunQuery(string query)
-        {
-            List<object> objectList = new List<object>();
-            var i = 0;
-            var readerOutput = 0;
-            var builder = Connection();
-            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            dbConn = new SqlConnection(connString);
+
+            Application.ApplicationExit += (sender, args) =>
             {
-                connection.Open();                  
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                if (dbConn != null)
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-
-                            objectList.Add(reader.GetValue(0));
-                            readerOutput = Convert.ToInt32(objectList[i]);
-                            readerOutput++;
-                            MessageBox.Show(Convert.ToString(objectList[i]));
-                            i++;
-
-                        }
-                    }
+                    dbConn.Dispose();
+                    dbConn = null;
                 }
-            }
+            };
+        }
 
-
+        public static void Insert(string f, int p)
+        {
+            string query = string.Format("INSERT INTO dbo.users(first_name, pincode) VALUES ('{0}', '{1}')", f, p);
+            SqlCommand cmd = new SqlCommand(query, dbConn);
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
         }
     }
 }
