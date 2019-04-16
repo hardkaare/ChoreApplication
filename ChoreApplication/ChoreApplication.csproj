@@ -58,8 +58,20 @@
     <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="LoginInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginInterface.Designer.cs">
+      <DependentUpon>LoginInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="Notification.cs" />
     <Compile Include="ParentUser.cs" />
+    <Compile Include="RegisterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterUser.Designer.cs">
+      <DependentUpon>RegisterUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Reocurring.cs" />
     <Compile Include="Repeatable.cs" />
     <Compile Include="Reward.cs" />
