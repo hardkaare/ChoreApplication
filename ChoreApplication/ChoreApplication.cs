@@ -16,6 +16,7 @@ namespace ChoreApplication
         public ChoreApplication()
         {
             InitializeComponent();
+            DatabaseFunctions.InitializeDB();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -31,7 +32,9 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
-            DatabaseFunctions.RunQuery("SELECT * FROM dbo.users");
+
+            DatabaseFunctions.Insert("Jens", 1234);
+            //DatabaseFunctions.RunStringQuery("SELECT * FROM dbo.users");
             //TestLabelJoenler.Text = DatabaseFunctions.RunQuery("SELECT * FROM dbo.chore");
             //Notification testNotification = new Notification("You have a new reward available", "Phillip");
             //TestLabelJoenler.Text = testNotification.ToString();
