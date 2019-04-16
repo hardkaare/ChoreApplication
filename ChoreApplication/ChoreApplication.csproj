@@ -66,11 +66,11 @@
     </Compile>
     <Compile Include="Notification.cs" />
     <Compile Include="ParentUser.cs" />
-    <Compile Include="RegisterUser.cs">
+    <Compile Include="RegisterUserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterUser.Designer.cs">
-      <DependentUpon>RegisterUser.cs</DependentUpon>
+    <Compile Include="RegisterUserInterface.Designer.cs">
+      <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Reocurring.cs" />
     <Compile Include="Repeatable.cs" />
@@ -83,6 +83,9 @@
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="LoginInterface.resx">
+      <DependentUpon>LoginInterface.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -91,7 +94,11 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RegisterUserInterface.resx">
+      <DependentUpon>RegisterUserInterface.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -105,6 +112,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserIcon.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\UserIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
