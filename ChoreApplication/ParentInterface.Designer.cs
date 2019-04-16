@@ -28,160 +28,238 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.InterfaceTitle = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.ParentChorePanel = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.NavChoresButton = new System.Windows.Forms.Button();
-            this.NavRewardButton = new System.Windows.Forms.Button();
-            this.NavLeaderboardButton = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.NavUsersButton = new System.Windows.Forms.Button();
-            this.exit_button = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            this.ParentChorePanel.SuspendLayout();
-            this.panel2.SuspendLayout();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
+            this.navigationPanel = new System.Windows.Forms.Panel();
+            this.notificationsLabel = new System.Windows.Forms.Label();
+            this.usersLabel = new System.Windows.Forms.Label();
+            this.leaderboardsLabel = new System.Windows.Forms.Label();
+            this.rewardsLabel = new System.Windows.Forms.Label();
+            this.choresLabel = new System.Windows.Forms.Label();
+            this.choreNavButton = new System.Windows.Forms.Button();
+            this.notificationsNavButton = new System.Windows.Forms.Button();
+            this.usersNavButton = new System.Windows.Forms.Button();
+            this.leadboardNavButton = new System.Windows.Forms.Button();
+            this.rewardNavButton = new System.Windows.Forms.Button();
+            this.chorePanel = new System.Windows.Forms.Panel();
+            this.titleLabel = new System.Windows.Forms.Label();
+            this.rewardPanel = new System.Windows.Forms.Panel();
+            this.navigationPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // InterfaceTitle
+            // navigationPanel
             // 
-            this.InterfaceTitle.AutoSize = true;
-            this.InterfaceTitle.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.InterfaceTitle.Location = new System.Drawing.Point(221, 20);
-            this.InterfaceTitle.Name = "InterfaceTitle";
-            this.InterfaceTitle.Size = new System.Drawing.Size(102, 31);
-            this.InterfaceTitle.TabIndex = 0;
-            this.InterfaceTitle.Text = "Chores";
+            this.navigationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.navigationPanel.Controls.Add(this.notificationsLabel);
+            this.navigationPanel.Controls.Add(this.usersLabel);
+            this.navigationPanel.Controls.Add(this.leaderboardsLabel);
+            this.navigationPanel.Controls.Add(this.rewardsLabel);
+            this.navigationPanel.Controls.Add(this.choresLabel);
+            this.navigationPanel.Controls.Add(this.choreNavButton);
+            this.navigationPanel.Controls.Add(this.notificationsNavButton);
+            this.navigationPanel.Controls.Add(this.usersNavButton);
+            this.navigationPanel.Controls.Add(this.leadboardNavButton);
+            this.navigationPanel.Controls.Add(this.rewardNavButton);
+            this.navigationPanel.Location = new System.Drawing.Point(12, 455);
+            this.navigationPanel.Name = "navigationPanel";
+            this.navigationPanel.Size = new System.Drawing.Size(423, 79);
+            this.navigationPanel.TabIndex = 0;
             // 
-            // panel1
+            // notificationsLabel
             // 
-            this.panel1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel1.Controls.Add(this.exit_button);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(532, 30);
-            this.panel1.TabIndex = 1;
+            this.notificationsLabel.AutoSize = true;
+            this.notificationsLabel.Location = new System.Drawing.Point(342, 51);
+            this.notificationsLabel.Name = "notificationsLabel";
+            this.notificationsLabel.Size = new System.Drawing.Size(65, 13);
+            this.notificationsLabel.TabIndex = 0;
+            this.notificationsLabel.Text = "Notifications";
             // 
-            // ParentChorePanel
+            // usersLabel
             // 
-            this.ParentChorePanel.Controls.Add(this.InterfaceTitle);
-            this.ParentChorePanel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ParentChorePanel.Location = new System.Drawing.Point(0, 30);
-            this.ParentChorePanel.Name = "ParentChorePanel";
-            this.ParentChorePanel.Size = new System.Drawing.Size(532, 367);
-            this.ParentChorePanel.TabIndex = 2;
+            this.usersLabel.AutoSize = true;
+            this.usersLabel.Location = new System.Drawing.Point(275, 51);
+            this.usersLabel.Name = "usersLabel";
+            this.usersLabel.Size = new System.Drawing.Size(34, 13);
+            this.usersLabel.TabIndex = 0;
+            this.usersLabel.Text = "Users";
             // 
-            // panel2
+            // leaderboardsLabel
             // 
-            this.panel2.Controls.Add(this.button4);
-            this.panel2.Controls.Add(this.NavUsersButton);
-            this.panel2.Controls.Add(this.NavChoresButton);
-            this.panel2.Controls.Add(this.NavRewardButton);
-            this.panel2.Controls.Add(this.NavLeaderboardButton);
-            this.panel2.Location = new System.Drawing.Point(0, 487);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(532, 100);
-            this.panel2.TabIndex = 1;
+            this.leaderboardsLabel.AutoSize = true;
+            this.leaderboardsLabel.Location = new System.Drawing.Point(177, 51);
+            this.leaderboardsLabel.Name = "leaderboardsLabel";
+            this.leaderboardsLabel.Size = new System.Drawing.Size(72, 13);
+            this.leaderboardsLabel.TabIndex = 0;
+            this.leaderboardsLabel.Text = "Leaderboards";
             // 
-            // NavChoresButton
+            // rewardsLabel
             // 
-            this.NavChoresButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NavChoresButton.Location = new System.Drawing.Point(65, 39);
-            this.NavChoresButton.Name = "NavChoresButton";
-            this.NavChoresButton.Size = new System.Drawing.Size(75, 23);
-            this.NavChoresButton.TabIndex = 1;
-            this.NavChoresButton.Text = "Chores";
-            this.NavChoresButton.UseVisualStyleBackColor = true;
+            this.rewardsLabel.AutoSize = true;
+            this.rewardsLabel.Location = new System.Drawing.Point(107, 51);
+            this.rewardsLabel.Name = "rewardsLabel";
+            this.rewardsLabel.Size = new System.Drawing.Size(49, 13);
+            this.rewardsLabel.TabIndex = 0;
+            this.rewardsLabel.Text = "Rewards";
             // 
-            // NavRewardButton
+            // choresLabel
             // 
-            this.NavRewardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NavRewardButton.Location = new System.Drawing.Point(146, 39);
-            this.NavRewardButton.Name = "NavRewardButton";
-            this.NavRewardButton.Size = new System.Drawing.Size(75, 23);
-            this.NavRewardButton.TabIndex = 2;
-            this.NavRewardButton.Text = "Rewards";
-            this.NavRewardButton.UseVisualStyleBackColor = true;
-            this.NavRewardButton.Click += new System.EventHandler(this.NavRewardButton_Click);
+            this.choresLabel.AutoSize = true;
+            this.choresLabel.Location = new System.Drawing.Point(30, 51);
+            this.choresLabel.Name = "choresLabel";
+            this.choresLabel.Size = new System.Drawing.Size(40, 13);
+            this.choresLabel.TabIndex = 0;
+            this.choresLabel.Text = "Chores";
             // 
-            // NavLeaderboardButton
+            // choreNavButton
             // 
-            this.NavLeaderboardButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NavLeaderboardButton.Location = new System.Drawing.Point(227, 39);
-            this.NavLeaderboardButton.Name = "NavLeaderboardButton";
-            this.NavLeaderboardButton.Size = new System.Drawing.Size(75, 23);
-            this.NavLeaderboardButton.TabIndex = 3;
-            this.NavLeaderboardButton.Text = "Leaderboard";
-            this.NavLeaderboardButton.UseVisualStyleBackColor = true;
+            this.choreNavButton.BackgroundImage = global::ChoreApplication.Properties.Resources.chores;
+            this.choreNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.choreNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.choreNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.choreNavButton.FlatAppearance.BorderSize = 0;
+            this.choreNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.choreNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.choreNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.choreNavButton.Location = new System.Drawing.Point(12, 13);
+            this.choreNavButton.Name = "choreNavButton";
+            this.choreNavButton.Size = new System.Drawing.Size(75, 35);
+            this.choreNavButton.TabIndex = 0;
+            this.choreNavButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
+            this.choreNavButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.choreNavButton.UseVisualStyleBackColor = true;
+            this.choreNavButton.Click += new System.EventHandler(this.ChoreNavButton_Click);
             // 
-            // button4
+            // notificationsNavButton
             // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(408, 39);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(75, 23);
-            this.button4.TabIndex = 4;
-            this.button4.Text = "Notifications";
-            this.button4.UseVisualStyleBackColor = true;
+            this.notificationsNavButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("notificationsNavButton.BackgroundImage")));
+            this.notificationsNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.notificationsNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.notificationsNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.notificationsNavButton.FlatAppearance.BorderSize = 0;
+            this.notificationsNavButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.notificationsNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.notificationsNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.notificationsNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.notificationsNavButton.Location = new System.Drawing.Point(336, 13);
+            this.notificationsNavButton.Name = "notificationsNavButton";
+            this.notificationsNavButton.Size = new System.Drawing.Size(75, 35);
+            this.notificationsNavButton.TabIndex = 0;
+            this.notificationsNavButton.UseVisualStyleBackColor = true;
+            this.notificationsNavButton.Click += new System.EventHandler(this.NotificationsNavButton_Click);
             // 
-            // NavUsersButton
+            // usersNavButton
             // 
-            this.NavUsersButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.NavUsersButton.Location = new System.Drawing.Point(318, 39);
-            this.NavUsersButton.Name = "NavUsersButton";
-            this.NavUsersButton.Size = new System.Drawing.Size(75, 23);
-            this.NavUsersButton.TabIndex = 5;
-            this.NavUsersButton.Text = "Users";
-            this.NavUsersButton.UseVisualStyleBackColor = true;
+            this.usersNavButton.BackgroundImage = global::ChoreApplication.Properties.Resources.users;
+            this.usersNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.usersNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.usersNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.usersNavButton.FlatAppearance.BorderSize = 0;
+            this.usersNavButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.usersNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.usersNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.usersNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.usersNavButton.Location = new System.Drawing.Point(255, 13);
+            this.usersNavButton.Name = "usersNavButton";
+            this.usersNavButton.Size = new System.Drawing.Size(75, 35);
+            this.usersNavButton.TabIndex = 0;
+            this.usersNavButton.UseVisualStyleBackColor = true;
+            this.usersNavButton.Click += new System.EventHandler(this.UsersNavButton_Click);
             // 
-            // exit_button
+            // leadboardNavButton
             // 
-            this.exit_button.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.exit_button.BackgroundImage = global::ChoreApplication.Properties.Resources.clor;
-            this.exit_button.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.exit_button.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.exit_button.FlatAppearance.BorderSize = 0;
-            this.exit_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.exit_button.Location = new System.Drawing.Point(502, 0);
-            this.exit_button.Name = "exit_button";
-            this.exit_button.Size = new System.Drawing.Size(29, 30);
-            this.exit_button.TabIndex = 0;
-            this.exit_button.UseVisualStyleBackColor = true;
-            this.exit_button.Click += new System.EventHandler(this.Exit_button_Click);
+            this.leadboardNavButton.BackgroundImage = global::ChoreApplication.Properties.Resources.leaderboardPlaceholder;
+            this.leadboardNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.leadboardNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.leadboardNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.leadboardNavButton.FlatAppearance.BorderSize = 0;
+            this.leadboardNavButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.leadboardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.leadboardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.leadboardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.leadboardNavButton.Location = new System.Drawing.Point(174, 13);
+            this.leadboardNavButton.Name = "leadboardNavButton";
+            this.leadboardNavButton.Size = new System.Drawing.Size(75, 35);
+            this.leadboardNavButton.TabIndex = 0;
+            this.leadboardNavButton.UseVisualStyleBackColor = true;
+            this.leadboardNavButton.Click += new System.EventHandler(this.LeadboardNavButton_Click);
+            // 
+            // rewardNavButton
+            // 
+            this.rewardNavButton.BackgroundImage = global::ChoreApplication.Properties.Resources.reward;
+            this.rewardNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.rewardNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.rewardNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rewardNavButton.FlatAppearance.BorderSize = 0;
+            this.rewardNavButton.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rewardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rewardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.rewardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.rewardNavButton.Location = new System.Drawing.Point(93, 13);
+            this.rewardNavButton.Name = "rewardNavButton";
+            this.rewardNavButton.Size = new System.Drawing.Size(75, 35);
+            this.rewardNavButton.TabIndex = 0;
+            this.rewardNavButton.UseVisualStyleBackColor = true;
+            this.rewardNavButton.Click += new System.EventHandler(this.RewardNavButton_Click);
+            // 
+            // chorePanel
+            // 
+            this.chorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chorePanel.Location = new System.Drawing.Point(12, 38);
+            this.chorePanel.Name = "chorePanel";
+            this.chorePanel.Size = new System.Drawing.Size(423, 411);
+            this.chorePanel.TabIndex = 1;
+            // 
+            // titleLabel
+            // 
+            this.titleLabel.AutoSize = true;
+            this.titleLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.titleLabel.Location = new System.Drawing.Point(180, 9);
+            this.titleLabel.Name = "titleLabel";
+            this.titleLabel.Size = new System.Drawing.Size(82, 26);
+            this.titleLabel.TabIndex = 0;
+            this.titleLabel.Text = "Chores";
+            // 
+            // rewardPanel
+            // 
+            this.rewardPanel.Location = new System.Drawing.Point(443, 38);
+            this.rewardPanel.Name = "rewardPanel";
+            this.rewardPanel.Size = new System.Drawing.Size(423, 411);
+            this.rewardPanel.TabIndex = 1;
             // 
             // ParentInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.Orange;
-            this.ClientSize = new System.Drawing.Size(532, 587);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.ParentChorePanel);
-            this.Controls.Add(this.panel1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(878, 537);
+            this.Controls.Add(this.titleLabel);
+            this.Controls.Add(this.rewardPanel);
+            this.Controls.Add(this.chorePanel);
+            this.Controls.Add(this.navigationPanel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ParentInterface";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ParentInterface";
-            this.panel1.ResumeLayout(false);
-            this.ParentChorePanel.ResumeLayout(false);
-            this.ParentChorePanel.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.navigationPanel.ResumeLayout(false);
+            this.navigationPanel.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label InterfaceTitle;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel ParentChorePanel;
-        private System.Windows.Forms.Button exit_button;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button NavUsersButton;
-        private System.Windows.Forms.Button NavChoresButton;
-        private System.Windows.Forms.Button NavRewardButton;
-        private System.Windows.Forms.Button NavLeaderboardButton;
+        private System.Windows.Forms.Panel navigationPanel;
+        private System.Windows.Forms.Button notificationsNavButton;
+        private System.Windows.Forms.Button usersNavButton;
+        private System.Windows.Forms.Button leadboardNavButton;
+        private System.Windows.Forms.Button rewardNavButton;
+        private System.Windows.Forms.Button choreNavButton;
+        private System.Windows.Forms.Panel chorePanel;
+        private System.Windows.Forms.Panel rewardPanel;
+        private System.Windows.Forms.Label notificationsLabel;
+        private System.Windows.Forms.Label usersLabel;
+        private System.Windows.Forms.Label leaderboardsLabel;
+        private System.Windows.Forms.Label rewardsLabel;
+        private System.Windows.Forms.Label choresLabel;
+        private System.Windows.Forms.Label titleLabel;
     }
 }
