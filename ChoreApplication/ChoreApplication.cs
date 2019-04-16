@@ -47,7 +47,18 @@ namespace ChoreApplication
         {
             var LoginInterface = new LoginInterface();
             var RegisterUser = new RegisterUserInterface();
-            RegisterUser.Show();
+            var ChooseProfile = new ChooseProfileInterface();
+            var ParentInterface = new ParentInterface();
+
+            //LoginInterface.Show();
+            //RegisterUser.Show();
+            //ChooseProfile.Show();
+            ParentInterface.Show();
+        }
+
+        private void ChoreApplication_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

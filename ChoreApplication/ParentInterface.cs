@@ -17,14 +17,60 @@ namespace ChoreApplication
             InitializeComponent();
         }
 
-        private void Exit_button_Click(object sender, EventArgs e)
+        public void MakeVisible(string input)
         {
-            this.Close();
+           
         }
 
-        private void NavRewardButton_Click(object sender, EventArgs e)
+        public void ChoreInterface()
         {
-            InterfaceTitle.Text = "Rewards";
+            titleLabel.Text = "Chores";
+            chorePanel.Visible = true;
+        }
+
+        public void RewardInterface()
+        {
+            titleLabel.Text = "Rewards";
+        }
+
+        public void LeaderboardInterface()
+        {
+            titleLabel.Text = "Leaderboards";
+        }
+
+        public void UsersInterface()
+        {
+            titleLabel.Text = "Users";
+        }
+
+        public void NotificationInterface()
+        {
+            titleLabel.Text = "Notifications";
+        }
+
+        private void ChoreNavButton_Click(object sender, EventArgs e)
+        {
+            ChoreInterface();
+        }
+
+        private void RewardNavButton_Click(object sender, EventArgs e)
+        {
+            RewardInterface();
+        }
+
+        private void LeadboardNavButton_Click(object sender, EventArgs e)
+        {
+            LeaderboardInterface();
+        }
+
+        private void UsersNavButton_Click(object sender, EventArgs e)
+        {
+            UsersInterface();
+        }
+
+        private void NotificationsNavButton_Click(object sender, EventArgs e)
+        {
+            NotificationInterface();
         }
     }
 }
