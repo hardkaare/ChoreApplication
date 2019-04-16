@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
@@ -27,6 +28,17 @@ namespace ChoreApplication
             Pincode = pincode;
         }
 
+        #endregion
+        #region Public methods
+        public static void Insert(string f, int p)
+        {
+               
+            string query = string.Format("INSERT INTO dbo.users(first_name, pincode) VALUES ('{0}', '{1}')", f, p);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
         #endregion
     }
 }
