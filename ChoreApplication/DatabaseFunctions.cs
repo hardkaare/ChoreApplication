@@ -18,7 +18,7 @@ namespace ChoreApplication
         private const String INITIALCATALOG = "ChoreApplication";
         private const String UID = "bi408f19";
         private const String PASSWORD = "Tuborg123";
-        private static SqlConnection dbConn;
+        public static SqlConnection dbConn;
 
         public static void InitializeDB()
         {
@@ -44,14 +44,7 @@ namespace ChoreApplication
             };
         }
 
-        public static void Insert(string f, int p)
-        {
-            string query = string.Format("INSERT INTO dbo.users(first_name, pincode) VALUES ('{0}', '{1}')", f, p);
-            SqlCommand cmd = new SqlCommand(query, dbConn);
-            dbConn.Open();
-            cmd.ExecuteNonQuery();
-            dbConn.Close();
-        }
+        
     }
 }
 
