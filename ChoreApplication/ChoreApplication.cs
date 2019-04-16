@@ -48,7 +48,9 @@ namespace ChoreApplication
 
         private void Interface1_Click(object sender, EventArgs e)
         {
-          
+            var LoginInterface = new LoginInterface();
+            var RegisterUser = new RegisterUserInterface();
+            RegisterUser.Show();
         }
     }
 }

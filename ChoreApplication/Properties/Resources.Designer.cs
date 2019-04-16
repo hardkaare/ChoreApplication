@@ -63,9 +63,9 @@ namespace ChoreApplication.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap clor {
+        internal static System.Drawing.Bitmap UserIcon {
             get {
-                object obj = ResourceManager.GetObject("clor", resourceCulture);
+                object obj = ResourceManager.GetObject("UserIcon", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
