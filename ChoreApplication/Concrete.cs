@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
@@ -45,7 +46,7 @@ namespace ChoreApplication
 
         #endregion
 
-        #region Public helpers
+        #region Public methods
 
         /// <summary>
         /// Override of ToString. 
@@ -58,6 +59,24 @@ namespace ChoreApplication
                 "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
                 name, description, points, assignment, DueDate, status, approvalDate);
         }
+
+        public static void Insert(string name, string desc, int points, 
+            int assignment, DateTime dueTime, string status, string type)
+        {
+            string query = string.Format("INSERT INTO dbo.concrete_chore" +
+                "(due_date, status, approval_date, type) VALUES " +
+                "('{0}', '{1}', NULL, '{2}')", dueTime, status, type);
+            string query2 = string.Format("INSERT INTO dbo.chore" +
+                "(child_id, name, description, points) VALUES " +
+                "('{0}', '{1}', '{2}', '{3}')", assignment, name, desc, points);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
+            cmd.ExecuteNonQuery();
+            DatabaseFunctions.dbConn.Close();
+        }
+
         #endregion
     }
 }

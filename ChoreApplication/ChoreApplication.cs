@@ -21,13 +21,9 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            List<string> testlist = new List<string>();
-            testlist.Add("Mon");
-            testlist.Add("Wed");
-            testlist.Add("Fri");
-            Reocurring testchore1 = new Reocurring("Gå tur med hunden", "Husk poser og snor", 5, 
-                "Hans", DateTime.Now, testlist);
-            TestLabelLuten.Text = testchore1.ToString();
+            
+            MessageBox.Show(DateTime.Now.ToString()); //Ændr format for tid i SQL
+            //Concrete.Insert("Æd lort", "Det skal være en stor en", 10, 1, DateTime.Now, "active", "Reoc");
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
@@ -50,7 +46,18 @@ namespace ChoreApplication
         {
             var LoginInterface = new LoginInterface();
             var RegisterUser = new RegisterUserInterface();
-            RegisterUser.Show();
+            var ChooseProfile = new ChooseProfileInterface();
+            var ParentInterface = new ParentInterface();
+
+            //LoginInterface.Show();
+            //RegisterUser.Show();
+            //ChooseProfile.Show();
+            ParentInterface.Show();
+        }
+
+        private void ChoreApplication_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

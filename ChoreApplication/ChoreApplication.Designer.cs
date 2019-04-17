@@ -93,6 +93,7 @@
             this.Controls.Add(this.TestButtonLuten);
             this.Name = "ChoreApplication";
             this.Text = "ChoreApplication";
+            this.Load += new System.EventHandler(this.ChoreApplication_Load);
             this.ResumeLayout(false);
 
         }

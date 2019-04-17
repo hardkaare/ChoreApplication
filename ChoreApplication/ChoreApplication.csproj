@@ -58,6 +58,12 @@
     <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChooseProfileInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ChooseProfileInterface.Designer.cs">
+      <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,12 @@
       <DependentUpon>LoginInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification.cs" />
+    <Compile Include="ParentInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ParentInterface.Designer.cs">
+      <DependentUpon>ParentInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="ParentUser.cs" />
     <Compile Include="RegisterUserInterface.cs">
       <SubType>Form</SubType>
@@ -83,8 +95,14 @@
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ChooseProfileInterface.resx">
+      <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ParentInterface.resx">
+      <DependentUpon>ParentInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -114,10 +132,58 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\UserIcon.bmp" />
+    <None Include="Resources\arrow.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\UserIcon.png" />
+    <None Include="Resources\check.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chores.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\leaderboardPlaceholder.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menu2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\notifications.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\picture.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumb-down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumbs-down-silhouette.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumbs-up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumbs-up-hand-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trash.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\trophy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\users.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\bell-musical-tool.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

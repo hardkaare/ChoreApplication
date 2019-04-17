@@ -28,86 +28,86 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.WelcomeLabel = new System.Windows.Forms.Label();
-            this.LoginLabel = new System.Windows.Forms.Label();
-            this.EmailTextbox = new System.Windows.Forms.TextBox();
-            this.PwdTextbox = new System.Windows.Forms.TextBox();
-            this.LoginButton = new System.Windows.Forms.Button();
-            this.NewUserLinkLabel = new System.Windows.Forms.LinkLabel();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.loginLabel = new System.Windows.Forms.Label();
+            this.emailInput = new System.Windows.Forms.TextBox();
+            this.pwdInput = new System.Windows.Forms.TextBox();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.newUserLink = new System.Windows.Forms.LinkLabel();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.LoginPanel.SuspendLayout();
             this.SuspendLayout();
             // 
-            // WelcomeLabel
+            // welcomeLabel
             // 
-            this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.welcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeLabel.AutoSize = true;
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.WelcomeLabel.Location = new System.Drawing.Point(61, 18);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(251, 25);
-            this.WelcomeLabel.TabIndex = 0;
-            this.WelcomeLabel.Text = " Welcome to Chore System";
-            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.welcomeLabel.AutoSize = true;
+            this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.welcomeLabel.Location = new System.Drawing.Point(61, 18);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(251, 25);
+            this.welcomeLabel.TabIndex = 0;
+            this.welcomeLabel.Text = " Welcome to Chore System";
+            this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // LoginLabel
+            // loginLabel
             // 
-            this.LoginLabel.AutoSize = true;
-            this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LoginLabel.Location = new System.Drawing.Point(142, 31);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(57, 24);
-            this.LoginLabel.TabIndex = 1;
-            this.LoginLabel.Text = "Login";
+            this.loginLabel.AutoSize = true;
+            this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.loginLabel.Location = new System.Drawing.Point(142, 31);
+            this.loginLabel.Name = "loginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(57, 24);
+            this.loginLabel.TabIndex = 1;
+            this.loginLabel.Text = "Login";
             // 
-            // EmailTextbox
+            // emailInput
             // 
-            this.EmailTextbox.AcceptsTab = true;
-            this.EmailTextbox.Location = new System.Drawing.Point(89, 77);
-            this.EmailTextbox.Name = "EmailTextbox";
-            this.EmailTextbox.Size = new System.Drawing.Size(176, 20);
-            this.EmailTextbox.TabIndex = 2;
-            this.EmailTextbox.Text = "Email";
-            this.EmailTextbox.Click += new System.EventHandler(this.EmailTextbox_Click);
+            this.emailInput.AcceptsTab = true;
+            this.emailInput.Location = new System.Drawing.Point(89, 77);
+            this.emailInput.Name = "emailInput";
+            this.emailInput.Size = new System.Drawing.Size(176, 20);
+            this.emailInput.TabIndex = 2;
+            this.emailInput.Text = "Email";
+            this.emailInput.Click += new System.EventHandler(this.EmailTextbox_Click);
             // 
-            // PwdTextbox
+            // pwdInput
             // 
-            this.PwdTextbox.AcceptsTab = true;
-            this.PwdTextbox.Location = new System.Drawing.Point(89, 103);
-            this.PwdTextbox.Name = "PwdTextbox";
-            this.PwdTextbox.Size = new System.Drawing.Size(176, 20);
-            this.PwdTextbox.TabIndex = 3;
-            this.PwdTextbox.Text = "Password";
-            this.PwdTextbox.Click += new System.EventHandler(this.PwdTextbox_Click);
+            this.pwdInput.AcceptsTab = true;
+            this.pwdInput.Location = new System.Drawing.Point(89, 103);
+            this.pwdInput.Name = "pwdInput";
+            this.pwdInput.Size = new System.Drawing.Size(176, 20);
+            this.pwdInput.TabIndex = 3;
+            this.pwdInput.Text = "Password";
+            this.pwdInput.Click += new System.EventHandler(this.PwdTextbox_Click);
             // 
-            // LoginButton
+            // loginButton
             // 
-            this.LoginButton.Location = new System.Drawing.Point(137, 129);
-            this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(75, 23);
-            this.LoginButton.TabIndex = 4;
-            this.LoginButton.Text = "Login";
-            this.LoginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Location = new System.Drawing.Point(137, 129);
+            this.loginButton.Name = "loginButton";
+            this.loginButton.Size = new System.Drawing.Size(75, 23);
+            this.loginButton.TabIndex = 4;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = true;
             // 
-            // NewUserLinkLabel
+            // newUserLink
             // 
-            this.NewUserLinkLabel.AutoSize = true;
-            this.NewUserLinkLabel.Location = new System.Drawing.Point(145, 155);
-            this.NewUserLinkLabel.Name = "NewUserLinkLabel";
-            this.NewUserLinkLabel.Size = new System.Drawing.Size(58, 13);
-            this.NewUserLinkLabel.TabIndex = 5;
-            this.NewUserLinkLabel.TabStop = true;
-            this.NewUserLinkLabel.Text = "New user?";
-            this.NewUserLinkLabel.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NewUserLinkLabel_LinkClicked);
+            this.newUserLink.AutoSize = true;
+            this.newUserLink.Location = new System.Drawing.Point(145, 155);
+            this.newUserLink.Name = "newUserLink";
+            this.newUserLink.Size = new System.Drawing.Size(58, 13);
+            this.newUserLink.TabIndex = 5;
+            this.newUserLink.TabStop = true;
+            this.newUserLink.Text = "New user?";
+            this.newUserLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NewUserLinkLabel_LinkClicked);
             // 
             // LoginPanel
             // 
-            this.LoginPanel.Controls.Add(this.LoginLabel);
-            this.LoginPanel.Controls.Add(this.NewUserLinkLabel);
-            this.LoginPanel.Controls.Add(this.EmailTextbox);
-            this.LoginPanel.Controls.Add(this.LoginButton);
-            this.LoginPanel.Controls.Add(this.PwdTextbox);
+            this.LoginPanel.Controls.Add(this.loginLabel);
+            this.LoginPanel.Controls.Add(this.newUserLink);
+            this.LoginPanel.Controls.Add(this.emailInput);
+            this.LoginPanel.Controls.Add(this.loginButton);
+            this.LoginPanel.Controls.Add(this.pwdInput);
             this.LoginPanel.Location = new System.Drawing.Point(12, 61);
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(345, 377);
@@ -120,7 +120,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(369, 450);
             this.Controls.Add(this.LoginPanel);
-            this.Controls.Add(this.WelcomeLabel);
+            this.Controls.Add(this.welcomeLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "LoginInterface";
@@ -135,12 +135,12 @@
 
         #endregion
 
-        private System.Windows.Forms.Label WelcomeLabel;
-        private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.TextBox EmailTextbox;
-        private System.Windows.Forms.TextBox PwdTextbox;
-        private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.LinkLabel NewUserLinkLabel;
+        private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Label loginLabel;
+        private System.Windows.Forms.TextBox emailInput;
+        private System.Windows.Forms.TextBox pwdInput;
+        private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.LinkLabel newUserLink;
         private System.Windows.Forms.Panel LoginPanel;
     }
 }
