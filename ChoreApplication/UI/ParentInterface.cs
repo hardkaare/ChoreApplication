@@ -8,28 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChoreApplication
+namespace ChoreApplication.UI
 {
     public partial class ParentInterface : Form
     {
         public int UI;
-
-        public Panel dynamicPanel1 = new Panel
-        {
-            BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle,
-            Size = new System.Drawing.Size(420, 415)
-        };
-        //{
-        //    dynamicPanel1.Location = new System.Drawing.Point(12, 47),
-        //    dynamicPanel1.MaximumSize = new System.Drawing.Size(420, 450),
-        //    dynamicPanel1.Name = "dynamicPanel",
-        //    dynamicPanel1.TabIndex = 1,
-        //};
         public ParentInterface()
         {
-
             InitializeComponent();
-            
         }
 
         #region UserInterfaceMethods
@@ -76,13 +62,10 @@ namespace ChoreApplication
 
         public void ChoresUI()
         {
-
-            //UI = 1;
-            //ResetUI();
-            //AddUpperButtons(true, true, false, false);
-            //titleText.Text = "Chores";
-            ChoreUI choreUI = new ChoreUI();
-            choreUI.InitializeUI();
+            UI = 1;
+            ResetUI();
+            AddUpperButtons(true, true, false, false);
+            titleText.Text = "Chores";
         }
         public void RewardsUI()
         {

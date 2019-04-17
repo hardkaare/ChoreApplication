@@ -1,4 +1,4 @@
-﻿namespace ChoreApplication
+﻿namespace ChoreApplication.UI
 {
     partial class ParentInterface
     {

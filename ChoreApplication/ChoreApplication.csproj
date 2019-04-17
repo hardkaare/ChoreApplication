@@ -52,10 +52,10 @@
   <ItemGroup>
     <Compile Include="ChildUser.cs" />
     <Compile Include="Chore.cs" />
-    <Compile Include="UI\ChoreApplication.cs">
+    <Compile Include="ChoreApplication.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ChoreApplication.Designer.cs">
+    <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\ChooseProfileInterface.cs">
@@ -64,7 +64,6 @@
     <Compile Include="UI\ChooseProfileInterface.Designer.cs">
       <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ChoreUI.cs" />
     <Compile Include="UI\LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -93,7 +92,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Concrete.cs" />
     <Compile Include="User.cs" />
-    <EmbeddedResource Include="UI\ChoreApplication.resx">
+    <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\ChooseProfileInterface.resx">

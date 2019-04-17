@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace ChoreApplication
+namespace ChoreApplication.UI
 {
     public partial class RegisterUserInterface : Form
     {

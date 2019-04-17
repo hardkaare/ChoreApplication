@@ -2,7 +2,7 @@
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
-namespace ChoreApplication
+namespace ChoreApplication.UI
 {
     public partial class LoginInterface : Form
     {
