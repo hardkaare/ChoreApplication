@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     public partial class LoginInterface : Form
     {
+        private static SqlConnection dbConn = DatabaseFunctions.dbConn;
+
         public LoginInterface()
         {
             InitializeComponent();
@@ -30,6 +33,42 @@ namespace ChoreApplication
         {
             var RegisterUserInterface = new RegisterUserInterface();
             RegisterUserInterface.Show();
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+            string Emailinput = emailInput.Text;
+            string passwordInput = pwdInput.Text;
+            if(string.IsNullOrEmpty(Emailinput) || string.IsNullOrEmpty(passwordInput))
+            {
+                MessageBox.Show("Please enter your E-mail and password.");
+                return;
+            }
+
+            string loginQuery = "SELECT email, password FROM dbo.parent";
+            SqlCommand cmd = new SqlCommand(loginQuery, dbConn);
+            dbConn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string email = reader["email"].ToString();
+                string password = reader["password"].ToString();
+                if(Emailinput == email && passwordInput == password)
+                {
+                    
+                    ParentInterface showInterface = new ParentInterface();
+                    showInterface.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Incorrect password or E-mail entered.");
+                    dbConn.Close();
+                    return;
+                }
+            }
+            dbConn.Close();
+
+
         }
     }
 }

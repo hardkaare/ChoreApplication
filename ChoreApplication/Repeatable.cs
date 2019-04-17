@@ -28,8 +28,8 @@ namespace ChoreApplication
         /// <summary>
         /// Passes variables to construct the chore. Sets limit. Sets completions to 0
         /// </summary>
-        public Repeatable(string _name, string _desc, int _points, string _assignment, int _limit) : 
-            base(_name, _desc, _points, _assignment)
+        public Repeatable(int _id, string _name, string _desc, int _points, int _assignment, int _limit) : 
+            base(_id, _name, _desc, _points, _assignment)
         {
             limit = _limit;
             completions = 0;
