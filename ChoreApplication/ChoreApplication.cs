@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient; //Use MySQL stuff
@@ -19,6 +20,22 @@ namespace ChoreApplication
             DatabaseFunctions.InitializeDB();
         }
 
+        private static void LoadAllUsers()
+        {
+            List<ParentUser> parents = ParentUser.GetParents();
+            List<ChildUser> children = ChildUser.GetChildren();
+            
+            foreach (var parent in parents)
+            {
+                MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
+                
+            }
+            foreach (var child in children)
+            {
+                MessageBox.Show(string.Format(child.FirstName + child.Pincode));
+            }
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             
@@ -28,8 +45,16 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
+            var LoginInterface = new LoginInterface();
+            var RegisterUser = new RegisterUserInterface();
+            var ChooseProfile = new ChooseProfileInterface();
+            var ParentInterface = new ParentInterface();
 
-            ParentUser.Delete(9);
+            LoginInterface.Show();
+            //RegisterUser.Show();
+            //ChooseProfile.Show();
+            //ParentInterface.Show();
+
             //DatabaseFunctions.RunStringQuery("SELECT * FROM dbo.users");
             //TestLabelJoenler.Text = DatabaseFunctions.RunQuery("SELECT * FROM dbo.chore");
             //Notification testNotification = new Notification("You have a new reward available", "Phillip");
