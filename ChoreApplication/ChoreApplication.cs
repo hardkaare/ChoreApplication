@@ -22,8 +22,8 @@ namespace ChoreApplication
         private void Button1_Click(object sender, EventArgs e)
         {
             
-            MessageBox.Show(DateTime.Now.ToString()); //Ændr format for tid i SQL
-            //Concrete.Insert("Æd lort", "Det skal være en stor en", 10, 1, DateTime.Now, "active", "Reoc");
+            //MessageBox.Show(DateTime.Now.ToString());
+            Concrete.Insert("Æd lort", "Det skal være en stor en", 10, 1, DateTime.Now, 1, "Reoc");
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)

@@ -61,19 +61,19 @@ namespace ChoreApplication
         }
 
         public static void Insert(string name, string desc, int points, 
-            int assignment, DateTime dueTime, string status, string type)
+            int assignment, DateTime dueTime, int status, string type)
         {
-            string query = string.Format("INSERT INTO dbo.concrete_chore" +
-                "(due_date, status, approval_date, type) VALUES " +
-                "('{0}', '{1}', NULL, '{2}')", dueTime, status, type);
-            string query2 = string.Format("INSERT INTO dbo.chore" +
+            string query = string.Format("INSERT INTO dbo.chore" +
                 "(child_id, name, description, points) VALUES " +
                 "('{0}', '{1}', '{2}', '{3}')", assignment, name, desc, points);
+            string query2 = string.Format("INSERT INTO dbo.concrete_chore" +
+                "VALUES (1, '{0}', '{1}', NULL, '{2}')", dueTime.ToString(), status, type);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            SqlCommand cmd2 = new SqlCommand(query2, DatabaseFunctions.dbConn);
+
             DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
-            cmd.ExecuteNonQuery();
+            cmd2.ExecuteNonQuery();
             DatabaseFunctions.dbConn.Close();
         }
 
