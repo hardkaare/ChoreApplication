@@ -14,6 +14,8 @@ namespace ChoreApplication
     {
         #region Properties
 
+        //ID of the chore
+        public int ID { get; protected set; }
         //Name of the chore
         public string name { get; protected set; }
         //Description of how to do the chore
@@ -21,7 +23,7 @@ namespace ChoreApplication
         //How many points is earned by completing the chore
         public int points { get; protected set; }
         //Who the chore's assigned to
-        public string assignment { get; protected set; }
+        public int assignment { get; protected set; }
 
         #endregion
 
@@ -35,8 +37,9 @@ namespace ChoreApplication
         /// <param name="_desc">Description of the chore</param>
         /// <param name="_points">Points earned by completing the chore</param>
         /// <param name="_assignment">Who the chore is assigned to</param>
-        public Chore(string _name, string _desc, int _points, string _assignment)
+        public Chore(int _id, string _name, string _desc, int _points, int _assignment)
         {
+            ID = _id;
             name = _name;
             description = _desc;
             points = _points;

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient; //Use MySQL stuff
+using System.Globalization; //Set different time/culture formats
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
@@ -21,9 +23,35 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            //Concrete.Insert("Spis broccoli", "Mindst 3 kg om dagen", 125, 1, DateTime.Now, "Reoc");
             
-            //MessageBox.Show(DateTime.Now.ToString());
-            Concrete.Insert("Æd lort", "Det skal være en stor en", 10, 1, DateTime.Now, 1, "Reoc");
+            var testList = new List<Concrete>();
+            testList = Concrete.LoadWhere("");
+            foreach(Concrete l in testList)
+            {
+                MessageBox.Show(l.ToString());
+            }
+            
+
+            /*
+            string tidcsharp = DateTime.Now.ToString();
+
+            string query = "SELECT due_date FROM concrete_chore";
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            string tidSQL ="";
+            DatabaseFunctions.dbConn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                tidSQL = reader[0].ToString();
+            }
+            DatabaseFunctions.dbConn.Close();
+
+            string samlet = string.Format("C#'s tidsformat som ToString: {0} \nSQL's tidsformat som ToString: {1}", tidcsharp, tidSQL);
+
+            MessageBox.Show(samlet);
+            */
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
