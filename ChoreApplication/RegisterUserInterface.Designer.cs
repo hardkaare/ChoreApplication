@@ -90,6 +90,7 @@
             this.RegisterUser.TabIndex = 1;
             this.RegisterUser.Text = "Register";
             this.RegisterUser.UseVisualStyleBackColor = true;
+            this.RegisterUser.Click += new System.EventHandler(this.RegisterUser_Click);
             // 
             // PincodeTextBox
             // 

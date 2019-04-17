@@ -33,7 +33,7 @@ namespace ChoreApplication
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
 
-            DatabaseFunctions.Insert("Jens", 1234);
+            ParentUser.Delete(9);
             //DatabaseFunctions.RunStringQuery("SELECT * FROM dbo.users");
             //TestLabelJoenler.Text = DatabaseFunctions.RunQuery("SELECT * FROM dbo.chore");
             //Notification testNotification = new Notification("You have a new reward available", "Phillip");

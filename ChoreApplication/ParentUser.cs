@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     class ParentUser : User
     {
+        private static SqlConnection dbConn = DatabaseFunctions.dbConn;
+
         #region Properties
         // The following properties can only be set from the derived classes but everyone can get it. (reconsider this later.)
    
@@ -30,6 +33,31 @@ namespace ChoreApplication
         #endregion
 
         #region Public Helpers
+
+        public static void Register(string firstname, string lastname, string email, string password, int pincode)
+        {
+            string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}','{1}')", firstname, pincode);
+            SqlCommand cmd = new SqlCommand(userQuery, dbConn);
+            dbConn.Open();
+            //executes the query and return the first column of the first row in the result set returned by the query 
+            int id = (int)cmd.ExecuteScalar();
+            string parentQuery = string.Format("INSERT INTO dbo.parent(user_id, last_name, email, password) VALUES ('{0}','{1}','{2}','{3}')", id, lastname, email, password);
+            cmd = new SqlCommand(parentQuery, dbConn);
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+        public static void Delete(int id)
+        {
+            string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", id);
+            SqlCommand cmd = new SqlCommand(query, dbConn);
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+        public static void Edit(string firstname, string lastname, string email, string password, int pincode)
+        {
+            string query = string.Format("UPDATE dbo.users SET f");
+        }
         public override string ToString()
         {
             return $"Parent with the last name {Lastname} has registered with E-mail: {Email} and password {Password}.";

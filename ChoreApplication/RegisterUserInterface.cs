@@ -52,5 +52,10 @@ namespace ChoreApplication
                 throw;
             }
         }
+
+        private void RegisterUser_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

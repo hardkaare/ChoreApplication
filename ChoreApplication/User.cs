@@ -30,15 +30,7 @@ namespace ChoreApplication
 
         #endregion
         #region Public methods
-        public static void Insert(string f, int p)
-        {
-               
-            string query = string.Format("INSERT INTO dbo.users(first_name, pincode) VALUES ('{0}', '{1}')", f, p);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            dbConn.Open();
-            cmd.ExecuteNonQuery();
-            dbConn.Close();
-        }
+        
         #endregion
     }
 }

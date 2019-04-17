@@ -15,11 +15,11 @@ namespace ChoreApplication
         #region Properties
 
         //Date and time of when the chore is due
-        private DateTime DueDate { get; protected set; }
+        private DateTime DueDate { get; set; }
         //Status of the chore. Can be active, approval pending, approved and overdue
-        private string status { get; protected set; }
+        private string status { get; set; }
         //Date of approval. Empty if not approved yet
-        private DateTime approvalDate { get; protected set; }
+        private DateTime approvalDate { get; set; }
 
         #endregion
 

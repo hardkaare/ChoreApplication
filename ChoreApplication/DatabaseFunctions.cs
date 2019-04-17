@@ -27,7 +27,7 @@ namespace ChoreApplication
         //Password
         private const String PASSWORD = "Tuborg123";
         //Sql connection
-        private static SqlConnection dbConn;
+        public static SqlConnection dbConn {get; private set;}
 
         #endregion
 
@@ -66,14 +66,7 @@ namespace ChoreApplication
 
         #endregion
 
-        public static void Insert(string f, int p)
-        {
-            string query = string.Format("INSERT INTO dbo.users(first_name, pincode) VALUES ('{0}', '{1}')", f, p);
-            SqlCommand cmd = new SqlCommand(query, dbConn);
-            dbConn.Open();
-            cmd.ExecuteNonQuery();
-            dbConn.Close();
-        }
+        
     }
 }
 
