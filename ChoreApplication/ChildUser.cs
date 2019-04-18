@@ -14,30 +14,74 @@ namespace ChoreApplication
         #region Properties
         // Gets and sets the points for the ChildUser
         public int Points { get; set; }
+        public int ChildId { get; private set; }
         #endregion
 
         #region Constructors
 
-        public ChildUser(int id, string firstName, string pincode) : base(id, firstName, pincode)
+        public ChildUser(int id, int childId, string firstName, int points, string pincode) : base(id, firstName, pincode)
         {
-            Points = 0;
+            Points = points;
+            ChildId = childId;
         }
 
-        public static List<ChildUser> GetChildren()
+
+
+        #endregion
+
+        #region Public Helpers
+        public static void Insert(string firstname)
         {
+            string userQuery = string.Format("INSERT INTO dbo.users(first_name) OUTPUT inserted.user_id VALUES ('{0}')", firstname);
+            SqlCommand cmd = new SqlCommand(userQuery, dbConn);
+            dbConn.Open();
+            //executes the query and return the first column of the first row in the result set returned by the query 
+            int id = (int)cmd.ExecuteScalar();
+            string parentQuery = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
+            cmd = new SqlCommand(parentQuery, dbConn);
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+
+        public void Update()
+        {
+            string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, Id);
+            string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}",Points,Id);
+            SqlCommand cmd = new SqlCommand(userQuery, dbConn);
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            cmd = new SqlCommand(childQuery, dbConn);
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+
+        public List<ChildUser> LoadAll()
+        {
+            List<ChildUser> result = new List<ChildUser>();
+            result = LoadWhere("");
+            return result;
+        }
+        public static List<ChildUser> LoadWhere(string whereClause)
+        {
+            if (whereClause != "")
+            {
+                whereClause = " WHERE " + whereClause;
+            }
             List<ChildUser> children = new List<ChildUser>();
 
-            string query = "SELECT * FROM dbo.users WHERE user_id <> 1";
+            string query = string.Format("SELECT u.user_id,c.child_id,u.first_name,c.points,u.pincode FROM users AS u INNER JOIN child AS c ON u.user_id = c.user_id{0}", whereClause);
             SqlCommand cmd = new SqlCommand(query, dbConn);
             dbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 int id = (int)reader["user_id"];
+                int childId = (int)reader["child_id"];
                 string firstname = reader["first_name"].ToString();
+                int points = (int)reader["points"];
                 string pincode = reader["pincode"].ToString();
 
-                ChildUser user = new ChildUser(id, firstname, pincode);
+                ChildUser user = new ChildUser(id, childId, firstname, points, pincode);
 
                 children.Add(user);
             }
@@ -46,26 +90,17 @@ namespace ChoreApplication
             return children;
         }
 
-
-        // Creates an object of the class ChildUser. 
-        public ChildUser(string firstName, string pincode) : base(firstName, pincode)
+       
+   
+        public void Delete()
         {
-            Points = 0;
-        }
-
-        
-
-        #endregion
-
-        #region Public Helpers
-        public static void SetPincode(string pincode, int id)
-        {
-            string query = string.Format("UPDATE dbo.users SET pincode='{0}' WHERE user_id={1}", pincode, id);
+            string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", Id);
             SqlCommand cmd = new SqlCommand(query, dbConn);
             dbConn.Open();
             cmd.ExecuteNonQuery();
             dbConn.Close();
         }
+
         public override string ToString()
         {
             return $"{FirstName} has {Points} points.";

@@ -23,8 +23,8 @@ namespace ChoreApplication
 
         private static void LoadAllUsers()
         {
-            List<ParentUser> parents = ParentUser.GetParents();
-            List<ChildUser> children = ChildUser.GetChildren();
+            List<ParentUser> parents = ParentUser.LoadAll();
+            List<ChildUser> children = ChildUser.LoadAll();
             
             foreach (var parent in parents)
             {

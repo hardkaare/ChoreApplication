@@ -31,13 +31,6 @@ namespace ChoreApplication
             FirstName = firstName;
             Pincode = pincode;
         }
-
-        public User(string firstName, string pincode)
-        {
-            FirstName = firstName;
-            Pincode = pincode;
-        }
-
         #endregion
         #region Public methods
         

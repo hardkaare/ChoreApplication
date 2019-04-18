@@ -3,38 +3,92 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     class Reward
     {
+        private static SqlConnection dbConn = DatabaseFunctions.dbConn;
         #region Properties
-        // The name of the reward. Everyone can set and get.
-        public string Name { get; set; }
+        public int RewardId { get; private set; }
+        // The name of the reward. 
+        public string Name { get; private set; }
 
-        // The points required to earn the reward. Everyone can get and set. 
-        public int PointsRequired { get; set; }
+        // The points required to earn the reward.
+        public int PointsReq { get; private set; }
 
-        // Who the reward is assigned to. Everyone can get and set. 
-        public string Assignment { get; set; }
+        // Who the reward is assigned to. 
+        public int ChildId { get; private set; }
         #endregion
 
         #region Constructors
         // Creates an object of the class Reward with the specified information.
-        public Reward(string name, int pointsRequired, string assignment)
+        public Reward(int rewardId, string name, int pointsReq, int childId)
         {
+            RewardId = rewardId;
             Name = name;
-            PointsRequired = pointsRequired;
-            Assignment = assignment;
+            PointsReq = pointsReq;
+            ChildId = childId;
         }
 
         #endregion
 
         #region Public Helpers
 
+        public static void Insert(int childId, string name, int pointsReq)
+        {
+            string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}',{2} )", childId, name, pointsReq);
+            SqlCommand cmd = new SqlCommand(query, dbConn);
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+        public List<Reward> LoadAll()
+        {
+            List<Reward> result = new List<Reward>();
+            result = LoadWhere("");
+            return result;
+        }
+        public static List<Reward> LoadWhere(string whereClause)
+        {
+            if (whereClause != "")
+            {
+                whereClause = " WHERE " + whereClause;
+            }
+            List<Reward> rewards = new List<Reward>();
+            string query = string.Format("SELECT * FROM dbo.reward{0}", whereClause);
+            SqlCommand cmd = new SqlCommand(query, dbConn);
+            dbConn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                int rewardId = (int)reader["reward_id"];
+                string name = reader["name"].ToString();
+                int pointsReq = (int)reader["points"];
+                int childId = (int)reader["child_id"];
+                Reward reward = new Reward(rewardId, name, pointsReq, childId);
+                rewards.Add(reward);
+            }
+            reader.Close();
+            dbConn.Close();
+            return rewards;
+        }
+
+        public void Delete()
+        {
+            string query = string.Format("DELETE FROM dbo.reward WHERE reward_id={0}", RewardId);
+            SqlCommand cmd = new SqlCommand(query, dbConn);
+            dbConn.Open();
+            cmd.ExecuteNonQuery();
+            dbConn.Close();
+        }
+
+
+
         public override string ToString()
         {
-            return $"{Assignment} must get {PointsRequired} points to earn {Name}.";
+            return $"{ChildId} must get {PointsReq} points to earn {Name}.";
         }
 
         #endregion

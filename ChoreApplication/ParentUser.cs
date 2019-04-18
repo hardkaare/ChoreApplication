@@ -29,16 +29,12 @@ namespace ChoreApplication
             Lastname = lastName;
 
         }
-        public ParentUser(int id, string firstName, string pincode): base(id, firstName, pincode)
-        {
-
-        }
 
         #endregion
 
         #region Public Helpers
-
-        public static void Register(string firstname, string lastname, string email, string password, string pincode)
+        
+        public static void Insert(string firstname, string lastname, string email, string password, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}','{1}')", firstname, pincode);
             SqlCommand cmd = new SqlCommand(userQuery, dbConn);
@@ -50,52 +46,37 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             dbConn.Close();
         }
-        public static void Delete(int id)
+     
+        public void Update()
         {
-            string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", id);
-            SqlCommand cmd = new SqlCommand(query, dbConn);
-            dbConn.Open();
-            cmd.ExecuteNonQuery();
-            dbConn.Close();
-        }
-        public static void CreateChild(string firstname)
-        {
-            string userQuery = string.Format("INSERT INTO dbo.users(first_name) OUTPUT inserted.user_id VALUES ('{0}')", firstname);
+            string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id=1", FirstName, Pincode);
             SqlCommand cmd = new SqlCommand(userQuery, dbConn);
             dbConn.Open();
-            //executes the query and return the first column of the first row in the result set returned by the query 
-            int id = (int)cmd.ExecuteScalar();
-            string parentQuery = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
+            cmd.ExecuteNonQuery();
+            string parentQuery = string.Format("UPDATE dbo.parent SET last_name='{0}', email='{1}', password='{2}' WHERE user_id=1", Lastname, Email, Password);
             cmd = new SqlCommand(parentQuery, dbConn);
             cmd.ExecuteNonQuery();
             dbConn.Close();
         }
-        public static void Edit(string firstname, string lastname, string email, string password, string pincode )
-        {
-            string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id=1", firstname, pincode);
-            SqlCommand cmd = new SqlCommand(userQuery, dbConn);
-            dbConn.Open();
-            cmd.ExecuteNonQuery();
-            string parentQuery = string.Format("UPDATE dbo.parent SET last_name='{0}', email='{1}', password='{2}' WHERE user_id=1", lastname, email, password);
-            cmd = new SqlCommand(parentQuery, dbConn);
-            cmd.ExecuteNonQuery();
-            dbConn.Close();
-        }
-        public static List<ParentUser> GetParents()
+      
+        public static List<ParentUser> LoadAll()
         {
             List<ParentUser> parents = new List<ParentUser>();
             
-            string query = "SELECT * FROM dbo.users WHERE user_id = 1";
+            string query = "SELECT u.user_id,u.first_name,p.last_name,p.email,p.[password],u.pincode FROM users AS u INNER JOIN parent AS p ON u.user_id = p.user_id;";
             SqlCommand cmd = new SqlCommand(query, dbConn);
             dbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 int id = (int)reader["user_id"];
+                string email = reader["email"].ToString();
+                string password = reader["password"].ToString();
+                string lastname = reader["last_name"].ToString();
                 string firstname = reader["first_name"].ToString();
                 string pincode = reader["pincode"].ToString();
 
-                ParentUser user = new ParentUser(id, firstname, pincode);
+                ParentUser user = new ParentUser(id, email, password, lastname, firstname, pincode);
 
                 parents.Add(user);
             }
