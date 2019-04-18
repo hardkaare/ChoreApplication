@@ -52,7 +52,6 @@ namespace ChoreApplication
                 name, description, points, assignment, limit, completions);
         }
 
-        //
         public static void Insert(int assignment, string name, string desc, int points, int limit)
         {
             //Formatting the query to chore table and creating the SqlCommand
