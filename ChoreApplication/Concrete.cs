@@ -8,13 +8,16 @@ using System.Data.SqlClient;
 namespace ChoreApplication
 {
     /// <summary>
-    /// Concrete chores. Inherits from the Chore class. Contains due date of the chore, the status of the chore
-    /// and the date of approval
+    /// Concrete chores. Inherits from the Chore class. Contains due date of the chore, 
+    /// the status of the chore and the date of approval
     /// </summary>
     class Concrete : Chore
     {
         #region Properties
-        //Date and time of when the chore is due
+        /// <summary>
+        /// Date and time of when the chore is due. If null in DB this property is 
+        /// set to "01-01-2000 00:00:00"
+        /// </summary>
         private DateTime dueDate { get; set; }
         /// <summary>
         /// Status of the chore:
@@ -161,52 +164,64 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
         }
 
-        public List<Concrete> LoadAll()
-        {
-            List<Concrete> result = new List<Concrete>();
-            result = LoadWhere("");
-            return result;
-        }
-
+        /// <summary>
+        /// Loads concrete chores from the DB. Can load with a where clause in the query
+        /// </summary>
+        /// <param name="whereClause">String with the where clause. If empty the method loads 
+        /// all concrete chores</param>
+        /// <returns></returns>
         public static List<Concrete> LoadWhere(string whereClause)
         {
+            //Checks if string is empty. If not adds where in front
             if (whereClause != "")
             {
                 whereClause = " WHERE " + whereClause;
             }
+
+            //Initializes a list of concrete chores
             List<Concrete> result = new List<Concrete>();
+
+            //Makes a string query and opens the connection to DB
             string query = string.Format(
                 "SELECT ch.chore_id, ch.name, ch.description, ch.points, ch.child_id, co.due_date, " +
                 "co.status, co.approval_date FROM chore AS ch INNER JOIN concrete_chore AS co ON " +
                 "ch.chore_id=co.chore_id{0}", whereClause);
             DatabaseFunctions.dbConn.Open();
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
 
+            //Creates the SqlCommand and executes it
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             SqlDataReader reader = cmd.ExecuteReader();
 
+            //Reads all lines in the datareader
             while (reader.Read())
             {
+                //Declares a Concrete object and casts the data from the datareader into variables
                 Concrete currentChore;
                 int choreID = (int)reader[0];
                 string name = reader[1].ToString();
                 string description = reader[2].ToString();
                 int points = (int)reader[3];
                 int assignment = (int)reader[4];
-                DateTime dueTime = (DateTime)reader[5];
+                DateTime dueTime = DateTime.ParseExact(reader[5].ToString(), "dd-MM-yyyy HH:mm:ss", null);
                 int status = (int)reader[6];
                 DateTime approvalDate;
-                if (reader[7] != null)
+
+                //Checks if approval date is null in DB and sets the time to a predefined date if so
+                if (!reader.IsDBNull(7))
                 {
-                    approvalDate = (DateTime)reader[7];
+                    approvalDate = DateTime.ParseExact(reader[7].ToString(), "dd-MM-yyyy HH:mm:ss", null);
+                    
                 }
                 else
                 {
-                    approvalDate = DateTime.Now;
+                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", "dd-MM-yyyy HH:mm:ss", null);
                 }
 
+                //Initializes the choreobject with the parameters and adds it to the list
                 currentChore = new Concrete(choreID, name, description, points, assignment, dueTime, status, approvalDate);
                 result.Add(currentChore);
             }
+            reader.Close();
             DatabaseFunctions.dbConn.Close();
             return result;
         }
