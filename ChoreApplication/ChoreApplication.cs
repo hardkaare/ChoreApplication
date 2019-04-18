@@ -23,35 +23,22 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            //Concrete.Insert("Spis broccoli", "Mindst 3 kg om dagen", 125, 1, DateTime.Now, "Reoc");
-            
-            var testList = new List<Concrete>();
-            testList = Concrete.LoadWhere("");
-            foreach(Concrete l in testList)
+            Repeatable.Insert(1, "Tag opvasken", "", 75, 10);
+            List<Repeatable> testlist = Repeatable.LoadWhere("");
+            foreach(Repeatable l in testlist)
             {
                 MessageBox.Show(l.ToString());
             }
-            
-
-            /*
-            string tidcsharp = DateTime.Now.ToString();
-
-            string query = "SELECT due_date FROM concrete_chore";
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            string tidSQL ="";
-            DatabaseFunctions.dbConn.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-
-            while (reader.Read())
+            testlist[2].Delete();
+            MessageBox.Show("Item deleted");
+            testlist[3].completions = 2;
+            testlist[3].Update();
+            MessageBox.Show("Item updted");
+            testlist = Repeatable.LoadWhere("");
+            foreach (Repeatable l in testlist)
             {
-                tidSQL = reader[0].ToString();
+                MessageBox.Show(l.ToString());
             }
-            DatabaseFunctions.dbConn.Close();
-
-            string samlet = string.Format("C#'s tidsformat som ToString: {0} \nSQL's tidsformat som ToString: {1}", tidcsharp, tidSQL);
-
-            MessageBox.Show(samlet);
-            */
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
