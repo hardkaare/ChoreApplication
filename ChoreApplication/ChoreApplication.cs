@@ -5,7 +5,6 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient; //Use MySQL stuff
@@ -73,10 +72,10 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
-            var LoginInterface = new LoginInterface();
-            var RegisterUser = new RegisterUserInterface();
-            var ChooseProfile = new ChooseProfileInterface();
-            var ParentInterface = new ParentInterface();
+            var LoginInterface = new UI.LoginInterface();
+            var RegisterUser = new UI.RegisterUserInterface();
+            var ChooseProfile = new UI.ChooseProfileInterface();
+            var ParentInterface = new UI.ParentInterface();
 
             LoginInterface.Show();
             //RegisterUser.Show();
@@ -97,10 +96,10 @@ namespace ChoreApplication
 
         private void Interface1_Click(object sender, EventArgs e)
         {
-            var LoginInterface = new LoginInterface();
-            var RegisterUser = new RegisterUserInterface();
-            var ChooseProfile = new ChooseProfileInterface();
-            var ParentInterface = new ParentInterface();
+            var LoginInterface = new UI.LoginInterface();
+            var RegisterUser = new UI.RegisterUserInterface();
+            var ChooseProfile = new UI.ChooseProfileInterface();
+            var ParentInterface = new UI.ParentInterface();
 
             //LoginInterface.Show();
             //RegisterUser.Show();

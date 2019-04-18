@@ -100,6 +100,12 @@ namespace ChoreApplication.UI
         }
         #endregion
 
+        #region ChoreUI
+        #endregion
+
+        #region RewardUI
+        #endregion
+
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
             ChoresUI();
