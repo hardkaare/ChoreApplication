@@ -21,6 +21,22 @@ namespace ChoreApplication
             DatabaseFunctions.InitializeDB();
         }
 
+        private static void LoadAllUsers()
+        {
+            List<ParentUser> parents = ParentUser.GetParents();
+            List<ChildUser> children = ChildUser.GetChildren();
+            
+            foreach (var parent in parents)
+            {
+                MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
+                
+            }
+            foreach (var child in children)
+            {
+                MessageBox.Show(string.Format(child.FirstName + child.Pincode));
+            }
+        }
+
         private void Button1_Click(object sender, EventArgs e)
         {
             Repeatable.Insert(1, "Tag opvasken", "", 75, 10);
@@ -43,8 +59,16 @@ namespace ChoreApplication
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
+            var LoginInterface = new UI.LoginInterface();
+            var RegisterUser = new UI.RegisterUserInterface();
+            var ChooseProfile = new UI.ChooseProfileInterface();
+            var ParentInterface = new UI.ParentInterface();
 
-            ParentUser.Delete(9);
+            LoginInterface.Show();
+            //RegisterUser.Show();
+            //ChooseProfile.Show();
+            //ParentInterface.Show();
+
             //DatabaseFunctions.RunStringQuery("SELECT * FROM dbo.users");
             //TestLabelJoenler.Text = DatabaseFunctions.RunQuery("SELECT * FROM dbo.chore");
             //Notification testNotification = new Notification("You have a new reward available", "Phillip");
@@ -59,10 +83,10 @@ namespace ChoreApplication
 
         private void Interface1_Click(object sender, EventArgs e)
         {
-            var LoginInterface = new LoginInterface();
-            var RegisterUser = new RegisterUserInterface();
-            var ChooseProfile = new ChooseProfileInterface();
-            var ParentInterface = new ParentInterface();
+            var LoginInterface = new UI.LoginInterface();
+            var RegisterUser = new UI.RegisterUserInterface();
+            var ChooseProfile = new UI.ChooseProfileInterface();
+            var ParentInterface = new UI.ParentInterface();
 
             //LoginInterface.Show();
             //RegisterUser.Show();

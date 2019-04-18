@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace ChoreApplication
+namespace ChoreApplication.UI
 {
     public partial class ChooseProfileInterface : Form
     {

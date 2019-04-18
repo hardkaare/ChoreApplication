@@ -58,30 +58,30 @@
     <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="ChooseProfileInterface.cs">
+    <Compile Include="UI\ChooseProfileInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ChooseProfileInterface.Designer.cs">
+    <Compile Include="UI\ChooseProfileInterface.Designer.cs">
       <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="LoginInterface.cs">
+    <Compile Include="UI\LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="LoginInterface.Designer.cs">
+    <Compile Include="UI\LoginInterface.Designer.cs">
       <DependentUpon>LoginInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification.cs" />
-    <Compile Include="ParentInterface.cs">
+    <Compile Include="UI\ParentInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ParentInterface.Designer.cs">
+    <Compile Include="UI\ParentInterface.Designer.cs">
       <DependentUpon>ParentInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="ParentUser.cs" />
-    <Compile Include="RegisterUserInterface.cs">
+    <Compile Include="UI\RegisterUserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="RegisterUserInterface.Designer.cs">
+    <Compile Include="UI\RegisterUserInterface.Designer.cs">
       <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Reocurring.cs" />
@@ -95,13 +95,13 @@
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ChooseProfileInterface.resx">
+    <EmbeddedResource Include="UI\ChooseProfileInterface.resx">
       <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="LoginInterface.resx">
+    <EmbeddedResource Include="UI\LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ParentInterface.resx">
+    <EmbeddedResource Include="UI\ParentInterface.resx">
       <DependentUpon>ParentInterface.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -114,7 +114,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="RegisterUserInterface.resx">
+    <EmbeddedResource Include="UI\RegisterUserInterface.resx">
       <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -184,6 +184,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\bell-musical-tool.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus-black-symbol.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
