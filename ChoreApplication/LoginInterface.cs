@@ -39,5 +39,15 @@ namespace ChoreApplication
             var RegisterUserInterface = new RegisterUserInterface();
             RegisterUserInterface.Show();
         }
+
+        private void LoginPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void LoginButton_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
