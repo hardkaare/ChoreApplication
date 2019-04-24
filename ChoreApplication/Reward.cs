@@ -9,7 +9,6 @@ namespace ChoreApplication
 {
     class Reward
     {
-        private static SqlConnection dbConn = DatabaseFunctions.dbConn;
         #region Properties
         public int RewardId { get; private set; }
         // The name of the reward. 
@@ -39,18 +38,13 @@ namespace ChoreApplication
         public static void Insert(int childId, string name, int pointsReq)
         {
             string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}',{2} )", childId, name, pointsReq);
-            SqlCommand cmd = new SqlCommand(query, dbConn);
-            dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
-            dbConn.Close();
+            DatabaseFunctions.dbConn.Close();
         }
-        public List<Reward> LoadAll()
-        {
-            List<Reward> result = new List<Reward>();
-            result = LoadWhere("");
-            return result;
-        }
-        public static List<Reward> LoadWhere(string whereClause)
+       
+        public static List<Reward> Load(string whereClause)
         {
             if (whereClause != "")
             {
@@ -58,8 +52,8 @@ namespace ChoreApplication
             }
             List<Reward> rewards = new List<Reward>();
             string query = string.Format("SELECT * FROM dbo.reward{0}", whereClause);
-            SqlCommand cmd = new SqlCommand(query, dbConn);
-            dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -71,17 +65,17 @@ namespace ChoreApplication
                 rewards.Add(reward);
             }
             reader.Close();
-            dbConn.Close();
+            DatabaseFunctions.dbConn.Close();
             return rewards;
         }
 
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.reward WHERE reward_id={0}", RewardId);
-            SqlCommand cmd = new SqlCommand(query, dbConn);
-            dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
-            dbConn.Close();
+            DatabaseFunctions.dbConn.Close();
         }
 
 
