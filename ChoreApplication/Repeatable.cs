@@ -99,7 +99,7 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
         }
 
-        public static List<Repeatable> LoadWhere(string whereClause)
+        public static List<Repeatable> Load(string whereClause)
         {
             //Checks if string is empty. If not adds where in front
             if (whereClause != "")

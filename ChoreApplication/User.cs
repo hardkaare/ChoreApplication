@@ -9,7 +9,6 @@ namespace ChoreApplication
 {
     abstract class User
     {
-        private static SqlConnection dbConn = DatabaseFunctions.dbConn;
         #region Properties
         
         public int Id { get; private set; }
