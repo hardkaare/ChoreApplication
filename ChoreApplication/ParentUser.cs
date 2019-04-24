@@ -32,7 +32,14 @@ namespace ChoreApplication
         #endregion
 
         #region Public Helpers
-        
+        /// <summary>
+        /// Inserts a parent user based on the following parameters:
+        /// </summary>
+        /// <param name="firstname"></param>
+        /// <param name="lastname"></param>
+        /// <param name="email"></param>
+        /// <param name="password"></param>
+        /// <param name="pincode"></param>
         public static void Insert(string firstname, string lastname, string email, string password, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}','{1}')", firstname, pincode);
@@ -45,7 +52,9 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             DatabaseFunctions.dbConn.Close();
         }
-     
+        /// <summary>
+        /// Updates a specific parent object based on the input from the user.
+        /// </summary>
         public void Update()
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id=1", FirstName, Pincode);
@@ -57,7 +66,11 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             DatabaseFunctions.dbConn.Close();
         }
-      
+      /// <summary>
+      /// Loads all parent users. A where clause can be added to narrow the load.
+      /// </summary>
+      /// <param name="whereClause"></param>
+      /// <returns></returns>
         public static List<ParentUser> Load(string whereClause)
         {
             if (whereClause != "")

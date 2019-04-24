@@ -26,9 +26,13 @@ namespace ChoreApplication
         #endregion
 
         #region Public Helpers
-        public static void Insert(string firstname)
+        /// <summary>
+        /// Inserts a child user with the firstName specified in the <param>firstName</param>
+        /// </summary>
+        /// <param name="firstName"></param>
+        public static void Insert(string firstName)
         {
-            string userQuery = string.Format("INSERT INTO dbo.users(first_name) OUTPUT inserted.user_id VALUES ('{0}')", firstname);
+            string userQuery = string.Format("INSERT INTO dbo.users(first_name) OUTPUT inserted.user_id VALUES ('{0}')", firstName);
             SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             //executes the query and return the first column of the first row in the result set returned by the query 
@@ -39,6 +43,9 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
         }
 
+        /// <summary>
+        /// Updates a specific child object based on the input from the user.
+        /// </summary>
         public void Update()
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, Id);
@@ -51,7 +58,11 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
         }
 
-     
+        /// <summary>
+        /// Loads children from the database. the <paramref name="whereClause"/> can be specified to narrow the results.
+        /// </summary>
+        /// <param name="whereClause"></param>
+        /// <returns></returns>
         public static List<ChildUser> Load(string whereClause)
         {
             if (whereClause != "")
@@ -79,8 +90,11 @@ namespace ChoreApplication
             reader.Close();
             DatabaseFunctions.dbConn.Close();
             return children;
-        } 
-   
+        }
+
+        /// <summary>
+        /// Deletes an instance of the ChildUser class based on the object interacted with. 
+        /// </summary>
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", Id);
@@ -90,6 +104,10 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
         }
 
+        /// <summary>
+        /// Provides a representation of an object of this class.
+        /// </summary>
+        /// <returns>A string describing the object.</returns>
         public override string ToString()
         {
             return $"{FirstName} has {Points} points.";

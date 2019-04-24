@@ -34,16 +34,46 @@ namespace ChoreApplication
         #endregion
 
         #region Public Helpers
-
+        /// <summary>
+        /// Creates a reward based on the values of this class' properties.
+        /// </summary>
+        /// <param name="childId"></param>
+        /// <param name="name"></param>
+        /// <param name="pointsReq"></param>
         public static void Insert(int childId, string name, int pointsReq)
         {
+            var timestamt = DateTime.Now.ToShortTimeString();
             string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}',{2} )", childId, name, pointsReq);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
+            cmd.ExecuteNonQuery();
+            // The query underneath gets the user_id which correlates to the previously used child_id.
+            string query2 = $"SELECT user_id FROM dbo.child WHERE child_id = {childId} ";
+            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
+            int id = (int)cmd.ExecuteScalar();
+            // Creates a notification.
+            Notification.Insert(id, $"({timestamt}) Reward available", $"You can earn {name} by earning {pointsReq} points.");
+            DatabaseFunctions.dbConn.Close();
+           
+        }
+
+        /// <summary>
+        /// Updates a specific reward object based on the input from the user.
+        /// </summary>
+        public void Update()
+        {
+            //Formatting the query to reward table and creating the SqlCommand.
+            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', points={2} WHERE reward_id={3}", ChildId , Name, PointsReq, RewardId);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
             DatabaseFunctions.dbConn.Close();
         }
-       
+        /// <summary>
+        /// Loads rewards from the database. the <paramref name="whereClause"/> can be specified to narrow the results.
+        /// </summary>
+        /// <param name="whereClause"></param>
+        /// <returns></returns>
         public static List<Reward> Load(string whereClause)
         {
             if (whereClause != "")
@@ -68,7 +98,9 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
             return rewards;
         }
-
+        /// <summary>
+        /// Deletes an instance of the reward class based on the object interacted with. 
+        /// </summary>
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.reward WHERE reward_id={0}", RewardId);
@@ -79,7 +111,10 @@ namespace ChoreApplication
         }
 
 
-
+        /// <summary>
+        /// Provides a string representation for objects of this class.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"{ChildId} must get {PointsReq} points to earn {Name}.";
