@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient; //Use MySQL stuff
+using System.Globalization; //Set different time/culture formats
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
@@ -16,22 +18,58 @@ namespace ChoreApplication
         public ChoreApplication()
         {
             InitializeComponent();
+            DatabaseFunctions.InitializeDB();
+        }
+
+        private static void LoadAllUsers()
+        {
+            List<ParentUser> parents = ParentUser.Load("");
+            List<ChildUser> children = ChildUser.Load("");
+            
+            foreach (var parent in parents)
+            {
+                MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
+                
+            }
+            foreach (var child in children)
+            {
+                MessageBox.Show(string.Format(child.FirstName + child.Pincode));
+            }
         }
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            List<string> testlist = new List<string>();
-            testlist.Add("Mon");
-            testlist.Add("Wed");
-            testlist.Add("Fri");
-            Reocurring testchore1 = new Reocurring("Gå tur med hunden", "Husk poser og snor", 5, 
-                "Hans", DateTime.Now, testlist);
-            TestLabelLuten.Text = testchore1.ToString();
+            Repeatable.Insert(1, "Tag opvasken", "", 75, 10);
+            List<Repeatable> testlist = Repeatable.Load("");
+            foreach(Repeatable l in testlist)
+            {
+                MessageBox.Show(l.ToString());
+            }
+            testlist[2].Delete();
+            MessageBox.Show("Item deleted");
+            testlist[3].completions = 2;
+            testlist[3].Update();
+            MessageBox.Show("Item updted");
+            testlist = Repeatable.Load("");
+            foreach (Repeatable l in testlist)
+            {
+                MessageBox.Show(l.ToString());
+            }
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
-            DatabaseFunctions.RunQuery("SELECT * FROM dbo.users");
+            var LoginInterface = new UI.LoginInterface();
+            var RegisterUser = new UI.RegisterUserInterface();
+            var ChooseProfile = new UI.ChooseProfileInterface();
+            var ParentInterface = new UI.ParentInterface();
+
+            LoginInterface.Show();
+            //RegisterUser.Show();
+            //ChooseProfile.Show();
+            //ParentInterface.Show();
+
+            //DatabaseFunctions.RunStringQuery("SELECT * FROM dbo.users");
             //TestLabelJoenler.Text = DatabaseFunctions.RunQuery("SELECT * FROM dbo.chore");
             //Notification testNotification = new Notification("You have a new reward available", "Phillip");
             //TestLabelJoenler.Text = testNotification.ToString();
@@ -45,9 +83,20 @@ namespace ChoreApplication
 
         private void Interface1_Click(object sender, EventArgs e)
         {
-            var LoginInterface = new LoginInterface();
-            var RegisterUser = new RegisterUserInterface();
-            RegisterUser.Show();
+            var LoginInterface = new UI.LoginInterface();
+            var RegisterUser = new UI.RegisterUserInterface();
+            var ChooseProfile = new UI.ChooseProfileInterface();
+            var ParentInterface = new UI.ParentInterface();
+
+            //LoginInterface.Show();
+            //RegisterUser.Show();
+            //ChooseProfile.Show();
+            ParentInterface.Show();
+        }
+
+        private void ChoreApplication_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

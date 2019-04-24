@@ -27,8 +27,8 @@ namespace ChoreApplication
         /// <summary>
         /// Constructs the chore. Passes variables to the Chore constructer. Sets due time and days.
         /// </summary>
-        public Reocurring(string _name, string _desc, int _points, string _assignment, DateTime _duetime, List<string> _days) : 
-            base(_name, _desc, _points, _assignment)
+        public Reocurring(int _id, string _name, string _desc, int _points, int _assignment, DateTime _duetime, List<string> _days) : 
+            base(_id, _name, _desc, _points, _assignment)
         {
             dueTime = _duetime;
             days = _days;

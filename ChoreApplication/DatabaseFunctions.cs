@@ -4,58 +4,68 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Collections.Generic;
 using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
+    /// <summary>
+    /// Functions for interacting with the DB. Inkludes a function run once that initializes the connection
+    /// to the DB.
+    /// </summary>
     class DatabaseFunctions
     {
-        public static SqlConnectionStringBuilder Connection()
+        #region Connection string constants
+
+        //Server
+        private const String DATASOURCE = "choreapplication.database.windows.net";
+        //Name of DB
+        private const String INITIALCATALOG = "ChoreApplication";
+        //Username
+        private const String UID = "bi408f19";
+        //Password
+        private const String PASSWORD = "Tuborg123";
+        //Sql connection
+        public static SqlConnection dbConn {get; private set;}
+
+        #endregion
+
+        #region Public methods
+
+        /// <summary>
+        /// Initializes the DB. Makes connection string from constants and uses it to 
+        /// create a connection to the DB
+        /// </summary>
+        public static void InitializeDB()
         {
-
-
+            //Builds a connection string from the connection string constants
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = "choreapplication.database.windows.net";
-            builder.UserID = "bi408f19";
-            builder.Password = "Tuborg123";
-            builder.InitialCatalog = "ChoreApplication";
+            builder.DataSource = DATASOURCE;
+            builder.UserID = UID;
+            builder.Password = PASSWORD;
+            builder.InitialCatalog = INITIALCATALOG;
 
-            return builder;
+            //Clears the string builder
+            String connString = builder.ToString();
+            builder = null;
 
+            //Makes the connection to DB
+            dbConn = new SqlConnection(connString);
 
-        }
-        public static void RunQuery(string query)
-        {
-            List<object> objectList = new List<object>();
-            var i = 0;
-            var readerOutput = 0;
-            var builder = Connection();
-            using (SqlConnection connection = new SqlConnection(builder.ConnectionString))
+            //When application is closed, clear connection if active
+            Application.ApplicationExit += (sender, args) =>
             {
-                connection.Open();                  
-
-                using (SqlCommand command = new SqlCommand(query, connection))
+                if (dbConn != null)
                 {
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-
-                            objectList.Add(reader.GetValue(0));
-                            readerOutput = Convert.ToInt32(objectList[i]);
-                            readerOutput++;
-                            MessageBox.Show(Convert.ToString(objectList[i]));
-                            i++;
-
-                        }
-                    }
+                    dbConn.Dispose();
+                    dbConn = null;
                 }
-            }
-
-
+            };
         }
+
+        #endregion
+
+        
     }
 }
 
