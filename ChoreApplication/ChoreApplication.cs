@@ -23,8 +23,8 @@ namespace ChoreApplication
 
         private static void LoadAllUsers()
         {
-            List<ParentUser> parents = ParentUser.Load("");
-            List<ChildUser> children = ChildUser.Load("");
+            List<ParentUser> parents = ParentUser.LoadAll();
+            List<ChildUser> children = ChildUser.LoadAll();
             
             foreach (var parent in parents)
             {
@@ -39,21 +39,10 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Repeatable.Insert(1, "Tag opvasken", "", 75, 10);
-            List<Repeatable> testlist = Repeatable.Load("");
-            foreach(Repeatable l in testlist)
+            List<Reocurring> testList = Reocurring.Load("");
+            foreach(Reocurring current in testList)
             {
-                MessageBox.Show(l.ToString());
-            }
-            testlist[2].Delete();
-            MessageBox.Show("Item deleted");
-            testlist[3].completions = 2;
-            testlist[3].Update();
-            MessageBox.Show("Item updted");
-            testlist = Repeatable.Load("");
-            foreach (Repeatable l in testlist)
-            {
-                MessageBox.Show(l.ToString());
+                MessageBox.Show(current.ToString());
             }
         }
 

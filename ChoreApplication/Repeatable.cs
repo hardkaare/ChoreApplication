@@ -76,25 +76,6 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
         }
 
-        public void Delete()
-        {
-            //Formatting the queries to chore table and creating the SqlCommand for the first query
-            string query = string.Format("DELETE FROM repeatable_chore WHERE chore_id={0}", ID);
-            string query2 = string.Format("DELETE FROM chore WHERE chore_id={0}", ID);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-
-            //Opens connection to the DB
-            DatabaseFunctions.dbConn.Open();
-
-            //Executes the SqlCommand
-            cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
-            cmd.ExecuteNonQuery();
-
-            //Closes connection to DB
-            DatabaseFunctions.dbConn.Close();
-        }
-
         public void Update()
         {
             //Formatting the queries to chore table and creating the SqlCommand for the first query

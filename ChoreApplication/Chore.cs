@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
@@ -55,6 +56,22 @@ namespace ChoreApplication
         {
             return string.Format("Chore: {0} | Description: {1} | Points: {2} | Assignment: {3}", 
                 name, description, points, assignment);
+        }
+
+        public void Delete()
+        {
+            //Formatting the queries to chore table and creating the SqlCommand for the first query
+            string query = string.Format("DELETE FROM chore WHERE chore_id={0}", ID);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+
+            //Opens connection to the DB
+            DatabaseFunctions.dbConn.Open();
+
+            //Executes the SqlCommand
+            cmd.ExecuteNonQuery();
+
+            //Closes connection to DB
+            DatabaseFunctions.dbConn.Close();
         }
 
         #endregion
