@@ -55,7 +55,7 @@ namespace ChoreApplication
             dbConn.Close();
         }
 
-        public List<ChildUser> LoadAll()
+        public static List<ChildUser> LoadAll()
         {
             List<ChildUser> result = new List<ChildUser>();
             result = LoadWhere("");
