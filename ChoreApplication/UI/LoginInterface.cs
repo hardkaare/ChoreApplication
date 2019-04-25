@@ -70,5 +70,10 @@ namespace ChoreApplication.UI
 
 
         }
+
+        private void LoginPanel_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }

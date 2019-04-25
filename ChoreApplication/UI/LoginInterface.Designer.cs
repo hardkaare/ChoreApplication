@@ -113,6 +113,7 @@
             this.LoginPanel.Name = "LoginPanel";
             this.LoginPanel.Size = new System.Drawing.Size(345, 377);
             this.LoginPanel.TabIndex = 4;
+            this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
             // 
             // LoginInterface
             // 
