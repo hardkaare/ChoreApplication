@@ -9,7 +9,6 @@ namespace ChoreApplication
 {
     class Reward
     {
-        
         #region Properties
         public int RewardId { get; private set; }
         // The name of the reward. 
@@ -50,7 +49,6 @@ namespace ChoreApplication
             DatabaseFunctions.dbConn.Close();
            
         }
-
         /// <summary>
         /// Updates a specific reward object based on the input from the user.
         /// </summary>

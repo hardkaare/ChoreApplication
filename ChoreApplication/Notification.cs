@@ -20,9 +20,7 @@ namespace ChoreApplication
         public int UserId { get; set; }
         // The id for a specific notification object
         public int NotificationId { get; set; }
-
         #endregion
-
         #region Constructors
 
         // Creates an object of the class Notification with the specified information entered in the constructor call.
@@ -34,7 +32,6 @@ namespace ChoreApplication
             NotificationId = notificationId;
         }
         #endregion
-
         #region Public Helpers
         public static void Insert(int userId, string title, string description)
         {
@@ -76,7 +73,6 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             DatabaseFunctions.dbConn.Close();
         }
-
         public override string ToString()
         {
             return $"{UserId} recieved an notification with the description: {Description}.";
