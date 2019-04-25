@@ -49,7 +49,7 @@ namespace ChoreApplication
             //Formats the string with varables from this and base class
             var sum = string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nDue time: {4} \nDays: ",
-                name, description, points, assignment, dueTime.ToString("T"));
+                Name, Description, Points, Assignment, dueTime.ToString("T"));
 
             //Adds each day to the list
             foreach (string day in days)
@@ -109,7 +109,7 @@ namespace ChoreApplication
                 dueTime.ToString("T"), ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
-                assignment, name, description, points, ID);
+                Assignment, Name, Description, Points, ID);
             string query3 = string.Format("DELETE FROM days WHERE reo_id=" +
                 "(SELECT reo_id FROM reoccurring_chore WHERE chore_id={0})", ID);
             string query4;

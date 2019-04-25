@@ -17,10 +17,10 @@ namespace ChoreApplication
         #region Properties
 
         //Number of times the chore can be completed a day
-        public int limit { get; protected set; }
+        public int Limit { get; protected set; }
 
         //How many times it has been completed currently
-        public int completions { get; set; }
+        public int Completions { get; set; }
 
         #endregion
 
@@ -32,8 +32,8 @@ namespace ChoreApplication
         public Repeatable(int _id, string _name, string _desc, int _points, int _assignment, int _limit, int _completions) : 
             base(_id, _name, _desc, _points, _assignment)
         {
-            limit = _limit;
-            completions = _completions;
+            Limit = _limit;
+            Completions = _completions;
         }
 
         #endregion
@@ -49,7 +49,7 @@ namespace ChoreApplication
         {
             return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nLimit: {4} \nCompletions: {5}",
-                name, description, points, assignment, limit, completions);
+                Name, Description, Points, Assignment, Limit, Completions);
         }
 
         public static void Insert(int assignment, string name, string desc, int points, int limit)
@@ -81,10 +81,10 @@ namespace ChoreApplication
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("UPDATE repeatable_chore SET " +
                 "limit={0}, completions={1} WHERE chore_id={2}",
-                limit, completions, ID);
+                Limit, Completions, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
-                assignment, name, description, points, ID);
+                Assignment, Name, Description, Points, ID);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
 
             //Opens connection to the DB
