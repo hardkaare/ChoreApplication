@@ -21,21 +21,21 @@ namespace ChoreApplication
             DatabaseFunctions.InitializeDB();
         }
 
-        private static void LoadAllUsers()
-        {
-            List<ParentUser> parents = ParentUser.LoadAll();
-            List<ChildUser> children = ChildUser.LoadAll();
+        //private static void LoadAllUsers()
+        //{
+        //    List<ParentUser> parents = ParentUser.Load();
+        //    List<ChildUser> children = ChildUser.Load();
             
-            foreach (var parent in parents)
-            {
-                MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
+        //    foreach (var parent in parents)
+        //    {
+        //        MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
                 
-            }
-            foreach (var child in children)
-            {
-                MessageBox.Show(string.Format(child.FirstName + child.Pincode));
-            }
-        }
+        //    }
+        //    foreach (var child in children)
+        //    {
+        //        MessageBox.Show(string.Format(child.FirstName + child.Pincode));
+        //    }
+        //}
 
         private void Button1_Click(object sender, EventArgs e)
         {
