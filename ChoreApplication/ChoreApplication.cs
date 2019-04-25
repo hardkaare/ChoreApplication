@@ -23,8 +23,8 @@ namespace ChoreApplication
 
         private static void LoadAllUsers()
         {
-            List<ParentUser> parents = ParentUser.LoadAll();
-            List<ChildUser> children = ChildUser.LoadAll();
+            List<ParentUser> parents = ParentUser.Load("");
+            List<ChildUser> children = ChildUser.Load("");
             
             foreach (var parent in parents)
             {
@@ -39,6 +39,11 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            var testlist = new List<string>();
+            testlist.Add("Tue");
+            testlist.Add("Thu");
+            testlist.Add("Sun");
+            Reocurring.Insert(2, "Sut min pik", "Haha hvor er det her umodent", 1000, DateTime.Now, testlist);
             List<Reocurring> testList = Reocurring.Load("");
             foreach(Reocurring current in testList)
             {
