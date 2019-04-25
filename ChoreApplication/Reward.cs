@@ -9,10 +9,13 @@ namespace ChoreApplication
 {
     class Reward
     {
+        private static string _timestamp = DateTime.Now.ToShortTimeString();
         #region Properties
         public int RewardId { get; private set; }
         // The name of the reward. 
         public string Name { get; private set; }
+
+        public bool RewardClaimed { get; set; }
 
         // The points required to earn the reward.
         public int PointsReq { get; private set; }
@@ -42,7 +45,6 @@ namespace ChoreApplication
         /// <param name="pointsReq"></param>
         public static void Insert(int childId, string name, int pointsReq)
         {
-            var timestamt = DateTime.Now.ToShortTimeString();
             string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}',{2} )", childId, name, pointsReq);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
@@ -52,7 +54,7 @@ namespace ChoreApplication
             cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
             int id = (int)cmd.ExecuteScalar();
             // Creates a notification.
-            Notification.Insert(id, $"({timestamt}) Reward available", $"You can earn {name} by earning {pointsReq} points.");
+            Notification.Insert(id, $"({_timestamp}) Reward available", $"You can earn {name} by earning {pointsReq} points.");
             DatabaseFunctions.dbConn.Close();
            
         }
@@ -67,6 +69,12 @@ namespace ChoreApplication
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
+            // The query underneath gets the user_id which correlates to the previously used child_id.
+            string query2 = $"SELECT user_id FROM dbo.child WHERE child_id = {ChildId} ";
+            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
+            int id = (int)cmd.ExecuteScalar();
+            // Creates a notification.
+            Notification.Insert(id, $"({_timestamp}) Reward updated", $"You can now earn {Name} by earning {PointsReq} points.");
             DatabaseFunctions.dbConn.Close();
         }
         /// <summary>
@@ -107,6 +115,28 @@ namespace ChoreApplication
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
+            if (RewardClaimed)
+            {
+                // Gets the user_id from the child whom has claimed the reward.
+                string query2 = $"SELECT user_id FROM dbo.child WHERE child_id = {ChildId} ";
+                cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
+                int id = (int)cmd.ExecuteScalar();
+                // Uses the previous gotten user_id to get the first name of the child whom has claimed the reward. 
+                string query3 = $"SELECT first_name FROM dbo.users WHERE user_id = {id} ";
+                cmd = new SqlCommand(query3, DatabaseFunctions.dbConn);
+                string childName = cmd.ExecuteScalar().ToString();
+                // Creates a notification.
+                Notification.Insert(1, $"({_timestamp}) Reward claimed", $"The reward {Name} was earned by {childName}.");
+            }
+            else
+            {
+                // Gets the user_id from the child whom has claimed the reward.
+                string query2 = $"SELECT user_id FROM dbo.child WHERE child_id = {ChildId} ";
+                cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
+                int id = (int)cmd.ExecuteScalar();
+                // Creates a notification.
+                Notification.Insert(id, $"({_timestamp}) Reward deleted", $"The reward {Name} is no longer available.");
+            }
             DatabaseFunctions.dbConn.Close();
         }
 

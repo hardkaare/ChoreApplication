@@ -23,8 +23,8 @@ namespace ChoreApplication
 
         private static void LoadAllUsers()
         {
-            List<ParentUser> parents = ParentUser.LoadAll();
-            List<ChildUser> children = ChildUser.LoadAll();
+            List<ParentUser> parents = ParentUser.Load("");
+            List<ChildUser> children = ChildUser.Load("");
             
             foreach (var parent in parents)
             {
@@ -53,8 +53,13 @@ namespace ChoreApplication
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface();
 
-            
-            Reward.Insert(3, "100g slik", 1300);
+
+
+            //var result = Reward.Load("reward_id = 6");
+            //var pis = result[0];
+            //pis.Delete();
+
+
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
