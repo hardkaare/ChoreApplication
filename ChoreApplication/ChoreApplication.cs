@@ -60,9 +60,7 @@ namespace ChoreApplication
 
 
 
-            //var result = Reward.Load("reward_id = 6");
-            //var pis = result[0];
-            //pis.Delete();
+         
 
 
             //LoginInterface.Show();

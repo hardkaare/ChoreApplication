@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChildFunctions.cs" />
     <Compile Include="ChildUser.cs" />
     <Compile Include="Chore.cs" />
     <Compile Include="ChoreApplication.cs">
@@ -58,6 +59,8 @@
     <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="ParentFunctions.cs" />
+    <Compile Include="SystemFunctions.cs" />
     <Compile Include="UI\ChooseProfileInterface.cs">
       <SubType>Form</SubType>
     </Compile>
