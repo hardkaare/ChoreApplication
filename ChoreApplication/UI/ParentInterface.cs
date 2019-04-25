@@ -12,23 +12,16 @@ namespace ChoreApplication.UI
 {
     public partial class ParentInterface : Form
     {
-        public int UI;
+        public int UI = 0;
+        private CreateChoreUI CreateChoreUI;
         public ParentInterface()
         {
+            CreateChoreUI = new CreateChoreUI();
             InitializeComponent();
+            ChoresUI();
         }
 
         #region UserInterfaceMethods
-        /// <summary>
-        /// Sletter alle Control objekter i dynamicPanel & upperPanel
-        /// </summary>
-        public void ResetUI()
-        {
-            dynamicPanel.Controls.Clear();
-            upperPanel.Controls.Clear();
-            upperPanel.Controls.Add(titleText);
-        }
-
         /// <summary>
         /// Brugt til at vise buttons i øverste panel.
         /// </summary>
@@ -36,76 +29,38 @@ namespace ChoreApplication.UI
         /// <param name="create">Hvis create button skal vises</param>
         /// <param name="delete">Hvis delete button skal vises</param>
         /// <param name="sort">Hvis sort button skal vises</param>
-        public void AddUpperButtons(bool user, bool create, bool delete, bool sort)
+        /// <param name="back">Hvis back button skal vises</param>
+        public void AddUpperButtons(bool user, bool create, bool delete, bool sort, bool back)
         {
             if (user == true)
             {
-                upperPanel.Controls.Add(userButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
+                upperPanel.Controls.Add(UserButton);
+                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
             }
             if (create == true)
             {
-                upperPanel.Controls.Add(optionButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.add;
+                upperPanel.Controls.Add(OptionButton);
+                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.add;
             }
             if (delete == true)
             {
-                upperPanel.Controls.Add(optionButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.delete;
+                upperPanel.Controls.Add(OptionButton);
+                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.delete;
             }
             if (sort == true)
             {
-                upperPanel.Controls.Add(optionButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.menu;
+                upperPanel.Controls.Add(OptionButton);
+                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.menu;
+            }
+            if (back == true)
+            {
+                upperPanel.Controls.Add(BackButton);
             }
         }
-
-        public void ChoresUI()
-        {
-            UI = 1;
-            ResetUI();
-            AddUpperButtons(true, true, false, false);
-            titleText.Text = "Chores";
-        }
-        public void RewardsUI()
-        {
-            UI = 2;
-            ResetUI();
-            AddUpperButtons(true, true, false, false);
-            titleText.Text = "Rewards";
-        }
-
-        public void LeaderboardsUI()
-        {
-            UI = 3;
-            ResetUI();
-            AddUpperButtons(true, false, false, true);
-            titleText.Text = "Leaderboard";
-        }
-
-        public void UsersUI()
-        {
-            UI = 4;
-            ResetUI();
-            AddUpperButtons(true, true, false, false);
-            titleText.Text = "Users";
-        }
-
-        public void NotificationsUI()
-        {
-            UI = 5;
-            ResetUI();
-            AddUpperButtons(true, false, false, false);
-            titleText.Text = "Notifications";
-        }
         #endregion
 
-        #region ChoreUI
-        #endregion
 
-        #region RewardUI
-        #endregion
-
+        #region NavigationPanel
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
             ChoresUI();
@@ -129,6 +84,73 @@ namespace ChoreApplication.UI
         private void NotificationsNavButton_Click(object sender, EventArgs e)
         {
             NotificationsUI();
+        }
+        #endregion
+
+        #region ChoreUI
+        public void ChoresUI()
+        {
+            UI = 1;
+            ChorePanel.Visible = true;
+            AddUpperButtons(true, true, false, false, false);
+            titleText.Text = "Chores";
+        }
+
+        public void EditChoreUI()
+        {
+            UI = 12;
+        }
+        #endregion
+
+        #region RewardUI
+        public void RewardsUI()
+        {
+        }
+        #endregion
+
+        #region LeaderboardUI
+        public void LeaderboardsUI()
+        {
+        }
+        #endregion
+
+        #region UsersUI
+        public void UsersUI()
+        {
+        }
+        #endregion
+
+        #region NotificationsUI
+        public void NotificationsUI()
+        {
+        }
+        #endregion
+
+        private void OptionButton_Click(object sender, EventArgs e)
+        {
+            switch (UI)
+            {
+                case 1:
+                    CreateChoreUI.Show();
+                    break;
+                default:
+                    break;
+            }
+        }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            switch (UI)
+            {
+                case 11:
+                    ChoresUI();
+                    break;
+                case 12:
+                    ChoresUI();
+                    break;
+                default:
+                    break;
+            }
         }
     }
 }
