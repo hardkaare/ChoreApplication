@@ -21,24 +21,29 @@ namespace ChoreApplication
             DatabaseFunctions.InitializeDB();
         }
 
-        //private static void LoadAllUsers()
-        //{
-        //    List<ParentUser> parents = ParentUser.Load();
-        //    List<ChildUser> children = ChildUser.Load();
+        private static void LoadAllUsers()
+        {
+            List<ParentUser> parents = ParentUser.Load("");
+            List<ChildUser> children = ChildUser.Load("");
             
-        //    foreach (var parent in parents)
-        //    {
-        //        MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
+            foreach (var parent in parents)
+            {
+                MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
                 
-        //    }
-        //    foreach (var child in children)
-        //    {
-        //        MessageBox.Show(string.Format(child.FirstName + child.Pincode));
-        //    }
-        //}
+            }
+            foreach (var child in children)
+            {
+                MessageBox.Show(string.Format(child.FirstName + child.Pincode));
+            }
+        }
 
         private void Button1_Click(object sender, EventArgs e)
         {
+            var testlist = new List<string>();
+            testlist.Add("Tue");
+            testlist.Add("Thu");
+            testlist.Add("Sun");
+            Reocurring.Insert(2, "Sut min pik", "Haha hvor er det her umodent", 1000, DateTime.Now, testlist);
             List<Reocurring> testList = Reocurring.Load("");
             foreach(Reocurring current in testList)
             {
@@ -53,8 +58,13 @@ namespace ChoreApplication
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface();
 
-            
-            Reward.Insert(3, "100g slik", 1300);
+
+
+            //var result = Reward.Load("reward_id = 6");
+            //var pis = result[0];
+            //pis.Delete();
+
+
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();

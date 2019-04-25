@@ -155,11 +155,6 @@ namespace ChoreApplication
                 "SELECT ch.chore_id, ch.name, ch.description, ch.points, ch.child_id, reo.due_time" +
                 " FROM chore AS ch INNER JOIN reoccurring_chore AS reo ON " +
                 "ch.chore_id=reo.chore_id{0}", whereClause);
-
-            SqlDataReader reader2;
-            SqlCommand cmd2;
-            string query2;
-
             DatabaseFunctions.dbConn.Open();
 
             //Creates the SqlCommand and executes it
@@ -177,24 +172,28 @@ namespace ChoreApplication
                 int points = (int)reader[3];
                 int assignment = (int)reader[4];
                 DateTime dueTime = DateTime.ParseExact(reader[5].ToString(), "HH:mm:ss", null);
-
-                //Loads all days from currentChore
                 List<string> days = new List<string>();
-                query2 = string.Format("SELECT day FROM days WHERE reo_id=" +
-                    "(SELECT reo_id FROM reoccurring_chore WHERE chore_id={0})", choreID);
-                cmd2 = new SqlCommand(query2, DatabaseFunctions.dbConn);
-                reader2 = cmd2.ExecuteReader();
-                while (reader2.Read())
-                {
-                    days.Add(reader2[0].ToString());
-                }
-                reader2.Close();
 
                 //Initializes the choreobject with the parameters and adds it to the list
                 currentChore = new Reocurring(choreID, name, description, points, assignment, dueTime, days);
                 result.Add(currentChore);
             }
             reader.Close();
+
+            //Fills in the blank lists in each Reocurring
+            foreach (Reocurring list in result)
+            {
+                query = string.Format("SELECT day FROM days WHERE reo_id=" +
+                    "(SELECT reo_id FROM reoccurring_chore WHERE chore_id={0})", list.ID);
+                cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+                reader = cmd.ExecuteReader();
+                while (reader.Read())
+                {
+                    list.days.Add(reader[0].ToString());
+                }
+                reader.Close();
+            }
+            
             DatabaseFunctions.dbConn.Close();
             return result;
         }

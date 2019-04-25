@@ -35,8 +35,8 @@ namespace ChoreApplication
         #region Public Helpers
         public static void Insert(int userId, string title, string description)
         {
-            string query4 = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, title, description);
-            SqlCommand cmd = new SqlCommand(query4, DatabaseFunctions.dbConn);
+            string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, title, description);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             cmd.ExecuteNonQuery();
        
         }
