@@ -66,7 +66,7 @@ namespace ChoreApplication
         {
             return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
-                name, description, points, assignment, dueDate, status, approvalDate);
+                Name, Description, Points, Assignment, dueDate, status, approvalDate);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace ChoreApplication
                 dueDate, status, approvalDate, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}", 
-                assignment, name, description, points, ID);
+                Assignment, Name, Description, Points, ID);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
 
             //Opens connection to the DB
