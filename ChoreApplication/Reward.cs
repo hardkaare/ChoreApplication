@@ -42,21 +42,13 @@ namespace ChoreApplication
         /// <param name="pointsReq"></param>
         public static void Insert(int childId, string name, int pointsReq)
         {
-            var timestamt = DateTime.Now.ToShortTimeString();
             string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}',{2} )", childId, name, pointsReq);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
-            // The query underneath gets the user_id which correlates to the previously used child_id.
-            string query2 = $"SELECT user_id FROM dbo.child WHERE child_id = {childId} ";
-            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
-            int id = (int)cmd.ExecuteScalar();
-            // Creates a notification.
-            Notification.Insert(id, $"({timestamt}) Reward available", $"You can earn {name} by earning {pointsReq} points.");
             DatabaseFunctions.dbConn.Close();
            
         }
-
         /// <summary>
         /// Updates a specific reward object based on the input from the user.
         /// </summary>

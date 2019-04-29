@@ -18,13 +18,13 @@ namespace ChoreApplication
         //ID of the chore
         public int ID { get; protected set; }
         //Name of the chore
-        public string name { get; protected set; }
+        public string Name { get; protected set; }
         //Description of how to do the chore
-        public string description { get; protected set; }
+        public string Description { get; protected set; }
         //How many points is earned by completing the chore
-        public int points { get; protected set; }
+        public int Points { get; protected set; }
         //Who the chore's assigned to
-        public int assignment { get; protected set; }
+        public int Assignment { get; protected set; }
 
         #endregion
 
@@ -41,10 +41,10 @@ namespace ChoreApplication
         public Chore(int _id, string _name, string _desc, int _points, int _assignment)
         {
             ID = _id;
-            name = _name;
-            description = _desc;
-            points = _points;
-            assignment = _assignment;
+            Name = _name;
+            Description = _desc;
+            Points = _points;
+            Assignment = _assignment;
         }
 
         #endregion
@@ -55,7 +55,7 @@ namespace ChoreApplication
         public override string ToString()
         {
             return string.Format("Chore: {0} | Description: {1} | Points: {2} | Assignment: {3}", 
-                name, description, points, assignment);
+                Name, Description, Points, Assignment);
         }
 
         public void Delete()

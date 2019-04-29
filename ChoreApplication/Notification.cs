@@ -18,76 +18,61 @@ namespace ChoreApplication
 
         // The user who will recieve the notification. Everyone can set and get it, reconsider this later.
         public int UserId { get; set; }
-
+        // The id for a specific notification object
+        public int NotificationId { get; set; }
         #endregion
-
         #region Constructors
 
         // Creates an object of the class Notification with the specified information entered in the constructor call.
-        public Notification(string title, string description, int userId)
+        public Notification(string title, string description, int userId, int notificationId)
         {
             Title = title;
             Description = description;
             UserId = userId;
+            NotificationId = notificationId;
         }
         #endregion
-
         #region Public Helpers
         public static void Insert(int userId, string title, string description)
         {
-            string query4 = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, title, description);
-            SqlCommand cmd = new SqlCommand(query4, DatabaseFunctions.dbConn);
+            string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, title, description);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             cmd.ExecuteNonQuery();
        
         }
-
-        //public void CreateNotification(int type, int userId)
-        //{
-            
-
-        //    switch (type)
-        //    {
-        //        // Reward Created.
-        //        case 1:
-        //            var rewards = Reward.Load("");
-        //            break;
-        //        // Reward Claimed.
-        //        case 2:
-        //            Insert(1, $" ({DateTime.Now}) Reward claimed", "");
-        //            break;
-        //        // Chore Completed.
-        //        case 3:
-        //            Insert(1, $" ({DateTime.Now}) Chore completed", "");
-        //            break;
-        //        // Chore Denied.
-        //        case 4:
-        //            Insert(userId, $" ({DateTime.Now}) Chore denied", "");
-        //            break;
-        //        // Chore Approved. 
-        //        case 5:
-        //            Insert(userId, $" ({DateTime.Now}) Chore approved", "");
-        //            break;
-        //        // Chore Overdue. 
-        //        case 6:
-        //            Insert(userId, $" ({DateTime.Now}) Chore overdue", "");
-        //            break;
-        //        // Chore reminder. 
-        //        case 7:
-        //            Insert(userId, $" ({DateTime.Now}) Chore available", "");
-        //            break;
-        //        // Due date reminder. 
-        //        case 8:
-        //            Insert(userId, $" ({DateTime.Now}) Attention: Chore due", "");
-        //            break;
-        //        // Executes if none of the above cases are met. 
-        //        default:
-        //            throw new Exception("Could not recognize the type of notification.");
-        //    }
-        //}
-
-
-      
-
+        public static List<Notification> Load(string whereClause)
+        {
+            if (whereClause != "")
+            {
+                whereClause = " WHERE " + whereClause;
+            }
+            List<Notification> notifications = new List<Notification>();
+            string query = string.Format("SELECT * FROM dbo.notificaiton{0}", whereClause);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            while (reader.Read())
+            {
+                string title = reader["title"].ToString();
+                string description = reader["description"].ToString();
+                int userid = (int)reader["user_id"];
+                int notificationId = (int)reader["notification_id"];
+             
+                Notification notification = new Notification(title, description, userid, notificationId);
+                notifications.Add(notification);
+            }
+            reader.Close();
+            DatabaseFunctions.dbConn.Close();
+            return notifications;
+        }
+        public void Delete()
+        {
+            string query = string.Format("DELETE FROM dbo.notification WHERE notification_id={0}", NotificationId);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
+            cmd.ExecuteNonQuery();
+            DatabaseFunctions.dbConn.Close();
+        }
         public override string ToString()
         {
             return $"{UserId} recieved an notification with the description: {Description}.";

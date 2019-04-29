@@ -58,8 +58,11 @@ namespace ChoreApplication
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface();
 
-            
-            Reward.Insert(3, "100g slik", 1300);
+
+
+         
+
+
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
