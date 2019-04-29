@@ -9,7 +9,7 @@ namespace ChoreApplication
 {
     /// <summary>
     /// Reocurring Chore. Inherits from the Chore class. Contains what time it's due and what days 
-    /// it should occur on in a list. Contains a method to generate Concrete versions of the chore
+    /// it should occur on in a list.
     /// </summary>
     class Reocurring : Chore
     {
@@ -183,17 +183,19 @@ namespace ChoreApplication
             //Fills in the blank lists in each Reocurring
             foreach (Reocurring list in result)
             {
+                //Selects all days for the current chore in DB
                 query = string.Format("SELECT day FROM days WHERE reo_id=" +
                     "(SELECT reo_id FROM reoccurring_chore WHERE chore_id={0})", list.ID);
                 cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
                 reader = cmd.ExecuteReader();
+                
+                //Adds each day to the days list for the current chore
                 while (reader.Read())
                 {
                     list.days.Add(reader[0].ToString());
                 }
                 reader.Close();
             }
-            
             DatabaseFunctions.dbConn.Close();
             return result;
         }
