@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace ChoreApplication
 {
@@ -64,9 +67,9 @@ namespace ChoreApplication
         /// and the associated Chore object</returns>
         public override string ToString()
         {
-            return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
-                "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
-                Name, Description, Points, Assignment, dueDate, status, approvalDate);
+           return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
+               "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
+               Name, Description, Points, Assignment, dueDate, status, approvalDate);
         }
 
         /// <summary>
@@ -148,8 +151,10 @@ namespace ChoreApplication
         /// <param name="whereClause">String with the where clause. If empty the method loads 
         /// all concrete chores</param>
         /// <returns></returns>
-        public static List<Concrete> LoadWhere(string whereClause)
+        public static List<Concrete> Load(string whereClause)
         {
+            CultureInfo culture = new CultureInfo("da-DK");
+            string formatString = "dd-MM-yyyy HH:mm:ss";
             //Checks if string is empty. If not adds where in front
             if (whereClause != "")
             {
@@ -180,19 +185,19 @@ namespace ChoreApplication
                 string description = reader[2].ToString();
                 int points = (int)reader[3];
                 int assignment = (int)reader[4];
-                DateTime dueTime = DateTime.ParseExact(reader[5].ToString(), "dd-MM-yyyy HH:mm:ss", null);
+                var dueTime = DateTime.ParseExact(reader[5].ToString(), formatString, culture);
                 int status = (int)reader[6];
                 DateTime approvalDate;
 
                 //Checks if approval date is null in DB and sets the time to a predefined date if so
                 if (!reader.IsDBNull(7))
                 {
-                    approvalDate = DateTime.ParseExact(reader[7].ToString(), "dd-MM-yyyy HH:mm:ss", null);
+                    approvalDate = DateTime.ParseExact(reader[7].ToString(), formatString, null);
                     
                 }
                 else
                 {
-                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", "dd-MM-yyyy HH:mm:ss", null);
+                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", formatString, null);
                 }
 
                 //Initializes the choreobject with the parameters and adds it to the list
