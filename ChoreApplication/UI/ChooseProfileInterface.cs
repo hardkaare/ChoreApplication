@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
 
 namespace ChoreApplication.UI
 {
@@ -20,7 +21,18 @@ namespace ChoreApplication.UI
 
         private void ChooseProfile_Load(object sender, EventArgs e)
         {
-            Surname = "Andersen";
+            string query = "SELECT last_name FROM parent";
+            DatabaseFunctions.dbConn.Open();
+
+            //Creates the SqlCommand and executes it
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            SqlDataReader reader = cmd.ExecuteReader();
+            while(reader.Read())
+            {
+                Surname = reader["last_name"].ToString();
+            }
+            
+            DatabaseFunctions.dbConn.Close();
 
             surnameLabel.Text = "The " + Surname + "'s";
         }

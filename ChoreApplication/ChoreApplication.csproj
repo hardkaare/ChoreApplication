@@ -59,6 +59,11 @@
     <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
+    <Compile Include="ChoreApplicationDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ChoreApplicationDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="ParentFunctions.cs" />
     <Compile Include="SystemFunctions.cs" />
     <Compile Include="UI\ChooseProfileInterface.cs">
@@ -129,6 +134,17 @@
     <EmbeddedResource Include="UI\RegisterUserInterface.resx">
       <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="ChoreApplicationDataSet.xsc">
+      <DependentUpon>ChoreApplicationDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="ChoreApplicationDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ChoreApplicationDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="ChoreApplicationDataSet.xss">
+      <DependentUpon>ChoreApplicationDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
