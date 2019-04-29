@@ -14,6 +14,7 @@ namespace ChoreApplication
     class Concrete : Chore
     {
         #region Properties
+
         /// <summary>
         /// Date and time of when the chore is due. If null in DB this property is 
         /// set to "01-01-2000 00:00:00"
@@ -148,7 +149,7 @@ namespace ChoreApplication
         /// <param name="whereClause">String with the where clause. If empty the method loads 
         /// all concrete chores</param>
         /// <returns></returns>
-        public static List<Concrete> LoadWhere(string whereClause)
+        public static List<Concrete> Load(string whereClause)
         {
             //Checks if string is empty. If not adds where in front
             if (whereClause != "")
@@ -188,7 +189,6 @@ namespace ChoreApplication
                 if (!reader.IsDBNull(7))
                 {
                     approvalDate = DateTime.ParseExact(reader[7].ToString(), "dd-MM-yyyy HH:mm:ss", null);
-                    
                 }
                 else
                 {
