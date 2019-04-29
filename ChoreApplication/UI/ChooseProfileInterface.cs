@@ -27,8 +27,11 @@ namespace ChoreApplication.UI
             //Creates the SqlCommand and executes it
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             SqlDataReader reader = cmd.ExecuteReader();
-
-            Surname = reader[0].ToString();
+            while(reader.Read())
+            {
+                Surname = reader["last_name"].ToString();
+            }
+            
             DatabaseFunctions.dbConn.Close();
 
             surnameLabel.Text = "The " + Surname + "'s";

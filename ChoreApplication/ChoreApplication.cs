@@ -39,16 +39,13 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var testlist = new List<string>();
-            testlist.Add("Tue");
-            testlist.Add("Thu");
-            testlist.Add("Sun");
-            Reocurring.Insert(2, "Sut min pik", "Haha hvor er det her umodent", 1000, DateTime.Now, testlist);
-            List<Reocurring> testList = Reocurring.Load("");
-            foreach(Reocurring current in testList)
+            
+            List<Concrete> testList = Concrete.Load("");
+            foreach(Concrete current in testList)
             {
                 MessageBox.Show(current.ToString());
             }
+            
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
@@ -96,6 +93,13 @@ namespace ChoreApplication
         private void ChoreApplication_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void AlexogLuten_Click(object sender, EventArgs e)
+        {
+            var LoginInterface = new UI.LoginInterface();
+            LoginInterface.Show();
+            this.Hide();
         }
     }
 }
