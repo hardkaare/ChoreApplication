@@ -78,6 +78,12 @@
     <Compile Include="UI\CreateChoreUI.Designer.cs">
       <DependentUpon>CreateChoreUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\CreateRewardUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CreateRewardUI.Designer.cs">
+      <DependentUpon>CreateRewardUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -114,6 +120,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CreateChoreUI.resx">
       <DependentUpon>CreateChoreUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CreateRewardUI.resx">
+      <DependentUpon>CreateRewardUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>
