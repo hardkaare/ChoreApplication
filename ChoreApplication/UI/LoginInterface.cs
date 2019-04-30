@@ -6,6 +6,8 @@ namespace ChoreApplication.UI
 {
     public partial class LoginInterface : Form
     {
+        public static ChooseProfileInterface chooseProfile;
+
         public LoginInterface()
         {
             InitializeComponent();
@@ -66,7 +68,7 @@ namespace ChoreApplication.UI
             if (match == true)
             {
                 DatabaseFunctions.dbConn.Close();
-                ChooseProfileInterface chooseProfile = new ChooseProfileInterface();
+                chooseProfile = new ChooseProfileInterface();
                 chooseProfile.Show();
                 this.Close();
             }

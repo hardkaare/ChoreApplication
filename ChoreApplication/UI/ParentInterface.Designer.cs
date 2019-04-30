@@ -310,6 +310,7 @@
             this.Name = "ParentInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ParentInterface";
+            this.Load += new System.EventHandler(this.ParentInterface_Load);
             this.navigationPanel.ResumeLayout(false);
             this.navigationPanel.PerformLayout();
             this.upperPanel.ResumeLayout(false);

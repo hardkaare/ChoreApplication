@@ -232,5 +232,10 @@ namespace ChoreApplication.UI
         {
 
         }
+
+        private void ParentInterface_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

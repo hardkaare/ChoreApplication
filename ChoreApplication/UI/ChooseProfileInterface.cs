@@ -13,6 +13,9 @@ namespace ChoreApplication.UI
 {
     public partial class ChooseProfileInterface : Form
     {
+        List<Button> button;
+        public static int activeId;
+
         public string Surname { get; set; }
         public ChooseProfileInterface()
         {
@@ -46,30 +49,52 @@ namespace ChoreApplication.UI
 
             #endregion
 
-            int i = 1;
+            int y = 1;
+            int x = 1;
+
             // pinPanel.Visible = false;
-            List<Button> button = new List<Button>();
+            button = new List<Button>();
             foreach (ParentUser p in ParentUsers)
             {
                 Button newButton = new Button();
                 button.Add(newButton);
-                //this.Controls.Add(newButton);
                 this.profilesPanel.Controls.Add(newButton);
-                newButton.Location = new Point(100, i * 50);
+                newButton.Location = new Point(x * 150, y * 75 - 75);
+                newButton.Width = 125;
+                newButton.Height = 50;
                 newButton.Text = p.FirstName;
-                newButton.Tag = p;
-                i++;
+                newButton.Tag = p.Id;
+                newButton.Click += new EventHandler(newButton_Click);
+                if (x == 1)
+                {
+                    x = 2;
+                }
+                else if (x == 2)
+                {
+                    x = 1;
+                    y++;
+                }
             }
             foreach (ChildUser c in childUsers)
             {
                 Button newButton = new Button();
                 button.Add(newButton);
-                //this.Controls.Add(newButton);
                 this.profilesPanel.Controls.Add(newButton);
-                newButton.Location = new Point(100, i * 50);
+                newButton.Location = new Point(x * 150, y * 75 - 75);
                 newButton.Text = c.FirstName;
-                newButton.Tag = c;
-                i++;
+                newButton.Width = 125;
+                newButton.Height = 50;
+                newButton.Tag = c.Id;
+                newButton.Click += new EventHandler(newButton_Click);
+                if (x == 1)
+                {
+                    x = 2;
+                }
+                else if (x == 2)
+                {
+                    x = 1;
+                    y++;
+                }
             }
         }
 
@@ -86,6 +111,13 @@ namespace ChoreApplication.UI
         private void ProfilesPanel_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+        private void newButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            activeId = (int)clickedButton.Tag;
+            PinCodeInterface pinCode = new PinCodeInterface();
+            pinCode.Show();
         }
     }
 }
