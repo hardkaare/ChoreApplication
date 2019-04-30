@@ -91,7 +91,6 @@ namespace ChoreApplication.UI
                     Name = "choreTitle" + chore.ID.ToString(),
                     Text = chore.Name.ToString(),
                     Location = new Point(10, 10),
-                    Margin = 0,
                 };
                 var choreAssignment = new Label
                 {
