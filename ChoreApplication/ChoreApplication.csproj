@@ -72,6 +72,12 @@
     <Compile Include="UI\ChooseProfileInterface.Designer.cs">
       <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\CreateChildUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\CreateChildUI.Designer.cs">
+      <DependentUpon>CreateChildUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\CreateChoreUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,12 @@
     </Compile>
     <Compile Include="UI\CreateRewardUI.Designer.cs">
       <DependentUpon>CreateRewardUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\EditChildUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditChildUI.Designer.cs">
+      <DependentUpon>EditChildUI.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LoginInterface.cs">
       <SubType>Form</SubType>
@@ -127,11 +139,17 @@
     <EmbeddedResource Include="UI\ChooseProfileInterface.resx">
       <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\CreateChildUI.resx">
+      <DependentUpon>CreateChildUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\CreateChoreUI.resx">
       <DependentUpon>CreateChoreUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\CreateRewardUI.resx">
       <DependentUpon>CreateRewardUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditChildUI.resx">
+      <DependentUpon>EditChildUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>

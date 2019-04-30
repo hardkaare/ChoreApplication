@@ -15,6 +15,7 @@ namespace ChoreApplication
         public string Name { get; private set; }
 
         // The points required to earn the reward.
+        public string Description { get; private set; }
         public int PointsReq { get; private set; }
 
         // Who the reward is assigned to. 
@@ -23,12 +24,13 @@ namespace ChoreApplication
 
         #region Constructors
         // Creates an object of the class Reward with the specified information.
-        public Reward(int rewardId, string name, int pointsReq, int childId)
+        public Reward(int rewardId, string name, string description, int pointsReq, int childId)
         {
             RewardId = rewardId;
             Name = name;
             PointsReq = pointsReq;
             ChildId = childId;
+            Description = description;
         }
 
         #endregion
@@ -40,9 +42,9 @@ namespace ChoreApplication
         /// <param name="childId"></param>
         /// <param name="name"></param>
         /// <param name="pointsReq"></param>
-        public static void Insert(int childId, string name, int pointsReq)
+        public static void Insert(int childId, string name, string description, int pointsReq)
         {
-            string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}',{2} )", childId, name, pointsReq);
+            string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}','{2}',{3} )", childId, name, description, pointsReq);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
@@ -55,7 +57,7 @@ namespace ChoreApplication
         public void Update()
         {
             //Formatting the query to reward table and creating the SqlCommand.
-            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', points={2} WHERE reward_id={3}", ChildId , Name, PointsReq, RewardId);
+            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildId , Name, Description, PointsReq, RewardId);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
@@ -81,9 +83,10 @@ namespace ChoreApplication
             {
                 int rewardId = (int)reader["reward_id"];
                 string name = reader["name"].ToString();
+                string description = reader["description"].ToString();
                 int pointsReq = (int)reader["points"];
                 int childId = (int)reader["child_id"];
-                Reward reward = new Reward(rewardId, name, pointsReq, childId);
+                Reward reward = new Reward(rewardId, name, description, pointsReq, childId);
                 rewards.Add(reward);
             }
             reader.Close();

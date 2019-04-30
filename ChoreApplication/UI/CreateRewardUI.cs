@@ -29,7 +29,7 @@ namespace ChoreApplication.UI
           
             foreach (var name in children)
             {
-                this.Assignment.Items.Add(name.FirstName);
+                this.assignment.Items.Add(name.FirstName);
             }
         }
 
@@ -39,12 +39,24 @@ namespace ChoreApplication.UI
             int id = 0;
             for (int i = 0; i < children.Count; i++)
             {
-                if (children[i].FirstName == Assignment.Text)
+                if (children[i].FirstName == assignment.Text)
                 {
                     id = children[i].ChildId;
                 }
             }
-            //Reward.Insert
+            try
+            {
+                Reward.Insert(id, rewardName.Text, description.Text, Convert.ToInt32(pointsRequired.Text));
+                this.Close();
+                MessageBox.Show("A reward has been created");
+                
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show($"Incorrect input entered.");
+
+            }
         }
     }
 }
