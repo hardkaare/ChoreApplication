@@ -66,17 +66,19 @@
             this.pincodePanel.Controls.Add(this.rbOne);
             this.pincodePanel.Controls.Add(this.pincodeLabel);
             this.pincodePanel.Controls.Add(this.enterpinTextBox);
-            this.pincodePanel.Location = new System.Drawing.Point(73, 12);
+            this.pincodePanel.Location = new System.Drawing.Point(55, 10);
+            this.pincodePanel.Margin = new System.Windows.Forms.Padding(2);
             this.pincodePanel.Name = "pincodePanel";
-            this.pincodePanel.Size = new System.Drawing.Size(324, 460);
+            this.pincodePanel.Size = new System.Drawing.Size(243, 374);
             this.pincodePanel.TabIndex = 0;
             this.pincodePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PincodePanel_Paint);
             // 
             // roundButton1
             // 
-            this.roundButton1.Location = new System.Drawing.Point(212, 368);
+            this.roundButton1.Location = new System.Drawing.Point(159, 299);
+            this.roundButton1.Margin = new System.Windows.Forms.Padding(2);
             this.roundButton1.Name = "roundButton1";
-            this.roundButton1.Size = new System.Drawing.Size(88, 84);
+            this.roundButton1.Size = new System.Drawing.Size(66, 68);
             this.roundButton1.TabIndex = 15;
             this.roundButton1.Text = "Accept";
             this.roundButton1.UseVisualStyleBackColor = true;
@@ -84,9 +86,10 @@
             // 
             // rbZero
             // 
-            this.rbZero.Location = new System.Drawing.Point(118, 368);
+            this.rbZero.Location = new System.Drawing.Point(88, 299);
+            this.rbZero.Margin = new System.Windows.Forms.Padding(2);
             this.rbZero.Name = "rbZero";
-            this.rbZero.Size = new System.Drawing.Size(88, 84);
+            this.rbZero.Size = new System.Drawing.Size(66, 68);
             this.rbZero.TabIndex = 14;
             this.rbZero.Text = "0";
             this.rbZero.UseVisualStyleBackColor = true;
@@ -94,9 +97,10 @@
             // 
             // rbDelete
             // 
-            this.rbDelete.Location = new System.Drawing.Point(24, 368);
+            this.rbDelete.Location = new System.Drawing.Point(18, 299);
+            this.rbDelete.Margin = new System.Windows.Forms.Padding(2);
             this.rbDelete.Name = "rbDelete";
-            this.rbDelete.Size = new System.Drawing.Size(88, 84);
+            this.rbDelete.Size = new System.Drawing.Size(66, 68);
             this.rbDelete.TabIndex = 13;
             this.rbDelete.Text = "Delete";
             this.rbDelete.UseVisualStyleBackColor = true;
@@ -104,9 +108,10 @@
             // 
             // rbNine
             // 
-            this.rbNine.Location = new System.Drawing.Point(212, 278);
+            this.rbNine.Location = new System.Drawing.Point(159, 226);
+            this.rbNine.Margin = new System.Windows.Forms.Padding(2);
             this.rbNine.Name = "rbNine";
-            this.rbNine.Size = new System.Drawing.Size(88, 84);
+            this.rbNine.Size = new System.Drawing.Size(66, 68);
             this.rbNine.TabIndex = 12;
             this.rbNine.Text = "9";
             this.rbNine.UseVisualStyleBackColor = true;
@@ -114,9 +119,10 @@
             // 
             // rbEight
             // 
-            this.rbEight.Location = new System.Drawing.Point(118, 278);
+            this.rbEight.Location = new System.Drawing.Point(88, 226);
+            this.rbEight.Margin = new System.Windows.Forms.Padding(2);
             this.rbEight.Name = "rbEight";
-            this.rbEight.Size = new System.Drawing.Size(88, 84);
+            this.rbEight.Size = new System.Drawing.Size(66, 68);
             this.rbEight.TabIndex = 11;
             this.rbEight.Text = "8";
             this.rbEight.UseVisualStyleBackColor = true;
@@ -124,9 +130,10 @@
             // 
             // rbSeven
             // 
-            this.rbSeven.Location = new System.Drawing.Point(24, 278);
+            this.rbSeven.Location = new System.Drawing.Point(18, 226);
+            this.rbSeven.Margin = new System.Windows.Forms.Padding(2);
             this.rbSeven.Name = "rbSeven";
-            this.rbSeven.Size = new System.Drawing.Size(88, 84);
+            this.rbSeven.Size = new System.Drawing.Size(66, 68);
             this.rbSeven.TabIndex = 10;
             this.rbSeven.Text = "7";
             this.rbSeven.UseVisualStyleBackColor = true;
@@ -134,9 +141,10 @@
             // 
             // rbSix
             // 
-            this.rbSix.Location = new System.Drawing.Point(212, 188);
+            this.rbSix.Location = new System.Drawing.Point(159, 153);
+            this.rbSix.Margin = new System.Windows.Forms.Padding(2);
             this.rbSix.Name = "rbSix";
-            this.rbSix.Size = new System.Drawing.Size(88, 84);
+            this.rbSix.Size = new System.Drawing.Size(66, 68);
             this.rbSix.TabIndex = 9;
             this.rbSix.Text = "6";
             this.rbSix.UseVisualStyleBackColor = true;
@@ -144,9 +152,10 @@
             // 
             // rbFive
             // 
-            this.rbFive.Location = new System.Drawing.Point(118, 188);
+            this.rbFive.Location = new System.Drawing.Point(88, 153);
+            this.rbFive.Margin = new System.Windows.Forms.Padding(2);
             this.rbFive.Name = "rbFive";
-            this.rbFive.Size = new System.Drawing.Size(88, 84);
+            this.rbFive.Size = new System.Drawing.Size(66, 68);
             this.rbFive.TabIndex = 8;
             this.rbFive.Text = "5";
             this.rbFive.UseVisualStyleBackColor = true;
@@ -154,9 +163,10 @@
             // 
             // rbFour
             // 
-            this.rbFour.Location = new System.Drawing.Point(24, 188);
+            this.rbFour.Location = new System.Drawing.Point(18, 153);
+            this.rbFour.Margin = new System.Windows.Forms.Padding(2);
             this.rbFour.Name = "rbFour";
-            this.rbFour.Size = new System.Drawing.Size(88, 84);
+            this.rbFour.Size = new System.Drawing.Size(66, 68);
             this.rbFour.TabIndex = 7;
             this.rbFour.Text = "4";
             this.rbFour.UseVisualStyleBackColor = true;
@@ -164,9 +174,10 @@
             // 
             // rbThree
             // 
-            this.rbThree.Location = new System.Drawing.Point(212, 89);
+            this.rbThree.Location = new System.Drawing.Point(159, 72);
+            this.rbThree.Margin = new System.Windows.Forms.Padding(2);
             this.rbThree.Name = "rbThree";
-            this.rbThree.Size = new System.Drawing.Size(88, 84);
+            this.rbThree.Size = new System.Drawing.Size(66, 68);
             this.rbThree.TabIndex = 6;
             this.rbThree.Text = "3";
             this.rbThree.UseVisualStyleBackColor = true;
@@ -174,9 +185,10 @@
             // 
             // rbTwo
             // 
-            this.rbTwo.Location = new System.Drawing.Point(118, 89);
+            this.rbTwo.Location = new System.Drawing.Point(88, 72);
+            this.rbTwo.Margin = new System.Windows.Forms.Padding(2);
             this.rbTwo.Name = "rbTwo";
-            this.rbTwo.Size = new System.Drawing.Size(88, 84);
+            this.rbTwo.Size = new System.Drawing.Size(66, 68);
             this.rbTwo.TabIndex = 5;
             this.rbTwo.Text = "2";
             this.rbTwo.UseVisualStyleBackColor = true;
@@ -184,9 +196,10 @@
             // 
             // rbOne
             // 
-            this.rbOne.Location = new System.Drawing.Point(24, 89);
+            this.rbOne.Location = new System.Drawing.Point(18, 72);
+            this.rbOne.Margin = new System.Windows.Forms.Padding(2);
             this.rbOne.Name = "rbOne";
-            this.rbOne.Size = new System.Drawing.Size(88, 84);
+            this.rbOne.Size = new System.Drawing.Size(66, 68);
             this.rbOne.TabIndex = 4;
             this.rbOne.Text = "1";
             this.rbOne.UseVisualStyleBackColor = true;
@@ -196,20 +209,22 @@
             // 
             this.pincodeLabel.AutoSize = true;
             this.pincodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.pincodeLabel.Location = new System.Drawing.Point(86, 9);
+            this.pincodeLabel.Location = new System.Drawing.Point(64, 7);
+            this.pincodeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pincodeLabel.Name = "pincodeLabel";
-            this.pincodeLabel.Size = new System.Drawing.Size(171, 24);
+            this.pincodeLabel.Size = new System.Drawing.Size(132, 18);
             this.pincodeLabel.TabIndex = 3;
             this.pincodeLabel.Text = "Enter your pincode";
             this.pincodeLabel.Click += new System.EventHandler(this.PincodeLabel_Click);
             // 
             // enterpinTextBox
             // 
-            this.enterpinTextBox.Location = new System.Drawing.Point(90, 36);
+            this.enterpinTextBox.Location = new System.Drawing.Point(68, 29);
+            this.enterpinTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.enterpinTextBox.MaxLength = 4;
             this.enterpinTextBox.Name = "enterpinTextBox";
             this.enterpinTextBox.PasswordChar = '*';
-            this.enterpinTextBox.Size = new System.Drawing.Size(155, 22);
+            this.enterpinTextBox.Size = new System.Drawing.Size(117, 20);
             this.enterpinTextBox.TabIndex = 1;
             // 
             // rbAccept
@@ -223,10 +238,12 @@
             // 
             // PinCodeInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AcceptButton = this.rbAccept;
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(458, 484);
+            this.ClientSize = new System.Drawing.Size(344, 393);
             this.Controls.Add(this.pincodePanel);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PinCodeInterface";
             this.Text = " ";
             this.pincodePanel.ResumeLayout(false);

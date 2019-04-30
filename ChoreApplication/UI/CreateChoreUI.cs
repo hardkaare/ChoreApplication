@@ -97,10 +97,9 @@ namespace ChoreApplication.UI
             var i = 0;
             foreach (var name in children)
             {
-             
                 childrenarray[i] = name.FirstName;
                 this.Assignment.Items.Add(childrenarray[i]);
-               
+        
                 i++;
             } 
         }
@@ -124,11 +123,12 @@ namespace ChoreApplication.UI
                     try
                     {
                         Concrete.Insert(ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), id, Convert.ToDateTime(DueDate.Text), choreType);
-
+                        this.Close();
+                        MessageBox.Show("A chore has been created");
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Incorrect information enterd");
+                        MessageBox.Show("Incorrect information entered");
                     }
                     break;
                 case "Repeatable":
@@ -136,11 +136,12 @@ namespace ChoreApplication.UI
                     try
                     {
                         Repeatable.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), (Int32)CompletionLimit.Value);
-
+                        this.Close();
+                        MessageBox.Show("A chore has been created");
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Incorrect information enterd");
+                        MessageBox.Show("Incorrect information entered");
                     }
                     break;
                 case "Reoccurring":
@@ -149,14 +150,16 @@ namespace ChoreApplication.UI
                     {
                         List<string> DaysChecked = Days.CheckedItems.OfType<string>().ToList<string>();
                         Reocurring.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), Convert.ToDateTime(DueTime.Text), DaysChecked);
+                        this.Close();
+                        MessageBox.Show("A chore has been created");
                     }
                     catch (Exception)
                     {
-                        MessageBox.Show("Incorrect information enterd");
+                        MessageBox.Show("Incorrect information entered");
                     }
                     break;
             }
-           
+            
         }
     }
 }

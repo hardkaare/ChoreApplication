@@ -14,7 +14,7 @@ namespace ChoreApplication.UI
     public partial class ChooseProfileInterface : Form
     {
         List<Button> button;
-        int activeId;
+        public static int activeId;
 
         public string Surname { get; set; }
         public ChooseProfileInterface()
@@ -116,7 +116,8 @@ namespace ChoreApplication.UI
         {
             Button clickedButton = (Button)sender;
             activeId = (int)clickedButton.Tag;
-            MessageBox.Show(activeId.ToString());
+            PinCodeInterface pinCode = new PinCodeInterface();
+            pinCode.Show();
         }
     }
 }

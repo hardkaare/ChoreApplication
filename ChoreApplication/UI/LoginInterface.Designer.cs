@@ -44,10 +44,9 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.welcomeLabel.AutoSize = true;
             this.welcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
-            this.welcomeLabel.Location = new System.Drawing.Point(81, 22);
-            this.welcomeLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.welcomeLabel.Location = new System.Drawing.Point(61, 18);
             this.welcomeLabel.Name = "welcomeLabel";
-            this.welcomeLabel.Size = new System.Drawing.Size(323, 29);
+            this.welcomeLabel.Size = new System.Drawing.Size(251, 25);
             this.welcomeLabel.TabIndex = 0;
             this.welcomeLabel.Text = " Welcome to Chore System";
             this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -56,20 +55,18 @@
             // 
             this.loginLabel.AutoSize = true;
             this.loginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.loginLabel.Location = new System.Drawing.Point(189, 38);
-            this.loginLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.loginLabel.Location = new System.Drawing.Point(142, 31);
             this.loginLabel.Name = "loginLabel";
-            this.loginLabel.Size = new System.Drawing.Size(73, 29);
+            this.loginLabel.Size = new System.Drawing.Size(57, 24);
             this.loginLabel.TabIndex = 1;
             this.loginLabel.Text = "Login";
             // 
             // emailInput
             // 
             this.emailInput.AcceptsTab = true;
-            this.emailInput.Location = new System.Drawing.Point(119, 95);
-            this.emailInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.emailInput.Location = new System.Drawing.Point(89, 77);
             this.emailInput.Name = "emailInput";
-            this.emailInput.Size = new System.Drawing.Size(233, 22);
+            this.emailInput.Size = new System.Drawing.Size(176, 20);
             this.emailInput.TabIndex = 2;
             this.emailInput.Text = "Email";
             this.emailInput.Click += new System.EventHandler(this.EmailTextbox_Click);
@@ -77,21 +74,19 @@
             // pwdInput
             // 
             this.pwdInput.AcceptsTab = true;
-            this.pwdInput.Location = new System.Drawing.Point(119, 127);
-            this.pwdInput.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pwdInput.Location = new System.Drawing.Point(89, 103);
             this.pwdInput.Name = "pwdInput";
             this.pwdInput.PasswordChar = '*';
-            this.pwdInput.Size = new System.Drawing.Size(233, 22);
+            this.pwdInput.Size = new System.Drawing.Size(176, 20);
             this.pwdInput.TabIndex = 3;
             this.pwdInput.Text = "Password";
             this.pwdInput.Click += new System.EventHandler(this.PwdTextbox_Click);
             // 
             // loginButton
             // 
-            this.loginButton.Location = new System.Drawing.Point(183, 159);
-            this.loginButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.loginButton.Location = new System.Drawing.Point(137, 129);
             this.loginButton.Name = "loginButton";
-            this.loginButton.Size = new System.Drawing.Size(100, 28);
+            this.loginButton.Size = new System.Drawing.Size(75, 23);
             this.loginButton.TabIndex = 4;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
@@ -100,10 +95,9 @@
             // newUserLink
             // 
             this.newUserLink.AutoSize = true;
-            this.newUserLink.Location = new System.Drawing.Point(193, 191);
-            this.newUserLink.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.newUserLink.Location = new System.Drawing.Point(145, 155);
             this.newUserLink.Name = "newUserLink";
-            this.newUserLink.Size = new System.Drawing.Size(75, 17);
+            this.newUserLink.Size = new System.Drawing.Size(58, 13);
             this.newUserLink.TabIndex = 5;
             this.newUserLink.TabStop = true;
             this.newUserLink.Text = "New user?";
@@ -116,24 +110,22 @@
             this.LoginPanel.Controls.Add(this.emailInput);
             this.LoginPanel.Controls.Add(this.loginButton);
             this.LoginPanel.Controls.Add(this.pwdInput);
-            this.LoginPanel.Location = new System.Drawing.Point(16, 75);
-            this.LoginPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.LoginPanel.Location = new System.Drawing.Point(12, 61);
             this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(460, 464);
+            this.LoginPanel.Size = new System.Drawing.Size(345, 377);
             this.LoginPanel.TabIndex = 4;
             this.LoginPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.LoginPanel_Paint);
             // 
             // LoginInterface
             // 
             this.AcceptButton = this.loginButton;
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(492, 554);
+            this.ClientSize = new System.Drawing.Size(369, 450);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.welcomeLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.Name = "LoginInterface";
             this.Text = "Login Interface";
