@@ -58,8 +58,8 @@ namespace ChoreApplication
             var createreward = new UI.CreateRewardUI();
 
 
-            createreward.Show();
-            //createchore.Show();
+            //createreward.Show();
+            createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
