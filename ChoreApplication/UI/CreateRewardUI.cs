@@ -44,7 +44,17 @@ namespace ChoreApplication.UI
                     id = children[i].ChildId;
                 }
             }
-            //Reward.Insert
+            try
+            {
+                Reward.Insert(id, rewardName.Text, Convert.ToInt32(pointsRequired.Text));
+                    
+            }
+            catch (Exception)
+            {
+
+                MessageBox.Show("Incorrect input entered.");
+
+            }
         }
     }
 }
