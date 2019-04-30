@@ -21,7 +21,7 @@ namespace ChoreApplication
         /// Date and time of when the chore is due. If null in DB this property is 
         /// set to "01-01-2000 00:00:00"
         /// </summary>
-        private DateTime dueDate { get; set; }
+        public DateTime DueDate { get; private set; }
         /// <summary>
         /// Status of the chore:
         /// 1 = active
@@ -29,9 +29,9 @@ namespace ChoreApplication
         /// 3 = approved 
         /// 4 = overdue
         /// </summary>
-        private int status { get; set; }
+        public int Status { get; private set; }
         //Date of approval. Empty if not approved yet
-        private DateTime approvalDate { get; set; }
+        public DateTime ApprovalDate { get; private set; }
 
         #endregion
 
@@ -51,9 +51,9 @@ namespace ChoreApplication
             DateTime _dueDate, int _status, DateTime _approvalDate) : 
             base(_id, _name, _desc, _points, _assignment)
         {
-            dueDate = _dueDate;
-            status = _status;
-            approvalDate = _approvalDate;
+            DueDate = _dueDate;
+            Status = _status;
+            ApprovalDate = _approvalDate;
         }
 
         #endregion
@@ -69,7 +69,7 @@ namespace ChoreApplication
         {
            return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
-               Name, Description, Points, Assignment, dueDate, status, approvalDate);
+               Name, Description, Points, Assignment, DueDate, Status, ApprovalDate);
         }
 
         /// <summary>
@@ -127,7 +127,7 @@ namespace ChoreApplication
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("UPDATE concrete_chore SET " +
                 "due_date='{0}', status={1}, approval_date='{2}' WHERE chore_id={3}", 
-                dueDate, status, approvalDate, ID);
+                DueDate, Status, ApprovalDate, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}", 
                 Assignment, Name, Description, Points, ID);

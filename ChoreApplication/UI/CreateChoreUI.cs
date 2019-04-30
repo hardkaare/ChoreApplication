@@ -30,18 +30,32 @@ namespace ChoreApplication.UI
                     // 
                     label5.Text = "Days";
                     DueDate.Visible = false;
-                    label6.Location = new System.Drawing.Point(61, 379);
-                    Assignment.Location = new System.Drawing.Point(64, 395);
-                    CreateChoreButton.Location = new System.Drawing.Point(126, 451);
+                    label6.Location = new System.Drawing.Point(61, 420);
+                    Assignment.Location = new System.Drawing.Point(64, 435);
+                    CreateChoreButton.Location = new System.Drawing.Point(126, 470);
                     Days.Visible = true;
                     CompletionLimit.Visible = false;
                     this.Days.FormattingEnabled = true;
                     this.Days.Items.AddRange(new object[] {"Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"});
                     this.Days.Location = new System.Drawing.Point(65, 266);
                     this.Days.Name = "Days";
-                    this.Days.Size = new System.Drawing.Size(198, 109);
+                    this.Days.Size = new System.Drawing.Size(200, 109);
                     this.Days.TabIndex = 12;
                     this.Controls.Add(this.Days);
+                    // 
+                    // DueTime
+                    // 
+                    this.DueTime.CustomFormat = "hh:mm";
+                    this.DueTime.ShowUpDown = true;
+                    this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+                    this.DueTime.Location = new System.Drawing.Point(63, 395);
+                    this.DueTime.Name = "DueTime";
+                    this.DueTime.Size = new System.Drawing.Size(200, 20);
+                    this.DueTime.TabIndex = 12;
+                    this.Controls.Add(this.DueTime);
+                    DueTime.Visible = true;
+                    this.Controls.Add(this.label7);
+                    label7.Visible = true;
                     break;
                 case "Concrete":
                     DueDate.Visible = true;
@@ -51,6 +65,8 @@ namespace ChoreApplication.UI
                     label6.Location = new System.Drawing.Point(61, 291);
                     Assignment.Location = new System.Drawing.Point(64, 307);
                     CreateChoreButton.Location = new System.Drawing.Point(126, 363);
+                    DueTime.Visible = false;
+                    label7.Visible = false;
                     break;
                 case "Repeatable":
                     // 
@@ -68,6 +84,8 @@ namespace ChoreApplication.UI
                     this.CompletionLimit.Name = "CompletionLimit";
                     this.CompletionLimit.Size = new System.Drawing.Size(198, 20);
                     this.CompletionLimit.TabIndex = 12;
+                    DueTime.Visible = false;
+                    label7.Visible = false;
                     break;
             }
         }
@@ -76,15 +94,15 @@ namespace ChoreApplication.UI
         {
             var children = ChildUser.Load("");
             var childrenarray = new string[children.Count];
+            var i = 0;
             foreach (var name in children)
             {
-                var i = 0;
+             
                 childrenarray[i] = name.FirstName;
                 this.Assignment.Items.Add(childrenarray[i]);
+               
                 i++;
-            }
-           
-            
+            } 
         }
 
         private void CreateChoreButton_Click(object sender, EventArgs e)
@@ -129,10 +147,8 @@ namespace ChoreApplication.UI
                     choreType = "reoc";
                     try
                     {
-                        //lav en liste med strings med l
-
-                       //Reocurring.Insert(id, ChoreName.Text, ChoreDescription, Convert.ToInt32(ChorePoints.Text), Convert.ToDateTime(DueDate.Text),)
-
+                        List<string> DaysChecked = Days.CheckedItems.OfType<string>().ToList<string>();
+                        Reocurring.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), Convert.ToDateTime(DueTime.Text), DaysChecked);
                     }
                     catch (Exception)
                     {

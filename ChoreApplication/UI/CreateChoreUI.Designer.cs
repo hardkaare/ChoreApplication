@@ -45,12 +45,14 @@ namespace ChoreApplication.UI
             this.label6 = new System.Windows.Forms.Label();
             this.Days = new System.Windows.Forms.CheckedListBox();
             this.CompletionLimit = new System.Windows.Forms.NumericUpDown();
+            this.DueTime = new System.Windows.Forms.DateTimePicker();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Location = new System.Drawing.Point(126, 363);
+            this.CreateChoreButton.Location = new System.Drawing.Point(126, 370);
             this.CreateChoreButton.Name = "CreateChoreButton";
             this.CreateChoreButton.Size = new System.Drawing.Size(75, 23);
             this.CreateChoreButton.TabIndex = 0;
@@ -93,6 +95,7 @@ namespace ChoreApplication.UI
             "Repeatable",
             "Reoccurring"});
             this.ChoreTypes.Location = new System.Drawing.Point(65, 225);
+            this.ChoreTypes.SelectedIndex = 0;
             this.ChoreTypes.Name = "ChoreTypes";
             this.ChoreTypes.Size = new System.Drawing.Size(198, 21);
             this.ChoreTypes.TabIndex = 3;
@@ -112,7 +115,7 @@ namespace ChoreApplication.UI
             // 
             this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Assignment.FormattingEnabled = true;
-            this.Assignment.Location = new System.Drawing.Point(64, 307);
+            this.Assignment.Location = new System.Drawing.Point(65, 314);
             this.Assignment.Name = "Assignment";
             this.Assignment.Size = new System.Drawing.Size(199, 21);
             this.Assignment.TabIndex = 5;
@@ -165,7 +168,7 @@ namespace ChoreApplication.UI
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(61, 291);
+            this.label6.Location = new System.Drawing.Point(62, 291);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(61, 13);
             this.label6.TabIndex = 11;
@@ -178,13 +181,36 @@ namespace ChoreApplication.UI
             this.Days.Size = new System.Drawing.Size(120, 96);
             this.Days.TabIndex = 0;
             // 
+            // CompletionLimit
+            // 
+            this.CompletionLimit.Location = new System.Drawing.Point(0, 0);
+            this.CompletionLimit.Name = "CompletionLimit";
+            this.CompletionLimit.Size = new System.Drawing.Size(120, 20);
+            this.CompletionLimit.TabIndex = 0;
+            // 
+            // DueTime
+            // 
+            this.DueTime.Location = new System.Drawing.Point(0, 0);
+            this.DueTime.Name = "DueTime";
+            this.DueTime.Size = new System.Drawing.Size(200, 20);
+            this.DueTime.TabIndex = 0;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(64, 380);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(35, 13);
+            this.label7.TabIndex = 12;
+            this.label7.Text = "Due time";
+            // 
             // CreateChoreUI
             // 
             this.AcceptButton = this.CreateChoreButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(337, 569);
+            this.ClientSize = new System.Drawing.Size(337, 557);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -227,5 +253,7 @@ namespace ChoreApplication.UI
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.CheckedListBox Days;
         private System.Windows.Forms.NumericUpDown CompletionLimit;
+        private System.Windows.Forms.DateTimePicker DueTime;
+        private System.Windows.Forms.Label label7;
     }
 }
