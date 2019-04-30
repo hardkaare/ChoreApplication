@@ -106,8 +106,8 @@ namespace ChoreApplication.UI
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
                     session = sessionList[0];
-                    //var childUI = new ChildInterface();
-                    //childUI.Show();
+                    var childUI = new ChildInterface();
+                    childUI.Show();
                     
                 }
                 LoginInterface.chooseProfile.Close();
