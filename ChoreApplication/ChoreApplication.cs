@@ -55,11 +55,11 @@ namespace ChoreApplication
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface();
             var createchore = new UI.CreateChoreUI();
+            var createreward = new UI.CreateRewardUI();
 
 
-
-            
-            createchore.Show();
+            createreward.Show();
+            //createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();

@@ -75,10 +75,16 @@ namespace ChoreApplication.UI
 
         public void LoadChores()
         {
-            List<Concrete> ConcreteChores = Concrete.Load("");
-            List<Reocurring> ReoccurringChores = Reocurring.Load("");
+            var ConcreteChores = Concrete.Load("");
+            var Children = ChildUser.Load("");
+            var ChildrenNames = new Dictionary<int, string>();
 
-            foreach (Concrete chore in ConcreteChores)
+            foreach (var child in Children)
+            {
+                ChildrenNames.Add(child.ChildId, child.FirstName);
+            }
+
+            foreach (var chore in ConcreteChores)
             {
                 var individualChorePanel = new Panel
                 {
@@ -95,13 +101,19 @@ namespace ChoreApplication.UI
                 var choreAssignment = new Label
                 {
                     Name = "choreAssignment" + chore.ID.ToString(),
-                    Text = "Assigned to: " + chore.Assignment.ToString(),
+                    Text = "Assigned to: " + ChildrenNames[chore.Assignment],
                     Location = new Point(10, 30),
+                };
+                var choreStatus = new Label
+                {
+                    Name = "choreStatus" + chore.ID.ToString(),
+                    Text = "Status: " + chore.Status.ToString(),
+                    Location = new Point(10, 60),
                 };
                 ChorePanel.Controls.Add(individualChorePanel);
                 individualChorePanel.Controls.Add(choreName);
                 individualChorePanel.Controls.Add(choreAssignment);
-                MessageBox.Show(chore.Assignment.ToString());
+                individualChorePanel.Controls.Add(choreStatus);
             }
         }
         #endregion
