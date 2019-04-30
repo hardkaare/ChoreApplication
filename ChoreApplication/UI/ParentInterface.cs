@@ -12,100 +12,31 @@ namespace ChoreApplication.UI
 {
     public partial class ParentInterface : Form
     {
-        public int UI;
+        public int UI = 0;
         public ParentInterface()
         {
             InitializeComponent();
+            ChoresUI();
         }
 
-        #region UserInterfaceMethods
-        /// <summary>
-        /// Sletter alle Control objekter i dynamicPanel & upperPanel
-        /// </summary>
-        public void ResetUI()
+        private void OptionButton_Click(object sender, EventArgs e)
         {
-            dynamicPanel.Controls.Clear();
-            upperPanel.Controls.Clear();
-            upperPanel.Controls.Add(titleText);
-        }
-
-        /// <summary>
-        /// Brugt til at vise buttons i øverste panel.
-        /// </summary>
-        /// <param name="user">Hvis user button skal vises</param>
-        /// <param name="create">Hvis create button skal vises</param>
-        /// <param name="delete">Hvis delete button skal vises</param>
-        /// <param name="sort">Hvis sort button skal vises</param>
-        public void AddUpperButtons(bool user, bool create, bool delete, bool sort)
-        {
-            if (user == true)
+            switch (UI)
             {
-                upperPanel.Controls.Add(userButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
-            }
-            if (create == true)
-            {
-                upperPanel.Controls.Add(optionButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.add;
-            }
-            if (delete == true)
-            {
-                upperPanel.Controls.Add(optionButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.delete;
-            }
-            if (sort == true)
-            {
-                upperPanel.Controls.Add(optionButton);
-                optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.menu;
+                case 1:
+                    //CreateChore
+                    break;
+                case 2:
+                    //CreateReward
+                    break;
+                case 4:
+                //CreateUser
+                default:
+                    break;
             }
         }
 
-        public void ChoresUI()
-        {
-            UI = 1;
-            ResetUI();
-            AddUpperButtons(true, true, false, false);
-            titleText.Text = "Chores";
-        }
-        public void RewardsUI()
-        {
-            UI = 2;
-            ResetUI();
-            AddUpperButtons(true, true, false, false);
-            titleText.Text = "Rewards";
-        }
-
-        public void LeaderboardsUI()
-        {
-            UI = 3;
-            ResetUI();
-            AddUpperButtons(true, false, false, true);
-            titleText.Text = "Leaderboard";
-        }
-
-        public void UsersUI()
-        {
-            UI = 4;
-            ResetUI();
-            AddUpperButtons(true, true, false, false);
-            titleText.Text = "Users";
-        }
-
-        public void NotificationsUI()
-        {
-            UI = 5;
-            ResetUI();
-            AddUpperButtons(true, false, false, false);
-            titleText.Text = "Notifications";
-        }
-        #endregion
-
-        #region ChoreUI
-        #endregion
-
-        #region RewardUI
-        #endregion
-
+        #region NavigationPanel
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
             ChoresUI();
@@ -129,6 +60,87 @@ namespace ChoreApplication.UI
         private void NotificationsNavButton_Click(object sender, EventArgs e)
         {
             NotificationsUI();
+        }
+        #endregion
+
+        #region ChoreUI
+        public void ChoresUI()
+        {
+            UI = 1;
+            this.ChorePanel.Visible = true;
+            this.ChorePanel.BringToFront();
+            titleText.Text = "Chores";
+            LoadChores();
+        }
+
+        public void LoadChores()
+        {
+            List<Concrete> ConcreteChores = Concrete.Load("");
+            List<Reocurring> ReoccurringChores = Reocurring.Load("");
+
+            foreach (Concrete chore in ConcreteChores)
+            {
+                var individualChorePanel = new Panel
+                {
+                    Name = "panel" + chore.ID.ToString(),
+                    Location = new Point(10, 10),
+                    BorderStyle = BorderStyle.FixedSingle,
+                };
+                var choreName = new Label
+                {
+                    Name = "choreTitle" + chore.ID.ToString(),
+                    Text = chore.Name.ToString(),
+                    Location = new Point(10, 10),
+                    Margin = 0,
+                };
+                var choreAssignment = new Label
+                {
+                    Name = "choreAssignment" + chore.ID.ToString(),
+                    Text = "Assigned to: " + chore.Assignment.ToString(),
+                    Location = new Point(10, 30),
+                };
+                ChorePanel.Controls.Add(individualChorePanel);
+                individualChorePanel.Controls.Add(choreName);
+                individualChorePanel.Controls.Add(choreAssignment);
+                MessageBox.Show(chore.Assignment.ToString());
+            }
+        }
+        #endregion
+
+        #region RewardUI
+        public void RewardsUI()
+        {
+            UI = 2;
+            titleText.Text = "Rewards";
+        }
+        #endregion
+
+        #region LeaderboardUI
+        public void LeaderboardsUI()
+        {
+            UI = 3;
+            titleText.Text = "Leaderboards";
+            this.SortButton.Show();
+        }
+        #endregion
+
+        #region UsersUI
+        public void UsersUI()
+        {
+            titleText.Text = "Users";
+        }
+        #endregion
+
+        #region NotificationsUI
+        public void NotificationsUI()
+        {
+            titleText.Text = "Notifications";
+        }
+        #endregion
+
+        private void SortButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

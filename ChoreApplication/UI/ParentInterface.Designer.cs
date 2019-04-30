@@ -40,11 +40,12 @@
             this.usersNavButton = new System.Windows.Forms.Button();
             this.leadboardNavButton = new System.Windows.Forms.Button();
             this.rewardNavButton = new System.Windows.Forms.Button();
-            this.dynamicPanel = new System.Windows.Forms.Panel();
-            this.optionButton = new System.Windows.Forms.Button();
+            this.OptionButton = new System.Windows.Forms.Button();
             this.titleText = new System.Windows.Forms.Label();
             this.upperPanel = new System.Windows.Forms.Panel();
-            this.userButton = new System.Windows.Forms.Button();
+            this.UserButton = new System.Windows.Forms.Button();
+            this.SortButton = new System.Windows.Forms.Button();
+            this.ChorePanel = new System.Windows.Forms.Panel();
             this.navigationPanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.SuspendLayout();
@@ -209,31 +210,23 @@
             this.rewardNavButton.UseVisualStyleBackColor = true;
             this.rewardNavButton.Click += new System.EventHandler(this.RewardNavButton_Click);
             // 
-            // dynamicPanel
+            // OptionButton
             // 
-            this.dynamicPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.dynamicPanel.Location = new System.Drawing.Point(12, 47);
-            this.dynamicPanel.MaximumSize = new System.Drawing.Size(420, 450);
-            this.dynamicPanel.Name = "dynamicPanel";
-            this.dynamicPanel.Size = new System.Drawing.Size(420, 415);
-            this.dynamicPanel.TabIndex = 1;
-            // 
-            // optionButton
-            // 
-            this.optionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.add;
-            this.optionButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.optionButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.optionButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.optionButton.FlatAppearance.BorderSize = 0;
-            this.optionButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.optionButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.optionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.optionButton.Location = new System.Drawing.Point(390, 3);
-            this.optionButton.Name = "optionButton";
-            this.optionButton.Size = new System.Drawing.Size(25, 25);
-            this.optionButton.TabIndex = 0;
-            this.optionButton.UseVisualStyleBackColor = true;
+            this.OptionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.add;
+            this.OptionButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.OptionButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.OptionButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.OptionButton.FlatAppearance.BorderSize = 0;
+            this.OptionButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.OptionButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.OptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.OptionButton.Location = new System.Drawing.Point(390, 3);
+            this.OptionButton.Name = "OptionButton";
+            this.OptionButton.Size = new System.Drawing.Size(25, 25);
+            this.OptionButton.TabIndex = 0;
+            this.OptionButton.UseVisualStyleBackColor = true;
+            this.OptionButton.Click += new System.EventHandler(this.OptionButton_Click);
             // 
             // titleText
             // 
@@ -248,30 +241,59 @@
             // upperPanel
             // 
             this.upperPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upperPanel.Controls.Add(this.userButton);
-            this.upperPanel.Controls.Add(this.optionButton);
+            this.upperPanel.Controls.Add(this.UserButton);
+            this.upperPanel.Controls.Add(this.SortButton);
+            this.upperPanel.Controls.Add(this.OptionButton);
             this.upperPanel.Controls.Add(this.titleText);
             this.upperPanel.Location = new System.Drawing.Point(12, 12);
             this.upperPanel.Name = "upperPanel";
             this.upperPanel.Size = new System.Drawing.Size(420, 33);
             this.upperPanel.TabIndex = 1;
             // 
-            // userButton
+            // UserButton
             // 
-            this.userButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.userButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
-            this.userButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.userButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.userButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.userButton.FlatAppearance.BorderSize = 0;
-            this.userButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.userButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.userButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.userButton.Location = new System.Drawing.Point(3, 4);
-            this.userButton.Name = "userButton";
-            this.userButton.Size = new System.Drawing.Size(25, 25);
-            this.userButton.TabIndex = 0;
-            this.userButton.UseVisualStyleBackColor = true;
+            this.UserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.UserButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
+            this.UserButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.UserButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.UserButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.UserButton.FlatAppearance.BorderSize = 0;
+            this.UserButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.UserButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.UserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.UserButton.Location = new System.Drawing.Point(3, 3);
+            this.UserButton.Name = "UserButton";
+            this.UserButton.Size = new System.Drawing.Size(25, 25);
+            this.UserButton.TabIndex = 0;
+            this.UserButton.UseVisualStyleBackColor = true;
+            // 
+            // SortButton
+            // 
+            this.SortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SortButton.BackgroundImage = global::ChoreApplication.Properties.Resources.menu;
+            this.SortButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SortButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SortButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.SortButton.FlatAppearance.BorderSize = 0;
+            this.SortButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.SortButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.SortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SortButton.Location = new System.Drawing.Point(336, 3);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(25, 25);
+            this.SortButton.TabIndex = 0;
+            this.SortButton.UseVisualStyleBackColor = true;
+            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
+            // 
+            // ChorePanel
+            // 
+            this.ChorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChorePanel.Location = new System.Drawing.Point(12, 49);
+            this.ChorePanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.ChorePanel.Name = "ChorePanel";
+            this.ChorePanel.Size = new System.Drawing.Size(420, 415);
+            this.ChorePanel.TabIndex = 1;
+            this.ChorePanel.Visible = false;
             // 
             // ParentInterface
             // 
@@ -280,7 +302,7 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(444, 561);
             this.Controls.Add(this.upperPanel);
-            this.Controls.Add(this.dynamicPanel);
+            this.Controls.Add(this.ChorePanel);
             this.Controls.Add(this.navigationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ParentInterface";
@@ -301,15 +323,16 @@
         private System.Windows.Forms.Button leadboardNavButton;
         private System.Windows.Forms.Button rewardNavButton;
         private System.Windows.Forms.Button choreNavButton;
-        private System.Windows.Forms.Panel dynamicPanel;
         private System.Windows.Forms.Label notificationsLabel;
         private System.Windows.Forms.Label usersLabel;
         private System.Windows.Forms.Label leaderboardsLabel;
         private System.Windows.Forms.Label rewardsLabel;
         private System.Windows.Forms.Label choresLabel;
         private System.Windows.Forms.Label titleText;
-        private System.Windows.Forms.Button optionButton;
+        private System.Windows.Forms.Button OptionButton;
         private System.Windows.Forms.Panel upperPanel;
-        private System.Windows.Forms.Button userButton;
+        private System.Windows.Forms.Button UserButton;
+        private System.Windows.Forms.Panel ChorePanel;
+        private System.Windows.Forms.Button SortButton;
     }
 }

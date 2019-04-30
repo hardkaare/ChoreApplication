@@ -10,7 +10,6 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient; //Use MySQL stuff
 using System.Globalization; //Set different time/culture formats
 using System.Data.SqlClient;
-using ChoreApplication.UI;
 
 namespace ChoreApplication
 {
@@ -40,22 +39,13 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Repeatable.Insert(1, "Tag opvasken", "", 75, 10);
-            List<Repeatable> testlist = Repeatable.Load("");
-            foreach(Repeatable l in testlist)
+            
+            List<Concrete> testList = Concrete.Load("");
+            foreach(Concrete current in testList)
             {
-                MessageBox.Show(l.ToString());
+                MessageBox.Show(current.ToString());
             }
-            testlist[2].Delete();
-            MessageBox.Show("Item deleted");
-            testlist[3].completions = 2;
-            testlist[3].Update();
-            MessageBox.Show("Item updted");
-            testlist = Repeatable.Load("");
-            foreach (Repeatable l in testlist)
-            {
-                MessageBox.Show(l.ToString());
-            }
+            
         }
 
         private void TestButtonJoenler_Click(object sender, EventArgs e)
@@ -64,8 +54,13 @@ namespace ChoreApplication
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface();
+            var createchore = new UI.CreateChoreUI();
 
-            LoginInterface.Show();
+
+
+            
+            createchore.Show();
+            //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
             //ParentInterface.Show();
@@ -93,7 +88,6 @@ namespace ChoreApplication
             //RegisterUser.Show();
             //ChooseProfile.Show();
             ParentInterface.Show();
-            this.Hide();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
@@ -101,10 +95,11 @@ namespace ChoreApplication
 
         }
 
-        internal class Roundbutton : RoundButton
+        private void AlexogLuten_Click(object sender, EventArgs e)
         {
+            var LoginInterface = new UI.LoginInterface();
+            LoginInterface.Show();
+            this.Hide();
         }
-
-       
     }
 }

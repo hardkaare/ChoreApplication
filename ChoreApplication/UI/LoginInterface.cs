@@ -6,8 +6,6 @@ namespace ChoreApplication.UI
 {
     public partial class LoginInterface : Form
     {
-        private static SqlConnection dbConn = DatabaseFunctions.dbConn;
-
         public LoginInterface()
         {
             InitializeComponent();
@@ -39,6 +37,7 @@ namespace ChoreApplication.UI
         {
             string Emailinput = emailInput.Text;
             string passwordInput = pwdInput.Text;
+            bool match = false;
             if(string.IsNullOrEmpty(Emailinput) || string.IsNullOrEmpty(passwordInput))
             {
                 MessageBox.Show("Please enter your E-mail and password.");
@@ -46,8 +45,8 @@ namespace ChoreApplication.UI
             }
 
             string loginQuery = "SELECT email, password FROM dbo.parent";
-            SqlCommand cmd = new SqlCommand(loginQuery, dbConn);
-            dbConn.Open();
+            SqlCommand cmd = new SqlCommand(loginQuery, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -55,19 +54,28 @@ namespace ChoreApplication.UI
                 string password = reader["password"].ToString();
                 if(Emailinput == email && passwordInput == password)
                 {
-                    
-                    ChooseProfileInterface showInterface = new ChooseProfileInterface();
-                    showInterface.Show();
+                    match = true;
                 }
                 else
                 {
                     MessageBox.Show("Incorrect password or E-mail entered.");
-                    dbConn.Close();
+                    DatabaseFunctions.dbConn.Close();
                     return;
                 }
             }
-            dbConn.Close();
+            if (match == true)
+            {
+                DatabaseFunctions.dbConn.Close();
+                ChooseProfileInterface chooseProfile = new ChooseProfileInterface();
+                chooseProfile.Show();
+                this.Close();
+            }
 
+
+        }
+
+        private void LoginPanel_Paint(object sender, PaintEventArgs e)
+        {
 
         }
     }

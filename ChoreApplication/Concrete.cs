@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Threading;
 using System.Data.SqlClient;
+using System.Globalization;
 
 namespace ChoreApplication
 {
@@ -64,9 +67,9 @@ namespace ChoreApplication
         /// and the associated Chore object</returns>
         public override string ToString()
         {
-            return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
-                "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
-                name, description, points, assignment, dueDate, status, approvalDate);
+           return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
+               "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
+               Name, Description, Points, Assignment, dueDate, status, approvalDate);
         }
 
         /// <summary>
@@ -117,28 +120,6 @@ namespace ChoreApplication
         }
 
         /// <summary>
-        /// Deletes a concrete chore and associated chore from the DB
-        /// </summary>
-        public void Delete()
-        {
-            //Formatting the queries to chore table and creating the SqlCommand for the first query
-            string query = string.Format("DELETE FROM concrete_chore WHERE chore_id={0}", ID);
-            string query2 = string.Format("DELETE FROM chore WHERE chore_id={0}", ID);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-
-            //Opens connection to the DB
-            DatabaseFunctions.dbConn.Open();
-
-            //Executes the SqlCommand
-            cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
-            cmd.ExecuteNonQuery();
-
-            //Closes connection to DB
-            DatabaseFunctions.dbConn.Close();
-        }
-
-        /// <summary>
         /// Updates the DB with the information in the Concrete Chore targeted by the method
         /// </summary>
         public void Update()
@@ -149,7 +130,7 @@ namespace ChoreApplication
                 dueDate, status, approvalDate, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}", 
-                assignment, name, description, points, ID);
+                Assignment, Name, Description, Points, ID);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
 
             //Opens connection to the DB
@@ -170,8 +151,10 @@ namespace ChoreApplication
         /// <param name="whereClause">String with the where clause. If empty the method loads 
         /// all concrete chores</param>
         /// <returns></returns>
-        public static List<Concrete> LoadWhere(string whereClause)
+        public static List<Concrete> Load(string whereClause)
         {
+            CultureInfo culture = new CultureInfo("da-DK");
+            string formatString = "dd-MM-yyyy HH:mm:ss";
             //Checks if string is empty. If not adds where in front
             if (whereClause != "")
             {
@@ -202,19 +185,19 @@ namespace ChoreApplication
                 string description = reader[2].ToString();
                 int points = (int)reader[3];
                 int assignment = (int)reader[4];
-                DateTime dueTime = DateTime.ParseExact(reader[5].ToString(), "dd-MM-yyyy HH:mm:ss", null);
+                var dueTime = DateTime.ParseExact(reader[5].ToString(), formatString, culture);
                 int status = (int)reader[6];
                 DateTime approvalDate;
 
                 //Checks if approval date is null in DB and sets the time to a predefined date if so
                 if (!reader.IsDBNull(7))
                 {
-                    approvalDate = DateTime.ParseExact(reader[7].ToString(), "dd-MM-yyyy HH:mm:ss", null);
+                    approvalDate = DateTime.ParseExact(reader[7].ToString(), formatString, null);
                     
                 }
                 else
                 {
-                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", "dd-MM-yyyy HH:mm:ss", null);
+                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", formatString, null);
                 }
 
                 //Initializes the choreobject with the parameters and adds it to the list

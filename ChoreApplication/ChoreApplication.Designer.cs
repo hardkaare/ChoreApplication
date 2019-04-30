@@ -33,6 +33,7 @@
             this.TestButtonJoenler = new System.Windows.Forms.Button();
             this.TestLabelJoenler = new System.Windows.Forms.Label();
             this.interface1 = new System.Windows.Forms.Button();
+            this.AlexogLuten = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestButtonLuten
@@ -81,11 +82,22 @@
             this.interface1.UseVisualStyleBackColor = true;
             this.interface1.Click += new System.EventHandler(this.Interface1_Click);
             // 
+            // AlexogLuten
+            // 
+            this.AlexogLuten.Location = new System.Drawing.Point(12, 374);
+            this.AlexogLuten.Name = "AlexogLuten";
+            this.AlexogLuten.Size = new System.Drawing.Size(159, 23);
+            this.AlexogLuten.TabIndex = 6;
+            this.AlexogLuten.Text = "Alex og Lutens mesterknap";
+            this.AlexogLuten.UseVisualStyleBackColor = true;
+            this.AlexogLuten.Click += new System.EventHandler(this.AlexogLuten_Click);
+            // 
             // ChoreApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
+            this.Controls.Add(this.AlexogLuten);
             this.Controls.Add(this.interface1);
             this.Controls.Add(this.TestLabelJoenler);
             this.Controls.Add(this.TestButtonJoenler);
@@ -104,6 +116,7 @@
         private System.Windows.Forms.Button TestButtonJoenler;
         private System.Windows.Forms.Label TestLabelJoenler;
         private System.Windows.Forms.Button interface1;
+        private System.Windows.Forms.Button AlexogLuten;
     }
 }
 
