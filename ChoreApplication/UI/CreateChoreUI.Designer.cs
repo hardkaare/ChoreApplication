@@ -55,7 +55,7 @@ namespace ChoreApplication.UI
             this.CreateChoreButton.Location = new System.Drawing.Point(126, 370);
             this.CreateChoreButton.Name = "CreateChoreButton";
             this.CreateChoreButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateChoreButton.TabIndex = 0;
+            this.CreateChoreButton.TabIndex = 7;
             this.CreateChoreButton.Text = "Create";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
             this.CreateChoreButton.Click += new System.EventHandler(this.CreateChoreButton_Click);
@@ -74,7 +74,7 @@ namespace ChoreApplication.UI
             this.ChorePoints.Location = new System.Drawing.Point(65, 107);
             this.ChorePoints.Name = "ChorePoints";
             this.ChorePoints.Size = new System.Drawing.Size(198, 20);
-            this.ChorePoints.TabIndex = 1;
+            this.ChorePoints.TabIndex = 2;
             this.ChorePoints.Text = "Enter chore points";
             // 
             // ChoreDescription
@@ -82,7 +82,7 @@ namespace ChoreApplication.UI
             this.ChoreDescription.Location = new System.Drawing.Point(65, 150);
             this.ChoreDescription.Name = "ChoreDescription";
             this.ChoreDescription.Size = new System.Drawing.Size(198, 57);
-            this.ChoreDescription.TabIndex = 2;
+            this.ChoreDescription.TabIndex = 3;
             this.ChoreDescription.Text = "Enter a description";
             // 
             // ChoreTypes
@@ -95,10 +95,9 @@ namespace ChoreApplication.UI
             "Repeatable",
             "Reoccurring"});
             this.ChoreTypes.Location = new System.Drawing.Point(65, 225);
-            this.ChoreTypes.SelectedIndex = 0;
             this.ChoreTypes.Name = "ChoreTypes";
             this.ChoreTypes.Size = new System.Drawing.Size(198, 21);
-            this.ChoreTypes.TabIndex = 3;
+            this.ChoreTypes.TabIndex = 4;
             this.ChoreTypes.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // DueDate
@@ -108,7 +107,7 @@ namespace ChoreApplication.UI
             this.DueDate.Location = new System.Drawing.Point(65, 266);
             this.DueDate.Name = "DueDate";
             this.DueDate.Size = new System.Drawing.Size(198, 20);
-            this.DueDate.TabIndex = 4;
+            this.DueDate.TabIndex = 5;
             this.DueDate.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
             // 
             // Assignment
@@ -118,7 +117,7 @@ namespace ChoreApplication.UI
             this.Assignment.Location = new System.Drawing.Point(65, 314);
             this.Assignment.Name = "Assignment";
             this.Assignment.Size = new System.Drawing.Size(199, 21);
-            this.Assignment.TabIndex = 5;
+            this.Assignment.TabIndex = 6;
             // 
             // label1
             // 
