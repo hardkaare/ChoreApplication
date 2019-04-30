@@ -76,6 +76,7 @@
             this.pwdInput.AcceptsTab = true;
             this.pwdInput.Location = new System.Drawing.Point(89, 103);
             this.pwdInput.Name = "pwdInput";
+            this.pwdInput.PasswordChar = '*';
             this.pwdInput.Size = new System.Drawing.Size(176, 20);
             this.pwdInput.TabIndex = 3;
             this.pwdInput.Text = "Password";

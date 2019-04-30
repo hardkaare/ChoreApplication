@@ -13,6 +13,7 @@ namespace ChoreApplication.UI
 {
     public partial class PinCodeInterface : Form
     {
+        User session;
         public PinCodeInterface()
         {
             InitializeComponent();
@@ -60,25 +61,59 @@ namespace ChoreApplication.UI
 
         private void AcceptButton_click(object sender, EventArgs e)
         {
-         //   string pincodeInput = pinInput.text;
-          //  if (string.IsNullOrEmpty(pincodeInput))
+            int pincode;
+            bool correctpin = false;
+            bool conversion = Int32.TryParse(enterpinTextBox.Text, out pincode);
+
+            if (conversion)
             {
-                MessageBox.Show("Please enter your pincode");
-                return;
-            }
+                string query = string.Format("SELECT pincode FROM users WHERE user_id={0}", ChooseProfileInterface.activeId);
+                DatabaseFunctions.dbConn.Open();
 
-          //  string loginQuery = $"SELECT pincode FROM dbo.users WHERE user_id ={id}";
-           // SqlCommand cmd = new SqlCommand(loginQuery, DatabaseFunctions.dbConn);
-           // DatabaseFunctions.dbConn.Open();
-          //  SqlDataReader reader = cmd.ExecuteReader();
-           // while (reader.Read())
+                //Creates the SqlCommand and executes it
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    int enteredpin = Convert.ToInt32(reader["pincode"]);
+                    if (enteredpin == pincode)
+                    {
+                        correctpin = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Incorrect pincode");
+                    }
+                }
+            }
+            else
             {
-
-
-
-
+                //Skrevet af Alexander Munk Petersen all rights reserved
+                MessageBox.Show("Please enter numbers in your pincode");
             }
-
+            DatabaseFunctions.dbConn.Close();
+            if (correctpin == true)
+            {
+                if (ChooseProfileInterface.activeId == 1)
+                {
+                    var sessionList = ParentUser.Load("");
+                    session = sessionList[0];
+                    var parentUI = new ParentInterface();
+                    parentUI.Show();
+                }
+                else
+                {
+                    var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
+                    session = sessionList[0];
+                    //var childUI = new ChildInterface();
+                    //childUI.Show();
+                    
+                }
+                LoginInterface.chooseProfile.Close();
+                this.Close();
+                MessageBox.Show(session.ToString());
+            }
         }
     }
 }
