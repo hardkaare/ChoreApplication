@@ -53,5 +53,11 @@ namespace ChoreApplication.UI
         {
 
         }
+
+
+        private void DataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

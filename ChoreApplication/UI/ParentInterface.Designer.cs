@@ -43,8 +43,8 @@
             this.OptionButton = new System.Windows.Forms.Button();
             this.titleText = new System.Windows.Forms.Label();
             this.upperPanel = new System.Windows.Forms.Panel();
-            this.BackButton = new System.Windows.Forms.Button();
             this.UserButton = new System.Windows.Forms.Button();
+            this.SortButton = new System.Windows.Forms.Button();
             this.ChorePanel = new System.Windows.Forms.Panel();
             this.navigationPanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
@@ -241,32 +241,14 @@
             // upperPanel
             // 
             this.upperPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upperPanel.Controls.Add(this.BackButton);
             this.upperPanel.Controls.Add(this.UserButton);
+            this.upperPanel.Controls.Add(this.SortButton);
             this.upperPanel.Controls.Add(this.OptionButton);
             this.upperPanel.Controls.Add(this.titleText);
             this.upperPanel.Location = new System.Drawing.Point(12, 12);
             this.upperPanel.Name = "upperPanel";
             this.upperPanel.Size = new System.Drawing.Size(420, 33);
             this.upperPanel.TabIndex = 1;
-            // 
-            // BackButton
-            // 
-            this.BackButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.BackButton.BackgroundImage = global::ChoreApplication.Properties.Resources.arrow;
-            this.BackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BackButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BackButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.BackButton.FlatAppearance.BorderSize = 0;
-            this.BackButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.BackButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackButton.Location = new System.Drawing.Point(3, 4);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(25, 25);
-            this.BackButton.TabIndex = 0;
-            this.BackButton.UseVisualStyleBackColor = true;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // UserButton
             // 
@@ -279,11 +261,29 @@
             this.UserButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.UserButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.UserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UserButton.Location = new System.Drawing.Point(34, 4);
+            this.UserButton.Location = new System.Drawing.Point(3, 3);
             this.UserButton.Name = "UserButton";
             this.UserButton.Size = new System.Drawing.Size(25, 25);
             this.UserButton.TabIndex = 0;
             this.UserButton.UseVisualStyleBackColor = true;
+            // 
+            // SortButton
+            // 
+            this.SortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.SortButton.BackgroundImage = global::ChoreApplication.Properties.Resources.menu;
+            this.SortButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.SortButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.SortButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.SortButton.FlatAppearance.BorderSize = 0;
+            this.SortButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.SortButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.SortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.SortButton.Location = new System.Drawing.Point(336, 3);
+            this.SortButton.Name = "SortButton";
+            this.SortButton.Size = new System.Drawing.Size(25, 25);
+            this.SortButton.TabIndex = 0;
+            this.SortButton.UseVisualStyleBackColor = true;
+            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
             // 
             // ChorePanel
             // 
@@ -332,7 +332,7 @@
         private System.Windows.Forms.Button OptionButton;
         private System.Windows.Forms.Panel upperPanel;
         private System.Windows.Forms.Button UserButton;
-        private System.Windows.Forms.Button BackButton;
         private System.Windows.Forms.Panel ChorePanel;
+        private System.Windows.Forms.Button SortButton;
     }
 }

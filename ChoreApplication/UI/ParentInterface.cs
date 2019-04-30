@@ -13,52 +13,28 @@ namespace ChoreApplication.UI
     public partial class ParentInterface : Form
     {
         public int UI = 0;
-        private CreateChoreUI CreateChoreUI;
         public ParentInterface()
         {
-            CreateChoreUI = new CreateChoreUI();
             InitializeComponent();
             ChoresUI();
         }
 
-        #region UserInterfaceMethods
-        /// <summary>
-        /// Brugt til at vise buttons i øverste panel.
-        /// </summary>
-        /// <param name="user">Hvis user button skal vises</param>
-        /// <param name="create">Hvis create button skal vises</param>
-        /// <param name="delete">Hvis delete button skal vises</param>
-        /// <param name="sort">Hvis sort button skal vises</param>
-        /// <param name="back">Hvis back button skal vises</param>
-        public void AddUpperButtons(bool user, bool create, bool delete, bool sort, bool back)
+        private void OptionButton_Click(object sender, EventArgs e)
         {
-            if (user == true)
+            switch (UI)
             {
-                upperPanel.Controls.Add(UserButton);
-                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
-            }
-            if (create == true)
-            {
-                upperPanel.Controls.Add(OptionButton);
-                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.add;
-            }
-            if (delete == true)
-            {
-                upperPanel.Controls.Add(OptionButton);
-                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.delete;
-            }
-            if (sort == true)
-            {
-                upperPanel.Controls.Add(OptionButton);
-                OptionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.menu;
-            }
-            if (back == true)
-            {
-                upperPanel.Controls.Add(BackButton);
+                case 1:
+                    //CreateChore
+                    break;
+                case 2:
+                    //CreateReward
+                    break;
+                case 4:
+                //CreateUser
+                default:
+                    break;
             }
         }
-        #endregion
-
 
         #region NavigationPanel
         private void ChoreNavButton_Click(object sender, EventArgs e)
@@ -91,66 +67,91 @@ namespace ChoreApplication.UI
         public void ChoresUI()
         {
             UI = 1;
-            ChorePanel.Visible = true;
-            AddUpperButtons(true, true, false, false, false);
+            this.ChorePanel.Visible = true;
+            this.ChorePanel.BringToFront();
             titleText.Text = "Chores";
+            LoadChores();
         }
 
-        public void EditChoreUI()
+        public void LoadChores()
         {
-            UI = 12;
+            var ConcreteChores = Concrete.Load("");
+            var Children = ChildUser.Load("");
+            var ChildrenNames = new Dictionary<int, string>();
+
+            foreach (var child in Children)
+            {
+                ChildrenNames.Add(child.ChildId, child.FirstName);
+            }
+
+            foreach (var chore in ConcreteChores)
+            {
+                var individualChorePanel = new Panel
+                {
+                    Name = "panel" + chore.ID.ToString(),
+                    Location = new Point(10, 10),
+                    BorderStyle = BorderStyle.FixedSingle,
+                };
+                var choreName = new Label
+                {
+                    Name = "choreTitle" + chore.ID.ToString(),
+                    Text = chore.Name.ToString(),
+                    Location = new Point(10, 10),
+                };
+                var choreAssignment = new Label
+                {
+                    Name = "choreAssignment" + chore.ID.ToString(),
+                    Text = "Assigned to: " + ChildrenNames[chore.Assignment],
+                    Location = new Point(10, 30),
+                };
+                var choreStatus = new Label
+                {
+                    Name = "choreStatus" + chore.ID.ToString(),
+                    Text = "Status: " + chore.Status.ToString(),
+                    Location = new Point(10, 60),
+                };
+                ChorePanel.Controls.Add(individualChorePanel);
+                individualChorePanel.Controls.Add(choreName);
+                individualChorePanel.Controls.Add(choreAssignment);
+                individualChorePanel.Controls.Add(choreStatus);
+            }
         }
         #endregion
 
         #region RewardUI
         public void RewardsUI()
         {
+            UI = 2;
+            titleText.Text = "Rewards";
         }
         #endregion
 
         #region LeaderboardUI
         public void LeaderboardsUI()
         {
+            UI = 3;
+            titleText.Text = "Leaderboards";
+            this.SortButton.Show();
         }
         #endregion
 
         #region UsersUI
         public void UsersUI()
         {
+            titleText.Text = "Users";
         }
         #endregion
 
         #region NotificationsUI
         public void NotificationsUI()
         {
+            titleText.Text = "Notifications";
         }
         #endregion
 
-        private void OptionButton_Click(object sender, EventArgs e)
+        private void SortButton_Click(object sender, EventArgs e)
         {
-            switch (UI)
-            {
-                case 1:
-                    CreateChoreUI.Show();
-                    break;
-                default:
-                    break;
-            }
-        }
 
-        private void BackButton_Click(object sender, EventArgs e)
-        {
-            switch (UI)
-            {
-                case 11:
-                    ChoresUI();
-                    break;
-                case 12:
-                    ChoresUI();
-                    break;
-                default:
-                    break;
-            }
         }
     }
 }

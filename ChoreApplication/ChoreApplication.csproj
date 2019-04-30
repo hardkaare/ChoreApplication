@@ -98,6 +98,12 @@
       <DependentUpon>ParentInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="ParentUser.cs" />
+    <Compile Include="UI\PinCodeInterface.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\PinCodeInterface.Designer.cs">
+      <DependentUpon>PinCodeInterface.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\RegisterUserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Concrete.cs" />
+    <Compile Include="UI\RoundButton.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="User.cs" />
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
@@ -140,6 +149,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="UI\PinCodeInterface.resx">
+      <DependentUpon>PinCodeInterface.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\RegisterUserInterface.resx">
       <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </EmbeddedResource>

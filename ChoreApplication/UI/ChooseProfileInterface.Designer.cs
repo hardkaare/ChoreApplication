@@ -35,10 +35,12 @@
             // 
             // profilesPanel
             // 
+            this.profilesPanel.AutoScroll = true;
             this.profilesPanel.Location = new System.Drawing.Point(12, 86);
             this.profilesPanel.Name = "profilesPanel";
             this.profilesPanel.Size = new System.Drawing.Size(558, 352);
             this.profilesPanel.TabIndex = 0;
+            this.profilesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilesPanel_Paint);
             // 
             // surnameLabel
             // 
@@ -49,6 +51,7 @@
             this.surnameLabel.Size = new System.Drawing.Size(168, 26);
             this.surnameLabel.TabIndex = 0;
             this.surnameLabel.Text = "The {surname}\'s";
+            this.surnameLabel.Click += new System.EventHandler(this.SurnameLabel_Click);
             // 
             // chooseProfileLabel
             // 
@@ -59,6 +62,7 @@
             this.chooseProfileLabel.Size = new System.Drawing.Size(133, 24);
             this.chooseProfileLabel.TabIndex = 1;
             this.chooseProfileLabel.Text = "Choose Profile";
+            this.chooseProfileLabel.Click += new System.EventHandler(this.ChooseProfileLabel_Click);
             // 
             // ChooseProfileInterface
             // 
