@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using MySql.Data.MySqlClient; //Use MySQL stuff
 using System.Globalization; //Set different time/culture formats
 using System.Data.SqlClient;
+using ChoreApplication.UI;
 
 namespace ChoreApplication
 {
@@ -92,11 +93,18 @@ namespace ChoreApplication
             //RegisterUser.Show();
             //ChooseProfile.Show();
             ParentInterface.Show();
+            this.Hide();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
         {
 
         }
+
+        internal class Roundbutton : RoundButton
+        {
+        }
+
+       
     }
 }

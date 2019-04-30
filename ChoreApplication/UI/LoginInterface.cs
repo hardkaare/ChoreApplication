@@ -56,7 +56,7 @@ namespace ChoreApplication.UI
                 if(Emailinput == email && passwordInput == password)
                 {
                     
-                    ParentInterface showInterface = new ParentInterface();
+                    ChooseProfileInterface showInterface = new ChooseProfileInterface();
                     showInterface.Show();
                 }
                 else
