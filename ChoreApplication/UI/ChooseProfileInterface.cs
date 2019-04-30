@@ -36,7 +36,22 @@ namespace ChoreApplication.UI
 
             surnameLabel.Text = "The " + Surname + "'s";
 
-           // pinPanel.Visible = false;
+           
+           
+        }
+
+        private void ChooseProfileLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void SurnameLabel_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ProfilesPanel_Paint(object sender, PaintEventArgs e)
+        {
             List<Button> button = new List<Button>();
             for (int i = 0; i < 10; i++)
 
@@ -58,16 +73,6 @@ namespace ChoreApplication.UI
 
 
             }
-        }
-
-        private void ChooseProfileLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SurnameLabel_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

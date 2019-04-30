@@ -36,10 +36,11 @@
             // profilesPanel
             // 
             this.profilesPanel.Location = new System.Drawing.Point(16, 106);
-            this.profilesPanel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.profilesPanel.Margin = new System.Windows.Forms.Padding(4);
             this.profilesPanel.Name = "profilesPanel";
             this.profilesPanel.Size = new System.Drawing.Size(744, 433);
             this.profilesPanel.TabIndex = 0;
+            this.profilesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilesPanel_Paint);
             // 
             // surnameLabel
             // 
@@ -75,7 +76,7 @@
             this.Controls.Add(this.chooseProfileLabel);
             this.Controls.Add(this.profilesPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChooseProfileInterface";
             this.Text = "Choose Profile";
             this.Load += new System.EventHandler(this.ChooseProfile_Load);
