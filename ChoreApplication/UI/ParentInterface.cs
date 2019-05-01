@@ -20,21 +20,29 @@ namespace ChoreApplication.UI
         private List<Repeatable> RepeatableChores;
         private List<Concrete> ConcreteChoresApprovalPending;
         private List<Reward> Rewards;
+        private List<ParentUser> ParentUsers;
+        private List<ChildUser> ChildUsers;
+        private List<Notification> Notifications;
         private readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
         private readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
         public ParentInterface(ParentUser p)
         {
             Session = p;
             InitializeComponent();
+            LoadAll();
             InitializeDictionaries();
-            LoadAllChores();
             ChoresUI();
         }
-        private void LoadAllChores()
+
+        private void LoadAll()
         {
-            ConcreteChoresApprovalPending = Concrete.Load("status=2 OR type='conc' ORDER BY status DESC");
+            ConcreteChoresApprovalPending = Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
             ReoccurringChores = Reocurring.Load("");
             RepeatableChores = Repeatable.Load("");
+            Rewards = Reward.Load("");
+            ParentUsers = ParentUser.Load("");
+            ChildUsers = ChildUser.Load("");
+            Notifications = Notification.Load("");
         }
 
         private void InitializeDictionaries()
@@ -48,8 +56,7 @@ namespace ChoreApplication.UI
             };
 
             ChildrenNames = new Dictionary<int, string>();
-            var Children = ChildUser.Load("");
-            foreach (var child in Children)
+            foreach (var child in ChildUsers)
             {
                 ChildrenNames.Add(child.ChildId, child.FirstName);
             }
@@ -102,15 +109,20 @@ namespace ChoreApplication.UI
         #region ChoreUI
         public void ChoresUI()
         {
+            LoadAmountOfNotifications();
             UI = 1;
             this.ChorePanel.Visible = true;
             this.ChorePanel.BringToFront();
+            this.SortButton.Visible = false;
+            this.OptionButton.Visible = true;
             titleText.Text = "Chores";
             LoadChores();
         }
 
         public void LoadChores()
         {
+            ChorePanel.Controls.Clear();
+            LoadAll();
             int i = 0;
             int panelDistance = 95;
 
@@ -139,7 +151,17 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
-                individualChorePanel.Controls.Add(AddApproveButton(200, 50));
+                if(chore.Status == 2)
+                {
+                    individualChorePanel.Controls.Add(AddApproveButton(300, 50, chore));
+                    individualChorePanel.Controls.Add(AddDenyButton(350, 50, chore));
+                }
+                else
+                {
+                    individualChorePanel.Controls.Add(AddEditButton(350, 50, chore));
+                }
+                //individualChorePanel.Controls.Add(AddApproveButton(200, 50));
+                //individualChorePanel.Controls.Add(AddEditButton(200, 50, 1));
                 i++;
             }
             foreach (var chore in ReoccurringChores)
@@ -167,6 +189,7 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
+                individualChorePanel.Controls.Add(AddEditButton(350, 50, chore));
                 i++;
             }
             foreach (var chore in RepeatableChores)
@@ -194,16 +217,18 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
+                individualChorePanel.Controls.Add(AddEditButton(350, 50, chore));
                 i++;
             }
         }
 
-        private Control AddApproveButton(int x, int y)
+        private Control AddApproveButton(int x, int y, Chore c)
         {
             var ApproveButton = new Button
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
+                Tag = c,
                 FlatStyle = FlatStyle.Flat,
                 BackgroundImage = global::ChoreApplication.Properties.Resources.thumbs_up,
                 BackgroundImageLayout = ImageLayout.Zoom,
@@ -211,16 +236,17 @@ namespace ChoreApplication.UI
             };
             ApproveButton.FlatAppearance.BorderSize = 0;
             ApproveButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-
+            ApproveButton.Click += new EventHandler(ApproveButton_Click);
             return ApproveButton;
         }
 
-        private Control AddDenyButton(int x, int y)
+        private Control AddDenyButton(int x, int y, Chore c)
         {
             var DenyButton = new Button
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
+                Tag = c,
                 FlatStyle = FlatStyle.Flat,
                 BackgroundImage = global::ChoreApplication.Properties.Resources.thumb_down,
                 BackgroundImageLayout = ImageLayout.Zoom,
@@ -228,8 +254,22 @@ namespace ChoreApplication.UI
             };
             DenyButton.FlatAppearance.BorderSize = 0;
             DenyButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-
+            DenyButton.Click += new EventHandler(DenyButton_Click);
             return DenyButton;
+        }
+
+        private Control AddEditButton(int x, int y, Chore c)
+        {
+            var EditButton = new Button
+            {
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = c.ID,
+                Text = "Edit",
+                AutoSize = true,
+            };
+            EditButton.Click += new EventHandler(EditButton_Click);
+            return EditButton;
         }
 
         private Control AddLabel(string labelText, bool bold, int posX, int posY)
@@ -252,36 +292,221 @@ namespace ChoreApplication.UI
             }
             return label;
         }
+
+        private void EditButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            int Id = (int)clickedButton.Tag;
+            MessageBox.Show(Id.ToString());
+        }
+
+        private void ApproveButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Concrete currentChore = (Concrete)clickedButton.Tag;
+            currentChore.Status = 3;
+            currentChore.ApprovalDate = DateTime.Now;
+            currentChore.Update();
+
+            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
+            currentChild[0].Points += currentChore.Points;
+            currentChild[0].Update();
+
+            LoadChores();
+        }
+
+        private void DenyButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Concrete currentChore = (Concrete)clickedButton.Tag;
+
+            if(currentChore.Type == "rep")
+            {
+                currentChore.Delete();
+            }
+            else
+            {
+                currentChore.DueDate = DateTime.Now.AddDays(1);
+                currentChore.Status = 1;
+                currentChore.Update();
+            }
+            LoadChores();
+        }
+
         #endregion
 
         #region RewardUI
-        public void RewardsUI()
+        private void RewardsUI()
         {
+            LoadAmountOfNotifications();
             UI = 2;
+            this.RewardPanel.Visible = true;
+            this.RewardPanel.BringToFront();
+            this.SortButton.Visible = false;
+            this.OptionButton.Visible = true;
             titleText.Text = "Rewards";
+            LoadRewards();
+        }
+
+        private void LoadRewards()
+        {
+            RewardPanel.Controls.Clear();
+            int i = 0;
+            int panelDistance = 72;
+
+            foreach (Reward r in Rewards)
+            {
+                var rewardName = r.Name.ToString();
+                var rewardAssignment = "Assigned to: " + ChildrenNames[r.ChildId];
+                var rewardStatus = "Status: Active";
+
+                var rewardNameLabel = AddLabel(rewardName, true, 5, 5);
+                var rewardAssignmentLabel = AddLabel(rewardAssignment, false, 10, rewardNameLabel.Location.Y + 20);
+                var rewardStatusLabel = AddLabel(rewardStatus, false, 10, rewardAssignmentLabel.Location.Y + 20);
+                var panelHeight = rewardNameLabel.Height + rewardAssignmentLabel.Height + rewardStatusLabel.Height;
+                var individualRewardPanel = new Panel
+                {
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(ChorePanel.Width - 20, panelHeight),
+                    AutoSize = true,
+                };
+                individualRewardPanel.Controls.Add(rewardNameLabel);
+                individualRewardPanel.Controls.Add(rewardAssignmentLabel);
+                individualRewardPanel.Controls.Add(rewardStatusLabel);
+                RewardPanel.Controls.Add(individualRewardPanel);
+                i++;
+            }
         }
         #endregion
 
         #region LeaderboardUI
-        public void LeaderboardsUI()
+        private void LeaderboardsUI()
         {
+            LoadAmountOfNotifications();
             UI = 3;
-            titleText.Text = "Leaderboards";
-            this.SortButton.Show();
+            titleText.Text = "Leaderboard";
+            this.LeaderboardPanel.Visible = true;
+            this.LeaderboardPanel.BringToFront();
+            this.SortButton.Visible = true;
+            this.OptionButton.Visible = false;
         }
         #endregion
 
         #region UsersUI
-        public void UsersUI()
+        private void UsersUI()
         {
+            LoadAmountOfNotifications();
+            UI = 4;
             titleText.Text = "Users";
+            this.UserPanel.Visible = true;
+            this.UserPanel.BringToFront();
+            this.SortButton.Visible = false;
+            this.OptionButton.Visible = true;
+            LoadUsers();
+        }
+
+        private void LoadUsers()
+        {
+            UserPanel.Controls.Clear();
+            int i = 0;
+            int panelDistance = 65;
+
+            foreach (User p in ParentUsers)
+            {
+                var userFirstName = p.FirstName.ToString();
+
+                var userFirstNameLabel = AddLabel(userFirstName, true, 5, 5);
+                var panelHeight = userFirstNameLabel.Height + 40;
+                var individualUserPanel = new Panel
+                {
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(ChorePanel.Width - 20, panelHeight),
+                    AutoSize = true,
+                };
+                individualUserPanel.Controls.Add(userFirstNameLabel);
+                UserPanel.Controls.Add(individualUserPanel);
+                i++;
+            }
+
+            foreach (User c in ChildUsers)
+            {
+                var userFirstName = c.FirstName.ToString();
+
+                var userFirstNameLabel = AddLabel(userFirstName, false, 5, 5);
+                var panelHeight = userFirstNameLabel.Height + 40;
+                var individualUserPanel = new Panel
+                {
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(ChorePanel.Width - 20, panelHeight),
+                    AutoSize = true,
+                };
+                individualUserPanel.Controls.Add(userFirstNameLabel);
+                UserPanel.Controls.Add(individualUserPanel);
+                i++;
+            }
         }
         #endregion
 
         #region NotificationsUI
-        public void NotificationsUI()
+        private void NotificationsUI()
         {
+            LoadAmountOfNotifications();
+            UI = 5;
             titleText.Text = "Notifications";
+            this.NotificationPanel.Visible = true;
+            this.NotificationPanel.BringToFront();
+            this.SortButton.Visible = false;
+            LoadNotification();
+        }
+
+        private void LoadNotification()
+        {
+            Notifications = Notification.Load("");
+            NotificationPanel.Controls.Clear();
+            int i = 0;
+            int panelDistance = 50;
+
+            foreach (Notification n in Notifications)
+            {
+                var notificationTitle = n.Title;
+                var notificationDescription = n.Description;
+
+                var notificationTitleLabel = AddLabel(notificationTitle, true, 5, 5);
+                var notificationDescriptionLabel = AddLabel(notificationDescription, false, 10, notificationTitleLabel.Location.Y + 20);
+                var panelHeight = notificationTitleLabel.Height + notificationDescriptionLabel.Height;
+                var individualNotificationPanel = new Panel
+                {
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(ChorePanel.Width - 20, panelHeight),
+                    AutoSize = true,
+                };
+                individualNotificationPanel.Controls.Add(notificationTitleLabel);
+                individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
+                NotificationPanel.Controls.Add(individualNotificationPanel);
+                i++;
+            }
+            foreach (Notification n in Notifications)
+            {
+                n.Delete();
+            }
+        }
+
+        private void LoadAmountOfNotifications()
+        {
+            Notifications = Notification.Load("");
+            NotificationAmount.Text = "";
+            if (Notifications.Count == 0)
+            {
+                NotificationAmount.Visible = false;
+            }
+            else
+            {
+                NotificationAmount.Text = Notifications.Count.ToString();
+            }
         }
         #endregion
 
