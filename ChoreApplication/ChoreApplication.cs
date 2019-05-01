@@ -15,6 +15,7 @@ namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
+        ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
         {
             InitializeComponent();
@@ -53,7 +54,7 @@ namespace ChoreApplication
             var LoginInterface = new UI.LoginInterface();
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
-            var ParentInterface = new UI.ParentInterface();
+            var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
             var createchore = new UI.CreateChoreUI();
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
@@ -83,14 +84,12 @@ namespace ChoreApplication
             var LoginInterface = new UI.LoginInterface();
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
-            var ParentInterface = new UI.ParentInterface();
-            var ChildInterface = new UI.ChildInterface();
+            var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
 
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
-            // ParentInterface.Show();
-            ChildInterface.Show();
+            ParentInterface.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
@@ -103,14 +102,6 @@ namespace ChoreApplication
             var LoginInterface = new UI.LoginInterface();
             LoginInterface.Show();
             this.Hide();
-        }
-
-   
-
-        private void storTryk_Click(object sender, EventArgs e)
-        {
-            var ChildInterface = new UI.ChildInterface();
-            ChildInterface.Show();
         }
     }
 }

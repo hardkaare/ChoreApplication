@@ -46,7 +46,7 @@ namespace ChoreApplication
         /// and the associated Chore object</returns>
         public override string ToString()
         {
-            //Formats the string with varables from this and base class
+            //Formats the string with variables from this and base class
             var sum = string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nDue time: {4} \nDays: ",
                 Name, Description, Points, Assignment, dueTime.ToString("T"));

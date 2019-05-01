@@ -244,6 +244,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "PinCodeInterface";
             this.Text = " ";
+            this.Load += new System.EventHandler(this.PinCodeInterface_Load);
             this.pincodePanel.ResumeLayout(false);
             this.pincodePanel.PerformLayout();
             this.ResumeLayout(false);
