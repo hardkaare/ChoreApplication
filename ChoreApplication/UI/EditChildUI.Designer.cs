@@ -32,6 +32,8 @@
             this.Save = new System.Windows.Forms.Button();
             this.childNameLabel = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pincode = new System.Windows.Forms.TextBox();
+            this.pincodeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(149, 294);
+            this.Save.Location = new System.Drawing.Point(149, 316);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(75, 24);
             this.Save.TabIndex = 1;
@@ -72,11 +74,29 @@
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
             // 
+            // pincode
+            // 
+            this.pincode.Location = new System.Drawing.Point(108, 290);
+            this.pincode.Name = "pincode";
+            this.pincode.Size = new System.Drawing.Size(157, 20);
+            this.pincode.TabIndex = 4;
+            // 
+            // pincodeLabel
+            // 
+            this.pincodeLabel.AutoSize = true;
+            this.pincodeLabel.Location = new System.Drawing.Point(105, 274);
+            this.pincodeLabel.Name = "pincodeLabel";
+            this.pincodeLabel.Size = new System.Drawing.Size(46, 13);
+            this.pincodeLabel.TabIndex = 5;
+            this.pincodeLabel.Text = "Pincode";
+            // 
             // EditChildUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(359, 450);
+            this.Controls.Add(this.pincodeLabel);
+            this.Controls.Add(this.pincode);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.childNameLabel);
             this.Controls.Add(this.Save);
@@ -95,5 +115,7 @@
         private System.Windows.Forms.Button Save;
         private System.Windows.Forms.Label childNameLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox pincode;
+        private System.Windows.Forms.Label pincodeLabel;
     }
 }

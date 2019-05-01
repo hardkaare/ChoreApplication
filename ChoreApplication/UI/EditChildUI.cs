@@ -7,19 +7,49 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+using System.Text.RegularExpressions;
 
 namespace ChoreApplication.UI
 {
     public partial class EditChildUI : Form
     {
-        public EditChildUI()
+        private ChildUser _child;
+        public EditChildUI(ChildUser child)
         {
             InitializeComponent();
+            _child = child;
+            childName.Text = child.FirstName;
+            pincode.Text = child.Pincode;
         }
-
+       
         private void Save_Click(object sender, EventArgs e)
         {
-           
+            try
+            {
+                _child.FirstName = childName.Text;
+                _child.Pincode = pincode.Text;
+                // The first !Regex.Match ensures that a childs name cannot contain only numbers. The second Regex.Match ensures that a pincode always will be exactly 4 digits. 
+                if (!(childName.Text == "") && !Regex.Match(childName.Text, "^[0-9]+$").Success && Regex.Match(pincode.Text, @"^\d{4}$").Success)
+                {
+                    _child.Update();
+                    this.Close();
+                    MessageBox.Show("Child information changed.");
+                }
+                else
+                {
+                    throw new System.ArgumentException("");
+                }
+
+            }
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Please enter a valid first name or four digits in the pincode field");
+            }
+            finally
+            {
+                DatabaseFunctions.dbConn.Close();
+            }
         }
     }
 }
