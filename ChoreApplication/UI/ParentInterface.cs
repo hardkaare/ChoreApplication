@@ -13,15 +13,18 @@ namespace ChoreApplication.UI
     public partial class ParentInterface : Form
     {
         public int UI = 0;
+        public ParentUser Session { get; set; }
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
         private List<Reocurring> ReoccurringChores;
         private List<Repeatable> RepeatableChores;
         private List<Concrete> ConcreteChoresApprovalPending;
+        private List<Reward> Rewards;
         private readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
         private readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
-        public ParentInterface()
+        public ParentInterface(ParentUser p)
         {
+            Session = p;
             InitializeComponent();
             InitializeDictionaries();
             LoadAllChores();
