@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Data.SqlClient;
+
 
 
 namespace ChoreApplication.UI
@@ -148,14 +150,18 @@ namespace ChoreApplication.UI
                     choreType = "reoc";
                     try
                     {
-                        List<string> DaysChecked = Days.CheckedItems.OfType<string>().ToList<string>();
+                        List<string> DaysChecked = Days.CheckedItems.OfType<string>().ToList<string>();                       
                         Reocurring.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), Convert.ToDateTime(DueTime.Text), DaysChecked);
                         this.Close();
                         MessageBox.Show("A chore has been created");
                     }
-                    catch (Exception)
-                    {
+                    catch (SqlException)
+                    {                       
                         MessageBox.Show("Incorrect information entered");
+                    }
+                    finally
+                    {
+                        DatabaseFunctions.dbConn.Close();
                     }
                     break;
             }

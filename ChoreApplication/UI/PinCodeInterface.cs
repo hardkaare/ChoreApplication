@@ -13,6 +13,7 @@ namespace ChoreApplication.UI
 {
     public partial class PinCodeInterface : Form
     {
+        ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         User session;
         public PinCodeInterface()
         {
@@ -33,33 +34,7 @@ namespace ChoreApplication.UI
         }
 
 
-
-        private void RoundButton1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RoundButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RoundButton1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PincodeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PincodePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void AcceptButton_click(object sender, EventArgs e)
+                private void AcceptButton_click(object sender, EventArgs e)
         {
             int pincode;
             bool correctpin = false;
@@ -98,24 +73,22 @@ namespace ChoreApplication.UI
                 if (ChooseProfileInterface.activeId == 1)
                 {
                     var sessionList = ParentUser.Load("");
-                    var parentUI = new ParentInterface(sessionList[0]);
+                    session = sessionList[0];
+                    var parentUI = new ParentInterface(sessionList[0]);//måske ok
                     parentUI.Show();
                 }
                 else
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
-                    var childUI = new ChildInterface(sessionList[0]);
+                    session = sessionList[0];
+                    var childUI = new ChildInterface();//sikkert ikke done
                     childUI.Show();
                     
                 }
                 LoginInterface.chooseProfile.Close();
                 this.Close();
+                MessageBox.Show(session.ToString());
             }
-        }
-
-        private void PinCodeInterface_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -14,14 +14,14 @@ namespace ChoreApplication
     /// Concrete chores. Inherits from the Chore class. Contains due date of the chore, 
     /// the status of the chore and the date of approval
     /// </summary>
-    class Concrete : Chore
+   public class Concrete : Chore
     {
         #region Properties
         /// <summary>
         /// Date and time of when the chore is due. If null in DB this property is 
         /// set to "01-01-2000 00:00:00"
         /// </summary>
-        public DateTime DueDate { get; private set; }
+        public DateTime DueDate { get; set; }
         /// <summary>
         /// Status of the chore:
         /// 1 = active
@@ -29,9 +29,11 @@ namespace ChoreApplication
         /// 3 = approved 
         /// 4 = overdue
         /// </summary>
-        public int Status { get; private set; }
+        public int Status { get; set; }
         //Date of approval. Empty if not approved yet
-        public DateTime ApprovalDate { get; private set; }
+        public DateTime ApprovalDate { get; set; }
+
+        public string Type { get; set; }
 
         #endregion
 
@@ -48,12 +50,13 @@ namespace ChoreApplication
         /// <param name="_status">What state the chore is in. Can be active, approval pending, approved and overdue</param>
         /// <param name="_approvalDate">What date the chore is approved. Empty string if not approved</param>
         public Concrete(int _id, string _name, string _desc, int _points, int _assignment, 
-            DateTime _dueDate, int _status, DateTime _approvalDate) : 
+            DateTime _dueDate, int _status, DateTime _approvalDate, string type) : 
             base(_id, _name, _desc, _points, _assignment)
         {
             DueDate = _dueDate;
             Status = _status;
             ApprovalDate = _approvalDate;
+            Type = type;
         }
 
         #endregion
@@ -167,7 +170,7 @@ namespace ChoreApplication
             //Makes a string query and opens the connection to DB
             string query = string.Format(
                 "SELECT ch.chore_id, ch.name, ch.description, ch.points, ch.child_id, co.due_date, " +
-                "co.status, co.approval_date FROM chore AS ch INNER JOIN concrete_chore AS co ON " +
+                "co.status, co.approval_date, co.type FROM chore AS ch INNER JOIN concrete_chore AS co ON " +
                 "ch.chore_id=co.chore_id{0}", whereClause);
             DatabaseFunctions.dbConn.Open();
 
@@ -188,6 +191,7 @@ namespace ChoreApplication
                 var dueTime = DateTime.ParseExact(reader[5].ToString(), formatString, culture);
                 int status = (int)reader[6];
                 DateTime approvalDate;
+                string type = reader[8].ToString();
 
                 //Checks if approval date is null in DB and sets the time to a predefined date if so
                 if (!reader.IsDBNull(7))
@@ -201,7 +205,7 @@ namespace ChoreApplication
                 }
 
                 //Initializes the choreobject with the parameters and adds it to the list
-                currentChore = new Concrete(choreID, name, description, points, assignment, dueTime, status, approvalDate);
+                currentChore = new Concrete(choreID, name, description, points, assignment, dueTime, status, approvalDate, type);
                 result.Add(currentChore);
             }
             reader.Close();

@@ -33,6 +33,7 @@ namespace ChoreApplication.UI
             InitializeDictionaries();
             ChoresUI();
         }
+
         private void LoadAll()
         {
             ConcreteChoresApprovalPending = Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
@@ -106,7 +107,7 @@ namespace ChoreApplication.UI
         #endregion
 
         #region ChoreUI
-        private void ChoresUI()
+        public void ChoresUI()
         {
             LoadAmountOfNotifications();
             UI = 1;
@@ -118,7 +119,7 @@ namespace ChoreApplication.UI
             LoadChores();
         }
 
-        private void LoadChores()
+        public void LoadChores()
         {
             ChorePanel.Controls.Clear();
             LoadAll();
@@ -150,7 +151,17 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
-                individualChorePanel.Controls.Add(AddApproveButton(200, 50));
+                if(chore.Status == 2)
+                {
+                    individualChorePanel.Controls.Add(AddApproveButton(300, 50, chore));
+                    individualChorePanel.Controls.Add(AddDenyButton(350, 50, chore));
+                }
+                else
+                {
+                    individualChorePanel.Controls.Add(AddEditButton(350, 50, chore));
+                }
+                //individualChorePanel.Controls.Add(AddApproveButton(200, 50));
+                //individualChorePanel.Controls.Add(AddEditButton(200, 50, 1));
                 i++;
             }
             foreach (var chore in ReoccurringChores)
@@ -178,6 +189,7 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
+                individualChorePanel.Controls.Add(AddEditButton(350, 50, chore));
                 i++;
             }
             foreach (var chore in RepeatableChores)
@@ -205,16 +217,18 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
+                individualChorePanel.Controls.Add(AddEditButton(350, 50, chore));
                 i++;
             }
         }
 
-        private Control AddApproveButton(int x, int y)
+        private Control AddApproveButton(int x, int y, Chore c)
         {
             var ApproveButton = new Button
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
+                Tag = c,
                 FlatStyle = FlatStyle.Flat,
                 BackgroundImage = global::ChoreApplication.Properties.Resources.thumbs_up,
                 BackgroundImageLayout = ImageLayout.Zoom,
@@ -222,16 +236,17 @@ namespace ChoreApplication.UI
             };
             ApproveButton.FlatAppearance.BorderSize = 0;
             ApproveButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-
+            ApproveButton.Click += new EventHandler(ApproveButton_Click);
             return ApproveButton;
         }
 
-        private Control AddDenyButton(int x, int y)
+        private Control AddDenyButton(int x, int y, Chore c)
         {
             var DenyButton = new Button
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
+                Tag = c,
                 FlatStyle = FlatStyle.Flat,
                 BackgroundImage = global::ChoreApplication.Properties.Resources.thumb_down,
                 BackgroundImageLayout = ImageLayout.Zoom,
@@ -239,8 +254,22 @@ namespace ChoreApplication.UI
             };
             DenyButton.FlatAppearance.BorderSize = 0;
             DenyButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-
+            DenyButton.Click += new EventHandler(DenyButton_Click);
             return DenyButton;
+        }
+
+        private Control AddEditButton(int x, int y, Chore c)
+        {
+            var EditButton = new Button
+            {
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = c.ID,
+                Text = "Edit",
+                AutoSize = true,
+            };
+            EditButton.Click += new EventHandler(EditButton_Click);
+            return EditButton;
         }
 
         private Control AddLabel(string labelText, bool bold, int posX, int posY)
@@ -263,6 +292,47 @@ namespace ChoreApplication.UI
             }
             return label;
         }
+
+        private void EditButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            int Id = (int)clickedButton.Tag;
+            MessageBox.Show(Id.ToString());
+        }
+
+        private void ApproveButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Concrete currentChore = (Concrete)clickedButton.Tag;
+            currentChore.Status = 3;
+            currentChore.ApprovalDate = DateTime.Now;
+            currentChore.Update();
+
+            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
+            currentChild[0].Points += currentChore.Points;
+            currentChild[0].Update();
+
+            LoadChores();
+        }
+
+        private void DenyButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Concrete currentChore = (Concrete)clickedButton.Tag;
+
+            if(currentChore.Type == "rep")
+            {
+                currentChore.Delete();
+            }
+            else
+            {
+                currentChore.DueDate = DateTime.Now.AddDays(1);
+                currentChore.Status = 1;
+                currentChore.Update();
+            }
+            LoadChores();
+        }
+
         #endregion
 
         #region RewardUI
@@ -440,14 +510,6 @@ namespace ChoreApplication.UI
         }
         #endregion
 
-        private void SortButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ParentInterface_Load(object sender, EventArgs e)
-        {
-
-        }
+  
     }
 }

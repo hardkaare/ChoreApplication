@@ -119,7 +119,7 @@ namespace ChoreApplication.UI
             this.Assignment.Size = new System.Drawing.Size(199, 21);
             this.Assignment.TabIndex = 6;
             // 
-            // label1
+            // nameLabel
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(62, 49);
