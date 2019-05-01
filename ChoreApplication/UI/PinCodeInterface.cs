@@ -74,14 +74,14 @@ namespace ChoreApplication.UI
                 {
                     var sessionList = ParentUser.Load("");
                     session = sessionList[0];
-                    var parentUI = new ParentInterface(DumbFuckParentUser);
+                    var parentUI = new ParentInterface(sessionList[0]);//måske ok
                     parentUI.Show();
                 }
                 else
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
                     session = sessionList[0];
-                    var childUI = new ParentInterface(DumbFuckParentUser);
+                    var childUI = new ChildInterface();//sikkert ikke done
                     childUI.Show();
                     
                 }
