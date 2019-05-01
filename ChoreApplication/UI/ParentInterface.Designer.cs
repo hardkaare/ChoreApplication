@@ -231,7 +231,7 @@
             // titleText
             // 
             this.titleText.AutoEllipsis = true;
-            this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.titleText.Location = new System.Drawing.Point(144, 3);
             this.titleText.Name = "titleText";
             this.titleText.Size = new System.Drawing.Size(149, 26);

@@ -15,27 +15,23 @@ namespace ChoreApplication.UI
         public int UI = 0;
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
-        private List<Chore> AllChores;
+        private List<Reocurring> ReoccurringChores;
+        private List<Repeatable> RepeatableChores;
+        private List<Concrete> ConcreteChoresApprovalPending;
         private readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
+        private readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
         public ParentInterface()
         {
+            InitializeComponent();
             InitializeDictionaries();
             LoadAllChores();
-            InitializeComponent();
             ChoresUI();
         }
         private void LoadAllChores()
         {
-            var ConcreteChores = Concrete.Load("");
-            var ReoccurringChores = Reocurring.Load("");
-            var RepeatableChores = Repeatable.Load("");
-
-            AllChores = new List<Chore>(ConcreteChores.Count +
-                ReoccurringChores.Count +
-                RepeatableChores.Count);
-            AllChores.AddRange(ConcreteChores);
-            AllChores.AddRange(ReoccurringChores);
-            AllChores.AddRange(RepeatableChores);
+            ConcreteChoresApprovalPending = Concrete.Load("status=2 OR type='conc' ORDER BY status DESC");
+            ReoccurringChores = Reocurring.Load("");
+            RepeatableChores = Repeatable.Load("");
         }
 
         private void InitializeDictionaries()
@@ -44,7 +40,7 @@ namespace ChoreApplication.UI
             {
                 { 1, "Active" },
                 { 2, "Approval pending" },
-                { 3, "Approves" },
+                { 3, "Approved" },
                 { 4, "Overdue" }
             };
 
@@ -113,51 +109,88 @@ namespace ChoreApplication.UI
         public void LoadChores()
         {
             int i = 0;
-            foreach (var chore in AllChores)
+            int panelDistance = 95;
+
+            foreach (var chore in ConcreteChoresApprovalPending)
             {
-                var choreName = new Label
-                {
-                    Name = "choreTitle" + chore.ID.ToString(),
-                    Font = StandardFont,
-                    Text = chore.Name.ToString(),
-                    Location = new Point(5, 5),
-                    AutoSize = true,
-                };
-                var choreAssignment = new Label
-                {
-                    Name = "choreAssignment" + chore.ID.ToString(),
-                    Font = StandardFont,
-                    Text = "Assigned to: "
-                           + ChildrenNames[chore.Assignment],
-                    Location = new Point(10, choreName.Location.Y + 20),
-                    AutoSize = true,
-                };
-                var choreStatus = new Label
-                {
-                    Name = "choreStatus" + chore.ID.ToString(),
-                    Font = StandardFont,
-                    Text = "Status: ",
-                    Location = new Point(10, choreAssignment.Location.Y + 20),
-                    AutoSize = true,
-                };
-                var panelHeight = choreName.Height + choreAssignment.Height + choreStatus.Height;
+                var choreName = chore.Name.ToString();
+                var choreAssignment = "Assigned to: " + ChildrenNames[chore.Assignment];
+                var choreStatus = "Status: " + StatusValues[chore.Status];
+                var choreType = "Type: Concrete";
+
+                var choreNameLabel = AddLabel(choreName, true, 5, 5);
+                var choreAssignmentLabel = AddLabel(choreAssignment, false, 10, choreNameLabel.Location.Y + 20);
+                var choreStatusLabel = AddLabel(choreStatus, false, 10, choreAssignmentLabel.Location.Y + 20);
+                var choreTypeLabel = AddLabel(choreType, false, 10, choreStatusLabel.Location.Y + 20);
+                var panelHeight = choreNameLabel.Height + choreAssignmentLabel.Height + choreStatusLabel.Height + choreTypeLabel.Height;
                 var individualChorePanel = new Panel
                 {
                     Name = "panel" + chore.ID.ToString(),
-                    Location = new Point(1, i * 70),
+                    Location = new Point(1, i * panelDistance),
                     BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(ChorePanel.Width - 5, panelHeight),
+                    Size = new Size(ChorePanel.Width - 20, panelHeight),
                     AutoSize = true,
                 };
-                //if (chore.Status == 2)
-                //{
-                //    individualChorePanel.Controls.Add(AddApproveButton(individualChorePanel.Width - 45, panelHeight / 2));
-                //    individualChorePanel.Controls.Add(AddDenyButton(individualChorePanel.Width - 90, panelHeight / 2));
-                //}
                 ChorePanel.Controls.Add(individualChorePanel);
-                individualChorePanel.Controls.Add(choreName);
-                individualChorePanel.Controls.Add(choreAssignment);
-                individualChorePanel.Controls.Add(choreStatus);
+                individualChorePanel.Controls.Add(choreNameLabel);
+                individualChorePanel.Controls.Add(choreAssignmentLabel);
+                individualChorePanel.Controls.Add(choreStatusLabel);
+                individualChorePanel.Controls.Add(choreTypeLabel);
+                individualChorePanel.Controls.Add(AddApproveButton(200, 50));
+                i++;
+            }
+            foreach (var chore in ReoccurringChores)
+            {
+                var choreName = chore.Name.ToString();
+                var choreAssignment = "Assigned to: " + ChildrenNames[chore.Assignment];
+                var choreStatus = "Status: Active";
+                var choreType = "Type: Reoccurring";
+
+                var choreNameLabel = AddLabel(choreName, true, 5, 5);
+                var choreAssignmentLabel = AddLabel(choreAssignment, false, 10, choreNameLabel.Location.Y + 20);
+                var choreStatusLabel = AddLabel(choreStatus, false, 10, choreAssignmentLabel.Location.Y + 20);
+                var choreTypeLabel = AddLabel(choreType, false, 10, choreStatusLabel.Location.Y + 20);
+                var panelHeight = choreNameLabel.Height + choreAssignmentLabel.Height + choreStatusLabel.Height + choreTypeLabel.Height;
+                var individualChorePanel = new Panel
+                {
+                    Name = "panel" + chore.ID.ToString(),
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(ChorePanel.Width - 20, panelHeight),
+                    AutoSize = true,
+                };
+                ChorePanel.Controls.Add(individualChorePanel);
+                individualChorePanel.Controls.Add(choreNameLabel);
+                individualChorePanel.Controls.Add(choreAssignmentLabel);
+                individualChorePanel.Controls.Add(choreStatusLabel);
+                individualChorePanel.Controls.Add(choreTypeLabel);
+                i++;
+            }
+            foreach (var chore in RepeatableChores)
+            {
+                var choreName = chore.Name.ToString();
+                var choreAssignment = "Assigned to: " + ChildrenNames[chore.Assignment];
+                var choreStatus = "Status: Active";
+                var choreType = "Type: Repeatable";
+
+                var choreNameLabel = AddLabel(choreName, true, 5, 5);
+                var choreAssignmentLabel = AddLabel(choreAssignment, false, 10, choreNameLabel.Location.Y + 20);
+                var choreStatusLabel = AddLabel(choreStatus, false, 10, choreAssignmentLabel.Location.Y + 20);
+                var choreTypeLabel = AddLabel(choreType, false, 10, choreStatusLabel.Location.Y + 20);
+                var panelHeight = choreNameLabel.Height + choreAssignmentLabel.Height + choreStatusLabel.Height + choreTypeLabel.Height;
+                var individualChorePanel = new Panel
+                {
+                    Name = "panel" + chore.ID.ToString(),
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(ChorePanel.Width - 20, panelHeight),
+                    AutoSize = true,
+                };
+                ChorePanel.Controls.Add(individualChorePanel);
+                individualChorePanel.Controls.Add(choreNameLabel);
+                individualChorePanel.Controls.Add(choreAssignmentLabel);
+                individualChorePanel.Controls.Add(choreStatusLabel);
+                individualChorePanel.Controls.Add(choreTypeLabel);
                 i++;
             }
         }
@@ -194,6 +227,27 @@ namespace ChoreApplication.UI
             DenyButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
 
             return DenyButton;
+        }
+
+        private Control AddLabel(string labelText, bool bold, int posX, int posY)
+        {
+            var label = new Label
+            {
+                Text = labelText,
+                Location = new Point(posX, posY),
+                AutoSize = true,
+            };
+            if (!bold)
+            {
+                label.Font = StandardFont;
+                return label;
+            }
+            if (bold)
+            {
+                label.Font = StandardFontBold;
+                return label;
+            }
+            return label;
         }
         #endregion
 
