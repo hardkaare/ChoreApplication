@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.pincodePanel = new System.Windows.Forms.Panel();
-            this.roundButton1 = new ChoreApplication.UI.RoundButton();
-            this.rbZero = new ChoreApplication.UI.RoundButton();
-            this.rbDelete = new ChoreApplication.UI.RoundButton();
-            this.rbNine = new ChoreApplication.UI.RoundButton();
-            this.rbEight = new ChoreApplication.UI.RoundButton();
-            this.rbSeven = new ChoreApplication.UI.RoundButton();
-            this.rbSix = new ChoreApplication.UI.RoundButton();
-            this.rbFive = new ChoreApplication.UI.RoundButton();
-            this.rbFour = new ChoreApplication.UI.RoundButton();
-            this.rbThree = new ChoreApplication.UI.RoundButton();
-            this.rbTwo = new ChoreApplication.UI.RoundButton();
-            this.rbOne = new ChoreApplication.UI.RoundButton();
+            this.roundButton1 = new UI.RoundButton();
+            this.rbZero = new UI.RoundButton();
+            this.rbDelete = new UI.RoundButton();
+            this.rbNine = new UI.RoundButton();
+            this.rbEight = new UI.RoundButton();
+            this.rbSeven = new UI.RoundButton();
+            this.rbSix = new UI.RoundButton();
+            this.rbFive = new UI.RoundButton();
+            this.rbFour = new UI.RoundButton();
+            this.rbThree = new UI.RoundButton();
+            this.rbTwo = new UI.RoundButton();
+            this.rbOne = new UI.RoundButton();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.enterpinTextBox = new System.Windows.Forms.TextBox();
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker2 = new System.ComponentModel.BackgroundWorker();
             this.backgroundWorker3 = new System.ComponentModel.BackgroundWorker();
-            this.rbAccept = new ChoreApplication.UI.RoundButton();
+            this.rbAccept = new UI.RoundButton();
             this.pincodePanel.SuspendLayout();
             this.SuspendLayout();
             // 
