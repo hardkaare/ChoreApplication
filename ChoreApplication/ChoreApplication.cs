@@ -52,7 +52,7 @@ namespace ChoreApplication
         {
             var child = ChildUser.Load("u.user_id = 2");
             var EditChild = new UI.EditChildUI(child[0]);
-            var editChore = new UI.EditChoreUI();
+         
             EditChild.Show();
         }
         private void TestButtonJoenler_Click(object sender, EventArgs e)
