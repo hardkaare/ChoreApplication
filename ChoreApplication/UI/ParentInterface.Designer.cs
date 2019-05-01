@@ -63,53 +63,59 @@
             this.navigationPanel.Controls.Add(this.usersNavButton);
             this.navigationPanel.Controls.Add(this.leadboardNavButton);
             this.navigationPanel.Controls.Add(this.rewardNavButton);
-            this.navigationPanel.Location = new System.Drawing.Point(12, 469);
+            this.navigationPanel.Location = new System.Drawing.Point(16, 577);
+            this.navigationPanel.Margin = new System.Windows.Forms.Padding(4);
             this.navigationPanel.Name = "navigationPanel";
-            this.navigationPanel.Size = new System.Drawing.Size(420, 79);
+            this.navigationPanel.Size = new System.Drawing.Size(559, 97);
             this.navigationPanel.TabIndex = 0;
             // 
             // notificationsLabel
             // 
             this.notificationsLabel.AutoSize = true;
-            this.notificationsLabel.Location = new System.Drawing.Point(342, 51);
+            this.notificationsLabel.Location = new System.Drawing.Point(456, 63);
+            this.notificationsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.notificationsLabel.Name = "notificationsLabel";
-            this.notificationsLabel.Size = new System.Drawing.Size(65, 13);
+            this.notificationsLabel.Size = new System.Drawing.Size(85, 17);
             this.notificationsLabel.TabIndex = 0;
             this.notificationsLabel.Text = "Notifications";
             // 
             // usersLabel
             // 
             this.usersLabel.AutoSize = true;
-            this.usersLabel.Location = new System.Drawing.Point(275, 51);
+            this.usersLabel.Location = new System.Drawing.Point(367, 63);
+            this.usersLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.usersLabel.Name = "usersLabel";
-            this.usersLabel.Size = new System.Drawing.Size(34, 13);
+            this.usersLabel.Size = new System.Drawing.Size(45, 17);
             this.usersLabel.TabIndex = 0;
             this.usersLabel.Text = "Users";
             // 
             // leaderboardsLabel
             // 
             this.leaderboardsLabel.AutoSize = true;
-            this.leaderboardsLabel.Location = new System.Drawing.Point(177, 51);
+            this.leaderboardsLabel.Location = new System.Drawing.Point(236, 63);
+            this.leaderboardsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.leaderboardsLabel.Name = "leaderboardsLabel";
-            this.leaderboardsLabel.Size = new System.Drawing.Size(72, 13);
+            this.leaderboardsLabel.Size = new System.Drawing.Size(97, 17);
             this.leaderboardsLabel.TabIndex = 0;
             this.leaderboardsLabel.Text = "Leaderboards";
             // 
             // rewardsLabel
             // 
             this.rewardsLabel.AutoSize = true;
-            this.rewardsLabel.Location = new System.Drawing.Point(107, 51);
+            this.rewardsLabel.Location = new System.Drawing.Point(143, 63);
+            this.rewardsLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.rewardsLabel.Name = "rewardsLabel";
-            this.rewardsLabel.Size = new System.Drawing.Size(49, 13);
+            this.rewardsLabel.Size = new System.Drawing.Size(63, 17);
             this.rewardsLabel.TabIndex = 0;
             this.rewardsLabel.Text = "Rewards";
             // 
             // choresLabel
             // 
             this.choresLabel.AutoSize = true;
-            this.choresLabel.Location = new System.Drawing.Point(30, 51);
+            this.choresLabel.Location = new System.Drawing.Point(40, 63);
+            this.choresLabel.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.choresLabel.Name = "choresLabel";
-            this.choresLabel.Size = new System.Drawing.Size(40, 13);
+            this.choresLabel.Size = new System.Drawing.Size(53, 17);
             this.choresLabel.TabIndex = 0;
             this.choresLabel.Text = "Chores";
             // 
@@ -124,9 +130,10 @@
             this.choreNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.choreNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.choreNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.choreNavButton.Location = new System.Drawing.Point(12, 13);
+            this.choreNavButton.Location = new System.Drawing.Point(16, 16);
+            this.choreNavButton.Margin = new System.Windows.Forms.Padding(4);
             this.choreNavButton.Name = "choreNavButton";
-            this.choreNavButton.Size = new System.Drawing.Size(75, 35);
+            this.choreNavButton.Size = new System.Drawing.Size(100, 43);
             this.choreNavButton.TabIndex = 0;
             this.choreNavButton.Tag = "Chores";
             this.choreNavButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -145,9 +152,10 @@
             this.notificationsNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.notificationsNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.notificationsNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notificationsNavButton.Location = new System.Drawing.Point(336, 13);
+            this.notificationsNavButton.Location = new System.Drawing.Point(448, 16);
+            this.notificationsNavButton.Margin = new System.Windows.Forms.Padding(4);
             this.notificationsNavButton.Name = "notificationsNavButton";
-            this.notificationsNavButton.Size = new System.Drawing.Size(75, 35);
+            this.notificationsNavButton.Size = new System.Drawing.Size(100, 43);
             this.notificationsNavButton.TabIndex = 0;
             this.notificationsNavButton.Tag = "Notifications";
             this.notificationsNavButton.UseVisualStyleBackColor = true;
@@ -164,9 +172,10 @@
             this.usersNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.usersNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.usersNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.usersNavButton.Location = new System.Drawing.Point(255, 13);
+            this.usersNavButton.Location = new System.Drawing.Point(340, 16);
+            this.usersNavButton.Margin = new System.Windows.Forms.Padding(4);
             this.usersNavButton.Name = "usersNavButton";
-            this.usersNavButton.Size = new System.Drawing.Size(75, 35);
+            this.usersNavButton.Size = new System.Drawing.Size(100, 43);
             this.usersNavButton.TabIndex = 0;
             this.usersNavButton.Tag = "Users";
             this.usersNavButton.UseVisualStyleBackColor = true;
@@ -183,9 +192,10 @@
             this.leadboardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.leadboardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.leadboardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.leadboardNavButton.Location = new System.Drawing.Point(174, 13);
+            this.leadboardNavButton.Location = new System.Drawing.Point(232, 16);
+            this.leadboardNavButton.Margin = new System.Windows.Forms.Padding(4);
             this.leadboardNavButton.Name = "leadboardNavButton";
-            this.leadboardNavButton.Size = new System.Drawing.Size(75, 35);
+            this.leadboardNavButton.Size = new System.Drawing.Size(100, 43);
             this.leadboardNavButton.TabIndex = 0;
             this.leadboardNavButton.Tag = "Leaderboards";
             this.leadboardNavButton.UseVisualStyleBackColor = true;
@@ -202,9 +212,10 @@
             this.rewardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rewardNavButton.Location = new System.Drawing.Point(93, 13);
+            this.rewardNavButton.Location = new System.Drawing.Point(124, 16);
+            this.rewardNavButton.Margin = new System.Windows.Forms.Padding(4);
             this.rewardNavButton.Name = "rewardNavButton";
-            this.rewardNavButton.Size = new System.Drawing.Size(75, 35);
+            this.rewardNavButton.Size = new System.Drawing.Size(100, 43);
             this.rewardNavButton.TabIndex = 0;
             this.rewardNavButton.Tag = "Rewards";
             this.rewardNavButton.UseVisualStyleBackColor = true;
@@ -221,22 +232,26 @@
             this.OptionButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.OptionButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.OptionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.OptionButton.Location = new System.Drawing.Point(390, 3);
+            this.OptionButton.Location = new System.Drawing.Point(520, 4);
+            this.OptionButton.Margin = new System.Windows.Forms.Padding(4);
             this.OptionButton.Name = "OptionButton";
-            this.OptionButton.Size = new System.Drawing.Size(25, 25);
+            this.OptionButton.Size = new System.Drawing.Size(33, 31);
             this.OptionButton.TabIndex = 0;
             this.OptionButton.UseVisualStyleBackColor = true;
             this.OptionButton.Click += new System.EventHandler(this.OptionButton_Click);
             // 
             // titleText
             // 
+            this.titleText.AutoEllipsis = true;
             this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.titleText.Location = new System.Drawing.Point(144, 3);
+            this.titleText.Location = new System.Drawing.Point(192, 4);
+            this.titleText.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(149, 26);
+            this.titleText.Size = new System.Drawing.Size(199, 32);
             this.titleText.TabIndex = 0;
             this.titleText.Text = "CenterText";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            
             // 
             // upperPanel
             // 
@@ -245,9 +260,10 @@
             this.upperPanel.Controls.Add(this.SortButton);
             this.upperPanel.Controls.Add(this.OptionButton);
             this.upperPanel.Controls.Add(this.titleText);
-            this.upperPanel.Location = new System.Drawing.Point(12, 12);
+            this.upperPanel.Location = new System.Drawing.Point(16, 15);
+            this.upperPanel.Margin = new System.Windows.Forms.Padding(4);
             this.upperPanel.Name = "upperPanel";
-            this.upperPanel.Size = new System.Drawing.Size(420, 33);
+            this.upperPanel.Size = new System.Drawing.Size(559, 40);
             this.upperPanel.TabIndex = 1;
             // 
             // UserButton
@@ -261,9 +277,10 @@
             this.UserButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.UserButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.UserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UserButton.Location = new System.Drawing.Point(3, 3);
+            this.UserButton.Location = new System.Drawing.Point(4, 4);
+            this.UserButton.Margin = new System.Windows.Forms.Padding(4);
             this.UserButton.Name = "UserButton";
-            this.UserButton.Size = new System.Drawing.Size(25, 25);
+            this.UserButton.Size = new System.Drawing.Size(33, 31);
             this.UserButton.TabIndex = 0;
             this.UserButton.UseVisualStyleBackColor = true;
             // 
@@ -278,37 +295,41 @@
             this.SortButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.SortButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.SortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SortButton.Location = new System.Drawing.Point(336, 3);
+            this.SortButton.Location = new System.Drawing.Point(448, 4);
+            this.SortButton.Margin = new System.Windows.Forms.Padding(4);
             this.SortButton.Name = "SortButton";
-            this.SortButton.Size = new System.Drawing.Size(25, 25);
+            this.SortButton.Size = new System.Drawing.Size(33, 31);
             this.SortButton.TabIndex = 0;
             this.SortButton.UseVisualStyleBackColor = true;
-            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
+            
             // 
             // ChorePanel
             // 
+            this.ChorePanel.AutoScroll = true;
             this.ChorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChorePanel.Location = new System.Drawing.Point(12, 49);
-            this.ChorePanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.ChorePanel.Location = new System.Drawing.Point(16, 63);
+            this.ChorePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.ChorePanel.MaximumSize = new System.Drawing.Size(559, 553);
             this.ChorePanel.Name = "ChorePanel";
-            this.ChorePanel.Size = new System.Drawing.Size(420, 415);
+            this.ChorePanel.Size = new System.Drawing.Size(559, 510);
             this.ChorePanel.TabIndex = 1;
             this.ChorePanel.Visible = false;
+         
             // 
             // ParentInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(444, 561);
+            this.ClientSize = new System.Drawing.Size(592, 690);
             this.Controls.Add(this.upperPanel);
             this.Controls.Add(this.ChorePanel);
             this.Controls.Add(this.navigationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ParentInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ParentInterface";
-            this.Load += new System.EventHandler(this.ParentInterface_Load);
             this.navigationPanel.ResumeLayout(false);
             this.navigationPanel.PerformLayout();
             this.upperPanel.ResumeLayout(false);

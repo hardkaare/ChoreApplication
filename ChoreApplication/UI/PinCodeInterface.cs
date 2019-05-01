@@ -33,33 +33,7 @@ namespace ChoreApplication.UI
         }
 
 
-
-        private void RoundButton1_Click_2(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RoundButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RoundButton1_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PincodeLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void PincodePanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void AcceptButton_click(object sender, EventArgs e)
+                private void AcceptButton_click(object sender, EventArgs e)
         {
             int pincode;
             bool correctpin = false;
@@ -106,7 +80,7 @@ namespace ChoreApplication.UI
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
                     session = sessionList[0];
-                    var childUI = new ChildInterface();
+                    var childUI = new ParentInterface();
                     childUI.Show();
                     
                 }
