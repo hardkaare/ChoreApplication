@@ -40,13 +40,8 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            
-            List<Concrete> testList = Concrete.Load("");
-            foreach(Concrete current in testList)
-            {
-                MessageBox.Show(current.ToString());
-            }
-            
+            var createChore = new UI.CreateChoreUI();
+            createChore.Show();
         }
         private void EditJoenler_Click(object sender, EventArgs e)
         {
