@@ -48,6 +48,7 @@
             this.Controls.Add(this.label1);
             this.Name = "ChildInterface";
             this.Text = "ChildInterface";
+            this.Load += new System.EventHandler(this.ChildInterface_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

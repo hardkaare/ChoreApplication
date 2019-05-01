@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
-    class ParentUser : User
+    public class ParentUser : User
     {
 
         #region Properties
