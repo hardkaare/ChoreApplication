@@ -35,10 +35,12 @@ namespace ChoreApplication
         #region Public Helpers
         public static void Insert(int userId, string title, string description)
         {
+            title += " - " + DateTime.Now.ToString("HH:mm d. MMMM");
             string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, title, description);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            DatabaseFunctions.dbConn.Open();
             cmd.ExecuteNonQuery();
-       
+            DatabaseFunctions.dbConn.Close();
         }
         public static List<Notification> Load(string whereClause)
         {
@@ -47,7 +49,7 @@ namespace ChoreApplication
                 whereClause = " WHERE " + whereClause;
             }
             List<Notification> notifications = new List<Notification>();
-            string query = string.Format("SELECT * FROM dbo.notificaiton{0}", whereClause);
+            string query = string.Format("SELECT * FROM dbo.notification{0}", whereClause);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
