@@ -230,6 +230,7 @@
             // 
             // titleText
             // 
+            this.titleText.AutoEllipsis = true;
             this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
             this.titleText.Location = new System.Drawing.Point(144, 3);
             this.titleText.Name = "titleText";
@@ -287,6 +288,7 @@
             // 
             // ChorePanel
             // 
+            this.ChorePanel.AutoScroll = true;
             this.ChorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ChorePanel.Location = new System.Drawing.Point(12, 49);
             this.ChorePanel.MaximumSize = new System.Drawing.Size(420, 450);
