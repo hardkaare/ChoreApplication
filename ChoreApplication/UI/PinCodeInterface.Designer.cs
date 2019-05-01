@@ -71,7 +71,7 @@
             this.pincodePanel.Name = "pincodePanel";
             this.pincodePanel.Size = new System.Drawing.Size(243, 374);
             this.pincodePanel.TabIndex = 0;
-            this.pincodePanel.Paint += new System.Windows.Forms.PaintEventHandler(this.PincodePanel_Paint);
+          
             // 
             // roundButton1
             // 
@@ -212,10 +212,8 @@
             this.pincodeLabel.Location = new System.Drawing.Point(64, 7);
             this.pincodeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pincodeLabel.Name = "pincodeLabel";
-            this.pincodeLabel.Size = new System.Drawing.Size(132, 18);
-            this.pincodeLabel.TabIndex = 3;
             this.pincodeLabel.Text = "Enter your pincode";
-            this.pincodeLabel.Click += new System.EventHandler(this.PincodeLabel_Click);
+           
             // 
             // enterpinTextBox
             // 

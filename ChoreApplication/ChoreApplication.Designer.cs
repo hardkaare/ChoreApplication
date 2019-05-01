@@ -34,13 +34,15 @@
             this.TestLabelJoenler = new System.Windows.Forms.Label();
             this.interface1 = new System.Windows.Forms.Button();
             this.AlexogLuten = new System.Windows.Forms.Button();
+            this.ChildInterface = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestButtonLuten
             // 
-            this.TestButtonLuten.Location = new System.Drawing.Point(55, 143);
+            this.TestButtonLuten.Location = new System.Drawing.Point(73, 176);
+            this.TestButtonLuten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TestButtonLuten.Name = "TestButtonLuten";
-            this.TestButtonLuten.Size = new System.Drawing.Size(106, 23);
+            this.TestButtonLuten.Size = new System.Drawing.Size(141, 28);
             this.TestButtonLuten.TabIndex = 1;
             this.TestButtonLuten.Text = "Test button Luten";
             this.TestButtonLuten.UseVisualStyleBackColor = true;
@@ -48,17 +50,19 @@
             // 
             // TestLabelLuten
             // 
-            this.TestLabelLuten.Location = new System.Drawing.Point(52, 185);
+            this.TestLabelLuten.Location = new System.Drawing.Point(69, 228);
+            this.TestLabelLuten.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TestLabelLuten.Name = "TestLabelLuten";
-            this.TestLabelLuten.Size = new System.Drawing.Size(212, 223);
+            this.TestLabelLuten.Size = new System.Drawing.Size(283, 274);
             this.TestLabelLuten.TabIndex = 2;
             this.TestLabelLuten.Text = "Test label Luten";
             // 
             // TestButtonJoenler
             // 
-            this.TestButtonJoenler.Location = new System.Drawing.Point(313, 143);
+            this.TestButtonJoenler.Location = new System.Drawing.Point(417, 176);
+            this.TestButtonJoenler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.TestButtonJoenler.Name = "TestButtonJoenler";
-            this.TestButtonJoenler.Size = new System.Drawing.Size(106, 23);
+            this.TestButtonJoenler.Size = new System.Drawing.Size(141, 28);
             this.TestButtonJoenler.TabIndex = 3;
             this.TestButtonJoenler.Text = "Test button Joenler";
             this.TestButtonJoenler.UseVisualStyleBackColor = true;
@@ -66,17 +70,19 @@
             // 
             // TestLabelJoenler
             // 
-            this.TestLabelJoenler.Location = new System.Drawing.Point(310, 185);
+            this.TestLabelJoenler.Location = new System.Drawing.Point(413, 228);
+            this.TestLabelJoenler.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.TestLabelJoenler.Name = "TestLabelJoenler";
-            this.TestLabelJoenler.Size = new System.Drawing.Size(212, 223);
+            this.TestLabelJoenler.Size = new System.Drawing.Size(283, 274);
             this.TestLabelJoenler.TabIndex = 4;
             this.TestLabelJoenler.Text = "Test label Joenler";
             // 
             // interface1
             // 
-            this.interface1.Location = new System.Drawing.Point(12, 415);
+            this.interface1.Location = new System.Drawing.Point(16, 511);
+            this.interface1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.interface1.Name = "interface1";
-            this.interface1.Size = new System.Drawing.Size(159, 23);
+            this.interface1.Size = new System.Drawing.Size(212, 28);
             this.interface1.TabIndex = 5;
             this.interface1.Text = "Test button interface team 69";
             this.interface1.UseVisualStyleBackColor = true;
@@ -84,25 +90,38 @@
             // 
             // AlexogLuten
             // 
-            this.AlexogLuten.Location = new System.Drawing.Point(12, 374);
+            this.AlexogLuten.Location = new System.Drawing.Point(16, 460);
+            this.AlexogLuten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.AlexogLuten.Name = "AlexogLuten";
-            this.AlexogLuten.Size = new System.Drawing.Size(159, 23);
+            this.AlexogLuten.Size = new System.Drawing.Size(212, 28);
             this.AlexogLuten.TabIndex = 6;
             this.AlexogLuten.Text = "Alex og Lutens mesterknap";
             this.AlexogLuten.UseVisualStyleBackColor = true;
             this.AlexogLuten.Click += new System.EventHandler(this.AlexogLuten_Click);
             // 
+            // ChildInterface
+            // 
+            this.ChildInterface.Location = new System.Drawing.Point(392, 349);
+            this.ChildInterface.Name = "ChildInterface";
+            this.ChildInterface.Size = new System.Drawing.Size(277, 174);
+            this.ChildInterface.TabIndex = 7;
+            this.ChildInterface.Text = "Stor knap";
+            this.ChildInterface.UseVisualStyleBackColor = true;
+            this.ChildInterface.Click += new System.EventHandler(this.storTryk_Click);
+            // 
             // ChoreApplication
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(538, 450);
+            this.ClientSize = new System.Drawing.Size(717, 554);
+            this.Controls.Add(this.ChildInterface);
             this.Controls.Add(this.AlexogLuten);
             this.Controls.Add(this.interface1);
             this.Controls.Add(this.TestLabelJoenler);
             this.Controls.Add(this.TestButtonJoenler);
             this.Controls.Add(this.TestLabelLuten);
             this.Controls.Add(this.TestButtonLuten);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "ChoreApplication";
             this.Text = "ChoreApplication";
             this.Load += new System.EventHandler(this.ChoreApplication_Load);
@@ -117,6 +136,7 @@
         private System.Windows.Forms.Label TestLabelJoenler;
         private System.Windows.Forms.Button interface1;
         private System.Windows.Forms.Button AlexogLuten;
+        private System.Windows.Forms.Button ChildInterface;
     }
 }
 

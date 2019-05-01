@@ -228,14 +228,6 @@ namespace ChoreApplication.UI
         }
         #endregion
 
-        private void SortButton_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ParentInterface_Load(object sender, EventArgs e)
-        {
-
-        }
+  
     }
 }

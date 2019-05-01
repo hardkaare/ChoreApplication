@@ -84,11 +84,13 @@ namespace ChoreApplication
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface();
+            var ChildInterface = new UI.ChildInterface();
 
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
-            ParentInterface.Show();
+            // ParentInterface.Show();
+            ChildInterface.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
@@ -101,6 +103,14 @@ namespace ChoreApplication
             var LoginInterface = new UI.LoginInterface();
             LoginInterface.Show();
             this.Hide();
+        }
+
+   
+
+        private void storTryk_Click(object sender, EventArgs e)
+        {
+            var ChildInterface = new UI.ChildInterface();
+            ChildInterface.Show();
         }
     }
 }
