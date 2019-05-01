@@ -51,9 +51,12 @@ namespace ChoreApplication
         private void EditJoenler_Click(object sender, EventArgs e)
         {
             var child = ChildUser.Load("u.user_id = 2");
+            var chore = Repeatable.Load("ch.chore_id = 3");
             var EditChild = new UI.EditChildUI(child[0]);
-         
-            EditChild.Show();
+            var editChore = new UI.EditChoreUI(chore[0]);
+
+            //EditChild.Show();
+            editChore.Show();
         }
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
