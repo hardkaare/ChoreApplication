@@ -12,7 +12,7 @@ namespace ChoreApplication
     /// a day and how many times it has been completed at the moment. Contains a method to generate 
     /// Concrete versions of the Chore
     /// </summary>
-    class Repeatable : Chore
+     public class Repeatable : Chore
     {
         #region Properties
 

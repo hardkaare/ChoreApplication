@@ -34,6 +34,7 @@
             this.TestLabelJoenler = new System.Windows.Forms.Label();
             this.interface1 = new System.Windows.Forms.Button();
             this.AlexogLuten = new System.Windows.Forms.Button();
+            this.EditJoenler = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestButtonLuten
@@ -92,11 +93,22 @@
             this.AlexogLuten.UseVisualStyleBackColor = true;
             this.AlexogLuten.Click += new System.EventHandler(this.AlexogLuten_Click);
             // 
+            // EditJoenler
+            // 
+            this.EditJoenler.Location = new System.Drawing.Point(313, 94);
+            this.EditJoenler.Name = "EditJoenler";
+            this.EditJoenler.Size = new System.Drawing.Size(106, 23);
+            this.EditJoenler.TabIndex = 7;
+            this.EditJoenler.Text = "Edit Joenler";
+            this.EditJoenler.UseVisualStyleBackColor = true;
+            this.EditJoenler.Click += new System.EventHandler(this.EditJoenler_Click);
+            // 
             // ChoreApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 450);
+            this.Controls.Add(this.EditJoenler);
             this.Controls.Add(this.AlexogLuten);
             this.Controls.Add(this.interface1);
             this.Controls.Add(this.TestLabelJoenler);
@@ -117,6 +129,7 @@
         private System.Windows.Forms.Label TestLabelJoenler;
         private System.Windows.Forms.Button interface1;
         private System.Windows.Forms.Button AlexogLuten;
+        private System.Windows.Forms.Button EditJoenler;
     }
 }
 

@@ -7,17 +7,17 @@ using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
-    abstract class User
+    public abstract class User
     {
         #region Properties
         
         public int Id { get; private set; }
 
         // Derived classes can set the firstname and the public can get it. 
-        public string FirstName { get; protected set; }
+        public string FirstName { get; set; }
 
         // Everyone can get the pincode (reconsider this later). Derived classes can set it.
-        public string Pincode { get; protected set; }
+        public string Pincode { get; set; }
 
         #endregion
 

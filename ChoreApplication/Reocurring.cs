@@ -11,7 +11,7 @@ namespace ChoreApplication
     /// Reocurring Chore. Inherits from the Chore class. Contains what time it's due and what days 
     /// it should occur on in a list.
     /// </summary>
-    class Reocurring : Chore
+    public class Reocurring : Chore
     {
         #region Properties
 
@@ -84,17 +84,13 @@ namespace ChoreApplication
             id = (int)cmd2.ExecuteScalar();
 
             //Creates and executes an insert query for each day in the list
-            int counter = 0;
             string query3;
             SqlCommand cmd3;
-
             foreach (string day in days)
             {
-                query3 = string.Format("INSERT INTO [days] (reo_id, day) VALUES ({0}, '{1}')", 
-                    id, days[counter]);
+                query3 = string.Format("INSERT INTO [days] (reo_id, day) VALUES ({0}, '{1}')", id, day);
                 cmd3 = new SqlCommand(query3, DatabaseFunctions.dbConn);
                 cmd3.ExecuteNonQuery();
-                counter++;
             }
 
             //Closes connection to DB

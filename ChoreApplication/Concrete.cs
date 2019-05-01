@@ -14,7 +14,7 @@ namespace ChoreApplication
     /// Concrete chores. Inherits from the Chore class. Contains due date of the chore, 
     /// the status of the chore and the date of approval
     /// </summary>
-    class Concrete : Chore
+   public class Concrete : Chore
     {
         #region Properties
         /// <summary>

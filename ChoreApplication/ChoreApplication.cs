@@ -47,7 +47,13 @@ namespace ChoreApplication
             }
             
         }
-
+        private void EditJoenler_Click(object sender, EventArgs e)
+        {
+            var child = ChildUser.Load("u.user_id = 2");
+            var EditChild = new UI.EditChildUI(child[0]);
+            var editChore = new UI.EditChoreUI();
+            EditChild.Show();
+        }
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
             var LoginInterface = new UI.LoginInterface();
@@ -58,9 +64,9 @@ namespace ChoreApplication
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
 
-            createChild.Show();
+            //createChild.Show();
             //createreward.Show();
-            //createchore.Show();
+            createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
@@ -102,5 +108,7 @@ namespace ChoreApplication
             LoginInterface.Show();
             this.Hide();
         }
+
+        
     }
 }

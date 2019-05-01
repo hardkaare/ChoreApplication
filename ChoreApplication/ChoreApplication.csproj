@@ -102,6 +102,12 @@
     <Compile Include="UI\EditChildUI.Designer.cs">
       <DependentUpon>EditChildUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\EditChoreUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditChoreUI.Designer.cs">
+      <DependentUpon>EditChoreUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -159,6 +165,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EditChildUI.resx">
       <DependentUpon>EditChildUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditChoreUI.resx">
+      <DependentUpon>EditChoreUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>
