@@ -306,7 +306,6 @@
             this.SortButton.Size = new System.Drawing.Size(25, 25);
             this.SortButton.TabIndex = 0;
             this.SortButton.UseVisualStyleBackColor = true;
-            this.SortButton.Click += new System.EventHandler(this.SortButton_Click);
             // 
             // ChorePanel
             // 
@@ -379,7 +378,6 @@
             this.Name = "ParentInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ParentInterface";
-            this.Load += new System.EventHandler(this.ParentInterface_Load);
             this.navigationPanel.ResumeLayout(false);
             this.navigationPanel.PerformLayout();
             this.upperPanel.ResumeLayout(false);
