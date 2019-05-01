@@ -12,9 +12,17 @@ namespace ChoreApplication.UI
 {
     public partial class ChildInterface : Form
     {
-        public ChildInterface()
+        public ChildUser Session { get; set; }
+
+        public ChildInterface(ChildUser c)
         {
             InitializeComponent();
+            Session = c;
+        }
+
+        private void ChildInterface_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

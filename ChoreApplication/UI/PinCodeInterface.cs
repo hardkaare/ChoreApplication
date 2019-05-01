@@ -98,22 +98,24 @@ namespace ChoreApplication.UI
                 if (ChooseProfileInterface.activeId == 1)
                 {
                     var sessionList = ParentUser.Load("");
-                    session = sessionList[0];
-                    var parentUI = new ParentInterface();
+                    var parentUI = new ParentInterface(sessionList[0]);
                     parentUI.Show();
                 }
                 else
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
-                    session = sessionList[0];
-                    var childUI = new ChildInterface();
+                    var childUI = new ChildInterface(sessionList[0]);
                     childUI.Show();
                     
                 }
                 LoginInterface.chooseProfile.Close();
                 this.Close();
-                MessageBox.Show(session.ToString());
             }
+        }
+
+        private void PinCodeInterface_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

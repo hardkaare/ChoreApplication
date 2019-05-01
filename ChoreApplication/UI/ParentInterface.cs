@@ -12,17 +12,19 @@ namespace ChoreApplication.UI
 {
     public partial class ParentInterface : Form
     {
+        public ParentUser Session { get; set; }
         public int UI = 0;
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
         private List<Chore> AllChores;
         private readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
-        public ParentInterface()
+        public ParentInterface(ParentUser p)
         {
             InitializeDictionaries();
             LoadAllChores();
             InitializeComponent();
             ChoresUI();
+            Session = p;
         }
         private void LoadAllChores()
         {
