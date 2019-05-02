@@ -19,7 +19,7 @@ namespace ChoreApplication
         /// <summary>
         /// String that indicates the standard date format
         /// </summary>
-        public static string dateFormatString = "dd-MM-yyyy HH:mm:ss";
+        public static string dateFormatString = "dd-MM-yyyy HH:mm";
         #region Properties
         /// <summary>
         /// Date and time of when the chore is due. If null in DB this property is 
@@ -203,7 +203,7 @@ namespace ChoreApplication
                 }
                 else
                 {
-                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", dateFormatString, null);
+                    approvalDate = DateTime.ParseExact("01-01-2000 00:00", dateFormatString, null);
                 }
 
                 //Initializes the choreobject with the parameters and adds it to the list
