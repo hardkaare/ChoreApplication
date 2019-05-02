@@ -28,11 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.limitOrDaysLabel = new System.Windows.Forms.Label();
+            this.daysLabel = new System.Windows.Forms.Label();
             this.CompletionLimit = new System.Windows.Forms.NumericUpDown();
             this.Days = new System.Windows.Forms.CheckedListBox();
             this.assignmentLabel = new System.Windows.Forms.Label();
-            this.dueDateOrTimeLabel = new System.Windows.Forms.Label();
+            this.dtlLabel = new System.Windows.Forms.Label();
             this.descriptionLabel = new System.Windows.Forms.Label();
             this.DueTime = new System.Windows.Forms.DateTimePicker();
             this.pointsLabel = new System.Windows.Forms.Label();
@@ -46,20 +46,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).BeginInit();
             this.SuspendLayout();
             // 
-            // limitOrDaysLabel
+            // daysLabel
             // 
-            this.limitOrDaysLabel.AutoSize = true;
-            this.limitOrDaysLabel.Location = new System.Drawing.Point(109, 266);
-            this.limitOrDaysLabel.Name = "limitOrDaysLabel";
-            this.limitOrDaysLabel.Size = new System.Drawing.Size(28, 13);
-            this.limitOrDaysLabel.TabIndex = 29;
-            this.limitOrDaysLabel.Text = "Limit";
+            this.daysLabel.AutoSize = true;
+            this.daysLabel.Location = new System.Drawing.Point(109, 266);
+            this.daysLabel.Name = "daysLabel";
+            this.daysLabel.Size = new System.Drawing.Size(31, 13);
+            this.daysLabel.TabIndex = 29;
+            this.daysLabel.Text = "Days";
             // 
             // CompletionLimit
             // 
-            this.CompletionLimit.Location = new System.Drawing.Point(151, 282);
+            this.CompletionLimit.Location = new System.Drawing.Point(112, 243);
             this.CompletionLimit.Name = "CompletionLimit";
-            this.CompletionLimit.Size = new System.Drawing.Size(120, 20);
+            this.CompletionLimit.Size = new System.Drawing.Size(198, 20);
             this.CompletionLimit.TabIndex = 13;
             // 
             // Days
@@ -80,20 +80,20 @@
             // assignmentLabel
             // 
             this.assignmentLabel.AutoSize = true;
-            this.assignmentLabel.Location = new System.Drawing.Point(109, 226);
+            this.assignmentLabel.Location = new System.Drawing.Point(109, 187);
             this.assignmentLabel.Name = "assignmentLabel";
             this.assignmentLabel.Size = new System.Drawing.Size(61, 13);
             this.assignmentLabel.TabIndex = 28;
             this.assignmentLabel.Text = "Assignment";
             // 
-            // dueDateOrTimeLabel
+            // dtlLabel
             // 
-            this.dueDateOrTimeLabel.AutoSize = true;
-            this.dueDateOrTimeLabel.Location = new System.Drawing.Point(109, 187);
-            this.dueDateOrTimeLabel.Name = "dueDateOrTimeLabel";
-            this.dueDateOrTimeLabel.Size = new System.Drawing.Size(51, 13);
-            this.dueDateOrTimeLabel.TabIndex = 27;
-            this.dueDateOrTimeLabel.Text = "Due date";
+            this.dtlLabel.AutoSize = true;
+            this.dtlLabel.Location = new System.Drawing.Point(109, 227);
+            this.dtlLabel.Name = "dtlLabel";
+            this.dtlLabel.Size = new System.Drawing.Size(51, 13);
+            this.dtlLabel.TabIndex = 27;
+            this.dtlLabel.Text = "Due date";
             // 
             // descriptionLabel
             // 
@@ -108,7 +108,7 @@
             // 
             this.DueTime.CustomFormat = "hh:mm";
             this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueTime.Location = new System.Drawing.Point(112, 203);
+            this.DueTime.Location = new System.Drawing.Point(112, 243);
             this.DueTime.Name = "DueTime";
             this.DueTime.ShowUpDown = true;
             this.DueTime.Size = new System.Drawing.Size(198, 20);
@@ -136,7 +136,7 @@
             // 
             this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Assignment.FormattingEnabled = true;
-            this.Assignment.Location = new System.Drawing.Point(112, 242);
+            this.Assignment.Location = new System.Drawing.Point(112, 203);
             this.Assignment.Name = "Assignment";
             this.Assignment.Size = new System.Drawing.Size(198, 21);
             this.Assignment.TabIndex = 22;
@@ -145,7 +145,7 @@
             // 
             this.DueDate.CustomFormat = "dd\'-\'MM\'-\'yyyy HH\':\'mm\':\'ss";
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueDate.Location = new System.Drawing.Point(112, 203);
+            this.DueDate.Location = new System.Drawing.Point(112, 243);
             this.DueDate.Name = "DueDate";
             this.DueDate.Size = new System.Drawing.Size(198, 20);
             this.DueDate.TabIndex = 20;
@@ -178,29 +178,24 @@
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Location = new System.Drawing.Point(174, 300);
+            this.CreateChoreButton.Location = new System.Drawing.Point(174, 280);
             this.CreateChoreButton.Name = "CreateChoreButton";
             this.CreateChoreButton.Size = new System.Drawing.Size(75, 23);
             this.CreateChoreButton.TabIndex = 24;
-            this.CreateChoreButton.Text = "Create";
+            this.CreateChoreButton.Text = "Save";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
+            this.CreateChoreButton.Click += new System.EventHandler(this.CreateChoreButton_Click);
             // 
             // EditChoreUI
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 513);
-            this.Controls.Add(this.limitOrDaysLabel);
-            this.Controls.Add(this.CompletionLimit);
-            this.Controls.Add(this.Days);
             this.Controls.Add(this.assignmentLabel);
-            this.Controls.Add(this.dueDateOrTimeLabel);
             this.Controls.Add(this.descriptionLabel);
-            this.Controls.Add(this.DueTime);
             this.Controls.Add(this.pointsLabel);
             this.Controls.Add(this.nameLabel);
             this.Controls.Add(this.Assignment);
-            this.Controls.Add(this.DueDate);
             this.Controls.Add(this.ChoreDescription);
             this.Controls.Add(this.ChorePoints);
             this.Controls.Add(this.ChoreName);
@@ -215,11 +210,11 @@
 
         #endregion
 
-        private System.Windows.Forms.Label limitOrDaysLabel;
+        private System.Windows.Forms.Label daysLabel;
         private System.Windows.Forms.NumericUpDown CompletionLimit;
         private System.Windows.Forms.CheckedListBox Days;
         private System.Windows.Forms.Label assignmentLabel;
-        private System.Windows.Forms.Label dueDateOrTimeLabel;
+        private System.Windows.Forms.Label dtlLabel;
         private System.Windows.Forms.Label descriptionLabel;
         private System.Windows.Forms.DateTimePicker DueTime;
         private System.Windows.Forms.Label pointsLabel;
