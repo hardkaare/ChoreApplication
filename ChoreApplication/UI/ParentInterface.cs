@@ -71,10 +71,13 @@ namespace ChoreApplication.UI
                     createChore.Show();
                     break;
                 case 2:
-                    //CreateReward
+                    var createReward = new CreateRewardUI();
+                    createReward.Show();
                     break;
                 case 4:
-                //CreateUser
+                    var createChild = new CreateChildUI();
+                    createChild.Show();
+                    break;
                 default:
                     break;
             }

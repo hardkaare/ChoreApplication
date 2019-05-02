@@ -102,7 +102,7 @@ namespace ChoreApplication.UI
             // 
             // DueDate
             // 
-            this.DueDate.CustomFormat = "dd-MM-yyyy HH:mm:ss";
+            this.DueDate.CustomFormat = Concrete.dateFormatString;
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueDate.Location = new System.Drawing.Point(65, 266);
             this.DueDate.Name = "DueDate";
