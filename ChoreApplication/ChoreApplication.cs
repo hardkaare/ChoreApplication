@@ -89,11 +89,13 @@ namespace ChoreApplication
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
+            var ChildInterface = new UI.ChildInterface();
 
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
-            ParentInterface.Show();
+            //ParentInterface.Show();
+            ChildInterface.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
@@ -108,6 +110,11 @@ namespace ChoreApplication
             this.Hide();
         }
 
-        
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            var ChildInterface = new UI.ChildInterface();
+            ChildInterface.Show();
+            
+        }
     }
 }
