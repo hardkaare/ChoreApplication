@@ -109,7 +109,7 @@ namespace ChoreApplication.UI
         private void CreateChoreButton_Click(object sender, EventArgs e)
         {
             int id = 0;
-            foreach (var child in ChildUser.Load($"u.first_name = {Assignment.Text}"))
+            foreach (var child in ChildUser.Load($"u.first_name = '{Assignment.Text}'"))
             {
                 id = child.ChildId;
             }
@@ -126,10 +126,25 @@ namespace ChoreApplication.UI
                     MessageBox.Show("The concrete chore has been updated.");
                     break;
                 case 2:
+                    _repeatable.Name = ChoreName.Text;
+                    _repeatable.Points = Convert.ToInt32(ChorePoints.Text);
+                    _repeatable.Description = ChoreDescription.Text;
+                    _repeatable.Assignment = id;
+                    _repeatable.Limit = (int)CompletionLimit.Value;
                     _repeatable.Update();
+                    this.Close();
+                    MessageBox.Show("The repeatable chore has been updated.");
                     break;
                 case 3:
+                    _reoccurring.Name = ChoreName.Text;
+                    _reoccurring.Points = Convert.ToInt32(ChorePoints.Text);
+                    _reoccurring.Description = ChoreDescription.Text;
+                    _reoccurring.Assignment = id;
+                    _reoccurring.dueTime = Convert.ToDateTime(DueTime.Text);
+                    _reoccurring.days = Days.CheckedItems.OfType<string>().ToList<string>();
                     _reoccurring.Update();
+                    this.Close();
+                    MessageBox.Show("The reoccurring chore has been updated.");
                     break;
             }
         }

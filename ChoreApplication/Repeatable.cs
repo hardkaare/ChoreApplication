@@ -17,7 +17,7 @@ namespace ChoreApplication
         #region Properties
 
         //Number of times the chore can be completed a day
-        public int Limit { get; protected set; }
+        public int Limit { get; set; }
 
         //How many times it has been completed currently
         public int Completions { get; set; }
