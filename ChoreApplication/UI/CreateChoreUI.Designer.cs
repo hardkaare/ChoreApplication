@@ -102,7 +102,7 @@ namespace ChoreApplication.UI
             // 
             // DueDate
             // 
-            this.DueDate.CustomFormat = "dd\'-\'MM\'-\'yyyy HH\':\'mm\':\'ss";
+            this.DueDate.CustomFormat = "dd-MM-yyyy HH:mm:ss";
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueDate.Location = new System.Drawing.Point(65, 266);
             this.DueDate.Name = "DueDate";
@@ -119,7 +119,7 @@ namespace ChoreApplication.UI
             this.Assignment.Size = new System.Drawing.Size(199, 21);
             this.Assignment.TabIndex = 6;
             // 
-            // nameLabel
+            // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(62, 49);
@@ -177,7 +177,7 @@ namespace ChoreApplication.UI
             // 
             this.Days.Location = new System.Drawing.Point(0, 0);
             this.Days.Name = "Days";
-            this.Days.Size = new System.Drawing.Size(120, 96);
+            this.Days.Size = new System.Drawing.Size(120, 94);
             this.Days.TabIndex = 0;
             // 
             // CompletionLimit

@@ -67,7 +67,8 @@ namespace ChoreApplication.UI
             switch (UI)
             {
                 case 1:
-                    //CreateChore
+                    var createChore = new CreateChoreUI();
+                    createChore.Show();
                     break;
                 case 2:
                     //CreateReward

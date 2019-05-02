@@ -16,6 +16,10 @@ namespace ChoreApplication
     /// </summary>
    public class Concrete : Chore
     {
+        /// <summary>
+        /// String that indicates the standard date format
+        /// </summary>
+        public static string dateFormatString = "dd-MM-yyyy HH:mm:ss";
         #region Properties
         /// <summary>
         /// Date and time of when the chore is due. If null in DB this property is 
@@ -83,11 +87,11 @@ namespace ChoreApplication
         /// <param name="desc">Description of the chore</param>
         /// <param name="points">Points of the chore</param>
         /// <param name="assignment">The ID of child the chore is assigned to</param>
-        /// <param name="dueTime">When the chore is due</param>
+        /// <param name="dueDate">When the chore is due</param>
         /// <param name="type">Which type of chore the concrete chore is generated as. Can be
         /// reoc, rep or conc</param>
         public static void Insert(string name, string desc, int points, 
-            int assignment, DateTime dueTime, string type)
+            int assignment, DateTime dueDate, string type)
         {
             //If a repeatable chore generated the concrete chore the status goes straight to approval pending
             int status;
@@ -114,7 +118,7 @@ namespace ChoreApplication
 
             //Formatting the query to concrete_chore table, creating the SqlCommand and executing it
             string query2 = string.Format("INSERT INTO dbo.concrete_chore " +
-                "VALUES ({0}, '{1}', '{2}', NULL, '{3}')", id, dueTime.ToString(), status, type);
+                "VALUES ({0}, '{1}', '{2}', NULL, '{3}')", id, dueDate.ToString(dateFormatString), status, type);
             SqlCommand cmd2 = new SqlCommand(query2, DatabaseFunctions.dbConn);
             cmd2.ExecuteNonQuery();
 
@@ -130,7 +134,7 @@ namespace ChoreApplication
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("UPDATE concrete_chore SET " +
                 "due_date='{0}', status={1}, approval_date='{2}' WHERE chore_id={3}", 
-                DueDate, Status, ApprovalDate, ID);
+                DueDate.ToString(dateFormatString), Status, ApprovalDate, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}", 
                 Assignment, Name, Description, Points, ID);
@@ -156,8 +160,6 @@ namespace ChoreApplication
         /// <returns></returns>
         public static List<Concrete> Load(string whereClause)
         {
-            CultureInfo culture = new CultureInfo("da-DK");
-            string formatString = "dd-MM-yyyy HH:mm:ss";
             //Checks if string is empty. If not adds where in front
             if (whereClause != "")
             {
@@ -188,7 +190,7 @@ namespace ChoreApplication
                 string description = reader[2].ToString();
                 int points = (int)reader[3];
                 int assignment = (int)reader[4];
-                var dueTime = DateTime.ParseExact(reader[5].ToString(), formatString, culture);
+                var dueTime = DateTime.ParseExact(reader[5].ToString(), dateFormatString, null);
                 int status = (int)reader[6];
                 DateTime approvalDate;
                 string type = reader[8].ToString();
@@ -196,12 +198,12 @@ namespace ChoreApplication
                 //Checks if approval date is null in DB and sets the time to a predefined date if so
                 if (!reader.IsDBNull(7))
                 {
-                    approvalDate = DateTime.ParseExact(reader[7].ToString(), formatString, null);
+                    approvalDate = DateTime.ParseExact(reader[7].ToString(), dateFormatString, null);
                     
                 }
                 else
                 {
-                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", formatString, null);
+                    approvalDate = DateTime.ParseExact("01-01-2000 00:00:00", dateFormatString, null);
                 }
 
                 //Initializes the choreobject with the parameters and adds it to the list
