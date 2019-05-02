@@ -19,6 +19,7 @@ namespace ChoreApplication.UI
         {
             InitializeComponent();
             LoadChildren();
+            this.DueDate.MinDate = DateTime.Now;
         }
        
 
@@ -47,7 +48,7 @@ namespace ChoreApplication.UI
                     // 
                     // DueTime
                     // 
-                    this.DueTime.CustomFormat = "hh:mm";
+                    this.DueTime.CustomFormat = "HH:mm";
                     this.DueTime.ShowUpDown = true;
                     this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
                     this.DueTime.Location = new System.Drawing.Point(63, 395);
@@ -111,6 +112,7 @@ namespace ChoreApplication.UI
             var children = ChildUser.Load("");
             int id = 0;
             var choreType = "";
+
             for (int i = 0; i < children.Count; i++)
             {
                 if(children[i].FirstName == Assignment.Text)
@@ -128,9 +130,9 @@ namespace ChoreApplication.UI
                         this.Close();
                         MessageBox.Show("A chore has been created");
                     }
-                    catch (Exception)
+                    catch (Exception ex)
                     {
-                        MessageBox.Show("Incorrect information entered");
+                        MessageBox.Show(ex.ToString());
                     }
                     break;
                 case "Repeatable":
