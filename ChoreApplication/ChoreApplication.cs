@@ -15,7 +15,8 @@ namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
-        ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
+        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "dillerdaller", 0, "0000");
+        public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
         {
             InitializeComponent();
@@ -92,11 +93,13 @@ namespace ChoreApplication
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
+            var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
 
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
-            ParentInterface.Show();
+            //ParentInterface.Show();
+            ChildInterface.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
@@ -111,6 +114,11 @@ namespace ChoreApplication
             this.Hide();
         }
 
-        
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
+            ChildInterface.Show();
+            
+        }
     }
 }
