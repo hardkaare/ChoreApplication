@@ -15,23 +15,24 @@ namespace ChoreApplication.UI
         public int UI = 0;
         public ChildUser Session { get; set; }
         private Dictionary<int, string> StatusValues;
-        private List<Concrete> ConcreteChores;
+        private List<Concrete> ConcreConcreteChoresApprovalPendingteChores;
         private List<ChildUser> ChildUsers;
         //  private List<Reward> Rewards;
         private readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
         private readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
-        public ChildInterface()
+        public ChildInterface(ChildUser child)
 
         {
+            Session = child;
             InitializeComponent();
-            ChoreUI();
             LoadAll();
             InitializeDictionaries();
+            ChoresUI();
         }
 
         private void LoadAll()
         {
-            ConcreteChores = Concrete.Load("status=1 OR (type='conc' AND status=2) ORDER BY status DESC");
+            ConcreConcreteChoresApprovalPendingteChores = Concrete.Load($"status=1 OR (type='conc' AND status=2) AND child_id={Session.ChildId} ORDER BY status DESC");
             ChildUsers = ChildUser.Load("");
 
         }
@@ -46,7 +47,7 @@ namespace ChoreApplication.UI
         }
 
             #region ChoreUi
-            public void ChoreUI()
+            public void ChoresUI()
         {
             UI = 1;
             this.ChorePanel.Visible = true;
@@ -64,7 +65,7 @@ namespace ChoreApplication.UI
             int i = 0;
             int panelDistance = 95;
 
-            foreach (var chore in ConcreteChores)
+            foreach (var chore in ConcreConcreteChoresApprovalPendingteChores)
             {
                 var choreName = chore.Name.ToString();
                 var chorePoints = chore.Points.ToString();
@@ -83,8 +84,10 @@ namespace ChoreApplication.UI
                     Size = new Size(ChorePanel.Width - 20, panelHeight),
                     AutoSize = true,
                 };
+                 ChorePanel.Controls.Add(individualChorePanel);
                  individualChorePanel.Controls.Add(choreNamelabel);
                  individualChorePanel.Controls.Add(choreStatusLabel);
+              
 
 
 
@@ -145,7 +148,7 @@ namespace ChoreApplication.UI
         #region NavigationMenu
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
-            ChoreUI();
+            ChoresUI();
         }
 
         

@@ -13,7 +13,6 @@ namespace ChoreApplication.UI
 {
     public partial class PinCodeInterface : Form
     {
-        ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         User session;
         public PinCodeInterface()
         {
@@ -81,9 +80,8 @@ namespace ChoreApplication.UI
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
                     session = sessionList[0];
-                    var childUI = new ChildInterface();//sikkert ikke done
+                    var childUI = new ChildInterface(sessionList[0]);//sikkert ikke done
                     childUI.Show();
-                    
                 }
                 LoginInterface.chooseProfile.Close();
                 this.Close();
