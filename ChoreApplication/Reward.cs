@@ -7,19 +7,19 @@ using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
-    class Reward
+    public class Reward
     {
         #region Properties
-        public int RewardId { get; private set; }
+        public int RewardId { get; set; }
         // The name of the reward. 
-        public string Name { get; private set; }
+        public string Name { get; set; }
 
         // The points required to earn the reward.
-        public string Description { get; private set; }
-        public int PointsReq { get; private set; }
+        public string Description { get; set; }
+        public int PointsReq { get; set; }
 
         // Who the reward is assigned to. 
-        public int ChildId { get; private set; }
+        public int ChildId { get; set; }
         #endregion
 
         #region Constructors
