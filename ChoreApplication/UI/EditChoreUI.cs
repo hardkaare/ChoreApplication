@@ -120,8 +120,10 @@ namespace ChoreApplication.UI
                     _concrete.Points = Convert.ToInt32(ChorePoints.Text);
                     _concrete.Description = ChoreDescription.Text;
                     _concrete.Assignment = id;
-                    //_concrete.DueDate = 
+                    _concrete.DueDate = Convert.ToDateTime(DueDate.Text);
                     _concrete.Update();
+                    this.Close();
+                    MessageBox.Show("The concrete chore has been updated.");
                     break;
                 case 2:
                     _repeatable.Update();
