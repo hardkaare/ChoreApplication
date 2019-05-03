@@ -51,7 +51,7 @@
             // childName
             // 
             this.childName.Location = new System.Drawing.Point(104, 228);
-            this.childName.MaxLength = 255;
+            this.childName.MaxLength = 20;
             this.childName.Name = "childName";
             this.childName.Size = new System.Drawing.Size(173, 20);
             this.childName.TabIndex = 1;
@@ -87,7 +87,7 @@
             // childPincode
             // 
             this.childPincode.Location = new System.Drawing.Point(104, 265);
-            this.childPincode.MaxLength = 255;
+            this.childPincode.MaxLength = 4;
             this.childPincode.Name = "childPincode";
             this.childPincode.Size = new System.Drawing.Size(173, 20);
             this.childPincode.TabIndex = 2;
