@@ -120,52 +120,59 @@ namespace ChoreApplication.UI
                     id = children[i].ChildId;
                 }
             }
-            switch (ChoreTypes.Text)
+            if (true)
             {
-                case "Concrete":
-                    choreType = "conc";
-                    try
-                    {
-                        Concrete.Insert(ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), id, Convert.ToDateTime(DueDate.Text), choreType);
-                        this.Close();
-                        MessageBox.Show("A chore has been created");
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Incorrect information entered");
-                    }
-                    break;
-                case "Repeatable":
-                    choreType = "rep";
-                    try
-                    {
-                        Repeatable.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), (Int32)CompletionLimit.Value);
-                        this.Close();
-                        MessageBox.Show("A chore has been created");
-                    }
-                    catch (Exception)
-                    {
-                        MessageBox.Show("Incorrect information entered");
-                    }
-                    break;
-                case "Reoccurring":
-                    choreType = "reoc";
-                    try
-                    {
-                        List<string> DaysChecked = Days.CheckedItems.OfType<string>().ToList<string>();                       
-                        Reocurring.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), Convert.ToDateTime(DueTime.Text), DaysChecked);
-                        this.Close();
-                        MessageBox.Show("A chore has been created");
-                    }
-                    catch (SqlException)
-                    {                       
-                        MessageBox.Show("Incorrect information entered");
-                    }
-                    finally
-                    {
-                        DatabaseFunctions.dbConn.Close();
-                    }
-                    break;
+                switch (ChoreTypes.Text)
+                {
+                    case "Concrete":
+                        choreType = "conc";
+                        try
+                        {
+                            Concrete.Insert(ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), id, Convert.ToDateTime(DueDate.Text), choreType);
+                            this.Close();
+                            MessageBox.Show("A chore has been created");
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Incorrect information entered");
+                        }
+                        break;
+                    case "Repeatable":
+                        choreType = "rep";
+                        try
+                        {
+                            Repeatable.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), (Int32)CompletionLimit.Value);
+                            this.Close();
+                            MessageBox.Show("A chore has been created");
+                        }
+                        catch (Exception)
+                        {
+                            MessageBox.Show("Incorrect information entered");
+                        }
+                        break;
+                    case "Reoccurring":
+                        choreType = "reoc";
+                        try
+                        {
+                            List<string> DaysChecked = Days.CheckedItems.OfType<string>().ToList<string>();
+                            Reocurring.Insert(id, ChoreName.Text, ChoreDescription.Text, Convert.ToInt32(ChorePoints.Text), Convert.ToDateTime(DueTime.Text), DaysChecked);
+                            this.Close();
+                            MessageBox.Show("A chore has been created");
+                        }
+                        catch (SqlException)
+                        {
+                            MessageBox.Show("Incorrect information entered");
+                        }
+                        finally
+                        {
+                            DatabaseFunctions.dbConn.Close();
+                        }
+                        break;
+                }
+            }
+            else
+            {
+
             }
             
         }

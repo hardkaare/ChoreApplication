@@ -67,9 +67,9 @@ namespace ChoreApplication
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
 
-            createChild.Show();
+            //createChild.Show();
             //createreward.Show();
-            //createchore.Show();
+            createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
