@@ -86,7 +86,7 @@
             this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
             this.NotificationAmount.TabIndex = 0;
             this.NotificationAmount.TabStop = false;
-            this.NotificationAmount.Text = "100";
+            this.NotificationAmount.Text = "999";
             this.NotificationAmount.UseVisualStyleBackColor = true;
             // 
             // notificationsLabel
