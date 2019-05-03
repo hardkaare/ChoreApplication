@@ -99,7 +99,7 @@ namespace ChoreApplication
             //RegisterUser.Show();
             //ChooseProfile.Show();
             //ParentInterface.Show();
-            ChildInterface.Show();
+            ParentInterface.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
