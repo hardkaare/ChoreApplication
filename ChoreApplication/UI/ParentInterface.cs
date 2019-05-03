@@ -269,7 +269,7 @@ namespace ChoreApplication.UI
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
-                Tag = c.ID,
+                Tag = c,
                 FlatStyle = FlatStyle.Flat,
                 BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
                 BackgroundImageLayout = ImageLayout.Zoom,
@@ -307,8 +307,12 @@ namespace ChoreApplication.UI
         private void EditButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            int Id = (int)clickedButton.Tag;
-            MessageBox.Show(Id.ToString());
+            Chore selectedChore = (Chore)clickedButton.Tag;
+            MessageBox.Show(selectedChore.ToString());
+            /*
+            EditChoreUI editSelectedChore = new EditChoreUI(selectedChore);
+            editSelectedChore.Show();
+            */
         }
 
         private void ApproveButton_Click(object sender, System.EventArgs e)
