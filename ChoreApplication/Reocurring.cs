@@ -16,10 +16,10 @@ namespace ChoreApplication
         #region Properties
 
         //What time of the day it should set the due time to when it generates Concrete Chores
-        public DateTime dueTime { get; protected set; }
+        public DateTime dueTime { get; set; }
 
         //What days it should generate a Concrete Chore
-        public List<string> days { get; protected set; }
+        public List<string> days { get; set; }
 
         #endregion
 

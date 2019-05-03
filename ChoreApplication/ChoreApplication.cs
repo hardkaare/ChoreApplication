@@ -15,7 +15,8 @@ namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
-        ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
+        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "dillerdaller", 0, "0000");
+        public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
         {
             InitializeComponent();
@@ -46,9 +47,15 @@ namespace ChoreApplication
         private void EditJoenler_Click(object sender, EventArgs e)
         {
             var child = ChildUser.Load("u.user_id = 2");
+            var chore = Reocurring.Load("ch.chore_id = 1");
+            var reward = Reward.Load("");
             var EditChild = new UI.EditChildUI(child[0]);
-         
-            EditChild.Show();
+            var editChore = new UI.EditChoreUI(chore[0]);
+            var editReward = new UI.EditRewardUI(reward[0]);
+
+            //EditChild.Show();
+            //editChore.Show();
+            editReward.Show();
         }
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
@@ -61,8 +68,8 @@ namespace ChoreApplication
             var createChild = new UI.CreateChildUI();
 
             //createChild.Show();
-            //createreward.Show();
-            createchore.Show();
+            createreward.Show();
+            //createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
@@ -86,11 +93,13 @@ namespace ChoreApplication
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
+            var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
 
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
-            ParentInterface.Show();
+            //ParentInterface.Show();
+            ChildInterface.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
@@ -105,6 +114,11 @@ namespace ChoreApplication
             this.Hide();
         }
 
-        
+        private void Button1_Click_1(object sender, EventArgs e)
+        {
+            var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
+            ChildInterface.Show();
+            
+        }
     }
 }

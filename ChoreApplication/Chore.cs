@@ -18,13 +18,13 @@ namespace ChoreApplication
         //ID of the chore
         public int ID { get; protected set; }
         //Name of the chore
-        public string Name { get; protected set; }
+        public string Name { get; set; }
         //Description of how to do the chore
-        public string Description { get; protected set; }
+        public string Description { get; set; }
         //How many points is earned by completing the chore
-        public int Points { get; protected set; }
+        public int Points { get; set; }
         //Who the chore's assigned to
-        public int Assignment { get; protected set; }
+        public int Assignment { get; set; }
 
         #endregion
 
