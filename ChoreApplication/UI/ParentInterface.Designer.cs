@@ -405,7 +405,7 @@
         private System.Windows.Forms.Panel ChorePanel;
         private System.Windows.Forms.Button SortButton;
         private System.Windows.Forms.Panel RewardPanel;
-        private System.Windows.Forms.Panel UserPanel;
+        public System.Windows.Forms.Panel UserPanel;
         private System.Windows.Forms.Panel NotificationPanel;
         private global::ChoreApplication.UI.RoundButton NotificationAmount;
         private System.Windows.Forms.Panel LeaderboardPanel;

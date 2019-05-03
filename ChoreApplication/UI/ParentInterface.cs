@@ -416,8 +416,9 @@ namespace ChoreApplication.UI
             LoadUsers();
         }
 
-        private void LoadUsers()
+        public void LoadUsers()
         {
+            LoadAll();
             UserPanel.Controls.Clear();
             int i = 0;
             int panelDistance = 65;
@@ -455,12 +456,12 @@ namespace ChoreApplication.UI
                 };
                 individualUserPanel.Controls.Add(userFirstNameLabel);
                 UserPanel.Controls.Add(individualUserPanel);
-                individualUserPanel.Controls.Add(AddDeleteButton(350, individualUserPanel.Height /2 , c));
+                individualUserPanel.Controls.Add(AddChildDeleteButton(350, individualUserPanel.Height /2 , c));
                 i++;
             }
         }
 
-        private Control AddDeleteButton(int x, int y, ChildUser user)
+        private Control AddChildDeleteButton(int x, int y, ChildUser user)
         {
             var DeleteButton = new Button
             {
@@ -475,22 +476,22 @@ namespace ChoreApplication.UI
             DeleteButton.Cursor = Cursors.Hand;
             DeleteButton.FlatAppearance.BorderSize = 0;
             DeleteButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            DeleteButton.Click += new EventHandler(DeleteButton_Click);
+            DeleteButton.Click += new EventHandler(ChildDeleteButton_Click);
             return DeleteButton;
         }
 
 
 
-        private void DeleteButton_Click(object sender, System.EventArgs e)
+        private void ChildDeleteButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
             ChildUser currentUser = (ChildUser)clickedButton.Tag;
 
-            var confirmDelete = MessageBox.Show("Are you sure you want to delete this user?", "", MessageBoxButtons.YesNo);
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this user?", "Hallo", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
             {
                 currentUser.Delete();
-                UsersUI();
+                LoadUsers();
             }
         }
 
@@ -504,6 +505,7 @@ namespace ChoreApplication.UI
             titleText.Text = "Notifications";
             this.NotificationPanel.Visible = true;
             this.NotificationPanel.BringToFront();
+            this.OptionButton.Visible = false;
             this.SortButton.Visible = false;
             LoadNotification();
         }
@@ -532,14 +534,38 @@ namespace ChoreApplication.UI
                 };
                 individualNotificationPanel.Controls.Add(notificationTitleLabel);
                 individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
+                individualNotificationPanel.Controls.Add(AddNotificationDeleteButton(350, individualNotificationPanel.Height / 2, n));
                 NotificationPanel.Controls.Add(individualNotificationPanel);
                 i++;
             }
-            //Slet alle chore, kan slettes igen alt efter hvad vi har tænkt os.
-            foreach (Notification n in Notifications)
+        }
+
+
+        private Control AddNotificationDeleteButton(int x, int y, Notification notification)
+        {
+            var DeleteButton = new Button
             {
-                n.Delete();
-            }
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = notification,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            DeleteButton.Cursor = Cursors.Hand;
+            DeleteButton.FlatAppearance.BorderSize = 0;
+            DeleteButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            DeleteButton.Click += new EventHandler(NotificationDeleteButton_Click);
+            return DeleteButton;
+        }
+
+        private void NotificationDeleteButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Notification currentNotification = (Notification)clickedButton.Tag;
+            currentNotification.Delete();
+            LoadNotification();
         }
 
         private void LoadAmountOfNotifications()

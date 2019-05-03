@@ -130,9 +130,9 @@ namespace ChoreApplication.UI
                         this.Close();
                         MessageBox.Show("A chore has been created");
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        MessageBox.Show(ex.ToString());
+                        MessageBox.Show("Incorrect information entered");
                     }
                     break;
                 case "Repeatable":

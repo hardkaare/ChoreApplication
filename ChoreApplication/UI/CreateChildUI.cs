@@ -23,6 +23,7 @@ namespace ChoreApplication.UI
                 ChildUser.Insert(childName.Text);
                 this.Close();
                 MessageBox.Show("A child has been created.");
+                
             }
             catch (Exception)
             {
