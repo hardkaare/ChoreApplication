@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.NotificationAmount = new global::ChoreApplication.UI.RoundButton();
+            this.NotificationAmount = new ChoreApplication.UI.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -44,13 +44,13 @@
             this.OptionButton = new System.Windows.Forms.Button();
             this.titleText = new System.Windows.Forms.Label();
             this.upperPanel = new System.Windows.Forms.Panel();
+            this.LeaderboardPanel = new System.Windows.Forms.Panel();
             this.UserButton = new System.Windows.Forms.Button();
             this.SortButton = new System.Windows.Forms.Button();
             this.ChorePanel = new System.Windows.Forms.Panel();
             this.RewardPanel = new System.Windows.Forms.Panel();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.NotificationPanel = new System.Windows.Forms.Panel();
-            this.LeaderboardPanel = new System.Windows.Forms.Panel();
             this.navigationPanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.SuspendLayout();
@@ -80,13 +80,13 @@
             this.NotificationAmount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotificationAmount.Location = new System.Drawing.Point(376, 2);
+            this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationAmount.Location = new System.Drawing.Point(374, 1);
             this.NotificationAmount.Name = "NotificationAmount";
-            this.NotificationAmount.Size = new System.Drawing.Size(28, 28);
+            this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
             this.NotificationAmount.TabIndex = 0;
             this.NotificationAmount.TabStop = false;
-            this.NotificationAmount.Text = "1";
+            this.NotificationAmount.Text = "100";
             this.NotificationAmount.UseVisualStyleBackColor = true;
             // 
             // notificationsLabel
@@ -273,6 +273,17 @@
             this.upperPanel.Size = new System.Drawing.Size(420, 33);
             this.upperPanel.TabIndex = 1;
             // 
+            // LeaderboardPanel
+            // 
+            this.LeaderboardPanel.AutoScroll = true;
+            this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LeaderboardPanel.Location = new System.Drawing.Point(-1, 36);
+            this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.LeaderboardPanel.Name = "LeaderboardPanel";
+            this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
+            this.LeaderboardPanel.TabIndex = 5;
+            this.LeaderboardPanel.Visible = false;
+            // 
             // UserButton
             // 
             this.UserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -351,17 +362,6 @@
             this.NotificationPanel.TabIndex = 4;
             this.NotificationPanel.Visible = false;
             // 
-            // LeaderboardPanel
-            // 
-            this.LeaderboardPanel.AutoScroll = true;
-            this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LeaderboardPanel.Location = new System.Drawing.Point(-1, 36);
-            this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 450);
-            this.LeaderboardPanel.Name = "LeaderboardPanel";
-            this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
-            this.LeaderboardPanel.TabIndex = 5;
-            this.LeaderboardPanel.Visible = false;
-            // 
             // ParentInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -377,7 +377,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ParentInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ParentInterface";
+            this.Text = "Parent Interface";
             this.navigationPanel.ResumeLayout(false);
             this.navigationPanel.PerformLayout();
             this.upperPanel.ResumeLayout(false);

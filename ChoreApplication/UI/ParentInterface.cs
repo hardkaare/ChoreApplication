@@ -32,6 +32,7 @@ namespace ChoreApplication.UI
             LoadAll();
             InitializeDictionaries();
             ChoresUI();
+            LoadAmountOfNotifications();
         }
 
         private void LoadAll()
@@ -534,7 +535,7 @@ namespace ChoreApplication.UI
                 };
                 individualNotificationPanel.Controls.Add(notificationTitleLabel);
                 individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
-                individualNotificationPanel.Controls.Add(AddNotificationDeleteButton(350, individualNotificationPanel.Height / 2, n));
+                individualNotificationPanel.Controls.Add(AddNotificationDeleteButton(365, individualNotificationPanel.Height / 2, n));
                 NotificationPanel.Controls.Add(individualNotificationPanel);
                 i++;
             }
@@ -566,6 +567,7 @@ namespace ChoreApplication.UI
             Notification currentNotification = (Notification)clickedButton.Tag;
             currentNotification.Delete();
             LoadNotification();
+            LoadAmountOfNotifications();
         }
 
         private void LoadAmountOfNotifications()
@@ -579,6 +581,14 @@ namespace ChoreApplication.UI
             else
             {
                 NotificationAmount.Text = Notifications.Count.ToString();
+            }
+        }
+
+        public void MyTestMethod()
+        {
+            for (int i = 0; i < 10; i++)
+            {
+                Notification.Insert(1, $"Chore {i.ToString()} completed", "Hello test test");
             }
         }
         #endregion
