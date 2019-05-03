@@ -13,6 +13,7 @@ namespace ChoreApplication.UI
     public partial class ParentInterface : Form
     {
         public int UI = 0;
+        private EditChoreUI editChore {get;set;}
         public ParentUser Session { get; set; }
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
@@ -264,7 +265,7 @@ namespace ChoreApplication.UI
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
-                Tag = c.ID,
+                Tag = c,
                 Text = "Edit",
                 AutoSize = true,
             };
@@ -296,8 +297,9 @@ namespace ChoreApplication.UI
         private void EditButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            int Id = (int)clickedButton.Tag;
-            MessageBox.Show(Id.ToString());
+            Chore selectedChore = (Chore)clickedButton.Tag;
+            editChore = new EditChoreUI(selectedChore);
+            editChore.Show();
         }
 
         private void ApproveButton_Click(object sender, System.EventArgs e)
