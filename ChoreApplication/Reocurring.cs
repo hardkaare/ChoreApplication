@@ -16,10 +16,10 @@ namespace ChoreApplication
         #region Properties
 
         //What time of the day it should set the due time to when it generates Concrete Chores
-        public DateTime dueTime { get; set; }
+        public DateTime DueTime { get; set; }
 
         //What days it should generate a Concrete Chore
-        public List<string> days { get; set; }
+        public List<string> Days { get; set; }
 
         #endregion
 
@@ -31,8 +31,8 @@ namespace ChoreApplication
         public Reocurring(int _id, string _name, string _desc, int _points, int _assignment, DateTime _duetime, List<string> _days) : 
             base(_id, _name, _desc, _points, _assignment)
         {
-            dueTime = _duetime;
-            days = _days;
+            DueTime = _duetime;
+            Days = _days;
         }
 
         #endregion
@@ -49,10 +49,10 @@ namespace ChoreApplication
             //Formats the string with variables from this and base class
             var sum = string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nDue time: {4} \nDays: ",
-                Name, Description, Points, Assignment, dueTime.ToString("T"));
+                Name, Description, Points, Assignment, DueTime.ToString("T"));
 
             //Adds each day to the list
-            foreach (string day in days)
+            foreach (string day in Days)
             {
                 sum += "\n" + day;
             }
@@ -102,7 +102,7 @@ namespace ChoreApplication
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("UPDATE reoccurring_chore SET " +
                 "due_time='{0}' WHERE chore_id={1}",
-                dueTime.ToString("T"), ID);
+                DueTime.ToString("T"), ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
                 Assignment, Name, Description, Points, ID);
@@ -123,7 +123,7 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
 
             //Creates and executes an insert query for each day in the list
-            foreach (string day in days)
+            foreach (string day in Days)
             {
                 query4 = string.Format("INSERT INTO [days] (reo_id, day) VALUES " +
                     "((SELECT reo_id FROM reoccurring_chore WHERE chore_id={0}), '{1}')", ID, day);
@@ -188,14 +188,13 @@ namespace ChoreApplication
                 //Adds each day to the days list for the current chore
                 while (reader.Read())
                 {
-                    list.days.Add(reader[0].ToString());
+                    list.Days.Add(reader[0].ToString());
                 }
                 reader.Close();
             }
             DatabaseFunctions.dbConn.Close();
             return result;
         }
-
         #endregion
     }
 }
