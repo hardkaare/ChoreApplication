@@ -89,7 +89,7 @@ namespace ChoreApplication.UI
                     }
                 }
             }
-            CreateChoreButton.Location = new System.Drawing.Point(174, 400);
+            CreateChoreButton.Location = new System.Drawing.Point(135, 400);
             _choreType = 3;
         }
         private void LoadChildren()
