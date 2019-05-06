@@ -29,8 +29,8 @@ namespace ChoreApplication.UI
             {
                 _child.FirstName = childName.Text;
                 _child.Pincode = pincode.Text;
-                // The first !Regex.Match ensures that a childs name cannot contain only numbers. The second Regex.Match ensures that a pincode always will be exactly 4 digits. 
-                if (!(childName.Text == "") && !Regex.Match(childName.Text, "^[0-9]+$").Success && Regex.Match(pincode.Text, @"^\d{4}$").Success)
+                // The first !Regex.Match ensures that a childs name only can contain letters. The second Regex.Match ensures that a pincode always will be exactly 4 digits. 
+                if (Regex.IsMatch(childName.Text, @"^[a-zA-Z]+$") && Regex.Match(pincode.Text, @"^\d{4}$").Success)
                 {
                     _child.Update();
                     this.Close();

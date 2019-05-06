@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.NotificationAmount = new global::ChoreApplication.UI.RoundButton();
+            this.NotificationAmount = new ChoreApplication.UI.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -80,13 +80,13 @@
             this.NotificationAmount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotificationAmount.Location = new System.Drawing.Point(376, 2);
+            this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationAmount.Location = new System.Drawing.Point(374, 1);
             this.NotificationAmount.Name = "NotificationAmount";
-            this.NotificationAmount.Size = new System.Drawing.Size(28, 28);
+            this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
             this.NotificationAmount.TabIndex = 0;
             this.NotificationAmount.TabStop = false;
-            this.NotificationAmount.Text = "1";
+            this.NotificationAmount.Text = "999";
             this.NotificationAmount.UseVisualStyleBackColor = true;
             // 
             // notificationsLabel
@@ -263,7 +263,6 @@
             // upperPanel
             // 
             this.upperPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upperPanel.Controls.Add(this.LeaderboardPanel);
             this.upperPanel.Controls.Add(this.UserButton);
             this.upperPanel.Controls.Add(this.SortButton);
             this.upperPanel.Controls.Add(this.OptionButton);
@@ -355,7 +354,7 @@
             // 
             this.LeaderboardPanel.AutoScroll = true;
             this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LeaderboardPanel.Location = new System.Drawing.Point(-1, 36);
+            this.LeaderboardPanel.Location = new System.Drawing.Point(12, 49);
             this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 450);
             this.LeaderboardPanel.Name = "LeaderboardPanel";
             this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
@@ -368,6 +367,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(444, 561);
+            this.Controls.Add(this.LeaderboardPanel);
             this.Controls.Add(this.NotificationPanel);
             this.Controls.Add(this.UserPanel);
             this.Controls.Add(this.RewardPanel);
@@ -377,7 +377,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "ParentInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ParentInterface";
+            this.Text = "Parent Interface";
             this.navigationPanel.ResumeLayout(false);
             this.navigationPanel.PerformLayout();
             this.upperPanel.ResumeLayout(false);
@@ -405,7 +405,7 @@
         private System.Windows.Forms.Panel ChorePanel;
         private System.Windows.Forms.Button SortButton;
         private System.Windows.Forms.Panel RewardPanel;
-        private System.Windows.Forms.Panel UserPanel;
+        public System.Windows.Forms.Panel UserPanel;
         private System.Windows.Forms.Panel NotificationPanel;
         private global::ChoreApplication.UI.RoundButton NotificationAmount;
         private System.Windows.Forms.Panel LeaderboardPanel;

@@ -47,12 +47,15 @@ namespace ChoreApplication
         private void EditJoenler_Click(object sender, EventArgs e)
         {
             var child = ChildUser.Load("u.user_id = 2");
-            var chore = Concrete.Load("ch.chore_id = 2");
+            var chore = Reocurring.Load("ch.chore_id = 1");
+            var reward = Reward.Load("");
             var EditChild = new UI.EditChildUI(child[0]);
             var editChore = new UI.EditChoreUI(chore[0]);
+            var editReward = new UI.EditRewardUI(reward[0]);
 
             //EditChild.Show();
             editChore.Show();
+            //editReward.Show();
         }
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
@@ -96,7 +99,7 @@ namespace ChoreApplication
             //RegisterUser.Show();
             //ChooseProfile.Show();
             //ParentInterface.Show();
-            ChildInterface.Show();
+            ParentInterface.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)

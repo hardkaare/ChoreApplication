@@ -64,6 +64,7 @@ namespace ChoreApplication.UI
             // 
             this.ChoreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ChoreName.Location = new System.Drawing.Point(65, 65);
+            this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
             this.ChoreName.Size = new System.Drawing.Size(198, 20);
             this.ChoreName.TabIndex = 1;
@@ -80,6 +81,7 @@ namespace ChoreApplication.UI
             // ChoreDescription
             // 
             this.ChoreDescription.Location = new System.Drawing.Point(65, 150);
+            this.ChoreDescription.MaxLength = 255;
             this.ChoreDescription.Name = "ChoreDescription";
             this.ChoreDescription.Size = new System.Drawing.Size(198, 57);
             this.ChoreDescription.TabIndex = 3;
@@ -102,7 +104,7 @@ namespace ChoreApplication.UI
             // 
             // DueDate
             // 
-            this.DueDate.CustomFormat = Concrete.dateFormatString;
+            this.DueDate.CustomFormat = "dd-MM-yyyy HH:mm";
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueDate.Location = new System.Drawing.Point(65, 266);
             this.DueDate.Name = "DueDate";
