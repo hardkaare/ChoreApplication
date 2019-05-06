@@ -43,6 +43,7 @@
             // description
             // 
             this.description.Location = new System.Drawing.Point(120, 127);
+            this.description.MaxLength = 255;
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(121, 96);
             this.description.TabIndex = 11;
@@ -113,6 +114,7 @@
             // rewardName
             // 
             this.rewardName.Location = new System.Drawing.Point(119, 84);
+            this.rewardName.MaxLength = 50;
             this.rewardName.Name = "rewardName";
             this.rewardName.Size = new System.Drawing.Size(120, 20);
             this.rewardName.TabIndex = 10;

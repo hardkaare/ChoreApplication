@@ -154,6 +154,7 @@
             // ChoreDescription
             // 
             this.ChoreDescription.Location = new System.Drawing.Point(112, 127);
+            this.ChoreDescription.MaxLength = 255;
             this.ChoreDescription.Name = "ChoreDescription";
             this.ChoreDescription.Size = new System.Drawing.Size(198, 57);
             this.ChoreDescription.TabIndex = 18;
@@ -171,6 +172,7 @@
             // 
             this.ChoreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ChoreName.Location = new System.Drawing.Point(112, 49);
+            this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
             this.ChoreName.Size = new System.Drawing.Size(198, 20);
             this.ChoreName.TabIndex = 16;

@@ -30,9 +30,9 @@ namespace ChoreApplication
         /// Inserts a child user with the firstName specified in the <param>firstName</param>
         /// </summary>
         /// <param name="firstName"></param>
-        public static void Insert(string firstName)
+        public static void Insert(string firstName, string pincode)
         {
-            string userQuery = string.Format("INSERT INTO dbo.users(first_name) OUTPUT inserted.user_id VALUES ('{0}')", firstName);
+            string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}', '{1}')", firstName, pincode);
             SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.dbConn);
             DatabaseFunctions.dbConn.Open();
             //executes the query and return the first column of the first row in the result set returned by the query 

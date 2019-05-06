@@ -40,6 +40,7 @@
             // childName
             // 
             this.childName.Location = new System.Drawing.Point(108, 248);
+            this.childName.MaxLength = 20;
             this.childName.Name = "childName";
             this.childName.Size = new System.Drawing.Size(157, 20);
             this.childName.TabIndex = 0;
@@ -77,6 +78,7 @@
             // pincode
             // 
             this.pincode.Location = new System.Drawing.Point(108, 290);
+            this.pincode.MaxLength = 4;
             this.pincode.Name = "pincode";
             this.pincode.Size = new System.Drawing.Size(157, 20);
             this.pincode.TabIndex = 4;

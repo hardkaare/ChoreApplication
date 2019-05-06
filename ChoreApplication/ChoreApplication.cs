@@ -54,8 +54,8 @@ namespace ChoreApplication
             var editReward = new UI.EditRewardUI(reward[0]);
 
             //EditChild.Show();
-            //editChore.Show();
-            editReward.Show();
+            editChore.Show();
+            //editReward.Show();
         }
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
@@ -68,8 +68,8 @@ namespace ChoreApplication
             var createChild = new UI.CreateChildUI();
 
             //createChild.Show();
-            createreward.Show();
-            //createchore.Show();
+            //createreward.Show();
+            createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
