@@ -177,24 +177,38 @@ namespace ChoreApplication.UI
             // 
             // Days
             // 
-            this.Days.Location = new System.Drawing.Point(0, 0);
+            this.Days.FormattingEnabled = true;
+            this.Days.Items.AddRange(new object[] {
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday",
+            "Sunday"});
+            this.Days.Location = new System.Drawing.Point(65, 266);
             this.Days.Name = "Days";
-            this.Days.Size = new System.Drawing.Size(120, 94);
-            this.Days.TabIndex = 0;
+            this.Days.Size = new System.Drawing.Size(200, 109);
+            this.Days.TabIndex = 12;
             // 
             // CompletionLimit
             // 
-            this.CompletionLimit.Location = new System.Drawing.Point(0, 0);
+            this.CompletionLimit.Location = new System.Drawing.Point(64, 266);
+            this.CompletionLimit.Minimum = new decimal(new int[] {1,0,0,0});
             this.CompletionLimit.Name = "CompletionLimit";
-            this.CompletionLimit.Size = new System.Drawing.Size(120, 20);
-            this.CompletionLimit.TabIndex = 0;
+            this.CompletionLimit.Size = new System.Drawing.Size(200, 20);
+            this.CompletionLimit.TabIndex = 12;
+            this.CompletionLimit.Value = new decimal(new int[] {1,0,0,0});
             // 
             // DueTime
             // 
-            this.DueTime.Location = new System.Drawing.Point(0, 0);
+            this.DueTime.CustomFormat = "HH:mm";
+            this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.DueTime.Location = new System.Drawing.Point(63, 395);
             this.DueTime.Name = "DueTime";
+            this.DueTime.ShowUpDown = true;
             this.DueTime.Size = new System.Drawing.Size(200, 20);
-            this.DueTime.TabIndex = 0;
+            this.DueTime.TabIndex = 12;
             // 
             // label7
             // 
@@ -212,6 +226,7 @@ namespace ChoreApplication.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(337, 557);
+            
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

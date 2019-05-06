@@ -165,6 +165,7 @@ namespace ChoreApplication.UI
                     Size = new Size(ChorePanel.Width - 20, panelHeight),
                     AutoSize = true,
                 };
+
                 ChorePanel.Controls.Add(individualChorePanel);
                 individualChorePanel.Controls.Add(choreNameLabel);
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
@@ -548,6 +549,18 @@ namespace ChoreApplication.UI
             this.LeaderboardPanel.BringToFront();
             this.SortButton.Visible = true;
             this.OptionButton.Visible = false;
+            LoadLeaderboard();
+        }
+
+        private void LoadLeaderboard()
+        {
+            ProgressBar test = new ProgressBar();
+            test.Location = new Point(20, 20);
+            test.Value = 45;
+            test.Name = "myProgressbar";
+            test.Height = 50;
+            test.Width = 200;
+            this.LeaderboardPanel.Controls.Add(test);
         }
         #endregion
 
