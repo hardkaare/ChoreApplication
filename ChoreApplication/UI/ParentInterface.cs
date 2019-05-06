@@ -150,6 +150,7 @@ namespace ChoreApplication.UI
                     Size = new Size(ChorePanel.Width - 20, panelHeight),
                     AutoSize = true,
                 };
+
                 ChorePanel.Controls.Add(individualChorePanel);
                 individualChorePanel.Controls.Add(choreNameLabel);
                 individualChorePanel.Controls.Add(choreAssignmentLabel);

@@ -17,7 +17,7 @@ namespace ChoreApplication.UI
         private Dictionary<int, string> StatusValues;
         private List<Concrete> ConcreConcreteChoresApprovalPendingteChores;
         private List<ChildUser> ChildUsers;
-        //  private List<Reward> Rewards;
+        private List<Reward> Rewards;
         private readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
         private readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
         public ChildInterface(ChildUser child)
@@ -34,7 +34,7 @@ namespace ChoreApplication.UI
         {
             ConcreConcreteChoresApprovalPendingteChores = Concrete.Load($"status=1 OR (type='conc' AND status=2) AND child_id={Session.ChildId} ORDER BY status DESC");
             ChildUsers = ChildUser.Load("");
-
+            Rewards = Reward.Load("");
         }
 
         private void InitializeDictionaries()
@@ -88,23 +88,51 @@ namespace ChoreApplication.UI
                  individualChorePanel.Controls.Add(choreNamelabel);
                  individualChorePanel.Controls.Add(choreStatusLabel);
               
-
-
-
-
-
-
+                                                                            
             }
 
 
         }
         #region RewardUI
-        public void RewardUI()
+        private void RewardsUI()
         {
             UI = 2;
+            this.RewardPanel.Visible = true;
+            this.RewardPanel.BringToFront();
             titleText.Text = "Rewards";
+            LoadRewards();
         }
         #endregion
+
+        private void LoadRewards()
+        {
+            RewardPanel.Controls.Clear();
+            int i = 0;
+            int panelDistance = 72;
+
+            foreach (Reward r in Rewards)
+            {
+                var rewardName = r.Name.ToString();
+                var rewardProgress = r.PointsReq.ToString();
+                var rewardNameLabel = AddLabel(rewardName, true, 5, 5);
+                var rewardProgressLabel = AddLabel(rewardProgress, true, 5, 5);
+                var panelHeight = rewardNameLabel.Height + rewardProgressLabel.Height;
+
+                var individualRewardPanel = new Panel
+                {
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(RewardPanel.Width - 20, panelHeight),
+                    AutoSize = true,
+                };
+                individualRewardPanel.Controls.Add(rewardNameLabel);
+                RewardPanel.Controls.Add(individualRewardPanel);
+                i++;
+            
+            }
+          
+        }
+
         private Control AddLabel(string labelText, bool bold, int posX, int posY)
         {
             var label = new Label
@@ -154,7 +182,7 @@ namespace ChoreApplication.UI
         
         private void RewardNavButton_Click(object sender, EventArgs e)
         {
-            RewardUI();
+            RewardsUI();
         }
 
         private void LeadboardNavButton_Click(object sender, EventArgs e)
