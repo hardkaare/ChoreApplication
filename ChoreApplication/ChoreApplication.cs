@@ -15,7 +15,7 @@ namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
-        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "dillerdaller", 0, "0000");
+        public ChildUser DumbFuckChildUser = new ChildUser(1, 2, "Dillerdaller", 1000, "0000");
         public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
         {
@@ -51,7 +51,7 @@ namespace ChoreApplication
             var reward = Reward.Load("");
             var EditChild = new UI.EditChildUI(child[0]);
             var editChore = new UI.EditChoreUI(chore[0]);
-            var editReward = new UI.EditRewardUI(reward[0]);
+            //var editReward = new UI.EditRewardUI(reward[0]);
 
             //EditChild.Show();
             editChore.Show();

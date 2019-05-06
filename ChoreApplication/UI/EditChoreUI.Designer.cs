@@ -49,7 +49,7 @@
             // daysLabel
             // 
             this.daysLabel.AutoSize = true;
-            this.daysLabel.Location = new System.Drawing.Point(109, 266);
+            this.daysLabel.Location = new System.Drawing.Point(70, 266);
             this.daysLabel.Name = "daysLabel";
             this.daysLabel.Size = new System.Drawing.Size(31, 13);
             this.daysLabel.TabIndex = 29;
@@ -57,10 +57,20 @@
             // 
             // CompletionLimit
             // 
-            this.CompletionLimit.Location = new System.Drawing.Point(112, 243);
+            this.CompletionLimit.Location = new System.Drawing.Point(70, 243);
+            this.CompletionLimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.CompletionLimit.Name = "CompletionLimit";
             this.CompletionLimit.Size = new System.Drawing.Size(198, 20);
             this.CompletionLimit.TabIndex = 13;
+            this.CompletionLimit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Days
             // 
@@ -72,24 +82,24 @@
             "Friday",
             "Saturday",
             "Sunday"});
-            this.Days.Location = new System.Drawing.Point(112, 282);
+            this.Days.Location = new System.Drawing.Point(70, 282);
             this.Days.Name = "Days";
             this.Days.Size = new System.Drawing.Size(198, 109);
-            this.Days.TabIndex = 14;
+            this.Days.TabIndex = 10;
             // 
             // assignmentLabel
             // 
             this.assignmentLabel.AutoSize = true;
-            this.assignmentLabel.Location = new System.Drawing.Point(109, 187);
+            this.assignmentLabel.Location = new System.Drawing.Point(70, 188);
             this.assignmentLabel.Name = "assignmentLabel";
             this.assignmentLabel.Size = new System.Drawing.Size(61, 13);
-            this.assignmentLabel.TabIndex = 28;
+            this.assignmentLabel.TabIndex = 0;
             this.assignmentLabel.Text = "Assignment";
             // 
             // dtlLabel
             // 
             this.dtlLabel.AutoSize = true;
-            this.dtlLabel.Location = new System.Drawing.Point(109, 227);
+            this.dtlLabel.Location = new System.Drawing.Point(70, 227);
             this.dtlLabel.Name = "dtlLabel";
             this.dtlLabel.Size = new System.Drawing.Size(51, 13);
             this.dtlLabel.TabIndex = 27;
@@ -98,101 +108,102 @@
             // descriptionLabel
             // 
             this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(109, 111);
+            this.descriptionLabel.Location = new System.Drawing.Point(70, 112);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(60, 13);
-            this.descriptionLabel.TabIndex = 25;
+            this.descriptionLabel.TabIndex = 0;
             this.descriptionLabel.Text = "Description";
             // 
             // DueTime
             // 
             this.DueTime.CustomFormat = "hh:mm";
             this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueTime.Location = new System.Drawing.Point(112, 243);
+            this.DueTime.Location = new System.Drawing.Point(70, 243);
             this.DueTime.Name = "DueTime";
             this.DueTime.ShowUpDown = true;
             this.DueTime.Size = new System.Drawing.Size(198, 20);
-            this.DueTime.TabIndex = 15;
+            this.DueTime.TabIndex = 9;
             // 
             // pointsLabel
             // 
             this.pointsLabel.AutoSize = true;
-            this.pointsLabel.Location = new System.Drawing.Point(109, 73);
+            this.pointsLabel.Location = new System.Drawing.Point(70, 74);
             this.pointsLabel.Name = "pointsLabel";
             this.pointsLabel.Size = new System.Drawing.Size(36, 13);
-            this.pointsLabel.TabIndex = 23;
+            this.pointsLabel.TabIndex = 0;
             this.pointsLabel.Text = "Points";
             // 
             // nameLabel
             // 
             this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(109, 33);
+            this.nameLabel.Location = new System.Drawing.Point(70, 34);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(35, 13);
-            this.nameLabel.TabIndex = 21;
+            this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name";
             // 
             // Assignment
             // 
             this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Assignment.FormattingEnabled = true;
-            this.Assignment.Location = new System.Drawing.Point(112, 203);
+            this.Assignment.Location = new System.Drawing.Point(70, 204);
             this.Assignment.Name = "Assignment";
             this.Assignment.Size = new System.Drawing.Size(198, 21);
-            this.Assignment.TabIndex = 22;
+            this.Assignment.TabIndex = 4;
             // 
             // DueDate
             // 
             this.DueDate.CustomFormat = "dd\'-\'MM\'-\'yyyy HH\':\'mm\':\'ss";
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueDate.Location = new System.Drawing.Point(112, 243);
+            this.DueDate.Location = new System.Drawing.Point(70, 243);
             this.DueDate.Name = "DueDate";
             this.DueDate.Size = new System.Drawing.Size(198, 20);
-            this.DueDate.TabIndex = 20;
+            this.DueDate.TabIndex = 13;
             this.DueDate.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
             // 
             // ChoreDescription
             // 
-            this.ChoreDescription.Location = new System.Drawing.Point(112, 127);
+            this.ChoreDescription.Location = new System.Drawing.Point(70, 128);
             this.ChoreDescription.MaxLength = 255;
             this.ChoreDescription.Name = "ChoreDescription";
             this.ChoreDescription.Size = new System.Drawing.Size(198, 57);
-            this.ChoreDescription.TabIndex = 18;
+            this.ChoreDescription.TabIndex = 3;
             this.ChoreDescription.Text = "Enter a description";
             // 
             // ChorePoints
             // 
-            this.ChorePoints.Location = new System.Drawing.Point(112, 88);
+            this.ChorePoints.Location = new System.Drawing.Point(70, 89);
             this.ChorePoints.Name = "ChorePoints";
             this.ChorePoints.Size = new System.Drawing.Size(198, 20);
-            this.ChorePoints.TabIndex = 17;
+            this.ChorePoints.TabIndex = 2;
             this.ChorePoints.Text = "Enter chore points";
             // 
             // ChoreName
             // 
             this.ChoreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChoreName.Location = new System.Drawing.Point(112, 49);
+            this.ChoreName.Location = new System.Drawing.Point(70, 50);
             this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
             this.ChoreName.Size = new System.Drawing.Size(198, 20);
-            this.ChoreName.TabIndex = 16;
+            this.ChoreName.TabIndex = 1;
             this.ChoreName.Text = "Enter chore name";
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Location = new System.Drawing.Point(174, 280);
+            this.CreateChoreButton.Location = new System.Drawing.Point(135, 281);
             this.CreateChoreButton.Name = "CreateChoreButton";
             this.CreateChoreButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateChoreButton.TabIndex = 24;
+            this.CreateChoreButton.TabIndex = 15;
             this.CreateChoreButton.Text = "Save";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
             this.CreateChoreButton.Click += new System.EventHandler(this.CreateChoreButton_Click);
             // 
             // EditChoreUI
             // 
+            this.AcceptButton = this.CreateChoreButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(437, 513);
+            this.ClientSize = new System.Drawing.Size(337, 513);
             this.Controls.Add(this.assignmentLabel);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.pointsLabel);
@@ -202,6 +213,9 @@
             this.Controls.Add(this.ChorePoints);
             this.Controls.Add(this.ChoreName);
             this.Controls.Add(this.CreateChoreButton);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditChoreUI";
             this.Text = "EditChoreUI";
             ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).EndInit();

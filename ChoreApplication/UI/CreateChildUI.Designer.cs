@@ -41,7 +41,7 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = global::ChoreApplication.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(133, 30);
+            this.pictureBox1.Location = new System.Drawing.Point(113, 21);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(119, 159);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -50,7 +50,7 @@
             // 
             // childName
             // 
-            this.childName.Location = new System.Drawing.Point(104, 228);
+            this.childName.Location = new System.Drawing.Point(86, 219);
             this.childName.MaxLength = 20;
             this.childName.Name = "childName";
             this.childName.Size = new System.Drawing.Size(173, 20);
@@ -58,7 +58,7 @@
             // 
             // createChildButton
             // 
-            this.createChildButton.Location = new System.Drawing.Point(140, 293);
+            this.createChildButton.Location = new System.Drawing.Point(122, 284);
             this.createChildButton.Name = "createChildButton";
             this.createChildButton.Size = new System.Drawing.Size(100, 33);
             this.createChildButton.TabIndex = 3;
@@ -69,7 +69,7 @@
             // childNameLabel
             // 
             this.childNameLabel.AutoSize = true;
-            this.childNameLabel.Location = new System.Drawing.Point(101, 212);
+            this.childNameLabel.Location = new System.Drawing.Point(83, 203);
             this.childNameLabel.Name = "childNameLabel";
             this.childNameLabel.Size = new System.Drawing.Size(35, 13);
             this.childNameLabel.TabIndex = 3;
@@ -78,7 +78,7 @@
             // pincodeLabel
             // 
             this.pincodeLabel.AutoSize = true;
-            this.pincodeLabel.Location = new System.Drawing.Point(101, 249);
+            this.pincodeLabel.Location = new System.Drawing.Point(83, 240);
             this.pincodeLabel.Name = "pincodeLabel";
             this.pincodeLabel.Size = new System.Drawing.Size(46, 13);
             this.pincodeLabel.TabIndex = 5;
@@ -86,7 +86,7 @@
             // 
             // childPincode
             // 
-            this.childPincode.Location = new System.Drawing.Point(104, 265);
+            this.childPincode.Location = new System.Drawing.Point(86, 256);
             this.childPincode.MaxLength = 4;
             this.childPincode.Name = "childPincode";
             this.childPincode.Size = new System.Drawing.Size(173, 20);
@@ -94,15 +94,18 @@
             // 
             // CreateChildUI
             // 
+            this.AcceptButton = this.createChildButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(384, 383);
+            this.ClientSize = new System.Drawing.Size(337, 383);
             this.Controls.Add(this.pincodeLabel);
             this.Controls.Add(this.childPincode);
             this.Controls.Add(this.childNameLabel);
             this.Controls.Add(this.createChildButton);
             this.Controls.Add(this.childName);
             this.Controls.Add(this.pictureBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MinimizeBox = false;
             this.Name = "CreateChildUI";
             this.Text = "CreateChildUI";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();

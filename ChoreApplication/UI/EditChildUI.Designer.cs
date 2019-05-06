@@ -39,18 +39,18 @@
             // 
             // childName
             // 
-            this.childName.Location = new System.Drawing.Point(108, 248);
+            this.childName.Location = new System.Drawing.Point(88, 248);
             this.childName.MaxLength = 20;
             this.childName.Name = "childName";
             this.childName.Size = new System.Drawing.Size(157, 20);
-            this.childName.TabIndex = 0;
+            this.childName.TabIndex = 1;
             // 
             // Save
             // 
-            this.Save.Location = new System.Drawing.Point(149, 316);
+            this.Save.Location = new System.Drawing.Point(129, 316);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(75, 24);
-            this.Save.TabIndex = 1;
+            this.Save.TabIndex = 3;
             this.Save.Text = "Save";
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
@@ -58,17 +58,17 @@
             // childNameLabel
             // 
             this.childNameLabel.AutoSize = true;
-            this.childNameLabel.Location = new System.Drawing.Point(105, 232);
+            this.childNameLabel.Location = new System.Drawing.Point(85, 232);
             this.childNameLabel.Name = "childNameLabel";
             this.childNameLabel.Size = new System.Drawing.Size(59, 13);
-            this.childNameLabel.TabIndex = 2;
+            this.childNameLabel.TabIndex = 0;
             this.childNameLabel.Text = "Child name";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = global::ChoreApplication.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(127, 28);
+            this.pictureBox1.Location = new System.Drawing.Point(107, 28);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(119, 159);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -77,32 +77,36 @@
             // 
             // pincode
             // 
-            this.pincode.Location = new System.Drawing.Point(108, 290);
+            this.pincode.Location = new System.Drawing.Point(88, 290);
             this.pincode.MaxLength = 4;
             this.pincode.Name = "pincode";
             this.pincode.Size = new System.Drawing.Size(157, 20);
-            this.pincode.TabIndex = 4;
+            this.pincode.TabIndex = 2;
             // 
             // pincodeLabel
             // 
             this.pincodeLabel.AutoSize = true;
-            this.pincodeLabel.Location = new System.Drawing.Point(105, 274);
+            this.pincodeLabel.Location = new System.Drawing.Point(85, 274);
             this.pincodeLabel.Name = "pincodeLabel";
             this.pincodeLabel.Size = new System.Drawing.Size(46, 13);
-            this.pincodeLabel.TabIndex = 5;
+            this.pincodeLabel.TabIndex = 0;
             this.pincodeLabel.Text = "Pincode";
             // 
             // EditChildUI
             // 
+            this.AcceptButton = this.Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(359, 450);
+            this.ClientSize = new System.Drawing.Size(337, 450);
             this.Controls.Add(this.pincodeLabel);
             this.Controls.Add(this.pincode);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.childNameLabel);
             this.Controls.Add(this.Save);
             this.Controls.Add(this.childName);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "EditChildUI";
             this.Text = "EditChildUI";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
