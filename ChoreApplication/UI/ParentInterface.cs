@@ -135,7 +135,6 @@ namespace ChoreApplication.UI
             UI = 1;
             this.ChorePanel.Visible = true;
             this.ChorePanel.BringToFront();
-            this.SortButton.Visible = false;
             this.OptionButton.Visible = true;
             titleText.Text = "Chores";
             LoadChores();
@@ -441,7 +440,6 @@ namespace ChoreApplication.UI
             UI = 2;
             this.RewardPanel.Visible = true;
             this.RewardPanel.BringToFront();
-            this.SortButton.Visible = false;
             this.OptionButton.Visible = true;
             titleText.Text = "Rewards";
             LoadRewards();
@@ -560,7 +558,6 @@ namespace ChoreApplication.UI
             titleText.Text = "Leaderboard";
             this.LeaderboardPanel.Visible = true;
             this.LeaderboardPanel.BringToFront();
-            this.SortButton.Visible = true;
             this.OptionButton.Visible = false;
             LoadLeaderboard();
         }
@@ -587,7 +584,6 @@ namespace ChoreApplication.UI
             titleText.Text = "Users";
             this.UserPanel.Visible = true;
             this.UserPanel.BringToFront();
-            this.SortButton.Visible = false;
             this.OptionButton.Visible = true;
             LoadUsers();
         }
@@ -717,7 +713,6 @@ namespace ChoreApplication.UI
             this.NotificationPanel.Visible = true;
             this.NotificationPanel.BringToFront();
             this.OptionButton.Visible = false;
-            this.SortButton.Visible = false;
             LoadNotification();
         }
 
