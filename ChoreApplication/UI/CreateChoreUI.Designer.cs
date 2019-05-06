@@ -52,10 +52,10 @@ namespace ChoreApplication.UI
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Location = new System.Drawing.Point(126, 370);
+            this.CreateChoreButton.Location = new System.Drawing.Point(121, 370);
             this.CreateChoreButton.Name = "CreateChoreButton";
             this.CreateChoreButton.Size = new System.Drawing.Size(75, 23);
-            this.CreateChoreButton.TabIndex = 7;
+            this.CreateChoreButton.TabIndex = 14;
             this.CreateChoreButton.Text = "Create";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
             this.CreateChoreButton.Click += new System.EventHandler(this.CreateChoreButton_Click);
@@ -119,7 +119,7 @@ namespace ChoreApplication.UI
             this.Assignment.Location = new System.Drawing.Point(65, 314);
             this.Assignment.Name = "Assignment";
             this.Assignment.Size = new System.Drawing.Size(199, 21);
-            this.Assignment.TabIndex = 6;
+            this.Assignment.TabIndex = 13;
             // 
             // label1
             // 
@@ -194,11 +194,19 @@ namespace ChoreApplication.UI
             // CompletionLimit
             // 
             this.CompletionLimit.Location = new System.Drawing.Point(64, 266);
-            this.CompletionLimit.Minimum = new decimal(new int[] {1,0,0,0});
+            this.CompletionLimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.CompletionLimit.Name = "CompletionLimit";
             this.CompletionLimit.Size = new System.Drawing.Size(200, 20);
             this.CompletionLimit.TabIndex = 12;
-            this.CompletionLimit.Value = new decimal(new int[] {1,0,0,0});
+            this.CompletionLimit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // DueTime
             // 
@@ -226,7 +234,6 @@ namespace ChoreApplication.UI
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(337, 557);
-            
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);

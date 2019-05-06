@@ -15,6 +15,7 @@ namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
+        
         public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "dillerdaller", 0, "0000");
         public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
@@ -57,19 +58,20 @@ namespace ChoreApplication
             editChore.Show();
             //editReward.Show();
         }
+        //public UI.CreateChoreUI createchore = new UI.CreateChoreUI();
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
             var LoginInterface = new UI.LoginInterface();
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
-            var createchore = new UI.CreateChoreUI();
+            //var createchore = new UI.CreateChoreUI();
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
 
             //createChild.Show();
             //createreward.Show();
-            createchore.Show();
+            //createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
