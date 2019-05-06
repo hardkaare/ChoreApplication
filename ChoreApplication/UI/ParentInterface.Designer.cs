@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.NotificationAmount = new global::ChoreApplication.UI.RoundButton();
+            this.NotificationAmount = new UI.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -263,7 +263,6 @@
             // upperPanel
             // 
             this.upperPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upperPanel.Controls.Add(this.LeaderboardPanel);
             this.upperPanel.Controls.Add(this.UserButton);
             this.upperPanel.Controls.Add(this.SortButton);
             this.upperPanel.Controls.Add(this.OptionButton);
@@ -277,7 +276,7 @@
             // 
             this.LeaderboardPanel.AutoScroll = true;
             this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LeaderboardPanel.Location = new System.Drawing.Point(-1, 36);
+            this.LeaderboardPanel.Location = new System.Drawing.Point(12, 49);
             this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 450);
             this.LeaderboardPanel.Name = "LeaderboardPanel";
             this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
