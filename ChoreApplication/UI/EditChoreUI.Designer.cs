@@ -58,9 +58,19 @@
             // CompletionLimit
             // 
             this.CompletionLimit.Location = new System.Drawing.Point(112, 243);
+            this.CompletionLimit.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.CompletionLimit.Name = "CompletionLimit";
             this.CompletionLimit.Size = new System.Drawing.Size(198, 20);
             this.CompletionLimit.TabIndex = 13;
+            this.CompletionLimit.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // Days
             // 

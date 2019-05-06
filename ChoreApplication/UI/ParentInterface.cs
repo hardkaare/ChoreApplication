@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
@@ -14,7 +9,9 @@ namespace ChoreApplication.UI
     {
         public int UI = 0;
         public ParentUser Session { get; set; }
-        public EditChoreUI EditSelectedChore { get; set; }
+        private EditChoreUI EditSelectedChore;
+        private EditRewardUI EditSelectedReward;
+        private EditChildUI EditSelectedChild;
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
         private List<Reocurring> ReoccurringChores;
@@ -26,25 +23,14 @@ namespace ChoreApplication.UI
         private List<Notification> Notifications;
         public readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
         public readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
+
         public ParentInterface(ParentUser p)
         {
             Session = p;
             InitializeComponent();
-            LoadAll();
             InitializeDictionaries();
             ChoresUI();
             LoadAmountOfNotifications();
-        }
-
-        private void LoadAll()
-        {
-            ConcreteChoresApprovalPending = Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
-            ReoccurringChores = Reocurring.Load("");
-            RepeatableChores = Repeatable.Load("");
-            Rewards = Reward.Load("");
-            ParentUsers = ParentUser.Load("");
-            ChildUsers = ChildUser.Load("");
-            Notifications = Notification.Load("");
         }
 
         private void InitializeDictionaries()
@@ -55,11 +41,35 @@ namespace ChoreApplication.UI
                 { 2, "Approval pending" },
             };
 
+            ChildUsers = ChildUser.Load("");
             ChildrenNames = new Dictionary<int, string>();
             foreach (var child in ChildUsers)
             {
                 ChildrenNames.Add(child.ChildId, child.FirstName);
             }
+        }
+
+        #region General Controls
+
+        private Control AddLabel(string labelText, bool bold, int posX, int posY)
+        {
+            var label = new Label
+            {
+                Text = labelText,
+                Location = new Point(posX, posY),
+                AutoSize = true,
+            };
+            if (!bold)
+            {
+                label.Font = StandardFont;
+                return label;
+            }
+            if (bold)
+            {
+                label.Font = StandardFontBold;
+                return label;
+            }
+            return label;
         }
 
         private void OptionButton_Click(object sender, EventArgs e)
@@ -70,20 +80,26 @@ namespace ChoreApplication.UI
                     var createChore = new CreateChoreUI();
                     createChore.Show();
                     break;
+
                 case 2:
                     var createReward = new CreateRewardUI();
                     createReward.Show();
                     break;
+
                 case 4:
                     var createChild = new CreateChildUI();
                     createChild.Show();
                     break;
+
                 default:
                     break;
             }
         }
 
+        #endregion General Controls
+
         #region NavigationPanel
+
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
             ChoresUI();
@@ -108,9 +124,11 @@ namespace ChoreApplication.UI
         {
             NotificationsUI();
         }
-        #endregion
+
+        #endregion NavigationPanel
 
         #region ChoreUI
+
         public void ChoresUI()
         {
             LoadAmountOfNotifications();
@@ -125,8 +143,10 @@ namespace ChoreApplication.UI
 
         public void LoadChores()
         {
+            ConcreteChoresApprovalPending = Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
+            ReoccurringChores = Reocurring.Load("");
+            RepeatableChores = Repeatable.Load("");
             ChorePanel.Controls.Clear();
-            LoadAll();
             int i = 0;
             int panelDistance = 95;
 
@@ -158,8 +178,8 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreTypeLabel);
                 if (chore.Status == 2)
                 {
-                    individualChorePanel.Controls.Add(AddApproveButton(330, individualChorePanel.Height / 2, chore));
-                    individualChorePanel.Controls.Add(AddDenyButton(365, individualChorePanel.Height / 2, chore));
+                    individualChorePanel.Controls.Add(AddApproveChoreButton(330, individualChorePanel.Height / 2, chore));
+                    individualChorePanel.Controls.Add(AddDenyChoreButton(365, individualChorePanel.Height / 2, chore));
                 }
                 else
                 {
@@ -228,29 +248,7 @@ namespace ChoreApplication.UI
             }
         }
 
-
-        private Control AddLabel(string labelText, bool bold, int posX, int posY)
-        {
-            var label = new Label
-            {
-                Text = labelText,
-                Location = new Point(posX, posY),
-                AutoSize = true,
-            };
-            if (!bold)
-            {
-                label.Font = StandardFont;
-                return label;
-            }
-            if (bold)
-            {
-                label.Font = StandardFontBold;
-                return label;
-            }
-            return label;
-        }
-
-        private Control AddApproveButton(int x, int y, Chore c)
+        private Control AddApproveChoreButton(int x, int y, Chore c)
         {
             var ApproveButton = new Button
             {
@@ -270,7 +268,7 @@ namespace ChoreApplication.UI
             return ApproveButton;
         }
 
-        private Control AddDenyButton(int x, int y, Chore c)
+        private Control AddDenyChoreButton(int x, int y, Chore c)
         {
             var DenyButton = new Button
             {
@@ -330,41 +328,37 @@ namespace ChoreApplication.UI
             return DeleteChoreButton;
         }
 
-        private void DeleteChoreButton_Click(object sender, System.EventArgs e)
+        private void ApproveButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            var confirmDelete = MessageBox.Show("Are you sure you want to delete this chore?", "Confirm Deletion", MessageBoxButtons.YesNo);
-            if (confirmDelete == DialogResult.Yes)
+            Concrete currentChore = (Concrete)clickedButton.Tag;
+            currentChore.Status = 3;
+            currentChore.ApprovalDate = DateTime.Now;
+            currentChore.Update();
+
+            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
+            currentChild[0].Points += currentChore.Points;
+            currentChild[0].Update();
+
+            LoadChores();
+        }
+
+        private void DenyButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Concrete currentChore = (Concrete)clickedButton.Tag;
+
+            if (currentChore.Type == "rep")
             {
-                try
-                {
-                    Concrete selectedChore = (Concrete)clickedButton.Tag;
-                    selectedChore.Delete();
-                    ChoresUI();
-                }
-                catch
-                {
-                    try
-                    {
-                        Reocurring selectedChore = (Reocurring)clickedButton.Tag;
-                        selectedChore.Delete();
-                        ChoresUI();
-                    }
-                    catch
-                    {
-                        try
-                        {
-                            Repeatable selectedChore = (Repeatable)clickedButton.Tag;
-                            selectedChore.Delete();
-                            ChoresUI();
-                        }
-                        catch
-                        {
-                            MessageBox.Show("Could not delete selected chore: Conversion failed", "Error");
-                        }
-                    }
-                }
+                currentChore.Delete();
             }
+            else
+            {
+                currentChore.DueDate = DateTime.Now.AddDays(1);
+                currentChore.Status = 1;
+                currentChore.Update();
+            }
+            LoadChores();
         }
 
         private void EditChoreButton_Click(object sender, System.EventArgs e)
@@ -400,42 +394,47 @@ namespace ChoreApplication.UI
             }
         }
 
-        private void ApproveButton_Click(object sender, System.EventArgs e)
+        private void DeleteChoreButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Concrete currentChore = (Concrete)clickedButton.Tag;
-            currentChore.Status = 3;
-            currentChore.ApprovalDate = DateTime.Now;
-            currentChore.Update();
-
-            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
-            currentChild[0].Points += currentChore.Points;
-            currentChild[0].Update();
-
-            LoadChores();
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this chore?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                try
+                {
+                    Concrete selectedChore = (Concrete)clickedButton.Tag;
+                    selectedChore.Delete();
+                    LoadChores();
+                }
+                catch
+                {
+                    try
+                    {
+                        Reocurring selectedChore = (Reocurring)clickedButton.Tag;
+                        selectedChore.Delete();
+                        LoadChores();
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            Repeatable selectedChore = (Repeatable)clickedButton.Tag;
+                            selectedChore.Delete();
+                            LoadChores();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Could not delete selected chore: Conversion failed", "Error");
+                        }
+                    }
+                }
+            }
         }
 
-        private void DenyButton_Click(object sender, System.EventArgs e)
-        {
-            Button clickedButton = (Button)sender;
-            Concrete currentChore = (Concrete)clickedButton.Tag;
-
-            if (currentChore.Type == "rep")
-            {
-                currentChore.Delete();
-            }
-            else
-            {
-                currentChore.DueDate = DateTime.Now.AddDays(1);
-                currentChore.Status = 1;
-                currentChore.Update();
-            }
-            LoadChores();
-        }
-
-        #endregion
+        #endregion ChoreUI
 
         #region RewardUI
+
         private void RewardsUI()
         {
             LoadAmountOfNotifications();
@@ -450,14 +449,15 @@ namespace ChoreApplication.UI
 
         private void LoadRewards()
         {
+            Rewards = Reward.Load("");
             RewardPanel.Controls.Clear();
             int i = 0;
             int panelDistance = 72;
 
-            foreach (Reward r in Rewards)
+            foreach (Reward reward in Rewards)
             {
-                var rewardName = r.Name.ToString();
-                var rewardAssignment = "Assigned to: " + ChildrenNames[r.ChildId];
+                var rewardName = reward.Name.ToString();
+                var rewardAssignment = "Assigned to: " + ChildrenNames[reward.ChildId];
                 var rewardStatus = "Status: Active";
 
                 var rewardNameLabel = AddLabel(rewardName, true, 5, 5);
@@ -474,13 +474,85 @@ namespace ChoreApplication.UI
                 individualRewardPanel.Controls.Add(rewardNameLabel);
                 individualRewardPanel.Controls.Add(rewardAssignmentLabel);
                 individualRewardPanel.Controls.Add(rewardStatusLabel);
+                individualRewardPanel.Controls.Add(AddEditRewardButton(330, individualRewardPanel.Height / 2, reward));
+                individualRewardPanel.Controls.Add(AddDeleteRewardButton(365, individualRewardPanel.Height / 2, reward));
                 RewardPanel.Controls.Add(individualRewardPanel);
                 i++;
             }
         }
-        #endregion
+
+        private Control AddEditRewardButton(int x, int y, Reward reward)
+        {
+            var EditRewardButton = new Button
+            {
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = reward,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            EditRewardButton.Cursor = Cursors.Hand;
+            EditRewardButton.FlatAppearance.BorderSize = 0;
+            EditRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            EditRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            EditRewardButton.Click += new EventHandler(EditRewardButton_Click);
+            return EditRewardButton;
+        }
+
+        private Control AddDeleteRewardButton(int x, int y, Reward reward)
+        {
+            var DeleteRewardButton = new Button
+            {
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = reward,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            DeleteRewardButton.Cursor = Cursors.Hand;
+            DeleteRewardButton.FlatAppearance.BorderSize = 0;
+            DeleteRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            DeleteRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            DeleteRewardButton.Click += new EventHandler(DeleteRewardButton_Click);
+            return DeleteRewardButton;
+        }
+
+        private void EditRewardButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            try
+            {
+                Reward selectedReward = (Reward)clickedButton.Tag;
+                EditSelectedReward = new EditRewardUI(selectedReward);
+                EditSelectedReward.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Could not edit reward: Reward not found", "Error");
+            }
+        }
+
+        private void DeleteRewardButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Reward selectedReward = (Reward)clickedButton.Tag;
+
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this reward?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                selectedReward.Delete();
+                LoadRewards();
+            }
+        }
+
+        #endregion RewardUI
 
         #region LeaderboardUI
+
         private void LeaderboardsUI()
         {
             LoadAmountOfNotifications();
@@ -503,9 +575,11 @@ namespace ChoreApplication.UI
             test.Width = 200;
             this.LeaderboardPanel.Controls.Add(test);
         }
-        #endregion
+
+        #endregion LeaderboardUI
 
         #region UsersUI
+
         private void UsersUI()
         {
             LoadAmountOfNotifications();
@@ -520,7 +594,8 @@ namespace ChoreApplication.UI
 
         public void LoadUsers()
         {
-            LoadAll();
+            ChildUsers = ChildUser.Load("");
+            ParentUsers = ParentUser.Load("");
             UserPanel.Controls.Clear();
             int i = 0;
             int panelDistance = 65;
@@ -558,14 +633,34 @@ namespace ChoreApplication.UI
                 };
                 individualUserPanel.Controls.Add(userFirstNameLabel);
                 UserPanel.Controls.Add(individualUserPanel);
-                individualUserPanel.Controls.Add(AddChildDeleteButton(350, individualUserPanel.Height / 2, c));
+                individualUserPanel.Controls.Add(AddEditChildButton(330, individualUserPanel.Height / 2, c));
+                individualUserPanel.Controls.Add(AddDeleteChildButton(365, individualUserPanel.Height / 2, c));
                 i++;
             }
         }
 
-        private Control AddChildDeleteButton(int x, int y, ChildUser user)
+        private Control AddEditChildButton(int x, int y, ChildUser user)
         {
-            var DeleteButton = new Button
+            var EditChildButton = new Button
+            {
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = user,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            EditChildButton.Cursor = Cursors.Hand;
+            EditChildButton.FlatAppearance.BorderSize = 0;
+            EditChildButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            EditChildButton.Click += new EventHandler(EditChildButton_Click);
+            return EditChildButton;
+        }
+
+        private Control AddDeleteChildButton(int x, int y, ChildUser user)
+        {
+            var DeleteChildButton = new Button
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
@@ -575,31 +670,45 @@ namespace ChoreApplication.UI
                 BackgroundImageLayout = ImageLayout.Zoom,
                 AutoSize = true,
             };
-            DeleteButton.Cursor = Cursors.Hand;
-            DeleteButton.FlatAppearance.BorderSize = 0;
-            DeleteButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            DeleteButton.Click += new EventHandler(ChildDeleteButton_Click);
-            return DeleteButton;
+            DeleteChildButton.Cursor = Cursors.Hand;
+            DeleteChildButton.FlatAppearance.BorderSize = 0;
+            DeleteChildButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            DeleteChildButton.Click += new EventHandler(DeleteChildButton_Click);
+            return DeleteChildButton;
         }
 
-
-
-        private void ChildDeleteButton_Click(object sender, System.EventArgs e)
+        private void DeleteChildButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            ChildUser currentUser = (ChildUser)clickedButton.Tag;
+            ChildUser selectedUser = (ChildUser)clickedButton.Tag;
 
             var confirmDelete = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
             {
-                currentUser.Delete();
+                selectedUser.Delete();
                 LoadUsers();
             }
         }
 
-        #endregion
+        private void EditChildButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            try
+            {
+                ChildUser selectedChild = (ChildUser)clickedButton.Tag;
+                EditSelectedChild = new EditChildUI(selectedChild);
+                EditSelectedChild.Show();
+            }
+            catch
+            {
+                MessageBox.Show("Could not edit child: Child not found", "Error");
+            }
+        }
+
+        #endregion UsersUI
 
         #region NotificationsUI
+
         private void NotificationsUI()
         {
             LoadAmountOfNotifications();
@@ -641,7 +750,6 @@ namespace ChoreApplication.UI
                 i++;
             }
         }
-
 
         private Control AddNotificationDeleteButton(int x, int y, Notification notification)
         {
@@ -685,15 +793,6 @@ namespace ChoreApplication.UI
             }
         }
 
-        public void MyTestMethod()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                Notification.Insert(1, $"Chore {i.ToString()} completed", "Hello test test");
-            }
-        }
-        #endregion
-
-
+        #endregion NotificationsUI
     }
 }
