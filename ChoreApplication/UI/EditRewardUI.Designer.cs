@@ -80,9 +80,19 @@
             // pointsRequired
             // 
             this.pointsRequired.Location = new System.Drawing.Point(119, 251);
+            this.pointsRequired.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             this.pointsRequired.Name = "pointsRequired";
             this.pointsRequired.Size = new System.Drawing.Size(120, 20);
             this.pointsRequired.TabIndex = 12;
+            this.pointsRequired.Value = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
             // 
             // pointsRequiredLabel
             // 

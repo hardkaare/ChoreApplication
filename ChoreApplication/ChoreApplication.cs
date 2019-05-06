@@ -51,7 +51,7 @@ namespace ChoreApplication
             var reward = Reward.Load("");
             var EditChild = new UI.EditChildUI(child[0]);
             var editChore = new UI.EditChoreUI(chore[0]);
-            var editReward = new UI.EditRewardUI(reward[0]);
+            //var editReward = new UI.EditRewardUI(reward[0]);
 
             //EditChild.Show();
             editChore.Show();
