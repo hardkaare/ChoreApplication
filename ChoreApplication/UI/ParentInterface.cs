@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
@@ -28,6 +23,7 @@ namespace ChoreApplication.UI
         private List<Notification> Notifications;
         public readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
         public readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
+
         public ParentInterface(ParentUser p)
         {
             Session = p;
@@ -54,6 +50,7 @@ namespace ChoreApplication.UI
         }
 
         #region General Controls
+
         private Control AddLabel(string labelText, bool bold, int posX, int posY)
         {
             var label = new Label
@@ -74,6 +71,7 @@ namespace ChoreApplication.UI
             }
             return label;
         }
+
         private void OptionButton_Click(object sender, EventArgs e)
         {
             switch (UI)
@@ -82,21 +80,26 @@ namespace ChoreApplication.UI
                     var createChore = new CreateChoreUI();
                     createChore.Show();
                     break;
+
                 case 2:
                     var createReward = new CreateRewardUI();
                     createReward.Show();
                     break;
+
                 case 4:
                     var createChild = new CreateChildUI();
                     createChild.Show();
                     break;
+
                 default:
                     break;
             }
         }
+
         #endregion General Controls
 
         #region NavigationPanel
+
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
             ChoresUI();
@@ -121,9 +124,11 @@ namespace ChoreApplication.UI
         {
             NotificationsUI();
         }
-        #endregion
+
+        #endregion NavigationPanel
 
         #region ChoreUI
+
         public void ChoresUI()
         {
             LoadAmountOfNotifications();
@@ -322,6 +327,7 @@ namespace ChoreApplication.UI
             DeleteChoreButton.Click += new EventHandler(DeleteChoreButton_Click);
             return DeleteChoreButton;
         }
+
         private void ApproveButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -354,6 +360,7 @@ namespace ChoreApplication.UI
             }
             LoadChores();
         }
+
         private void EditChoreButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -386,6 +393,7 @@ namespace ChoreApplication.UI
                 }
             }
         }
+
         private void DeleteChoreButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -422,9 +430,11 @@ namespace ChoreApplication.UI
                 }
             }
         }
-        #endregion
+
+        #endregion ChoreUI
 
         #region RewardUI
+
         private void RewardsUI()
         {
             LoadAmountOfNotifications();
@@ -525,6 +535,7 @@ namespace ChoreApplication.UI
                 MessageBox.Show("Could not edit reward: Reward not found", "Error");
             }
         }
+
         private void DeleteRewardButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
@@ -537,9 +548,11 @@ namespace ChoreApplication.UI
                 LoadRewards();
             }
         }
-        #endregion
+
+        #endregion RewardUI
 
         #region LeaderboardUI
+
         private void LeaderboardsUI()
         {
             LoadAmountOfNotifications();
@@ -562,9 +575,11 @@ namespace ChoreApplication.UI
             test.Width = 200;
             this.LeaderboardPanel.Controls.Add(test);
         }
-        #endregion
+
+        #endregion LeaderboardUI
 
         #region UsersUI
+
         private void UsersUI()
         {
             LoadAmountOfNotifications();
@@ -623,6 +638,7 @@ namespace ChoreApplication.UI
                 i++;
             }
         }
+
         private Control AddEditChildButton(int x, int y, ChildUser user)
         {
             var EditChildButton = new Button
@@ -688,9 +704,11 @@ namespace ChoreApplication.UI
                 MessageBox.Show("Could not edit child: Child not found", "Error");
             }
         }
-        #endregion
+
+        #endregion UsersUI
 
         #region NotificationsUI
+
         private void NotificationsUI()
         {
             LoadAmountOfNotifications();
@@ -733,7 +751,6 @@ namespace ChoreApplication.UI
             }
         }
 
-
         private Control AddNotificationDeleteButton(int x, int y, Notification notification)
         {
             var DeleteButton = new Button
@@ -775,6 +792,7 @@ namespace ChoreApplication.UI
                 NotificationAmount.Text = Notifications.Count.ToString();
             }
         }
-        #endregion
+
+        #endregion NotificationsUI
     }
 }
