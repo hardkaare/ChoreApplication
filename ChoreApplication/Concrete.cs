@@ -134,7 +134,7 @@ namespace ChoreApplication
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("UPDATE concrete_chore SET " +
                 "due_date='{0}', status={1}, approval_date='{2}' WHERE chore_id={3}", 
-                DueDate.ToString(dateFormatString), Status, ApprovalDate, ID);
+                DueDate.ToString(dateFormatString), Status, ApprovalDate.ToString(dateFormatString), ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}", 
                 Assignment, Name, Description, Points, ID);

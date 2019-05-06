@@ -14,6 +14,7 @@ namespace ChoreApplication.UI
     {
         public int UI = 0;
         public ParentUser Session { get; set; }
+        public EditChoreUI editSelectedChore { get; set; }
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
         private List<Reocurring> ReoccurringChores;
@@ -306,12 +307,35 @@ namespace ChoreApplication.UI
         private void EditButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Chore selectedChore = (Chore)clickedButton.Tag;
-            MessageBox.Show(selectedChore.ToString());
-            /*
-            EditChoreUI editSelectedChore = new EditChoreUI(selectedChore);
-            editSelectedChore.Show();
-            */
+            try
+            {
+                Concrete selectedChore = (Concrete)clickedButton.Tag;
+                editSelectedChore = new EditChoreUI(selectedChore);
+                editSelectedChore.Show();
+            }
+            catch
+            {
+                try
+                {
+                    Reocurring selectedChore = (Reocurring)clickedButton.Tag;
+                    editSelectedChore = new EditChoreUI(selectedChore);
+                    editSelectedChore.Show();
+                }
+                catch
+                {
+                    try
+                    {
+                        Repeatable selectedChore = (Repeatable)clickedButton.Tag;
+                        editSelectedChore = new EditChoreUI(selectedChore);
+                        editSelectedChore.Show();
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Could not convert to any chore type", "Error");
+                    }
+                }
+            }
+
         }
 
         private void ApproveButton_Click(object sender, System.EventArgs e)
