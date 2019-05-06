@@ -30,7 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.NotificationAmount = new UI.RoundButton();
+            this.NotificationAmount = new ChoreApplication.UI.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -44,13 +44,13 @@
             this.OptionButton = new System.Windows.Forms.Button();
             this.titleText = new System.Windows.Forms.Label();
             this.upperPanel = new System.Windows.Forms.Panel();
-            this.LeaderboardPanel = new System.Windows.Forms.Panel();
             this.UserButton = new System.Windows.Forms.Button();
             this.SortButton = new System.Windows.Forms.Button();
             this.ChorePanel = new System.Windows.Forms.Panel();
             this.RewardPanel = new System.Windows.Forms.Panel();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.NotificationPanel = new System.Windows.Forms.Panel();
+            this.LeaderboardPanel = new System.Windows.Forms.Panel();
             this.navigationPanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.SuspendLayout();
@@ -272,17 +272,6 @@
             this.upperPanel.Size = new System.Drawing.Size(420, 33);
             this.upperPanel.TabIndex = 1;
             // 
-            // LeaderboardPanel
-            // 
-            this.LeaderboardPanel.AutoScroll = true;
-            this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LeaderboardPanel.Location = new System.Drawing.Point(12, 49);
-            this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 450);
-            this.LeaderboardPanel.Name = "LeaderboardPanel";
-            this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
-            this.LeaderboardPanel.TabIndex = 5;
-            this.LeaderboardPanel.Visible = false;
-            // 
             // UserButton
             // 
             this.UserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -361,12 +350,24 @@
             this.NotificationPanel.TabIndex = 4;
             this.NotificationPanel.Visible = false;
             // 
+            // LeaderboardPanel
+            // 
+            this.LeaderboardPanel.AutoScroll = true;
+            this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.LeaderboardPanel.Location = new System.Drawing.Point(12, 49);
+            this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.LeaderboardPanel.Name = "LeaderboardPanel";
+            this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
+            this.LeaderboardPanel.TabIndex = 5;
+            this.LeaderboardPanel.Visible = false;
+            // 
             // ParentInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(444, 561);
+            this.Controls.Add(this.LeaderboardPanel);
             this.Controls.Add(this.NotificationPanel);
             this.Controls.Add(this.UserPanel);
             this.Controls.Add(this.RewardPanel);
