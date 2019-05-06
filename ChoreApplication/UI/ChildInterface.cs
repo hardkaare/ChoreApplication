@@ -68,14 +68,14 @@ namespace ChoreApplication.UI
             foreach (var chore in ConcreConcreteChoresApprovalPendingteChores)
             {
                 var choreName = chore.Name.ToString();
-                var chorePoints = chore.Points.ToString();
+                var chorePoints = "point" + chore.Points.ToString();
                 var choreDescription = chore.Description.ToString();
                 var choreStatus = "Status: " + StatusValues[chore.Status];
 
                 var choreNamelabel = AddLabel(choreName, true, 5, 5);
                 var chorePointslabel = AddLabel(chorePoints, true, 5, 5);
-                var choreStatusLabel = AddLabel(choreStatus, false, 10, choreNamelabel.Location.Y +20);
-                var panelHeight = choreNamelabel.Height + chorePointslabel.Height + choreStatusLabel.Height + choreStatusLabel.Height;
+                var choreStatusLabel = AddLabel(choreStatus, true, 10, choreNamelabel.Location.Y +20);
+                var panelHeight = choreNamelabel.Height + chorePointslabel.Height + choreStatusLabel.Height + choreNamelabel.Height;
                 var individualChorePanel = new Panel
                 {
                     Name = "panel" + chore.ID.ToString(),
@@ -87,6 +87,8 @@ namespace ChoreApplication.UI
                  ChorePanel.Controls.Add(individualChorePanel);
                  individualChorePanel.Controls.Add(choreNamelabel);
                  individualChorePanel.Controls.Add(choreStatusLabel);
+                individualChorePanel.Controls.Add(chorePointslabel);
+
               
                                                                             
             }
