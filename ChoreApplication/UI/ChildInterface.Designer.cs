@@ -36,6 +36,7 @@
             this.navigationPanel = new System.Windows.Forms.Panel();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
+            this.RewardPanel = new System.Windows.Forms.Panel();
             this.rewardsLabel = new System.Windows.Forms.Label();
             this.choresLabel = new System.Windows.Forms.Label();
             this.choreNavButton = new System.Windows.Forms.Button();
@@ -98,6 +99,18 @@
             this.ChorePanel.Size = new System.Drawing.Size(466, 509);
             this.ChorePanel.TabIndex = 3;
             this.ChorePanel.Visible = false;
+
+            // RewardPanel
+            // 
+            this.RewardPanel.AutoScroll = true;
+            this.RewardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.RewardPanel.Location = new System.Drawing.Point(30, 61);
+            this.ChorePanel.Margin = new System.Windows.Forms.Padding(4);
+            this.RewardPanel.MaximumSize = new System.Drawing.Size(559, 553);
+            this.RewardPanel.Name = "RewardPanel";
+            this.RewardPanel.Size = new System.Drawing.Size(466, 509);
+            this.RewardPanel.TabIndex = 2;
+            this.RewardPanel.Visible = false;
             // 
             // navigationPanel
             // 
@@ -246,6 +259,7 @@
             this.ClientSize = new System.Drawing.Size(524, 689);
             this.Controls.Add(this.upperPanel);
             this.Controls.Add(this.ChorePanel);
+            this.Controls.Add(this.RewardPanel);
             this.Controls.Add(this.navigationPanel);
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChildInterface";
@@ -267,6 +281,7 @@
         private System.Windows.Forms.Label notificationsLabel;
         private System.Windows.Forms.Label leaderboardsLabel;
         private System.Windows.Forms.Label rewardsLabel;
+        private System.Windows.Forms.Panel RewardPanel;
         private System.Windows.Forms.Label choresLabel;
         private System.Windows.Forms.Button choreNavButton;
         private System.Windows.Forms.Button notificationsNavButton;

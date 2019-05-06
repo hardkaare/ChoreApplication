@@ -14,7 +14,7 @@ namespace ChoreApplication.UI
     {
         public int UI = 0;
         public ParentUser Session { get; set; }
-        public EditChoreUI editSelectedChore { get; set; }
+        public EditChoreUI EditSelectedChore { get; set; }
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
         private List<Reocurring> ReoccurringChores;
@@ -150,19 +150,21 @@ namespace ChoreApplication.UI
                     Size = new Size(ChorePanel.Width - 20, panelHeight),
                     AutoSize = true,
                 };
+
                 ChorePanel.Controls.Add(individualChorePanel);
                 individualChorePanel.Controls.Add(choreNameLabel);
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
-                if(chore.Status == 2)
+                if (chore.Status == 2)
                 {
-                    individualChorePanel.Controls.Add(AddApproveButton(300, individualChorePanel.Height/2, chore));
-                    individualChorePanel.Controls.Add(AddDenyButton(350, individualChorePanel.Height/2, chore));
+                    individualChorePanel.Controls.Add(AddApproveButton(330, individualChorePanel.Height / 2, chore));
+                    individualChorePanel.Controls.Add(AddDenyButton(365, individualChorePanel.Height / 2, chore));
                 }
                 else
                 {
-                    individualChorePanel.Controls.Add(AddEditButton(350, individualChorePanel.Height/2, chore));
+                    individualChorePanel.Controls.Add(AddEditChoreButton(330, individualChorePanel.Height / 2, chore));
+                    individualChorePanel.Controls.Add(AddDeleteChoreButton(365, individualChorePanel.Height / 2, chore));
                 }
                 i++;
             }
@@ -191,7 +193,8 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
-                individualChorePanel.Controls.Add(AddEditButton(350, individualChorePanel.Height/2, chore));
+                individualChorePanel.Controls.Add(AddEditChoreButton(330, individualChorePanel.Height / 2, chore));
+                individualChorePanel.Controls.Add(AddDeleteChoreButton(365, individualChorePanel.Height / 2, chore));
                 i++;
             }
             foreach (var chore in RepeatableChores)
@@ -219,9 +222,32 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreAssignmentLabel);
                 individualChorePanel.Controls.Add(choreStatusLabel);
                 individualChorePanel.Controls.Add(choreTypeLabel);
-                individualChorePanel.Controls.Add(AddEditButton(350, individualChorePanel.Height/2, chore));
+                individualChorePanel.Controls.Add(AddEditChoreButton(330, individualChorePanel.Height / 2, chore));
+                individualChorePanel.Controls.Add(AddDeleteChoreButton(365, individualChorePanel.Height / 2, chore));
                 i++;
             }
+        }
+
+
+        private Control AddLabel(string labelText, bool bold, int posX, int posY)
+        {
+            var label = new Label
+            {
+                Text = labelText,
+                Location = new Point(posX, posY),
+                AutoSize = true,
+            };
+            if (!bold)
+            {
+                label.Font = StandardFont;
+                return label;
+            }
+            if (bold)
+            {
+                label.Font = StandardFontBold;
+                return label;
+            }
+            return label;
         }
 
         private Control AddApproveButton(int x, int y, Chore c)
@@ -264,9 +290,9 @@ namespace ChoreApplication.UI
             return DenyButton;
         }
 
-        private Control AddEditButton(int x, int y, Chore c)
+        private Control AddEditChoreButton(int x, int y, Chore c)
         {
-            var EditButton = new Button
+            var EditChoreButton = new Button
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
@@ -276,67 +302,102 @@ namespace ChoreApplication.UI
                 BackgroundImageLayout = ImageLayout.Zoom,
                 AutoSize = true,
             };
-            EditButton.Cursor = Cursors.Hand;
-            EditButton.FlatAppearance.BorderSize = 0;
-            EditButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            EditButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            EditButton.Click += new EventHandler(EditButton_Click);
-            return EditButton;
+            EditChoreButton.Cursor = Cursors.Hand;
+            EditChoreButton.FlatAppearance.BorderSize = 0;
+            EditChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            EditChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            EditChoreButton.Click += new EventHandler(EditChoreButton_Click);
+            return EditChoreButton;
         }
 
-        private Control AddLabel(string labelText, bool bold, int posX, int posY)
+        private Control AddDeleteChoreButton(int x, int y, Chore chore)
         {
-            var label = new Label
+            var DeleteChoreButton = new Button
             {
-                Text = labelText,
-                Location = new Point(posX, posY),
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = chore,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
+                BackgroundImageLayout = ImageLayout.Zoom,
                 AutoSize = true,
             };
-            if (!bold)
-            {
-                label.Font = StandardFont;
-                return label;
-            }
-            if (bold)
-            {
-                label.Font = StandardFontBold;
-                return label;
-            }
-            return label;
+            DeleteChoreButton.Cursor = Cursors.Hand;
+            DeleteChoreButton.FlatAppearance.BorderSize = 0;
+            DeleteChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            DeleteChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            DeleteChoreButton.Click += new EventHandler(DeleteChoreButton_Click);
+            return DeleteChoreButton;
         }
 
-        private void EditButton_Click(object sender, System.EventArgs e)
+        private void DeleteChoreButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this chore?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                try
+                {
+                    Concrete selectedChore = (Concrete)clickedButton.Tag;
+                    selectedChore.Delete();
+                    ChoresUI();
+                }
+                catch
+                {
+                    try
+                    {
+                        Reocurring selectedChore = (Reocurring)clickedButton.Tag;
+                        selectedChore.Delete();
+                        ChoresUI();
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            Repeatable selectedChore = (Repeatable)clickedButton.Tag;
+                            selectedChore.Delete();
+                            ChoresUI();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Could not delete selected chore: Conversion failed", "Error");
+                        }
+                    }
+                }
+            }
+        }
+
+        private void EditChoreButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
             try
             {
                 Concrete selectedChore = (Concrete)clickedButton.Tag;
-                editSelectedChore = new EditChoreUI(selectedChore);
-                editSelectedChore.Show();
+                EditSelectedChore = new EditChoreUI(selectedChore);
+                EditSelectedChore.Show();
             }
             catch
             {
                 try
                 {
                     Reocurring selectedChore = (Reocurring)clickedButton.Tag;
-                    editSelectedChore = new EditChoreUI(selectedChore);
-                    editSelectedChore.Show();
+                    EditSelectedChore = new EditChoreUI(selectedChore);
+                    EditSelectedChore.Show();
                 }
                 catch
                 {
                     try
                     {
                         Repeatable selectedChore = (Repeatable)clickedButton.Tag;
-                        editSelectedChore = new EditChoreUI(selectedChore);
-                        editSelectedChore.Show();
+                        EditSelectedChore = new EditChoreUI(selectedChore);
+                        EditSelectedChore.Show();
                     }
                     catch
                     {
-                        MessageBox.Show("Could not convert to any chore type", "Error");
+                        MessageBox.Show("Could not edit chore: Conversion failed", "Error");
                     }
                 }
             }
-
         }
 
         private void ApproveButton_Click(object sender, System.EventArgs e)
@@ -359,7 +420,7 @@ namespace ChoreApplication.UI
             Button clickedButton = (Button)sender;
             Concrete currentChore = (Concrete)clickedButton.Tag;
 
-            if(currentChore.Type == "rep")
+            if (currentChore.Type == "rep")
             {
                 currentChore.Delete();
             }
@@ -429,6 +490,18 @@ namespace ChoreApplication.UI
             this.LeaderboardPanel.BringToFront();
             this.SortButton.Visible = true;
             this.OptionButton.Visible = false;
+            LoadLeaderboard();
+        }
+
+        private void LoadLeaderboard()
+        {
+            ProgressBar test = new ProgressBar();
+            test.Location = new Point(20, 20);
+            test.Value = 45;
+            test.Name = "myProgressbar";
+            test.Height = 50;
+            test.Width = 200;
+            this.LeaderboardPanel.Controls.Add(test);
         }
         #endregion
 
@@ -485,7 +558,7 @@ namespace ChoreApplication.UI
                 };
                 individualUserPanel.Controls.Add(userFirstNameLabel);
                 UserPanel.Controls.Add(individualUserPanel);
-                individualUserPanel.Controls.Add(AddChildDeleteButton(350, individualUserPanel.Height /2 , c));
+                individualUserPanel.Controls.Add(AddChildDeleteButton(350, individualUserPanel.Height / 2, c));
                 i++;
             }
         }
@@ -516,7 +589,7 @@ namespace ChoreApplication.UI
             Button clickedButton = (Button)sender;
             ChildUser currentUser = (ChildUser)clickedButton.Tag;
 
-            var confirmDelete = MessageBox.Show("Are you sure you want to delete this user?", "Hallo", MessageBoxButtons.YesNo);
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
             {
                 currentUser.Delete();
@@ -621,6 +694,6 @@ namespace ChoreApplication.UI
         }
         #endregion
 
-  
+
     }
 }
