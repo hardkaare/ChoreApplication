@@ -29,7 +29,7 @@ namespace ChoreApplication.UI
                 Text = labelText,
                 TextAlign = ContentAlignment.MiddleCenter,
                 Location = new Point(posX, posY),
-                Size = new Size(125, 20),
+                Size = new Size(75, 20),
             };
             if (!bold)
             {
@@ -71,15 +71,15 @@ namespace ChoreApplication.UI
             {
                 Button UserButton = new Button
                 {
-                    Location = new Point(x * 105, y * 80 - 75),
-                    Size = new Size(125, 50),
+                    Location = new Point(x * 120, y * 100-40),
+                    Size = new Size(60, 60),
                     Tag = parent.Id,
                     FlatStyle = FlatStyle.Flat,
                     BackgroundImage = global::ChoreApplication.Properties.Resources.user,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X, y*80-25);
+                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X, y * 100-70);
                 UserButton.FlatAppearance.BorderColor = SystemColors.Window;
                 UserButton.FlatAppearance.BorderSize = 0;
                 UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
@@ -101,15 +101,15 @@ namespace ChoreApplication.UI
             {
                 Button UserButton = new Button
                 {
-                    Location = new Point(x * 105, y * 80 - 75),
-                    Size = new Size(125, 50),
+                    Location = new Point(x * 120, y * 100-40),
+                    Size = new Size(60, 60),
                     Tag = child.Id,
                     FlatStyle = FlatStyle.Flat,
                     BackgroundImage = global::ChoreApplication.Properties.Resources.useregular,
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X, y * 80 - 25);
+                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X, y * 100-70);
                 UserButton.FlatAppearance.BorderColor = SystemColors.Window;
                 UserButton.FlatAppearance.BorderSize = 0;
                 UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;

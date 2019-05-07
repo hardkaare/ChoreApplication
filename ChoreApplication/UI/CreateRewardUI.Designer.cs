@@ -131,7 +131,7 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
+            this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
             this.WelcomeLabel.TabIndex = 6;

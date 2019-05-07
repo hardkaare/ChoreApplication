@@ -35,9 +35,10 @@ namespace ChoreApplication.UI
                     this.Controls.Add(this.label7);
                     label7.Visible = true;
                     DueDate.Visible = false;
-                    label6.Location = new System.Drawing.Point(61, 420);
-                    Assignment.Location = new System.Drawing.Point(64, 435);
-                    CreateChoreButton.Location = new System.Drawing.Point(126, 470);
+                    label6.Location = new System.Drawing.Point(62, 420);
+                    Assignment.Location = new System.Drawing.Point(65, 435);
+                    CreateChoreButton.Location = new System.Drawing.Point(65, 470);
+                    this.Size = new Size(350, 550);
                     CompletionLimit.Visible = false;
                     break;
                 case "Concrete":
@@ -45,9 +46,10 @@ namespace ChoreApplication.UI
                     label5.Text = "Due date";
                     Days.Visible = false;
                     CompletionLimit.Visible = false;
-                    label6.Location = new System.Drawing.Point(61, 291);
-                    Assignment.Location = new System.Drawing.Point(64, 307);
-                    CreateChoreButton.Location = new System.Drawing.Point(126, 363);
+                    label6.Location = new System.Drawing.Point(62, 291);
+                    Assignment.Location = new System.Drawing.Point(65, 307);
+                    CreateChoreButton.Location = new System.Drawing.Point(65, 340);
+                    this.Size = new Size(350, 420);
                     DueTime.Visible = false;
                     label7.Visible = false;
                     break;
@@ -57,9 +59,10 @@ namespace ChoreApplication.UI
                     DueDate.Visible = false;
                     CompletionLimit.Visible = true;
                     Days.Visible = false;
-                    label6.Location = new System.Drawing.Point(61, 291);
-                    Assignment.Location = new System.Drawing.Point(64, 307);
-                    CreateChoreButton.Location = new System.Drawing.Point(126, 363);
+                    label6.Location = new System.Drawing.Point(62, 291);
+                    Assignment.Location = new System.Drawing.Point(65, 307);
+                    CreateChoreButton.Location = new System.Drawing.Point(65, 340);
+                    this.Size = new Size(350, 420);
                     DueTime.Visible = false;
                     label7.Visible = false;
                     break;
@@ -75,7 +78,6 @@ namespace ChoreApplication.UI
             {
                 childrenarray[i] = name.FirstName;
                 this.Assignment.Items.Add(childrenarray[i]);
-        
                 i++;
             } 
         }
@@ -159,7 +161,6 @@ namespace ChoreApplication.UI
             {
                 MessageBox.Show("Chore name cannot contain numbers.");
             }
-            
         }
     }
 }

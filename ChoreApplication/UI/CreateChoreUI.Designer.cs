@@ -53,9 +53,9 @@ namespace ChoreApplication.UI
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Location = new System.Drawing.Point(65, 341);
+            this.CreateChoreButton.Location = new System.Drawing.Point(65, 340);
             this.CreateChoreButton.Name = "CreateChoreButton";
-            this.CreateChoreButton.Size = new System.Drawing.Size(200, 23);
+            this.CreateChoreButton.Size = new System.Drawing.Size(200, 25);
             this.CreateChoreButton.TabIndex = 14;
             this.CreateChoreButton.Text = "Create";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
@@ -231,7 +231,7 @@ namespace ChoreApplication.UI
             // WelcomeLabel
             // 
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
+            this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(313, 24);
             this.WelcomeLabel.TabIndex = 15;
@@ -244,7 +244,7 @@ namespace ChoreApplication.UI
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(334, 561);
+            this.ClientSize = new System.Drawing.Size(334, 381);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
