@@ -266,5 +266,8 @@
   <ItemGroup>
     <None Include="Resources\plus-black-symbol.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\useregular.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

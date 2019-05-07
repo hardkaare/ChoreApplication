@@ -83,7 +83,7 @@ namespace ChoreApplication.UI
                     var childUI = new ChildInterface(sessionList[0]);//sikkert ikke done
                     childUI.Show();
                 }
-                LoginInterface.chooseProfile.Close();
+                LoginInterface.ChooseProfile.Close();
                 this.Close();
                 MessageBox.Show(session.ToString());
             }

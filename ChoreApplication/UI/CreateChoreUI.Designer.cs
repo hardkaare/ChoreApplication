@@ -47,14 +47,15 @@ namespace ChoreApplication.UI
             this.CompletionLimit = new System.Windows.Forms.NumericUpDown();
             this.DueTime = new System.Windows.Forms.DateTimePicker();
             this.label7 = new System.Windows.Forms.Label();
+            this.WelcomeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Location = new System.Drawing.Point(121, 370);
+            this.CreateChoreButton.Location = new System.Drawing.Point(65, 341);
             this.CreateChoreButton.Name = "CreateChoreButton";
-            this.CreateChoreButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateChoreButton.Size = new System.Drawing.Size(200, 23);
             this.CreateChoreButton.TabIndex = 14;
             this.CreateChoreButton.Text = "Create";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
@@ -66,7 +67,7 @@ namespace ChoreApplication.UI
             this.ChoreName.Location = new System.Drawing.Point(65, 65);
             this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
-            this.ChoreName.Size = new System.Drawing.Size(198, 20);
+            this.ChoreName.Size = new System.Drawing.Size(200, 20);
             this.ChoreName.TabIndex = 1;
             this.ChoreName.Text = "Enter chore name";
             // 
@@ -74,7 +75,7 @@ namespace ChoreApplication.UI
             // 
             this.ChorePoints.Location = new System.Drawing.Point(65, 107);
             this.ChorePoints.Name = "ChorePoints";
-            this.ChorePoints.Size = new System.Drawing.Size(198, 20);
+            this.ChorePoints.Size = new System.Drawing.Size(200, 20);
             this.ChorePoints.TabIndex = 2;
             this.ChorePoints.Text = "Enter chore points";
             // 
@@ -83,7 +84,7 @@ namespace ChoreApplication.UI
             this.ChoreDescription.Location = new System.Drawing.Point(65, 150);
             this.ChoreDescription.MaxLength = 255;
             this.ChoreDescription.Name = "ChoreDescription";
-            this.ChoreDescription.Size = new System.Drawing.Size(198, 57);
+            this.ChoreDescription.Size = new System.Drawing.Size(200, 57);
             this.ChoreDescription.TabIndex = 3;
             this.ChoreDescription.Text = "Enter a description";
             // 
@@ -98,7 +99,7 @@ namespace ChoreApplication.UI
             "Reoccurring"});
             this.ChoreTypes.Location = new System.Drawing.Point(65, 225);
             this.ChoreTypes.Name = "ChoreTypes";
-            this.ChoreTypes.Size = new System.Drawing.Size(198, 21);
+            this.ChoreTypes.Size = new System.Drawing.Size(200, 21);
             this.ChoreTypes.TabIndex = 4;
             this.ChoreTypes.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
@@ -108,7 +109,7 @@ namespace ChoreApplication.UI
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueDate.Location = new System.Drawing.Point(65, 266);
             this.DueDate.Name = "DueDate";
-            this.DueDate.Size = new System.Drawing.Size(198, 20);
+            this.DueDate.Size = new System.Drawing.Size(200, 20);
             this.DueDate.TabIndex = 5;
             this.DueDate.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
             // 
@@ -116,9 +117,9 @@ namespace ChoreApplication.UI
             // 
             this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.Assignment.FormattingEnabled = true;
-            this.Assignment.Location = new System.Drawing.Point(65, 314);
+            this.Assignment.Location = new System.Drawing.Point(65, 307);
             this.Assignment.Name = "Assignment";
-            this.Assignment.Size = new System.Drawing.Size(199, 21);
+            this.Assignment.Size = new System.Drawing.Size(200, 21);
             this.Assignment.TabIndex = 13;
             // 
             // label1
@@ -227,13 +228,24 @@ namespace ChoreApplication.UI
             this.label7.TabIndex = 12;
             this.label7.Text = "Due time";
             // 
+            // WelcomeLabel
+            // 
+            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
+            this.WelcomeLabel.Name = "WelcomeLabel";
+            this.WelcomeLabel.Size = new System.Drawing.Size(313, 24);
+            this.WelcomeLabel.TabIndex = 15;
+            this.WelcomeLabel.Text = "Create Chore";
+            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // CreateChoreUI
             // 
             this.AcceptButton = this.CreateChoreButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(337, 557);
+            this.ClientSize = new System.Drawing.Size(334, 561);
+            this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -252,7 +264,7 @@ namespace ChoreApplication.UI
             this.MinimizeBox = false;
             this.Name = "CreateChoreUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CreateChore";
+            this.Text = "Create Chore";
             ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -278,5 +290,6 @@ namespace ChoreApplication.UI
         private System.Windows.Forms.NumericUpDown CompletionLimit;
         private System.Windows.Forms.DateTimePicker DueTime;
         private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.Label WelcomeLabel;
     }
 }
