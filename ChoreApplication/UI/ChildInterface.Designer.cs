@@ -66,12 +66,13 @@
             // 
             // ChildPointsLabel
             // 
-            this.ChildPointsLabel.AutoSize = true;
-            this.ChildPointsLabel.Location = new System.Drawing.Point(27, 9);
+            this.ChildPointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChildPointsLabel.Location = new System.Drawing.Point(29, 0);
             this.ChildPointsLabel.Name = "ChildPointsLabel";
-            this.ChildPointsLabel.Size = new System.Drawing.Size(39, 13);
+            this.ChildPointsLabel.Size = new System.Drawing.Size(104, 31);
             this.ChildPointsLabel.TabIndex = 1;
             this.ChildPointsLabel.Text = "Points:";
+            this.ChildPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // UserButton
             // 
@@ -109,6 +110,7 @@
             this.ChorePanel.MaximumSize = new System.Drawing.Size(420, 415);
             this.ChorePanel.Name = "ChorePanel";
             this.ChorePanel.Size = new System.Drawing.Size(420, 415);
+            this.ChorePanel.TabIndex = 5;
             this.ChorePanel.Visible = false;
             // 
             // navigationPanel
@@ -126,6 +128,7 @@
             this.navigationPanel.Location = new System.Drawing.Point(12, 469);
             this.navigationPanel.Name = "navigationPanel";
             this.navigationPanel.Size = new System.Drawing.Size(420, 79);
+            this.navigationPanel.TabIndex = 6;
             // 
             // NotificationAmount
             // 
@@ -134,48 +137,53 @@
             this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotificationAmount.Location = new System.Drawing.Point(366, 3);
+            this.NotificationAmount.Location = new System.Drawing.Point(360, 3);
             this.NotificationAmount.Name = "NotificationAmount";
             this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
+            this.NotificationAmount.TabIndex = 0;
             this.NotificationAmount.TabStop = false;
             this.NotificationAmount.Text = "999";
             this.NotificationAmount.UseVisualStyleBackColor = true;
             // 
             // notificationsLabel
             // 
-            this.notificationsLabel.AutoSize = true;
-            this.notificationsLabel.Location = new System.Drawing.Point(331, 58);
+            this.notificationsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notificationsLabel.Location = new System.Drawing.Point(318, 59);
             this.notificationsLabel.Name = "notificationsLabel";
-            this.notificationsLabel.Size = new System.Drawing.Size(65, 13);
+            this.notificationsLabel.Size = new System.Drawing.Size(84, 18);
             this.notificationsLabel.TabIndex = 0;
             this.notificationsLabel.Text = "Notifications";
+            this.notificationsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // leaderboardsLabel
             // 
-            this.leaderboardsLabel.AutoSize = true;
-            this.leaderboardsLabel.Location = new System.Drawing.Point(235, 59);
+            this.leaderboardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaderboardsLabel.Location = new System.Drawing.Point(215, 59);
             this.leaderboardsLabel.Name = "leaderboardsLabel";
-            this.leaderboardsLabel.Size = new System.Drawing.Size(72, 13);
+            this.leaderboardsLabel.Size = new System.Drawing.Size(97, 18);
             this.leaderboardsLabel.TabIndex = 0;
             this.leaderboardsLabel.Text = "Leaderboards";
+            this.leaderboardsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // rewardsLabel
             // 
-            this.rewardsLabel.AutoSize = true;
-            this.rewardsLabel.Location = new System.Drawing.Point(141, 59);
+            this.rewardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rewardsLabel.Location = new System.Drawing.Point(122, 59);
             this.rewardsLabel.Name = "rewardsLabel";
-            this.rewardsLabel.Size = new System.Drawing.Size(49, 13);
+            this.rewardsLabel.Size = new System.Drawing.Size(75, 18);
             this.rewardsLabel.TabIndex = 0;
             this.rewardsLabel.Text = "Rewards";
+            this.rewardsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // choresLabel
             // 
-            this.choresLabel.AutoSize = true;
-            this.choresLabel.Location = new System.Drawing.Point(47, 59);
+            this.choresLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choresLabel.Location = new System.Drawing.Point(26, 59);
             this.choresLabel.Name = "choresLabel";
-            this.choresLabel.Size = new System.Drawing.Size(40, 13);
+            this.choresLabel.Size = new System.Drawing.Size(73, 18);
             this.choresLabel.TabIndex = 0;
             this.choresLabel.Text = "Chores";
+            this.choresLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // choreNavButton
             // 
@@ -188,7 +196,7 @@
             this.choreNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.choreNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.choreNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.choreNavButton.Location = new System.Drawing.Point(30, 13);
+            this.choreNavButton.Location = new System.Drawing.Point(24, 13);
             this.choreNavButton.Name = "choreNavButton";
             this.choreNavButton.Size = new System.Drawing.Size(75, 40);
             this.choreNavButton.TabIndex = 0;
@@ -209,7 +217,7 @@
             this.notificationsNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.notificationsNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.notificationsNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notificationsNavButton.Location = new System.Drawing.Point(327, 13);
+            this.notificationsNavButton.Location = new System.Drawing.Point(321, 13);
             this.notificationsNavButton.Name = "notificationsNavButton";
             this.notificationsNavButton.Size = new System.Drawing.Size(75, 40);
             this.notificationsNavButton.TabIndex = 0;
@@ -228,9 +236,9 @@
             this.leadboardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.leadboardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.leadboardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.leadboardNavButton.Location = new System.Drawing.Point(232, 16);
+            this.leadboardNavButton.Location = new System.Drawing.Point(218, 16);
             this.leadboardNavButton.Name = "leadboardNavButton";
-            this.leadboardNavButton.Size = new System.Drawing.Size(75, 40);
+            this.leadboardNavButton.Size = new System.Drawing.Size(86, 40);
             this.leadboardNavButton.TabIndex = 0;
             this.leadboardNavButton.Tag = "Leaderboards";
             this.leadboardNavButton.UseVisualStyleBackColor = true;
@@ -247,7 +255,7 @@
             this.rewardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rewardNavButton.Location = new System.Drawing.Point(128, 16);
+            this.rewardNavButton.Location = new System.Drawing.Point(122, 16);
             this.rewardNavButton.Name = "rewardNavButton";
             this.rewardNavButton.Size = new System.Drawing.Size(75, 40);
             this.rewardNavButton.TabIndex = 0;
@@ -291,8 +299,7 @@
             // 
             // ChildInterface
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(444, 561);
             this.Controls.Add(this.upperPanel);
@@ -304,11 +311,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "ChildInterface";
-            this.Text = "ChildInterface";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Child Interface";
             this.upperPanel.ResumeLayout(false);
-            this.upperPanel.PerformLayout();
             this.navigationPanel.ResumeLayout(false);
-            this.navigationPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }

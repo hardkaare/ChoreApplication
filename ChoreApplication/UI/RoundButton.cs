@@ -7,7 +7,6 @@ using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
-
 {
    public class RoundButton : Button
     {
@@ -17,14 +16,6 @@ namespace ChoreApplication.UI
             grPath.AddEllipse(1, 1, ClientSize.Width - 4, ClientSize.Height - 4);
             this.Region = new System.Drawing.Region(grPath);
             base.OnPaint(e);
-
-
         }
-
     }
 }
-
-
-
-
-

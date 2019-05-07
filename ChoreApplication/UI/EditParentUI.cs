@@ -7,35 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Text.RegularExpressions;
 
 namespace ChoreApplication.UI
 {
-    public partial class EditChildUI : Form
+    public partial class EditParentUI : Form
     {
-        private ChildUser _child;
-        public EditChildUI(ChildUser child)
+        private ParentUser _parent;
+        public EditParentUI(ParentUser parent)
         {
             InitializeComponent();
-            _child = child;
-            ChildFirstnameInput.Text = child.FirstName;
-            ChildPincodeInput.Text = child.Pincode;
-            WelcomeLabel.Text = "Edit " + child.FirstName;
+            _parent = parent;
+            parentName.Text = parent.FirstName;
+            parentLastName.Text = parent.Lastname;
+            email.Text = parent.Email;
+            password.Text = parent.Password;
+            pincode.Text = parent.Pincode;
+
         }
-       
+
         private void Save_Click(object sender, EventArgs e)
         {
             try
             {
-                _child.FirstName = ChildFirstnameInput.Text;
-                _child.Pincode = ChildPincodeInput.Text;
-                // The first !Regex.Match ensures that a childs name only can contain letters. The second Regex.Match ensures that a pincode always will be exactly 4 digits. 
-                if (Regex.IsMatch(ChildFirstnameInput.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(ChildPincodeInput.Text, @"^\d{4}$").Success)
+                _parent.FirstName = parentName.Text;
+                _parent.Lastname = parentLastName.Text;
+                _parent.Email = email.Text;
+                _parent.Password = password.Text;
+                _parent.Pincode = pincode.Text;
+
+                if (Regex.IsMatch(parentName.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(pincode.Text, @"^\d{4}$").Success)
+
                 {
-                    _child.Update();
+                    _parent.Update();
                     this.Close();
-                    MessageBox.Show("Child information changed.");
+                    MessageBox.Show("Parent information changed.");
                 }
                 else
                 {
@@ -43,14 +49,18 @@ namespace ChoreApplication.UI
                 }
 
             }
+
             catch (ArgumentException)
             {
                 MessageBox.Show("Please enter a valid first name or four digits in the pincode field");
+
             }
+
             finally
             {
                 DatabaseFunctions.DbConn.Close();
             }
+
         }
     }
 }

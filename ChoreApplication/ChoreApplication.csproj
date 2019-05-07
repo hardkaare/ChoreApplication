@@ -103,11 +103,23 @@
     <Compile Include="UI\EditChoreUI.Designer.cs">
       <DependentUpon>EditChoreUI.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\EditParentUI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\EditParentUI.Designer.cs">
+      <DependentUpon>EditParentUI.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\EditRewardUI.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\EditRewardUI.Designer.cs">
       <DependentUpon>EditRewardUI.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RegisterUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\RegisterUser.Designer.cs">
+      <DependentUpon>RegisterUser.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\LoginInterface.cs">
       <SubType>Form</SubType>
@@ -170,8 +182,14 @@
     <EmbeddedResource Include="UI\EditChoreUI.resx">
       <DependentUpon>EditChoreUI.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\EditParentUI.resx">
+      <DependentUpon>EditParentUI.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\EditRewardUI.resx">
       <DependentUpon>EditRewardUI.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RegisterUser.resx">
+      <DependentUpon>RegisterUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>
@@ -265,6 +283,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\plus-black-symbol.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\useregular.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

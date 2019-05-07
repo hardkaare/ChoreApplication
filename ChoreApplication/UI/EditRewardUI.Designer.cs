@@ -148,7 +148,8 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditRewardUI";
-            this.Text = "EditRewardUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Edit Reward";
             ((System.ComponentModel.ISupportInitialize)(this.pointsRequired)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

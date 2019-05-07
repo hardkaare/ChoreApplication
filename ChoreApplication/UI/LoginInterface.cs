@@ -6,39 +6,34 @@ namespace ChoreApplication.UI
 {
     public partial class LoginInterface : Form
     {
-        public static ChooseProfileInterface chooseProfile;
+        public static ChooseProfileInterface ChooseProfile;
 
         public LoginInterface()
         {
             InitializeComponent();
         }
 
-        private void LoginInterface_Load(object sender, EventArgs e)
-        {
-        }
-
         private void EmailTextbox_Click(object sender, EventArgs e)
         {
             //Få tekstbokse til at slette indhold ved første selection.
-            emailInput.Text = "";
+            EmailInput.Text = "";
         }
 
         private void PwdTextbox_Click(object sender, EventArgs e)
         {
-            pwdInput.Text = "";
-            pwdInput.UseSystemPasswordChar = true;
+            PasswordInput.Text = "";
+            PasswordInput.UseSystemPasswordChar = true;
         }
 
         private void NewUserLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var RegisterUserInterface = new RegisterUserInterface();
-            RegisterUserInterface.Show();
+
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string Emailinput = emailInput.Text;
-            string passwordInput = pwdInput.Text;
+            string Emailinput = EmailInput.Text;
+            string passwordInput = PasswordInput.Text;
             bool match = false;
             if(string.IsNullOrEmpty(Emailinput) || string.IsNullOrEmpty(passwordInput))
             {
@@ -68,17 +63,31 @@ namespace ChoreApplication.UI
             if (match == true)
             {
                 DatabaseFunctions.DbConn.Close();
-                chooseProfile = new ChooseProfileInterface();
-                chooseProfile.Show();
+                ChooseProfile = new ChooseProfileInterface();
+                ChooseProfile.Show();
                 this.Close();
             }
-
-
         }
 
-        private void LoginPanel_Paint(object sender, PaintEventArgs e)
+        private void LoginInterface_Load(object sender, EventArgs e)
         {
-
+            bool users = true;
+            string query = "SELECT user_id FROM users";
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                users = false;
+            }
+            reader.Close();
+            DatabaseFunctions.DbConn.Close();
+            if (!users)
+            {
+                var registerUserInterface = new RegisterUserInterface();
+                registerUserInterface.Show();
+                this.Close();
+            }
         }
     }
 }
