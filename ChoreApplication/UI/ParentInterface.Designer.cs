@@ -386,7 +386,7 @@
         private System.Windows.Forms.Panel RewardPanel;
         public System.Windows.Forms.Panel UserPanel;
         private System.Windows.Forms.Panel NotificationPanel;
-        private global::ChoreApplication.UI.RoundButton NotificationAmount;
+        private RoundButton NotificationAmount;
         private System.Windows.Forms.Panel LeaderboardPanel;
     }
 }
