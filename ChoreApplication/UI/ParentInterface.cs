@@ -626,10 +626,10 @@ namespace ChoreApplication.UI
                 int sum = 0;
                 string query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
-                DatabaseFunctions.dbConn.Open();
+                DatabaseFunctions.DbConn.Open();
 
                 //Creates the SqlCommand and executes it
-                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //Reads all lines in the datareader
@@ -639,7 +639,7 @@ namespace ChoreApplication.UI
                     sum++;
                 }
                 reader.Close();
-                DatabaseFunctions.dbConn.Close();
+                DatabaseFunctions.DbConn.Close();
                 result.Add(c.ChildId, sum);
             }
             result = SortIntDics(result);
@@ -689,10 +689,10 @@ namespace ChoreApplication.UI
                 int sum = 0;
                 string query = string.Format("SELECT points FROM chore INNER JOIN concrete_chore ON " +
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
-                DatabaseFunctions.dbConn.Open();
+                DatabaseFunctions.DbConn.Open();
 
                 //Creates the SqlCommand and executes it
-                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //Reads all lines in the datareader
@@ -701,7 +701,7 @@ namespace ChoreApplication.UI
                     sum += (int)reader[0];
                 }
                 reader.Close();
-                DatabaseFunctions.dbConn.Close();
+                DatabaseFunctions.DbConn.Close();
                 result.Add(c.ChildId, sum);
             }
             result = SortIntDics(result);
