@@ -50,54 +50,56 @@
             // 
             // childName
             // 
-            this.childName.Location = new System.Drawing.Point(86, 219);
+            this.childName.Location = new System.Drawing.Point(70, 219);
             this.childName.MaxLength = 20;
             this.childName.Name = "childName";
-            this.childName.Size = new System.Drawing.Size(173, 20);
+            this.childName.Size = new System.Drawing.Size(200, 20);
             this.childName.TabIndex = 1;
+            this.childName.Text = "Enter firstname";
             // 
             // createChildButton
             // 
-            this.createChildButton.Location = new System.Drawing.Point(122, 284);
+            this.createChildButton.Location = new System.Drawing.Point(70, 284);
             this.createChildButton.Name = "createChildButton";
-            this.createChildButton.Size = new System.Drawing.Size(100, 33);
+            this.createChildButton.Size = new System.Drawing.Size(200, 25);
             this.createChildButton.TabIndex = 3;
-            this.createChildButton.Text = "Create child";
+            this.createChildButton.Text = "Create";
             this.createChildButton.UseVisualStyleBackColor = true;
             this.createChildButton.Click += new System.EventHandler(this.CreateChildButton_Click);
             // 
             // childNameLabel
             // 
-            this.childNameLabel.AutoSize = true;
-            this.childNameLabel.Location = new System.Drawing.Point(83, 203);
+            this.childNameLabel.Location = new System.Drawing.Point(67, 203);
             this.childNameLabel.Name = "childNameLabel";
-            this.childNameLabel.Size = new System.Drawing.Size(35, 13);
+            this.childNameLabel.Size = new System.Drawing.Size(57, 13);
             this.childNameLabel.TabIndex = 3;
-            this.childNameLabel.Text = "Name";
+            this.childNameLabel.Text = "Firstname";
             // 
             // pincodeLabel
             // 
             this.pincodeLabel.AutoSize = true;
-            this.pincodeLabel.Location = new System.Drawing.Point(83, 240);
+            this.pincodeLabel.Location = new System.Drawing.Point(67, 242);
             this.pincodeLabel.Name = "pincodeLabel";
-            this.pincodeLabel.Size = new System.Drawing.Size(46, 13);
+            this.pincodeLabel.Size = new System.Drawing.Size(73, 13);
             this.pincodeLabel.TabIndex = 5;
-            this.pincodeLabel.Text = "Pincode";
+            this.pincodeLabel.Text = "Enter pincode";
             // 
             // childPincode
             // 
-            this.childPincode.Location = new System.Drawing.Point(86, 256);
+            this.childPincode.Location = new System.Drawing.Point(70, 258);
             this.childPincode.MaxLength = 4;
             this.childPincode.Name = "childPincode";
-            this.childPincode.Size = new System.Drawing.Size(173, 20);
+            this.childPincode.Size = new System.Drawing.Size(200, 20);
             this.childPincode.TabIndex = 2;
+            this.childPincode.Text = "Enter pincode";
             // 
             // CreateChildUI
             // 
             this.AcceptButton = this.createChildButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 383);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(334, 326);
             this.Controls.Add(this.pincodeLabel);
             this.Controls.Add(this.childPincode);
             this.Controls.Add(this.childNameLabel);
@@ -105,9 +107,10 @@
             this.Controls.Add(this.childName);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreateChildUI";
-            this.Text = "CreateChildUI";
+            this.Text = "Create Child";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

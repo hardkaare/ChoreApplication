@@ -26,9 +26,9 @@ namespace ChoreApplication.UI
         public readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
         public readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
 
-        public ParentInterface(ParentUser p)
+        public ParentInterface(ParentUser CurrentUser)
         {
-            Session = p;
+            Session = CurrentUser;
             InitializeComponent();
             InitializeDictionaries();
             ChoresUI();

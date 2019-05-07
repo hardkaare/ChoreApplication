@@ -13,22 +13,42 @@ namespace ChoreApplication.UI
 {
     public partial class ChooseProfileInterface : Form
     {
-        List<Button> button;
         public static int activeId;
+        public readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
+        public readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
 
         public string Surname { get; set; }
         public ChooseProfileInterface()
         {
             InitializeComponent();
         }
+        private Control AddLabel(string labelText, bool bold, int posX, int posY)
+        {
+            var label = new Label
+            {
+                Text = labelText,
+                TextAlign = ContentAlignment.MiddleCenter,
+                Location = new Point(posX, posY),
+                Size = new Size(125, 20),
+            };
+            if (!bold)
+            {
+                label.Font = StandardFont;
+                return label;
+            }
+            if (bold)
+            {
+                label.Font = StandardFontBold;
+                return label;
+            }
+            return label;
+        }
 
         private void ChooseProfile_Load(object sender, EventArgs e)
         {
             #region Load last name
-
             string query = "SELECT last_name FROM parent";
             DatabaseFunctions.DbConn.Open();
-
             //Creates the SqlCommand and executes it
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             SqlDataReader reader = cmd.ExecuteReader();
@@ -36,35 +56,37 @@ namespace ChoreApplication.UI
             {
                 Surname = reader["last_name"].ToString();
             }
-            
             DatabaseFunctions.DbConn.Close();
-            surnameLabel.Text = "The " + Surname + "'s";
-
+            SurnameLabel.Text = "The " + Surname + "'s";
             #endregion
 
             #region Load Users
-
             List<ParentUser> ParentUsers = ParentUser.Load("");
             List<ChildUser> childUsers = ChildUser.Load("");
-
             #endregion
 
             int y = 1;
             int x = 1;
-
-            // pinPanel.Visible = false;
-            button = new List<Button>();
-            foreach (ParentUser p in ParentUsers)
+            foreach (ParentUser parent in ParentUsers)
             {
-                Button newButton = new Button();
-                button.Add(newButton);
-                this.profilesPanel.Controls.Add(newButton);
-                newButton.Location = new Point(x * 150, y * 75 - 75);
-                newButton.Width = 125;
-                newButton.Height = 50;
-                newButton.Text = p.FirstName;
-                newButton.Tag = p.Id;
-                newButton.Click += new EventHandler(newButton_Click);
+                Button UserButton = new Button
+                {
+                    Location = new Point(x * 105, y * 80 - 75),
+                    Size = new Size(125, 50),
+                    Tag = parent.Id,
+                    FlatStyle = FlatStyle.Flat,
+                    BackgroundImage = global::ChoreApplication.Properties.Resources.user,
+                    BackgroundImageLayout = ImageLayout.Zoom,
+                    Cursor = Cursors.Hand,
+                };
+                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X, y*80-25);
+                UserButton.FlatAppearance.BorderColor = SystemColors.Window;
+                UserButton.FlatAppearance.BorderSize = 0;
+                UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+                UserButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+                UserButton.Click += new EventHandler(UserButton_Click);
+                ProfilesPanel.Controls.Add(UserButton);
+                ProfilesPanel.Controls.Add(NameLabel);
                 if (x == 1)
                 {
                     x = 2;
@@ -75,17 +97,27 @@ namespace ChoreApplication.UI
                     y++;
                 }
             }
-            foreach (ChildUser c in childUsers)
+            foreach (ChildUser child in childUsers)
             {
-                Button newButton = new Button();
-                button.Add(newButton);
-                this.profilesPanel.Controls.Add(newButton);
-                newButton.Location = new Point(x * 150, y * 75 - 75);
-                newButton.Text = c.FirstName;
-                newButton.Width = 125;
-                newButton.Height = 50;
-                newButton.Tag = c.Id;
-                newButton.Click += new EventHandler(newButton_Click);
+                Button UserButton = new Button
+                {
+                    Location = new Point(x * 105, y * 80 - 75),
+                    Size = new Size(125, 50),
+                    Tag = child.Id,
+                    FlatStyle = FlatStyle.Flat,
+                    BackgroundImage = global::ChoreApplication.Properties.Resources.useregular,
+                    BackgroundImageLayout = ImageLayout.Zoom,
+                    Cursor = Cursors.Hand,
+                };
+                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X, y * 80 - 25);
+                UserButton.FlatAppearance.BorderColor = SystemColors.Window;
+                UserButton.FlatAppearance.BorderSize = 0;
+                UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+                UserButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+                UserButton.Click += new EventHandler(UserButton_Click);
+                ProfilesPanel.Controls.Add(UserButton);
+                ProfilesPanel.Controls.Add(NameLabel);
+                UserButton.Click += new EventHandler(UserButton_Click);
                 if (x == 1)
                 {
                     x = 2;
@@ -97,26 +129,12 @@ namespace ChoreApplication.UI
                 }
             }
         }
-
-        private void ChooseProfileLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void SurnameLabel_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void ProfilesPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-        private void newButton_Click(object sender, System.EventArgs e)
+        private void UserButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
             activeId = (int)clickedButton.Tag;
             PinCodeInterface pinCode = new PinCodeInterface();
+            this.Close();
             pinCode.Show();
         }
     }

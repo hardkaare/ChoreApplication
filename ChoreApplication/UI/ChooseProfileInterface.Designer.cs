@@ -28,64 +28,66 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.profilesPanel = new System.Windows.Forms.Panel();
-            this.surnameLabel = new System.Windows.Forms.Label();
-            this.chooseProfileLabel = new System.Windows.Forms.Label();
+            this.ProfilesPanel = new System.Windows.Forms.Panel();
+            this.SurnameLabel = new System.Windows.Forms.Label();
+            this.ChooseProfileLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // profilesPanel
+            // ProfilesPanel
             // 
-            this.profilesPanel.AutoScroll = true;
-            this.profilesPanel.Location = new System.Drawing.Point(12, 86);
-            this.profilesPanel.Name = "profilesPanel";
-            this.profilesPanel.Size = new System.Drawing.Size(558, 352);
-            this.profilesPanel.TabIndex = 0;
-            this.profilesPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.ProfilesPanel_Paint);
+            this.ProfilesPanel.AutoScroll = true;
+            this.ProfilesPanel.Location = new System.Drawing.Point(12, 84);
+            this.ProfilesPanel.Name = "ProfilesPanel";
+            this.ProfilesPanel.Size = new System.Drawing.Size(448, 354);
+            this.ProfilesPanel.TabIndex = 0;
             // 
-            // surnameLabel
+            // SurnameLabel
             // 
-            this.surnameLabel.AutoSize = true;
-            this.surnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            this.surnameLabel.Location = new System.Drawing.Point(213, 19);
-            this.surnameLabel.Name = "surnameLabel";
-            this.surnameLabel.Size = new System.Drawing.Size(168, 26);
-            this.surnameLabel.TabIndex = 0;
-            this.surnameLabel.Text = "The {surname}\'s";
-            this.surnameLabel.Click += new System.EventHandler(this.SurnameLabel_Click);
+            this.SurnameLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.SurnameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            this.SurnameLabel.Location = new System.Drawing.Point(12, 9);
+            this.SurnameLabel.Name = "SurnameLabel";
+            this.SurnameLabel.Size = new System.Drawing.Size(448, 26);
+            this.SurnameLabel.TabIndex = 0;
+            this.SurnameLabel.Text = "The {surname}\'s";
+            this.SurnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // chooseProfileLabel
+            // ChooseProfileLabel
             // 
-            this.chooseProfileLabel.AutoSize = true;
-            this.chooseProfileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.chooseProfileLabel.Location = new System.Drawing.Point(233, 45);
-            this.chooseProfileLabel.Name = "chooseProfileLabel";
-            this.chooseProfileLabel.Size = new System.Drawing.Size(133, 24);
-            this.chooseProfileLabel.TabIndex = 1;
-            this.chooseProfileLabel.Text = "Choose Profile";
-            this.chooseProfileLabel.Click += new System.EventHandler(this.ChooseProfileLabel_Click);
+            this.ChooseProfileLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.ChooseProfileLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.ChooseProfileLabel.Location = new System.Drawing.Point(12, 44);
+            this.ChooseProfileLabel.Name = "ChooseProfileLabel";
+            this.ChooseProfileLabel.Size = new System.Drawing.Size(448, 24);
+            this.ChooseProfileLabel.TabIndex = 1;
+            this.ChooseProfileLabel.Text = "Choose Profile";
+            this.ChooseProfileLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // ChooseProfileInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(582, 450);
-            this.Controls.Add(this.surnameLabel);
-            this.Controls.Add(this.chooseProfileLabel);
-            this.Controls.Add(this.profilesPanel);
+            this.ClientSize = new System.Drawing.Size(472, 450);
+            this.Controls.Add(this.SurnameLabel);
+            this.Controls.Add(this.ChooseProfileLabel);
+            this.Controls.Add(this.ProfilesPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "ChooseProfileInterface";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Choose Profile";
             this.Load += new System.EventHandler(this.ChooseProfile_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel profilesPanel;
-        private System.Windows.Forms.Label surnameLabel;
-        private System.Windows.Forms.Label chooseProfileLabel;
+        private System.Windows.Forms.Panel ProfilesPanel;
+        private System.Windows.Forms.Label SurnameLabel;
+        private System.Windows.Forms.Label ChooseProfileLabel;
     }
 }

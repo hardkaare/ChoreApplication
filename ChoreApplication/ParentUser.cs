@@ -13,9 +13,9 @@ namespace ChoreApplication
         #region Properties
         // The following properties can only be set from the derived classes but everyone can get it. (reconsider this later.)
    
-        public string Email { get; protected set; }
-        public string Password { get; protected set; }
-        public string Lastname { get; protected set; }
+        public string Email { get;  set; }
+        public string Password { get;  set; }
+        public string Lastname { get; set; }
 
         #endregion
 
