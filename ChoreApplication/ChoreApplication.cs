@@ -32,7 +32,7 @@ namespace ChoreApplication
             {
                 //foreach chore
                 //{
-                MessageBox.Show($"{NotifyDueTime(TimeNow, DueTime)}");
+                //MessageBox.Show($"{NotifyDueTime(TimeNow, DueTime)}");
                 //if(NotifyDueTime(Chore.duetime,DateTime.now)
                 //Create Notification
                 //}
@@ -75,8 +75,8 @@ namespace ChoreApplication
             var editChore = new UI.EditChoreUI(chore[0]);
             //var editReward = new UI.EditRewardUI(reward[0]);
 
-            //EditChild.Show();
-            editChore.Show();
+            EditChild.Show();
+            //editChore.Show();
             //editReward.Show();
         }
         //public UI.CreateChoreUI createchore = new UI.CreateChoreUI();
@@ -117,12 +117,14 @@ namespace ChoreApplication
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
             var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
+            var EditParentUI = new UI.EditParentUI(DumbFuckParentUser);
 
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
             //ParentInterface.Show();
-            ParentInterface.Show();
+            //ParentInterface.Show();
+            EditParentUI.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
@@ -142,6 +144,12 @@ namespace ChoreApplication
             var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
             ChildInterface.Show();
             
+        }
+
+        private void EditParentUI_Click(object sender, EventArgs e)
+        {
+            var EditParent = new UI.EditParentUI(DumbFuckParentUser);
+            EditParent.Show();
         }
     }
 }

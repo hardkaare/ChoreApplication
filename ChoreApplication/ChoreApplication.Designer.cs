@@ -36,12 +36,13 @@
             this.AlexogLuten = new System.Windows.Forms.Button();
             this.EditJoenler = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
+            this.EditParentUI = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // TestButtonLuten
             // 
             this.TestButtonLuten.Location = new System.Drawing.Point(73, 176);
-            this.TestButtonLuten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TestButtonLuten.Margin = new System.Windows.Forms.Padding(4);
             this.TestButtonLuten.Name = "TestButtonLuten";
             this.TestButtonLuten.Size = new System.Drawing.Size(141, 28);
             this.TestButtonLuten.TabIndex = 1;
@@ -61,7 +62,7 @@
             // TestButtonJoenler
             // 
             this.TestButtonJoenler.Location = new System.Drawing.Point(417, 176);
-            this.TestButtonJoenler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.TestButtonJoenler.Margin = new System.Windows.Forms.Padding(4);
             this.TestButtonJoenler.Name = "TestButtonJoenler";
             this.TestButtonJoenler.Size = new System.Drawing.Size(141, 28);
             this.TestButtonJoenler.TabIndex = 3;
@@ -81,7 +82,7 @@
             // interface1
             // 
             this.interface1.Location = new System.Drawing.Point(16, 511);
-            this.interface1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.interface1.Margin = new System.Windows.Forms.Padding(4);
             this.interface1.Name = "interface1";
             this.interface1.Size = new System.Drawing.Size(212, 28);
             this.interface1.TabIndex = 5;
@@ -92,7 +93,7 @@
             // AlexogLuten
             // 
             this.AlexogLuten.Location = new System.Drawing.Point(16, 460);
-            this.AlexogLuten.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.AlexogLuten.Margin = new System.Windows.Forms.Padding(4);
             this.AlexogLuten.Name = "AlexogLuten";
             this.AlexogLuten.Size = new System.Drawing.Size(212, 28);
             this.AlexogLuten.TabIndex = 6;
@@ -103,7 +104,7 @@
             // EditJoenler
             // 
             this.EditJoenler.Location = new System.Drawing.Point(417, 116);
-            this.EditJoenler.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.EditJoenler.Margin = new System.Windows.Forms.Padding(4);
             this.EditJoenler.Name = "EditJoenler";
             this.EditJoenler.Size = new System.Drawing.Size(141, 28);
             this.EditJoenler.TabIndex = 7;
@@ -122,11 +123,23 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Button1_Click_1);
             // 
+            // EditParentUI
+            // 
+            this.EditParentUI.BackColor = System.Drawing.SystemColors.HotTrack;
+            this.EditParentUI.Location = new System.Drawing.Point(235, 301);
+            this.EditParentUI.Name = "EditParentUI";
+            this.EditParentUI.Size = new System.Drawing.Size(251, 250);
+            this.EditParentUI.TabIndex = 9;
+            this.EditParentUI.Text = "DON\'T CLICK";
+            this.EditParentUI.UseVisualStyleBackColor = false;
+            this.EditParentUI.Click += new System.EventHandler(this.EditParentUI_Click);
+            // 
             // ChoreApplication
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 554);
+            this.Controls.Add(this.EditParentUI);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.EditJoenler);
             this.Controls.Add(this.AlexogLuten);
@@ -135,7 +148,7 @@
             this.Controls.Add(this.TestButtonJoenler);
             this.Controls.Add(this.TestLabelLuten);
             this.Controls.Add(this.TestButtonLuten);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "ChoreApplication";
             this.Text = "ChoreApplication";
             this.Load += new System.EventHandler(this.ChoreApplication_Load);
@@ -152,6 +165,7 @@
         private System.Windows.Forms.Button AlexogLuten;
         private System.Windows.Forms.Button EditJoenler;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button EditParentUI;
     }
 }
 
