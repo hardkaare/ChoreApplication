@@ -19,18 +19,19 @@ namespace ChoreApplication.UI
         {
             InitializeComponent();
             _child = child;
-            childName.Text = child.FirstName;
-            pincode.Text = child.Pincode;
+            ChildFirstnameInput.Text = child.FirstName;
+            ChildPincodeInput.Text = child.Pincode;
+            WelcomeLabel.Text = "Edit " + child.FirstName;
         }
        
         private void Save_Click(object sender, EventArgs e)
         {
             try
             {
-                _child.FirstName = childName.Text;
-                _child.Pincode = pincode.Text;
+                _child.FirstName = ChildFirstnameInput.Text;
+                _child.Pincode = ChildPincodeInput.Text;
                 // The first !Regex.Match ensures that a childs name only can contain letters. The second Regex.Match ensures that a pincode always will be exactly 4 digits. 
-                if (Regex.IsMatch(childName.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(pincode.Text, @"^\d{4}$").Success)
+                if (Regex.IsMatch(ChildFirstnameInput.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(ChildPincodeInput.Text, @"^\d{4}$").Success)
                 {
                     _child.Update();
                     this.Close();

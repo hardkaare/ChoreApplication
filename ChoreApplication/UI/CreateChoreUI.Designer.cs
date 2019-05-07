@@ -53,6 +53,7 @@ namespace ChoreApplication.UI
             // 
             // CreateChoreButton
             // 
+            this.CreateChoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.CreateChoreButton.Location = new System.Drawing.Point(65, 340);
             this.CreateChoreButton.Name = "CreateChoreButton";
             this.CreateChoreButton.Size = new System.Drawing.Size(200, 25);
@@ -64,24 +65,27 @@ namespace ChoreApplication.UI
             // ChoreName
             // 
             this.ChoreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.ChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChoreName.Location = new System.Drawing.Point(65, 65);
             this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
-            this.ChoreName.Size = new System.Drawing.Size(200, 20);
+            this.ChoreName.Size = new System.Drawing.Size(200, 22);
             this.ChoreName.TabIndex = 1;
             this.ChoreName.Text = "Enter chore name";
             // 
             // ChorePoints
             // 
-            this.ChorePoints.Location = new System.Drawing.Point(65, 107);
+            this.ChorePoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChorePoints.Location = new System.Drawing.Point(65, 106);
             this.ChorePoints.Name = "ChorePoints";
-            this.ChorePoints.Size = new System.Drawing.Size(200, 20);
+            this.ChorePoints.Size = new System.Drawing.Size(200, 22);
             this.ChorePoints.TabIndex = 2;
             this.ChorePoints.Text = "Enter chore points";
             // 
             // ChoreDescription
             // 
-            this.ChoreDescription.Location = new System.Drawing.Point(65, 150);
+            this.ChoreDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChoreDescription.Location = new System.Drawing.Point(65, 147);
             this.ChoreDescription.MaxLength = 255;
             this.ChoreDescription.Name = "ChoreDescription";
             this.ChoreDescription.Size = new System.Drawing.Size(200, 57);
@@ -92,87 +96,96 @@ namespace ChoreApplication.UI
             // 
             this.ChoreTypes.BackColor = System.Drawing.SystemColors.Window;
             this.ChoreTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.ChoreTypes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ChoreTypes.FormattingEnabled = true;
             this.ChoreTypes.Items.AddRange(new object[] {
             "Concrete",
             "Repeatable",
             "Reoccurring"});
-            this.ChoreTypes.Location = new System.Drawing.Point(65, 225);
+            this.ChoreTypes.Location = new System.Drawing.Point(65, 223);
             this.ChoreTypes.Name = "ChoreTypes";
-            this.ChoreTypes.Size = new System.Drawing.Size(200, 21);
+            this.ChoreTypes.Size = new System.Drawing.Size(200, 24);
             this.ChoreTypes.TabIndex = 4;
             this.ChoreTypes.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
             // 
             // DueDate
             // 
             this.DueDate.CustomFormat = "dd-MM-yyyy HH:mm";
+            this.DueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueDate.Location = new System.Drawing.Point(65, 266);
             this.DueDate.Name = "DueDate";
-            this.DueDate.Size = new System.Drawing.Size(200, 20);
+            this.DueDate.Size = new System.Drawing.Size(200, 22);
             this.DueDate.TabIndex = 5;
             this.DueDate.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
             // 
             // Assignment
             // 
             this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Assignment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Assignment.FormattingEnabled = true;
-            this.Assignment.Location = new System.Drawing.Point(65, 307);
+            this.Assignment.Location = new System.Drawing.Point(65, 310);
             this.Assignment.Name = "Assignment";
-            this.Assignment.Size = new System.Drawing.Size(200, 21);
+            this.Assignment.Size = new System.Drawing.Size(200, 24);
             this.Assignment.TabIndex = 13;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(62, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "Name";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(62, 91);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(62, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
+            this.label2.Size = new System.Drawing.Size(45, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Points";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(62, 134);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(62, 131);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(60, 13);
+            this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Description";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(62, 209);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(62, 207);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(58, 13);
+            this.label4.Size = new System.Drawing.Size(73, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Chore type";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(62, 250);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(51, 13);
+            this.label5.Size = new System.Drawing.Size(63, 16);
             this.label5.TabIndex = 10;
             this.label5.Text = "Due date";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.Location = new System.Drawing.Point(62, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(61, 13);
+            this.label6.Size = new System.Drawing.Size(78, 16);
             this.label6.TabIndex = 11;
             this.label6.Text = "Assignment";
             // 

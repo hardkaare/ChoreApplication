@@ -51,16 +51,18 @@
             // 
             // childName
             // 
+            this.childName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.childName.Location = new System.Drawing.Point(70, 183);
             this.childName.MaxLength = 20;
             this.childName.Name = "childName";
-            this.childName.Size = new System.Drawing.Size(200, 20);
+            this.childName.Size = new System.Drawing.Size(200, 22);
             this.childName.TabIndex = 1;
             this.childName.Text = "Enter firstname";
             // 
             // createChildButton
             // 
-            this.createChildButton.Location = new System.Drawing.Point(70, 248);
+            this.createChildButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createChildButton.Location = new System.Drawing.Point(70, 262);
             this.createChildButton.Name = "createChildButton";
             this.createChildButton.Size = new System.Drawing.Size(200, 25);
             this.createChildButton.TabIndex = 3;
@@ -70,27 +72,30 @@
             // 
             // childNameLabel
             // 
+            this.childNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.childNameLabel.Location = new System.Drawing.Point(70, 167);
             this.childNameLabel.Name = "childNameLabel";
-            this.childNameLabel.Size = new System.Drawing.Size(57, 13);
+            this.childNameLabel.Size = new System.Drawing.Size(200, 13);
             this.childNameLabel.TabIndex = 3;
             this.childNameLabel.Text = "Firstname";
             // 
             // pincodeLabel
             // 
             this.pincodeLabel.AutoSize = true;
-            this.pincodeLabel.Location = new System.Drawing.Point(70, 206);
+            this.pincodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pincodeLabel.Location = new System.Drawing.Point(70, 217);
             this.pincodeLabel.Name = "pincodeLabel";
-            this.pincodeLabel.Size = new System.Drawing.Size(73, 13);
+            this.pincodeLabel.Size = new System.Drawing.Size(91, 16);
             this.pincodeLabel.TabIndex = 5;
             this.pincodeLabel.Text = "Enter pincode";
             // 
             // childPincode
             // 
-            this.childPincode.Location = new System.Drawing.Point(70, 222);
+            this.childPincode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.childPincode.Location = new System.Drawing.Point(70, 236);
             this.childPincode.MaxLength = 4;
             this.childPincode.Name = "childPincode";
-            this.childPincode.Size = new System.Drawing.Size(200, 20);
+            this.childPincode.Size = new System.Drawing.Size(200, 22);
             this.childPincode.TabIndex = 2;
             this.childPincode.Text = "Enter pincode";
             // 
@@ -110,7 +115,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(334, 287);
+            this.ClientSize = new System.Drawing.Size(334, 307);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.pincodeLabel);
             this.Controls.Add(this.childPincode);

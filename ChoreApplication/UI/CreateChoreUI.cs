@@ -16,6 +16,7 @@ namespace ChoreApplication.UI
 {
     public partial class CreateChoreUI : Form
     {
+        private readonly Font StandardFont = new Font("Microsoft Sans Serif", 9.75F);
         public CreateChoreUI()
         {
             InitializeComponent();
@@ -24,6 +25,13 @@ namespace ChoreApplication.UI
         }  
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
+            DueTime.Font = StandardFont;
+            CompletionLimit.Font = StandardFont;
+            Days.Font = StandardFont;
+            DueDate.Font = StandardFont;
+            label5.Font = StandardFont;
+            label6.Font = StandardFont;
+            label7.Font = StandardFont;
             switch (ChoreTypes.Text)
             {
                 case "Reoccurring":
@@ -36,7 +44,7 @@ namespace ChoreApplication.UI
                     label7.Visible = true;
                     DueDate.Visible = false;
                     label6.Location = new System.Drawing.Point(62, 420);
-                    Assignment.Location = new System.Drawing.Point(65, 435);
+                    Assignment.Location = new System.Drawing.Point(65, 440);
                     CreateChoreButton.Location = new System.Drawing.Point(65, 470);
                     this.Size = new Size(350, 550);
                     CompletionLimit.Visible = false;
@@ -47,7 +55,7 @@ namespace ChoreApplication.UI
                     Days.Visible = false;
                     CompletionLimit.Visible = false;
                     label6.Location = new System.Drawing.Point(62, 291);
-                    Assignment.Location = new System.Drawing.Point(65, 307);
+                    Assignment.Location = new System.Drawing.Point(65, 310);
                     CreateChoreButton.Location = new System.Drawing.Point(65, 340);
                     this.Size = new Size(350, 420);
                     DueTime.Visible = false;
@@ -60,7 +68,7 @@ namespace ChoreApplication.UI
                     CompletionLimit.Visible = true;
                     Days.Visible = false;
                     label6.Location = new System.Drawing.Point(62, 291);
-                    Assignment.Location = new System.Drawing.Point(65, 307);
+                    Assignment.Location = new System.Drawing.Point(65, 310);
                     CreateChoreButton.Location = new System.Drawing.Point(65, 340);
                     this.Size = new Size(350, 420);
                     DueTime.Visible = false;
