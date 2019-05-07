@@ -18,7 +18,6 @@ namespace ChoreApplication
 
         public static Panel LoadLongestStreak(Point location, int width, Dictionary<int, string> ChildrenNames, List<ChildUser> ChildUsers)
         {
-
             Panel currentPanel = new Panel();
             currentPanel.Location = location;
             currentPanel.Width = width;

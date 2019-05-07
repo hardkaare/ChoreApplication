@@ -35,8 +35,8 @@
             this.LoginButton = new System.Windows.Forms.Button();
             this.newUserLink = new System.Windows.Forms.LinkLabel();
             this.LoginPanel = new System.Windows.Forms.Panel();
-            this.EmailLabel = new System.Windows.Forms.Label();
             this.PasswordLabel = new System.Windows.Forms.Label();
+            this.EmailLabel = new System.Windows.Forms.Label();
             this.LoginPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -119,15 +119,6 @@
             this.LoginPanel.Size = new System.Drawing.Size(345, 214);
             this.LoginPanel.TabIndex = 4;
             // 
-            // EmailLabel
-            // 
-            this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Location = new System.Drawing.Point(86, 68);
-            this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(32, 13);
-            this.EmailLabel.TabIndex = 6;
-            this.EmailLabel.Text = "Email";
-            // 
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
@@ -136,6 +127,15 @@
             this.PasswordLabel.Size = new System.Drawing.Size(53, 13);
             this.PasswordLabel.TabIndex = 6;
             this.PasswordLabel.Text = "Password";
+            // 
+            // EmailLabel
+            // 
+            this.EmailLabel.AutoSize = true;
+            this.EmailLabel.Location = new System.Drawing.Point(86, 68);
+            this.EmailLabel.Name = "EmailLabel";
+            this.EmailLabel.Size = new System.Drawing.Size(32, 13);
+            this.EmailLabel.TabIndex = 6;
+            this.EmailLabel.Text = "Email";
             // 
             // LoginInterface
             // 
@@ -151,6 +151,7 @@
             this.Name = "LoginInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
+            this.Load += new System.EventHandler(this.LoginInterface_Load);
             this.LoginPanel.ResumeLayout(false);
             this.LoginPanel.PerformLayout();
             this.ResumeLayout(false);

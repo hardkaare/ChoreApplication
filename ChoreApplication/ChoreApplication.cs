@@ -63,8 +63,8 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var createChore = new UI.CreateChoreUI();
-            createChore.Show();
+            var test = new UI.RegisterUserInterface();
+            test.Show();
         }
         private void EditJoenler_Click(object sender, EventArgs e)
         {
