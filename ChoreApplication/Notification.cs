@@ -37,10 +37,10 @@ namespace ChoreApplication
         {
             title += " - " + DateTime.Now.ToString("HH:mm d. MMMM");
             string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, title, description);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
         public static List<Notification> Load(string whereClause)
         {
@@ -50,8 +50,8 @@ namespace ChoreApplication
             }
             List<Notification> notifications = new List<Notification>();
             string query = string.Format("SELECT * FROM dbo.notification{0}", whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -64,16 +64,16 @@ namespace ChoreApplication
                 notifications.Add(notification);
             }
             reader.Close();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
             return notifications;
         }
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.notification WHERE notification_id={0}", NotificationId);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
         public override string ToString()
         {

@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.NotificationAmount = new UI.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -45,12 +44,12 @@
             this.titleText = new System.Windows.Forms.Label();
             this.upperPanel = new System.Windows.Forms.Panel();
             this.UserButton = new System.Windows.Forms.Button();
-            this.SortButton = new System.Windows.Forms.Button();
             this.ChorePanel = new System.Windows.Forms.Panel();
             this.RewardPanel = new System.Windows.Forms.Panel();
             this.UserPanel = new System.Windows.Forms.Panel();
             this.NotificationPanel = new System.Windows.Forms.Panel();
             this.LeaderboardPanel = new System.Windows.Forms.Panel();
+            this.NotificationAmount = new RoundButton();
             this.navigationPanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.SuspendLayout();
@@ -73,21 +72,6 @@
             this.navigationPanel.Name = "navigationPanel";
             this.navigationPanel.Size = new System.Drawing.Size(420, 79);
             this.navigationPanel.TabIndex = 0;
-            // 
-            // NotificationAmount
-            // 
-            this.NotificationAmount.Enabled = false;
-            this.NotificationAmount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotificationAmount.Location = new System.Drawing.Point(374, 1);
-            this.NotificationAmount.Name = "NotificationAmount";
-            this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
-            this.NotificationAmount.TabIndex = 0;
-            this.NotificationAmount.TabStop = false;
-            this.NotificationAmount.Text = "999";
-            this.NotificationAmount.UseVisualStyleBackColor = true;
             // 
             // notificationsLabel
             // 
@@ -264,7 +248,6 @@
             // 
             this.upperPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.upperPanel.Controls.Add(this.UserButton);
-            this.upperPanel.Controls.Add(this.SortButton);
             this.upperPanel.Controls.Add(this.OptionButton);
             this.upperPanel.Controls.Add(this.titleText);
             this.upperPanel.Location = new System.Drawing.Point(12, 12);
@@ -289,32 +272,14 @@
             this.UserButton.TabIndex = 0;
             this.UserButton.UseVisualStyleBackColor = true;
             // 
-            // SortButton
-            // 
-            this.SortButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.SortButton.BackgroundImage = global::ChoreApplication.Properties.Resources.menu;
-            this.SortButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.SortButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.SortButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.SortButton.FlatAppearance.BorderSize = 0;
-            this.SortButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.SortButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.SortButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.SortButton.Location = new System.Drawing.Point(390, 3);
-            this.SortButton.Name = "SortButton";
-            this.SortButton.Size = new System.Drawing.Size(25, 25);
-            this.SortButton.TabIndex = 0;
-            this.SortButton.UseVisualStyleBackColor = true;
-            // 
             // ChorePanel
             // 
             this.ChorePanel.AutoScroll = true;
             this.ChorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.ChorePanel.Location = new System.Drawing.Point(12, 49);
-            this.ChorePanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.ChorePanel.MaximumSize = new System.Drawing.Size(420, 415);
             this.ChorePanel.Name = "ChorePanel";
             this.ChorePanel.Size = new System.Drawing.Size(420, 415);
-            this.ChorePanel.TabIndex = 1;
             this.ChorePanel.Visible = false;
             // 
             // RewardPanel
@@ -322,7 +287,7 @@
             this.RewardPanel.AutoScroll = true;
             this.RewardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.RewardPanel.Location = new System.Drawing.Point(12, 49);
-            this.RewardPanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.RewardPanel.MaximumSize = new System.Drawing.Size(420, 415);
             this.RewardPanel.Name = "RewardPanel";
             this.RewardPanel.Size = new System.Drawing.Size(420, 415);
             this.RewardPanel.TabIndex = 2;
@@ -333,7 +298,7 @@
             this.UserPanel.AutoScroll = true;
             this.UserPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.UserPanel.Location = new System.Drawing.Point(12, 49);
-            this.UserPanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.UserPanel.MaximumSize = new System.Drawing.Size(420, 415);
             this.UserPanel.Name = "UserPanel";
             this.UserPanel.Size = new System.Drawing.Size(420, 415);
             this.UserPanel.TabIndex = 3;
@@ -344,7 +309,7 @@
             this.NotificationPanel.AutoScroll = true;
             this.NotificationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.NotificationPanel.Location = new System.Drawing.Point(12, 50);
-            this.NotificationPanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.NotificationPanel.MaximumSize = new System.Drawing.Size(420, 415);
             this.NotificationPanel.Name = "NotificationPanel";
             this.NotificationPanel.Size = new System.Drawing.Size(420, 415);
             this.NotificationPanel.TabIndex = 4;
@@ -355,11 +320,26 @@
             this.LeaderboardPanel.AutoScroll = true;
             this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.LeaderboardPanel.Location = new System.Drawing.Point(12, 49);
-            this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 450);
+            this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 415);
             this.LeaderboardPanel.Name = "LeaderboardPanel";
             this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
             this.LeaderboardPanel.TabIndex = 5;
             this.LeaderboardPanel.Visible = false;
+            // 
+            // NotificationAmount
+            // 
+            this.NotificationAmount.Enabled = false;
+            this.NotificationAmount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.NotificationAmount.Location = new System.Drawing.Point(374, 1);
+            this.NotificationAmount.Name = "NotificationAmount";
+            this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
+            this.NotificationAmount.TabIndex = 0;
+            this.NotificationAmount.TabStop = false;
+            this.NotificationAmount.Text = "999";
+            this.NotificationAmount.UseVisualStyleBackColor = true;
             // 
             // ParentInterface
             // 
@@ -403,7 +383,6 @@
         private System.Windows.Forms.Panel upperPanel;
         private System.Windows.Forms.Button UserButton;
         private System.Windows.Forms.Panel ChorePanel;
-        private System.Windows.Forms.Button SortButton;
         private System.Windows.Forms.Panel RewardPanel;
         public System.Windows.Forms.Panel UserPanel;
         private System.Windows.Forms.Panel NotificationPanel;

@@ -43,14 +43,14 @@ namespace ChoreApplication
         public static void Insert(string firstname, string lastname, string email, string password, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}','{1}')", firstname, pincode);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             //executes the query and return the first column of the first row in the result set returned by the query 
             int id = (int)cmd.ExecuteScalar();
             string parentQuery = string.Format("INSERT INTO dbo.parent(user_id, last_name, email, password) VALUES ('{0}','{1}','{2}','{3}')", id, lastname, email, password);
-            cmd = new SqlCommand(parentQuery, DatabaseFunctions.dbConn);
+            cmd = new SqlCommand(parentQuery, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
         /// <summary>
         /// Updates a specific parent object based on the input from the user.
@@ -58,13 +58,13 @@ namespace ChoreApplication
         public void Update()
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id=1", FirstName, Pincode);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
             string parentQuery = string.Format("UPDATE dbo.parent SET last_name='{0}', email='{1}', password='{2}' WHERE user_id=1", Lastname, Email, Password);
-            cmd = new SqlCommand(parentQuery, DatabaseFunctions.dbConn);
+            cmd = new SqlCommand(parentQuery, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
       /// <summary>
       /// Loads all parent users. A where clause can be added to narrow the load.
@@ -80,8 +80,8 @@ namespace ChoreApplication
             List<ParentUser> parents = new List<ParentUser>();
             
             string query = string.Format("SELECT u.user_id,u.first_name,p.last_name,p.email,p.[password],u.pincode FROM users AS u INNER JOIN parent AS p ON u.user_id = p.user_id{0};",whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -97,7 +97,7 @@ namespace ChoreApplication
                 parents.Add(user);
             }
             reader.Close();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
             return parents;
         }
         public override string ToString()

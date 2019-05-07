@@ -33,14 +33,14 @@ namespace ChoreApplication
         public static void Insert(string firstName, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}', '{1}')", firstName, pincode);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             //executes the query and return the first column of the first row in the result set returned by the query 
             int id = (int)cmd.ExecuteScalar();
             string parentQuery = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
-            cmd = new SqlCommand(parentQuery, DatabaseFunctions.dbConn);
+            cmd = new SqlCommand(parentQuery, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
 
         /// <summary>
@@ -50,12 +50,12 @@ namespace ChoreApplication
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, Id);
             string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}",Points,Id);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(childQuery, DatabaseFunctions.dbConn);
+            cmd = new SqlCommand(childQuery, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
 
         /// <summary>
@@ -72,8 +72,8 @@ namespace ChoreApplication
             List<ChildUser> children = new List<ChildUser>();
 
             string query = string.Format("SELECT u.user_id,c.child_id,u.first_name,c.points,u.pincode FROM users AS u INNER JOIN child AS c ON u.user_id = c.user_id{0}", whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -88,7 +88,7 @@ namespace ChoreApplication
                 children.Add(user);
             }
             reader.Close();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
             return children;
         }
 
@@ -98,10 +98,10 @@ namespace ChoreApplication
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", Id);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
 
         /// <summary>

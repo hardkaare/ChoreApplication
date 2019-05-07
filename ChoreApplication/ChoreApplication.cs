@@ -15,12 +15,34 @@ namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
+        public static string dateFormatString = "dd-MM-yyyy HH:mm";
+        private const int WithinOneHour = 60;
+        private DateTime TimeNow = DateTime.ParseExact(DateTime.Now.ToString(dateFormatString), dateFormatString, null);
+        private DateTime DueTime= DateTime.ParseExact("06-05-2019 15:26", dateFormatString, null);
+
         public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "dillerdaller", 0, "0000");
         public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
         {
             InitializeComponent();
             DatabaseFunctions.InitializeDB();
+            var StartTimeSpan = TimeSpan.Zero;
+            var PeriodTimeSpan = TimeSpan.FromSeconds(1);//1 tick i timen
+            var timer = new System.Threading.Timer((e) =>
+            {
+                //foreach chore
+                //{
+                MessageBox.Show($"{NotifyDueTime(TimeNow, DueTime)}");
+                //if(NotifyDueTime(Chore.duetime,DateTime.now)
+                //Create Notification
+                //}
+            }, null, StartTimeSpan, PeriodTimeSpan);
+        }
+        public static bool NotifyDueTime(DateTime timeNow, DateTime dueTime)
+        {
+            TimeSpan elapsedTime = dueTime - timeNow;
+            return (elapsedTime.TotalSeconds > -1 && elapsedTime.TotalSeconds < 0) // up to 1 second before
+                   || (elapsedTime.TotalSeconds >= 0 && Math.Floor(elapsedTime.TotalSeconds) <= WithinOneHour * 60); // up to 15 minutes later
         }
 
         private static void LoadAllUsers()
@@ -57,19 +79,20 @@ namespace ChoreApplication
             editChore.Show();
             //editReward.Show();
         }
+        //public UI.CreateChoreUI createchore = new UI.CreateChoreUI();
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
             var LoginInterface = new UI.LoginInterface();
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
-            var createchore = new UI.CreateChoreUI();
+            //var createchore = new UI.CreateChoreUI();
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
 
             //createChild.Show();
             //createreward.Show();
-            createchore.Show();
+            //createchore.Show();
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();

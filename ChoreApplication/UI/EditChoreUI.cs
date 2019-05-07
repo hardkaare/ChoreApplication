@@ -64,8 +64,8 @@ namespace ChoreApplication.UI
             ChoreDescription.Text = _reoccurring.Description;
             this.Controls.Add(this.Assignment);
             foreach (var child in ChildUser.Load($"c.child_id = {_reoccurring.Assignment}"))
-            {   
-                    Assignment.Text = child.FirstName;
+            {
+                Assignment.Text = child.FirstName;
             }
             this.Controls.Add(this.dtlLabel);
             dtlLabel.Text = "Due time";
@@ -80,16 +80,16 @@ namespace ChoreApplication.UI
                     //Reqular expression removing whitespace from string.
                     string formItem = Regex.Replace(Days.Items[i].ToString(), @"\s", "");
                     string choreItem = Regex.Replace(_reoccurring.Days[j], @"\s", "");
-                    
+
                     bool equals = String.Equals(formItem, choreItem, StringComparison.OrdinalIgnoreCase);
-                    
+
                     if (equals)
-                    {                        
+                    {
                         Days.SetItemChecked(i, true);
                     }
                 }
             }
-            CreateChoreButton.Location = new System.Drawing.Point(174, 400);
+            CreateChoreButton.Location = new System.Drawing.Point(135, 400);
             _choreType = 3;
         }
         private void LoadChildren()
@@ -103,7 +103,7 @@ namespace ChoreApplication.UI
                 this.Assignment.Items.Add(childrenarray[i]);
                 i++;
             }
-            
+
         }
 
         private void CreateChoreButton_Click(object sender, EventArgs e)
@@ -113,39 +113,49 @@ namespace ChoreApplication.UI
             {
                 id = child.ChildId;
             }
-            switch (_choreType)
+            if (Regex.IsMatch(ChoreName.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
             {
-                case 1:
-                    _concrete.Name = ChoreName.Text;
-                    _concrete.Points = Convert.ToInt32(ChorePoints.Text);
-                    _concrete.Description = ChoreDescription.Text;
-                    _concrete.Assignment = id;
-                    _concrete.DueDate = Convert.ToDateTime(DueDate.Text);
-                    _concrete.Update();
-                    this.Close();
-                    MessageBox.Show("The concrete chore has been updated.");
-                    break;
-                case 2:
-                    _repeatable.Name = ChoreName.Text;
-                    _repeatable.Points = Convert.ToInt32(ChorePoints.Text);
-                    _repeatable.Description = ChoreDescription.Text;
-                    _repeatable.Assignment = id;
-                    _repeatable.Limit = (int)CompletionLimit.Value;
-                    _repeatable.Update();
-                    this.Close();
-                    MessageBox.Show("The repeatable chore has been updated.");
-                    break;
-                case 3:
-                    _reoccurring.Name = ChoreName.Text;
-                    _reoccurring.Points = Convert.ToInt32(ChorePoints.Text);
-                    _reoccurring.Description = ChoreDescription.Text;
-                    _reoccurring.Assignment = id;
-                    _reoccurring.DueTime = Convert.ToDateTime(DueTime.Text);
-                    _reoccurring.Days = Days.CheckedItems.OfType<string>().ToList<string>();
-                    _reoccurring.Update();
-                    this.Close();
-                    MessageBox.Show("The reoccurring chore has been updated.");
-                    break;
+                try
+                {
+                    switch (_choreType)
+                    {
+                        case 1:
+                            _concrete.Name = ChoreName.Text;
+                            _concrete.Points = Convert.ToInt32(ChorePoints.Text);
+                            _concrete.Description = ChoreDescription.Text;
+                            _concrete.Assignment = id;
+                            _concrete.DueDate = Convert.ToDateTime(DueDate.Text);
+                            _concrete.Update();
+                            this.Close();
+                            MessageBox.Show("The concrete chore has been updated.");
+                            break;
+                        case 2:
+                            _repeatable.Name = ChoreName.Text;
+                            _repeatable.Points = Convert.ToInt32(ChorePoints.Text);
+                            _repeatable.Description = ChoreDescription.Text;
+                            _repeatable.Assignment = id;
+                            _repeatable.Limit = (int)CompletionLimit.Value;
+                            _repeatable.Update();
+                            this.Close();
+                            MessageBox.Show("The repeatable chore has been updated.");
+                            break;
+                        case 3:
+                            _reoccurring.Name = ChoreName.Text;
+                            _reoccurring.Points = Convert.ToInt32(ChorePoints.Text);
+                            _reoccurring.Description = ChoreDescription.Text;
+                            _reoccurring.Assignment = id;
+                            _reoccurring.DueTime = Convert.ToDateTime(DueTime.Text);
+                            _reoccurring.Days = Days.CheckedItems.OfType<string>().ToList<string>();
+                            _reoccurring.Update();
+                            this.Close();
+                            MessageBox.Show("The reoccurring chore has been updated.");
+                            break;
+                    }
+                }
+                catch (Exception)
+                {
+                    MessageBox.Show("Invalid informaion entered.");
+                }
             }
         }
     }

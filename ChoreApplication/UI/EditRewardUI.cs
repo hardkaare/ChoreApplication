@@ -37,9 +37,7 @@ namespace ChoreApplication.UI
                 this.assignment.Items.Add(childrenarray[i]);
                 i++;
             }
-
         }
-
         private void SaveReward_Click(object sender, EventArgs e)
         {
             _reward.Name = rewardName.Text;
