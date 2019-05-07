@@ -121,10 +121,10 @@ namespace ChoreApplication
 
             //LoginInterface.Show();
             //RegisterUser.Show();
-            //ChooseProfile.Show();
-            //ParentInterface.Show();
-            //ParentInterface.Show();
-            EditParentUI.Show();
+            ChooseProfile.Show();
+            ParentInterface.Show();
+            //EditParentUI.Show();
+
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
