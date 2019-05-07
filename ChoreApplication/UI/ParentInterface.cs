@@ -565,6 +565,7 @@ namespace ChoreApplication.UI
 
         private void LoadLeaderboard()
         {
+            LeaderboardPanel.Controls.Clear();
             int PanelDist = 20;
             int yLocLeaderboard = 10;
 
@@ -573,20 +574,198 @@ namespace ChoreApplication.UI
             this.LeaderboardPanel.Controls.Add(Title1);
             yLocLeaderboard += Title1.Height + PanelDist;
 
-            //Add Total Points bars
+            //Add Total Points panel
             Panel TotalPointsStatistic = LoadTotalPoints(new Point(0, yLocLeaderboard));
             this.LeaderboardPanel.Controls.Add(TotalPointsStatistic);
             yLocLeaderboard += TotalPointsStatistic.Height + PanelDist;
 
             //Add Total Chores Approved title
-            var Title2 = AddLabel("Total Chores Approved", true, 140, Title1.Height + TotalPointsStatistic.Height + 2 * PanelDist);
+            var Title2 = AddLabel("Total Chores Approved", true, 140, yLocLeaderboard);
             this.LeaderboardPanel.Controls.Add(Title2);
             yLocLeaderboard += Title2.Height + PanelDist;
 
-            //Add Total Chores Approved bars
+            //Add Total Chores Approved panel
             Panel TotalChoresApprovedStatistic = LoadTotalChoresApproved(new Point(0, yLocLeaderboard));
             this.LeaderboardPanel.Controls.Add(TotalChoresApprovedStatistic);
             yLocLeaderboard += TotalChoresApprovedStatistic.Height + PanelDist;
+
+            //Add Completion Rate title
+            var Title3 = AddLabel("Completion Rate", true, 140, yLocLeaderboard);
+            this.LeaderboardPanel.Controls.Add(Title3);
+            yLocLeaderboard += Title3.Height + PanelDist;
+
+            //Add Completion Rate panel
+            Panel CompletionRateStatistic = LoadCompletionRate(new Point(0, yLocLeaderboard));
+            this.LeaderboardPanel.Controls.Add(CompletionRateStatistic);
+            yLocLeaderboard += CompletionRateStatistic.Height + PanelDist;
+
+            //Add Longest streak title
+            var Title4 = AddLabel("Longest Streak", true, 140, yLocLeaderboard);
+            this.LeaderboardPanel.Controls.Add(Title4);
+            yLocLeaderboard += Title4.Height + PanelDist;
+
+            //Add Longest Strea panel
+            Panel LongestStreakStatistic = LoadLongestStreak(new Point(0, yLocLeaderboard));
+            this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
+            yLocLeaderboard += LongestStreakStatistic.Height + PanelDist;
+
+        }
+
+        private Panel LoadLongestStreak(Point location)
+        {
+            Panel currentPanel = new Panel();
+            currentPanel.Location = location;
+            currentPanel.Width = LeaderboardPanel.Width - 5;
+            int barDist = 5;
+            int yLoc = 0;
+            var longestStreak = LongestStreak();
+            var first = longestStreak.First();
+            int maxValue = first.Value;
+
+            foreach (KeyValuePair<int, int> score in longestStreak)
+            {
+                var bar = AddProgressbar(score.Value, maxValue);
+                currentPanel.Controls.Add(bar);
+                bar.Location = new Point(0, yLoc);
+                var label1 = AddLabel(score.Value.ToString(), false, bar.Width, yLoc + 5);
+                var label2 = AddLabel(ChildrenNames[score.Key], false, bar.Width + 50, yLoc + 5);
+                currentPanel.Controls.Add(label1);
+                currentPanel.Controls.Add(label2);
+                yLoc += bar.Height + barDist;
+            }
+
+            currentPanel.Height = yLoc;
+            return currentPanel;
+        }
+
+        private Dictionary<int, int> LongestStreak()
+        {
+            var result = new Dictionary<int, int>();
+
+            foreach (ChildUser c in ChildUsers)
+            {
+                int longestStreak = 0;
+                int currentStreak = 0;
+
+                string query = string.Format("SELECT concrete_chore.status FROM chore INNER JOIN concrete_chore ON " +
+                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND (concrete_chore.[status]=4 OR " +
+                    "concrete_chore.[status]=3)", c.ChildId);
+                DatabaseFunctions.DbConn.Open();
+
+                //Creates the SqlCommand and executes it
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                //Reads all lines in the datareader
+                while (reader.Read())
+                {
+                    int status = (int)reader[0];
+                    if(status == 3)
+                    {
+                        currentStreak++;
+                        if(currentStreak > longestStreak)
+                        {
+                            longestStreak = currentStreak;
+                        }
+                    }
+                    else
+                    {
+                        currentStreak = 0;
+                    }
+                }
+                reader.Close();
+                DatabaseFunctions.DbConn.Close();
+
+                result.Add(c.ChildId, longestStreak);
+            }
+            result = SortIntDics(result);
+            return result;
+        }
+
+        private Panel LoadCompletionRate(Point location)
+        {
+            Panel currentPanel = new Panel();
+            currentPanel.Location = location;
+            currentPanel.Width = LeaderboardPanel.Width - 5;
+            int barDist = 5;
+            int yLoc = 0;
+            var completionRateApproved = CompletionRateApproved();
+
+            foreach (KeyValuePair<int, int> score in completionRateApproved)
+            {
+                var bar = AddProgressbar(score.Value, 100);
+                currentPanel.Controls.Add(bar);
+                bar.Location = new Point(0, yLoc);
+                var label1 = AddLabel(score.Value.ToString() + "%", false, bar.Width, yLoc + 5);
+                var label2 = AddLabel(ChildrenNames[score.Key], false, bar.Width + 50, yLoc + 5);
+                currentPanel.Controls.Add(label1);
+                currentPanel.Controls.Add(label2);
+                yLoc += bar.Height + barDist;
+            }
+
+            currentPanel.Height = yLoc;
+            return currentPanel;
+        }
+
+        private Dictionary<int, int> CompletionRateApproved()
+        {
+            var result = new Dictionary<int, int>();
+
+            foreach (ChildUser c in ChildUsers)
+            {
+                double CR;
+                int sumOverdue = 0;
+                int sumApproved = 0;
+                int CRrounded;
+
+                string query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
+                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=4", c.ChildId);
+                DatabaseFunctions.DbConn.Open();
+
+                //Creates the SqlCommand and executes it
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                SqlDataReader reader = cmd.ExecuteReader();
+
+                //Reads all lines in the datareader
+                while (reader.Read())
+                {
+                    int noget = (int)reader[0];
+                    sumOverdue++;
+                }
+                reader.Close();
+
+                query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
+                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
+                
+                //Creates the SqlCommand and executes it
+                cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                reader = cmd.ExecuteReader();
+
+                //Reads all lines in the datareader
+                while (reader.Read())
+                {
+                    int noget = (int)reader[0];
+                    sumApproved++;
+                }
+                reader.Close();
+                DatabaseFunctions.DbConn.Close();
+
+                if((sumOverdue+sumApproved) != 0)
+                {
+                    CR = (double)sumOverdue / (sumOverdue + sumApproved) * 100;
+                }
+                else
+                {
+                    CR = 0;
+                }
+                
+                CR = 100 - Math.Round(CR);
+                CRrounded = (int)CR;
+
+                result.Add(c.ChildId, CRrounded);
+            }
+            result = SortIntDics(result);
+            return result;
         }
 
         private Panel LoadTotalChoresApproved(Point location)
@@ -611,7 +790,6 @@ namespace ChoreApplication.UI
                 currentPanel.Controls.Add(label2);
                 yLoc += bar.Height + barDist;
             }
-
 
             currentPanel.Height = yLoc;
             return currentPanel;
@@ -672,14 +850,6 @@ namespace ChoreApplication.UI
             return currentPanel;
         }
 
-        private Panel AddPanel()
-        {
-            Panel newPanel = new Panel();
-            newPanel.Width = this.LeaderboardPanel.Width - 1;
-            newPanel.BorderStyle = BorderStyle.FixedSingle;
-            return newPanel;
-        }
-
         private Dictionary<int, int> TotalPoints()
         {
             var result = new Dictionary<int, int>();
@@ -712,6 +882,16 @@ namespace ChoreApplication.UI
         {
             Dictionary<int, int> result = new Dictionary<int, int>();
             foreach (KeyValuePair<int, int> points in input.OrderByDescending(key => key.Value))
+            {
+                result.Add(points.Key, points.Value);
+            }
+            return result;
+        }
+
+        private Dictionary<int, double> SortDoubleDics(Dictionary<int, double> input)
+        {
+            Dictionary<int, double> result = new Dictionary<int, double>();
+            foreach (KeyValuePair<int, double> points in input.OrderByDescending(key => key.Value))
             {
                 result.Add(points.Key, points.Value);
             }
