@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
 using System.Data.SqlClient;
 
 namespace ChoreApplication
@@ -26,7 +21,7 @@ namespace ChoreApplication
         //Password
         private const String PASSWORD = "Tuborg123";
         //Sql connection
-        public static SqlConnection dbConn {get; private set;}
+        public static SqlConnection DbConn {get; private set;}
 
         #endregion
 
@@ -50,22 +45,19 @@ namespace ChoreApplication
             builder = null;
 
             //Makes the connection to DB
-            dbConn = new SqlConnection(connString);
+            DbConn = new SqlConnection(connString);
 
             //When application is closed, clear connection if active
             Application.ApplicationExit += (sender, args) =>
             {
-                if (dbConn != null)
+                if (DbConn != null)
                 {
-                    dbConn.Dispose();
-                    dbConn = null;
+                    DbConn.Dispose();
+                    DbConn = null;
                 }
             };
         }
-
         #endregion
-
-        
     }
 }
 

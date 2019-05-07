@@ -67,10 +67,10 @@ namespace ChoreApplication
             string query = string.Format("INSERT INTO dbo.chore" +
                 "(child_id, name, description, points) OUTPUT inserted.chore_id VALUES " +
                 "('{0}', '{1}', '{2}', '{3}')", assignment, name, desc, points);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
 
             //Opens connection to the DB
-            DatabaseFunctions.dbConn.Open();
+            DatabaseFunctions.DbConn.Open();
 
             //Executes the query to chore table and returns the chore_id inserted
             int id = (int)cmd.ExecuteScalar();
@@ -78,7 +78,7 @@ namespace ChoreApplication
             //Formatting the query to concrete_chore table and creating the SqlCommand
             string query2 = string.Format("INSERT INTO dbo.reoccurring_chore (chore_id, due_time) " +
                 "OUTPUT inserted.reo_id VALUES ({0}, '{1}')", id, dueTime.ToString("T"));
-            SqlCommand cmd2 = new SqlCommand(query2, DatabaseFunctions.dbConn);
+            SqlCommand cmd2 = new SqlCommand(query2, DatabaseFunctions.DbConn);
 
             //Executes the query to chore table and returns the chore_id inserted
             id = (int)cmd2.ExecuteScalar();
@@ -89,12 +89,12 @@ namespace ChoreApplication
             foreach (string day in days)
             {
                 query3 = string.Format("INSERT INTO [days] (reo_id, day) VALUES ({0}, '{1}')", id, day);
-                cmd3 = new SqlCommand(query3, DatabaseFunctions.dbConn);
+                cmd3 = new SqlCommand(query3, DatabaseFunctions.DbConn);
                 cmd3.ExecuteNonQuery();
             }
 
             //Closes connection to DB
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
 
         public void Update()
@@ -110,16 +110,16 @@ namespace ChoreApplication
                 "(SELECT reo_id FROM reoccurring_chore WHERE chore_id={0})", ID);
             string query4;
 
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
 
             //Opens connection to the DB
-            DatabaseFunctions.dbConn.Open();
+            DatabaseFunctions.DbConn.Open();
 
             //Executes the SqlCommands
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(query2, DatabaseFunctions.dbConn);
+            cmd = new SqlCommand(query2, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(query3, DatabaseFunctions.dbConn);
+            cmd = new SqlCommand(query3, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
 
             //Creates and executes an insert query for each day in the list
@@ -127,12 +127,12 @@ namespace ChoreApplication
             {
                 query4 = string.Format("INSERT INTO [days] (reo_id, day) VALUES " +
                     "((SELECT reo_id FROM reoccurring_chore WHERE chore_id={0}), '{1}')", ID, day);
-                cmd = new SqlCommand(query4, DatabaseFunctions.dbConn);
+                cmd = new SqlCommand(query4, DatabaseFunctions.DbConn);
                 cmd.ExecuteNonQuery();
             }
 
             //Closes connection to DB
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
         }
 
         public static List<Reocurring> Load(string whereClause)
@@ -151,10 +151,10 @@ namespace ChoreApplication
                 "SELECT ch.chore_id, ch.name, ch.description, ch.points, ch.child_id, reo.due_time" +
                 " FROM chore AS ch INNER JOIN reoccurring_chore AS reo ON " +
                 "ch.chore_id=reo.chore_id{0}", whereClause);
-            DatabaseFunctions.dbConn.Open();
+            DatabaseFunctions.DbConn.Open();
 
             //Creates the SqlCommand and executes it
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             SqlDataReader reader = cmd.ExecuteReader();
 
             //Reads all lines in the datareader
@@ -182,7 +182,7 @@ namespace ChoreApplication
                 //Selects all days for the current chore in DB
                 query = string.Format("SELECT day FROM days WHERE reo_id=" +
                     "(SELECT reo_id FROM reoccurring_chore WHERE chore_id={0})", list.ID);
-                cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+                cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
                 reader = cmd.ExecuteReader();
                 
                 //Adds each day to the days list for the current chore
@@ -192,7 +192,7 @@ namespace ChoreApplication
                 }
                 reader.Close();
             }
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
             return result;
         }
         #endregion

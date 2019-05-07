@@ -15,7 +15,7 @@ namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
-        public ChildUser DumbFuckChildUser = new ChildUser(1, 2, "Dillerdaller", 1000, "0000");
+        public ChildUser DumbFuckChildUser = new ChildUser(1, 2, "Dillerdaller", 20, "0000");
         public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
         {

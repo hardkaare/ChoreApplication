@@ -27,17 +27,17 @@ namespace ChoreApplication.UI
             #region Load last name
 
             string query = "SELECT last_name FROM parent";
-            DatabaseFunctions.dbConn.Open();
+            DatabaseFunctions.DbConn.Open();
 
             //Creates the SqlCommand and executes it
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.dbConn);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             SqlDataReader reader = cmd.ExecuteReader();
             while(reader.Read())
             {
                 Surname = reader["last_name"].ToString();
             }
             
-            DatabaseFunctions.dbConn.Close();
+            DatabaseFunctions.DbConn.Close();
             surnameLabel.Text = "The " + Surname + "'s";
 
             #endregion

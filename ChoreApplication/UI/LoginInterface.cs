@@ -47,8 +47,8 @@ namespace ChoreApplication.UI
             }
 
             string loginQuery = "SELECT email, password FROM dbo.parent";
-            SqlCommand cmd = new SqlCommand(loginQuery, DatabaseFunctions.dbConn);
-            DatabaseFunctions.dbConn.Open();
+            SqlCommand cmd = new SqlCommand(loginQuery, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -61,13 +61,13 @@ namespace ChoreApplication.UI
                 else
                 {
                     MessageBox.Show("Incorrect password or E-mail entered.");
-                    DatabaseFunctions.dbConn.Close();
+                    DatabaseFunctions.DbConn.Close();
                     return;
                 }
             }
             if (match == true)
             {
-                DatabaseFunctions.dbConn.Close();
+                DatabaseFunctions.DbConn.Close();
                 chooseProfile = new ChooseProfileInterface();
                 chooseProfile.Show();
                 this.Close();
