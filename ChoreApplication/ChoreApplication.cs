@@ -32,7 +32,7 @@ namespace ChoreApplication
             {
                 //foreach chore
                 //{
-                MessageBox.Show($"{NotifyDueTime(TimeNow, DueTime)}");
+                //MessageBox.Show($"{NotifyDueTime(TimeNow, DueTime)}");
                 //if(NotifyDueTime(Chore.duetime,DateTime.now)
                 //Create Notification
                 //}
