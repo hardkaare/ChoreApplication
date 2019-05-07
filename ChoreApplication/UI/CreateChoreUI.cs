@@ -93,7 +93,7 @@ namespace ChoreApplication.UI
                     id = children[i].ChildId;
                 }
             }
-            if (Regex.IsMatch(ChoreName.Text, @"^[a-zA-Z\s]+$"))
+            if (Regex.IsMatch(ChoreName.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
             {
                 switch (ChoreTypes.Text)
                 {

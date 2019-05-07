@@ -17,12 +17,6 @@ namespace ChoreApplication.UI
             InitializeComponent();
             LoadChildren();
         }
-
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void LoadChildren()
         {
             var children = ChildUser.Load("");
@@ -44,19 +38,9 @@ namespace ChoreApplication.UI
                     id = children[i].ChildId;
                 }
             }
-            try
-            {
-                Reward.Insert(id, rewardName.Text, description.Text, Convert.ToInt32(pointsRequired.Text));
-                this.Close();
-                MessageBox.Show("A reward has been created");
-                
-            }
-            catch (Exception)
-            {
-
-                MessageBox.Show($"Incorrect input entered.");
-
-            }
+            Reward.Insert(id, rewardName.Text, description.Text, Convert.ToInt32(pointsRequired.Text));
+            this.Close();
+            MessageBox.Show("A reward has been created");
         }
     }
 }
