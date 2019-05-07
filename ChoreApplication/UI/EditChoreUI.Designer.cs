@@ -43,28 +43,31 @@
             this.ChorePoints = new System.Windows.Forms.TextBox();
             this.ChoreName = new System.Windows.Forms.TextBox();
             this.CreateChoreButton = new System.Windows.Forms.Button();
+            this.WelcomeLabel = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).BeginInit();
             this.SuspendLayout();
             // 
             // daysLabel
             // 
             this.daysLabel.AutoSize = true;
-            this.daysLabel.Location = new System.Drawing.Point(70, 266);
+            this.daysLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.daysLabel.Location = new System.Drawing.Point(69, 310);
             this.daysLabel.Name = "daysLabel";
-            this.daysLabel.Size = new System.Drawing.Size(31, 13);
+            this.daysLabel.Size = new System.Drawing.Size(40, 16);
             this.daysLabel.TabIndex = 29;
             this.daysLabel.Text = "Days";
             // 
             // CompletionLimit
             // 
-            this.CompletionLimit.Location = new System.Drawing.Point(70, 243);
+            this.CompletionLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompletionLimit.Location = new System.Drawing.Point(70, 284);
             this.CompletionLimit.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
             this.CompletionLimit.Name = "CompletionLimit";
-            this.CompletionLimit.Size = new System.Drawing.Size(198, 20);
+            this.CompletionLimit.Size = new System.Drawing.Size(198, 22);
             this.CompletionLimit.TabIndex = 13;
             this.CompletionLimit.Value = new decimal(new int[] {
             1,
@@ -74,6 +77,7 @@
             // 
             // Days
             // 
+            this.Days.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Days.Items.AddRange(new object[] {
             "Monday",
             "Tuesday",
@@ -82,88 +86,93 @@
             "Friday",
             "Saturday",
             "Sunday"});
-            this.Days.Location = new System.Drawing.Point(70, 282);
+            this.Days.Location = new System.Drawing.Point(69, 326);
             this.Days.Name = "Days";
-            this.Days.Size = new System.Drawing.Size(198, 109);
+            this.Days.Size = new System.Drawing.Size(198, 106);
             this.Days.TabIndex = 10;
             // 
             // assignmentLabel
             // 
-            this.assignmentLabel.AutoSize = true;
-            this.assignmentLabel.Location = new System.Drawing.Point(70, 188);
+            this.assignmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.assignmentLabel.Location = new System.Drawing.Point(70, 219);
             this.assignmentLabel.Name = "assignmentLabel";
-            this.assignmentLabel.Size = new System.Drawing.Size(61, 13);
+            this.assignmentLabel.Size = new System.Drawing.Size(78, 16);
             this.assignmentLabel.TabIndex = 0;
             this.assignmentLabel.Text = "Assignment";
             // 
             // dtlLabel
             // 
             this.dtlLabel.AutoSize = true;
-            this.dtlLabel.Location = new System.Drawing.Point(70, 227);
+            this.dtlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtlLabel.Location = new System.Drawing.Point(70, 265);
             this.dtlLabel.Name = "dtlLabel";
-            this.dtlLabel.Size = new System.Drawing.Size(51, 13);
+            this.dtlLabel.Size = new System.Drawing.Size(63, 16);
             this.dtlLabel.TabIndex = 27;
             this.dtlLabel.Text = "Due date";
             // 
             // descriptionLabel
             // 
-            this.descriptionLabel.AutoSize = true;
-            this.descriptionLabel.Location = new System.Drawing.Point(70, 112);
+            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionLabel.Location = new System.Drawing.Point(70, 140);
             this.descriptionLabel.Name = "descriptionLabel";
-            this.descriptionLabel.Size = new System.Drawing.Size(60, 13);
+            this.descriptionLabel.Size = new System.Drawing.Size(76, 16);
             this.descriptionLabel.TabIndex = 0;
             this.descriptionLabel.Text = "Description";
             // 
             // DueTime
             // 
             this.DueTime.CustomFormat = "hh:mm";
+            this.DueTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueTime.Location = new System.Drawing.Point(70, 243);
+            this.DueTime.Location = new System.Drawing.Point(70, 284);
             this.DueTime.Name = "DueTime";
             this.DueTime.ShowUpDown = true;
-            this.DueTime.Size = new System.Drawing.Size(198, 20);
+            this.DueTime.Size = new System.Drawing.Size(198, 22);
             this.DueTime.TabIndex = 9;
             // 
             // pointsLabel
             // 
-            this.pointsLabel.AutoSize = true;
-            this.pointsLabel.Location = new System.Drawing.Point(70, 74);
+            this.pointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pointsLabel.Location = new System.Drawing.Point(70, 96);
             this.pointsLabel.Name = "pointsLabel";
-            this.pointsLabel.Size = new System.Drawing.Size(36, 13);
+            this.pointsLabel.Size = new System.Drawing.Size(45, 16);
             this.pointsLabel.TabIndex = 0;
             this.pointsLabel.Text = "Points";
             // 
             // nameLabel
             // 
-            this.nameLabel.AutoSize = true;
-            this.nameLabel.Location = new System.Drawing.Point(70, 34);
+            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Location = new System.Drawing.Point(70, 55);
             this.nameLabel.Name = "nameLabel";
-            this.nameLabel.Size = new System.Drawing.Size(35, 13);
+            this.nameLabel.Size = new System.Drawing.Size(45, 16);
             this.nameLabel.TabIndex = 0;
             this.nameLabel.Text = "Name";
             // 
             // Assignment
             // 
             this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.Assignment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Assignment.FormattingEnabled = true;
-            this.Assignment.Location = new System.Drawing.Point(70, 204);
+            this.Assignment.Location = new System.Drawing.Point(70, 238);
             this.Assignment.Name = "Assignment";
-            this.Assignment.Size = new System.Drawing.Size(198, 21);
+            this.Assignment.Size = new System.Drawing.Size(198, 24);
             this.Assignment.TabIndex = 4;
             // 
             // DueDate
             // 
             this.DueDate.CustomFormat = "dd\'-\'MM\'-\'yyyy HH\':\'mm\':\'ss";
+            this.DueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueDate.Location = new System.Drawing.Point(70, 243);
+            this.DueDate.Location = new System.Drawing.Point(70, 284);
             this.DueDate.Name = "DueDate";
-            this.DueDate.Size = new System.Drawing.Size(198, 20);
+            this.DueDate.Size = new System.Drawing.Size(198, 22);
             this.DueDate.TabIndex = 13;
             this.DueDate.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
             // 
             // ChoreDescription
             // 
-            this.ChoreDescription.Location = new System.Drawing.Point(70, 128);
+            this.ChoreDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChoreDescription.Location = new System.Drawing.Point(70, 159);
             this.ChoreDescription.MaxLength = 255;
             this.ChoreDescription.Name = "ChoreDescription";
             this.ChoreDescription.Size = new System.Drawing.Size(198, 57);
@@ -172,52 +181,68 @@
             // 
             // ChorePoints
             // 
-            this.ChorePoints.Location = new System.Drawing.Point(70, 89);
+            this.ChorePoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChorePoints.Location = new System.Drawing.Point(70, 115);
             this.ChorePoints.Name = "ChorePoints";
-            this.ChorePoints.Size = new System.Drawing.Size(198, 20);
+            this.ChorePoints.Size = new System.Drawing.Size(198, 22);
             this.ChorePoints.TabIndex = 2;
             this.ChorePoints.Text = "Enter chore points";
             // 
             // ChoreName
             // 
             this.ChoreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChoreName.Location = new System.Drawing.Point(70, 50);
+            this.ChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChoreName.Location = new System.Drawing.Point(70, 71);
             this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
-            this.ChoreName.Size = new System.Drawing.Size(198, 20);
+            this.ChoreName.Size = new System.Drawing.Size(198, 22);
             this.ChoreName.TabIndex = 1;
             this.ChoreName.Text = "Enter chore name";
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Location = new System.Drawing.Point(135, 281);
+            this.CreateChoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateChoreButton.Location = new System.Drawing.Point(69, 312);
             this.CreateChoreButton.Name = "CreateChoreButton";
-            this.CreateChoreButton.Size = new System.Drawing.Size(75, 23);
+            this.CreateChoreButton.Size = new System.Drawing.Size(199, 25);
             this.CreateChoreButton.TabIndex = 15;
-            this.CreateChoreButton.Text = "Save";
+            this.CreateChoreButton.Text = "Save Changes";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
             this.CreateChoreButton.Click += new System.EventHandler(this.CreateChoreButton_Click);
+            // 
+            // WelcomeLabel
+            // 
+            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
+            this.WelcomeLabel.Name = "WelcomeLabel";
+            this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
+            this.WelcomeLabel.TabIndex = 30;
+            this.WelcomeLabel.Text = "Edit Chore";
+            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EditChoreUI
             // 
             this.AcceptButton = this.CreateChoreButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(337, 513);
+            this.BackColor = System.Drawing.SystemColors.Window;
+            this.ClientSize = new System.Drawing.Size(334, 346);
+            this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.assignmentLabel);
             this.Controls.Add(this.descriptionLabel);
             this.Controls.Add(this.pointsLabel);
             this.Controls.Add(this.nameLabel);
-            this.Controls.Add(this.Assignment);
             this.Controls.Add(this.ChoreDescription);
             this.Controls.Add(this.ChorePoints);
             this.Controls.Add(this.ChoreName);
             this.Controls.Add(this.CreateChoreButton);
+            this.Controls.Add(this.Assignment);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditChoreUI";
-            this.Text = "EditChoreUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Edit Chore";
             ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -241,5 +266,6 @@
         private System.Windows.Forms.TextBox ChorePoints;
         private System.Windows.Forms.TextBox ChoreName;
         private System.Windows.Forms.Button CreateChoreButton;
+        private System.Windows.Forms.Label WelcomeLabel;
     }
 }

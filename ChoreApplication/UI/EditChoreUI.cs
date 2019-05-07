@@ -30,6 +30,7 @@ namespace ChoreApplication.UI
                 Assignment.Text = child.FirstName;
             }
             this.Controls.Add(this.dtlLabel);
+            this.Size = new Size(350, 385);
             dtlLabel.Text = "Due date";
             this.Controls.Add(this.DueDate);
             DueDate.Text = _concrete.DueDate.ToString();
@@ -48,6 +49,7 @@ namespace ChoreApplication.UI
             {
                 Assignment.Text = child.FirstName;
             }
+            this.Size = new Size(350, 385);
             this.Controls.Add(this.dtlLabel);
             dtlLabel.Text = "Limit";
             this.Controls.Add(this.CompletionLimit);
@@ -73,6 +75,7 @@ namespace ChoreApplication.UI
             DueTime.Text = _reoccurring.DueTime.ToString();
             this.Controls.Add(this.daysLabel);
             this.Controls.Add(this.Days);
+            this.Size = new Size(350, 525);
             for (int i = 0; i < Days.Items.Count; i++)
             {
                 for (int j = 0; j < _reoccurring.Days.Count; j++)
@@ -89,7 +92,7 @@ namespace ChoreApplication.UI
                     }
                 }
             }
-            CreateChoreButton.Location = new System.Drawing.Point(135, 400);
+            CreateChoreButton.Location = new System.Drawing.Point(69, 440);
             _choreType = 3;
         }
         private void LoadChildren()
