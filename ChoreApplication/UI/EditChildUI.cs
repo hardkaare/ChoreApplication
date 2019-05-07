@@ -48,7 +48,7 @@ namespace ChoreApplication.UI
             }
             finally
             {
-                DatabaseFunctions.dbConn.Close();
+                DatabaseFunctions.DbConn.Close();
             }
         }
     }
