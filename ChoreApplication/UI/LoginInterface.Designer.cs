@@ -33,7 +33,6 @@
             this.EmailInput = new System.Windows.Forms.TextBox();
             this.PasswordInput = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
-            this.newUserLink = new System.Windows.Forms.LinkLabel();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
@@ -97,23 +96,11 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
-            // newUserLink
-            // 
-            this.newUserLink.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.newUserLink.Location = new System.Drawing.Point(60, 177);
-            this.newUserLink.Name = "newUserLink";
-            this.newUserLink.Size = new System.Drawing.Size(200, 25);
-            this.newUserLink.TabIndex = 5;
-            this.newUserLink.TabStop = true;
-            this.newUserLink.Text = "New user?";
-            this.newUserLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
             // LoginPanel
             // 
             this.LoginPanel.Controls.Add(this.PasswordLabel);
             this.LoginPanel.Controls.Add(this.EmailLabel);
             this.LoginPanel.Controls.Add(this.LoginLabel);
-            this.LoginPanel.Controls.Add(this.newUserLink);
             this.LoginPanel.Controls.Add(this.EmailInput);
             this.LoginPanel.Controls.Add(this.LoginButton);
             this.LoginPanel.Controls.Add(this.PasswordInput);
@@ -148,7 +135,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(334, 284);
+            this.ClientSize = new System.Drawing.Size(334, 264);
             this.Controls.Add(this.LoginPanel);
             this.Controls.Add(this.WelcomeLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -170,7 +157,6 @@
         private System.Windows.Forms.TextBox EmailInput;
         private System.Windows.Forms.TextBox PasswordInput;
         private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.LinkLabel newUserLink;
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Label EmailLabel;

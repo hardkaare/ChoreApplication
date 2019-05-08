@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 
@@ -33,7 +26,7 @@ namespace ChoreApplication.UI
         }
 
 
-                private void AcceptButton_click(object sender, EventArgs e)
+        private void AcceptButton_click(object sender, EventArgs e)
         {
             int pincode;
             bool correctpin = false;
@@ -85,7 +78,6 @@ namespace ChoreApplication.UI
                 }
                 LoginInterface.ChooseProfile.Close();
                 this.Close();
-                MessageBox.Show(Session.ToString());
             }
         }
     }

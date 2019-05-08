@@ -21,7 +21,7 @@ namespace ChoreApplication.UI
             _child = child;
             ChildFirstnameInput.Text = child.FirstName;
             ChildPincodeInput.Text = child.Pincode;
-            WelcomeLabel.Text = "Edit " + child.FirstName;
+            WelcomeLabel.Text = "Editing " + child.FirstName;
         }
        
         private void Save_Click(object sender, EventArgs e)
