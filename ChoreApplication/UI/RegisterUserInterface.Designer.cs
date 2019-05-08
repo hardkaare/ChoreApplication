@@ -49,7 +49,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label6.Location = new System.Drawing.Point(70, 341);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(58, 16);
@@ -59,7 +59,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label5.Location = new System.Drawing.Point(71, 300);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(115, 16);
@@ -69,7 +69,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label4.Location = new System.Drawing.Point(71, 259);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(68, 16);
@@ -79,7 +79,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label3.Location = new System.Drawing.Point(71, 218);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(42, 16);
@@ -89,7 +89,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label2.Location = new System.Drawing.Point(70, 177);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(67, 16);
@@ -99,7 +99,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label1.Location = new System.Drawing.Point(71, 133);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(67, 16);
@@ -120,7 +120,7 @@
             // 
             // RegisterUserLabel
             // 
-            this.RegisterUserLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.RegisterUserLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.RegisterUserLabel.Location = new System.Drawing.Point(12, 10);
             this.RegisterUserLabel.Name = "RegisterUserLabel";
             this.RegisterUserLabel.Size = new System.Drawing.Size(310, 24);
@@ -130,7 +130,7 @@
             // 
             // RegisterUserButton
             // 
-            this.RegisterUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterUserButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.RegisterUserButton.Location = new System.Drawing.Point(70, 385);
             this.RegisterUserButton.Name = "RegisterUserButton";
             this.RegisterUserButton.Size = new System.Drawing.Size(200, 25);
@@ -141,7 +141,7 @@
             // 
             // PincodeInput
             // 
-            this.PincodeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PincodeInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.PincodeInput.Location = new System.Drawing.Point(70, 357);
             this.PincodeInput.Name = "PincodeInput";
             this.PincodeInput.Size = new System.Drawing.Size(200, 22);
@@ -149,7 +149,7 @@
             // 
             // Password2Input
             // 
-            this.Password2Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password2Input.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.Password2Input.Location = new System.Drawing.Point(71, 316);
             this.Password2Input.Name = "Password2Input";
             this.Password2Input.Size = new System.Drawing.Size(200, 22);
@@ -158,7 +158,7 @@
             // 
             // Password1Input
             // 
-            this.Password1Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password1Input.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.Password1Input.Location = new System.Drawing.Point(71, 275);
             this.Password1Input.Name = "Password1Input";
             this.Password1Input.Size = new System.Drawing.Size(200, 22);
@@ -167,7 +167,7 @@
             // 
             // EmailInput
             // 
-            this.EmailInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EmailInput.Location = new System.Drawing.Point(71, 234);
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(200, 22);
@@ -175,7 +175,7 @@
             // 
             // LastNameInput
             // 
-            this.LastNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastNameInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.LastNameInput.Location = new System.Drawing.Point(70, 193);
             this.LastNameInput.Name = "LastNameInput";
             this.LastNameInput.Size = new System.Drawing.Size(200, 22);
@@ -183,7 +183,7 @@
             // 
             // FirstNameInput
             // 
-            this.FirstNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FirstNameInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.FirstNameInput.Location = new System.Drawing.Point(70, 152);
             this.FirstNameInput.Name = "FirstNameInput";
             this.FirstNameInput.Size = new System.Drawing.Size(200, 22);

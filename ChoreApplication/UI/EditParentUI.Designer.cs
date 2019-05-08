@@ -46,7 +46,7 @@
             // 
             // parentLastName
             // 
-            this.parentLastName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parentLastName.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.parentLastName.Location = new System.Drawing.Point(70, 230);
             this.parentLastName.Margin = new System.Windows.Forms.Padding(2);
             this.parentLastName.MaxLength = 50;
@@ -58,7 +58,7 @@
             // EditPasswordLabel
             // 
             this.EditPasswordLabel.AutoSize = true;
-            this.EditPasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditPasswordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EditPasswordLabel.Location = new System.Drawing.Point(70, 298);
             this.EditPasswordLabel.Name = "EditPasswordLabel";
             this.EditPasswordLabel.Size = new System.Drawing.Size(68, 16);
@@ -67,7 +67,7 @@
             // 
             // password
             // 
-            this.password.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.password.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.password.Location = new System.Drawing.Point(70, 317);
             this.password.MaxLength = 50;
             this.password.Name = "password";
@@ -77,7 +77,7 @@
             // EditEmailLabel
             // 
             this.EditEmailLabel.AutoSize = true;
-            this.EditEmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditEmailLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EditEmailLabel.Location = new System.Drawing.Point(70, 254);
             this.EditEmailLabel.Name = "EditEmailLabel";
             this.EditEmailLabel.Size = new System.Drawing.Size(42, 16);
@@ -86,7 +86,7 @@
             // 
             // emailTextBox
             // 
-            this.emailTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.emailTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.emailTextBox.Location = new System.Drawing.Point(70, 273);
             this.emailTextBox.MaxLength = 50;
             this.emailTextBox.Name = "emailTextBox";
@@ -97,7 +97,7 @@
             // LastNameEditLabel
             // 
             this.LastNameEditLabel.AutoSize = true;
-            this.LastNameEditLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastNameEditLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.LastNameEditLabel.Location = new System.Drawing.Point(68, 212);
             this.LastNameEditLabel.Name = "LastNameEditLabel";
             this.LastNameEditLabel.Size = new System.Drawing.Size(70, 16);
@@ -107,7 +107,7 @@
             // EditPincodeLabel
             // 
             this.EditPincodeLabel.AutoSize = true;
-            this.EditPincodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditPincodeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EditPincodeLabel.Location = new System.Drawing.Point(70, 342);
             this.EditPincodeLabel.Name = "EditPincodeLabel";
             this.EditPincodeLabel.Size = new System.Drawing.Size(58, 16);
@@ -116,7 +116,7 @@
             // 
             // pincode
             // 
-            this.pincode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pincode.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pincode.Location = new System.Drawing.Point(70, 361);
             this.pincode.MaxLength = 4;
             this.pincode.Name = "pincode";
@@ -125,7 +125,7 @@
             // 
             // Save
             // 
-            this.Save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Save.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.Save.Location = new System.Drawing.Point(70, 389);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(200, 25);
@@ -137,7 +137,7 @@
             // EditNameLabel
             // 
             this.EditNameLabel.AutoSize = true;
-            this.EditNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EditNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EditNameLabel.Location = new System.Drawing.Point(70, 168);
             this.EditNameLabel.Name = "EditNameLabel";
             this.EditNameLabel.Size = new System.Drawing.Size(45, 16);
@@ -146,7 +146,7 @@
             // 
             // parentName
             // 
-            this.parentName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.parentName.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.parentName.Location = new System.Drawing.Point(70, 187);
             this.parentName.MaxLength = 50;
             this.parentName.Name = "parentName";
@@ -168,7 +168,7 @@
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);

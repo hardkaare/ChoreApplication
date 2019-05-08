@@ -43,7 +43,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 9.75pt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 9.749999pt")]
         public global::System.Drawing.Font StandardFont {
             get {
                 return ((global::System.Drawing.Font)(this["StandardFont"]));
@@ -52,7 +52,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 9.75pt, style=Bold")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 9.749999pt, style=Bold")]
         public global::System.Drawing.Font StandardFontBold {
             get {
                 return ((global::System.Drawing.Font)(this["StandardFontBold"]));
@@ -65,6 +65,24 @@ namespace ChoreApplication.Properties {
         public string TextDateFormat {
             get {
                 return ((string)(this["TextDateFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 15.749999pt")]
+        public global::System.Drawing.Font StandardFontTitle {
+            get {
+                return ((global::System.Drawing.Font)(this["StandardFontTitle"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 14.249999pt")]
+        public global::System.Drawing.Font StandardFontSubtitle {
+            get {
+                return ((global::System.Drawing.Font)(this["StandardFontSubtitle"]));
             }
         }
     }

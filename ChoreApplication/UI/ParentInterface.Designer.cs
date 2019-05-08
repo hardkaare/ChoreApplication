@@ -91,7 +91,7 @@
             // notificationsLabel
             // 
             this.notificationsLabel.AutoSize = true;
-            this.notificationsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notificationsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.notificationsLabel.Location = new System.Drawing.Point(333, 55);
             this.notificationsLabel.Name = "notificationsLabel";
             this.notificationsLabel.Size = new System.Drawing.Size(81, 16);
@@ -101,7 +101,7 @@
             // usersLabel
             // 
             this.usersLabel.AutoSize = true;
-            this.usersLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usersLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.usersLabel.Location = new System.Drawing.Point(271, 55);
             this.usersLabel.Name = "usersLabel";
             this.usersLabel.Size = new System.Drawing.Size(44, 16);
@@ -111,7 +111,7 @@
             // leaderboardsLabel
             // 
             this.leaderboardsLabel.AutoSize = true;
-            this.leaderboardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaderboardsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.leaderboardsLabel.Location = new System.Drawing.Point(164, 55);
             this.leaderboardsLabel.Name = "leaderboardsLabel";
             this.leaderboardsLabel.Size = new System.Drawing.Size(94, 16);
@@ -121,7 +121,7 @@
             // rewardsLabel
             // 
             this.rewardsLabel.AutoSize = true;
-            this.rewardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rewardsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rewardsLabel.Location = new System.Drawing.Point(86, 55);
             this.rewardsLabel.Name = "rewardsLabel";
             this.rewardsLabel.Size = new System.Drawing.Size(62, 16);
@@ -131,7 +131,7 @@
             // choresLabel
             // 
             this.choresLabel.AutoSize = true;
-            this.choresLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choresLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.choresLabel.Location = new System.Drawing.Point(14, 55);
             this.choresLabel.Name = "choresLabel";
             this.choresLabel.Size = new System.Drawing.Size(51, 16);

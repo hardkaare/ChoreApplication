@@ -43,7 +43,7 @@
             // 
             // rewardName
             // 
-            this.rewardName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rewardName.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rewardName.Location = new System.Drawing.Point(70, 77);
             this.rewardName.Name = "rewardName";
             this.rewardName.Size = new System.Drawing.Size(200, 22);
@@ -52,7 +52,7 @@
             // rewardNameLabel
             // 
             this.rewardNameLabel.AutoSize = true;
-            this.rewardNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rewardNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rewardNameLabel.Location = new System.Drawing.Point(66, 58);
             this.rewardNameLabel.Name = "rewardNameLabel";
             this.rewardNameLabel.Size = new System.Drawing.Size(92, 16);
@@ -62,7 +62,7 @@
             // rewardDescriptionLabel
             // 
             this.rewardDescriptionLabel.AutoSize = true;
-            this.rewardDescriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rewardDescriptionLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rewardDescriptionLabel.Location = new System.Drawing.Point(66, 102);
             this.rewardDescriptionLabel.Name = "rewardDescriptionLabel";
             this.rewardDescriptionLabel.Size = new System.Drawing.Size(76, 16);
@@ -72,7 +72,7 @@
             // pointsRequiredLabel
             // 
             this.pointsRequiredLabel.AutoSize = true;
-            this.pointsRequiredLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pointsRequiredLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pointsRequiredLabel.Location = new System.Drawing.Point(68, 224);
             this.pointsRequiredLabel.Name = "pointsRequiredLabel";
             this.pointsRequiredLabel.Size = new System.Drawing.Size(98, 16);
@@ -81,7 +81,7 @@
             // 
             // pointsRequired
             // 
-            this.pointsRequired.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pointsRequired.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pointsRequired.Location = new System.Drawing.Point(70, 243);
             this.pointsRequired.Minimum = new decimal(new int[] {
             1,
@@ -100,7 +100,7 @@
             // assignmentLabel
             // 
             this.assignmentLabel.AutoSize = true;
-            this.assignmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.assignmentLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.assignmentLabel.Location = new System.Drawing.Point(68, 268);
             this.assignmentLabel.Name = "assignmentLabel";
             this.assignmentLabel.Size = new System.Drawing.Size(78, 16);
@@ -110,7 +110,7 @@
             // assignment
             // 
             this.assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.assignment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.assignment.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.assignment.FormattingEnabled = true;
             this.assignment.Location = new System.Drawing.Point(69, 287);
             this.assignment.Name = "assignment";
@@ -119,7 +119,7 @@
             // 
             // createReward
             // 
-            this.createReward.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.createReward.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.createReward.Location = new System.Drawing.Point(69, 317);
             this.createReward.Name = "createReward";
             this.createReward.Size = new System.Drawing.Size(200, 25);
@@ -130,7 +130,7 @@
             // 
             // description
             // 
-            this.description.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.description.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.description.Location = new System.Drawing.Point(69, 121);
             this.description.Name = "description";
             this.description.Size = new System.Drawing.Size(200, 100);
@@ -139,7 +139,7 @@
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);

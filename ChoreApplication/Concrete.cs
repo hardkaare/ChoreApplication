@@ -16,9 +16,6 @@ namespace ChoreApplication
     /// </summary>
    public class Concrete : Chore
     {
-        /// <summary>
-        /// String that indicates the standard date format
-        /// </summary>
         #region Properties
         /// <summary>
         /// Date and time of when the chore is due. If null in DB this property is 

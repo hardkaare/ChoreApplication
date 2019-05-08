@@ -18,13 +18,6 @@ namespace ChoreApplication.UI
         }  
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DueTime.Font = Properties.Settings.Default.StandardFont;
-            CompletionLimit.Font = Properties.Settings.Default.StandardFont;
-            Days.Font = Properties.Settings.Default.StandardFont;
-            DueDate.Font = Properties.Settings.Default.StandardFont;
-            label5.Font = Properties.Settings.Default.StandardFont;
-            label6.Font = Properties.Settings.Default.StandardFont;
-            label7.Font = Properties.Settings.Default.StandardFont;
             switch (ChoreTypes.Text)
             {
                 case "Reoccurring":

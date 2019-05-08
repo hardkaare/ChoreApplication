@@ -43,7 +43,7 @@
             // 
             this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F);
+            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 25);
@@ -53,10 +53,10 @@
             // 
             // LoginLabel
             // 
-            this.LoginLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.LoginLabel.Location = new System.Drawing.Point(3, 36);
+            this.LoginLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontSubtitle;
+            this.LoginLabel.Location = new System.Drawing.Point(3, 17);
             this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(304, 24);
+            this.LoginLabel.Size = new System.Drawing.Size(304, 40);
             this.LoginLabel.TabIndex = 1;
             this.LoginLabel.Text = "Login";
             this.LoginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -64,10 +64,10 @@
             // EmailInput
             // 
             this.EmailInput.AcceptsTab = true;
-            this.EmailInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EmailInput.Location = new System.Drawing.Point(60, 76);
             this.EmailInput.Name = "EmailInput";
-            this.EmailInput.Size = new System.Drawing.Size(200, 22);
+            this.EmailInput.Size = new System.Drawing.Size(200, 26);
             this.EmailInput.TabIndex = 2;
             this.EmailInput.Text = "Enter email";
             this.EmailInput.Click += new System.EventHandler(this.EmailTextbox_Click);
@@ -75,11 +75,11 @@
             // PasswordInput
             // 
             this.PasswordInput.AcceptsTab = true;
-            this.PasswordInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordInput.Location = new System.Drawing.Point(60, 120);
+            this.PasswordInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.PasswordInput.Location = new System.Drawing.Point(60, 125);
             this.PasswordInput.Name = "PasswordInput";
             this.PasswordInput.PasswordChar = '*';
-            this.PasswordInput.Size = new System.Drawing.Size(200, 22);
+            this.PasswordInput.Size = new System.Drawing.Size(200, 26);
             this.PasswordInput.TabIndex = 3;
             this.PasswordInput.Text = "Password";
             this.PasswordInput.Click += new System.EventHandler(this.PwdTextbox_Click);
@@ -87,10 +87,10 @@
             // LoginButton
             // 
             this.LoginButton.AutoSize = true;
-            this.LoginButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.LoginButton.Location = new System.Drawing.Point(60, 148);
+            this.LoginButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.LoginButton.Location = new System.Drawing.Point(60, 153);
             this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(200, 26);
+            this.LoginButton.Size = new System.Drawing.Size(200, 28);
             this.LoginButton.TabIndex = 4;
             this.LoginButton.Text = "Login";
             this.LoginButton.UseVisualStyleBackColor = true;
@@ -112,20 +112,20 @@
             // PasswordLabel
             // 
             this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.PasswordLabel.Location = new System.Drawing.Point(57, 101);
+            this.PasswordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.PasswordLabel.Location = new System.Drawing.Point(57, 106);
             this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(68, 16);
+            this.PasswordLabel.Size = new System.Drawing.Size(65, 18);
             this.PasswordLabel.TabIndex = 6;
             this.PasswordLabel.Text = "Password";
             // 
             // EmailLabel
             // 
             this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EmailLabel.Location = new System.Drawing.Point(57, 57);
             this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(42, 16);
+            this.EmailLabel.Size = new System.Drawing.Size(40, 18);
             this.EmailLabel.TabIndex = 6;
             this.EmailLabel.Text = "Email";
             // 
