@@ -13,7 +13,7 @@ namespace ChoreApplication
         #region Connection string constants
 
         //Server
-        private const String DATASOURCE = "choreapplication.database.windows.net";
+        private const String DATASOURCE = "choreapplication1.database.windows.net";
         //Name of DB
         private const String INITIALCATALOG = "ChoreApplication";
         //Username
