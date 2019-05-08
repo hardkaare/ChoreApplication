@@ -32,7 +32,7 @@
             this.EditPasswordLabel = new System.Windows.Forms.Label();
             this.password = new System.Windows.Forms.TextBox();
             this.EditEmailLabel = new System.Windows.Forms.Label();
-            this.email = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
             this.LastNameEditLabel = new System.Windows.Forms.Label();
             this.EditPincodeLabel = new System.Windows.Forms.Label();
             this.pincode = new System.Windows.Forms.TextBox();
@@ -80,14 +80,14 @@
             this.EditEmailLabel.TabIndex = 4;
             this.EditEmailLabel.Text = "Email";
             // 
-            // email
+            // emailTextBox
             // 
-            this.email.Location = new System.Drawing.Point(104, 320);
-            this.email.Margin = new System.Windows.Forms.Padding(4);
-            this.email.MaxLength = 50;
-            this.email.Name = "email";
-            this.email.Size = new System.Drawing.Size(208, 22);
-            this.email.TabIndex = 5;
+            this.emailTextBox.Location = new System.Drawing.Point(104, 320);
+            this.emailTextBox.Margin = new System.Windows.Forms.Padding(4);
+            this.emailTextBox.MaxLength = 50;
+            this.emailTextBox.Name = "emailTextBox";
+            this.emailTextBox.Size = new System.Drawing.Size(208, 22);
+            this.emailTextBox.TabIndex = 5;
             // 
             // LastNameEditLabel
             // 
@@ -176,7 +176,7 @@
             this.Controls.Add(this.EditPasswordLabel);
             this.Controls.Add(this.password);
             this.Controls.Add(this.EditEmailLabel);
-            this.Controls.Add(this.email);
+            this.Controls.Add(this.emailTextBox);
             this.Controls.Add(this.parentLastName);
             this.Name = "EditParentUI";
             this.Text = "EditParentUI";
@@ -192,7 +192,7 @@
         private System.Windows.Forms.Label EditPasswordLabel;
         private System.Windows.Forms.TextBox password;
         private System.Windows.Forms.Label EditEmailLabel;
-        private System.Windows.Forms.TextBox email;
+        private System.Windows.Forms.TextBox emailTextBox;
         private System.Windows.Forms.Label LastNameEditLabel;
         private System.Windows.Forms.Label EditPincodeLabel;
         private System.Windows.Forms.TextBox pincode;

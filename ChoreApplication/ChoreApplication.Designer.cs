@@ -132,7 +132,7 @@
             this.EditParentUI.TabIndex = 9;
             this.EditParentUI.Text = "DON\'T CLICK";
             this.EditParentUI.UseVisualStyleBackColor = false;
-            //this.EditParentUI.Click += new System.EventHandler(this.EditParentUI_Click);
+            this.EditParentUI.Click += new System.EventHandler(this.EditParentUI_Click);
             // 
             // ChoreApplication
             // 
