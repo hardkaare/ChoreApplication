@@ -72,6 +72,10 @@
             // 
             // roundButton1
             // 
+            this.roundButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton1.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.roundButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.roundButton1.Location = new System.Drawing.Point(191, 271);
             this.roundButton1.Margin = new System.Windows.Forms.Padding(2);
@@ -84,6 +88,10 @@
             // 
             // rbZero
             // 
+            this.rbZero.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbZero.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbZero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbZero.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbZero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbZero.Location = new System.Drawing.Point(120, 271);
             this.rbZero.Margin = new System.Windows.Forms.Padding(2);
@@ -96,6 +104,10 @@
             // 
             // rbDelete
             // 
+            this.rbDelete.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbDelete.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbDelete.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbDelete.Location = new System.Drawing.Point(50, 271);
             this.rbDelete.Margin = new System.Windows.Forms.Padding(2);
@@ -108,6 +120,10 @@
             // 
             // rbNine
             // 
+            this.rbNine.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbNine.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbNine.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbNine.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbNine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbNine.Location = new System.Drawing.Point(191, 198);
             this.rbNine.Margin = new System.Windows.Forms.Padding(2);
@@ -120,6 +136,10 @@
             // 
             // rbEight
             // 
+            this.rbEight.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbEight.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbEight.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbEight.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbEight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbEight.Location = new System.Drawing.Point(120, 198);
             this.rbEight.Margin = new System.Windows.Forms.Padding(2);
@@ -132,6 +152,10 @@
             // 
             // rbSeven
             // 
+            this.rbSeven.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbSeven.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbSeven.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbSeven.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbSeven.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbSeven.Location = new System.Drawing.Point(50, 198);
             this.rbSeven.Margin = new System.Windows.Forms.Padding(2);
@@ -144,6 +168,10 @@
             // 
             // rbSix
             // 
+            this.rbSix.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbSix.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbSix.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbSix.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbSix.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbSix.Location = new System.Drawing.Point(191, 125);
             this.rbSix.Margin = new System.Windows.Forms.Padding(2);
@@ -156,6 +184,10 @@
             // 
             // rbFive
             // 
+            this.rbFive.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbFive.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbFive.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbFive.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbFive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbFive.Location = new System.Drawing.Point(120, 125);
             this.rbFive.Margin = new System.Windows.Forms.Padding(2);
@@ -168,6 +200,10 @@
             // 
             // rbFour
             // 
+            this.rbFour.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbFour.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbFour.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbFour.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbFour.Location = new System.Drawing.Point(50, 125);
             this.rbFour.Margin = new System.Windows.Forms.Padding(2);
@@ -180,6 +216,10 @@
             // 
             // rbThree
             // 
+            this.rbThree.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbThree.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbThree.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbThree.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbThree.Location = new System.Drawing.Point(191, 55);
             this.rbThree.Margin = new System.Windows.Forms.Padding(2);
@@ -192,6 +232,10 @@
             // 
             // rbTwo
             // 
+            this.rbTwo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbTwo.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbTwo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbTwo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbTwo.Location = new System.Drawing.Point(120, 55);
             this.rbTwo.Margin = new System.Windows.Forms.Padding(2);
@@ -204,6 +248,10 @@
             // 
             // rbOne
             // 
+            this.rbOne.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbOne.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.rbOne.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.rbOne.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rbOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.rbOne.Location = new System.Drawing.Point(50, 55);
             this.rbOne.Margin = new System.Windows.Forms.Padding(2);
@@ -252,7 +300,7 @@
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
             this.WelcomeLabel.TabIndex = 9;
-            this.WelcomeLabel.Text = "Hi {FirstName}";
+            this.WelcomeLabel.Text = "Welcome";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // PinCodeInterface

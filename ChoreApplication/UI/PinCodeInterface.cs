@@ -16,7 +16,6 @@ namespace ChoreApplication.UI
         public User Session;
         public PinCodeInterface()
         {
-            WelcomeLabel.Text = "Hi " + Session.FirstName;
             InitializeComponent();
         }
 
