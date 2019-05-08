@@ -17,8 +17,8 @@ namespace ChoreApplication
     {
 
         //private SystemFunctions _checkTime;
-        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "dillerdaller", 0, "0000");
-        public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
+        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "child", 0, "1234");
+        public ParentUser DumbFuckParentUser = new ParentUser(1, "admin", "1234", "adminsen", "admin", "1234");
         public ChoreApplication()
         {
             InitializeComponent();

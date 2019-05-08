@@ -1,13 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
@@ -37,73 +30,64 @@ namespace ChoreApplication.UI
             _parent.Pincode = pincode.Text;
             _parent.Email = emailTextBox.Text;
 
-            /*
             try
-            {
-
-                string email = emailTextBox.Text;
-                Regex regex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*" + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
-                Match match = regex.Match(email);
-                if (match.Success)
-
+            {//Edit email
+                if ((emailTextBox.Text.Length < 50) && Regex.Match(emailTextBox.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Success)
                 {
-                    _parent.Update();
-                    this.Close();
-                    MessageBox.Show(email + " is correct"); }
-                else
-                { MessageBox.Show(email + " is incorrect"); }
-
-            }
-            catch
-            {
-                MessageBox.Show("noob");
-            }
-            */
-
-            try
-            {
-                if (Regex.IsMatch(emailTextBox.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
-
-                {
-                    _parent.Update();
-                    this.Close();
-                    MessageBox.Show("Email has been changed");
-                }
-                else
-                {
-                    throw new System.ArgumentException("Incorrect input");
-                }
-
-              try
-                {
-
-
-                    if (Regex.IsMatch(parentName.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(pincode.Text, @"^\d{4}$").Success)
-
+                    //Edit Firstname
+                    if ((parentName.Text.Length < 20) && Regex.IsMatch(parentName.Text, @"^[ÆØÅæøåa-zA-Z]+$"))
                     {
-                        _parent.Update();
-                        this.Close();
-                        MessageBox.Show("Parent information changed.");
+                        //Edit Lastname
+                        if ((parentLastName.Text.Length < 50) && Regex.IsMatch(parentLastName.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
+                        {
+                            //edit password
+                            if ((password.Text.Length < 50) && Regex.IsMatch(password.Text, @"^[ÆØÅæøåa-zA-Z0-9\s]+$"))
+                            {
+                               
+                                if(Regex.IsMatch(pincode.Text, @"^\d{4}$"))
+                                    {
+                                    _parent.Update();
+                                    this.Close();
+                                    MessageBox.Show("Parent has been edited");
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Invalid pincode");
+                                }
+                            }
+                            else
+                            {
+                                MessageBox.Show("Invalid password");
+                            }
+                              
+                         
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid last name");
+                        }
+                        
+
                     }
                     else
                     {
-                        throw new System.ArgumentException("");
+                        MessageBox.Show("Invalid first name");
                     }
-
                 }
-
-                catch (ArgumentException)
+                else
                 {
-                    MessageBox.Show("Please enter a valid firstname");
-
+                    throw new ArgumentException();
                 }
             }
-
-            
+            catch (ArgumentException)
+            {
+                MessageBox.Show("Invalid email");
+            }
             finally
             {
                 DatabaseFunctions.DbConn.Close();
             }
-        }
+                 
+        }           
     }
 }

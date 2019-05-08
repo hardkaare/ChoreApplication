@@ -49,7 +49,8 @@
             this.parentLastName.MaxLength = 50;
             this.parentLastName.Name = "parentLastName";
             this.parentLastName.Size = new System.Drawing.Size(208, 22);
-            this.parentLastName.TabIndex = 0;
+            this.parentLastName.TabIndex = 2;
+            this.parentLastName.Tag = "";
             // 
             // EditPasswordLabel
             // 
@@ -68,7 +69,7 @@
             this.password.MaxLength = 50;
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(208, 22);
-            this.password.TabIndex = 6;
+            this.password.TabIndex = 4;
             // 
             // EditEmailLabel
             // 
@@ -87,7 +88,8 @@
             this.emailTextBox.MaxLength = 50;
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(208, 22);
-            this.emailTextBox.TabIndex = 5;
+            this.emailTextBox.TabIndex = 3;
+            this.emailTextBox.Tag = "";
             // 
             // LastNameEditLabel
             // 
@@ -116,7 +118,7 @@
             this.pincode.MaxLength = 4;
             this.pincode.Name = "pincode";
             this.pincode.Size = new System.Drawing.Size(208, 22);
-            this.pincode.TabIndex = 9;
+            this.pincode.TabIndex = 5;
             // 
             // Save
             // 
@@ -124,7 +126,7 @@
             this.Save.Margin = new System.Windows.Forms.Padding(4);
             this.Save.Name = "Save";
             this.Save.Size = new System.Drawing.Size(100, 30);
-            this.Save.TabIndex = 10;
+            this.Save.TabIndex = 6;
             this.Save.Text = "Save";
             this.Save.UseVisualStyleBackColor = true;
             this.Save.Click += new System.EventHandler(this.Save_Click);
@@ -146,7 +148,8 @@
             this.parentName.MaxLength = 50;
             this.parentName.Name = "parentName";
             this.parentName.Size = new System.Drawing.Size(211, 22);
-            this.parentName.TabIndex = 12;
+            this.parentName.TabIndex = 1;
+            this.parentName.Tag = "";
             // 
             // uploadPictureBox
             // 
@@ -163,6 +166,7 @@
             // 
             // EditParentUI
             // 
+            this.AcceptButton = this.Save;
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(449, 554);
