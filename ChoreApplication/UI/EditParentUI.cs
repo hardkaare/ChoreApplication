@@ -23,7 +23,7 @@ namespace ChoreApplication.UI
             emailTextBox.Text = parent.Email;
             password.Text = parent.Password;
             pincode.Text = parent.Pincode;
-
+            WelcomeLabel.Text = "Edit " + parent.FirstName;
         }
 
 
