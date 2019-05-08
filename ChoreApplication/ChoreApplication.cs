@@ -16,14 +16,14 @@ namespace ChoreApplication
     public partial class ChoreApplication : Form
     {
 
-        private SystemFunctions _checkTime;
+        //private SystemFunctions _checkTime;
         public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "dillerdaller", 0, "0000");
         public ParentUser DumbFuckParentUser = new ParentUser(1, "diller", "diller", "dillersen", "diller", "0000");
         public ChoreApplication()
         {
             InitializeComponent();
             DatabaseFunctions.InitializeDB();
-            _checkTime = new SystemFunctions();
+            //_checkTime = new SystemFunctions();
         }
        
 
@@ -71,6 +71,7 @@ namespace ChoreApplication
             //var createchore = new UI.CreateChoreUI();
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
+
 
             //createChild.Show();
             //createreward.Show();
@@ -124,6 +125,12 @@ namespace ChoreApplication
             var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
             ChildInterface.Show();
             
+        }
+
+        private void EditParentUI_Click(object sender, EventArgs e)
+        {
+            var EditParentUI = new UI.EditParentUI(DumbFuckParentUser);
+            EditParentUI.Show();
         }
     }
 }
