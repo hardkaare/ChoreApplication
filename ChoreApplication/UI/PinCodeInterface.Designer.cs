@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.pincodePanel = new System.Windows.Forms.Panel();
-            this.roundButton1 = new ChoreApplication.UI.RoundButton();
-            this.rbZero = new ChoreApplication.UI.RoundButton();
-            this.rbDelete = new ChoreApplication.UI.RoundButton();
-            this.rbNine = new ChoreApplication.UI.RoundButton();
-            this.rbEight = new ChoreApplication.UI.RoundButton();
-            this.rbSeven = new ChoreApplication.UI.RoundButton();
-            this.rbSix = new ChoreApplication.UI.RoundButton();
-            this.rbFive = new ChoreApplication.UI.RoundButton();
-            this.rbFour = new ChoreApplication.UI.RoundButton();
-            this.rbThree = new ChoreApplication.UI.RoundButton();
-            this.rbTwo = new ChoreApplication.UI.RoundButton();
-            this.rbOne = new ChoreApplication.UI.RoundButton();
+            this.roundButton1 = new RoundButton();
+            this.rbZero = new RoundButton();
+            this.rbDelete = new RoundButton();
+            this.rbNine = new RoundButton();
+            this.rbEight = new RoundButton();
+            this.rbSeven = new RoundButton();
+            this.rbSix = new RoundButton();
+            this.rbFive = new RoundButton();
+            this.rbFour = new RoundButton();
+            this.rbThree = new RoundButton();
+            this.rbTwo = new RoundButton();
+            this.rbOne = new RoundButton();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.enterpinTextBox = new System.Windows.Forms.TextBox();
-            this.rbAccept = new ChoreApplication.UI.RoundButton();
+            this.rbAccept = new RoundButton();
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.pincodePanel.SuspendLayout();
             this.SuspendLayout();
