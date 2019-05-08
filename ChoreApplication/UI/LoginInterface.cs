@@ -27,8 +27,7 @@ namespace ChoreApplication.UI
 
         private void NewUserLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            var RegisterUserInterface = new RegisterUserInterface();
-            RegisterUserInterface.Show();
+
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
@@ -66,6 +65,27 @@ namespace ChoreApplication.UI
                 DatabaseFunctions.DbConn.Close();
                 ChooseProfile = new ChooseProfileInterface();
                 ChooseProfile.Show();
+                this.Close();
+            }
+        }
+
+        private void LoginInterface_Load(object sender, EventArgs e)
+        {
+            bool users = true;
+            string query = "SELECT user_id FROM users";
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                users = false;
+            }
+            reader.Close();
+            DatabaseFunctions.DbConn.Close();
+            if (!users)
+            {
+                var registerUserInterface = new RegisterUserInterface();
+                registerUserInterface.Show();
                 this.Close();
             }
         }

@@ -35,8 +35,8 @@ namespace ChoreApplication
         #region Public Helpers
         public static void Insert(int userId, string title, string description)
         {
-            title += " - " + DateTime.Now.ToString("HH:mm d. MMMM");
-            string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, title, description);
+            var fulltitle = DateTime.Now.ToString("HH:mm d. MMMM") + " - " + title;
+            string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, fulltitle, description);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
