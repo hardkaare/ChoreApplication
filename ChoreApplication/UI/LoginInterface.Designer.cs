@@ -107,7 +107,6 @@
             this.newUserLink.TabStop = true;
             this.newUserLink.Text = "New user?";
             this.newUserLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.newUserLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NewUserLinkLabel_LinkClicked);
             // 
             // LoginPanel
             // 
