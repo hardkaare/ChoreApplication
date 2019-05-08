@@ -20,47 +20,90 @@ namespace ChoreApplication.UI
             _parent = parent;
             parentName.Text = parent.FirstName;
             parentLastName.Text = parent.Lastname;
-            email.Text = parent.Email;
+            emailTextBox.Text = parent.Email;
             password.Text = parent.Password;
             pincode.Text = parent.Pincode;
 
         }
 
+
         private void Save_Click(object sender, EventArgs e)
+
         {
+
+            _parent.FirstName = parentName.Text;
+            _parent.Lastname = parentLastName.Text;
+            _parent.Password = password.Text;
+            _parent.Pincode = pincode.Text;
+            _parent.Email = emailTextBox.Text;
+
+            /*
             try
             {
-                _parent.FirstName = parentName.Text;
-                _parent.Lastname = parentLastName.Text;
-                _parent.Email = email.Text;
-                _parent.Password = password.Text;
-                _parent.Pincode = pincode.Text;
 
-                if (Regex.IsMatch(parentName.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(pincode.Text, @"^\d{4}$").Success)
+                string email = emailTextBox.Text;
+                Regex regex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*" + "@" + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
+                Match match = regex.Match(email);
+                if (match.Success)
 
                 {
                     _parent.Update();
                     this.Close();
-                    MessageBox.Show("Parent information changed.");
+                    MessageBox.Show(email + " is correct"); }
+                else
+                { MessageBox.Show(email + " is incorrect"); }
+
+            }
+            catch
+            {
+                MessageBox.Show("noob");
+            }
+            */
+
+            try
+            {
+                if (Regex.IsMatch(emailTextBox.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+
+                {
+                    _parent.Update();
+                    this.Close();
+                    MessageBox.Show("Email has been changed");
                 }
                 else
                 {
-                    throw new System.ArgumentException("");
+                    throw new System.ArgumentException("Incorrect input");
                 }
 
+              try
+                {
+
+
+                    if (Regex.IsMatch(parentName.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(pincode.Text, @"^\d{4}$").Success)
+
+                    {
+                        _parent.Update();
+                        this.Close();
+                        MessageBox.Show("Parent information changed.");
+                    }
+                    else
+                    {
+                        throw new System.ArgumentException("");
+                    }
+
+                }
+
+                catch (ArgumentException)
+                {
+                    MessageBox.Show("Please enter a valid firstname");
+
+                }
             }
 
-            catch (ArgumentException)
-            {
-                MessageBox.Show("Please enter a valid first name or four digits in the pincode field");
-
-            }
-
+            
             finally
             {
                 DatabaseFunctions.DbConn.Close();
             }
-
         }
     }
 }
