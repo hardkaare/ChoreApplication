@@ -338,7 +338,8 @@ namespace ChoreApplication.UI
             var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
             currentChild[0].Points += currentChore.Points;
             currentChild[0].Update();
-            Notification.Insert(currentChild[0].Id, "Chore Approved", "The chore '" + currentChore.Name + "' has been approved. " + currentChore.Points + " has been added to your account");
+            Notification.Insert(currentChild[0].Id, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
+                $"\n{currentChore.Points.ToString()} points has been added to your account");
             LoadChores();
         }
 
@@ -358,7 +359,7 @@ namespace ChoreApplication.UI
                 currentChore.Status = 1;
                 currentChore.Update();
             }
-            Notification.Insert(currentChild[0].Id, "Chore Denied", "The chore '" + currentChore.Name + "' has been denied.");
+            Notification.Insert(currentChild[0].Id, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
             LoadChores();
         }
 

@@ -78,7 +78,7 @@ namespace ChoreApplication.UI
             this.label6.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label6.Location = new System.Drawing.Point(62, 291);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(75, 18);
+            this.label6.Size = new System.Drawing.Size(78, 16);
             this.label6.TabIndex = 11;
             this.label6.Text = "Assignment";
             // 
@@ -88,7 +88,7 @@ namespace ChoreApplication.UI
             this.label5.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label5.Location = new System.Drawing.Point(62, 250);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(62, 18);
+            this.label5.Size = new System.Drawing.Size(63, 16);
             this.label5.TabIndex = 10;
             this.label5.Text = "Due date";
             // 
@@ -98,7 +98,7 @@ namespace ChoreApplication.UI
             this.label4.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label4.Location = new System.Drawing.Point(62, 207);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 18);
+            this.label4.Size = new System.Drawing.Size(73, 16);
             this.label4.TabIndex = 9;
             this.label4.Text = "Chore type";
             // 
@@ -108,7 +108,7 @@ namespace ChoreApplication.UI
             this.label3.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label3.Location = new System.Drawing.Point(62, 131);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(77, 18);
+            this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 8;
             this.label3.Text = "Description";
             // 
@@ -118,7 +118,7 @@ namespace ChoreApplication.UI
             this.label2.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label2.Location = new System.Drawing.Point(62, 90);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(44, 18);
+            this.label2.Size = new System.Drawing.Size(45, 16);
             this.label2.TabIndex = 7;
             this.label2.Text = "Points";
             // 
@@ -128,7 +128,7 @@ namespace ChoreApplication.UI
             this.label1.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.label1.Location = new System.Drawing.Point(62, 49);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 18);
+            this.label1.Size = new System.Drawing.Size(45, 16);
             this.label1.TabIndex = 6;
             this.label1.Text = "Name";
             // 
@@ -139,7 +139,7 @@ namespace ChoreApplication.UI
             this.Assignment.FormattingEnabled = true;
             this.Assignment.Location = new System.Drawing.Point(65, 310);
             this.Assignment.Name = "Assignment";
-            this.Assignment.Size = new System.Drawing.Size(200, 26);
+            this.Assignment.Size = new System.Drawing.Size(200, 24);
             this.Assignment.TabIndex = 13;
             // 
             // DueDate
@@ -149,7 +149,7 @@ namespace ChoreApplication.UI
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueDate.Location = new System.Drawing.Point(65, 266);
             this.DueDate.Name = "DueDate";
-            this.DueDate.Size = new System.Drawing.Size(200, 26);
+            this.DueDate.Size = new System.Drawing.Size(200, 22);
             this.DueDate.TabIndex = 5;
             this.DueDate.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
             // 
@@ -165,9 +165,9 @@ namespace ChoreApplication.UI
             "Reoccurring"});
             this.ChoreTypes.Location = new System.Drawing.Point(65, 223);
             this.ChoreTypes.Name = "ChoreTypes";
-            this.ChoreTypes.Size = new System.Drawing.Size(200, 26);
+            this.ChoreTypes.Size = new System.Drawing.Size(200, 24);
             this.ChoreTypes.TabIndex = 4;
-            this.ChoreTypes.SelectedIndexChanged += new System.EventHandler(this.ComboBox1_SelectedIndexChanged);
+            this.ChoreTypes.SelectedIndexChanged += new System.EventHandler(this.ChoreType_SelectIndexChanged);
             // 
             // ChoreDescription
             // 
@@ -184,7 +184,7 @@ namespace ChoreApplication.UI
             this.ChorePoints.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.ChorePoints.Location = new System.Drawing.Point(65, 106);
             this.ChorePoints.Name = "ChorePoints";
-            this.ChorePoints.Size = new System.Drawing.Size(200, 26);
+            this.ChorePoints.Size = new System.Drawing.Size(200, 22);
             this.ChorePoints.TabIndex = 2;
             this.ChorePoints.Text = "Enter chore points";
             // 
@@ -195,7 +195,7 @@ namespace ChoreApplication.UI
             this.ChoreName.Location = new System.Drawing.Point(65, 65);
             this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
-            this.ChoreName.Size = new System.Drawing.Size(200, 26);
+            this.ChoreName.Size = new System.Drawing.Size(200, 22);
             this.ChoreName.TabIndex = 1;
             this.ChoreName.Text = "Enter chore name";
             // 
@@ -213,7 +213,7 @@ namespace ChoreApplication.UI
             "Sunday"});
             this.Days.Location = new System.Drawing.Point(65, 266);
             this.Days.Name = "Days";
-            this.Days.Size = new System.Drawing.Size(200, 88);
+            this.Days.Size = new System.Drawing.Size(200, 72);
             this.Days.TabIndex = 12;
             // 
             // CompletionLimit
@@ -226,7 +226,7 @@ namespace ChoreApplication.UI
             0,
             0});
             this.CompletionLimit.Name = "CompletionLimit";
-            this.CompletionLimit.Size = new System.Drawing.Size(200, 26);
+            this.CompletionLimit.Size = new System.Drawing.Size(200, 22);
             this.CompletionLimit.TabIndex = 12;
             this.CompletionLimit.Value = new decimal(new int[] {
             1,
@@ -242,7 +242,7 @@ namespace ChoreApplication.UI
             this.DueTime.Location = new System.Drawing.Point(63, 395);
             this.DueTime.Name = "DueTime";
             this.DueTime.ShowUpDown = true;
-            this.DueTime.Size = new System.Drawing.Size(200, 26);
+            this.DueTime.Size = new System.Drawing.Size(200, 22);
             this.DueTime.TabIndex = 12;
             // 
             // label7

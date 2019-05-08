@@ -17,7 +17,7 @@ namespace ChoreApplication
     {
 
         //private SystemFunctions _checkTime;
-        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "child", 0, "1234");
+        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "child", 100, "1234");
         public ParentUser DumbFuckParentUser = new ParentUser(1, "admin", "1234", "adminsen", "admin", "1234");
         public ChoreApplication()
         {
@@ -106,7 +106,6 @@ namespace ChoreApplication
             //ChooseProfile.Show();
             //ParentInterface.Show();
             ParentInterface.Show();
-            editparent.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)

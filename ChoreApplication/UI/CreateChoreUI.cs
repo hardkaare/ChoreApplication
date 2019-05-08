@@ -16,7 +16,7 @@ namespace ChoreApplication.UI
             LoadChildren();
             this.DueDate.MinDate = DateTime.Now;
         }  
-        private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        private void ChoreType_SelectIndexChanged(object sender, EventArgs e)
         {
             switch (ChoreTypes.Text)
             {

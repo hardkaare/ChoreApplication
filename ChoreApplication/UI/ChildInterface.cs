@@ -155,6 +155,8 @@ namespace ChoreApplication.UI
             Concrete currentChore = (Concrete)clickedButton.Tag;
             currentChore.Status = 2;
             currentChore.Update();
+            Notification.Insert(1, $"{ChildrenNames[currentChore.Assignment]} completed a chore.", $"{ChildrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
+
             LoadChores();
         }
         #endregion
@@ -255,6 +257,8 @@ namespace ChoreApplication.UI
                 currentReward.Delete();
                 LoadPoints();
                 LoadRewards();
+                Notification.Insert(1, "Reward has been claimed.", $"The reward {currentReward.Name}: {currentReward.Description} " +
+                    $"has been claimed by {ChildrenNames[currentReward.ChildId]}");
             }
         }
 

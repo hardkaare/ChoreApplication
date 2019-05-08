@@ -25,7 +25,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"\"dd-MM-yyyy HH:mm\"\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("dd-MM-yyyy HH:mm")]
         public string LongDateFormat {
             get {
                 return ((string)(this["LongDateFormat"]));
@@ -34,7 +34,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"\"dd/MM HH:mm\"\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("dd/MM HH:mm")]
         public string ShortDateFormat {
             get {
                 return ((string)(this["ShortDateFormat"]));
@@ -43,7 +43,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 9.749999pt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 9.75pt")]
         public global::System.Drawing.Font StandardFont {
             get {
                 return ((global::System.Drawing.Font)(this["StandardFont"]));
@@ -52,7 +52,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 9.749999pt, style=Bold")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 9.75pt, style=Bold")]
         public global::System.Drawing.Font StandardFontBold {
             get {
                 return ((global::System.Drawing.Font)(this["StandardFontBold"]));
@@ -61,7 +61,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("\"\"HH:mm d. MMMM\"\"")]
+        [global::System.Configuration.DefaultSettingValueAttribute("HH:mm d. MMMM")]
         public string TextDateFormat {
             get {
                 return ((string)(this["TextDateFormat"]));
@@ -70,7 +70,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 15.749999pt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 15.75pt")]
         public global::System.Drawing.Font StandardFontTitle {
             get {
                 return ((global::System.Drawing.Font)(this["StandardFontTitle"]));
@@ -79,7 +79,7 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 14.249999pt")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Microsoft Sans Serif, 14.25pt")]
         public global::System.Drawing.Font StandardFontSubtitle {
             get {
                 return ((global::System.Drawing.Font)(this["StandardFontSubtitle"]));
