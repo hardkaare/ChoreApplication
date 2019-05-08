@@ -142,7 +142,6 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
             return result;
         }
-
         #endregion
     }
 }

@@ -340,7 +340,7 @@ namespace ChoreApplication.UI
             var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
             currentChild[0].Points += currentChore.Points;
             currentChild[0].Update();
-
+            Notification.Insert(currentChild[0].Id, "Chore Approved", "The chore '" + currentChore.Name + "' has been approved. " + currentChore.Points + " has been added to your account");
             LoadChores();
         }
 
@@ -348,6 +348,7 @@ namespace ChoreApplication.UI
         {
             Button clickedButton = (Button)sender;
             Concrete currentChore = (Concrete)clickedButton.Tag;
+            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
 
             if (currentChore.Type == "rep")
             {
@@ -359,6 +360,7 @@ namespace ChoreApplication.UI
                 currentChore.Status = 1;
                 currentChore.Update();
             }
+            Notification.Insert(currentChild[0].Id, "Chore Denied", "The chore '" + currentChore.Name + "' has been denied.");
             LoadChores();
         }
 
@@ -759,7 +761,7 @@ namespace ChoreApplication.UI
 
         private void LoadNotification()
         {
-            Notifications = Notification.Load("");
+            Notifications = Notification.Load("user_id=" + Session.Id);
             NotificationPanel.Controls.Clear();
             int i = 0;
             int panelDistance = 50;
@@ -828,7 +830,6 @@ namespace ChoreApplication.UI
                 NotificationAmount.Text = Notifications.Count.ToString();
             }
         }
-
         #endregion NotificationsUI
     }
 }
