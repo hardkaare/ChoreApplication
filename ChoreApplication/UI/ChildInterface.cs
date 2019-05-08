@@ -20,8 +20,6 @@ namespace ChoreApplication.UI
         private List<Concrete> ActiveConcreteChores;
         private List<Reward> Rewards;
         private List<Notification> Notifications;
-        private readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
-        private readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
         public ChildInterface(ChildUser child)
         {
             Session = child;
@@ -63,12 +61,12 @@ namespace ChoreApplication.UI
             };
             if (!bold)
             {
-                label.Font = StandardFont;
+                label.Font = Properties.Settings.Default.StandardFont;
                 return label;
             }
             if (bold)
             {
-                label.Font = StandardFontBold;
+                label.Font = Properties.Settings.Default.StandardFontBold;
                 return label;
             }
             return label;
@@ -98,7 +96,7 @@ namespace ChoreApplication.UI
                 var chorePoints = "Points: " + chore.Points.ToString();
                 var choreDescription = "Description: " + chore.Description.ToString();
                 var choreStatus = "Status: " + StatusValues[chore.Status];
-                var choreDueDate = "Due date: " + chore.DueDate.ToString("dd/MM HH:mm");
+                var choreDueDate = "Due date: " + chore.DueDate.ToString(Properties.Settings.Default.ShortDateFormat);
 
                 var choreNameLabel = AddLabel(choreName, true, 5, 5);
                 var chorePointsLabel = AddLabel(chorePoints, false, 10, choreNameLabel.Location.Y + 20);

@@ -1,22 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Text.RegularExpressions;
-
-
 
 namespace ChoreApplication.UI
 {
     public partial class CreateChoreUI : Form
     {
-        private readonly Font StandardFont = new Font("Microsoft Sans Serif", 9.75F);
         public CreateChoreUI()
         {
             InitializeComponent();
@@ -25,13 +18,6 @@ namespace ChoreApplication.UI
         }  
         private void ComboBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            DueTime.Font = StandardFont;
-            CompletionLimit.Font = StandardFont;
-            Days.Font = StandardFont;
-            DueDate.Font = StandardFont;
-            label5.Font = StandardFont;
-            label6.Font = StandardFont;
-            label7.Font = StandardFont;
             switch (ChoreTypes.Text)
             {
                 case "Reoccurring":

@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
@@ -48,12 +41,6 @@ namespace ChoreApplication.UI
             {
                 MessageBox.Show("You must assign the reward to a child.");
             }
-            
-        }
-
-        private void Assignment_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
         }
     }
 }

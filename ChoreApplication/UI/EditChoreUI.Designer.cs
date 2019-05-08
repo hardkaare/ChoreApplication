@@ -50,7 +50,7 @@
             // daysLabel
             // 
             this.daysLabel.AutoSize = true;
-            this.daysLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.daysLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.daysLabel.Location = new System.Drawing.Point(69, 310);
             this.daysLabel.Name = "daysLabel";
             this.daysLabel.Size = new System.Drawing.Size(40, 16);
@@ -59,7 +59,7 @@
             // 
             // CompletionLimit
             // 
-            this.CompletionLimit.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CompletionLimit.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.CompletionLimit.Location = new System.Drawing.Point(70, 284);
             this.CompletionLimit.Minimum = new decimal(new int[] {
             1,
@@ -77,7 +77,7 @@
             // 
             // Days
             // 
-            this.Days.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Days.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.Days.Items.AddRange(new object[] {
             "Monday",
             "Tuesday",
@@ -93,17 +93,17 @@
             // 
             // assignmentLabel
             // 
-            this.assignmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.assignmentLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.assignmentLabel.Location = new System.Drawing.Point(70, 219);
             this.assignmentLabel.Name = "assignmentLabel";
-            this.assignmentLabel.Size = new System.Drawing.Size(70, 16);
+            this.assignmentLabel.Size = new System.Drawing.Size(110, 16);
             this.assignmentLabel.TabIndex = 0;
             this.assignmentLabel.Text = "Assignment";
             // 
             // dtlLabel
             // 
             this.dtlLabel.AutoSize = true;
-            this.dtlLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dtlLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.dtlLabel.Location = new System.Drawing.Point(70, 265);
             this.dtlLabel.Name = "dtlLabel";
             this.dtlLabel.Size = new System.Drawing.Size(63, 16);
@@ -112,7 +112,7 @@
             // 
             // descriptionLabel
             // 
-            this.descriptionLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.descriptionLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.descriptionLabel.Location = new System.Drawing.Point(70, 140);
             this.descriptionLabel.Name = "descriptionLabel";
             this.descriptionLabel.Size = new System.Drawing.Size(76, 16);
@@ -122,7 +122,7 @@
             // DueTime
             // 
             this.DueTime.CustomFormat = "hh:mm";
-            this.DueTime.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DueTime.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueTime.Location = new System.Drawing.Point(70, 284);
             this.DueTime.Name = "DueTime";
@@ -132,7 +132,7 @@
             // 
             // pointsLabel
             // 
-            this.pointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pointsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pointsLabel.Location = new System.Drawing.Point(70, 96);
             this.pointsLabel.Name = "pointsLabel";
             this.pointsLabel.Size = new System.Drawing.Size(45, 16);
@@ -141,7 +141,7 @@
             // 
             // nameLabel
             // 
-            this.nameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.nameLabel.Location = new System.Drawing.Point(70, 55);
             this.nameLabel.Name = "nameLabel";
             this.nameLabel.Size = new System.Drawing.Size(45, 16);
@@ -151,7 +151,7 @@
             // Assignment
             // 
             this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Assignment.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Assignment.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.Assignment.FormattingEnabled = true;
             this.Assignment.Location = new System.Drawing.Point(70, 238);
             this.Assignment.Name = "Assignment";
@@ -161,7 +161,7 @@
             // DueDate
             // 
             this.DueDate.CustomFormat = "dd\'-\'MM\'-\'yyyy HH\':\'mm\':\'ss";
-            this.DueDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.DueDate.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.DueDate.Location = new System.Drawing.Point(70, 284);
             this.DueDate.Name = "DueDate";
@@ -171,7 +171,7 @@
             // 
             // ChoreDescription
             // 
-            this.ChoreDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChoreDescription.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.ChoreDescription.Location = new System.Drawing.Point(70, 159);
             this.ChoreDescription.MaxLength = 255;
             this.ChoreDescription.Name = "ChoreDescription";
@@ -181,7 +181,7 @@
             // 
             // ChorePoints
             // 
-            this.ChorePoints.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChorePoints.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.ChorePoints.Location = new System.Drawing.Point(70, 115);
             this.ChorePoints.Name = "ChorePoints";
             this.ChorePoints.Size = new System.Drawing.Size(198, 22);
@@ -191,7 +191,7 @@
             // ChoreName
             // 
             this.ChoreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChoreName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChoreName.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.ChoreName.Location = new System.Drawing.Point(70, 71);
             this.ChoreName.MaxLength = 50;
             this.ChoreName.Name = "ChoreName";
@@ -201,7 +201,7 @@
             // 
             // CreateChoreButton
             // 
-            this.CreateChoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.CreateChoreButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.CreateChoreButton.Location = new System.Drawing.Point(69, 310);
             this.CreateChoreButton.Name = "CreateChoreButton";
             this.CreateChoreButton.Size = new System.Drawing.Size(199, 30);
@@ -212,7 +212,7 @@
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);

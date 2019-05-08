@@ -25,12 +25,64 @@ namespace ChoreApplication.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=choreapplication.database.windows.net;Initial Catalog=ChoreApplicatio" +
-            "n;Persist Security Info=True;User ID=bi408f19")]
-        public string ChoreApplicationConnectionString {
+        [global::System.Configuration.DefaultSettingValueAttribute("\"\"dd-MM-yyyy HH:mm\"\"")]
+        public string LongDateFormat {
             get {
-                return ((string)(this["ChoreApplicationConnectionString"]));
+                return ((string)(this["LongDateFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"\"dd/MM HH:mm\"\"")]
+        public string ShortDateFormat {
+            get {
+                return ((string)(this["ShortDateFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 9.749999pt")]
+        public global::System.Drawing.Font StandardFont {
+            get {
+                return ((global::System.Drawing.Font)(this["StandardFont"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 9.749999pt, style=Bold")]
+        public global::System.Drawing.Font StandardFontBold {
+            get {
+                return ((global::System.Drawing.Font)(this["StandardFontBold"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\"\"HH:mm d. MMMM\"\"")]
+        public string TextDateFormat {
+            get {
+                return ((string)(this["TextDateFormat"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 15.749999pt")]
+        public global::System.Drawing.Font StandardFontTitle {
+            get {
+                return ((global::System.Drawing.Font)(this["StandardFontTitle"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("Dubai, 14.249999pt")]
+        public global::System.Drawing.Font StandardFontSubtitle {
+            get {
+                return ((global::System.Drawing.Font)(this["StandardFontSubtitle"]));
             }
         }
     }

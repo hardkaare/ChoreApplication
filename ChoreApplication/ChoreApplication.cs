@@ -100,12 +100,13 @@ namespace ChoreApplication
             var ChooseProfile = new UI.ChooseProfileInterface();
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
             var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
-
+            var editparent = new UI.EditParentUI(DumbFuckParentUser);
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
             //ParentInterface.Show();
             ParentInterface.Show();
+            editparent.Show();
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)

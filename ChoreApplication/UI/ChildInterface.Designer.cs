@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChildInterface));
             this.upperPanel = new System.Windows.Forms.Panel();
             this.ChildPointsLabel = new System.Windows.Forms.Label();
             this.UserButton = new System.Windows.Forms.Button();
@@ -66,7 +65,7 @@
             // 
             // ChildPointsLabel
             // 
-            this.ChildPointsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChildPointsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.ChildPointsLabel.Location = new System.Drawing.Point(29, 0);
             this.ChildPointsLabel.Name = "ChildPointsLabel";
             this.ChildPointsLabel.Size = new System.Drawing.Size(104, 31);
@@ -94,10 +93,11 @@
             // titleText
             // 
             this.titleText.AutoEllipsis = true;
-            this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleText.Location = new System.Drawing.Point(144, 3);
+            this.titleText.DataBindings.Add(new System.Windows.Forms.Binding("Font", global::ChoreApplication.Properties.Settings.Default, "StandardFontTitle", true, System.Windows.Forms.DataSourceUpdateMode.OnPropertyChanged));
+            this.titleText.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
+            this.titleText.Location = new System.Drawing.Point(-1, -1);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(149, 26);
+            this.titleText.Size = new System.Drawing.Size(420, 30);
             this.titleText.TabIndex = 0;
             this.titleText.Text = "CenterText";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -136,7 +136,6 @@
             this.NotificationAmount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.NotificationAmount.Location = new System.Drawing.Point(364, -1);
             this.NotificationAmount.Name = "NotificationAmount";
             this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
@@ -147,7 +146,7 @@
             // 
             // notificationsLabel
             // 
-            this.notificationsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.notificationsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.notificationsLabel.Location = new System.Drawing.Point(322, 55);
             this.notificationsLabel.Name = "notificationsLabel";
             this.notificationsLabel.Size = new System.Drawing.Size(84, 18);
@@ -157,7 +156,7 @@
             // 
             // leaderboardsLabel
             // 
-            this.leaderboardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.leaderboardsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.leaderboardsLabel.Location = new System.Drawing.Point(209, 55);
             this.leaderboardsLabel.Name = "leaderboardsLabel";
             this.leaderboardsLabel.Size = new System.Drawing.Size(97, 18);
@@ -167,7 +166,7 @@
             // 
             // rewardsLabel
             // 
-            this.rewardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rewardsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rewardsLabel.Location = new System.Drawing.Point(109, 55);
             this.rewardsLabel.Name = "rewardsLabel";
             this.rewardsLabel.Size = new System.Drawing.Size(75, 18);
@@ -177,7 +176,7 @@
             // 
             // choresLabel
             // 
-            this.choresLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.choresLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.choresLabel.Location = new System.Drawing.Point(16, 55);
             this.choresLabel.Name = "choresLabel";
             this.choresLabel.Size = new System.Drawing.Size(73, 18);
@@ -208,7 +207,7 @@
             // 
             // notificationsNavButton
             // 
-            this.notificationsNavButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("notificationsNavButton.BackgroundImage")));
+            this.notificationsNavButton.BackgroundImage = global::ChoreApplication.Properties.Resources.notifications;
             this.notificationsNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.notificationsNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.notificationsNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -310,7 +309,9 @@
             this.Controls.Add(this.navigationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ChildInterface";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Child Interface";
             this.upperPanel.ResumeLayout(false);

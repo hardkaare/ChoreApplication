@@ -40,7 +40,7 @@
             // 
             // ChildFirstnameInput
             // 
-            this.ChildFirstnameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChildFirstnameInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.ChildFirstnameInput.Location = new System.Drawing.Point(70, 176);
             this.ChildFirstnameInput.MaxLength = 20;
             this.ChildFirstnameInput.Name = "ChildFirstnameInput";
@@ -49,7 +49,7 @@
             // 
             // SaveButton
             // 
-            this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.SaveButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.SaveButton.Location = new System.Drawing.Point(70, 249);
             this.SaveButton.Name = "SaveButton";
             this.SaveButton.Size = new System.Drawing.Size(200, 30);
@@ -61,7 +61,7 @@
             // childNameLabel
             // 
             this.childNameLabel.AutoSize = true;
-            this.childNameLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.childNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.childNameLabel.Location = new System.Drawing.Point(70, 160);
             this.childNameLabel.Name = "childNameLabel";
             this.childNameLabel.Size = new System.Drawing.Size(75, 16);
@@ -81,7 +81,7 @@
             // 
             // ChildPincodeInput
             // 
-            this.ChildPincodeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ChildPincodeInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.ChildPincodeInput.Location = new System.Drawing.Point(70, 218);
             this.ChildPincodeInput.MaxLength = 4;
             this.ChildPincodeInput.Name = "ChildPincodeInput";
@@ -91,7 +91,7 @@
             // pincodeLabel
             // 
             this.pincodeLabel.AutoSize = true;
-            this.pincodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pincodeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pincodeLabel.Location = new System.Drawing.Point(70, 202);
             this.pincodeLabel.Name = "pincodeLabel";
             this.pincodeLabel.Size = new System.Drawing.Size(58, 16);
@@ -100,7 +100,7 @@
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);

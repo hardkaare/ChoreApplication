@@ -78,7 +78,7 @@
             this.roundButton1.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.roundButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.roundButton1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.roundButton1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.roundButton1.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton1.Location = new System.Drawing.Point(191, 271);
             this.roundButton1.Margin = new System.Windows.Forms.Padding(2);
             this.roundButton1.Name = "roundButton1";
@@ -96,7 +96,7 @@
             this.rbZero.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbZero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbZero.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbZero.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbZero.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbZero.Location = new System.Drawing.Point(120, 271);
             this.rbZero.Margin = new System.Windows.Forms.Padding(2);
             this.rbZero.Name = "rbZero";
@@ -114,7 +114,7 @@
             this.rbDelete.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbDelete.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbDelete.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbDelete.Location = new System.Drawing.Point(50, 271);
             this.rbDelete.Margin = new System.Windows.Forms.Padding(2);
             this.rbDelete.Name = "rbDelete";
@@ -132,7 +132,7 @@
             this.rbNine.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbNine.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbNine.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbNine.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbNine.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbNine.Location = new System.Drawing.Point(191, 198);
             this.rbNine.Margin = new System.Windows.Forms.Padding(2);
             this.rbNine.Name = "rbNine";
@@ -150,7 +150,7 @@
             this.rbEight.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbEight.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbEight.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbEight.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbEight.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbEight.Location = new System.Drawing.Point(120, 198);
             this.rbEight.Margin = new System.Windows.Forms.Padding(2);
             this.rbEight.Name = "rbEight";
@@ -168,7 +168,7 @@
             this.rbSeven.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbSeven.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbSeven.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbSeven.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbSeven.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbSeven.Location = new System.Drawing.Point(50, 198);
             this.rbSeven.Margin = new System.Windows.Forms.Padding(2);
             this.rbSeven.Name = "rbSeven";
@@ -186,7 +186,7 @@
             this.rbSix.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbSix.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbSix.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbSix.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbSix.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbSix.Location = new System.Drawing.Point(191, 125);
             this.rbSix.Margin = new System.Windows.Forms.Padding(2);
             this.rbSix.Name = "rbSix";
@@ -204,7 +204,7 @@
             this.rbFive.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbFive.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbFive.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbFive.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFive.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbFive.Location = new System.Drawing.Point(120, 125);
             this.rbFive.Margin = new System.Windows.Forms.Padding(2);
             this.rbFive.Name = "rbFive";
@@ -222,7 +222,7 @@
             this.rbFour.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbFour.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbFour.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbFour.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbFour.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbFour.Location = new System.Drawing.Point(50, 125);
             this.rbFour.Margin = new System.Windows.Forms.Padding(2);
             this.rbFour.Name = "rbFour";
@@ -240,7 +240,7 @@
             this.rbThree.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbThree.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbThree.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbThree.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbThree.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbThree.Location = new System.Drawing.Point(191, 55);
             this.rbThree.Margin = new System.Windows.Forms.Padding(2);
             this.rbThree.Name = "rbThree";
@@ -258,7 +258,7 @@
             this.rbTwo.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbTwo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbTwo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbTwo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbTwo.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbTwo.Location = new System.Drawing.Point(120, 55);
             this.rbTwo.Margin = new System.Windows.Forms.Padding(2);
             this.rbTwo.Name = "rbTwo";
@@ -276,7 +276,7 @@
             this.rbOne.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbOne.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbOne.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbOne.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.rbOne.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rbOne.Location = new System.Drawing.Point(50, 55);
             this.rbOne.Margin = new System.Windows.Forms.Padding(2);
             this.rbOne.Name = "rbOne";
@@ -288,18 +288,18 @@
             // 
             // pincodeLabel
             // 
-            this.pincodeLabel.AutoSize = true;
-            this.pincodeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F);
-            this.pincodeLabel.Location = new System.Drawing.Point(93, 9);
+            this.pincodeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.pincodeLabel.Location = new System.Drawing.Point(2, 9);
             this.pincodeLabel.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.pincodeLabel.Name = "pincodeLabel";
-            this.pincodeLabel.Size = new System.Drawing.Size(120, 16);
+            this.pincodeLabel.Size = new System.Drawing.Size(308, 16);
             this.pincodeLabel.TabIndex = 16;
             this.pincodeLabel.Text = "Enter your pincode";
+            this.pincodeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // enterpinTextBox
             // 
-            this.enterpinTextBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.enterpinTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.enterpinTextBox.Location = new System.Drawing.Point(53, 27);
             this.enterpinTextBox.Margin = new System.Windows.Forms.Padding(2);
             this.enterpinTextBox.MaxLength = 4;
@@ -319,7 +319,7 @@
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
+            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(13, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
