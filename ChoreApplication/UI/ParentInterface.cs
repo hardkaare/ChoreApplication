@@ -340,7 +340,7 @@ namespace ChoreApplication.UI
             var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
             currentChild[0].Points += currentChore.Points;
             currentChild[0].Update();
-
+            Notification.Insert(currentChild[0].Id, "Chore Approved", "The chore '" + currentChore.Name + "' has been approved. " + currentChore.Points + " has been added to your account");
             LoadChores();
         }
 
@@ -348,6 +348,7 @@ namespace ChoreApplication.UI
         {
             Button clickedButton = (Button)sender;
             Concrete currentChore = (Concrete)clickedButton.Tag;
+            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
 
             if (currentChore.Type == "rep")
             {
@@ -359,6 +360,7 @@ namespace ChoreApplication.UI
                 currentChore.Status = 1;
                 currentChore.Update();
             }
+            Notification.Insert(currentChild[0].Id, "Chore Denied", "The chore '" + currentChore.Name + "' has been denied.");
             LoadChores();
         }
 
@@ -566,52 +568,55 @@ namespace ChoreApplication.UI
         private void LoadLeaderboard()
         {
             LeaderboardPanel.Controls.Clear();
-            int PanelDist = 20;
-            int yLocLeaderboard = 10;
+            if (ChildUsers.Count != 0)
+            {
+                int PanelDist = 20;
+                int yLocLeaderboard = 10;
 
-            //Add Total Points title
-            var Title1 = AddLabel("Total Points Earned", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title1);
-            yLocLeaderboard += Title1.Height + PanelDist;
+                //Add Total Points title
+                var Title1 = AddLabel("Total Points Earned", true, 140, yLocLeaderboard);
+                this.LeaderboardPanel.Controls.Add(Title1);
+                yLocLeaderboard += Title1.Height + PanelDist;
 
-            //Add Total Points panel
-            Panel TotalPointsStatistic = SystemFunctions.LoadTotalPoints(new Point(0, yLocLeaderboard), 
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(TotalPointsStatistic);
-            yLocLeaderboard += TotalPointsStatistic.Height + PanelDist;
+                //Add Total Points panel
+                Panel TotalPointsStatistic = SystemFunctions.LoadTotalPoints(new Point(0, yLocLeaderboard),
+                    LeaderboardPanel.Width, ChildrenNames, ChildUsers);
+                this.LeaderboardPanel.Controls.Add(TotalPointsStatistic);
+                yLocLeaderboard += TotalPointsStatistic.Height + PanelDist;
 
-            //Add Total Chores Approved title
-            var Title2 = AddLabel("Total Chores Approved", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title2);
-            yLocLeaderboard += Title2.Height + PanelDist;
+                //Add Total Chores Approved title
+                var Title2 = AddLabel("Total Chores Approved", true, 140, yLocLeaderboard);
+                this.LeaderboardPanel.Controls.Add(Title2);
+                yLocLeaderboard += Title2.Height + PanelDist;
 
-            //Add Total Chores Approved panel
-            Panel TotalChoresApprovedStatistic = SystemFunctions.LoadTotalChoresApproved(new Point(0, yLocLeaderboard),
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(TotalChoresApprovedStatistic);
-            yLocLeaderboard += TotalChoresApprovedStatistic.Height + PanelDist;
+                //Add Total Chores Approved panel
+                Panel TotalChoresApprovedStatistic = SystemFunctions.LoadTotalChoresApproved(new Point(0, yLocLeaderboard),
+                    LeaderboardPanel.Width, ChildrenNames, ChildUsers);
+                this.LeaderboardPanel.Controls.Add(TotalChoresApprovedStatistic);
+                yLocLeaderboard += TotalChoresApprovedStatistic.Height + PanelDist;
 
-            //Add Completion Rate title
-            var Title3 = AddLabel("Completion Rate", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title3);
-            yLocLeaderboard += Title3.Height + PanelDist;
+                //Add Completion Rate title
+                var Title3 = AddLabel("Completion Rate", true, 140, yLocLeaderboard);
+                this.LeaderboardPanel.Controls.Add(Title3);
+                yLocLeaderboard += Title3.Height + PanelDist;
 
-            //Add Completion Rate panel
-            Panel CompletionRateStatistic = SystemFunctions.LoadCompletionRate(new Point(0, yLocLeaderboard),
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(CompletionRateStatistic);
-            yLocLeaderboard += CompletionRateStatistic.Height + PanelDist;
+                //Add Completion Rate panel
+                Panel CompletionRateStatistic = SystemFunctions.LoadCompletionRate(new Point(0, yLocLeaderboard),
+                    LeaderboardPanel.Width, ChildrenNames, ChildUsers);
+                this.LeaderboardPanel.Controls.Add(CompletionRateStatistic);
+                yLocLeaderboard += CompletionRateStatistic.Height + PanelDist;
 
-            //Add Longest streak title
-            var Title4 = AddLabel("Longest Streak", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title4);
-            yLocLeaderboard += Title4.Height + PanelDist;
+                //Add Longest streak title
+                var Title4 = AddLabel("Longest Streak", true, 140, yLocLeaderboard);
+                this.LeaderboardPanel.Controls.Add(Title4);
+                yLocLeaderboard += Title4.Height + PanelDist;
 
-            //Add Longest Strea panel
-            Panel LongestStreakStatistic = SystemFunctions.LoadLongestStreak(new Point(0, yLocLeaderboard),
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
-            yLocLeaderboard += LongestStreakStatistic.Height + PanelDist;
+                //Add Longest Strea panel
+                Panel LongestStreakStatistic = SystemFunctions.LoadLongestStreak(new Point(0, yLocLeaderboard),
+                    LeaderboardPanel.Width, ChildrenNames, ChildUsers);
+                this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
+                yLocLeaderboard += LongestStreakStatistic.Height + PanelDist;
+            }
         }
 
         #endregion
@@ -759,7 +764,7 @@ namespace ChoreApplication.UI
 
         private void LoadNotification()
         {
-            Notifications = Notification.Load("");
+            Notifications = Notification.Load("user_id=" + Session.Id);
             NotificationPanel.Controls.Clear();
             int i = 0;
             int panelDistance = 50;
@@ -828,7 +833,6 @@ namespace ChoreApplication.UI
                 NotificationAmount.Text = Notifications.Count.ToString();
             }
         }
-
         #endregion NotificationsUI
     }
 }

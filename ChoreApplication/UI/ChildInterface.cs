@@ -82,11 +82,11 @@ namespace ChoreApplication.UI
             titleText.Text = "Chores";
             LoadChores();
         }
-        #endregion
+
 
         public void LoadChores()
         {
-            ActiveConcreteChores = Concrete.Load($"status=1 OR (type='conc' AND status=2) AND child_id={Session.ChildId} ORDER BY status ASC");
+            ActiveConcreteChores = Concrete.Load($"status=1 OR (type='conc' AND status=2) AND ch.child_id={Session.ChildId} ORDER BY status ASC");
             ChorePanel.Controls.Clear();
             int i = 0;
             int panelDistance = 95;
@@ -159,6 +159,7 @@ namespace ChoreApplication.UI
             currentChore.Update();
             LoadChores();
         }
+        #endregion
 
         #region RewardUI
         private void RewardsUI()

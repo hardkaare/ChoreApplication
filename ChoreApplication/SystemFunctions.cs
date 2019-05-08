@@ -352,6 +352,7 @@ namespace ChoreApplication
             int barDist = 5;
             int yLoc = 0;
             var totalPoints = TotalPoints(ChildUsers);
+
             var first = totalPoints.First();
             int maxPoints = first.Value;
 
@@ -366,6 +367,7 @@ namespace ChoreApplication
                 currentPanel.Controls.Add(label2);
                 yLoc += bar.Height + barDist;
             }
+
             currentPanel.Height = yLoc;
             return currentPanel;
         }
