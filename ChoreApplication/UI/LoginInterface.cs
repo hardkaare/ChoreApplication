@@ -11,6 +11,33 @@ namespace ChoreApplication.UI
         public LoginInterface()
         {
             InitializeComponent();
+            testUsers();
+        }
+
+        private void testUsers()
+        {
+            bool users = true;
+            string query = "SELECT user_id FROM users";
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DbConn.Open();
+            SqlDataReader reader = cmd.ExecuteReader();
+            if (!reader.HasRows)
+            {
+                users = false;
+
+            }
+            reader.Close();
+            DatabaseFunctions.DbConn.Close();
+            if (!users)
+            {
+                var registerUserInterface = new RegisterUserInterface();
+                registerUserInterface.Show();
+                this.Close();
+            }
+            else
+            {
+                this.Show();
+            }
         }
 
         private void EmailTextbox_Click(object sender, EventArgs e)
@@ -25,17 +52,12 @@ namespace ChoreApplication.UI
             PasswordInput.UseSystemPasswordChar = true;
         }
 
-        private void NewUserLinkLabel_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
-        {
-
-        }
-
         private void LoginButton_Click(object sender, EventArgs e)
         {
             string Emailinput = EmailInput.Text;
             string passwordInput = PasswordInput.Text;
             bool match = false;
-            if(string.IsNullOrEmpty(Emailinput) || string.IsNullOrEmpty(passwordInput))
+            if (string.IsNullOrEmpty(Emailinput) || string.IsNullOrEmpty(passwordInput))
             {
                 MessageBox.Show("Please enter your E-mail and password.");
                 return;
@@ -49,7 +71,7 @@ namespace ChoreApplication.UI
             {
                 string email = reader["email"].ToString();
                 string password = reader["password"].ToString();
-                if(Emailinput == email && passwordInput == password)
+                if (Emailinput == email && passwordInput == password)
                 {
                     match = true;
                 }
@@ -65,27 +87,6 @@ namespace ChoreApplication.UI
                 DatabaseFunctions.DbConn.Close();
                 ChooseProfile = new ChooseProfileInterface();
                 ChooseProfile.Show();
-                this.Close();
-            }
-        }
-
-        private void LoginInterface_Load(object sender, EventArgs e)
-        {
-            bool users = true;
-            string query = "SELECT user_id FROM users";
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
-            DatabaseFunctions.DbConn.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (!reader.HasRows)
-            {
-                users = false;
-            }
-            reader.Close();
-            DatabaseFunctions.DbConn.Close();
-            if (!users)
-            {
-                var registerUserInterface = new RegisterUserInterface();
-                registerUserInterface.Show();
                 this.Close();
             }
         }

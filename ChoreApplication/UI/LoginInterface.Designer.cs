@@ -33,7 +33,6 @@
             this.EmailInput = new System.Windows.Forms.TextBox();
             this.PasswordInput = new System.Windows.Forms.TextBox();
             this.LoginButton = new System.Windows.Forms.Button();
-            this.newUserLink = new System.Windows.Forms.LinkLabel();
             this.LoginPanel = new System.Windows.Forms.Panel();
             this.PasswordLabel = new System.Windows.Forms.Label();
             this.EmailLabel = new System.Windows.Forms.Label();
@@ -94,23 +93,11 @@
             this.LoginButton.UseVisualStyleBackColor = true;
             this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
-            // newUserLink
-            // 
-            this.newUserLink.Location = new System.Drawing.Point(60, 169);
-            this.newUserLink.Name = "newUserLink";
-            this.newUserLink.Size = new System.Drawing.Size(200, 25);
-            this.newUserLink.TabIndex = 5;
-            this.newUserLink.TabStop = true;
-            this.newUserLink.Text = "New user?";
-            this.newUserLink.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.newUserLink.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.NewUserLinkLabel_LinkClicked);
-            // 
             // LoginPanel
             // 
             this.LoginPanel.Controls.Add(this.PasswordLabel);
             this.LoginPanel.Controls.Add(this.EmailLabel);
             this.LoginPanel.Controls.Add(this.LoginLabel);
-            this.LoginPanel.Controls.Add(this.newUserLink);
             this.LoginPanel.Controls.Add(this.EmailInput);
             this.LoginPanel.Controls.Add(this.LoginButton);
             this.LoginPanel.Controls.Add(this.PasswordInput);
@@ -165,7 +152,6 @@
         private System.Windows.Forms.TextBox EmailInput;
         private System.Windows.Forms.TextBox PasswordInput;
         private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.LinkLabel newUserLink;
         private System.Windows.Forms.Panel LoginPanel;
         private System.Windows.Forms.Label PasswordLabel;
         private System.Windows.Forms.Label EmailLabel;

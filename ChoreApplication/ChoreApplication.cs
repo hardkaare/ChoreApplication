@@ -135,7 +135,6 @@ namespace ChoreApplication
         private void AlexogLuten_Click(object sender, EventArgs e)
         {
             var LoginInterface = new UI.LoginInterface();
-            LoginInterface.Show();
             this.Hide();
         }
 

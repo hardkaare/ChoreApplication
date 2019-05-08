@@ -85,7 +85,6 @@ namespace ChoreApplication.UI
                 }
                 LoginInterface.ChooseProfile.Close();
                 this.Close();
-                MessageBox.Show(session.ToString());
             }
         }
     }
