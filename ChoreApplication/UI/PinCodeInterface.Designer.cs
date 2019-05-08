@@ -72,7 +72,9 @@
             // 
             // roundButton1
             // 
+            this.roundButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton1.FlatAppearance.BorderSize = 0;
             this.roundButton1.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.roundButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.roundButton1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -88,7 +90,9 @@
             // 
             // rbZero
             // 
+            this.rbZero.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbZero.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbZero.FlatAppearance.BorderSize = 0;
             this.rbZero.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbZero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbZero.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -104,7 +108,9 @@
             // 
             // rbDelete
             // 
+            this.rbDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbDelete.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbDelete.FlatAppearance.BorderSize = 0;
             this.rbDelete.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbDelete.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -120,7 +126,9 @@
             // 
             // rbNine
             // 
+            this.rbNine.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbNine.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbNine.FlatAppearance.BorderSize = 0;
             this.rbNine.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbNine.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbNine.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -136,7 +144,9 @@
             // 
             // rbEight
             // 
+            this.rbEight.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbEight.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbEight.FlatAppearance.BorderSize = 0;
             this.rbEight.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbEight.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbEight.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -152,7 +162,9 @@
             // 
             // rbSeven
             // 
+            this.rbSeven.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbSeven.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbSeven.FlatAppearance.BorderSize = 0;
             this.rbSeven.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbSeven.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbSeven.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -168,7 +180,9 @@
             // 
             // rbSix
             // 
+            this.rbSix.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbSix.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbSix.FlatAppearance.BorderSize = 0;
             this.rbSix.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbSix.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbSix.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -184,7 +198,9 @@
             // 
             // rbFive
             // 
+            this.rbFive.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbFive.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbFive.FlatAppearance.BorderSize = 0;
             this.rbFive.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbFive.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbFive.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -200,7 +216,9 @@
             // 
             // rbFour
             // 
+            this.rbFour.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbFour.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbFour.FlatAppearance.BorderSize = 0;
             this.rbFour.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbFour.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbFour.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -216,7 +234,9 @@
             // 
             // rbThree
             // 
+            this.rbThree.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbThree.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbThree.FlatAppearance.BorderSize = 0;
             this.rbThree.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbThree.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbThree.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -232,7 +252,9 @@
             // 
             // rbTwo
             // 
+            this.rbTwo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbTwo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbTwo.FlatAppearance.BorderSize = 0;
             this.rbTwo.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbTwo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbTwo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -248,7 +270,9 @@
             // 
             // rbOne
             // 
+            this.rbOne.Cursor = System.Windows.Forms.Cursors.Hand;
             this.rbOne.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.rbOne.FlatAppearance.BorderSize = 0;
             this.rbOne.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
             this.rbOne.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rbOne.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
@@ -296,7 +320,7 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
+            this.WelcomeLabel.Location = new System.Drawing.Point(13, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
             this.WelcomeLabel.TabIndex = 9;

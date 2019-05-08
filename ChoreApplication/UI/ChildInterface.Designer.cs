@@ -137,7 +137,7 @@
             this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.NotificationAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.NotificationAmount.Location = new System.Drawing.Point(360, 3);
+            this.NotificationAmount.Location = new System.Drawing.Point(364, -1);
             this.NotificationAmount.Name = "NotificationAmount";
             this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
             this.NotificationAmount.TabIndex = 0;
@@ -148,7 +148,7 @@
             // notificationsLabel
             // 
             this.notificationsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.notificationsLabel.Location = new System.Drawing.Point(318, 59);
+            this.notificationsLabel.Location = new System.Drawing.Point(322, 55);
             this.notificationsLabel.Name = "notificationsLabel";
             this.notificationsLabel.Size = new System.Drawing.Size(84, 18);
             this.notificationsLabel.TabIndex = 0;
@@ -158,7 +158,7 @@
             // leaderboardsLabel
             // 
             this.leaderboardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.leaderboardsLabel.Location = new System.Drawing.Point(215, 59);
+            this.leaderboardsLabel.Location = new System.Drawing.Point(209, 55);
             this.leaderboardsLabel.Name = "leaderboardsLabel";
             this.leaderboardsLabel.Size = new System.Drawing.Size(97, 18);
             this.leaderboardsLabel.TabIndex = 0;
@@ -168,7 +168,7 @@
             // rewardsLabel
             // 
             this.rewardsLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.rewardsLabel.Location = new System.Drawing.Point(122, 59);
+            this.rewardsLabel.Location = new System.Drawing.Point(109, 55);
             this.rewardsLabel.Name = "rewardsLabel";
             this.rewardsLabel.Size = new System.Drawing.Size(75, 18);
             this.rewardsLabel.TabIndex = 0;
@@ -178,7 +178,7 @@
             // choresLabel
             // 
             this.choresLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.choresLabel.Location = new System.Drawing.Point(26, 59);
+            this.choresLabel.Location = new System.Drawing.Point(16, 55);
             this.choresLabel.Name = "choresLabel";
             this.choresLabel.Size = new System.Drawing.Size(73, 18);
             this.choresLabel.TabIndex = 0;
@@ -196,7 +196,7 @@
             this.choreNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.choreNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.choreNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.choreNavButton.Location = new System.Drawing.Point(24, 13);
+            this.choreNavButton.Location = new System.Drawing.Point(14, 9);
             this.choreNavButton.Name = "choreNavButton";
             this.choreNavButton.Size = new System.Drawing.Size(75, 40);
             this.choreNavButton.TabIndex = 0;
@@ -217,7 +217,7 @@
             this.notificationsNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.notificationsNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.notificationsNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.notificationsNavButton.Location = new System.Drawing.Point(321, 13);
+            this.notificationsNavButton.Location = new System.Drawing.Point(325, 9);
             this.notificationsNavButton.Name = "notificationsNavButton";
             this.notificationsNavButton.Size = new System.Drawing.Size(75, 40);
             this.notificationsNavButton.TabIndex = 0;
@@ -236,7 +236,7 @@
             this.leadboardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.leadboardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.leadboardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.leadboardNavButton.Location = new System.Drawing.Point(218, 16);
+            this.leadboardNavButton.Location = new System.Drawing.Point(212, 9);
             this.leadboardNavButton.Name = "leadboardNavButton";
             this.leadboardNavButton.Size = new System.Drawing.Size(86, 40);
             this.leadboardNavButton.TabIndex = 0;
@@ -255,7 +255,7 @@
             this.rewardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rewardNavButton.Location = new System.Drawing.Point(122, 16);
+            this.rewardNavButton.Location = new System.Drawing.Point(109, 9);
             this.rewardNavButton.Name = "rewardNavButton";
             this.rewardNavButton.Size = new System.Drawing.Size(75, 40);
             this.rewardNavButton.TabIndex = 0;

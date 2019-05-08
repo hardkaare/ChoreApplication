@@ -115,12 +115,6 @@
     <Compile Include="UI\EditRewardUI.Designer.cs">
       <DependentUpon>EditRewardUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\RegisterUser.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\RegisterUser.Designer.cs">
-      <DependentUpon>RegisterUser.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -187,9 +181,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\EditRewardUI.resx">
       <DependentUpon>EditRewardUI.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\RegisterUser.resx">
-      <DependentUpon>RegisterUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>
