@@ -14,8 +14,6 @@ namespace ChoreApplication.UI
     public partial class ChooseProfileInterface : Form
     {
         public static int activeId;
-        public readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
-        public readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
 
         public string Surname { get; set; }
         public ChooseProfileInterface()
@@ -33,12 +31,12 @@ namespace ChoreApplication.UI
             };
             if (!bold)
             {
-                label.Font = StandardFont;
+                label.Font = Properties.Settings.Default.StandardFont;
                 return label;
             }
             if (bold)
             {
-                label.Font = StandardFontBold;
+                label.Font = Properties.Settings.Default.StandardFontBold;
                 return label;
             }
             return label;

@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ChildInterface));
             this.upperPanel = new System.Windows.Forms.Panel();
             this.ChildPointsLabel = new System.Windows.Forms.Label();
             this.UserButton = new System.Windows.Forms.Button();
@@ -95,9 +94,9 @@
             // 
             this.titleText.AutoEllipsis = true;
             this.titleText.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.titleText.Location = new System.Drawing.Point(144, 3);
+            this.titleText.Location = new System.Drawing.Point(-1, 3);
             this.titleText.Name = "titleText";
-            this.titleText.Size = new System.Drawing.Size(149, 26);
+            this.titleText.Size = new System.Drawing.Size(420, 26);
             this.titleText.TabIndex = 0;
             this.titleText.Text = "CenterText";
             this.titleText.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -208,7 +207,7 @@
             // 
             // notificationsNavButton
             // 
-            this.notificationsNavButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("notificationsNavButton.BackgroundImage")));
+            this.notificationsNavButton.BackgroundImage = global::ChoreApplication.Properties.Resources.notifications;
             this.notificationsNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.notificationsNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.notificationsNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;

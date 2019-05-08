@@ -96,7 +96,7 @@
             this.assignmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.assignmentLabel.Location = new System.Drawing.Point(70, 219);
             this.assignmentLabel.Name = "assignmentLabel";
-            this.assignmentLabel.Size = new System.Drawing.Size(70, 16);
+            this.assignmentLabel.Size = new System.Drawing.Size(110, 16);
             this.assignmentLabel.TabIndex = 0;
             this.assignmentLabel.Text = "Assignment";
             // 

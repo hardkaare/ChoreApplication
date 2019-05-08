@@ -60,6 +60,7 @@
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
     <Compile Include="ParentFunctions.cs" />
+    <Compile Include="Settings.cs" />
     <Compile Include="SystemFunctions.cs" />
     <Compile Include="UI\ChildInterface.cs">
       <SubType>Form</SubType>
@@ -277,6 +278,27 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\useregular.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\add.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\delete.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\reward.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumb_down.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumbs_down_filled.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumbs_up.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\thumbs_up_filled.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

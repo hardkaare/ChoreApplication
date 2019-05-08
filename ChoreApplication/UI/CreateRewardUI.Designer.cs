@@ -116,7 +116,6 @@
             this.assignment.Name = "assignment";
             this.assignment.Size = new System.Drawing.Size(200, 24);
             this.assignment.TabIndex = 4;
-            this.assignment.SelectedIndexChanged += new System.EventHandler(this.Assignment_SelectedIndexChanged);
             // 
             // createReward
             // 
