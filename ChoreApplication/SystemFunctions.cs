@@ -17,10 +17,9 @@ namespace ChoreApplication
         private static DateTime TimeNow = DateTime.ParseExact(DateTime.Now.ToString(dateFormatString), dateFormatString, null);
         private static TimeSpan _StartTimeSpan;
 
-        private List<ChildUser> childs = ChildUser.Load("u.user_id = 3");
         public SystemFunctions()
         {
-            //CheckTime(childs[0]);
+
 
         }
         public static void CheckTime(ChildUser c)

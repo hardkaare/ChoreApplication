@@ -38,9 +38,22 @@ namespace ChoreApplication.UI
                     id = children[i].ChildId;
                 }
             }
-            Reward.Insert(id, rewardName.Text, description.Text, Convert.ToInt32(pointsRequired.Text));
-            this.Close();
-            MessageBox.Show("A reward has been created");
+            if (!string.IsNullOrEmpty(assignment.Text))
+            {
+                Reward.Insert(id, rewardName.Text, description.Text, Convert.ToInt32(pointsRequired.Text));
+                this.Close();
+                MessageBox.Show("A reward has been created");
+            }
+            else
+            {
+                MessageBox.Show("You must assign the reward to a child.");
+            }
+            
+        }
+
+        private void Assignment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
