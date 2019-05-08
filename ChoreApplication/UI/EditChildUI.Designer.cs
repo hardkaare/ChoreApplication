@@ -52,7 +52,7 @@
             this.SaveButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SaveButton.Location = new System.Drawing.Point(70, 249);
             this.SaveButton.Name = "SaveButton";
-            this.SaveButton.Size = new System.Drawing.Size(200, 25);
+            this.SaveButton.Size = new System.Drawing.Size(200, 30);
             this.SaveButton.TabIndex = 3;
             this.SaveButton.Text = "Save Changes";
             this.SaveButton.UseVisualStyleBackColor = true;

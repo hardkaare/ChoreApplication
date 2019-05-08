@@ -202,9 +202,9 @@
             // CreateChoreButton
             // 
             this.CreateChoreButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.CreateChoreButton.Location = new System.Drawing.Point(69, 312);
+            this.CreateChoreButton.Location = new System.Drawing.Point(69, 310);
             this.CreateChoreButton.Name = "CreateChoreButton";
-            this.CreateChoreButton.Size = new System.Drawing.Size(199, 25);
+            this.CreateChoreButton.Size = new System.Drawing.Size(199, 30);
             this.CreateChoreButton.TabIndex = 15;
             this.CreateChoreButton.Text = "Save Changes";
             this.CreateChoreButton.UseVisualStyleBackColor = true;
