@@ -29,12 +29,13 @@ namespace ChoreApplication
             var PeriodTimeSpan = TimeSpan.FromHours(1);//1 tick i timen
             var timer = new System.Threading.Timer((e) =>
             {
+              
                 TimeSpan oneDay = TimeNow - LoadTicks()[1];
-
                 if (oneDay.TotalDays > 1)
                 {
-                    //UpdateDailyTick();
-                    //MessageBox.Show($"{DateTime.Now.Day}");
+                    UpdateDailyTick();
+                    ResetChores();
+                    GenerateConcreteChore();
                 }
 
                 if (!CheckDueTime(LoadTicks()[0], TimeNow))
@@ -95,11 +96,34 @@ namespace ChoreApplication
         }
         private static void UpdateDailyTick()
         {
-            string query = $"UPDATE dbo.checkTime SET dailyTick = '{DateTime.Now.Date.ToString() + " 06:00"}'";
+            string query = $"UPDATE dbo.checkTime SET dailyTick = '{DateTime.Now.Date.ToShortDateString() + " 05:00"}'";
             DatabaseFunctions.DbConn.Open();
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
             DatabaseFunctions.DbConn.Close();
+        }
+        private static void ResetChores()
+        {
+            var chores = Repeatable.Load("");
+            foreach (var chore in chores)
+            {
+                chore.Completions = 0;
+                chore.Update();
+            }
+        }
+        private static void GenerateConcreteChore()
+        {
+            var chores = Reocurring.Load("");
+            foreach (var chore in chores)
+            {
+                foreach (var day in chore.Days)
+                {
+                    if(day == DateTime.Now.DayOfWeek.ToString())
+                    {
+                        Concrete.Insert(chore.Name, chore.Description, chore.Points, chore.Assignment, chore.DueTime, "reoc");
+                    }
+                }
+            }
         }
 
         #endregion
