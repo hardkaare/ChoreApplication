@@ -49,54 +49,60 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(70, 331);
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(70, 341);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(46, 13);
+            this.label6.Size = new System.Drawing.Size(58, 16);
             this.label6.TabIndex = 5;
             this.label6.Text = "Pincode";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(70, 292);
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(71, 300);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(90, 13);
+            this.label5.Size = new System.Drawing.Size(115, 16);
             this.label5.TabIndex = 5;
             this.label5.Text = "Confirm password";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(70, 253);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(71, 259);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 13);
+            this.label4.Size = new System.Drawing.Size(68, 16);
             this.label4.TabIndex = 5;
             this.label4.Text = "Password";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(70, 214);
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(71, 218);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(32, 13);
+            this.label3.Size = new System.Drawing.Size(42, 16);
             this.label3.TabIndex = 5;
             this.label3.Text = "Email";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(70, 175);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(70, 177);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(53, 13);
+            this.label2.Size = new System.Drawing.Size(67, 16);
             this.label2.TabIndex = 5;
             this.label2.Text = "Lastname";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(70, 136);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(71, 133);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(67, 16);
             this.label1.TabIndex = 5;
             this.label1.Text = "Firstname";
             // 
@@ -124,7 +130,8 @@
             // 
             // RegisterUserButton
             // 
-            this.RegisterUserButton.Location = new System.Drawing.Point(69, 373);
+            this.RegisterUserButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.RegisterUserButton.Location = new System.Drawing.Point(70, 385);
             this.RegisterUserButton.Name = "RegisterUserButton";
             this.RegisterUserButton.Size = new System.Drawing.Size(200, 25);
             this.RegisterUserButton.TabIndex = 7;
@@ -134,51 +141,53 @@
             // 
             // PincodeInput
             // 
-            this.PincodeInput.Location = new System.Drawing.Point(70, 347);
+            this.PincodeInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.PincodeInput.Location = new System.Drawing.Point(70, 357);
             this.PincodeInput.Name = "PincodeInput";
-            this.PincodeInput.Size = new System.Drawing.Size(200, 20);
+            this.PincodeInput.Size = new System.Drawing.Size(200, 22);
             this.PincodeInput.TabIndex = 6;
-            this.PincodeInput.Text = "Enter pincode";
             // 
             // Password2Input
             // 
-            this.Password2Input.Location = new System.Drawing.Point(70, 308);
+            this.Password2Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password2Input.Location = new System.Drawing.Point(71, 316);
             this.Password2Input.Name = "Password2Input";
-            this.Password2Input.Size = new System.Drawing.Size(200, 20);
+            this.Password2Input.Size = new System.Drawing.Size(200, 22);
             this.Password2Input.TabIndex = 5;
-            this.Password2Input.Text = "Confirm password";
+            this.Password2Input.UseSystemPasswordChar = true;
             // 
             // Password1Input
             // 
-            this.Password1Input.Location = new System.Drawing.Point(70, 269);
+            this.Password1Input.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Password1Input.Location = new System.Drawing.Point(71, 275);
             this.Password1Input.Name = "Password1Input";
-            this.Password1Input.Size = new System.Drawing.Size(200, 20);
+            this.Password1Input.Size = new System.Drawing.Size(200, 22);
             this.Password1Input.TabIndex = 4;
-            this.Password1Input.Text = "Enter password";
+            this.Password1Input.UseSystemPasswordChar = true;
             // 
             // EmailInput
             // 
-            this.EmailInput.Location = new System.Drawing.Point(70, 230);
+            this.EmailInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.EmailInput.Location = new System.Drawing.Point(71, 234);
             this.EmailInput.Name = "EmailInput";
-            this.EmailInput.Size = new System.Drawing.Size(200, 20);
+            this.EmailInput.Size = new System.Drawing.Size(200, 22);
             this.EmailInput.TabIndex = 3;
-            this.EmailInput.Text = "Enter email";
             // 
             // LastNameInput
             // 
-            this.LastNameInput.Location = new System.Drawing.Point(70, 191);
+            this.LastNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.LastNameInput.Location = new System.Drawing.Point(70, 193);
             this.LastNameInput.Name = "LastNameInput";
-            this.LastNameInput.Size = new System.Drawing.Size(200, 20);
+            this.LastNameInput.Size = new System.Drawing.Size(200, 22);
             this.LastNameInput.TabIndex = 2;
-            this.LastNameInput.Text = "Enter lastname";
             // 
             // FirstNameInput
             // 
+            this.FirstNameInput.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FirstNameInput.Location = new System.Drawing.Point(70, 152);
             this.FirstNameInput.Name = "FirstNameInput";
-            this.FirstNameInput.Size = new System.Drawing.Size(200, 20);
+            this.FirstNameInput.Size = new System.Drawing.Size(200, 22);
             this.FirstNameInput.TabIndex = 1;
-            this.FirstNameInput.Text = "Enter firstname";
             // 
             // RegisterUserInterface
             // 
@@ -186,7 +195,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(334, 411);
+            this.ClientSize = new System.Drawing.Size(334, 421);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.LastNameInput);

@@ -20,7 +20,7 @@ namespace ChoreApplication
         private List<ChildUser> childs = ChildUser.Load("u.user_id = 3");
         public SystemFunctions()
         {
-            CheckTime(childs[0]);
+            //CheckTime(childs[0]);
 
         }
         public static void CheckTime(ChildUser c)

@@ -54,7 +54,7 @@
             // saveReward
             // 
             this.saveReward.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.saveReward.Location = new System.Drawing.Point(70, 352);
+            this.saveReward.Location = new System.Drawing.Point(70, 317);
             this.saveReward.Name = "saveReward";
             this.saveReward.Size = new System.Drawing.Size(200, 25);
             this.saveReward.TabIndex = 5;
@@ -78,7 +78,7 @@
             this.assignmentLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.assignmentLabel.Location = new System.Drawing.Point(70, 271);
             this.assignmentLabel.Name = "assignmentLabel";
-            this.assignmentLabel.Size = new System.Drawing.Size(78, 16);
+            this.assignmentLabel.Size = new System.Drawing.Size(70, 16);
             this.assignmentLabel.TabIndex = 0;
             this.assignmentLabel.Text = "Assignment";
             // 
@@ -155,7 +155,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(334, 450);
+            this.ClientSize = new System.Drawing.Size(334, 352);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.description);
             this.Controls.Add(this.saveReward);
