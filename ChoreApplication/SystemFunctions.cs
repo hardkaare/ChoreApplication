@@ -22,7 +22,8 @@ namespace ChoreApplication
 
 
         }
-        public static void CheckTime(ChildUser c)
+
+        public static void CheckTime(List<ChildUser> childList)
         {
             _StartTimeSpan = TimeSpan.Zero;
             var PeriodTimeSpan = TimeSpan.FromHours(1);//1 tick i timen
@@ -40,23 +41,27 @@ namespace ChoreApplication
                 if (!CheckDueTime(LoadTicks()[0], TimeNow))
                 {
                     UpdateLastTick();
-                    foreach (var chore in Concrete.Load($"ch.child_id ={c.ChildId} AND co.status = 1"))
+                    foreach(ChildUser c in childList)
                     {
-                        if (chore.DueDate < TimeNow)
+                        foreach (var chore in Concrete.Load($"ch.child_id ={c.ChildId} AND co.status = 1"))
                         {
-                            c.Points -= chore.Points;
-                            c.Update();
-                            chore.Status = 4;
-                            chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(dateFormatString), dateFormatString, null);
-                            chore.Update();
-                            Notification.Insert(c.Id, $"A chore has gone over due", $"You did not complete {chore.Name}.");
-                        }
-                        if (CheckDueTime(TimeNow, chore.DueDate))
-                        {
-                            Notification.Insert(c.Id, $"A chore is due in one hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
+                            if (chore.DueDate < TimeNow)
+                            {
+                                c.Points -= chore.Points;
+                                c.Update();
+                                chore.Status = 4;
+                                chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(dateFormatString), dateFormatString, null);
+                                chore.Update();
+                                Notification.Insert(c.Id, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
+                            }
+                            else if (CheckDueTime(TimeNow, chore.DueDate))
+                            {
+                                Notification.Insert(c.Id, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
+                            }
                         }
                     }
                 }
+
             }, null, _StartTimeSpan, PeriodTimeSpan);
         }
         private static bool CheckDueTime(DateTime timeNow, DateTime dueTime)
@@ -85,6 +90,7 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
             return dateTimes;
         }
+
         private static void UpdateLastTick()
         {
             string query = $"UPDATE dbo.checkTime SET lastTick = '{DateTime.Now.ToString(dateFormatString)}'";
@@ -126,6 +132,7 @@ namespace ChoreApplication
         }
 
         #endregion
+
         #region Leaderboard
 
         public static readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
