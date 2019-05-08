@@ -138,7 +138,6 @@
             this.PincodeInput.Name = "PincodeInput";
             this.PincodeInput.Size = new System.Drawing.Size(200, 20);
             this.PincodeInput.TabIndex = 6;
-            this.PincodeInput.Text = "Enter pincode";
             // 
             // Password2Input
             // 
@@ -146,7 +145,7 @@
             this.Password2Input.Name = "Password2Input";
             this.Password2Input.Size = new System.Drawing.Size(200, 20);
             this.Password2Input.TabIndex = 5;
-            this.Password2Input.Text = "Confirm password";
+            this.Password2Input.UseSystemPasswordChar = true;
             // 
             // Password1Input
             // 
@@ -154,7 +153,7 @@
             this.Password1Input.Name = "Password1Input";
             this.Password1Input.Size = new System.Drawing.Size(200, 20);
             this.Password1Input.TabIndex = 4;
-            this.Password1Input.Text = "Enter password";
+            this.Password1Input.UseSystemPasswordChar = true;
             // 
             // EmailInput
             // 
@@ -162,7 +161,6 @@
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(200, 20);
             this.EmailInput.TabIndex = 3;
-            this.EmailInput.Text = "Enter email";
             // 
             // LastNameInput
             // 
@@ -170,7 +168,6 @@
             this.LastNameInput.Name = "LastNameInput";
             this.LastNameInput.Size = new System.Drawing.Size(200, 20);
             this.LastNameInput.TabIndex = 2;
-            this.LastNameInput.Text = "Enter lastname";
             // 
             // FirstNameInput
             // 
@@ -178,7 +175,6 @@
             this.FirstNameInput.Name = "FirstNameInput";
             this.FirstNameInput.Size = new System.Drawing.Size(200, 20);
             this.FirstNameInput.TabIndex = 1;
-            this.FirstNameInput.Text = "Enter firstname";
             // 
             // RegisterUserInterface
             // 
