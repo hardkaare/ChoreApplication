@@ -19,7 +19,6 @@ namespace ChoreApplication
         /// <summary>
         /// String that indicates the standard date format
         /// </summary>
-        public static string dateFormatString = "dd-MM-yyyy HH:mm";
         #region Properties
         /// <summary>
         /// Date and time of when the chore is due. If null in DB this property is 
@@ -118,7 +117,7 @@ namespace ChoreApplication
 
             //Formatting the query to concrete_chore table, creating the SqlCommand and executing it
             string query2 = string.Format("INSERT INTO dbo.concrete_chore " +
-                "VALUES ({0}, '{1}', '{2}', NULL, '{3}')", id, dueDate.ToString(dateFormatString), status, type);
+                "VALUES ({0}, '{1}', '{2}', NULL, '{3}')", id, dueDate.ToString(Properties.Settings.Default.LongDateFormat), status, type);
             SqlCommand cmd2 = new SqlCommand(query2, DatabaseFunctions.DbConn);
             cmd2.ExecuteNonQuery();
 
@@ -134,7 +133,7 @@ namespace ChoreApplication
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("UPDATE concrete_chore SET " +
                 "due_date='{0}', status={1}, approval_date='{2}' WHERE chore_id={3}", 
-                DueDate.ToString(dateFormatString), Status, ApprovalDate.ToString(dateFormatString), ID);
+                DueDate.ToString(Properties.Settings.Default.LongDateFormat), Status, ApprovalDate.ToString(Properties.Settings.Default.LongDateFormat), ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}", 
                 Assignment, Name, Description, Points, ID);
@@ -190,7 +189,7 @@ namespace ChoreApplication
                 string description = reader[2].ToString();
                 int points = (int)reader[3];
                 int assignment = (int)reader[4];
-                var dueTime = DateTime.ParseExact(reader[5].ToString(), dateFormatString, null);
+                var dueTime = DateTime.ParseExact(reader[5].ToString(), Properties.Settings.Default.LongDateFormat, null);
                 int status = (int)reader[6];
                 DateTime approvalDate;
                 string type = reader[8].ToString();
@@ -198,12 +197,12 @@ namespace ChoreApplication
                 //Checks if approval date is null in DB and sets the time to a predefined date if so
                 if (!reader.IsDBNull(7))
                 {
-                    approvalDate = DateTime.ParseExact(reader[7].ToString(), dateFormatString, null);
+                    approvalDate = DateTime.ParseExact(reader[7].ToString(), Properties.Settings.Default.LongDateFormat, null);
                     
                 }
                 else
                 {
-                    approvalDate = DateTime.ParseExact("01-01-2000 00:00", dateFormatString, null);
+                    approvalDate = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
                 }
 
                 //Initializes the choreobject with the parameters and adds it to the list
