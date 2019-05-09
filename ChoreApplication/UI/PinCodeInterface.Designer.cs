@@ -29,21 +29,21 @@
         private void InitializeComponent()
         {
             this.pincodePanel = new System.Windows.Forms.Panel();
-            this.roundButton1 = new UI.RoundButton();
-            this.rbZero = new UI.RoundButton();
-            this.rbDelete = new UI.RoundButton();
-            this.rbNine = new UI.RoundButton();
-            this.rbEight = new UI.RoundButton();
-            this.rbSeven = new UI.RoundButton();
-            this.rbSix = new UI.RoundButton();
-            this.rbFive = new UI.RoundButton();
-            this.rbFour = new UI.RoundButton();
-            this.rbThree = new UI.RoundButton();
-            this.rbTwo = new UI.RoundButton();
-            this.rbOne = new UI.RoundButton();
+            this.roundButton1 = new RoundButton();
+            this.rbZero = new RoundButton();
+            this.rbDelete = new RoundButton();
+            this.rbNine = new RoundButton();
+            this.rbEight = new RoundButton();
+            this.rbSeven = new RoundButton();
+            this.rbSix = new RoundButton();
+            this.rbFive = new RoundButton();
+            this.rbFour = new RoundButton();
+            this.rbThree = new RoundButton();
+            this.rbTwo = new RoundButton();
+            this.rbOne = new RoundButton();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.enterpinTextBox = new System.Windows.Forms.TextBox();
-            this.rbAccept = new UI.RoundButton();
+            this.rbAccept = new RoundButton();
             this.WelcomeLabel = new System.Windows.Forms.Label();
             this.BackButton = new System.Windows.Forms.Button();
             this.pincodePanel.SuspendLayout();
@@ -65,10 +65,10 @@
             this.pincodePanel.Controls.Add(this.rbOne);
             this.pincodePanel.Controls.Add(this.pincodeLabel);
             this.pincodePanel.Controls.Add(this.enterpinTextBox);
-            this.pincodePanel.Location = new System.Drawing.Point(11, 51);
+            this.pincodePanel.Location = new System.Drawing.Point(11, 40);
             this.pincodePanel.Margin = new System.Windows.Forms.Padding(2);
             this.pincodePanel.Name = "pincodePanel";
-            this.pincodePanel.Size = new System.Drawing.Size(312, 342);
+            this.pincodePanel.Size = new System.Drawing.Size(312, 353);
             this.pincodePanel.TabIndex = 0;
             // 
             // roundButton1
@@ -306,7 +306,7 @@
             this.enterpinTextBox.MaxLength = 4;
             this.enterpinTextBox.Name = "enterpinTextBox";
             this.enterpinTextBox.PasswordChar = '*';
-            this.enterpinTextBox.Size = new System.Drawing.Size(200, 29);
+            this.enterpinTextBox.Size = new System.Drawing.Size(200, 22);
             this.enterpinTextBox.TabIndex = 1;
             // 
             // rbAccept
@@ -321,7 +321,7 @@
             // WelcomeLabel
             // 
             this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
-            this.WelcomeLabel.Location = new System.Drawing.Point(13, 10);
+            this.WelcomeLabel.Location = new System.Drawing.Point(11, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
             this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
             this.WelcomeLabel.TabIndex = 9;
@@ -330,11 +330,18 @@
             // 
             // BackButton
             // 
-            this.BackButton.Location = new System.Drawing.Point(11, 10);
+            this.BackButton.BackgroundImage = global::ChoreApplication.Properties.Resources.chevron_circle_left_solid;
+            this.BackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.BackButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.BackButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.BackButton.FlatAppearance.BorderSize = 0;
+            this.BackButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.BackButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.BackButton.Location = new System.Drawing.Point(12, 9);
             this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(75, 23);
-            this.BackButton.TabIndex = 10;
-            this.BackButton.Text = "Back";
+            this.BackButton.Size = new System.Drawing.Size(25, 26);
+            this.BackButton.TabIndex = 2;
             this.BackButton.UseVisualStyleBackColor = true;
             this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
             // 

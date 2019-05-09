@@ -28,9 +28,8 @@ namespace ChoreApplication.UI
 
         private void AcceptButton_click(object sender, EventArgs e)
         {
-            int pincode;
             bool correctpin = false;
-            bool conversion = Int32.TryParse(enterpinTextBox.Text, out pincode);
+            bool conversion = Int32.TryParse(enterpinTextBox.Text, out int pincode);
 
             if (conversion)
             {
@@ -68,6 +67,7 @@ namespace ChoreApplication.UI
                     Session = sessionList[0];
                     var parentUI = new ParentInterface(sessionList[0]);//måske ok
                     parentUI.Show();
+                    this.Close();
                 }
                 else
                 {
@@ -75,9 +75,8 @@ namespace ChoreApplication.UI
                     Session = sessionList[0];
                     var childUI = new ChildInterface(sessionList[0]);//sikkert ikke done
                     childUI.Show();
+                    this.Close();
                 }
-                LoginInterface.ChooseProfile.Close();
-                this.Close();
             }
         }
 

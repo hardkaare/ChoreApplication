@@ -159,9 +159,9 @@
             this.uploadPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.uploadPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
             this.uploadPictureBox.Image = global::ChoreApplication.Properties.Resources.user;
-            this.uploadPictureBox.Location = new System.Drawing.Point(0, 48);
+            this.uploadPictureBox.Location = new System.Drawing.Point(0, 54);
             this.uploadPictureBox.Name = "uploadPictureBox";
-            this.uploadPictureBox.Size = new System.Drawing.Size(339, 106);
+            this.uploadPictureBox.Size = new System.Drawing.Size(339, 100);
             this.uploadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.uploadPictureBox.TabIndex = 13;
             this.uploadPictureBox.TabStop = false;
@@ -171,7 +171,7 @@
             this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
+            this.WelcomeLabel.Size = new System.Drawing.Size(310, 42);
             this.WelcomeLabel.TabIndex = 14;
             this.WelcomeLabel.Text = "Edit Firstname";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

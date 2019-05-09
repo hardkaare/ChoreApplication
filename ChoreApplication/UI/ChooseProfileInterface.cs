@@ -64,7 +64,7 @@ namespace ChoreApplication.UI
             {
                 Button UserButton = new Button
                 {
-                    Location = new Point(x * 120, y * 100-40),
+                    Location = new Point(x * 120, y * 100-90),
                     Size = new Size(60, 60),
                     Tag = parent.Id,
                     FlatStyle = FlatStyle.Flat,
@@ -72,7 +72,7 @@ namespace ChoreApplication.UI
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X, y * 100-70);
+                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X-7, UserButton.Location.Y + UserButton.Height);
                 UserButton.FlatAppearance.BorderColor = SystemColors.Window;
                 UserButton.FlatAppearance.BorderSize = 0;
                 UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
@@ -94,7 +94,7 @@ namespace ChoreApplication.UI
             {
                 Button UserButton = new Button
                 {
-                    Location = new Point(x * 120, y * 100-40),
+                    Location = new Point(x * 120, y * 100-90),
                     Size = new Size(60, 60),
                     Tag = child.Id,
                     FlatStyle = FlatStyle.Flat,
@@ -102,7 +102,7 @@ namespace ChoreApplication.UI
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X, y * 100-70);
+                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X-7, UserButton.Location.Y + UserButton.Height);
                 UserButton.FlatAppearance.BorderColor = SystemColors.Window;
                 UserButton.FlatAppearance.BorderSize = 0;
                 UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
@@ -110,7 +110,6 @@ namespace ChoreApplication.UI
                 UserButton.Click += new EventHandler(UserButton_Click);
                 ProfilesPanel.Controls.Add(UserButton);
                 ProfilesPanel.Controls.Add(NameLabel);
-                UserButton.Click += new EventHandler(UserButton_Click);
                 if (x == 1)
                 {
                     x = 2;
@@ -126,14 +125,15 @@ namespace ChoreApplication.UI
         {
             Button clickedButton = (Button)sender;
             activeId = (int)clickedButton.Tag;
-            PinCodeInterface pinCode = new PinCodeInterface();
+            var pincodeUI = new PinCodeInterface();
+            pincodeUI.Show();
             this.Close();
-            pinCode.Show();
         }
 
         private void BackButton_Click(object sender, EventArgs e)
         {
-            var loginInterface = new LoginInterface();
+            var loginUI = new LoginInterface();
+            loginUI.Show();
             this.Close();
         }
     }

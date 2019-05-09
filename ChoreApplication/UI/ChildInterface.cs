@@ -170,11 +170,14 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreDescriptionLabel);
                 individualChorePanel.Controls.Add(choreLimitLabel);
                 individualChorePanel.Controls.Add(choreCompletionsLabel);
-
-                individualChorePanel.Controls.Add(AddRepDoneChoreButton(330, individualChorePanel.Height / 2, chore));
+                var repChoreDoneButton = AddRepDoneChoreButton(330, individualChorePanel.Height / 2, chore);
+                individualChorePanel.Controls.Add(repChoreDoneButton);
                 if (chore.Completions >= chore.Limit)
                 {
-                    individualChorePanel.Controls.Add(AddLabel("Limit reached", false, 305, individualChorePanel.Height / 2 + 20));
+                    var limitReachedLabel = AddLabel("Limit reached", false, 290, individualChorePanel.Height / 2);
+                    limitReachedLabel.Enabled = false;
+                    individualChorePanel.Controls.Add(limitReachedLabel);
+                    individualChorePanel.Controls.Remove(repChoreDoneButton);
                 }
                 else
                 {
@@ -529,5 +532,15 @@ namespace ChoreApplication.UI
             NotificationUI();
         }
         #endregion
+
+        #region UpperPanel
+        private void UserButton_Click(object sender, EventArgs e)
+        {
+            var loginInterface = new LoginInterface();
+            Session = default(ChildUser);
+            loginInterface.Show();
+            this.Close();
+        }
+        #endregion UpperPanel
     }
 }

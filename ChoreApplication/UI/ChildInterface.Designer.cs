@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.upperPanel = new System.Windows.Forms.Panel();
             this.ChildPointsLabel = new System.Windows.Forms.Label();
             this.UserButton = new System.Windows.Forms.Button();
@@ -46,6 +47,7 @@
             this.RewardPanel = new System.Windows.Forms.Panel();
             this.LeaderboardPanel = new System.Windows.Forms.Panel();
             this.NotificationPanel = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.upperPanel.SuspendLayout();
             this.navigationPanel.SuspendLayout();
             this.SuspendLayout();
@@ -89,6 +91,7 @@
             this.UserButton.Size = new System.Drawing.Size(25, 25);
             this.UserButton.TabIndex = 0;
             this.UserButton.UseVisualStyleBackColor = true;
+            this.UserButton.Click += new System.EventHandler(this.UserButton_Click);
             // 
             // titleText
             // 
@@ -296,6 +299,11 @@
             this.NotificationPanel.TabIndex = 3;
             this.NotificationPanel.Visible = false;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            this.toolTip1.SetToolTip(UserButton, "Click here to log out.");
+            // 
             // ChildInterface
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -340,5 +348,6 @@
         private System.Windows.Forms.Panel LeaderboardPanel;
         private System.Windows.Forms.Panel NotificationPanel;
         private RoundButton NotificationAmount;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

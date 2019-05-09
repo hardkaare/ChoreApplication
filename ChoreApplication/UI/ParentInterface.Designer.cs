@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.navigationPanel = new System.Windows.Forms.Panel();
             this.NotificationAmount = new RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
@@ -49,6 +50,7 @@
             this.UserPanel = new System.Windows.Forms.Panel();
             this.NotificationPanel = new System.Windows.Forms.Panel();
             this.LeaderboardPanel = new System.Windows.Forms.Panel();
+            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.navigationPanel.SuspendLayout();
             this.upperPanel.SuspendLayout();
             this.SuspendLayout();
@@ -289,6 +291,7 @@
             this.UserButton.Name = "UserButton";
             this.UserButton.Size = new System.Drawing.Size(25, 25);
             this.UserButton.TabIndex = 0;
+            this.toolTip1.SetToolTip(this.UserButton, "Click here to log out.");
             this.UserButton.UseVisualStyleBackColor = true;
             this.UserButton.Click += new System.EventHandler(this.UserButton_Click);
             // 
@@ -347,6 +350,10 @@
             this.LeaderboardPanel.TabIndex = 5;
             this.LeaderboardPanel.Visible = false;
             // 
+            // toolTip1
+            // 
+            this.toolTip1.IsBalloon = true;
+            // 
             // ParentInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -396,5 +403,6 @@
         private System.Windows.Forms.Panel NotificationPanel;
         private RoundButton NotificationAmount;
         private System.Windows.Forms.Panel LeaderboardPanel;
+        private System.Windows.Forms.ToolTip toolTip1;
     }
 }

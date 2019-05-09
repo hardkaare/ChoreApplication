@@ -300,5 +300,17 @@
   <ItemGroup>
     <None Include="Resources\thumbs_up_filled.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\backward-solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\angle-left-solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chevron-circle-left-solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chevron-left-solid.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

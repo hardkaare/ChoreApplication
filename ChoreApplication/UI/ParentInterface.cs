@@ -888,6 +888,7 @@ namespace ChoreApplication.UI
         {
             var loginInterface = new LoginInterface();
             Session = default(ParentUser);
+            loginInterface.Show();
             this.Close();
         }
 

@@ -72,9 +72,9 @@
             // 
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBox1.Image = global::ChoreApplication.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 49);
+            this.pictureBox1.Location = new System.Drawing.Point(12, 59);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(310, 101);
+            this.pictureBox1.Size = new System.Drawing.Size(310, 91);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
@@ -103,7 +103,7 @@
             this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
             this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
+            this.WelcomeLabel.Size = new System.Drawing.Size(310, 46);
             this.WelcomeLabel.TabIndex = 7;
             this.WelcomeLabel.Text = "Edit Firstname";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
