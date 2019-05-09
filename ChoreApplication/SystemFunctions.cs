@@ -1,17 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using System.Drawing;
 using System.Data.SqlClient;
+using System.Drawing;
+using System.Linq;
+using System.Windows.Forms;
 
 namespace ChoreApplication
 {
-    abstract class SystemFunctions
+    internal abstract class SystemFunctions
     {
         #region CheckTime
+
         private const int WithinOneHour = 60;
         private static DateTime TimeNow = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
         private static TimeSpan _StartTimeSpan;
@@ -22,7 +21,6 @@ namespace ChoreApplication
             var PeriodTimeSpan = TimeSpan.FromHours(1);//1 tick i timen
             var timer = new System.Threading.Timer((e) =>
             {
-
                 TimeSpan oneDay = TimeNow - LoadTicks()[1];
                 if (oneDay.TotalDays > 1)
                 {
@@ -54,9 +52,9 @@ namespace ChoreApplication
                         }
                     }
                 }
-
             }, null, _StartTimeSpan, PeriodTimeSpan);
         }
+
         private static bool CheckDueTime(DateTime timeNow, DateTime dueTime)
         {
             TimeSpan elapsedTime = dueTime - timeNow;
@@ -92,6 +90,7 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             DatabaseFunctions.DbConn.Close();
         }
+
         private static void UpdateDailyTick()
         {
             string query = $"UPDATE dbo.checkTime SET dailyTick = '{DateTime.Now.Date.ToShortDateString() + " 05:00"}'";
@@ -100,6 +99,7 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             DatabaseFunctions.DbConn.Close();
         }
+
         private static void ResetChores()
         {
             var chores = Repeatable.Load("");
@@ -109,6 +109,7 @@ namespace ChoreApplication
                 chore.Update();
             }
         }
+
         private static void GenerateConcreteChore()
         {
             var chores = Reocurring.Load("");
@@ -124,9 +125,10 @@ namespace ChoreApplication
             }
         }
 
-        #endregion
+        #endregion CheckTime
 
         #region Leaderboard
+
         public static Panel LoadLongestStreak(Point location, int width, Dictionary<int, string> ChildrenNames, List<ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel();
@@ -437,6 +439,7 @@ namespace ChoreApplication
             }
             return label;
         }
-        #endregion
+
+        #endregion Leaderboard
     }
 }

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace ChoreApplication
@@ -10,19 +6,24 @@ namespace ChoreApplication
     public class Reward
     {
         #region Properties
+
         public int RewardId { get; set; }
-        // The name of the reward. 
+
+        // The name of the reward.
         public string Name { get; set; }
 
         // The points required to earn the reward.
         public string Description { get; set; }
+
         public int PointsReq { get; set; }
 
-        // Who the reward is assigned to. 
+        // Who the reward is assigned to.
         public int ChildId { get; set; }
-        #endregion
+
+        #endregion Properties
 
         #region Constructors
+
         // Creates an object of the class Reward with the specified information.
         public Reward(int rewardId, string name, string description, int pointsReq, int childId)
         {
@@ -33,9 +34,10 @@ namespace ChoreApplication
             Description = description;
         }
 
-        #endregion
+        #endregion Constructors
 
         #region Public Helpers
+
         /// <summary>
         /// Creates a reward based on the values of this class' properties.
         /// </summary>
@@ -49,20 +51,21 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
             DatabaseFunctions.DbConn.Close();
-           
         }
+
         /// <summary>
         /// Updates a specific reward object based on the input from the user.
         /// </summary>
         public void Update()
         {
             //Formatting the query to reward table and creating the SqlCommand.
-            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildId , Name, Description, PointsReq, RewardId);
+            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildId, Name, Description, PointsReq, RewardId);
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
             DatabaseFunctions.DbConn.Close();
         }
+
         /// <summary>
         /// Loads rewards from the database. the <paramref name="whereClause"/> can be specified to narrow the results.
         /// </summary>
@@ -93,8 +96,9 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
             return rewards;
         }
+
         /// <summary>
-        /// Deletes an instance of the reward class based on the object interacted with. 
+        /// Deletes an instance of the reward class based on the object interacted with.
         /// </summary>
         public void Delete()
         {
@@ -105,7 +109,6 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
         }
 
-
         /// <summary>
         /// Provides a string representation for objects of this class.
         /// </summary>
@@ -115,10 +118,6 @@ namespace ChoreApplication
             return $"{ChildId} must get {PointsReq} points to earn {Name}.";
         }
 
-        #endregion
-
-        #region Private Helpers
-        #endregion
-
+        #endregion Public Helpers
     }
 }

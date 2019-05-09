@@ -10,10 +10,11 @@ namespace ChoreApplication.UI
             InitializeComponent();
             LoadChildren();
         }
+
         private void LoadChildren()
         {
             var children = ChildUser.Load("");
-          
+
             foreach (var name in children)
             {
                 this.assignment.Items.Add(name.FirstName);

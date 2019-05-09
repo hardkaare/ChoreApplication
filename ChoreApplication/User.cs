@@ -1,25 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
-
-namespace ChoreApplication
+﻿namespace ChoreApplication
 {
     public abstract class User
     {
         #region Properties
-        
+
         public int Id { get; private set; }
 
-        // Derived classes can set the firstname and the public can get it. 
+        // Derived classes can set the firstname and the public can get it.
         public string FirstName { get; set; }
 
         // Everyone can get the pincode (reconsider this later). Derived classes can set it.
         public string Pincode { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Constructors
 
@@ -30,9 +23,7 @@ namespace ChoreApplication
             FirstName = firstName;
             Pincode = pincode;
         }
-        #endregion
-        #region Public methods
-        
-        #endregion
+
+        #endregion Constructors
     }
 }

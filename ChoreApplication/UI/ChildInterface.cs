@@ -1,11 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
@@ -21,6 +16,7 @@ namespace ChoreApplication.UI
         private List<Repeatable> ActiveRepeatableChores;
         private List<Reward> Rewards;
         private List<Notification> Notifications;
+
         public ChildInterface(ChildUser child)
         {
             Session = child;
@@ -76,6 +72,7 @@ namespace ChoreApplication.UI
         }
 
         #region ChoreUI
+
         public void ChoresUI()
         {
             UI = 1;
@@ -84,7 +81,6 @@ namespace ChoreApplication.UI
             titleText.Text = "Chores";
             LoadChores();
         }
-
 
         public void LoadChores()
         {
@@ -124,7 +120,7 @@ namespace ChoreApplication.UI
                 if (chore.Status == 1)
                 {
                     individualChorePanel.Controls.Add(AddDoneChoreButton(330, individualChorePanel.Height / 2, chore));
-                    individualChorePanel.Controls.Add(AddLabel("Completed?", false, 305, individualChorePanel.Height/2 + 20));
+                    individualChorePanel.Controls.Add(AddLabel("Completed?", false, 305, individualChorePanel.Height / 2 + 20));
                 }
                 if (chore.Status == 2)
                 {
@@ -134,7 +130,7 @@ namespace ChoreApplication.UI
                 i++;
             }
 
-            foreach(var chore in ActiveRepeatableChores)
+            foreach (var chore in ActiveRepeatableChores)
             {
                 double calcDimishingReturn = chore.Points;
                 for (int j = 0; j < chore.Completions; j++)
@@ -184,8 +180,6 @@ namespace ChoreApplication.UI
                     individualChorePanel.Controls.Add(AddLabel("Completed?", false, 305, individualChorePanel.Height / 2 + 20));
                 }
             }
-
-
         }
 
         private Button AddRepDoneChoreButton(int x, int y, Repeatable chore)
@@ -204,7 +198,7 @@ namespace ChoreApplication.UI
             RepDoneButton.FlatAppearance.BorderSize = 0;
             RepDoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
             RepDoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            if(chore.Completions >= chore.Limit)
+            if (chore.Completions >= chore.Limit)
             {
                 RepDoneButton.Enabled = false;
             }
@@ -217,7 +211,7 @@ namespace ChoreApplication.UI
             Button clickedButton = (Button)sender;
             Repeatable currentChore = (Repeatable)clickedButton.Tag;
             double calcDimishingReturn = currentChore.Points;
-            for (int i = 0; i <currentChore.Completions; i++)
+            for (int i = 0; i < currentChore.Completions; i++)
             {
                 calcDimishingReturn *= 0.75;
             }
@@ -261,9 +255,11 @@ namespace ChoreApplication.UI
             LoadAmountOfNotifications();
             LoadChores();
         }
-        #endregion
+
+        #endregion ChoreUI
 
         #region RewardUI
+
         private void RewardsUI()
         {
             UI = 2;
@@ -272,7 +268,8 @@ namespace ChoreApplication.UI
             titleText.Text = "Rewards";
             LoadRewards();
         }
-        #endregion
+
+        #endregion RewardUI
 
         private void LoadRewards()
         {
@@ -366,6 +363,7 @@ namespace ChoreApplication.UI
         }
 
         #region LeaderBoardUI
+
         public void LeaderboardUI()
         {
             UI = 3;
@@ -425,9 +423,10 @@ namespace ChoreApplication.UI
             this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
         }
 
-        #endregion
+        #endregion LeaderBoardUI
 
         #region NotificationUI
+
         public void NotificationUI()
         {
             UI = 4;
@@ -436,6 +435,7 @@ namespace ChoreApplication.UI
             this.NotificationPanel.BringToFront();
             LoadNotification();
         }
+
         private void LoadNotification()
         {
             Notifications = Notification.Load("user_id=" + Session.Id);
@@ -507,14 +507,15 @@ namespace ChoreApplication.UI
                 NotificationAmount.Text = Notifications.Count.ToString();
             }
         }
-        #endregion
+
+        #endregion NotificationUI
 
         #region NavigationMenu
+
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
             ChoresUI();
         }
-
 
         private void RewardNavButton_Click(object sender, EventArgs e)
         {
@@ -530,9 +531,11 @@ namespace ChoreApplication.UI
         {
             NotificationUI();
         }
-        #endregion
+
+        #endregion NavigationMenu
 
         #region UpperPanel
+
         private void UserButton_Click(object sender, EventArgs e)
         {
             var loginInterface = new LoginInterface();
@@ -540,6 +543,7 @@ namespace ChoreApplication.UI
             loginInterface.Show();
             this.Close();
         }
+
         #endregion UpperPanel
     }
 }

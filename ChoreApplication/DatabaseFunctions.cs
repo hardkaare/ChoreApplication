@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ChoreApplication
 {
@@ -8,27 +8,31 @@ namespace ChoreApplication
     /// Functions for interacting with the DB. Inkludes a function run once that initializes the connection
     /// to the DB.
     /// </summary>
-    class DatabaseFunctions
+    internal class DatabaseFunctions
     {
         #region Connection string constants
 
         //Server
         private const String DATASOURCE = "choreapplication1.database.windows.net";
+
         //Name of DB
         private const String INITIALCATALOG = "ChoreApplication";
+
         //Username
         private const String UID = "bi408f19";
+
         //Password
         private const String PASSWORD = "Tuborg123";
-        //Sql connection
-        public static SqlConnection DbConn {get; private set;}
 
-        #endregion
+        //Sql connection
+        public static SqlConnection DbConn { get; private set; }
+
+        #endregion Connection string constants
 
         #region Public methods
 
         /// <summary>
-        /// Initializes the DB. Makes connection string from constants and uses it to 
+        /// Initializes the DB. Makes connection string from constants and uses it to
         /// create a connection to the DB
         /// </summary>
         public static void InitializeDB()
@@ -57,7 +61,7 @@ namespace ChoreApplication
                 }
             };
         }
-        #endregion
+
+        #endregion Public methods
     }
 }
-

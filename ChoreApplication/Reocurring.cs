@@ -1,14 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     /// <summary>
-    /// Reocurring Chore. Inherits from the Chore class. Contains what time it's due and what days 
+    /// Reocurring Chore. Inherits from the Chore class. Contains what time it's due and what days
     /// it should occur on in a list.
     /// </summary>
     public class Reocurring : Chore
@@ -21,28 +18,28 @@ namespace ChoreApplication
         //What days it should generate a Concrete Chore
         public List<string> Days { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Constructor
 
         /// <summary>
         /// Constructs the chore. Passes variables to the Chore constructer. Sets due time and days.
         /// </summary>
-        public Reocurring(int _id, string _name, string _desc, int _points, int _assignment, DateTime _duetime, List<string> _days) : 
+        public Reocurring(int _id, string _name, string _desc, int _points, int _assignment, DateTime _duetime, List<string> _days) :
             base(_id, _name, _desc, _points, _assignment)
         {
             DueTime = _duetime;
             Days = _days;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Public helpers
 
         /// <summary>
-        /// Override of ToString. 
+        /// Override of ToString.
         /// </summary>
-        /// <returns>Returns a string representation of the properties of the object 
+        /// <returns>Returns a string representation of the properties of the object
         /// and the associated Chore object</returns>
         public override string ToString()
         {
@@ -60,7 +57,7 @@ namespace ChoreApplication
         }
 
         //Overvej transactions her
-        public static void Insert(int assignment, string name, string desc, int points, 
+        public static void Insert(int assignment, string name, string desc, int points,
             DateTime dueTime, List<string> days)
         {
             //Formatting the query to chore table and creating the SqlCommand
@@ -184,7 +181,7 @@ namespace ChoreApplication
                     "(SELECT reo_id FROM reoccurring_chore WHERE chore_id={0})", list.ID);
                 cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
                 reader = cmd.ExecuteReader();
-                
+
                 //Adds each day to the days list for the current chore
                 while (reader.Read())
                 {
@@ -195,6 +192,7 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
             return result;
         }
-        #endregion
+
+        #endregion Public helpers
     }
 }

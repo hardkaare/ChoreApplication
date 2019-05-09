@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
@@ -12,6 +12,7 @@ namespace ChoreApplication.UI
         private Repeatable _repeatable;
         private Reocurring _reoccurring;
         private int _choreType = 0;
+
         public EditChoreUI(Concrete chore)
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace ChoreApplication.UI
             DueDate.Text = _concrete.DueDate.ToString();
             _choreType = 1;
         }
+
         public EditChoreUI(Repeatable chore)
         {
             InitializeComponent();
@@ -51,6 +53,7 @@ namespace ChoreApplication.UI
             CompletionLimit.Value = _repeatable.Limit;
             _choreType = 2;
         }
+
         public EditChoreUI(Reocurring chore)
         {
             InitializeComponent();
@@ -90,6 +93,7 @@ namespace ChoreApplication.UI
             CreateChoreButton.Location = new System.Drawing.Point(69, 440);
             _choreType = 3;
         }
+
         private void LoadChildren()
         {
             var children = ChildUser.Load("");
@@ -101,7 +105,6 @@ namespace ChoreApplication.UI
                 this.Assignment.Items.Add(childrenarray[i]);
                 i++;
             }
-
         }
 
         private void CreateChoreButton_Click(object sender, EventArgs e)
@@ -127,6 +130,7 @@ namespace ChoreApplication.UI
                             this.Close();
                             MessageBox.Show("The concrete chore has been updated.");
                             break;
+
                         case 2:
                             _repeatable.Name = ChoreName.Text;
                             _repeatable.Points = Convert.ToInt32(ChorePoints.Text);
@@ -137,6 +141,7 @@ namespace ChoreApplication.UI
                             this.Close();
                             MessageBox.Show("The repeatable chore has been updated.");
                             break;
+
                         case 3:
                             _reoccurring.Name = ChoreName.Text;
                             _reoccurring.Points = Convert.ToInt32(ChorePoints.Text);

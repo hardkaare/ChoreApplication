@@ -1,41 +1,31 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient; //Use MySQL stuff
-using System.Globalization; //Set different time/culture formats
-using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     public partial class ChoreApplication : Form
     {
-
         //private SystemFunctions _checkTime;
         public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "child", 100, "1234");
+
         public ParentUser DumbFuckParentUser = new ParentUser(1, "admin", "1234", "adminsen", "admin", "1234");
+
         public ChoreApplication()
         {
             InitializeComponent();
             DatabaseFunctions.InitializeDB();
             //_checkTime = new SystemFunctions();
         }
-       
 
         private static void LoadAllUsers()
         {
             List<ParentUser> parents = ParentUser.Load("");
             List<ChildUser> children = ChildUser.Load("");
-            
+
             foreach (var parent in parents)
             {
                 MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
-                
             }
             foreach (var child in children)
             {
@@ -48,6 +38,7 @@ namespace ChoreApplication
             var createChore = new UI.CreateChoreUI();
             createChore.Show();
         }
+
         private void EditJoenler_Click(object sender, EventArgs e)
         {
             var child = ChildUser.Load("u.user_id = 2");
@@ -61,6 +52,7 @@ namespace ChoreApplication
             editChore.Show();
             //editReward.Show();
         }
+
         //public UI.CreateChoreUI createchore = new UI.CreateChoreUI();
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
@@ -71,7 +63,6 @@ namespace ChoreApplication
             //var createchore = new UI.CreateChoreUI();
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
-
 
             //createChild.Show();
             //createreward.Show();
@@ -98,19 +89,17 @@ namespace ChoreApplication
             var LoginInterface = new UI.LoginInterface();
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
-            
+
             var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
             var editparent = new UI.EditParentUI(DumbFuckParentUser);
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
             //ParentInterface.Show();
-            
         }
 
         private void ChoreApplication_Load(object sender, EventArgs e)
         {
-
         }
 
         private void AlexogLuten_Click(object sender, EventArgs e)

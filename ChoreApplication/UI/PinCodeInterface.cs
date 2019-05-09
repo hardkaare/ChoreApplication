@@ -1,30 +1,28 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
     public partial class PinCodeInterface : Form
     {
         public User Session;
+
         public PinCodeInterface()
         {
             InitializeComponent();
         }
 
-
         private void OneButton_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
             enterpinTextBox.Text = enterpinTextBox.Text + button.Text;
-
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
         {
             enterpinTextBox.Text = "";
         }
-
 
         private void AcceptButton_click(object sender, EventArgs e)
         {

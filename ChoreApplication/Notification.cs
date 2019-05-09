@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
-    class Notification
+    internal class Notification
     {
         #region Properties
+
         //The title of the notification
         public string Title { get; set; }
 
@@ -18,9 +16,12 @@ namespace ChoreApplication
 
         // The user who will recieve the notification. Everyone can set and get it, reconsider this later.
         public int UserId { get; set; }
+
         // The id for a specific notification object
         public int NotificationId { get; set; }
-        #endregion
+
+        #endregion Properties
+
         #region Constructors
 
         // Creates an object of the class Notification with the specified information entered in the constructor call.
@@ -31,8 +32,11 @@ namespace ChoreApplication
             UserId = userId;
             NotificationId = notificationId;
         }
-        #endregion
+
+        #endregion Constructors
+
         #region Public Helpers
+
         public static void Insert(int userId, string title, string description)
         {
             var fulltitle = DateTime.Now.ToString(Properties.Settings.Default.TextDateFormat) + " - " + title;
@@ -42,6 +46,7 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             DatabaseFunctions.DbConn.Close();
         }
+
         public static List<Notification> Load(string whereClause)
         {
             if (whereClause != "")
@@ -59,7 +64,7 @@ namespace ChoreApplication
                 string description = reader["description"].ToString();
                 int userid = (int)reader["user_id"];
                 int notificationId = (int)reader["notification_id"];
-             
+
                 Notification notification = new Notification(title, description, userid, notificationId);
                 notifications.Add(notification);
             }
@@ -67,6 +72,7 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
             return notifications;
         }
+
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.notification WHERE notification_id={0}", NotificationId);
@@ -75,19 +81,12 @@ namespace ChoreApplication
             cmd.ExecuteNonQuery();
             DatabaseFunctions.DbConn.Close();
         }
+
         public override string ToString()
         {
             return $"{UserId} recieved an notification with the description: {Description}.";
         }
 
-        #endregion
-
-        #region Private Helpers
-
-        #endregion
-
-
+        #endregion Public Helpers
     }
-
-
 }

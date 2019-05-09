@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
@@ -24,7 +24,6 @@ namespace ChoreApplication.UI
             if (!reader.HasRows)
             {
                 users = false;
-
             }
             reader.Close();
             DatabaseFunctions.DbConn.Close();

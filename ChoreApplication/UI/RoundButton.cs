@@ -1,14 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Drawing.Drawing2D;
+﻿using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
-   public class RoundButton : Button
+    public class RoundButton : Button
     {
         protected override void OnPaint(System.Windows.Forms.PaintEventArgs e)
         {

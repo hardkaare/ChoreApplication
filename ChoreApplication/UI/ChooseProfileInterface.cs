@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace ChoreApplication.UI
 {
@@ -11,10 +11,12 @@ namespace ChoreApplication.UI
         public static int activeId;
 
         public string Surname { get; set; }
+
         public ChooseProfileInterface()
         {
             InitializeComponent();
         }
+
         private Control AddLabel(string labelText, bool bold, int posX, int posY)
         {
             var label = new Label
@@ -40,23 +42,27 @@ namespace ChoreApplication.UI
         private void ChooseProfile_Load(object sender, EventArgs e)
         {
             #region Load last name
+
             string query = "SELECT last_name FROM parent";
             DatabaseFunctions.DbConn.Open();
             //Creates the SqlCommand and executes it
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             SqlDataReader reader = cmd.ExecuteReader();
-            while(reader.Read())
+            while (reader.Read())
             {
                 Surname = reader["last_name"].ToString();
             }
             DatabaseFunctions.DbConn.Close();
             SurnameLabel.Text = "The " + Surname + "'s";
-            #endregion
+
+            #endregion Load last name
 
             #region Load Users
+
             List<ParentUser> ParentUsers = ParentUser.Load("");
             List<ChildUser> childUsers = ChildUser.Load("");
-            #endregion
+
+            #endregion Load Users
 
             int y = 1;
             int x = 1;
@@ -64,7 +70,7 @@ namespace ChoreApplication.UI
             {
                 Button UserButton = new Button
                 {
-                    Location = new Point(x * 120, y * 100-90),
+                    Location = new Point(x * 120, y * 100 - 90),
                     Size = new Size(60, 60),
                     Tag = parent.Id,
                     FlatStyle = FlatStyle.Flat,
@@ -72,7 +78,7 @@ namespace ChoreApplication.UI
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X-7, UserButton.Location.Y + UserButton.Height);
+                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X - 7, UserButton.Location.Y + UserButton.Height);
                 UserButton.FlatAppearance.BorderColor = SystemColors.Window;
                 UserButton.FlatAppearance.BorderSize = 0;
                 UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
@@ -94,7 +100,7 @@ namespace ChoreApplication.UI
             {
                 Button UserButton = new Button
                 {
-                    Location = new Point(x * 120, y * 100-90),
+                    Location = new Point(x * 120, y * 100 - 90),
                     Size = new Size(60, 60),
                     Tag = child.Id,
                     FlatStyle = FlatStyle.Flat,
@@ -102,7 +108,7 @@ namespace ChoreApplication.UI
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X-7, UserButton.Location.Y + UserButton.Height);
+                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X - 7, UserButton.Location.Y + UserButton.Height);
                 UserButton.FlatAppearance.BorderColor = SystemColors.Window;
                 UserButton.FlatAppearance.BorderSize = 0;
                 UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
@@ -121,6 +127,7 @@ namespace ChoreApplication.UI
                 }
             }
         }
+
         private void UserButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;

@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Data.SqlClient;
+﻿using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     /// <summary>
-    /// Class for chore objects. Contains name of the chore, description of it, how many points it gives and 
-    /// who it's assigned to. 
+    /// Class for chore objects. Contains name of the chore, description of it, how many points it gives and
+    /// who it's assigned to.
     /// </summary>
     public abstract class Chore
     {
@@ -17,19 +12,22 @@ namespace ChoreApplication
 
         //ID of the chore
         public int ID { get; protected set; }
+
         //Name of the chore
         public string Name { get; set; }
+
         //Description of how to do the chore
         public string Description { get; set; }
+
         //How many points is earned by completing the chore
         public int Points { get; set; }
+
         //Who the chore's assigned to
         public int Assignment { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Constructor
-
 
         /// <summary>
         /// Constructor that sets all properties for the class
@@ -47,14 +45,14 @@ namespace ChoreApplication
             Assignment = _assignment;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Public helpers
 
         //ToString override that lists all properties of the chore
         public override string ToString()
         {
-            return string.Format("Chore: {0} | Description: {1} | Points: {2} | Assignment: {3}", 
+            return string.Format("Chore: {0} | Description: {1} | Points: {2} | Assignment: {3}",
                 Name, Description, Points, Assignment);
         }
 
@@ -74,10 +72,6 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
         }
 
-        #endregion
-
-        #region Private helpers
-
-        #endregion
+        #endregion Public helpers
     }
 }

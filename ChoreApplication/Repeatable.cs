@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     /// <summary>
     /// Repeatable chores. Inherits from the Chore class. Contains the limit of times the chore can be completed
-    /// a day and how many times it has been completed at the moment. Contains a method to generate 
+    /// a day and how many times it has been completed at the moment. Contains a method to generate
     /// Concrete versions of the Chore
     /// </summary>
-     public class Repeatable : Chore
+    public class Repeatable : Chore
     {
         #region Properties
 
@@ -22,28 +18,28 @@ namespace ChoreApplication
         //How many times it has been completed currently
         public int Completions { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Constructor
 
         /// <summary>
         /// Passes variables to construct the chore. Sets limit. Sets completions to 0
         /// </summary>
-        public Repeatable(int _id, string _name, string _desc, int _points, int _assignment, int _limit, int _completions) : 
+        public Repeatable(int _id, string _name, string _desc, int _points, int _assignment, int _limit, int _completions) :
             base(_id, _name, _desc, _points, _assignment)
         {
             Limit = _limit;
             Completions = _completions;
         }
 
-        #endregion
+        #endregion Constructor
 
         #region Public methods
 
         /// <summary>
-        /// Override of ToString. 
+        /// Override of ToString.
         /// </summary>
-        /// <returns>Returns a string representation of the properties of the object 
+        /// <returns>Returns a string representation of the properties of the object
         /// and the associated Chore object</returns>
         public override string ToString()
         {
@@ -142,6 +138,7 @@ namespace ChoreApplication
             DatabaseFunctions.DbConn.Close();
             return result;
         }
-        #endregion
+
+        #endregion Public methods
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
@@ -10,11 +10,12 @@ namespace ChoreApplication.UI
         {
             InitializeComponent();
         }
+
         private void CreateChildButton_Click(object sender, EventArgs e)
         {
             try
             {
-                // The first !Regex.Match ensures that a childs name only can contain letters. The second Regex.Match ensures that a pincode always will be exactly 4 digits. 
+                // The first !Regex.Match ensures that a childs name only can contain letters. The second Regex.Match ensures that a pincode always will be exactly 4 digits.
                 if (Regex.IsMatch(childName.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(childPincode.Text, @"^\d{4}$").Success)
                 {
                     ChildUser.Insert(childName.Text, childPincode.Text);
@@ -28,7 +29,6 @@ namespace ChoreApplication.UI
             }
             catch (ArgumentException)
             {
-
                 MessageBox.Show("Incorrect input entered.");
             }
         }

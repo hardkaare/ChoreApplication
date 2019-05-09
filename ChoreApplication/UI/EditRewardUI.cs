@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
@@ -13,6 +6,7 @@ namespace ChoreApplication.UI
     public partial class EditRewardUI : Form
     {
         private Reward _reward;
+
         public EditRewardUI(Reward reward)
         {
             InitializeComponent();
@@ -26,6 +20,7 @@ namespace ChoreApplication.UI
                 assignment.Text = child.FirstName;
             }
         }
+
         private void LoadChildren()
         {
             var children = ChildUser.Load("");
@@ -38,6 +33,7 @@ namespace ChoreApplication.UI
                 i++;
             }
         }
+
         private void SaveReward_Click(object sender, EventArgs e)
         {
             _reward.Name = rewardName.Text;

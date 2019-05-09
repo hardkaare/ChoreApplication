@@ -1,20 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
     public class ChildUser : User
     {
-
         #region Properties
+
         // Gets and sets the points for the ChildUser
         public int Points { get; set; }
+
         public int ChildId { get; private set; }
-        #endregion
+
+        #endregion Properties
 
         #region Constructors
 
@@ -23,9 +21,11 @@ namespace ChoreApplication
             Points = points;
             ChildId = childId;
         }
-        #endregion
+
+        #endregion Constructors
 
         #region Public Helpers
+
         /// <summary>
         /// Inserts a child user with the firstName specified in the <param>firstName</param>
         /// </summary>
@@ -35,7 +35,7 @@ namespace ChoreApplication
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}', '{1}')", firstName, pincode);
             SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DbConn);
             DatabaseFunctions.DbConn.Open();
-            //executes the query and return the first column of the first row in the result set returned by the query 
+            //executes the query and return the first column of the first row in the result set returned by the query
             int id = (int)cmd.ExecuteScalar();
             string parentQuery = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
             cmd = new SqlCommand(parentQuery, DatabaseFunctions.DbConn);
@@ -49,7 +49,7 @@ namespace ChoreApplication
         public void Update()
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, Id);
-            string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}",Points,Id);
+            string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}", Points, Id);
             SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DbConn);
             DatabaseFunctions.DbConn.Open();
             cmd.ExecuteNonQuery();
@@ -93,7 +93,7 @@ namespace ChoreApplication
         }
 
         /// <summary>
-        /// Deletes an instance of the ChildUser class based on the object interacted with. 
+        /// Deletes an instance of the ChildUser class based on the object interacted with.
         /// </summary>
         public void Delete()
         {
@@ -113,11 +113,6 @@ namespace ChoreApplication
             return $"{FirstName} has {Points} points.";
         }
 
-        #endregion
-
-        #region Private Helpers
-
-        #endregion
+        #endregion Public Helpers
     }
-
 }

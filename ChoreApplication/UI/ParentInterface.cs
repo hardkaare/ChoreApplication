@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
-using System.Linq;
-using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace ChoreApplication.UI
@@ -81,12 +79,14 @@ namespace ChoreApplication.UI
                     createChore.Show();
                     createChore.FormClosing += ChoreNavButton_Click;
                     break;
+
                 case 2:
                     this.Enabled = false;
                     var createReward = new CreateRewardUI();
                     createReward.Show();
                     createReward.FormClosing += RewardNavButton_Click;
                     break;
+
                 case 4:
                     this.Enabled = false;
                     var createChild = new CreateChildUI();
@@ -345,6 +345,7 @@ namespace ChoreApplication.UI
             currentChild[0].Update();
             Notification.Insert(currentChild[0].Id, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
                 $"\n{currentChore.Points.ToString()} points has been added to your account");
+            LoadAmountOfNotifications();
             LoadChores();
         }
 
@@ -365,6 +366,7 @@ namespace ChoreApplication.UI
                 currentChore.Update();
             }
             Notification.Insert(currentChild[0].Id, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
+            LoadAmountOfNotifications();
             LoadChores();
         }
 
@@ -564,6 +566,7 @@ namespace ChoreApplication.UI
         #endregion RewardUI
 
         #region LeaderboardUI
+
         private void LeaderboardsUI()
         {
             LoadAmountOfNotifications();
@@ -623,12 +626,12 @@ namespace ChoreApplication.UI
 
                 //Add Longest Strea panel
                 Panel LongestStreakStatistic = SystemFunctions.LoadLongestStreak(new Point(0, yLocLeaderboard),
-                    LeaderboardPanel.Width, ChildrenNames, ChildUsers);
+                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
                 this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
             }
         }
 
-        #endregion
+        #endregion LeaderboardUI
 
         #region UsersUI
 
@@ -709,6 +712,7 @@ namespace ChoreApplication.UI
             EditChildButton.Click += new EventHandler(EditChildButton_Click);
             return EditChildButton;
         }
+
         private Control AddEditParentButton(int x, int y, ParentUser user)
         {
             var EditParentButton = new Button
@@ -800,13 +804,13 @@ namespace ChoreApplication.UI
 
         private void NotificationsUI()
         {
-            LoadAmountOfNotifications();
             UI = 5;
             titleText.Text = "Notifications";
             this.NotificationPanel.Visible = true;
             this.NotificationPanel.BringToFront();
             this.OptionButton.Visible = false;
             LoadNotification();
+            LoadAmountOfNotifications();
         }
 
         private void LoadNotification()
@@ -879,6 +883,7 @@ namespace ChoreApplication.UI
                 NotificationAmount.Text = Notifications.Count.ToString();
             }
         }
+
         #endregion NotificationsUI
 
         #region UpperPanel
@@ -890,6 +895,7 @@ namespace ChoreApplication.UI
             loginInterface.Show();
             this.Close();
         }
-        #endregion
+
+        #endregion UpperPanel
     }
 }

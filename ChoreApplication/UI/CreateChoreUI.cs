@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
-using System.Windows.Forms;
-using System.Data.SqlClient;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
@@ -15,7 +15,8 @@ namespace ChoreApplication.UI
             InitializeComponent();
             LoadChildren();
             this.DueDate.MinDate = DateTime.Now;
-        }  
+        }
+
         private void ChoreType_SelectIndexChanged(object sender, EventArgs e)
         {
             switch (ChoreTypes.Text)
@@ -35,6 +36,7 @@ namespace ChoreApplication.UI
                     this.Size = new Size(350, 550);
                     CompletionLimit.Visible = false;
                     break;
+
                 case "Concrete":
                     DueDate.Visible = true;
                     label5.Text = "Due date";
@@ -47,6 +49,7 @@ namespace ChoreApplication.UI
                     DueTime.Visible = false;
                     label7.Visible = false;
                     break;
+
                 case "Repeatable":
                     this.Controls.Add(this.CompletionLimit);
                     label5.Text = "Completion limit";
@@ -73,7 +76,7 @@ namespace ChoreApplication.UI
                 childrenarray[i] = name.FirstName;
                 this.Assignment.Items.Add(childrenarray[i]);
                 i++;
-            } 
+            }
         }
 
         private void CreateChoreButton_Click(object sender, EventArgs e)
@@ -84,7 +87,7 @@ namespace ChoreApplication.UI
 
             for (int i = 0; i < children.Count; i++)
             {
-                if(children[i].FirstName == Assignment.Text)
+                if (children[i].FirstName == Assignment.Text)
                 {
                     id = children[i].ChildId;
                 }
@@ -106,6 +109,7 @@ namespace ChoreApplication.UI
                             MessageBox.Show("Incorrect information entered");
                         }
                         break;
+
                     case "Repeatable":
                         choreType = "rep";
                         try
@@ -119,6 +123,7 @@ namespace ChoreApplication.UI
                             MessageBox.Show("Incorrect information entered");
                         }
                         break;
+
                     case "Reoccurring":
                         choreType = "reoc";
                         try
@@ -127,7 +132,7 @@ namespace ChoreApplication.UI
                             int dayChecked = 0;
                             foreach (var day in DaysChecked)
                             {
-                                    dayChecked++;
+                                dayChecked++;
                             }
                             if (dayChecked > 0)
                             {

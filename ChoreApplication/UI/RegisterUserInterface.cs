@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Windows.Forms;
 using System.Text.RegularExpressions;
+using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
@@ -16,7 +16,7 @@ namespace ChoreApplication.UI
             try
             {
                 //Validate first name
-                if((FirstNameInput.Text.Length < 20) && Regex.IsMatch(FirstNameInput.Text, @"^[ÆØÅæøåa-zA-Z]+$"))
+                if ((FirstNameInput.Text.Length < 20) && Regex.IsMatch(FirstNameInput.Text, @"^[ÆØÅæøåa-zA-Z]+$"))
                 {
                     string firstName = FirstNameInput.Text;
 
@@ -36,7 +36,7 @@ namespace ChoreApplication.UI
                                 string password = Password1Input.Text;
 
                                 //Validate password2
-                                if(Password1Input.Text == Password2Input.Text)
+                                if (Password1Input.Text == Password2Input.Text)
                                 {
                                     //Validate pincode
                                     if (Regex.IsMatch(PincodeInput.Text, @"^\d{4}$"))
