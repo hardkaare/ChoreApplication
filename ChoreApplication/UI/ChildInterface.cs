@@ -139,7 +139,7 @@ namespace ChoreApplication.UI
                 double calcDimishingReturn = chore.Points;
                 for (int j = 0; j < chore.Completions; j++)
                 {
-                    calcDimishingReturn = calcDimishingReturn * 0.75;
+                    calcDimishingReturn *= 0.75;
                 }
                 int diminishedPoints = (int)calcDimishingReturn;
 
@@ -219,7 +219,7 @@ namespace ChoreApplication.UI
             double calcDimishingReturn = currentChore.Points;
             for (int i = 0; i <currentChore.Completions; i++)
             {
-                calcDimishingReturn = calcDimishingReturn * 0.75;
+                calcDimishingReturn *= 0.75;
             }
             int diminishedPoints = (int)calcDimishingReturn;
 
@@ -423,7 +423,6 @@ namespace ChoreApplication.UI
             Panel LongestStreakStatistic = SystemFunctions.LoadLongestStreak(new Point(0, yLocLeaderboard),
                 LeaderboardPanel.Width, ChildrenNames, ChildUsers);
             this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
-            yLocLeaderboard += LongestStreakStatistic.Height + PanelDist;
         }
 
         #endregion
@@ -537,7 +536,7 @@ namespace ChoreApplication.UI
         private void UserButton_Click(object sender, EventArgs e)
         {
             var loginInterface = new LoginInterface();
-            Session = default(ChildUser);
+            Session = default;
             loginInterface.Show();
             this.Close();
         }

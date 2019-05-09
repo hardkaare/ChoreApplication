@@ -625,7 +625,6 @@ namespace ChoreApplication.UI
                 Panel LongestStreakStatistic = SystemFunctions.LoadLongestStreak(new Point(0, yLocLeaderboard),
                     LeaderboardPanel.Width, ChildrenNames, ChildUsers);
                 this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
-                yLocLeaderboard += LongestStreakStatistic.Height + PanelDist;
             }
         }
 
@@ -887,11 +886,10 @@ namespace ChoreApplication.UI
         private void UserButton_Click(object sender, EventArgs e)
         {
             var loginInterface = new LoginInterface();
-            Session = default(ParentUser);
+            Session = default;
             loginInterface.Show();
             this.Close();
         }
-
         #endregion
     }
 }
