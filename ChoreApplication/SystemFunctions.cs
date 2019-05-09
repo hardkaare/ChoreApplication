@@ -12,14 +12,12 @@ namespace ChoreApplication
     class SystemFunctions
     {
         #region CheckTime
-        private static string dateFormatString { get; set; } = "dd-MM-yyyy HH:mm";
         private const int WithinOneHour = 60;
-        private static DateTime TimeNow = DateTime.ParseExact(DateTime.Now.ToString(dateFormatString), dateFormatString, null);
+        private static DateTime TimeNow = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
         private static TimeSpan _StartTimeSpan;
 
         public SystemFunctions()
         {
-
 
         }
 
@@ -29,7 +27,7 @@ namespace ChoreApplication
             var PeriodTimeSpan = TimeSpan.FromHours(1);//1 tick i timen
             var timer = new System.Threading.Timer((e) =>
             {
-              
+
                 TimeSpan oneDay = TimeNow - LoadTicks()[1];
                 if (oneDay.TotalDays > 1)
                 {
@@ -41,7 +39,7 @@ namespace ChoreApplication
                 if (!CheckDueTime(LoadTicks()[0], TimeNow))
                 {
                     UpdateLastTick();
-                    foreach(ChildUser c in childList)
+                    foreach (ChildUser c in childList)
                     {
                         foreach (var chore in Concrete.Load($"ch.child_id ={c.ChildId} AND co.status = 1"))
                         {
@@ -50,7 +48,7 @@ namespace ChoreApplication
                                 c.Points -= chore.Points;
                                 c.Update();
                                 chore.Status = 4;
-                                chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(dateFormatString), dateFormatString, null);
+                                chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
                                 chore.Update();
                                 Notification.Insert(c.Id, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
                             }
@@ -75,15 +73,15 @@ namespace ChoreApplication
         {
             string query = $"SELECT * FROM dbo.checkTime";
             List<DateTime> dateTimes = new List<DateTime>();
-            DateTime tickTime = DateTime.ParseExact("01-01-2000 00:00", dateFormatString, null);
-            DateTime dailyTick = DateTime.ParseExact("01-01-2000 00:00", dateFormatString, null);
+            DateTime tickTime = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
+            DateTime dailyTick = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
             DatabaseFunctions.DbConn.Open();
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
-                tickTime = DateTime.ParseExact(reader["lastTick"].ToString(), dateFormatString, null);
-                dailyTick = DateTime.ParseExact(reader["dailyTick"].ToString(), dateFormatString, null);
+                tickTime = DateTime.ParseExact(reader["lastTick"].ToString(), Properties.Settings.Default.LongDateFormat, null);
+                dailyTick = DateTime.ParseExact(reader["dailyTick"].ToString(), Properties.Settings.Default.LongDateFormat, null);
                 dateTimes.Add(tickTime);
                 dateTimes.Add(dailyTick);
             }
@@ -93,7 +91,7 @@ namespace ChoreApplication
 
         private static void UpdateLastTick()
         {
-            string query = $"UPDATE dbo.checkTime SET lastTick = '{DateTime.Now.ToString(dateFormatString)}'";
+            string query = $"UPDATE dbo.checkTime SET lastTick = '{DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat)}'";
             DatabaseFunctions.DbConn.Open();
             SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
             cmd.ExecuteNonQuery();
@@ -123,7 +121,7 @@ namespace ChoreApplication
             {
                 foreach (var day in chore.Days)
                 {
-                    if(day == DateTime.Now.DayOfWeek.ToString())
+                    if (day == DateTime.Now.DayOfWeek.ToString())
                     {
                         Concrete.Insert(chore.Name, chore.Description, chore.Points, chore.Assignment, chore.DueTime, "reoc");
                     }
@@ -134,10 +132,6 @@ namespace ChoreApplication
         #endregion
 
         #region Leaderboard
-
-        public static readonly Font StandardFont = new Font("Microsoft Sans Serif", 10F);
-        public static readonly Font StandardFontBold = new Font("Microsoft Sans Serif", 9.75F, FontStyle.Bold);
-
         public static Panel LoadLongestStreak(Point location, int width, Dictionary<int, string> ChildrenNames, List<ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel();
@@ -438,18 +432,16 @@ namespace ChoreApplication
             };
             if (!bold)
             {
-                label.Font = StandardFont;
+                label.Font = Properties.Settings.Default.StandardFont;
                 return label;
             }
             if (bold)
             {
-                label.Font = StandardFontBold;
+                label.Font = Properties.Settings.Default.StandardFontBold;
                 return label;
             }
             return label;
         }
-
         #endregion
-
     }
 }

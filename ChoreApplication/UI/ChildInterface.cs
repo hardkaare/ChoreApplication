@@ -96,7 +96,8 @@ namespace ChoreApplication.UI
                 var chorePoints = "Points: " + chore.Points.ToString();
                 var choreDescription = "Description: " + chore.Description.ToString();
                 var choreStatus = "Status: " + StatusValues[chore.Status];
-                var choreDueDate = "Due date: " + chore.DueDate.ToString(Properties.Settings.Default.ShortDateFormat);
+                var choreDueDate = "Due date: " + chore.DueDate.ToString(Properties.Settings.Default.Short
+                    );
 
                 var choreNameLabel = AddLabel(choreName, true, 5, 5);
                 var chorePointsLabel = AddLabel(chorePoints, false, 10, choreNameLabel.Location.Y + 20);
