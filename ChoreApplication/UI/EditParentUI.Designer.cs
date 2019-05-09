@@ -69,7 +69,7 @@
             // 
             this.password.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.password.Location = new System.Drawing.Point(70, 317);
-            this.password.MaxLength = 50;
+            this.password.MaxLength = 20;
             this.password.Name = "password";
             this.password.Size = new System.Drawing.Size(200, 22);
             this.password.TabIndex = 4;

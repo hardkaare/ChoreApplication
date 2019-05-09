@@ -31,7 +31,7 @@ namespace ChoreApplication.UI
                             string email = EmailInput.Text;
 
                             //Validate password text
-                            if ((Password1Input.Text.Length < 20) && Regex.IsMatch(Password1Input.Text, @"^[ÆØÅæøåa-zA-Z0-9]+$"))
+                            if ((Password1Input.Text.Length < 20) && Regex.IsMatch(Password1Input.Text, @"^[ÆØÅæøåa-zA-Z0-9]+$") && Regex.IsMatch(Password1Input.Text, @"^\d{6}$"))
                             {
                                 string password = Password1Input.Text;
 
@@ -59,7 +59,7 @@ namespace ChoreApplication.UI
                             }
                             else
                             {
-                                MessageBox.Show("Please enter a valid password with maximum 20 characters", "Error");
+                                MessageBox.Show("Please enter a valid password with minimum 6 characters and maximum 20 characters", "Error");
                             }
                         }
                         else

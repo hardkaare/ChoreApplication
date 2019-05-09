@@ -39,7 +39,7 @@ namespace ChoreApplication.UI
                         if ((parentLastName.Text.Length < 50) && Regex.IsMatch(parentLastName.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
                         {
                             //edit password
-                            if ((password.Text.Length < 50) && Regex.IsMatch(password.Text, @"^[ÆØÅæøåa-zA-Z0-9\s]+$"))
+                            if ((password.Text.Length < 20) && Regex.IsMatch(password.Text, @"^[ÆØÅæøåa-zA-Z0-9\s]+$") && Regex.IsMatch(password.Text, @"^\d{6}$"))
                             {
                                 if (Regex.IsMatch(pincode.Text, @"^\d{4}$"))
                                 {
