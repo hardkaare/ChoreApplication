@@ -881,5 +881,16 @@ namespace ChoreApplication.UI
             }
         }
         #endregion NotificationsUI
+
+        #region UpperPanel
+
+        private void UserButton_Click(object sender, EventArgs e)
+        {
+            var loginInterface = new LoginInterface();
+            Session = default(ParentUser);
+            this.Close();
+        }
+
+        #endregion
     }
 }

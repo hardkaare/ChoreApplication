@@ -31,6 +31,7 @@
             this.ProfilesPanel = new System.Windows.Forms.Panel();
             this.ChooseProfileLabel = new System.Windows.Forms.Label();
             this.SurnameLabel = new System.Windows.Forms.Label();
+            this.BackButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // ProfilesPanel
@@ -66,12 +67,23 @@
             this.SurnameLabel.Text = "The {surname}\'s";
             this.SurnameLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(12, 9);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(75, 23);
+            this.BackButton.TabIndex = 2;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
             // ChooseProfileInterface
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(444, 450);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.SurnameLabel);
             this.Controls.Add(this.ChooseProfileLabel);
             this.Controls.Add(this.ProfilesPanel);
@@ -91,5 +103,6 @@
         private System.Windows.Forms.Panel ProfilesPanel;
         private System.Windows.Forms.Label SurnameLabel;
         private System.Windows.Forms.Label ChooseProfileLabel;
+        private System.Windows.Forms.Button BackButton;
     }
 }

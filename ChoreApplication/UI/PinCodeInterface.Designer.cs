@@ -29,22 +29,23 @@
         private void InitializeComponent()
         {
             this.pincodePanel = new System.Windows.Forms.Panel();
-            this.roundButton1 = new RoundButton();
-            this.rbZero = new RoundButton();
-            this.rbDelete = new RoundButton();
-            this.rbNine = new RoundButton();
-            this.rbEight = new RoundButton();
-            this.rbSeven = new RoundButton();
-            this.rbSix = new RoundButton();
-            this.rbFive = new RoundButton();
-            this.rbFour = new RoundButton();
-            this.rbThree = new RoundButton();
-            this.rbTwo = new RoundButton();
-            this.rbOne = new RoundButton();
+            this.roundButton1 = new UI.RoundButton();
+            this.rbZero = new UI.RoundButton();
+            this.rbDelete = new UI.RoundButton();
+            this.rbNine = new UI.RoundButton();
+            this.rbEight = new UI.RoundButton();
+            this.rbSeven = new UI.RoundButton();
+            this.rbSix = new UI.RoundButton();
+            this.rbFive = new UI.RoundButton();
+            this.rbFour = new UI.RoundButton();
+            this.rbThree = new UI.RoundButton();
+            this.rbTwo = new UI.RoundButton();
+            this.rbOne = new UI.RoundButton();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.enterpinTextBox = new System.Windows.Forms.TextBox();
-            this.rbAccept = new RoundButton();
+            this.rbAccept = new UI.RoundButton();
             this.WelcomeLabel = new System.Windows.Forms.Label();
+            this.BackButton = new System.Windows.Forms.Button();
             this.pincodePanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -305,7 +306,7 @@
             this.enterpinTextBox.MaxLength = 4;
             this.enterpinTextBox.Name = "enterpinTextBox";
             this.enterpinTextBox.PasswordChar = '*';
-            this.enterpinTextBox.Size = new System.Drawing.Size(200, 22);
+            this.enterpinTextBox.Size = new System.Drawing.Size(200, 29);
             this.enterpinTextBox.TabIndex = 1;
             // 
             // rbAccept
@@ -327,6 +328,16 @@
             this.WelcomeLabel.Text = "Welcome";
             this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
+            // BackButton
+            // 
+            this.BackButton.Location = new System.Drawing.Point(11, 10);
+            this.BackButton.Name = "BackButton";
+            this.BackButton.Size = new System.Drawing.Size(75, 23);
+            this.BackButton.TabIndex = 10;
+            this.BackButton.Text = "Back";
+            this.BackButton.UseVisualStyleBackColor = true;
+            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            // 
             // PinCodeInterface
             // 
             this.AcceptButton = this.rbAccept;
@@ -334,6 +345,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(334, 404);
+            this.Controls.Add(this.BackButton);
             this.Controls.Add(this.WelcomeLabel);
             this.Controls.Add(this.pincodePanel);
             this.Margin = new System.Windows.Forms.Padding(2);
@@ -369,5 +381,6 @@
         private RoundButton rbAccept;
         private RoundButton roundButton1;
         private System.Windows.Forms.Label WelcomeLabel;
+        private System.Windows.Forms.Button BackButton;
     }
 }

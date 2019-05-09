@@ -80,5 +80,12 @@ namespace ChoreApplication.UI
                 this.Close();
             }
         }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            var chooseProfile = new ChooseProfileInterface();
+            chooseProfile.Show();
+            this.Close();
+        }
     }
 }
