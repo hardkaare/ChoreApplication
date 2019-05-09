@@ -78,7 +78,7 @@
             this.assignmentLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.assignmentLabel.Location = new System.Drawing.Point(70, 271);
             this.assignmentLabel.Name = "assignmentLabel";
-            this.assignmentLabel.Size = new System.Drawing.Size(70, 16);
+            this.assignmentLabel.Size = new System.Drawing.Size(78, 16);
             this.assignmentLabel.TabIndex = 0;
             this.assignmentLabel.Text = "Assignment";
             // 
@@ -86,6 +86,11 @@
             // 
             this.pointsRequired.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pointsRequired.Location = new System.Drawing.Point(70, 243);
+            this.pointsRequired.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.pointsRequired.Minimum = new decimal(new int[] {
             1,
             0,

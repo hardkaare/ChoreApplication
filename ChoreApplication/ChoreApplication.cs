@@ -121,8 +121,9 @@ namespace ChoreApplication
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
+            var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
             var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
-            ParentInterface.Show();
+            ChildInterface.Show();
         }
 
         private void EditParentUI_Click(object sender, EventArgs e)

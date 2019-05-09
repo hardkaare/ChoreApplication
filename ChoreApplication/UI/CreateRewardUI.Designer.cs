@@ -83,6 +83,11 @@
             // 
             this.pointsRequired.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pointsRequired.Location = new System.Drawing.Point(70, 243);
+            this.pointsRequired.Maximum = new decimal(new int[] {
+            99999,
+            0,
+            0,
+            0});
             this.pointsRequired.Minimum = new decimal(new int[] {
             1,
             0,

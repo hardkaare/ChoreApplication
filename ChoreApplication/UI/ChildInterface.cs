@@ -58,7 +58,9 @@ namespace ChoreApplication.UI
             {
                 Text = labelText,
                 Location = new Point(posX, posY),
+                MaximumSize = new Size(295, 20),
                 AutoSize = true,
+                AutoEllipsis = true,
             };
             if (!bold)
             {
@@ -222,7 +224,7 @@ namespace ChoreApplication.UI
             currentChore.Completions++;
             currentChore.Update();
             Notification.Insert(1, $"{ChildrenNames[currentChore.Assignment]} completed a chore.", $"{ChildrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
-
+            LoadAmountOfNotifications();
             LoadChores();
         }
 
@@ -253,7 +255,7 @@ namespace ChoreApplication.UI
             currentChore.Status = 2;
             currentChore.Update();
             Notification.Insert(1, $"{ChildrenNames[currentChore.Assignment]} completed a chore.", $"{ChildrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
-
+            LoadAmountOfNotifications();
             LoadChores();
         }
         #endregion
@@ -356,6 +358,7 @@ namespace ChoreApplication.UI
                 LoadRewards();
                 Notification.Insert(1, "Reward has been claimed.", $"The reward {currentReward.Name}: {currentReward.Description} " +
                     $"has been claimed by {ChildrenNames[currentReward.ChildId]}");
+                LoadAmountOfNotifications();
             }
         }
 
