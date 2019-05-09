@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
             this.navigationPanel = new System.Windows.Forms.Panel();
             this.NotificationAmount = new RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
@@ -161,7 +160,7 @@
             // 
             // notificationsNavButton
             // 
-            this.notificationsNavButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("notificationsNavButton.BackgroundImage")));
+            this.notificationsNavButton.BackgroundImage = global::ChoreApplication.Properties.Resources.notifications;
             this.notificationsNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.notificationsNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.notificationsNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -227,7 +226,7 @@
             this.rewardNavButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.rewardNavButton.Location = new System.Drawing.Point(70, 13);
+            this.rewardNavButton.Location = new System.Drawing.Point(79, 13);
             this.rewardNavButton.Name = "rewardNavButton";
             this.rewardNavButton.Size = new System.Drawing.Size(75, 35);
             this.rewardNavButton.TabIndex = 0;
@@ -361,6 +360,8 @@
             this.Controls.Add(this.ChorePanel);
             this.Controls.Add(this.navigationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ParentInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Parent Interface";

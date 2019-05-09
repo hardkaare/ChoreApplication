@@ -11,9 +11,6 @@ namespace ChoreApplication.UI
     {
         public int UI = 0;
         public ParentUser Session { get; set; }
-        private EditChoreUI EditSelectedChore;
-        private EditRewardUI EditSelectedReward;
-        private EditChildUI EditSelectedChild;
         private Dictionary<int, string> StatusValues;
         private Dictionary<int, string> ChildrenNames;
         private List<Reocurring> ReoccurringChores;
@@ -56,9 +53,11 @@ namespace ChoreApplication.UI
             var label = new Label
             {
                 Text = labelText,
-                Location = new Point(posX, posY),
+                MaximumSize = new Size(310, 20),
+                AutoEllipsis = true,
                 AutoSize = true,
             };
+            label.Location = new Point(posX, posY);
             if (!bold)
             {
                 label.Font = Properties.Settings.Default.StandardFont;
@@ -77,21 +76,22 @@ namespace ChoreApplication.UI
             switch (UI)
             {
                 case 1:
+                    this.Enabled = false;
                     var createChore = new CreateChoreUI();
                     createChore.Show();
+                    createChore.FormClosing += ChoreNavButton_Click;
                     break;
-
                 case 2:
+                    this.Enabled = false;
                     var createReward = new CreateRewardUI();
                     createReward.Show();
+                    createReward.FormClosing += RewardNavButton_Click;
                     break;
-
                 case 4:
+                    this.Enabled = false;
                     var createChild = new CreateChildUI();
                     createChild.Show();
-                    break;
-
-                default:
+                    createChild.FormClosing += UsersNavButton_Click;
                     break;
             }
         }
@@ -102,26 +102,31 @@ namespace ChoreApplication.UI
 
         private void ChoreNavButton_Click(object sender, EventArgs e)
         {
+            this.Enabled = true;
             ChoresUI();
         }
 
         private void RewardNavButton_Click(object sender, EventArgs e)
         {
+            this.Enabled = true;
             RewardsUI();
         }
 
         private void LeadboardNavButton_Click(object sender, EventArgs e)
         {
+            this.Enabled = true;
             LeaderboardsUI();
         }
 
         private void UsersNavButton_Click(object sender, EventArgs e)
         {
+            this.Enabled = true;
             UsersUI();
         }
 
         private void NotificationsNavButton_Click(object sender, EventArgs e)
         {
+            this.Enabled = true;
             NotificationsUI();
         }
 
@@ -365,28 +370,32 @@ namespace ChoreApplication.UI
 
         private void EditChoreButton_Click(object sender, System.EventArgs e)
         {
+            this.Enabled = false; //Disable ParentUI
             Button clickedButton = (Button)sender;
             try
             {
                 Concrete selectedChore = (Concrete)clickedButton.Tag;
-                EditSelectedChore = new EditChoreUI(selectedChore);
+                var EditSelectedChore = new EditChoreUI(selectedChore);
                 EditSelectedChore.Show();
+                EditSelectedChore.FormClosing += ChoreNavButton_Click;
             }
             catch
             {
                 try
                 {
                     Reocurring selectedChore = (Reocurring)clickedButton.Tag;
-                    EditSelectedChore = new EditChoreUI(selectedChore);
+                    var EditSelectedChore = new EditChoreUI(selectedChore);
                     EditSelectedChore.Show();
+                    EditSelectedChore.FormClosing += ChoreNavButton_Click;
                 }
                 catch
                 {
                     try
                     {
                         Repeatable selectedChore = (Repeatable)clickedButton.Tag;
-                        EditSelectedChore = new EditChoreUI(selectedChore);
+                        var EditSelectedChore = new EditChoreUI(selectedChore);
                         EditSelectedChore.Show();
+                        EditSelectedChore.FormClosing += ChoreNavButton_Click;
                     }
                     catch
                     {
@@ -524,12 +533,14 @@ namespace ChoreApplication.UI
 
         private void EditRewardButton_Click(object sender, System.EventArgs e)
         {
+            this.Enabled = false; //Disable ParentUI
             Button clickedButton = (Button)sender;
             try
             {
                 Reward selectedReward = (Reward)clickedButton.Tag;
-                EditSelectedReward = new EditRewardUI(selectedReward);
+                var EditSelectedReward = new EditRewardUI(selectedReward);
                 EditSelectedReward.Show();
+                EditSelectedReward.FormClosing += RewardNavButton_Click;
             }
             catch
             {
@@ -656,6 +667,7 @@ namespace ChoreApplication.UI
                 };
                 individualUserPanel.Controls.Add(userFirstNameLabel);
                 UserPanel.Controls.Add(individualUserPanel);
+                individualUserPanel.Controls.Add(AddEditParentButton(365, individualUserPanel.Height / 2, p));
                 i++;
             }
 
@@ -698,6 +710,24 @@ namespace ChoreApplication.UI
             EditChildButton.Click += new EventHandler(EditChildButton_Click);
             return EditChildButton;
         }
+        private Control AddEditParentButton(int x, int y, ParentUser user)
+        {
+            var EditParentButton = new Button
+            {
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = user,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            EditParentButton.Cursor = Cursors.Hand;
+            EditParentButton.FlatAppearance.BorderSize = 0;
+            EditParentButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            EditParentButton.Click += new EventHandler(EditParentButton_Click);
+            return EditParentButton;
+        }
 
         private Control AddDeleteChildButton(int x, int y, ChildUser user)
         {
@@ -727,18 +757,37 @@ namespace ChoreApplication.UI
             if (confirmDelete == DialogResult.Yes)
             {
                 selectedUser.Delete();
-                LoadUsers();
+                UsersUI();
+            }
+        }
+
+        private void EditParentButton_Click(object sender, System.EventArgs e)
+        {
+            this.Enabled = false; //Disable ParentUI
+            Button clickedButton = (Button)sender;
+            try
+            {
+                ParentUser selectedParent = (ParentUser)clickedButton.Tag;
+                var EditSelectedParent = new EditParentUI(selectedParent);
+                EditSelectedParent.Show();
+                EditSelectedParent.FormClosing += UsersNavButton_Click;
+            }
+            catch
+            {
+                MessageBox.Show("Could not edit Parent: Parent not found", "Error");
             }
         }
 
         private void EditChildButton_Click(object sender, System.EventArgs e)
         {
+            this.Enabled = false; //Disable ParentUI
             Button clickedButton = (Button)sender;
             try
             {
                 ChildUser selectedChild = (ChildUser)clickedButton.Tag;
-                EditSelectedChild = new EditChildUI(selectedChild);
+                var EditSelectedChild = new EditChildUI(selectedChild);
                 EditSelectedChild.Show();
+                EditSelectedChild.FormClosing += UsersNavButton_Click;
             }
             catch
             {
@@ -815,13 +864,12 @@ namespace ChoreApplication.UI
             Button clickedButton = (Button)sender;
             Notification currentNotification = (Notification)clickedButton.Tag;
             currentNotification.Delete();
-            LoadNotification();
-            LoadAmountOfNotifications();
+            NotificationsUI();
         }
 
         private void LoadAmountOfNotifications()
         {
-            Notifications = Notification.Load("");
+            Notifications = Notification.Load("user_id=" + Session.Id);
             NotificationAmount.Text = "";
             if (Notifications.Count == 0)
             {

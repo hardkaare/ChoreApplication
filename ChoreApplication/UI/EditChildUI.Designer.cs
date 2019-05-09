@@ -126,6 +126,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "EditChildUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Child";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
