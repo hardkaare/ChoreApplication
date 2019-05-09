@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ParentInterface));
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.NotificationAmount = new RoundButton();
+            this.NotificationAmount = new UI.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -94,7 +93,7 @@
             this.notificationsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.notificationsLabel.Location = new System.Drawing.Point(333, 55);
             this.notificationsLabel.Name = "notificationsLabel";
-            this.notificationsLabel.Size = new System.Drawing.Size(81, 16);
+            this.notificationsLabel.Size = new System.Drawing.Size(79, 22);
             this.notificationsLabel.TabIndex = 0;
             this.notificationsLabel.Text = "Notifications";
             // 
@@ -104,7 +103,7 @@
             this.usersLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.usersLabel.Location = new System.Drawing.Point(271, 55);
             this.usersLabel.Name = "usersLabel";
-            this.usersLabel.Size = new System.Drawing.Size(44, 16);
+            this.usersLabel.Size = new System.Drawing.Size(40, 22);
             this.usersLabel.TabIndex = 0;
             this.usersLabel.Text = "Users";
             // 
@@ -114,7 +113,7 @@
             this.leaderboardsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.leaderboardsLabel.Location = new System.Drawing.Point(164, 55);
             this.leaderboardsLabel.Name = "leaderboardsLabel";
-            this.leaderboardsLabel.Size = new System.Drawing.Size(94, 16);
+            this.leaderboardsLabel.Size = new System.Drawing.Size(84, 22);
             this.leaderboardsLabel.TabIndex = 0;
             this.leaderboardsLabel.Text = "Leaderboards";
             // 
@@ -124,7 +123,7 @@
             this.rewardsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rewardsLabel.Location = new System.Drawing.Point(86, 55);
             this.rewardsLabel.Name = "rewardsLabel";
-            this.rewardsLabel.Size = new System.Drawing.Size(62, 16);
+            this.rewardsLabel.Size = new System.Drawing.Size(56, 22);
             this.rewardsLabel.TabIndex = 0;
             this.rewardsLabel.Text = "Rewards";
             // 
@@ -134,7 +133,7 @@
             this.choresLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.choresLabel.Location = new System.Drawing.Point(14, 55);
             this.choresLabel.Name = "choresLabel";
-            this.choresLabel.Size = new System.Drawing.Size(51, 16);
+            this.choresLabel.Size = new System.Drawing.Size(47, 22);
             this.choresLabel.TabIndex = 0;
             this.choresLabel.Text = "Chores";
             // 
@@ -161,7 +160,6 @@
             // 
             // notificationsNavButton
             // 
-            this.notificationsNavButton.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("notificationsNavButton.BackgroundImage")));
             this.notificationsNavButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.notificationsNavButton.Cursor = System.Windows.Forms.Cursors.Hand;
             this.notificationsNavButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -291,6 +289,7 @@
             this.UserButton.Size = new System.Drawing.Size(25, 25);
             this.UserButton.TabIndex = 0;
             this.UserButton.UseVisualStyleBackColor = true;
+            this.UserButton.Click += new System.EventHandler(this.UserButton_Click);
             // 
             // ChorePanel
             // 

@@ -9,17 +9,12 @@ using System.Data.SqlClient;
 
 namespace ChoreApplication
 {
-    class SystemFunctions
+    abstract class SystemFunctions
     {
         #region CheckTime
         private const int WithinOneHour = 60;
         private static DateTime TimeNow = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
         private static TimeSpan _StartTimeSpan;
-
-        public SystemFunctions()
-        {
-
-        }
 
         public static void CheckTime(List<ChildUser> childList)
         {
@@ -274,13 +269,13 @@ namespace ChoreApplication
                 if ((sumOverdue + sumApproved) != 0)
                 {
                     CR = (double)sumOverdue / (sumOverdue + sumApproved) * 100;
+                    CR = 100 - Math.Round(CR);
                 }
                 else
                 {
                     CR = 0;
                 }
 
-                CR = 100 - Math.Round(CR);
                 CRrounded = (int)CR;
 
                 result.Add(c.ChildId, CRrounded);
