@@ -76,7 +76,7 @@
             this.pincodeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pincodeLabel.Location = new System.Drawing.Point(67, 215);
             this.pincodeLabel.Name = "pincodeLabel";
-            this.pincodeLabel.Size = new System.Drawing.Size(92, 18);
+            this.pincodeLabel.Size = new System.Drawing.Size(91, 16);
             this.pincodeLabel.TabIndex = 5;
             this.pincodeLabel.Text = "Enter pincode";
             // 
@@ -86,7 +86,7 @@
             this.childPincode.Location = new System.Drawing.Point(70, 236);
             this.childPincode.MaxLength = 4;
             this.childPincode.Name = "childPincode";
-            this.childPincode.Size = new System.Drawing.Size(200, 26);
+            this.childPincode.Size = new System.Drawing.Size(200, 22);
             this.childPincode.TabIndex = 2;
             this.childPincode.Text = "Enter pincode";
             // 
@@ -96,7 +96,7 @@
             this.childNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.childNameLabel.Location = new System.Drawing.Point(67, 162);
             this.childNameLabel.Name = "childNameLabel";
-            this.childNameLabel.Size = new System.Drawing.Size(67, 18);
+            this.childNameLabel.Size = new System.Drawing.Size(67, 16);
             this.childNameLabel.TabIndex = 3;
             this.childNameLabel.Text = "Firstname";
             // 
@@ -106,7 +106,7 @@
             this.childName.Location = new System.Drawing.Point(70, 183);
             this.childName.MaxLength = 20;
             this.childName.Name = "childName";
-            this.childName.Size = new System.Drawing.Size(200, 26);
+            this.childName.Size = new System.Drawing.Size(200, 22);
             this.childName.TabIndex = 1;
             this.childName.Text = "Enter firstname";
             // 
@@ -128,6 +128,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreateChildUI";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Child";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
