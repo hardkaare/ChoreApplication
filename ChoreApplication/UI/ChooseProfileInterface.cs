@@ -130,5 +130,11 @@ namespace ChoreApplication.UI
             this.Close();
             pinCode.Show();
         }
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            var loginInterface = new LoginInterface();
+            this.Close();
+        }
     }
 }
