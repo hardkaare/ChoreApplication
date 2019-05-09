@@ -143,6 +143,7 @@
             // 
             this.PincodeInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.PincodeInput.Location = new System.Drawing.Point(70, 357);
+            this.PincodeInput.MaxLength = 4;
             this.PincodeInput.Name = "PincodeInput";
             this.PincodeInput.Size = new System.Drawing.Size(200, 22);
             this.PincodeInput.TabIndex = 6;
@@ -151,6 +152,7 @@
             // 
             this.Password2Input.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.Password2Input.Location = new System.Drawing.Point(71, 316);
+            this.Password2Input.MaxLength = 20;
             this.Password2Input.Name = "Password2Input";
             this.Password2Input.Size = new System.Drawing.Size(200, 22);
             this.Password2Input.TabIndex = 5;
@@ -160,6 +162,7 @@
             // 
             this.Password1Input.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.Password1Input.Location = new System.Drawing.Point(71, 275);
+            this.Password1Input.MaxLength = 20;
             this.Password1Input.Name = "Password1Input";
             this.Password1Input.Size = new System.Drawing.Size(200, 22);
             this.Password1Input.TabIndex = 4;
@@ -169,6 +172,7 @@
             // 
             this.EmailInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.EmailInput.Location = new System.Drawing.Point(71, 234);
+            this.EmailInput.MaxLength = 50;
             this.EmailInput.Name = "EmailInput";
             this.EmailInput.Size = new System.Drawing.Size(200, 22);
             this.EmailInput.TabIndex = 3;
@@ -177,6 +181,7 @@
             // 
             this.LastNameInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.LastNameInput.Location = new System.Drawing.Point(70, 193);
+            this.LastNameInput.MaxLength = 50;
             this.LastNameInput.Name = "LastNameInput";
             this.LastNameInput.Size = new System.Drawing.Size(200, 22);
             this.LastNameInput.TabIndex = 2;
@@ -185,6 +190,7 @@
             // 
             this.FirstNameInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.FirstNameInput.Location = new System.Drawing.Point(70, 152);
+            this.FirstNameInput.MaxLength = 20;
             this.FirstNameInput.Name = "FirstNameInput";
             this.FirstNameInput.Size = new System.Drawing.Size(200, 22);
             this.FirstNameInput.TabIndex = 1;
