@@ -18,6 +18,7 @@ namespace ChoreApplication.UI
         private Dictionary<int, string> ChildrenNames;
         private List<ChildUser> ChildUsers;
         private List<Concrete> ActiveConcreteChores;
+        private List<Repeatable> ActiveRepeatableChores;
         private List<Reward> Rewards;
         private List<Notification> Notifications;
         public ChildInterface(ChildUser child)
@@ -86,6 +87,7 @@ namespace ChoreApplication.UI
         public void LoadChores()
         {
             ActiveConcreteChores = Concrete.Load($"status=1 OR (type='conc' AND status=2) AND ch.child_id={Session.ChildId} ORDER BY status ASC");
+            ActiveRepeatableChores = Repeatable.Load($"ch.child_id={Session.ChildId}");
             ChorePanel.Controls.Clear();
             int i = 0;
             int panelDistance = 95;
@@ -129,7 +131,101 @@ namespace ChoreApplication.UI
                 }
                 i++;
             }
+
+            foreach(var chore in ActiveRepeatableChores)
+            {
+                double calcDimishingReturn = chore.Points;
+                for (int j = 0; j < chore.Completions; j++)
+                {
+                    calcDimishingReturn = calcDimishingReturn * 0.75;
+                }
+                int diminishedPoints = (int)calcDimishingReturn;
+
+                var choreName = chore.Name.ToString();
+                var chorePoints = "Points: " + diminishedPoints.ToString();
+                var choreDescription = "Description: " + chore.Description.ToString();
+                var choreLimit = "Completion limit: " + chore.Limit.ToString();
+                var choreCompletions = "Amount completed today: " + chore.Completions.ToString();
+
+                var choreNameLabel = AddLabel(choreName, true, 5, 5);
+                var chorePointsLabel = AddLabel(chorePoints, false, 10, choreNameLabel.Location.Y + 20);
+                var choreDescriptionLabel = AddLabel(choreDescription, false, 10, chorePointsLabel.Location.Y + 20);
+                var choreLimitLabel = AddLabel(choreLimit, false, 10, choreDescriptionLabel.Location.Y + 20);
+                var choreCompletionsLabel = AddLabel(choreCompletions, false, 10, choreLimitLabel.Location.Y + 20);
+                var panelHeight = choreNameLabel.Height + chorePointsLabel.Height + choreDescriptionLabel.Height + choreLimitLabel.Height + choreCompletionsLabel.Height;
+
+                var individualChorePanel = new Panel
+                {
+                    Name = "panel" + chore.ID.ToString(),
+                    Location = new Point(1, i * panelDistance),
+                    BorderStyle = BorderStyle.FixedSingle,
+                    Size = new Size(ChorePanel.Width - 25, panelHeight),
+                    AutoSize = true,
+                };
+                ChorePanel.Controls.Add(individualChorePanel);
+                individualChorePanel.Controls.Add(choreNameLabel);
+                individualChorePanel.Controls.Add(chorePointsLabel);
+                individualChorePanel.Controls.Add(choreDescriptionLabel);
+                individualChorePanel.Controls.Add(choreLimitLabel);
+                individualChorePanel.Controls.Add(choreCompletionsLabel);
+
+                individualChorePanel.Controls.Add(AddRepDoneChoreButton(330, individualChorePanel.Height / 2, chore));
+                if (chore.Completions >= chore.Limit)
+                {
+                    individualChorePanel.Controls.Add(AddLabel("Limit reached", false, 305, individualChorePanel.Height / 2 + 20));
+                }
+                else
+                {
+                    individualChorePanel.Controls.Add(AddLabel("Completed?", false, 305, individualChorePanel.Height / 2 + 20));
+                }
+            }
+
+
         }
+
+        private Button AddRepDoneChoreButton(int x, int y, Repeatable chore)
+        {
+            var RepDoneButton = new Button
+            {
+                Location = new Point(x, y - 15),
+                Size = new Size(30, 30),
+                Tag = chore,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.thumbs_up,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            RepDoneButton.Cursor = Cursors.Hand;
+            RepDoneButton.FlatAppearance.BorderSize = 0;
+            RepDoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            RepDoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            if(chore.Completions >= chore.Limit)
+            {
+                RepDoneButton.Enabled = false;
+            }
+            RepDoneButton.Click += new EventHandler(RepDoneButton_Click);
+            return RepDoneButton;
+        }
+
+        private void RepDoneButton_Click(object sender, EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Repeatable currentChore = (Repeatable)clickedButton.Tag;
+            double calcDimishingReturn = currentChore.Points;
+            for (int i = 0; i <currentChore.Completions; i++)
+            {
+                calcDimishingReturn = calcDimishingReturn * 0.75;
+            }
+            int diminishedPoints = (int)calcDimishingReturn;
+
+            Concrete.Insert(currentChore.Name, currentChore.Description, diminishedPoints, currentChore.Assignment, new DateTime(2000, 1, 1, 0, 0, 0), "rep");
+            currentChore.Completions++;
+            currentChore.Update();
+            Notification.Insert(1, $"{ChildrenNames[currentChore.Assignment]} completed a chore.", $"{ChildrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
+
+            LoadChores();
+        }
+
         private Control AddDoneChoreButton(int x, int y, Concrete chore)
         {
             var DoneButton = new Button
