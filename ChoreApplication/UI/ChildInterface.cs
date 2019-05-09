@@ -88,7 +88,7 @@ namespace ChoreApplication.UI
 
         public void LoadChores()
         {
-            ActiveConcreteChores = Concrete.Load($"status=1 OR (type='conc' AND status=2) AND ch.child_id={Session.ChildId} ORDER BY status ASC");
+            ActiveConcreteChores = Concrete.Load($"(status=1 OR status=2) AND ch.child_id={Session.ChildId} ORDER BY status ASC");
             ActiveRepeatableChores = Repeatable.Load($"ch.child_id={Session.ChildId}");
             ChorePanel.Controls.Clear();
             int i = 0;
