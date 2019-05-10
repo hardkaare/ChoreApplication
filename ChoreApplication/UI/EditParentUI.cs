@@ -12,21 +12,21 @@ namespace ChoreApplication.UI
         {
             InitializeComponent();
             _parent = parent;
-            parentName.Text = parent.FirstName;
-            parentLastName.Text = parent.Lastname;
+            firstNameTextBox.Text = parent.FirstName;
+            lastNameTextBox.Text = parent.Lastname;
             emailTextBox.Text = parent.Email;
-            password.Text = parent.Password;
-            pincode.Text = parent.Pincode;
-            WelcomeLabel.Text = "Editing " + parent.FirstName;
+            passwordTextBox.Text = parent.Password;
+            pincodeTextBox.Text = parent.Pincode;
+            welcomeLabel.Text = "Editing " + parent.FirstName;
         }
 
         private void Save_Click(object sender, EventArgs e)
 
         {
-            _parent.FirstName = parentName.Text;
-            _parent.Lastname = parentLastName.Text;
-            _parent.Password = password.Text;
-            _parent.Pincode = pincode.Text;
+            _parent.FirstName = firstNameTextBox.Text;
+            _parent.Lastname = lastNameTextBox.Text;
+            _parent.Password = passwordTextBox.Text;
+            _parent.Pincode = pincodeTextBox.Text;
             _parent.Email = emailTextBox.Text;
 
             try
@@ -34,48 +34,48 @@ namespace ChoreApplication.UI
                 if ((emailTextBox.Text.Length < 50) && Regex.Match(emailTextBox.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$").Success)
                 {
                     //Edit Firstname
-                    if ((parentName.Text.Length < 20) && Regex.IsMatch(parentName.Text, @"^[ÆØÅæøåa-zA-Z]+$"))
+                    if ((firstNameTextBox.Text.Length < 20) && Regex.IsMatch(firstNameTextBox.Text, @"^[ÆØÅæøåa-zA-Z]+$"))
                     {
                         //Edit Lastname
-                        if ((parentLastName.Text.Length < 50) && Regex.IsMatch(parentLastName.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
+                        if ((lastNameTextBox.Text.Length < 50) && Regex.IsMatch(lastNameTextBox.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
                         {
                             //edit password
-                            if ((password.Text.Length < 20) && Regex.IsMatch(password.Text, @"^[ÆØÅæøåa-zA-Z0-9\s]+$") && Regex.IsMatch(password.Text, @"^\d{6}$"))
+                            if ((passwordTextBox.Text.Length < 20) && Regex.IsMatch(passwordTextBox.Text, @"^[ÆØÅæøåa-zA-Z0-9\s]+$") && Regex.IsMatch(passwordTextBox.Text, @"^\d{6}$"))
                             {
-                                if (Regex.IsMatch(pincode.Text, @"^\d{4}$"))
+                                if (Regex.IsMatch(pincodeTextBox.Text, @"^\d{4}$"))
                                 {
                                     _parent.Update();
                                     this.Close();
-                                    MessageBox.Show("Parent has been edited");
+                                    MessageBox.Show("Parent has been edited", "Edit Complete");
                                 }
                                 else
                                 {
-                                    MessageBox.Show("Invalid pincode");
+                                    MessageBox.Show("Invalid pincode", "Error");
                                 }
                             }
                             else
                             {
-                                MessageBox.Show("Invalid password");
+                                MessageBox.Show("Invalid password", "Error");
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Invalid last name");
+                            MessageBox.Show("Invalid last name", "Error");
                         }
                     }
                     else
                     {
-                        MessageBox.Show("Invalid first name");
+                        MessageBox.Show("Invalid first name", "Error");
                     }
                 }
                 else
                 {
-                    throw new ArgumentException();
+                    MessageBox.Show("Invalid email", "Error");
                 }
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
-                MessageBox.Show("Invalid email");
+                MessageBox.Show("Something went wrong", "Error");
             }
             finally
             {

@@ -16,32 +16,32 @@ namespace ChoreApplication.UI
             try
             {
                 //Validate first name
-                if ((FirstNameInput.Text.Length < 20) && Regex.IsMatch(FirstNameInput.Text, @"^[ÆØÅæøåa-zA-Z]+$"))
+                if ((firstNameTextBox.Text.Length < 20) && Regex.IsMatch(firstNameTextBox.Text, @"^[ÆØÅæøåa-zA-Z]+$"))
                 {
-                    string firstName = FirstNameInput.Text;
+                    string firstName = firstNameTextBox.Text;
 
                     //Validate last name
-                    if ((LastNameInput.Text.Length < 50) && Regex.IsMatch(LastNameInput.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
+                    if ((lastNameTextBox.Text.Length < 50) && Regex.IsMatch(lastNameTextBox.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))
                     {
-                        string lastName = LastNameInput.Text;
+                        string lastName = lastNameTextBox.Text;
 
                         //Validate email
-                        if ((EmailInput.Text.Length < 50) && Regex.IsMatch(EmailInput.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+                        if ((emailTextBox.Text.Length < 50) && Regex.IsMatch(emailTextBox.Text, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
                         {
-                            string email = EmailInput.Text;
+                            string email = emailTextBox.Text;
 
                             //Validate password text
-                            if ((Password1Input.Text.Length < 20) && Regex.IsMatch(Password1Input.Text, @"^[ÆØÅæøåa-zA-Z0-9]+$") && Regex.IsMatch(Password1Input.Text, @"^\d{6}$"))
+                            if ((password1TextBox.Text.Length < 20) && Regex.IsMatch(password1TextBox.Text, @"^[ÆØÅæøåa-zA-Z0-9]+$") && Regex.IsMatch(password1TextBox.Text, @"^\d{6}$"))
                             {
-                                string password = Password1Input.Text;
+                                string password = password1TextBox.Text;
 
                                 //Validate password2
-                                if (Password1Input.Text == Password2Input.Text)
+                                if (password1TextBox.Text == password2TextBox.Text)
                                 {
                                     //Validate pincode
-                                    if (Regex.IsMatch(PincodeInput.Text, @"^\d{4}$"))
+                                    if (Regex.IsMatch(pincodeTextBox.Text, @"^\d{4}$"))
                                     {
-                                        string pincode = PincodeInput.Text;
+                                        string pincode = pincodeTextBox.Text;
                                         ParentUser.Insert(firstName, lastName, email, password, pincode);
                                         var loginInterface = new LoginInterface();
                                         loginInterface.Show();

@@ -30,180 +30,180 @@ namespace ChoreApplication.UI
         /// </summary>
         private void InitializeComponent()
         {
-            this.CreateChoreButton = new System.Windows.Forms.Button();
-            this.WelcomeLabel = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.Assignment = new System.Windows.Forms.ComboBox();
-            this.DueDate = new System.Windows.Forms.DateTimePicker();
-            this.ChoreTypes = new System.Windows.Forms.ComboBox();
-            this.ChoreDescription = new System.Windows.Forms.RichTextBox();
-            this.ChorePoints = new System.Windows.Forms.TextBox();
-            this.ChoreName = new System.Windows.Forms.TextBox();
-            this.Days = new System.Windows.Forms.CheckedListBox();
-            this.CompletionLimit = new System.Windows.Forms.NumericUpDown();
-            this.DueTime = new System.Windows.Forms.DateTimePicker();
-            this.label7 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).BeginInit();
+            this.createChoreButton = new System.Windows.Forms.Button();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.assignmentLabel = new System.Windows.Forms.Label();
+            this.dueDateLabel = new System.Windows.Forms.Label();
+            this.choreTypeLabel = new System.Windows.Forms.Label();
+            this.choreDescriptionLabel = new System.Windows.Forms.Label();
+            this.chorePointsLabel = new System.Windows.Forms.Label();
+            this.choreNameLabel = new System.Windows.Forms.Label();
+            this.childAssignedCombobox = new System.Windows.Forms.ComboBox();
+            this.dueDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.choreTypesComboBox = new System.Windows.Forms.ComboBox();
+            this.choreDescriptionRichTextBox = new System.Windows.Forms.RichTextBox();
+            this.chorePointsTextBox = new System.Windows.Forms.TextBox();
+            this.choreNameTextBox = new System.Windows.Forms.TextBox();
+            this.daysCheckedListBox = new System.Windows.Forms.CheckedListBox();
+            this.completionsLimitNumericUpDown = new System.Windows.Forms.NumericUpDown();
+            this.dueTimeDateTimePicker = new System.Windows.Forms.DateTimePicker();
+            this.dueTimeLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.completionsLimitNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // CreateChoreButton
+            // createChoreButton
             // 
-            this.CreateChoreButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.CreateChoreButton.Location = new System.Drawing.Point(65, 340);
-            this.CreateChoreButton.Name = "CreateChoreButton";
-            this.CreateChoreButton.Size = new System.Drawing.Size(200, 25);
-            this.CreateChoreButton.TabIndex = 14;
-            this.CreateChoreButton.Text = "Create";
-            this.CreateChoreButton.UseVisualStyleBackColor = true;
-            this.CreateChoreButton.Click += new System.EventHandler(this.CreateChoreButton_Click);
+            this.createChoreButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.createChoreButton.Location = new System.Drawing.Point(65, 340);
+            this.createChoreButton.Name = "createChoreButton";
+            this.createChoreButton.Size = new System.Drawing.Size(200, 25);
+            this.createChoreButton.TabIndex = 14;
+            this.createChoreButton.Text = "Create";
+            this.createChoreButton.UseVisualStyleBackColor = true;
+            this.createChoreButton.Click += new System.EventHandler(this.CreateChoreButton_Click);
             // 
-            // WelcomeLabel
+            // welcomeLabel
             // 
-            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(313, 24);
-            this.WelcomeLabel.TabIndex = 15;
-            this.WelcomeLabel.Text = "Create Chore";
-            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.welcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 10);
+            this.welcomeLabel.Name = "welcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(313, 24);
+            this.welcomeLabel.TabIndex = 15;
+            this.welcomeLabel.Text = "Create Chore";
+            this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // label6
+            // assignmentLabel
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label6.Location = new System.Drawing.Point(62, 291);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(78, 16);
-            this.label6.TabIndex = 11;
-            this.label6.Text = "Assignment";
+            this.assignmentLabel.AutoSize = true;
+            this.assignmentLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.assignmentLabel.Location = new System.Drawing.Point(62, 291);
+            this.assignmentLabel.Name = "assignmentLabel";
+            this.assignmentLabel.Size = new System.Drawing.Size(78, 16);
+            this.assignmentLabel.TabIndex = 11;
+            this.assignmentLabel.Text = "Assignment";
             // 
-            // label5
+            // dueDateLabel
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label5.Location = new System.Drawing.Point(62, 250);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(63, 16);
-            this.label5.TabIndex = 10;
-            this.label5.Text = "Due date";
+            this.dueDateLabel.AutoSize = true;
+            this.dueDateLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.dueDateLabel.Location = new System.Drawing.Point(62, 250);
+            this.dueDateLabel.Name = "dueDateLabel";
+            this.dueDateLabel.Size = new System.Drawing.Size(63, 16);
+            this.dueDateLabel.TabIndex = 10;
+            this.dueDateLabel.Text = "Due date";
             // 
-            // label4
+            // choreTypeLabel
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label4.Location = new System.Drawing.Point(62, 207);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(73, 16);
-            this.label4.TabIndex = 9;
-            this.label4.Text = "Chore type";
+            this.choreTypeLabel.AutoSize = true;
+            this.choreTypeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.choreTypeLabel.Location = new System.Drawing.Point(62, 207);
+            this.choreTypeLabel.Name = "choreTypeLabel";
+            this.choreTypeLabel.Size = new System.Drawing.Size(73, 16);
+            this.choreTypeLabel.TabIndex = 9;
+            this.choreTypeLabel.Text = "Chore type";
             // 
-            // label3
+            // choreDescriptionLabel
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label3.Location = new System.Drawing.Point(62, 131);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(76, 16);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "Description";
+            this.choreDescriptionLabel.AutoSize = true;
+            this.choreDescriptionLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.choreDescriptionLabel.Location = new System.Drawing.Point(62, 131);
+            this.choreDescriptionLabel.Name = "choreDescriptionLabel";
+            this.choreDescriptionLabel.Size = new System.Drawing.Size(76, 16);
+            this.choreDescriptionLabel.TabIndex = 8;
+            this.choreDescriptionLabel.Text = "Description";
             // 
-            // label2
+            // chorePointsLabel
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label2.Location = new System.Drawing.Point(62, 90);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(45, 16);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Points";
+            this.chorePointsLabel.AutoSize = true;
+            this.chorePointsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.chorePointsLabel.Location = new System.Drawing.Point(62, 90);
+            this.chorePointsLabel.Name = "chorePointsLabel";
+            this.chorePointsLabel.Size = new System.Drawing.Size(45, 16);
+            this.chorePointsLabel.TabIndex = 7;
+            this.chorePointsLabel.Text = "Points";
             // 
-            // label1
+            // choreNameLabel
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label1.Location = new System.Drawing.Point(62, 49);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(45, 16);
-            this.label1.TabIndex = 6;
-            this.label1.Text = "Name";
+            this.choreNameLabel.AutoSize = true;
+            this.choreNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.choreNameLabel.Location = new System.Drawing.Point(62, 49);
+            this.choreNameLabel.Name = "choreNameLabel";
+            this.choreNameLabel.Size = new System.Drawing.Size(45, 16);
+            this.choreNameLabel.TabIndex = 6;
+            this.choreNameLabel.Text = "Name";
             // 
-            // Assignment
+            // childAssignedCombobox
             // 
-            this.Assignment.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.Assignment.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.Assignment.FormattingEnabled = true;
-            this.Assignment.Location = new System.Drawing.Point(65, 310);
-            this.Assignment.Name = "Assignment";
-            this.Assignment.Size = new System.Drawing.Size(200, 24);
-            this.Assignment.TabIndex = 13;
+            this.childAssignedCombobox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.childAssignedCombobox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.childAssignedCombobox.FormattingEnabled = true;
+            this.childAssignedCombobox.Location = new System.Drawing.Point(65, 310);
+            this.childAssignedCombobox.Name = "childAssignedCombobox";
+            this.childAssignedCombobox.Size = new System.Drawing.Size(200, 24);
+            this.childAssignedCombobox.TabIndex = 13;
             // 
-            // DueDate
+            // dueDateTimePicker
             // 
-            this.DueDate.CustomFormat = global::ChoreApplication.Properties.Settings.Default.LongDateFormat;
-            this.DueDate.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.DueDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueDate.Location = new System.Drawing.Point(65, 266);
-            this.DueDate.Name = "DueDate";
-            this.DueDate.Size = new System.Drawing.Size(200, 22);
-            this.DueDate.TabIndex = 5;
-            this.DueDate.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
+            this.dueDateTimePicker.CustomFormat = global::ChoreApplication.Properties.Settings.Default.LongDateFormat;
+            this.dueDateTimePicker.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.dueDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dueDateTimePicker.Location = new System.Drawing.Point(65, 266);
+            this.dueDateTimePicker.Name = "dueDateTimePicker";
+            this.dueDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.dueDateTimePicker.TabIndex = 5;
+            this.dueDateTimePicker.Value = new System.DateTime(2019, 4, 20, 23, 59, 59, 0);
             // 
-            // ChoreTypes
+            // choreTypesComboBox
             // 
-            this.ChoreTypes.BackColor = System.Drawing.SystemColors.Window;
-            this.ChoreTypes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ChoreTypes.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.ChoreTypes.FormattingEnabled = true;
-            this.ChoreTypes.Items.AddRange(new object[] {
+            this.choreTypesComboBox.BackColor = System.Drawing.SystemColors.Window;
+            this.choreTypesComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.choreTypesComboBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.choreTypesComboBox.FormattingEnabled = true;
+            this.choreTypesComboBox.Items.AddRange(new object[] {
             "Concrete",
             "Repeatable",
             "Reoccurring"});
-            this.ChoreTypes.Location = new System.Drawing.Point(65, 223);
-            this.ChoreTypes.Name = "ChoreTypes";
-            this.ChoreTypes.Size = new System.Drawing.Size(200, 24);
-            this.ChoreTypes.TabIndex = 4;
-            this.ChoreTypes.SelectedIndexChanged += new System.EventHandler(this.ChoreType_SelectIndexChanged);
+            this.choreTypesComboBox.Location = new System.Drawing.Point(65, 223);
+            this.choreTypesComboBox.Name = "choreTypesComboBox";
+            this.choreTypesComboBox.Size = new System.Drawing.Size(200, 24);
+            this.choreTypesComboBox.TabIndex = 4;
+            this.choreTypesComboBox.SelectedIndexChanged += new System.EventHandler(this.ChoreType_SelectIndexChanged);
             // 
-            // ChoreDescription
+            // choreDescriptionRichTextBox
             // 
-            this.ChoreDescription.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.ChoreDescription.Location = new System.Drawing.Point(65, 147);
-            this.ChoreDescription.MaxLength = 255;
-            this.ChoreDescription.Name = "ChoreDescription";
-            this.ChoreDescription.Size = new System.Drawing.Size(200, 57);
-            this.ChoreDescription.TabIndex = 3;
-            this.ChoreDescription.Text = "Enter a description";
+            this.choreDescriptionRichTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.choreDescriptionRichTextBox.Location = new System.Drawing.Point(65, 147);
+            this.choreDescriptionRichTextBox.MaxLength = 255;
+            this.choreDescriptionRichTextBox.Name = "choreDescriptionRichTextBox";
+            this.choreDescriptionRichTextBox.Size = new System.Drawing.Size(200, 57);
+            this.choreDescriptionRichTextBox.TabIndex = 3;
+            this.choreDescriptionRichTextBox.Text = "Enter a description";
             // 
-            // ChorePoints
+            // chorePointsTextBox
             // 
-            this.ChorePoints.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.ChorePoints.Location = new System.Drawing.Point(65, 106);
-            this.ChorePoints.Name = "ChorePoints";
-            this.ChorePoints.Size = new System.Drawing.Size(200, 22);
-            this.ChorePoints.TabIndex = 2;
-            this.ChorePoints.Text = "Enter chore points";
+            this.chorePointsTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.chorePointsTextBox.Location = new System.Drawing.Point(65, 106);
+            this.chorePointsTextBox.Name = "chorePointsTextBox";
+            this.chorePointsTextBox.Size = new System.Drawing.Size(200, 22);
+            this.chorePointsTextBox.TabIndex = 2;
+            this.chorePointsTextBox.Text = "Enter chore points";
             // 
-            // ChoreName
+            // choreNameTextBox
             // 
-            this.ChoreName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChoreName.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.ChoreName.Location = new System.Drawing.Point(65, 65);
-            this.ChoreName.MaxLength = 50;
-            this.ChoreName.Name = "ChoreName";
-            this.ChoreName.Size = new System.Drawing.Size(200, 22);
-            this.ChoreName.TabIndex = 1;
-            this.ChoreName.Text = "Enter chore name";
+            this.choreNameTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.choreNameTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.choreNameTextBox.Location = new System.Drawing.Point(65, 65);
+            this.choreNameTextBox.MaxLength = 50;
+            this.choreNameTextBox.Name = "choreNameTextBox";
+            this.choreNameTextBox.Size = new System.Drawing.Size(200, 22);
+            this.choreNameTextBox.TabIndex = 1;
+            this.choreNameTextBox.Text = "Enter chore name";
             // 
-            // Days
+            // daysCheckedListBox
             // 
-            this.Days.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.Days.FormattingEnabled = true;
-            this.Days.Items.AddRange(new object[] {
+            this.daysCheckedListBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.daysCheckedListBox.FormattingEnabled = true;
+            this.daysCheckedListBox.Items.AddRange(new object[] {
             "Monday",
             "Tuesday",
             "Wednesday",
@@ -211,78 +211,78 @@ namespace ChoreApplication.UI
             "Friday",
             "Saturday",
             "Sunday"});
-            this.Days.Location = new System.Drawing.Point(65, 266);
-            this.Days.Name = "Days";
-            this.Days.Size = new System.Drawing.Size(200, 72);
-            this.Days.TabIndex = 12;
+            this.daysCheckedListBox.Location = new System.Drawing.Point(65, 266);
+            this.daysCheckedListBox.Name = "daysCheckedListBox";
+            this.daysCheckedListBox.Size = new System.Drawing.Size(200, 72);
+            this.daysCheckedListBox.TabIndex = 12;
             // 
-            // CompletionLimit
+            // completionsLimitNumericUpDown
             // 
-            this.CompletionLimit.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.CompletionLimit.Location = new System.Drawing.Point(64, 266);
-            this.CompletionLimit.Minimum = new decimal(new int[] {
+            this.completionsLimitNumericUpDown.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.completionsLimitNumericUpDown.Location = new System.Drawing.Point(64, 266);
+            this.completionsLimitNumericUpDown.Minimum = new decimal(new int[] {
             1,
             0,
             0,
             0});
-            this.CompletionLimit.Name = "CompletionLimit";
-            this.CompletionLimit.Size = new System.Drawing.Size(200, 22);
-            this.CompletionLimit.TabIndex = 12;
-            this.CompletionLimit.Value = new decimal(new int[] {
+            this.completionsLimitNumericUpDown.Name = "completionsLimitNumericUpDown";
+            this.completionsLimitNumericUpDown.Size = new System.Drawing.Size(200, 22);
+            this.completionsLimitNumericUpDown.TabIndex = 12;
+            this.completionsLimitNumericUpDown.Value = new decimal(new int[] {
             1,
             0,
             0,
             0});
             // 
-            // DueTime
+            // dueTimeDateTimePicker
             // 
-            this.DueTime.CustomFormat = "HH:mm";
-            this.DueTime.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.DueTime.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.DueTime.Location = new System.Drawing.Point(63, 395);
-            this.DueTime.Name = "DueTime";
-            this.DueTime.ShowUpDown = true;
-            this.DueTime.Size = new System.Drawing.Size(200, 22);
-            this.DueTime.TabIndex = 12;
+            this.dueTimeDateTimePicker.CustomFormat = "HH:mm";
+            this.dueTimeDateTimePicker.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.dueTimeDateTimePicker.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dueTimeDateTimePicker.Location = new System.Drawing.Point(63, 395);
+            this.dueTimeDateTimePicker.Name = "dueTimeDateTimePicker";
+            this.dueTimeDateTimePicker.ShowUpDown = true;
+            this.dueTimeDateTimePicker.Size = new System.Drawing.Size(200, 22);
+            this.dueTimeDateTimePicker.TabIndex = 12;
             // 
-            // label7
+            // dueTimeLabel
             // 
-            this.label7.AutoSize = true;
-            this.label7.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label7.Location = new System.Drawing.Point(64, 380);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(35, 13);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "Due time";
+            this.dueTimeLabel.AutoSize = true;
+            this.dueTimeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.dueTimeLabel.Location = new System.Drawing.Point(64, 380);
+            this.dueTimeLabel.Name = "dueTimeLabel";
+            this.dueTimeLabel.Size = new System.Drawing.Size(35, 13);
+            this.dueTimeLabel.TabIndex = 12;
+            this.dueTimeLabel.Text = "Due time";
             // 
             // CreateChoreUI
             // 
-            this.AcceptButton = this.CreateChoreButton;
+            this.AcceptButton = this.createChoreButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(334, 381);
-            this.Controls.Add(this.WelcomeLabel);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Assignment);
-            this.Controls.Add(this.DueDate);
-            this.Controls.Add(this.ChoreTypes);
-            this.Controls.Add(this.ChoreDescription);
-            this.Controls.Add(this.ChorePoints);
-            this.Controls.Add(this.ChoreName);
-            this.Controls.Add(this.CreateChoreButton);
+            this.Controls.Add(this.welcomeLabel);
+            this.Controls.Add(this.assignmentLabel);
+            this.Controls.Add(this.dueDateLabel);
+            this.Controls.Add(this.choreTypeLabel);
+            this.Controls.Add(this.choreDescriptionLabel);
+            this.Controls.Add(this.chorePointsLabel);
+            this.Controls.Add(this.choreNameLabel);
+            this.Controls.Add(this.childAssignedCombobox);
+            this.Controls.Add(this.dueDateTimePicker);
+            this.Controls.Add(this.choreTypesComboBox);
+            this.Controls.Add(this.choreDescriptionRichTextBox);
+            this.Controls.Add(this.chorePointsTextBox);
+            this.Controls.Add(this.choreNameTextBox);
+            this.Controls.Add(this.createChoreButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreateChoreUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Chore";
-            ((System.ComponentModel.ISupportInitialize)(this.CompletionLimit)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.completionsLimitNumericUpDown)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,23 +290,23 @@ namespace ChoreApplication.UI
 
         #endregion
 
-        private System.Windows.Forms.Button CreateChoreButton;
-        private System.Windows.Forms.TextBox ChoreName;
-        private System.Windows.Forms.TextBox ChorePoints;
-        private System.Windows.Forms.RichTextBox ChoreDescription;
-        private System.Windows.Forms.ComboBox ChoreTypes;
-        private System.Windows.Forms.DateTimePicker DueDate;
-        private System.Windows.Forms.ComboBox Assignment;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.CheckedListBox Days;
-        private System.Windows.Forms.NumericUpDown CompletionLimit;
-        private System.Windows.Forms.DateTimePicker DueTime;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label WelcomeLabel;
+        private System.Windows.Forms.Button createChoreButton;
+        private System.Windows.Forms.TextBox choreNameTextBox;
+        private System.Windows.Forms.TextBox chorePointsTextBox;
+        private System.Windows.Forms.RichTextBox choreDescriptionRichTextBox;
+        private System.Windows.Forms.ComboBox choreTypesComboBox;
+        private System.Windows.Forms.DateTimePicker dueDateTimePicker;
+        private System.Windows.Forms.ComboBox childAssignedCombobox;
+        private System.Windows.Forms.Label choreNameLabel;
+        private System.Windows.Forms.Label chorePointsLabel;
+        private System.Windows.Forms.Label choreDescriptionLabel;
+        private System.Windows.Forms.Label choreTypeLabel;
+        private System.Windows.Forms.Label dueDateLabel;
+        private System.Windows.Forms.Label assignmentLabel;
+        private System.Windows.Forms.CheckedListBox daysCheckedListBox;
+        private System.Windows.Forms.NumericUpDown completionsLimitNumericUpDown;
+        private System.Windows.Forms.DateTimePicker dueTimeDateTimePicker;
+        private System.Windows.Forms.Label dueTimeLabel;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

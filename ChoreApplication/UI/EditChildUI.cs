@@ -12,23 +12,23 @@ namespace ChoreApplication.UI
         {
             InitializeComponent();
             _child = child;
-            ChildFirstnameInput.Text = child.FirstName;
-            ChildPincodeInput.Text = child.Pincode;
-            WelcomeLabel.Text = "Editing " + child.FirstName;
+            childFirstNameTextbox.Text = child.FirstName;
+            childPincodeTextBox.Text = child.Pincode;
+            welcomeLabel.Text = "Editing " + child.FirstName;
         }
 
         private void Save_Click(object sender, EventArgs e)
         {
             try
             {
-                _child.FirstName = ChildFirstnameInput.Text;
-                _child.Pincode = ChildPincodeInput.Text;
+                _child.FirstName = childFirstNameTextbox.Text;
+                _child.Pincode = childPincodeTextBox.Text;
                 // The first !Regex.Match ensures that a childs name only can contain letters. The second Regex.Match ensures that a pincode always will be exactly 4 digits.
-                if (Regex.IsMatch(ChildFirstnameInput.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(ChildPincodeInput.Text, @"^\d{4}$").Success)
+                if (Regex.IsMatch(childFirstNameTextbox.Text, @"^[ÆØÅæøåa-zA-Z]+$") && Regex.Match(childPincodeTextBox.Text, @"^\d{4}$").Success)
                 {
                     _child.Update();
                     this.Close();
-                    MessageBox.Show("Child information changed.");
+                    MessageBox.Show("Child has been edited.", "Edit Complete");
                 }
                 else
                 {
@@ -37,7 +37,7 @@ namespace ChoreApplication.UI
             }
             catch (ArgumentException)
             {
-                MessageBox.Show("Please enter a valid first name or four digits in the pincode field");
+                MessageBox.Show("Please enter a valid first name or four digits in the pincode field", "Error");
             }
             finally
             {

@@ -17,7 +17,7 @@ namespace ChoreApplication.UI
 
             foreach (var name in children)
             {
-                this.assignment.Items.Add(name.FirstName);
+                this.assignmentComboBox.Items.Add(name.FirstName);
             }
         }
 
@@ -27,20 +27,20 @@ namespace ChoreApplication.UI
             int id = 0;
             for (int i = 0; i < children.Count; i++)
             {
-                if (children[i].FirstName == assignment.Text)
+                if (children[i].FirstName == assignmentComboBox.Text)
                 {
                     id = children[i].ChildId;
                 }
             }
-            if (!string.IsNullOrEmpty(assignment.Text))
+            if (!string.IsNullOrEmpty(assignmentComboBox.Text))
             {
-                Reward.Insert(id, rewardName.Text, description.Text, Convert.ToInt32(pointsRequired.Text));
+                Reward.Insert(id, rewardNameTextBox.Text, descriptionRichTextBox.Text, Convert.ToInt32(pointsRequiredNumericUpDown.Text));
                 this.Close();
-                MessageBox.Show("A reward has been created");
+                MessageBox.Show("A reward has been created", "Reward Created");
             }
             else
             {
-                MessageBox.Show("You must assign the reward to a child.");
+                MessageBox.Show("You must assign the reward to a child.", "Error");
             }
         }
     }

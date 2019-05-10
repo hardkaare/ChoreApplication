@@ -20,16 +20,12 @@ namespace ChoreApplication.UI
                 {
                     ChildUser.Insert(childName.Text, childPincode.Text);
                     this.Close();
-                    MessageBox.Show("A child has been created.");
-                }
-                else
-                {
-                    throw new System.ArgumentException("");
+                    MessageBox.Show("A child user has been created.", "Child User Created");
                 }
             }
-            catch (ArgumentException)
+            catch (Exception)
             {
-                MessageBox.Show("Incorrect input entered.");
+                MessageBox.Show("Incorrect input entered.", "Error");
             }
         }
     }

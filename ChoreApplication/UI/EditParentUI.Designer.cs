@@ -28,61 +28,61 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.parentLastName = new System.Windows.Forms.TextBox();
-            this.EditPasswordLabel = new System.Windows.Forms.Label();
-            this.password = new System.Windows.Forms.TextBox();
-            this.EditEmailLabel = new System.Windows.Forms.Label();
+            this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.emailLabel = new System.Windows.Forms.Label();
             this.emailTextBox = new System.Windows.Forms.TextBox();
-            this.LastNameEditLabel = new System.Windows.Forms.Label();
-            this.EditPincodeLabel = new System.Windows.Forms.Label();
-            this.pincode = new System.Windows.Forms.TextBox();
-            this.Save = new System.Windows.Forms.Button();
-            this.EditNameLabel = new System.Windows.Forms.Label();
-            this.parentName = new System.Windows.Forms.TextBox();
-            this.uploadPictureBox = new System.Windows.Forms.PictureBox();
-            this.WelcomeLabel = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.uploadPictureBox)).BeginInit();
+            this.lastNameLabel = new System.Windows.Forms.Label();
+            this.pincodeLabel = new System.Windows.Forms.Label();
+            this.pincodeTextBox = new System.Windows.Forms.TextBox();
+            this.saveChangesButton = new System.Windows.Forms.Button();
+            this.nameLabel = new System.Windows.Forms.Label();
+            this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // parentLastName
             // 
-            this.parentLastName.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.parentLastName.Location = new System.Drawing.Point(70, 230);
-            this.parentLastName.Margin = new System.Windows.Forms.Padding(2);
-            this.parentLastName.MaxLength = 50;
-            this.parentLastName.Name = "parentLastName";
-            this.parentLastName.Size = new System.Drawing.Size(200, 22);
-            this.parentLastName.TabIndex = 2;
-            this.parentLastName.Tag = "";
+            this.lastNameTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.lastNameTextBox.Location = new System.Drawing.Point(70, 230);
+            this.lastNameTextBox.Margin = new System.Windows.Forms.Padding(2);
+            this.lastNameTextBox.MaxLength = 50;
+            this.lastNameTextBox.Name = "parentLastName";
+            this.lastNameTextBox.Size = new System.Drawing.Size(200, 22);
+            this.lastNameTextBox.TabIndex = 2;
+            this.lastNameTextBox.Tag = "";
             // 
             // EditPasswordLabel
             // 
-            this.EditPasswordLabel.AutoSize = true;
-            this.EditPasswordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.EditPasswordLabel.Location = new System.Drawing.Point(70, 298);
-            this.EditPasswordLabel.Name = "EditPasswordLabel";
-            this.EditPasswordLabel.Size = new System.Drawing.Size(68, 16);
-            this.EditPasswordLabel.TabIndex = 3;
-            this.EditPasswordLabel.Text = "Password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.passwordLabel.Location = new System.Drawing.Point(70, 298);
+            this.passwordLabel.Name = "EditPasswordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(68, 16);
+            this.passwordLabel.TabIndex = 3;
+            this.passwordLabel.Text = "Password";
             // 
             // password
             // 
-            this.password.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.password.Location = new System.Drawing.Point(70, 317);
-            this.password.MaxLength = 20;
-            this.password.Name = "password";
-            this.password.Size = new System.Drawing.Size(200, 22);
-            this.password.TabIndex = 4;
+            this.passwordTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.passwordTextBox.Location = new System.Drawing.Point(70, 317);
+            this.passwordTextBox.MaxLength = 20;
+            this.passwordTextBox.Name = "password";
+            this.passwordTextBox.Size = new System.Drawing.Size(200, 22);
+            this.passwordTextBox.TabIndex = 4;
             // 
             // EditEmailLabel
             // 
-            this.EditEmailLabel.AutoSize = true;
-            this.EditEmailLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.EditEmailLabel.Location = new System.Drawing.Point(70, 254);
-            this.EditEmailLabel.Name = "EditEmailLabel";
-            this.EditEmailLabel.Size = new System.Drawing.Size(42, 16);
-            this.EditEmailLabel.TabIndex = 4;
-            this.EditEmailLabel.Text = "Email";
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.emailLabel.Location = new System.Drawing.Point(70, 254);
+            this.emailLabel.Name = "EditEmailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(42, 16);
+            this.emailLabel.TabIndex = 4;
+            this.emailLabel.Text = "Email";
             // 
             // emailTextBox
             // 
@@ -96,106 +96,106 @@
             // 
             // LastNameEditLabel
             // 
-            this.LastNameEditLabel.AutoSize = true;
-            this.LastNameEditLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.LastNameEditLabel.Location = new System.Drawing.Point(68, 212);
-            this.LastNameEditLabel.Name = "LastNameEditLabel";
-            this.LastNameEditLabel.Size = new System.Drawing.Size(70, 16);
-            this.LastNameEditLabel.TabIndex = 7;
-            this.LastNameEditLabel.Text = "Last name";
+            this.lastNameLabel.AutoSize = true;
+            this.lastNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.lastNameLabel.Location = new System.Drawing.Point(68, 212);
+            this.lastNameLabel.Name = "LastNameEditLabel";
+            this.lastNameLabel.Size = new System.Drawing.Size(70, 16);
+            this.lastNameLabel.TabIndex = 7;
+            this.lastNameLabel.Text = "Last name";
             // 
             // EditPincodeLabel
             // 
-            this.EditPincodeLabel.AutoSize = true;
-            this.EditPincodeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.EditPincodeLabel.Location = new System.Drawing.Point(70, 342);
-            this.EditPincodeLabel.Name = "EditPincodeLabel";
-            this.EditPincodeLabel.Size = new System.Drawing.Size(58, 16);
-            this.EditPincodeLabel.TabIndex = 8;
-            this.EditPincodeLabel.Text = "Pincode";
+            this.pincodeLabel.AutoSize = true;
+            this.pincodeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.pincodeLabel.Location = new System.Drawing.Point(70, 342);
+            this.pincodeLabel.Name = "EditPincodeLabel";
+            this.pincodeLabel.Size = new System.Drawing.Size(58, 16);
+            this.pincodeLabel.TabIndex = 8;
+            this.pincodeLabel.Text = "Pincode";
             // 
             // pincode
             // 
-            this.pincode.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.pincode.Location = new System.Drawing.Point(70, 361);
-            this.pincode.MaxLength = 4;
-            this.pincode.Name = "pincode";
-            this.pincode.Size = new System.Drawing.Size(200, 22);
-            this.pincode.TabIndex = 5;
+            this.pincodeTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.pincodeTextBox.Location = new System.Drawing.Point(70, 361);
+            this.pincodeTextBox.MaxLength = 4;
+            this.pincodeTextBox.Name = "pincode";
+            this.pincodeTextBox.Size = new System.Drawing.Size(200, 22);
+            this.pincodeTextBox.TabIndex = 5;
             // 
             // Save
             // 
-            this.Save.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.Save.Location = new System.Drawing.Point(70, 389);
-            this.Save.Name = "Save";
-            this.Save.Size = new System.Drawing.Size(200, 25);
-            this.Save.TabIndex = 6;
-            this.Save.Text = "Save";
-            this.Save.UseVisualStyleBackColor = true;
-            this.Save.Click += new System.EventHandler(this.Save_Click);
+            this.saveChangesButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.saveChangesButton.Location = new System.Drawing.Point(70, 389);
+            this.saveChangesButton.Name = "Save";
+            this.saveChangesButton.Size = new System.Drawing.Size(200, 25);
+            this.saveChangesButton.TabIndex = 6;
+            this.saveChangesButton.Text = "Save";
+            this.saveChangesButton.UseVisualStyleBackColor = true;
+            this.saveChangesButton.Click += new System.EventHandler(this.Save_Click);
             // 
             // EditNameLabel
             // 
-            this.EditNameLabel.AutoSize = true;
-            this.EditNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.EditNameLabel.Location = new System.Drawing.Point(70, 168);
-            this.EditNameLabel.Name = "EditNameLabel";
-            this.EditNameLabel.Size = new System.Drawing.Size(45, 16);
-            this.EditNameLabel.TabIndex = 11;
-            this.EditNameLabel.Text = "Name";
+            this.nameLabel.AutoSize = true;
+            this.nameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.nameLabel.Location = new System.Drawing.Point(70, 168);
+            this.nameLabel.Name = "EditNameLabel";
+            this.nameLabel.Size = new System.Drawing.Size(45, 16);
+            this.nameLabel.TabIndex = 11;
+            this.nameLabel.Text = "Name";
             // 
             // parentName
             // 
-            this.parentName.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.parentName.Location = new System.Drawing.Point(70, 187);
-            this.parentName.MaxLength = 50;
-            this.parentName.Name = "parentName";
-            this.parentName.Size = new System.Drawing.Size(200, 22);
-            this.parentName.TabIndex = 1;
-            this.parentName.Tag = "";
+            this.firstNameTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.firstNameTextBox.Location = new System.Drawing.Point(70, 187);
+            this.firstNameTextBox.MaxLength = 50;
+            this.firstNameTextBox.Name = "parentName";
+            this.firstNameTextBox.Size = new System.Drawing.Size(200, 22);
+            this.firstNameTextBox.TabIndex = 1;
+            this.firstNameTextBox.Tag = "";
             // 
             // uploadPictureBox
             // 
-            this.uploadPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.uploadPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.uploadPictureBox.Image = global::ChoreApplication.Properties.Resources.user;
-            this.uploadPictureBox.Location = new System.Drawing.Point(0, 54);
-            this.uploadPictureBox.Name = "uploadPictureBox";
-            this.uploadPictureBox.Size = new System.Drawing.Size(339, 100);
-            this.uploadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.uploadPictureBox.TabIndex = 13;
-            this.uploadPictureBox.TabStop = false;
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.pictureBox.Image = global::ChoreApplication.Properties.Resources.user;
+            this.pictureBox.Location = new System.Drawing.Point(0, 54);
+            this.pictureBox.Name = "uploadPictureBox";
+            this.pictureBox.Size = new System.Drawing.Size(339, 100);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 13;
+            this.pictureBox.TabStop = false;
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 9);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(310, 42);
-            this.WelcomeLabel.TabIndex = 14;
-            this.WelcomeLabel.Text = "Edit Firstname";
-            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.welcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 9);
+            this.welcomeLabel.Name = "WelcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(310, 42);
+            this.welcomeLabel.TabIndex = 14;
+            this.welcomeLabel.Text = "Edit Firstname";
+            this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EditParentUI
             // 
-            this.AcceptButton = this.Save;
+            this.AcceptButton = this.saveChangesButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(337, 419);
-            this.Controls.Add(this.WelcomeLabel);
-            this.Controls.Add(this.uploadPictureBox);
-            this.Controls.Add(this.EditNameLabel);
-            this.Controls.Add(this.parentName);
-            this.Controls.Add(this.Save);
-            this.Controls.Add(this.EditPincodeLabel);
-            this.Controls.Add(this.pincode);
-            this.Controls.Add(this.LastNameEditLabel);
-            this.Controls.Add(this.EditPasswordLabel);
-            this.Controls.Add(this.password);
-            this.Controls.Add(this.EditEmailLabel);
+            this.Controls.Add(this.welcomeLabel);
+            this.Controls.Add(this.pictureBox);
+            this.Controls.Add(this.nameLabel);
+            this.Controls.Add(this.firstNameTextBox);
+            this.Controls.Add(this.saveChangesButton);
+            this.Controls.Add(this.pincodeLabel);
+            this.Controls.Add(this.pincodeTextBox);
+            this.Controls.Add(this.lastNameLabel);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.passwordTextBox);
+            this.Controls.Add(this.emailLabel);
             this.Controls.Add(this.emailTextBox);
-            this.Controls.Add(this.parentLastName);
+            this.Controls.Add(this.lastNameTextBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -204,7 +204,7 @@
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Edit Parent";
-            ((System.ComponentModel.ISupportInitialize)(this.uploadPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -212,18 +212,18 @@
 
         #endregion
 
-        private System.Windows.Forms.TextBox parentLastName;
-        private System.Windows.Forms.Label EditPasswordLabel;
-        private System.Windows.Forms.TextBox password;
-        private System.Windows.Forms.Label EditEmailLabel;
+        private System.Windows.Forms.TextBox lastNameTextBox;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.Label emailLabel;
         private System.Windows.Forms.TextBox emailTextBox;
-        private System.Windows.Forms.Label LastNameEditLabel;
-        private System.Windows.Forms.Label EditPincodeLabel;
-        private System.Windows.Forms.TextBox pincode;
-        private System.Windows.Forms.Button Save;
-        private System.Windows.Forms.Label EditNameLabel;
-        private System.Windows.Forms.TextBox parentName;
-        private System.Windows.Forms.PictureBox uploadPictureBox;
-        private System.Windows.Forms.Label WelcomeLabel;
+        private System.Windows.Forms.Label lastNameLabel;
+        private System.Windows.Forms.Label pincodeLabel;
+        private System.Windows.Forms.TextBox pincodeTextBox;
+        private System.Windows.Forms.Button saveChangesButton;
+        private System.Windows.Forms.Label nameLabel;
+        private System.Windows.Forms.TextBox firstNameTextBox;
+        private System.Windows.Forms.PictureBox pictureBox;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

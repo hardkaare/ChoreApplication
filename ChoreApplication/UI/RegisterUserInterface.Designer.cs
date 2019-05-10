@@ -28,222 +28,222 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.UploadPictureBox = new System.Windows.Forms.PictureBox();
-            this.RegisterUserLabel = new System.Windows.Forms.Label();
-            this.RegisterUserButton = new System.Windows.Forms.Button();
-            this.PincodeInput = new System.Windows.Forms.TextBox();
-            this.Password2Input = new System.Windows.Forms.TextBox();
-            this.Password1Input = new System.Windows.Forms.TextBox();
-            this.EmailInput = new System.Windows.Forms.TextBox();
-            this.LastNameInput = new System.Windows.Forms.TextBox();
-            this.FirstNameInput = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.UploadPictureBox)).BeginInit();
+            this.pincodeLabel = new System.Windows.Forms.Label();
+            this.confirmPasswordLabel = new System.Windows.Forms.Label();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.lastNameLabel = new System.Windows.Forms.Label();
+            this.firstNameLabel = new System.Windows.Forms.Label();
+            this.uploadPictureBox = new System.Windows.Forms.PictureBox();
+            this.registerUserLabel = new System.Windows.Forms.Label();
+            this.registerUserButton = new System.Windows.Forms.Button();
+            this.pincodeTextBox = new System.Windows.Forms.TextBox();
+            this.password2TextBox = new System.Windows.Forms.TextBox();
+            this.password1TextBox = new System.Windows.Forms.TextBox();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.lastNameTextBox = new System.Windows.Forms.TextBox();
+            this.firstNameTextBox = new System.Windows.Forms.TextBox();
+            ((System.ComponentModel.ISupportInitialize)(this.uploadPictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label6.Location = new System.Drawing.Point(70, 341);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(58, 16);
-            this.label6.TabIndex = 5;
-            this.label6.Text = "Pincode";
+            this.pincodeLabel.AutoSize = true;
+            this.pincodeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.pincodeLabel.Location = new System.Drawing.Point(70, 341);
+            this.pincodeLabel.Name = "label6";
+            this.pincodeLabel.Size = new System.Drawing.Size(58, 16);
+            this.pincodeLabel.TabIndex = 5;
+            this.pincodeLabel.Text = "Pincode";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label5.Location = new System.Drawing.Point(71, 300);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(115, 16);
-            this.label5.TabIndex = 5;
-            this.label5.Text = "Confirm password";
+            this.confirmPasswordLabel.AutoSize = true;
+            this.confirmPasswordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.confirmPasswordLabel.Location = new System.Drawing.Point(71, 300);
+            this.confirmPasswordLabel.Name = "label5";
+            this.confirmPasswordLabel.Size = new System.Drawing.Size(115, 16);
+            this.confirmPasswordLabel.TabIndex = 5;
+            this.confirmPasswordLabel.Text = "Confirm password";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label4.Location = new System.Drawing.Point(71, 259);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(68, 16);
-            this.label4.TabIndex = 5;
-            this.label4.Text = "Password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.passwordLabel.Location = new System.Drawing.Point(71, 259);
+            this.passwordLabel.Name = "label4";
+            this.passwordLabel.Size = new System.Drawing.Size(68, 16);
+            this.passwordLabel.TabIndex = 5;
+            this.passwordLabel.Text = "Password";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label3.Location = new System.Drawing.Point(71, 218);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(42, 16);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Email";
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.emailLabel.Location = new System.Drawing.Point(71, 218);
+            this.emailLabel.Name = "label3";
+            this.emailLabel.Size = new System.Drawing.Size(42, 16);
+            this.emailLabel.TabIndex = 5;
+            this.emailLabel.Text = "Email";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label2.Location = new System.Drawing.Point(70, 177);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(67, 16);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Lastname";
+            this.lastNameLabel.AutoSize = true;
+            this.lastNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.lastNameLabel.Location = new System.Drawing.Point(70, 177);
+            this.lastNameLabel.Name = "label2";
+            this.lastNameLabel.Size = new System.Drawing.Size(67, 16);
+            this.lastNameLabel.TabIndex = 5;
+            this.lastNameLabel.Text = "Lastname";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.label1.Location = new System.Drawing.Point(71, 133);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(67, 16);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Firstname";
+            this.firstNameLabel.AutoSize = true;
+            this.firstNameLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.firstNameLabel.Location = new System.Drawing.Point(71, 133);
+            this.firstNameLabel.Name = "label1";
+            this.firstNameLabel.Size = new System.Drawing.Size(67, 16);
+            this.firstNameLabel.TabIndex = 5;
+            this.firstNameLabel.Text = "Firstname";
             // 
             // UploadPictureBox
             // 
-            this.UploadPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.UploadPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UploadPictureBox.Image = global::ChoreApplication.Properties.Resources.user;
-            this.UploadPictureBox.Location = new System.Drawing.Point(0, 37);
-            this.UploadPictureBox.Name = "UploadPictureBox";
-            this.UploadPictureBox.Size = new System.Drawing.Size(334, 90);
-            this.UploadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.UploadPictureBox.TabIndex = 4;
-            this.UploadPictureBox.TabStop = false;
+            this.uploadPictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.uploadPictureBox.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.uploadPictureBox.Image = global::ChoreApplication.Properties.Resources.user;
+            this.uploadPictureBox.Location = new System.Drawing.Point(0, 37);
+            this.uploadPictureBox.Name = "UploadPictureBox";
+            this.uploadPictureBox.Size = new System.Drawing.Size(334, 90);
+            this.uploadPictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.uploadPictureBox.TabIndex = 4;
+            this.uploadPictureBox.TabStop = false;
             // 
             // RegisterUserLabel
             // 
-            this.RegisterUserLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
-            this.RegisterUserLabel.Location = new System.Drawing.Point(12, 10);
-            this.RegisterUserLabel.Name = "RegisterUserLabel";
-            this.RegisterUserLabel.Size = new System.Drawing.Size(310, 24);
-            this.RegisterUserLabel.TabIndex = 3;
-            this.RegisterUserLabel.Text = "Register User";
-            this.RegisterUserLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.registerUserLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
+            this.registerUserLabel.Location = new System.Drawing.Point(12, 10);
+            this.registerUserLabel.Name = "RegisterUserLabel";
+            this.registerUserLabel.Size = new System.Drawing.Size(310, 24);
+            this.registerUserLabel.TabIndex = 3;
+            this.registerUserLabel.Text = "Register User";
+            this.registerUserLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // RegisterUserButton
             // 
-            this.RegisterUserButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.RegisterUserButton.Location = new System.Drawing.Point(70, 385);
-            this.RegisterUserButton.Name = "RegisterUserButton";
-            this.RegisterUserButton.Size = new System.Drawing.Size(200, 25);
-            this.RegisterUserButton.TabIndex = 7;
-            this.RegisterUserButton.Text = "Register";
-            this.RegisterUserButton.UseVisualStyleBackColor = true;
-            this.RegisterUserButton.Click += new System.EventHandler(this.RegisterUserButton_Click);
+            this.registerUserButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.registerUserButton.Location = new System.Drawing.Point(70, 385);
+            this.registerUserButton.Name = "RegisterUserButton";
+            this.registerUserButton.Size = new System.Drawing.Size(200, 25);
+            this.registerUserButton.TabIndex = 7;
+            this.registerUserButton.Text = "Register";
+            this.registerUserButton.UseVisualStyleBackColor = true;
+            this.registerUserButton.Click += new System.EventHandler(this.RegisterUserButton_Click);
             // 
             // PincodeInput
             // 
-            this.PincodeInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.PincodeInput.Location = new System.Drawing.Point(70, 357);
-            this.PincodeInput.MaxLength = 4;
-            this.PincodeInput.Name = "PincodeInput";
-            this.PincodeInput.Size = new System.Drawing.Size(200, 22);
-            this.PincodeInput.TabIndex = 6;
+            this.pincodeTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.pincodeTextBox.Location = new System.Drawing.Point(70, 357);
+            this.pincodeTextBox.MaxLength = 4;
+            this.pincodeTextBox.Name = "PincodeInput";
+            this.pincodeTextBox.Size = new System.Drawing.Size(200, 22);
+            this.pincodeTextBox.TabIndex = 6;
             // 
             // Password2Input
             // 
-            this.Password2Input.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.Password2Input.Location = new System.Drawing.Point(71, 316);
-            this.Password2Input.MaxLength = 20;
-            this.Password2Input.Name = "Password2Input";
-            this.Password2Input.Size = new System.Drawing.Size(200, 22);
-            this.Password2Input.TabIndex = 5;
-            this.Password2Input.UseSystemPasswordChar = true;
+            this.password2TextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.password2TextBox.Location = new System.Drawing.Point(71, 316);
+            this.password2TextBox.MaxLength = 20;
+            this.password2TextBox.Name = "Password2Input";
+            this.password2TextBox.Size = new System.Drawing.Size(200, 22);
+            this.password2TextBox.TabIndex = 5;
+            this.password2TextBox.UseSystemPasswordChar = true;
             // 
             // Password1Input
             // 
-            this.Password1Input.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.Password1Input.Location = new System.Drawing.Point(71, 275);
-            this.Password1Input.MaxLength = 20;
-            this.Password1Input.Name = "Password1Input";
-            this.Password1Input.Size = new System.Drawing.Size(200, 22);
-            this.Password1Input.TabIndex = 4;
-            this.Password1Input.UseSystemPasswordChar = true;
+            this.password1TextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.password1TextBox.Location = new System.Drawing.Point(71, 275);
+            this.password1TextBox.MaxLength = 20;
+            this.password1TextBox.Name = "Password1Input";
+            this.password1TextBox.Size = new System.Drawing.Size(200, 22);
+            this.password1TextBox.TabIndex = 4;
+            this.password1TextBox.UseSystemPasswordChar = true;
             // 
             // EmailInput
             // 
-            this.EmailInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.EmailInput.Location = new System.Drawing.Point(71, 234);
-            this.EmailInput.MaxLength = 50;
-            this.EmailInput.Name = "EmailInput";
-            this.EmailInput.Size = new System.Drawing.Size(200, 22);
-            this.EmailInput.TabIndex = 3;
+            this.emailTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.emailTextBox.Location = new System.Drawing.Point(71, 234);
+            this.emailTextBox.MaxLength = 50;
+            this.emailTextBox.Name = "EmailInput";
+            this.emailTextBox.Size = new System.Drawing.Size(200, 22);
+            this.emailTextBox.TabIndex = 3;
             // 
             // LastNameInput
             // 
-            this.LastNameInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.LastNameInput.Location = new System.Drawing.Point(70, 193);
-            this.LastNameInput.MaxLength = 50;
-            this.LastNameInput.Name = "LastNameInput";
-            this.LastNameInput.Size = new System.Drawing.Size(200, 22);
-            this.LastNameInput.TabIndex = 2;
+            this.lastNameTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.lastNameTextBox.Location = new System.Drawing.Point(70, 193);
+            this.lastNameTextBox.MaxLength = 50;
+            this.lastNameTextBox.Name = "LastNameInput";
+            this.lastNameTextBox.Size = new System.Drawing.Size(200, 22);
+            this.lastNameTextBox.TabIndex = 2;
             // 
             // FirstNameInput
             // 
-            this.FirstNameInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.FirstNameInput.Location = new System.Drawing.Point(70, 152);
-            this.FirstNameInput.MaxLength = 20;
-            this.FirstNameInput.Name = "FirstNameInput";
-            this.FirstNameInput.Size = new System.Drawing.Size(200, 22);
-            this.FirstNameInput.TabIndex = 1;
+            this.firstNameTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.firstNameTextBox.Location = new System.Drawing.Point(70, 152);
+            this.firstNameTextBox.MaxLength = 20;
+            this.firstNameTextBox.Name = "FirstNameInput";
+            this.firstNameTextBox.Size = new System.Drawing.Size(200, 22);
+            this.firstNameTextBox.TabIndex = 1;
             // 
             // RegisterUserInterface
             // 
-            this.AcceptButton = this.RegisterUserButton;
+            this.AcceptButton = this.registerUserButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(334, 421);
-            this.Controls.Add(this.label6);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.LastNameInput);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.FirstNameInput);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.EmailInput);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.Password1Input);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.Password2Input);
-            this.Controls.Add(this.UploadPictureBox);
-            this.Controls.Add(this.PincodeInput);
-            this.Controls.Add(this.RegisterUserLabel);
-            this.Controls.Add(this.RegisterUserButton);
+            this.Controls.Add(this.pincodeLabel);
+            this.Controls.Add(this.confirmPasswordLabel);
+            this.Controls.Add(this.lastNameTextBox);
+            this.Controls.Add(this.passwordLabel);
+            this.Controls.Add(this.firstNameTextBox);
+            this.Controls.Add(this.emailLabel);
+            this.Controls.Add(this.emailTextBox);
+            this.Controls.Add(this.lastNameLabel);
+            this.Controls.Add(this.password1TextBox);
+            this.Controls.Add(this.firstNameLabel);
+            this.Controls.Add(this.password2TextBox);
+            this.Controls.Add(this.uploadPictureBox);
+            this.Controls.Add(this.pincodeTextBox);
+            this.Controls.Add(this.registerUserLabel);
+            this.Controls.Add(this.registerUserButton);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "RegisterUserInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Register User";
-            ((System.ComponentModel.ISupportInitialize)(this.UploadPictureBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.uploadPictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-        private System.Windows.Forms.PictureBox UploadPictureBox;
-        private System.Windows.Forms.Label RegisterUserLabel;
-        private System.Windows.Forms.Button RegisterUserButton;
-        private System.Windows.Forms.TextBox PincodeInput;
-        private System.Windows.Forms.TextBox Password2Input;
-        private System.Windows.Forms.TextBox Password1Input;
-        private System.Windows.Forms.TextBox EmailInput;
-        private System.Windows.Forms.TextBox LastNameInput;
-        private System.Windows.Forms.TextBox FirstNameInput;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.PictureBox uploadPictureBox;
+        private System.Windows.Forms.Label registerUserLabel;
+        private System.Windows.Forms.Button registerUserButton;
+        private System.Windows.Forms.TextBox pincodeTextBox;
+        private System.Windows.Forms.TextBox password2TextBox;
+        private System.Windows.Forms.TextBox password1TextBox;
+        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.TextBox lastNameTextBox;
+        private System.Windows.Forms.TextBox firstNameTextBox;
+        private System.Windows.Forms.Label pincodeLabel;
+        private System.Windows.Forms.Label confirmPasswordLabel;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label emailLabel;
+        private System.Windows.Forms.Label lastNameLabel;
+        private System.Windows.Forms.Label firstNameLabel;
     }
 }

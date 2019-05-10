@@ -28,137 +28,137 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.WelcomeLabel = new System.Windows.Forms.Label();
-            this.LoginLabel = new System.Windows.Forms.Label();
-            this.EmailInput = new System.Windows.Forms.TextBox();
-            this.PasswordInput = new System.Windows.Forms.TextBox();
-            this.LoginButton = new System.Windows.Forms.Button();
-            this.LoginPanel = new System.Windows.Forms.Panel();
-            this.PasswordLabel = new System.Windows.Forms.Label();
-            this.EmailLabel = new System.Windows.Forms.Label();
-            this.LoginPanel.SuspendLayout();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.loginLabel = new System.Windows.Forms.Label();
+            this.emailTextBox = new System.Windows.Forms.TextBox();
+            this.passwordTextBox = new System.Windows.Forms.TextBox();
+            this.loginButton = new System.Windows.Forms.Button();
+            this.loginPanel = new System.Windows.Forms.Panel();
+            this.passwordLabel = new System.Windows.Forms.Label();
+            this.emailLabel = new System.Windows.Forms.Label();
+            this.loginPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.welcomeLabel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(310, 25);
-            this.WelcomeLabel.TabIndex = 0;
-            this.WelcomeLabel.Text = " Welcome";
-            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.welcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 10);
+            this.welcomeLabel.Name = "WelcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(310, 25);
+            this.welcomeLabel.TabIndex = 0;
+            this.welcomeLabel.Text = " Welcome";
+            this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // LoginLabel
             // 
-            this.LoginLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontSubtitle;
-            this.LoginLabel.Location = new System.Drawing.Point(3, 17);
-            this.LoginLabel.Name = "LoginLabel";
-            this.LoginLabel.Size = new System.Drawing.Size(304, 40);
-            this.LoginLabel.TabIndex = 1;
-            this.LoginLabel.Text = "Login";
-            this.LoginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.loginLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontSubtitle;
+            this.loginLabel.Location = new System.Drawing.Point(3, 17);
+            this.loginLabel.Name = "LoginLabel";
+            this.loginLabel.Size = new System.Drawing.Size(304, 40);
+            this.loginLabel.TabIndex = 1;
+            this.loginLabel.Text = "Login";
+            this.loginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // EmailInput
             // 
-            this.EmailInput.AcceptsTab = true;
-            this.EmailInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.EmailInput.Location = new System.Drawing.Point(60, 76);
-            this.EmailInput.Name = "EmailInput";
-            this.EmailInput.Size = new System.Drawing.Size(200, 26);
-            this.EmailInput.TabIndex = 2;
-            this.EmailInput.Text = "Enter email";
-            this.EmailInput.Click += new System.EventHandler(this.EmailTextbox_Click);
+            this.emailTextBox.AcceptsTab = true;
+            this.emailTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.emailTextBox.Location = new System.Drawing.Point(60, 76);
+            this.emailTextBox.Name = "EmailInput";
+            this.emailTextBox.Size = new System.Drawing.Size(200, 26);
+            this.emailTextBox.TabIndex = 2;
+            this.emailTextBox.Text = "Enter email";
+            this.emailTextBox.Click += new System.EventHandler(this.EmailTextbox_Click);
             // 
             // PasswordInput
             // 
-            this.PasswordInput.AcceptsTab = true;
-            this.PasswordInput.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.PasswordInput.Location = new System.Drawing.Point(60, 125);
-            this.PasswordInput.Name = "PasswordInput";
-            this.PasswordInput.PasswordChar = '*';
-            this.PasswordInput.Size = new System.Drawing.Size(200, 26);
-            this.PasswordInput.TabIndex = 3;
-            this.PasswordInput.Text = "Password";
-            this.PasswordInput.Click += new System.EventHandler(this.PwdTextbox_Click);
+            this.passwordTextBox.AcceptsTab = true;
+            this.passwordTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.passwordTextBox.Location = new System.Drawing.Point(60, 125);
+            this.passwordTextBox.Name = "PasswordInput";
+            this.passwordTextBox.PasswordChar = '*';
+            this.passwordTextBox.Size = new System.Drawing.Size(200, 26);
+            this.passwordTextBox.TabIndex = 3;
+            this.passwordTextBox.Text = "Password";
+            this.passwordTextBox.Click += new System.EventHandler(this.PasswordTextBox_Click);
             // 
             // LoginButton
             // 
-            this.LoginButton.AutoSize = true;
-            this.LoginButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.LoginButton.Location = new System.Drawing.Point(60, 153);
-            this.LoginButton.Name = "LoginButton";
-            this.LoginButton.Size = new System.Drawing.Size(200, 28);
-            this.LoginButton.TabIndex = 4;
-            this.LoginButton.Text = "Login";
-            this.LoginButton.UseVisualStyleBackColor = true;
-            this.LoginButton.Click += new System.EventHandler(this.LoginButton_Click);
+            this.loginButton.AutoSize = true;
+            this.loginButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.loginButton.Location = new System.Drawing.Point(60, 153);
+            this.loginButton.Name = "LoginButton";
+            this.loginButton.Size = new System.Drawing.Size(200, 28);
+            this.loginButton.TabIndex = 4;
+            this.loginButton.Text = "Login";
+            this.loginButton.UseVisualStyleBackColor = true;
+            this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);
             // 
             // LoginPanel
             // 
-            this.LoginPanel.Controls.Add(this.PasswordLabel);
-            this.LoginPanel.Controls.Add(this.EmailLabel);
-            this.LoginPanel.Controls.Add(this.LoginLabel);
-            this.LoginPanel.Controls.Add(this.EmailInput);
-            this.LoginPanel.Controls.Add(this.LoginButton);
-            this.LoginPanel.Controls.Add(this.PasswordInput);
-            this.LoginPanel.Location = new System.Drawing.Point(12, 38);
-            this.LoginPanel.Name = "LoginPanel";
-            this.LoginPanel.Size = new System.Drawing.Size(310, 214);
-            this.LoginPanel.TabIndex = 4;
+            this.loginPanel.Controls.Add(this.passwordLabel);
+            this.loginPanel.Controls.Add(this.emailLabel);
+            this.loginPanel.Controls.Add(this.loginLabel);
+            this.loginPanel.Controls.Add(this.emailTextBox);
+            this.loginPanel.Controls.Add(this.loginButton);
+            this.loginPanel.Controls.Add(this.passwordTextBox);
+            this.loginPanel.Location = new System.Drawing.Point(12, 38);
+            this.loginPanel.Name = "LoginPanel";
+            this.loginPanel.Size = new System.Drawing.Size(310, 214);
+            this.loginPanel.TabIndex = 4;
             // 
             // PasswordLabel
             // 
-            this.PasswordLabel.AutoSize = true;
-            this.PasswordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.PasswordLabel.Location = new System.Drawing.Point(57, 106);
-            this.PasswordLabel.Name = "PasswordLabel";
-            this.PasswordLabel.Size = new System.Drawing.Size(65, 18);
-            this.PasswordLabel.TabIndex = 6;
-            this.PasswordLabel.Text = "Password";
+            this.passwordLabel.AutoSize = true;
+            this.passwordLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.passwordLabel.Location = new System.Drawing.Point(57, 106);
+            this.passwordLabel.Name = "PasswordLabel";
+            this.passwordLabel.Size = new System.Drawing.Size(65, 18);
+            this.passwordLabel.TabIndex = 6;
+            this.passwordLabel.Text = "Password";
             // 
             // EmailLabel
             // 
-            this.EmailLabel.AutoSize = true;
-            this.EmailLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.EmailLabel.Location = new System.Drawing.Point(57, 57);
-            this.EmailLabel.Name = "EmailLabel";
-            this.EmailLabel.Size = new System.Drawing.Size(40, 18);
-            this.EmailLabel.TabIndex = 6;
-            this.EmailLabel.Text = "Email";
+            this.emailLabel.AutoSize = true;
+            this.emailLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.emailLabel.Location = new System.Drawing.Point(57, 57);
+            this.emailLabel.Name = "EmailLabel";
+            this.emailLabel.Size = new System.Drawing.Size(40, 18);
+            this.emailLabel.TabIndex = 6;
+            this.emailLabel.Text = "Email";
             // 
             // LoginInterface
             // 
-            this.AcceptButton = this.LoginButton;
+            this.AcceptButton = this.loginButton;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(334, 264);
-            this.Controls.Add(this.LoginPanel);
-            this.Controls.Add(this.WelcomeLabel);
+            this.Controls.Add(this.loginPanel);
+            this.Controls.Add(this.welcomeLabel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "LoginInterface";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.LoginPanel.ResumeLayout(false);
-            this.LoginPanel.PerformLayout();
+            this.loginPanel.ResumeLayout(false);
+            this.loginPanel.PerformLayout();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label WelcomeLabel;
-        private System.Windows.Forms.Label LoginLabel;
-        private System.Windows.Forms.TextBox EmailInput;
-        private System.Windows.Forms.TextBox PasswordInput;
-        private System.Windows.Forms.Button LoginButton;
-        private System.Windows.Forms.Panel LoginPanel;
-        private System.Windows.Forms.Label PasswordLabel;
-        private System.Windows.Forms.Label EmailLabel;
+        private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Label loginLabel;
+        private System.Windows.Forms.TextBox emailTextBox;
+        private System.Windows.Forms.TextBox passwordTextBox;
+        private System.Windows.Forms.Button loginButton;
+        private System.Windows.Forms.Panel loginPanel;
+        private System.Windows.Forms.Label passwordLabel;
+        private System.Windows.Forms.Label emailLabel;
     }
 }

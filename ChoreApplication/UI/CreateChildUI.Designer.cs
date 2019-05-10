@@ -28,26 +28,26 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox = new System.Windows.Forms.PictureBox();
             this.createChildButton = new System.Windows.Forms.Button();
-            this.WelcomeLabel = new System.Windows.Forms.Label();
+            this.welcomeLabel = new System.Windows.Forms.Label();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.childPincode = new System.Windows.Forms.TextBox();
             this.childNameLabel = new System.Windows.Forms.Label();
             this.childName = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.SuspendLayout();
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.pictureBox1.Image = global::ChoreApplication.Properties.Resources.user;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 46);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(310, 106);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pictureBox.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.pictureBox.Image = global::ChoreApplication.Properties.Resources.user;
+            this.pictureBox.Location = new System.Drawing.Point(12, 46);
+            this.pictureBox.Name = "pictureBox1";
+            this.pictureBox.Size = new System.Drawing.Size(310, 106);
+            this.pictureBox.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox.TabIndex = 0;
+            this.pictureBox.TabStop = false;
             // 
             // createChildButton
             // 
@@ -62,13 +62,13 @@
             // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
-            this.WelcomeLabel.Location = new System.Drawing.Point(12, 10);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(310, 33);
-            this.WelcomeLabel.TabIndex = 16;
-            this.WelcomeLabel.Text = "Create Child";
-            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.welcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
+            this.welcomeLabel.Location = new System.Drawing.Point(12, 10);
+            this.welcomeLabel.Name = "WelcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(310, 33);
+            this.welcomeLabel.TabIndex = 16;
+            this.welcomeLabel.Text = "Create Child";
+            this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // pincodeLabel
             // 
@@ -117,20 +117,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(334, 307);
-            this.Controls.Add(this.WelcomeLabel);
+            this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.pincodeLabel);
             this.Controls.Add(this.childPincode);
             this.Controls.Add(this.childNameLabel);
             this.Controls.Add(this.createChildButton);
             this.Controls.Add(this.childName);
-            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.pictureBox);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CreateChildUI";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Create Child";
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -138,12 +138,12 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox;
         private System.Windows.Forms.TextBox childName;
         private System.Windows.Forms.Button createChildButton;
         private System.Windows.Forms.Label childNameLabel;
         private System.Windows.Forms.Label pincodeLabel;
         private System.Windows.Forms.TextBox childPincode;
-        private System.Windows.Forms.Label WelcomeLabel;
+        private System.Windows.Forms.Label welcomeLabel;
     }
 }

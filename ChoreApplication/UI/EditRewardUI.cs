@@ -12,12 +12,12 @@ namespace ChoreApplication.UI
             InitializeComponent();
             LoadChildren();
             _reward = reward;
-            rewardName.Text = _reward.Name;
-            description.Text = _reward.Description;
-            pointsRequired.Value = _reward.PointsRequired;
+            rewardNameTextBox.Text = _reward.Name;
+            descriptionRichTextBox.Text = _reward.Description;
+            pointsRequiredNumericUpDown.Value = _reward.PointsRequired;
             foreach (var child in ChildUser.Load($"c.child_id = {_reward.ChildID}"))
             {
-                assignment.Text = child.FirstName;
+                childAssignedComboBox.Text = child.FirstName;
             }
         }
 
@@ -29,18 +29,18 @@ namespace ChoreApplication.UI
             foreach (var name in children)
             {
                 childrenarray[i] = name.FirstName;
-                this.assignment.Items.Add(childrenarray[i]);
+                this.childAssignedComboBox.Items.Add(childrenarray[i]);
                 i++;
             }
         }
 
         private void SaveReward_Click(object sender, EventArgs e)
         {
-            _reward.Name = rewardName.Text;
-            _reward.Description = description.Text;
-            _reward.PointsRequired = (int)pointsRequired.Value;
+            _reward.Name = rewardNameTextBox.Text;
+            _reward.Description = descriptionRichTextBox.Text;
+            _reward.PointsRequired = (int)pointsRequiredNumericUpDown.Value;
             int id = 0;
-            foreach (var child in ChildUser.Load($"u.first_name = '{assignment.Text}'"))
+            foreach (var child in ChildUser.Load($"u.first_name = '{childAssignedComboBox.Text}'"))
             {
                 id = child.ChildId;
             }

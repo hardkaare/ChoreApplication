@@ -30,12 +30,12 @@
         {
             this.components = new System.ComponentModel.Container();
             this.upperPanel = new System.Windows.Forms.Panel();
-            this.ChildPointsLabel = new System.Windows.Forms.Label();
-            this.UserButton = new System.Windows.Forms.Button();
+            this.childPointsLabel = new System.Windows.Forms.Label();
+            this.userButton = new System.Windows.Forms.Button();
             this.titleText = new System.Windows.Forms.Label();
-            this.ChorePanel = new System.Windows.Forms.Panel();
+            this.chorePanel = new System.Windows.Forms.Panel();
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.NotificationAmount = new RoundButton();
+            this.notificationAmount = new RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
             this.rewardsLabel = new System.Windows.Forms.Label();
@@ -46,8 +46,8 @@
             this.rewardNavButton = new System.Windows.Forms.Button();
             this.RewardPanel = new System.Windows.Forms.Panel();
             this.leaderboardPanel = new System.Windows.Forms.Panel();
-            this.NotificationPanel = new System.Windows.Forms.Panel();
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
+            this.notificationPanel = new System.Windows.Forms.Panel();
+            this.toolTip = new System.Windows.Forms.ToolTip(this.components);
             this.upperPanel.SuspendLayout();
             this.navigationPanel.SuspendLayout();
             this.SuspendLayout();
@@ -57,8 +57,8 @@
             this.upperPanel.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.upperPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.upperPanel.Controls.Add(this.ChildPointsLabel);
-            this.upperPanel.Controls.Add(this.UserButton);
+            this.upperPanel.Controls.Add(this.childPointsLabel);
+            this.upperPanel.Controls.Add(this.userButton);
             this.upperPanel.Controls.Add(this.titleText);
             this.upperPanel.Location = new System.Drawing.Point(12, 12);
             this.upperPanel.Name = "upperPanel";
@@ -67,31 +67,31 @@
             // 
             // ChildPointsLabel
             // 
-            this.ChildPointsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.ChildPointsLabel.Location = new System.Drawing.Point(29, 0);
-            this.ChildPointsLabel.Name = "ChildPointsLabel";
-            this.ChildPointsLabel.Size = new System.Drawing.Size(104, 31);
-            this.ChildPointsLabel.TabIndex = 1;
-            this.ChildPointsLabel.Text = "Points:";
-            this.ChildPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.childPointsLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.childPointsLabel.Location = new System.Drawing.Point(29, 0);
+            this.childPointsLabel.Name = "ChildPointsLabel";
+            this.childPointsLabel.Size = new System.Drawing.Size(104, 31);
+            this.childPointsLabel.TabIndex = 1;
+            this.childPointsLabel.Text = "Points:";
+            this.childPointsLabel.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // UserButton
             // 
-            this.UserButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.UserButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
-            this.UserButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.UserButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.UserButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.UserButton.FlatAppearance.BorderSize = 0;
-            this.UserButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.UserButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.UserButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.UserButton.Location = new System.Drawing.Point(3, 3);
-            this.UserButton.Name = "UserButton";
-            this.UserButton.Size = new System.Drawing.Size(25, 25);
-            this.UserButton.TabIndex = 0;
-            this.UserButton.UseVisualStyleBackColor = true;
-            this.UserButton.Click += new System.EventHandler(this.UserButton_Click);
+            this.userButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.userButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
+            this.userButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.userButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.userButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.userButton.FlatAppearance.BorderSize = 0;
+            this.userButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.userButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.userButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.userButton.Location = new System.Drawing.Point(3, 3);
+            this.userButton.Name = "UserButton";
+            this.userButton.Size = new System.Drawing.Size(25, 25);
+            this.userButton.TabIndex = 0;
+            this.userButton.UseVisualStyleBackColor = true;
+            this.userButton.Click += new System.EventHandler(this.UserButton_Click);
             // 
             // titleText
             // 
@@ -107,19 +107,19 @@
             // 
             // ChorePanel
             // 
-            this.ChorePanel.AutoScroll = true;
-            this.ChorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.ChorePanel.Location = new System.Drawing.Point(12, 49);
-            this.ChorePanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.ChorePanel.Name = "ChorePanel";
-            this.ChorePanel.Size = new System.Drawing.Size(420, 415);
-            this.ChorePanel.TabIndex = 5;
-            this.ChorePanel.Visible = false;
+            this.chorePanel.AutoScroll = true;
+            this.chorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.chorePanel.Location = new System.Drawing.Point(12, 49);
+            this.chorePanel.MaximumSize = new System.Drawing.Size(420, 415);
+            this.chorePanel.Name = "ChorePanel";
+            this.chorePanel.Size = new System.Drawing.Size(420, 415);
+            this.chorePanel.TabIndex = 5;
+            this.chorePanel.Visible = false;
             // 
             // navigationPanel
             // 
             this.navigationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.navigationPanel.Controls.Add(this.NotificationAmount);
+            this.navigationPanel.Controls.Add(this.notificationAmount);
             this.navigationPanel.Controls.Add(this.notificationsLabel);
             this.navigationPanel.Controls.Add(this.leaderboardsLabel);
             this.navigationPanel.Controls.Add(this.rewardsLabel);
@@ -135,17 +135,17 @@
             // 
             // NotificationAmount
             // 
-            this.NotificationAmount.Enabled = false;
-            this.NotificationAmount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.NotificationAmount.Location = new System.Drawing.Point(364, -1);
-            this.NotificationAmount.Name = "NotificationAmount";
-            this.NotificationAmount.Size = new System.Drawing.Size(35, 35);
-            this.NotificationAmount.TabIndex = 0;
-            this.NotificationAmount.TabStop = false;
-            this.NotificationAmount.Text = "999";
-            this.NotificationAmount.UseVisualStyleBackColor = true;
+            this.notificationAmount.Enabled = false;
+            this.notificationAmount.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.notificationAmount.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.notificationAmount.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.notificationAmount.Location = new System.Drawing.Point(364, -1);
+            this.notificationAmount.Name = "NotificationAmount";
+            this.notificationAmount.Size = new System.Drawing.Size(35, 35);
+            this.notificationAmount.TabIndex = 0;
+            this.notificationAmount.TabStop = false;
+            this.notificationAmount.Text = "999";
+            this.notificationAmount.UseVisualStyleBackColor = true;
             // 
             // notificationsLabel
             // 
@@ -290,19 +290,19 @@
             // 
             // NotificationPanel
             // 
-            this.NotificationPanel.AutoScroll = true;
-            this.NotificationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.NotificationPanel.Location = new System.Drawing.Point(12, 49);
-            this.NotificationPanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.NotificationPanel.Name = "NotificationPanel";
-            this.NotificationPanel.Size = new System.Drawing.Size(420, 415);
-            this.NotificationPanel.TabIndex = 3;
-            this.NotificationPanel.Visible = false;
+            this.notificationPanel.AutoScroll = true;
+            this.notificationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.notificationPanel.Location = new System.Drawing.Point(12, 49);
+            this.notificationPanel.MaximumSize = new System.Drawing.Size(420, 415);
+            this.notificationPanel.Name = "NotificationPanel";
+            this.notificationPanel.Size = new System.Drawing.Size(420, 415);
+            this.notificationPanel.TabIndex = 3;
+            this.notificationPanel.Visible = false;
             // 
             // toolTip1
             // 
-            this.toolTip1.IsBalloon = true;
-            this.toolTip1.SetToolTip(UserButton, "Click here to log out.");
+            this.toolTip.IsBalloon = true;
+            this.toolTip.SetToolTip(userButton, "Click here to log out.");
             // 
             // ChildInterface
             // 
@@ -310,9 +310,9 @@
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(444, 561);
             this.Controls.Add(this.upperPanel);
-            this.Controls.Add(this.NotificationPanel);
+            this.Controls.Add(this.notificationPanel);
             this.Controls.Add(this.leaderboardPanel);
-            this.Controls.Add(this.ChorePanel);
+            this.Controls.Add(this.chorePanel);
             this.Controls.Add(this.RewardPanel);
             this.Controls.Add(this.navigationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -331,9 +331,9 @@
         #endregion
 
         private System.Windows.Forms.Panel upperPanel;
-        private System.Windows.Forms.Button UserButton;
+        private System.Windows.Forms.Button userButton;
         private System.Windows.Forms.Label titleText;
-        private System.Windows.Forms.Panel ChorePanel;
+        private System.Windows.Forms.Panel chorePanel;
         private System.Windows.Forms.Panel navigationPanel;
         private System.Windows.Forms.Label notificationsLabel;
         private System.Windows.Forms.Label leaderboardsLabel;
@@ -344,10 +344,10 @@
         private System.Windows.Forms.Button notificationsNavButton;
         private System.Windows.Forms.Button leadboardNavButton;
         private System.Windows.Forms.Button rewardNavButton;
-        private System.Windows.Forms.Label ChildPointsLabel;
+        private System.Windows.Forms.Label childPointsLabel;
         private System.Windows.Forms.Panel leaderboardPanel;
-        private System.Windows.Forms.Panel NotificationPanel;
-        private RoundButton NotificationAmount;
-        private System.Windows.Forms.ToolTip toolTip1;
+        private System.Windows.Forms.Panel notificationPanel;
+        private RoundButton notificationAmount;
+        private System.Windows.Forms.ToolTip toolTip;
     }
 }

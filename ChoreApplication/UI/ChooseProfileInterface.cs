@@ -8,7 +8,7 @@ namespace ChoreApplication.UI
 {
     public partial class ChooseProfileInterface : Form
     {
-        public static int activeId;
+        public static int ActiveID;
 
         public string Surname { get; set; }
 
@@ -17,21 +17,21 @@ namespace ChoreApplication.UI
             InitializeComponent();
         }
 
-        private Control AddLabel(string labelText, bool bold, int posX, int posY)
+        private Control AddLabel(string labelText, bool isBold, int locationX, int locationY)
         {
             var label = new Label
             {
                 Text = labelText,
                 TextAlign = ContentAlignment.MiddleCenter,
-                Location = new Point(posX, posY),
+                Location = new Point(locationX, locationY),
                 Size = new Size(75, 20),
             };
-            if (!bold)
+            if (!isBold)
             {
                 label.Font = Properties.Settings.Default.StandardFont;
                 return label;
             }
-            if (bold)
+            if (isBold)
             {
                 label.Font = Properties.Settings.Default.StandardFontBold;
                 return label;
@@ -46,31 +46,31 @@ namespace ChoreApplication.UI
             string query = "SELECT last_name FROM parent";
             DatabaseFunctions.DatabaseConnection.Open();
             //Creates the SqlCommand and executes it
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Surname = reader["last_name"].ToString();
             }
             DatabaseFunctions.DatabaseConnection.Close();
-            SurnameLabel.Text = "The " + Surname + "'s";
+            surnameLabel.Text = "The " + Surname + "'s";
 
             #endregion Load last name
 
             #region Load Users
 
-            List<ParentUser> ParentUsers = ParentUser.Load("");
-            List<ChildUser> childUsers = ChildUser.Load("");
+            var parentUsers = ParentUser.Load("");
+            var childUsers = ChildUser.Load("");
 
             #endregion Load Users
 
-            int y = 1;
-            int x = 1;
-            foreach (ParentUser parent in ParentUsers)
+            int locationCounter1 = 1;
+            int locationCounter2 = 1;
+            foreach (ParentUser parent in parentUsers)
             {
-                Button UserButton = new Button
+                Button userButton = new Button
                 {
-                    Location = new Point(x * 120, y * 100 - 90),
+                    Location = new Point(locationCounter2 * 120, locationCounter1 * 100 - 90),
                     Size = new Size(60, 60),
                     Tag = parent.ID,
                     FlatStyle = FlatStyle.Flat,
@@ -78,29 +78,29 @@ namespace ChoreApplication.UI
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(parent.FirstName, true, UserButton.Location.X - 7, UserButton.Location.Y + UserButton.Height);
-                UserButton.FlatAppearance.BorderColor = SystemColors.Window;
-                UserButton.FlatAppearance.BorderSize = 0;
-                UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-                UserButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-                UserButton.Click += new EventHandler(UserButton_Click);
-                ProfilesPanel.Controls.Add(UserButton);
-                ProfilesPanel.Controls.Add(NameLabel);
-                if (x == 1)
+                var nameLabel = AddLabel(parent.FirstName, true, userButton.Location.X - 7, userButton.Location.Y + userButton.Height);
+                userButton.FlatAppearance.BorderColor = SystemColors.Window;
+                userButton.FlatAppearance.BorderSize = 0;
+                userButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+                userButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+                userButton.Click += new EventHandler(UserButton_Click);
+                profilesPanel.Controls.Add(userButton);
+                profilesPanel.Controls.Add(nameLabel);
+                if (locationCounter2 == 1)
                 {
-                    x = 2;
+                    locationCounter2 = 2;
                 }
-                else if (x == 2)
+                else if (locationCounter2 == 2)
                 {
-                    x = 1;
-                    y++;
+                    locationCounter2 = 1;
+                    locationCounter1++;
                 }
             }
             foreach (ChildUser child in childUsers)
             {
-                Button UserButton = new Button
+                Button userButton = new Button
                 {
-                    Location = new Point(x * 120, y * 100 - 90),
+                    Location = new Point(locationCounter2 * 120, locationCounter1 * 100 - 90),
                     Size = new Size(60, 60),
                     Tag = child.ID,
                     FlatStyle = FlatStyle.Flat,
@@ -108,22 +108,22 @@ namespace ChoreApplication.UI
                     BackgroundImageLayout = ImageLayout.Zoom,
                     Cursor = Cursors.Hand,
                 };
-                var NameLabel = AddLabel(child.FirstName, false, UserButton.Location.X - 7, UserButton.Location.Y + UserButton.Height);
-                UserButton.FlatAppearance.BorderColor = SystemColors.Window;
-                UserButton.FlatAppearance.BorderSize = 0;
-                UserButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-                UserButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-                UserButton.Click += new EventHandler(UserButton_Click);
-                ProfilesPanel.Controls.Add(UserButton);
-                ProfilesPanel.Controls.Add(NameLabel);
-                if (x == 1)
+                var nameLabel = AddLabel(child.FirstName, false, userButton.Location.X - 7, userButton.Location.Y + userButton.Height);
+                userButton.FlatAppearance.BorderColor = SystemColors.Window;
+                userButton.FlatAppearance.BorderSize = 0;
+                userButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+                userButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+                userButton.Click += new EventHandler(UserButton_Click);
+                profilesPanel.Controls.Add(userButton);
+                profilesPanel.Controls.Add(nameLabel);
+                if (locationCounter2 == 1)
                 {
-                    x = 2;
+                    locationCounter2 = 2;
                 }
-                else if (x == 2)
+                else if (locationCounter2 == 2)
                 {
-                    x = 1;
-                    y++;
+                    locationCounter2 = 1;
+                    locationCounter1++;
                 }
             }
         }
@@ -131,9 +131,9 @@ namespace ChoreApplication.UI
         private void UserButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            activeId = (int)clickedButton.Tag;
-            var pincodeUI = new PinCodeInterface();
-            pincodeUI.Show();
+            ActiveID = (int)clickedButton.Tag;
+            var pinCodeUI = new PinCodeInterface();
+            pinCodeUI.Show();
             this.Close();
         }
 

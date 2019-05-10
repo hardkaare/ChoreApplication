@@ -6,21 +6,19 @@ namespace ChoreApplication.UI
 {
     public partial class LoginInterface : Form
     {
-        public static ChooseProfileInterface ChooseProfile;
-
         public LoginInterface()
         {
             InitializeComponent();
-            testUsers();
+            CheckIfUsersExist();
         }
 
-        private void testUsers()
+        private void CheckIfUsersExist()
         {
             bool users = true;
             string query = "SELECT user_id FROM users";
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand comd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = comd.ExecuteReader();
             if (!reader.HasRows)
             {
                 users = false;
@@ -42,37 +40,37 @@ namespace ChoreApplication.UI
         private void EmailTextbox_Click(object sender, EventArgs e)
         {
             //Få tekstbokse til at slette indhold ved første selection.
-            EmailInput.Text = "";
+            emailTextBox.Text = "";
         }
 
-        private void PwdTextbox_Click(object sender, EventArgs e)
+        private void PasswordTextBox_Click(object sender, EventArgs e)
         {
-            PasswordInput.Text = "";
-            PasswordInput.UseSystemPasswordChar = true;
+            passwordTextBox.Text = "";
+            passwordTextBox.UseSystemPasswordChar = true;
         }
 
         private void LoginButton_Click(object sender, EventArgs e)
         {
-            string Emailinput = EmailInput.Text;
-            string passwordInput = PasswordInput.Text;
-            bool match = false;
-            if (string.IsNullOrEmpty(Emailinput) || string.IsNullOrEmpty(passwordInput))
+            string emailInput = emailTextBox.Text;
+            string passwordInput = passwordTextBox.Text;
+            bool isMatch = false;
+            if (string.IsNullOrEmpty(emailInput) || string.IsNullOrEmpty(passwordInput))
             {
-                MessageBox.Show("Please enter your E-mail and password.");
+                MessageBox.Show("Please enter your E-mail and password.", "Error");
                 return;
             }
 
             string loginQuery = "SELECT email, password FROM dbo.parent";
-            SqlCommand cmd = new SqlCommand(loginQuery, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(loginQuery, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 string email = reader["email"].ToString();
                 string password = reader["password"].ToString();
-                if (Emailinput == email && passwordInput == password)
+                if (emailInput == email && passwordInput == password)
                 {
-                    match = true;
+                    isMatch = true;
                 }
                 else
                 {
@@ -81,11 +79,11 @@ namespace ChoreApplication.UI
                     return;
                 }
             }
-            if (match == true)
+            if (isMatch == true)
             {
                 DatabaseFunctions.DatabaseConnection.Close();
-                ChooseProfile = new ChooseProfileInterface();
-                ChooseProfile.Show();
+                var chooseProfileUI = new ChooseProfileInterface();
+                chooseProfileUI.Show();
                 this.Close();
             }
         }

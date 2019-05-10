@@ -31,7 +31,7 @@ namespace ChoreApplication.UI
 
             if (conversion)
             {
-                string query = string.Format("SELECT pincode FROM users WHERE user_id={0}", ChooseProfileInterface.activeId);
+                string query = string.Format("SELECT pincode FROM users WHERE user_id={0}", ChooseProfileInterface.ActiveID);
                 DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
@@ -59,7 +59,7 @@ namespace ChoreApplication.UI
             DatabaseFunctions.DatabaseConnection.Close();
             if (correctpin == true)
             {
-                if (ChooseProfileInterface.activeId == 1)
+                if (ChooseProfileInterface.ActiveID == 1)
                 {
                     var sessionList = ParentUser.Load("");
                     Session = sessionList[0];
@@ -69,7 +69,7 @@ namespace ChoreApplication.UI
                 }
                 else
                 {
-                    var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.activeId.ToString());
+                    var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.ActiveID.ToString());
                     Session = sessionList[0];
                     var childUI = new ChildInterface(sessionList[0]);//sikkert ikke done
                     childUI.Show();
