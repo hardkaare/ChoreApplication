@@ -40,7 +40,7 @@ namespace ChoreApplication.UI
             _childrenNames = new Dictionary<int, string>();
             foreach (var child in _childUsers)
             {
-                _childrenNames.Add(child.ChildId, child.FirstName);
+                _childrenNames.Add(child.ChildID, child.FirstName);
             }
         }
 

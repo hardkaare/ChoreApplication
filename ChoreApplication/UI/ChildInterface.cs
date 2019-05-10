@@ -43,7 +43,7 @@ namespace ChoreApplication.UI
             _childrenNames = new Dictionary<int, string>();
             foreach (var child in _childUsers)
             {
-                _childrenNames.Add(child.ChildId, child.FirstName);
+                _childrenNames.Add(child.ChildID, child.FirstName);
             }
         }
 
@@ -83,8 +83,8 @@ namespace ChoreApplication.UI
 
         public void LoadChores()
         {
-            _activeConcreteChores = Concrete.Load($"(status=1 OR status=2) AND ch.child_id={Session.ChildId} ORDER BY status ASC");
-            _activeRepeatableChores = Repeatable.Load($"ch.child_id={Session.ChildId}");
+            _activeConcreteChores = Concrete.Load($"(status=1 OR status=2) AND ch.child_id={Session.ChildID} ORDER BY status ASC");
+            _activeRepeatableChores = Repeatable.Load($"ch.child_id={Session.ChildID}");
             chorePanel.Controls.Clear();
             int i = 0;
             int panelDistance = 95;
@@ -272,7 +272,7 @@ namespace ChoreApplication.UI
 
         private void LoadRewards()
         {
-            _rewards = Reward.Load("child_id=" + Session.ChildId);
+            _rewards = Reward.Load("child_id=" + Session.ChildID);
             RewardPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 72;

@@ -140,7 +140,7 @@ namespace ChoreApplication.UI
             this.childAssignedCombobox.Location = new System.Drawing.Point(65, 310);
             this.childAssignedCombobox.Name = "childAssignedCombobox";
             this.childAssignedCombobox.Size = new System.Drawing.Size(200, 24);
-            this.childAssignedCombobox.TabIndex = 13;
+            this.childAssignedCombobox.TabIndex = 6;
             // 
             // dueDateTimePicker
             // 
@@ -183,6 +183,7 @@ namespace ChoreApplication.UI
             // 
             this.chorePointsTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.chorePointsTextBox.Location = new System.Drawing.Point(65, 106);
+            this.chorePointsTextBox.MaxLength = 50;
             this.chorePointsTextBox.Name = "chorePointsTextBox";
             this.chorePointsTextBox.Size = new System.Drawing.Size(200, 22);
             this.chorePointsTextBox.TabIndex = 2;

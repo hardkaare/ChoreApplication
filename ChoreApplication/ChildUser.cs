@@ -10,7 +10,7 @@ namespace ChoreApplication
         // Gets and sets the points for the ChildUser
         public int Points { get; set; }
 
-        public int ChildId { get; private set; }
+        public int ChildID { get; private set; }
 
         #endregion Properties
 
@@ -19,7 +19,7 @@ namespace ChoreApplication
         public ChildUser(int id, int childId, string firstName, int points, string pincode) : base(id, firstName, pincode)
         {
             Points = points;
-            ChildId = childId;
+            ChildID = childId;
         }
 
         #endregion Constructors
@@ -33,13 +33,13 @@ namespace ChoreApplication
         public static void Insert(string firstName, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}', '{1}')", firstName, pincode);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
             //executes the query and return the first column of the first row in the result set returned by the query
-            int id = (int)cmd.ExecuteScalar();
+            int id = (int)command.ExecuteScalar();
             string parentQuery = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
-            cmd = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
-            cmd.ExecuteNonQuery();
+            command = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -50,11 +50,11 @@ namespace ChoreApplication
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, ID);
             string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}", Points, ID);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(childQuery, DatabaseFunctions.DatabaseConnection);
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
+            command = new SqlCommand(childQuery, DatabaseFunctions.DatabaseConnection);
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -70,11 +70,10 @@ namespace ChoreApplication
                 whereClause = " WHERE " + whereClause;
             }
             List<ChildUser> children = new List<ChildUser>();
-
-            string query = string.Format("SELECT u.user_id,c.child_id,u.first_name,c.points,u.pincode FROM users AS u INNER JOIN child AS c ON u.user_id = c.user_id{0}", whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            string query = string.Format("SELECT u.user_id,c.child_id,u.first_name,c.points,u.pincode FROM users AS u INNER JOIN child AS c ON u.user_id = c.user_id{0}", whereClause);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 int id = (int)reader["user_id"];

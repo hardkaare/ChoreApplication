@@ -11,7 +11,7 @@ namespace ChoreApplication
 
         public string Email { get; set; }
         public string Password { get; set; }
-        public string Lastname { get; set; }
+        public string LastName { get; set; }
 
         #endregion Properties
 
@@ -21,7 +21,7 @@ namespace ChoreApplication
         {
             Email = email;
             Password = password;
-            Lastname = lastName;
+            LastName = lastName;
         }
 
         #endregion Constructors
@@ -39,13 +39,13 @@ namespace ChoreApplication
         public static void Insert(string firstname, string lastname, string email, string password, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}','{1}')", firstname, pincode);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
             //executes the query and return the first column of the first row in the result set returned by the query
-            int id = (int)cmd.ExecuteScalar();
+            int id = (int)command.ExecuteScalar();
             string parentQuery = string.Format("INSERT INTO dbo.parent(user_id, last_name, email, password) VALUES ('{0}','{1}','{2}','{3}')", id, lastname, email, password);
-            cmd = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
-            cmd.ExecuteNonQuery();
+            command = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -55,12 +55,12 @@ namespace ChoreApplication
         public void Update()
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id=1", FirstName, Pincode);
-            SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            cmd.ExecuteNonQuery();
-            string parentQuery = string.Format("UPDATE dbo.parent SET last_name='{0}', email='{1}', password='{2}' WHERE user_id=1", Lastname, Email, Password);
-            cmd = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
+            string parentQuery = string.Format("UPDATE dbo.parent SET last_name='{0}', email='{1}', password='{2}' WHERE user_id=1", LastName, Email, Password);
+            command = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -78,9 +78,9 @@ namespace ChoreApplication
             List<ParentUser> parents = new List<ParentUser>();
 
             string query = string.Format("SELECT u.user_id,u.first_name,p.last_name,p.email,p.[password],u.pincode FROM users AS u INNER JOIN parent AS p ON u.user_id = p.user_id{0};", whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 int id = (int)reader["user_id"];
@@ -101,7 +101,7 @@ namespace ChoreApplication
 
         public override string ToString()
         {
-            return $"Parent with the last name {Lastname} has registered with E-mail: {Email} and password {Password}.";
+            return $"Parent with the last name {LastName} has registered with E-mail: {Email} and password {Password}.";
         }
 
         #endregion Public Helpers
