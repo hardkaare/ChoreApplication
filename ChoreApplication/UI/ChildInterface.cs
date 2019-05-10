@@ -8,7 +8,7 @@ namespace ChoreApplication.UI
     public partial class ChildInterface : Form
     {
         public int UI = 0;
-        public ChildUser Session { get; set; }
+        private ChildUser _session;
         private Dictionary<int, string> _statusValues;
         private Dictionary<int, string> _childrenNames;
         private List<ChildUser> _childUsers;
@@ -19,7 +19,7 @@ namespace ChoreApplication.UI
 
         public ChildInterface(ChildUser child)
         {
-            Session = child;
+            _session = child;
             InitializeComponent();
             InitializeDictionaries();
             LoadPoints();
@@ -29,7 +29,7 @@ namespace ChoreApplication.UI
 
         private void LoadPoints()
         {
-            childPointsLabel.Text = "Points: " + Session.Points.ToString();
+            childPointsLabel.Text = "Points: " + _session.Points.ToString();
         }
 
         private void InitializeDictionaries()
@@ -83,8 +83,8 @@ namespace ChoreApplication.UI
 
         public void LoadChores()
         {
-            _activeConcreteChores = Concrete.Load($"(status=1 OR status=2) AND ch.child_id={Session.ChildID} ORDER BY status ASC");
-            _activeRepeatableChores = Repeatable.Load($"ch.child_id={Session.ChildID}");
+            _activeConcreteChores = Concrete.Load($"(status=1 OR status=2) AND ch.child_id={_session.ChildID} ORDER BY status ASC");
+            _activeRepeatableChores = Repeatable.Load($"ch.child_id={_session.ChildID}");
             chorePanel.Controls.Clear();
             int i = 0;
             int panelDistance = 95;
@@ -272,7 +272,7 @@ namespace ChoreApplication.UI
 
         private void LoadRewards()
         {
-            _rewards = Reward.Load("child_id=" + Session.ChildID);
+            _rewards = Reward.Load("child_id=" + _session.ChildID);
             RewardPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 72;
@@ -281,7 +281,7 @@ namespace ChoreApplication.UI
             {
                 var rewardName = reward.Name.ToString();
                 var rewardPointsRequired = "Points required: " + reward.PointsRequired.ToString();
-                var childPoints = (double)Session.Points;
+                var childPoints = (double)_session.Points;
                 var requiredPoints = (double)reward.PointsRequired;
                 var progressBarValue = (childPoints / requiredPoints) * 100;
 
@@ -350,8 +350,8 @@ namespace ChoreApplication.UI
             var confirmDelete = MessageBox.Show("Are you sure you want to claim this reward?", "Claim Reward", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
             {
-                Session.Points -= currentReward.PointsRequired;
-                Session.Update();
+                _session.Points -= currentReward.PointsRequired;
+                _session.Update();
                 currentReward.Delete();
                 LoadPoints();
                 LoadRewards();
@@ -437,7 +437,7 @@ namespace ChoreApplication.UI
 
         private void LoadNotification()
         {
-            _notifications = Notification.Load("user_id=" + Session.ID);
+            _notifications = Notification.Load("user_id=" + _session.ID);
             notificationPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 50;
@@ -495,7 +495,7 @@ namespace ChoreApplication.UI
 
         private void LoadAmountOfNotifications()
         {
-            _notifications = Notification.Load("user_id=" + Session.ID);
+            _notifications = Notification.Load("user_id=" + _session.ID);
             notificationAmount.Text = "";
             if (_notifications.Count == 0)
             {
@@ -538,7 +538,7 @@ namespace ChoreApplication.UI
         private void UserButton_Click(object sender, EventArgs e)
         {
             var loginInterface = new LoginInterface();
-            Session = default;
+            _session = default;
             loginInterface.Show();
             this.Close();
         }
