@@ -29,40 +29,39 @@
         private void InitializeComponent()
         {
             this.pincodePanel = new System.Windows.Forms.Panel();
+            this.roundButton0 = new RoundButton();
+            this.roundButtonDelete = new RoundButton();
+            this.roundButton9 = new RoundButton();
+            this.roundButton8 = new RoundButton();
+            this.roundButton7 = new RoundButton();
+            this.roundButton6 = new RoundButton();
+            this.roundButton5 = new RoundButton();
+            this.roundButton4 = new RoundButton();
+            this.roundButton3 = new RoundButton();
+            this.roundButton2 = new RoundButton();
             this.roundButton1 = new RoundButton();
-            this.rbZero = new RoundButton();
-            this.rbDelete = new RoundButton();
-            this.rbNine = new RoundButton();
-            this.rbEight = new RoundButton();
-            this.rbSeven = new RoundButton();
-            this.rbSix = new RoundButton();
-            this.rbFive = new RoundButton();
-            this.rbFour = new RoundButton();
-            this.rbThree = new RoundButton();
-            this.rbTwo = new RoundButton();
-            this.rbOne = new RoundButton();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.enterpinTextBox = new System.Windows.Forms.TextBox();
-            this.rbAccept = new RoundButton();
-            this.WelcomeLabel = new System.Windows.Forms.Label();
-            this.BackButton = new System.Windows.Forms.Button();
+            this.roundButtonAccept = new RoundButton();
+            this.welcomeLabel = new System.Windows.Forms.Label();
+            this.backButton = new System.Windows.Forms.Button();
             this.pincodePanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // pincodePanel
             // 
+            this.pincodePanel.Controls.Add(this.roundButtonAccept);
+            this.pincodePanel.Controls.Add(this.roundButton0);
+            this.pincodePanel.Controls.Add(this.roundButtonDelete);
+            this.pincodePanel.Controls.Add(this.roundButton9);
+            this.pincodePanel.Controls.Add(this.roundButton8);
+            this.pincodePanel.Controls.Add(this.roundButton7);
+            this.pincodePanel.Controls.Add(this.roundButton6);
+            this.pincodePanel.Controls.Add(this.roundButton5);
+            this.pincodePanel.Controls.Add(this.roundButton4);
+            this.pincodePanel.Controls.Add(this.roundButton3);
+            this.pincodePanel.Controls.Add(this.roundButton2);
             this.pincodePanel.Controls.Add(this.roundButton1);
-            this.pincodePanel.Controls.Add(this.rbZero);
-            this.pincodePanel.Controls.Add(this.rbDelete);
-            this.pincodePanel.Controls.Add(this.rbNine);
-            this.pincodePanel.Controls.Add(this.rbEight);
-            this.pincodePanel.Controls.Add(this.rbSeven);
-            this.pincodePanel.Controls.Add(this.rbSix);
-            this.pincodePanel.Controls.Add(this.rbFive);
-            this.pincodePanel.Controls.Add(this.rbFour);
-            this.pincodePanel.Controls.Add(this.rbThree);
-            this.pincodePanel.Controls.Add(this.rbTwo);
-            this.pincodePanel.Controls.Add(this.rbOne);
             this.pincodePanel.Controls.Add(this.pincodeLabel);
             this.pincodePanel.Controls.Add(this.enterpinTextBox);
             this.pincodePanel.Location = new System.Drawing.Point(11, 40);
@@ -71,7 +70,205 @@
             this.pincodePanel.Size = new System.Drawing.Size(312, 353);
             this.pincodePanel.TabIndex = 0;
             // 
-            // roundButton1
+            // roundButtonAccept
+            // 
+            this.roundButtonAccept.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButtonAccept.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButtonAccept.FlatAppearance.BorderSize = 0;
+            this.roundButtonAccept.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButtonAccept.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButtonAccept.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButtonAccept.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButtonAccept.Location = new System.Drawing.Point(191, 271);
+            this.roundButtonAccept.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButtonAccept.Name = "roundButtonAccept";
+            this.roundButtonAccept.Size = new System.Drawing.Size(66, 68);
+            this.roundButtonAccept.TabIndex = 15;
+            this.roundButtonAccept.Text = "Accept";
+            this.roundButtonAccept.UseVisualStyleBackColor = true;
+            this.roundButtonAccept.Click += new System.EventHandler(this.AcceptButton_click);
+            // 
+            // rbZero
+            // 
+            this.roundButton0.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton0.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton0.FlatAppearance.BorderSize = 0;
+            this.roundButton0.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton0.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton0.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton0.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton0.Location = new System.Drawing.Point(120, 271);
+            this.roundButton0.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton0.Name = "rbZero";
+            this.roundButton0.Size = new System.Drawing.Size(66, 68);
+            this.roundButton0.TabIndex = 14;
+            this.roundButton0.Text = "0";
+            this.roundButton0.UseVisualStyleBackColor = true;
+            this.roundButton0.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // roundButtonDelete
+            // 
+            this.roundButtonDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButtonDelete.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButtonDelete.FlatAppearance.BorderSize = 0;
+            this.roundButtonDelete.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButtonDelete.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButtonDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButtonDelete.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButtonDelete.Location = new System.Drawing.Point(50, 271);
+            this.roundButtonDelete.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButtonDelete.Name = "roundButtonDelete";
+            this.roundButtonDelete.Size = new System.Drawing.Size(66, 68);
+            this.roundButtonDelete.TabIndex = 13;
+            this.roundButtonDelete.Text = "Delete";
+            this.roundButtonDelete.UseVisualStyleBackColor = true;
+            this.roundButtonDelete.Click += new System.EventHandler(this.DeleteButton_Click);
+            // 
+            // rbNine
+            // 
+            this.roundButton9.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton9.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton9.FlatAppearance.BorderSize = 0;
+            this.roundButton9.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton9.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton9.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton9.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton9.Location = new System.Drawing.Point(191, 198);
+            this.roundButton9.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton9.Name = "rbNine";
+            this.roundButton9.Size = new System.Drawing.Size(66, 68);
+            this.roundButton9.TabIndex = 12;
+            this.roundButton9.Text = "9";
+            this.roundButton9.UseVisualStyleBackColor = true;
+            this.roundButton9.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbEight
+            // 
+            this.roundButton8.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton8.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton8.FlatAppearance.BorderSize = 0;
+            this.roundButton8.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton8.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton8.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton8.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton8.Location = new System.Drawing.Point(120, 198);
+            this.roundButton8.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton8.Name = "rbEight";
+            this.roundButton8.Size = new System.Drawing.Size(66, 68);
+            this.roundButton8.TabIndex = 11;
+            this.roundButton8.Text = "8";
+            this.roundButton8.UseVisualStyleBackColor = true;
+            this.roundButton8.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbSeven
+            // 
+            this.roundButton7.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton7.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton7.FlatAppearance.BorderSize = 0;
+            this.roundButton7.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton7.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton7.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton7.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton7.Location = new System.Drawing.Point(50, 198);
+            this.roundButton7.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton7.Name = "rbSeven";
+            this.roundButton7.Size = new System.Drawing.Size(66, 68);
+            this.roundButton7.TabIndex = 10;
+            this.roundButton7.Text = "7";
+            this.roundButton7.UseVisualStyleBackColor = true;
+            this.roundButton7.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbSix
+            // 
+            this.roundButton6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton6.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton6.FlatAppearance.BorderSize = 0;
+            this.roundButton6.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton6.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton6.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton6.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton6.Location = new System.Drawing.Point(191, 125);
+            this.roundButton6.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton6.Name = "rbSix";
+            this.roundButton6.Size = new System.Drawing.Size(66, 68);
+            this.roundButton6.TabIndex = 9;
+            this.roundButton6.Text = "6";
+            this.roundButton6.UseVisualStyleBackColor = true;
+            this.roundButton6.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbFive
+            // 
+            this.roundButton5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton5.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton5.FlatAppearance.BorderSize = 0;
+            this.roundButton5.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton5.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton5.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton5.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton5.Location = new System.Drawing.Point(120, 125);
+            this.roundButton5.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton5.Name = "rbFive";
+            this.roundButton5.Size = new System.Drawing.Size(66, 68);
+            this.roundButton5.TabIndex = 8;
+            this.roundButton5.Text = "5";
+            this.roundButton5.UseVisualStyleBackColor = true;
+            this.roundButton5.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbFour
+            // 
+            this.roundButton4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton4.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton4.FlatAppearance.BorderSize = 0;
+            this.roundButton4.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton4.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton4.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton4.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton4.Location = new System.Drawing.Point(50, 125);
+            this.roundButton4.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton4.Name = "rbFour";
+            this.roundButton4.Size = new System.Drawing.Size(66, 68);
+            this.roundButton4.TabIndex = 7;
+            this.roundButton4.Text = "4";
+            this.roundButton4.UseVisualStyleBackColor = true;
+            this.roundButton4.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbThree
+            // 
+            this.roundButton3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton3.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton3.FlatAppearance.BorderSize = 0;
+            this.roundButton3.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton3.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton3.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton3.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton3.Location = new System.Drawing.Point(191, 55);
+            this.roundButton3.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton3.Name = "rbThree";
+            this.roundButton3.Size = new System.Drawing.Size(66, 68);
+            this.roundButton3.TabIndex = 6;
+            this.roundButton3.Text = "3";
+            this.roundButton3.UseVisualStyleBackColor = true;
+            this.roundButton3.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbTwo
+            // 
+            this.roundButton2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.roundButton2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.roundButton2.FlatAppearance.BorderSize = 0;
+            this.roundButton2.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton2.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton2.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.roundButton2.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
+            this.roundButton2.Location = new System.Drawing.Point(120, 55);
+            this.roundButton2.Margin = new System.Windows.Forms.Padding(2);
+            this.roundButton2.Name = "rbTwo";
+            this.roundButton2.Size = new System.Drawing.Size(66, 68);
+            this.roundButton2.TabIndex = 5;
+            this.roundButton2.Text = "2";
+            this.roundButton2.UseVisualStyleBackColor = true;
+            this.roundButton2.Click += new System.EventHandler(this.OneButton_Click);
+            // 
+            // rbOne
             // 
             this.roundButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -80,212 +277,14 @@
             this.roundButton1.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.roundButton1.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.roundButton1.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.roundButton1.Location = new System.Drawing.Point(191, 271);
+            this.roundButton1.Location = new System.Drawing.Point(50, 55);
             this.roundButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton1.Name = "roundButton1";
+            this.roundButton1.Name = "rbOne";
             this.roundButton1.Size = new System.Drawing.Size(66, 68);
-            this.roundButton1.TabIndex = 15;
-            this.roundButton1.Text = "Accept";
+            this.roundButton1.TabIndex = 4;
+            this.roundButton1.Text = "1";
             this.roundButton1.UseVisualStyleBackColor = true;
-            this.roundButton1.Click += new System.EventHandler(this.AcceptButton_click);
-            // 
-            // rbZero
-            // 
-            this.rbZero.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbZero.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbZero.FlatAppearance.BorderSize = 0;
-            this.rbZero.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbZero.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbZero.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbZero.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbZero.Location = new System.Drawing.Point(120, 271);
-            this.rbZero.Margin = new System.Windows.Forms.Padding(2);
-            this.rbZero.Name = "rbZero";
-            this.rbZero.Size = new System.Drawing.Size(66, 68);
-            this.rbZero.TabIndex = 14;
-            this.rbZero.Text = "0";
-            this.rbZero.UseVisualStyleBackColor = true;
-            this.rbZero.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbDelete
-            // 
-            this.rbDelete.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbDelete.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbDelete.FlatAppearance.BorderSize = 0;
-            this.rbDelete.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbDelete.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbDelete.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbDelete.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbDelete.Location = new System.Drawing.Point(50, 271);
-            this.rbDelete.Margin = new System.Windows.Forms.Padding(2);
-            this.rbDelete.Name = "rbDelete";
-            this.rbDelete.Size = new System.Drawing.Size(66, 68);
-            this.rbDelete.TabIndex = 13;
-            this.rbDelete.Text = "Delete";
-            this.rbDelete.UseVisualStyleBackColor = true;
-            this.rbDelete.Click += new System.EventHandler(this.DeleteButton_Click);
-            // 
-            // rbNine
-            // 
-            this.rbNine.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbNine.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbNine.FlatAppearance.BorderSize = 0;
-            this.rbNine.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbNine.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbNine.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbNine.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbNine.Location = new System.Drawing.Point(191, 198);
-            this.rbNine.Margin = new System.Windows.Forms.Padding(2);
-            this.rbNine.Name = "rbNine";
-            this.rbNine.Size = new System.Drawing.Size(66, 68);
-            this.rbNine.TabIndex = 12;
-            this.rbNine.Text = "9";
-            this.rbNine.UseVisualStyleBackColor = true;
-            this.rbNine.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbEight
-            // 
-            this.rbEight.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbEight.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbEight.FlatAppearance.BorderSize = 0;
-            this.rbEight.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbEight.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbEight.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbEight.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbEight.Location = new System.Drawing.Point(120, 198);
-            this.rbEight.Margin = new System.Windows.Forms.Padding(2);
-            this.rbEight.Name = "rbEight";
-            this.rbEight.Size = new System.Drawing.Size(66, 68);
-            this.rbEight.TabIndex = 11;
-            this.rbEight.Text = "8";
-            this.rbEight.UseVisualStyleBackColor = true;
-            this.rbEight.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbSeven
-            // 
-            this.rbSeven.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbSeven.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbSeven.FlatAppearance.BorderSize = 0;
-            this.rbSeven.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbSeven.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbSeven.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbSeven.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbSeven.Location = new System.Drawing.Point(50, 198);
-            this.rbSeven.Margin = new System.Windows.Forms.Padding(2);
-            this.rbSeven.Name = "rbSeven";
-            this.rbSeven.Size = new System.Drawing.Size(66, 68);
-            this.rbSeven.TabIndex = 10;
-            this.rbSeven.Text = "7";
-            this.rbSeven.UseVisualStyleBackColor = true;
-            this.rbSeven.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbSix
-            // 
-            this.rbSix.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbSix.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbSix.FlatAppearance.BorderSize = 0;
-            this.rbSix.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbSix.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbSix.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbSix.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbSix.Location = new System.Drawing.Point(191, 125);
-            this.rbSix.Margin = new System.Windows.Forms.Padding(2);
-            this.rbSix.Name = "rbSix";
-            this.rbSix.Size = new System.Drawing.Size(66, 68);
-            this.rbSix.TabIndex = 9;
-            this.rbSix.Text = "6";
-            this.rbSix.UseVisualStyleBackColor = true;
-            this.rbSix.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbFive
-            // 
-            this.rbFive.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbFive.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbFive.FlatAppearance.BorderSize = 0;
-            this.rbFive.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbFive.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbFive.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbFive.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbFive.Location = new System.Drawing.Point(120, 125);
-            this.rbFive.Margin = new System.Windows.Forms.Padding(2);
-            this.rbFive.Name = "rbFive";
-            this.rbFive.Size = new System.Drawing.Size(66, 68);
-            this.rbFive.TabIndex = 8;
-            this.rbFive.Text = "5";
-            this.rbFive.UseVisualStyleBackColor = true;
-            this.rbFive.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbFour
-            // 
-            this.rbFour.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbFour.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbFour.FlatAppearance.BorderSize = 0;
-            this.rbFour.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbFour.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbFour.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbFour.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbFour.Location = new System.Drawing.Point(50, 125);
-            this.rbFour.Margin = new System.Windows.Forms.Padding(2);
-            this.rbFour.Name = "rbFour";
-            this.rbFour.Size = new System.Drawing.Size(66, 68);
-            this.rbFour.TabIndex = 7;
-            this.rbFour.Text = "4";
-            this.rbFour.UseVisualStyleBackColor = true;
-            this.rbFour.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbThree
-            // 
-            this.rbThree.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbThree.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbThree.FlatAppearance.BorderSize = 0;
-            this.rbThree.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbThree.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbThree.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbThree.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbThree.Location = new System.Drawing.Point(191, 55);
-            this.rbThree.Margin = new System.Windows.Forms.Padding(2);
-            this.rbThree.Name = "rbThree";
-            this.rbThree.Size = new System.Drawing.Size(66, 68);
-            this.rbThree.TabIndex = 6;
-            this.rbThree.Text = "3";
-            this.rbThree.UseVisualStyleBackColor = true;
-            this.rbThree.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbTwo
-            // 
-            this.rbTwo.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbTwo.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbTwo.FlatAppearance.BorderSize = 0;
-            this.rbTwo.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbTwo.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbTwo.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbTwo.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbTwo.Location = new System.Drawing.Point(120, 55);
-            this.rbTwo.Margin = new System.Windows.Forms.Padding(2);
-            this.rbTwo.Name = "rbTwo";
-            this.rbTwo.Size = new System.Drawing.Size(66, 68);
-            this.rbTwo.TabIndex = 5;
-            this.rbTwo.Text = "2";
-            this.rbTwo.UseVisualStyleBackColor = true;
-            this.rbTwo.Click += new System.EventHandler(this.OneButton_Click);
-            // 
-            // rbOne
-            // 
-            this.rbOne.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.rbOne.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.rbOne.FlatAppearance.BorderSize = 0;
-            this.rbOne.FlatAppearance.CheckedBackColor = System.Drawing.SystemColors.Window;
-            this.rbOne.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.rbOne.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.rbOne.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
-            this.rbOne.Location = new System.Drawing.Point(50, 55);
-            this.rbOne.Margin = new System.Windows.Forms.Padding(2);
-            this.rbOne.Name = "rbOne";
-            this.rbOne.Size = new System.Drawing.Size(66, 68);
-            this.rbOne.TabIndex = 4;
-            this.rbOne.Text = "1";
-            this.rbOne.UseVisualStyleBackColor = true;
-            this.rbOne.Click += new System.EventHandler(this.OneButton_Click);
+            this.roundButton1.Click += new System.EventHandler(this.OneButton_Click);
             // 
             // pincodeLabel
             // 
@@ -309,51 +308,42 @@
             this.enterpinTextBox.Size = new System.Drawing.Size(200, 22);
             this.enterpinTextBox.TabIndex = 1;
             // 
-            // rbAccept
-            // 
-            this.rbAccept.Location = new System.Drawing.Point(212, 368);
-            this.rbAccept.Name = "rbAccept";
-            this.rbAccept.Size = new System.Drawing.Size(88, 84);
-            this.rbAccept.TabIndex = 15;
-            this.rbAccept.Text = "Accept";
-            this.rbAccept.UseVisualStyleBackColor = true;
-            // 
             // WelcomeLabel
             // 
-            this.WelcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
-            this.WelcomeLabel.Location = new System.Drawing.Point(11, 10);
-            this.WelcomeLabel.Name = "WelcomeLabel";
-            this.WelcomeLabel.Size = new System.Drawing.Size(310, 24);
-            this.WelcomeLabel.TabIndex = 9;
-            this.WelcomeLabel.Text = "Welcome";
-            this.WelcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.welcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
+            this.welcomeLabel.Location = new System.Drawing.Point(11, 10);
+            this.welcomeLabel.Name = "WelcomeLabel";
+            this.welcomeLabel.Size = new System.Drawing.Size(310, 24);
+            this.welcomeLabel.TabIndex = 9;
+            this.welcomeLabel.Text = "Welcome";
+            this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // BackButton
             // 
-            this.BackButton.BackgroundImage = global::ChoreApplication.Properties.Resources.chevron_circle_left_solid;
-            this.BackButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.BackButton.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.BackButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
-            this.BackButton.FlatAppearance.BorderSize = 0;
-            this.BackButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
-            this.BackButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
-            this.BackButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.BackButton.Location = new System.Drawing.Point(12, 9);
-            this.BackButton.Name = "BackButton";
-            this.BackButton.Size = new System.Drawing.Size(25, 26);
-            this.BackButton.TabIndex = 2;
-            this.BackButton.UseVisualStyleBackColor = true;
-            this.BackButton.Click += new System.EventHandler(this.BackButton_Click);
+            this.backButton.BackgroundImage = global::ChoreApplication.Properties.Resources.chevron_circle_left_solid;
+            this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.backButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
+            this.backButton.FlatAppearance.BorderSize = 0;
+            this.backButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
+            this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
+            this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.backButton.Location = new System.Drawing.Point(12, 9);
+            this.backButton.Name = "BackButton";
+            this.backButton.Size = new System.Drawing.Size(25, 26);
+            this.backButton.TabIndex = 2;
+            this.backButton.UseVisualStyleBackColor = true;
+            this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
             // PinCodeInterface
             // 
-            this.AcceptButton = this.rbAccept;
+            this.AcceptButton = this.roundButtonAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(334, 404);
-            this.Controls.Add(this.BackButton);
-            this.Controls.Add(this.WelcomeLabel);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.welcomeLabel);
             this.Controls.Add(this.pincodePanel);
             this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
@@ -374,20 +364,19 @@
         private System.Windows.Forms.Label pincodeLabel;
         private System.Windows.Forms.TextBox enterpinTextBox;
 
-        private RoundButton rbOne;
-        private RoundButton rbTwo;
-        private RoundButton rbThree;
-        private RoundButton rbFour;
-        private RoundButton rbFive;
-        private RoundButton rbSix;
-        private RoundButton rbSeven;
-        private RoundButton rbEight;
-        private RoundButton rbNine;
-        private RoundButton rbZero;
-        private RoundButton rbDelete;
-        private RoundButton rbAccept;
         private RoundButton roundButton1;
-        private System.Windows.Forms.Label WelcomeLabel;
-        private System.Windows.Forms.Button BackButton;
+        private RoundButton roundButton2;
+        private RoundButton roundButton3;
+        private RoundButton roundButton4;
+        private RoundButton roundButton5;
+        private RoundButton roundButton6;
+        private RoundButton roundButton7;
+        private RoundButton roundButton8;
+        private RoundButton roundButton9;
+        private RoundButton roundButton0;
+        private RoundButton roundButtonDelete;
+        private RoundButton roundButtonAccept;
+        private System.Windows.Forms.Label welcomeLabel;
+        private System.Windows.Forms.Button backButton;
     }
 }
