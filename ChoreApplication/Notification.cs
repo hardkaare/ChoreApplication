@@ -15,36 +15,36 @@ namespace ChoreApplication
         public string Description { get; set; }
 
         // The user who will recieve the notification. Everyone can set and get it, reconsider this later.
-        public int UserId { get; set; }
+        public int UserID { get; set; }
 
         // The id for a specific notification object
-        public int NotificationId { get; set; }
+        public int NotificationID { get; set; }
 
         #endregion Properties
 
         #region Constructors
 
         // Creates an object of the class Notification with the specified information entered in the constructor call.
-        public Notification(string title, string description, int userId, int notificationId)
+        public Notification(string title, string description, int userID, int notificationID)
         {
             Title = title;
             Description = description;
-            UserId = userId;
-            NotificationId = notificationId;
+            UserID = userID;
+            NotificationID = notificationID;
         }
 
         #endregion Constructors
 
         #region Public Helpers
 
-        public static void Insert(int userId, string title, string description)
+        public static void Insert(int userID, string title, string description)
         {
             var fulltitle = DateTime.Now.ToString(Properties.Settings.Default.TextDateFormat) + " - " + title;
-            string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userId, fulltitle, description);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
-            DatabaseFunctions.DbConn.Open();
+            string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userID, fulltitle, description);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            DatabaseFunctions.DatabaseConnection.Open();
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.DbConn.Close();
+            DatabaseFunctions.DatabaseConnection.Close();
         }
 
         public static List<Notification> Load(string whereClause)
@@ -55,36 +55,36 @@ namespace ChoreApplication
             }
             List<Notification> notifications = new List<Notification>();
             string query = string.Format("SELECT * FROM dbo.notification{0}", whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
-            DatabaseFunctions.DbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 string title = reader["title"].ToString();
                 string description = reader["description"].ToString();
-                int userid = (int)reader["user_id"];
-                int notificationId = (int)reader["notification_id"];
+                int userID = (int)reader["user_id"];
+                int notificationID = (int)reader["notification_id"];
 
-                Notification notification = new Notification(title, description, userid, notificationId);
+                Notification notification = new Notification(title, description, userID, notificationID);
                 notifications.Add(notification);
             }
             reader.Close();
-            DatabaseFunctions.DbConn.Close();
+            DatabaseFunctions.DatabaseConnection.Close();
             return notifications;
         }
 
         public void Delete()
         {
-            string query = string.Format("DELETE FROM dbo.notification WHERE notification_id={0}", NotificationId);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
-            DatabaseFunctions.DbConn.Open();
+            string query = string.Format("DELETE FROM dbo.notification WHERE notification_id={0}", NotificationID);
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            DatabaseFunctions.DatabaseConnection.Open();
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.DbConn.Close();
+            DatabaseFunctions.DatabaseConnection.Close();
         }
 
         public override string ToString()
         {
-            return $"{UserId} recieved an notification with the description: {Description}.";
+            return $"{UserID} recieved an notification with the description: {Description}.";
         }
 
         #endregion Public Helpers

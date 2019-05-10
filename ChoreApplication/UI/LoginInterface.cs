@@ -18,15 +18,15 @@ namespace ChoreApplication.UI
         {
             bool users = true;
             string query = "SELECT user_id FROM users";
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
-            DatabaseFunctions.DbConn.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             if (!reader.HasRows)
             {
                 users = false;
             }
             reader.Close();
-            DatabaseFunctions.DbConn.Close();
+            DatabaseFunctions.DatabaseConnection.Close();
             if (!users)
             {
                 var registerUserInterface = new RegisterUserInterface();
@@ -63,8 +63,8 @@ namespace ChoreApplication.UI
             }
 
             string loginQuery = "SELECT email, password FROM dbo.parent";
-            SqlCommand cmd = new SqlCommand(loginQuery, DatabaseFunctions.DbConn);
-            DatabaseFunctions.DbConn.Open();
+            SqlCommand cmd = new SqlCommand(loginQuery, DatabaseFunctions.DatabaseConnection);
+            DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -77,13 +77,13 @@ namespace ChoreApplication.UI
                 else
                 {
                     MessageBox.Show("Incorrect password or E-mail entered.");
-                    DatabaseFunctions.DbConn.Close();
+                    DatabaseFunctions.DatabaseConnection.Close();
                     return;
                 }
             }
             if (match == true)
             {
-                DatabaseFunctions.DbConn.Close();
+                DatabaseFunctions.DatabaseConnection.Close();
                 ChooseProfile = new ChooseProfileInterface();
                 ChooseProfile.Show();
                 this.Close();

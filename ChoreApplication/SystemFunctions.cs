@@ -12,16 +12,16 @@ namespace ChoreApplication
         #region CheckTime
 
         private const int WithinOneHour = 60;
-        private static DateTime TimeNow = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
-        private static TimeSpan _StartTimeSpan;
+        private static DateTime _timeNow = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
+        private static TimeSpan _startTimeSpan;
 
         public static void CheckTime(List<ChildUser> childList)
         {
-            _StartTimeSpan = TimeSpan.Zero;
+            _startTimeSpan = TimeSpan.Zero;
             var PeriodTimeSpan = TimeSpan.FromHours(1);//1 tick i timen
             var timer = new System.Threading.Timer((e) =>
             {
-                TimeSpan oneDay = TimeNow - LoadTicks()[1];
+                TimeSpan oneDay = _timeNow - LoadTicks()[1];
                 if (oneDay.TotalDays > 1)
                 {
                     UpdateDailyTick();
@@ -29,30 +29,30 @@ namespace ChoreApplication
                     GenerateConcreteChore();
                 }
 
-                if (!CheckDueTime(LoadTicks()[0], TimeNow))
+                if (!CheckDueTime(LoadTicks()[0], _timeNow))
                 {
                     UpdateLastTick();
-                    foreach (ChildUser c in childList)
+                    foreach (ChildUser child in childList)
                     {
-                        foreach (var chore in Concrete.Load($"ch.child_id ={c.ChildId} AND co.status = 1"))
+                        foreach (var chore in Concrete.Load($"ch.child_id ={child.ChildId} AND co.status = 1"))
                         {
-                            if (chore.DueDate < TimeNow)
+                            if (chore.DueDate < _timeNow)
                             {
-                                c.Points -= chore.Points;
-                                c.Update();
+                                child.Points -= chore.Points;
+                                child.Update();
                                 chore.Status = 4;
                                 chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
                                 chore.Update();
-                                Notification.Insert(c.Id, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
+                                Notification.Insert(child.Id, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
                             }
-                            else if (CheckDueTime(TimeNow, chore.DueDate))
+                            else if (CheckDueTime(_timeNow, chore.DueDate))
                             {
-                                Notification.Insert(c.Id, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
+                                Notification.Insert(child.Id, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
                             }
                         }
                     }
                 }
-            }, null, _StartTimeSpan, PeriodTimeSpan);
+            }, null, _startTimeSpan, PeriodTimeSpan);
         }
 
         private static bool CheckDueTime(DateTime timeNow, DateTime dueTime)
@@ -68,8 +68,8 @@ namespace ChoreApplication
             List<DateTime> dateTimes = new List<DateTime>();
             DateTime tickTime = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
             DateTime dailyTick = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
-            DatabaseFunctions.DbConn.Open();
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
@@ -78,26 +78,26 @@ namespace ChoreApplication
                 dateTimes.Add(tickTime);
                 dateTimes.Add(dailyTick);
             }
-            DatabaseFunctions.DbConn.Close();
+            DatabaseFunctions.DatabaseConnection.Close();
             return dateTimes;
         }
 
         private static void UpdateLastTick()
         {
             string query = $"UPDATE dbo.checkTime SET lastTick = '{DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat)}'";
-            DatabaseFunctions.DbConn.Open();
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.DbConn.Close();
+            DatabaseFunctions.DatabaseConnection.Close();
         }
 
         private static void UpdateDailyTick()
         {
             string query = $"UPDATE dbo.checkTime SET dailyTick = '{DateTime.Now.Date.ToShortDateString() + " 05:00"}'";
-            DatabaseFunctions.DbConn.Open();
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.DbConn.Close();
+            DatabaseFunctions.DatabaseConnection.Close();
         }
 
         private static void ResetChores()
@@ -168,10 +168,10 @@ namespace ChoreApplication
                 string query = string.Format("SELECT concrete_chore.status FROM chore INNER JOIN concrete_chore ON " +
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND (concrete_chore.[status]=4 OR " +
                     "concrete_chore.[status]=3) ORDER BY concrete_chore.approval_date ASC", c.ChildId);
-                DatabaseFunctions.DbConn.Open();
+                DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
-                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //Reads all lines in the datareader
@@ -192,7 +192,7 @@ namespace ChoreApplication
                     }
                 }
                 reader.Close();
-                DatabaseFunctions.DbConn.Close();
+                DatabaseFunctions.DatabaseConnection.Close();
 
                 result.Add(c.ChildId, longestStreak);
             }
@@ -238,10 +238,10 @@ namespace ChoreApplication
 
                 string query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=4", c.ChildId);
-                DatabaseFunctions.DbConn.Open();
+                DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
-                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //Reads all lines in the datareader
@@ -256,7 +256,7 @@ namespace ChoreApplication
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
 
                 //Creates the SqlCommand and executes it
-                cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
                 reader = cmd.ExecuteReader();
 
                 //Reads all lines in the datareader
@@ -266,7 +266,7 @@ namespace ChoreApplication
                     sumApproved++;
                 }
                 reader.Close();
-                DatabaseFunctions.DbConn.Close();
+                DatabaseFunctions.DatabaseConnection.Close();
 
                 if ((sumOverdue + sumApproved) != 0)
                 {
@@ -322,10 +322,10 @@ namespace ChoreApplication
                 int sum = 0;
                 string query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
-                DatabaseFunctions.DbConn.Open();
+                DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
-                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //Reads all lines in the datareader
@@ -335,7 +335,7 @@ namespace ChoreApplication
                     sum++;
                 }
                 reader.Close();
-                DatabaseFunctions.DbConn.Close();
+                DatabaseFunctions.DatabaseConnection.Close();
                 result.Add(c.ChildId, sum);
             }
             result = SortIntDics(result);
@@ -379,10 +379,10 @@ namespace ChoreApplication
                 int sum = 0;
                 string query = string.Format("SELECT points FROM chore INNER JOIN concrete_chore ON " +
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
-                DatabaseFunctions.DbConn.Open();
+                DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
-                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DbConn);
+                SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 //Reads all lines in the datareader
@@ -391,7 +391,7 @@ namespace ChoreApplication
                     sum += (int)reader[0];
                 }
                 reader.Close();
-                DatabaseFunctions.DbConn.Close();
+                DatabaseFunctions.DatabaseConnection.Close();
                 result.Add(c.ChildId, sum);
             }
             result = SortIntDics(result);

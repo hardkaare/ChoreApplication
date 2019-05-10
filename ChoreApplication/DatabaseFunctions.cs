@@ -13,19 +13,19 @@ namespace ChoreApplication
         #region Connection string constants
 
         //Server
-        private const String DATASOURCE = "choreapplication1.database.windows.net";
+        private const String DataSource = "choreapplication1.database.windows.net";
 
         //Name of DB
-        private const String INITIALCATALOG = "ChoreApplication";
+        private const String InitialCatalog = "ChoreApplication";
 
         //Username
         private const String UID = "bi408f19";
 
         //Password
-        private const String PASSWORD = "Tuborg123";
+        private const String Password = "Tuborg123";
 
         //Sql connection
-        public static SqlConnection DbConn { get; private set; }
+        public static SqlConnection DatabaseConnection { get; private set; }
 
         #endregion Connection string constants
 
@@ -39,25 +39,25 @@ namespace ChoreApplication
         {
             //Builds a connection string from the connection string constants
             SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
-            builder.DataSource = DATASOURCE;
+            builder.DataSource = DataSource;
             builder.UserID = UID;
-            builder.Password = PASSWORD;
-            builder.InitialCatalog = INITIALCATALOG;
+            builder.Password = Password;
+            builder.InitialCatalog = InitialCatalog;
 
             //Clears the string builder
             String connString = builder.ToString();
             builder = null;
 
             //Makes the connection to DB
-            DbConn = new SqlConnection(connString);
+            DatabaseConnection = new SqlConnection(connString);
 
             //When application is closed, clear connection if active
             Application.ApplicationExit += (sender, args) =>
             {
-                if (DbConn != null)
+                if (DatabaseConnection != null)
                 {
-                    DbConn.Dispose();
-                    DbConn = null;
+                    DatabaseConnection.Dispose();
+                    DatabaseConnection = null;
                 }
             };
         }
