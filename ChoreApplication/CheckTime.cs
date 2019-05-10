@@ -40,7 +40,11 @@ namespace ChoreApplication
             //Check overdue chores
             foreach (ChildUser child in _childList)
             {
-                _concreteList = Concrete.Load($"child_id={child.ChildId}");
+                _concreteList = Concrete.Load($"child_id={child.ChildID}");
+                foreach (Chore chore in _concreteList)
+                {
+
+                }
             }
 
             Thread.Sleep(5000); //Lav om til 60 eller 360
