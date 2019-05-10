@@ -8,7 +8,7 @@ namespace ChoreApplication.UI
     public partial class ParentInterface : Form
     {
         public int UI = 0;
-        public ParentUser Session { get; set; }
+        private ParentUser _session;
         private Dictionary<int, string> _statusValues;
         private Dictionary<int, string> _childrenNames;
         private List<Reocurring> _reoccurringChores;
@@ -21,7 +21,7 @@ namespace ChoreApplication.UI
 
         public ParentInterface(ParentUser currentUser)
         {
-            Session = currentUser;
+            _session = currentUser;
             InitializeComponent();
             InitializeDictionaries();
             ChoresUI();
@@ -815,7 +815,7 @@ namespace ChoreApplication.UI
 
         private void LoadNotification()
         {
-            _notifications = Notification.Load("user_id=" + Session.ID);
+            _notifications = Notification.Load("user_id=" + _session.ID);
             notificationPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 50;
@@ -872,7 +872,7 @@ namespace ChoreApplication.UI
 
         private void LoadAmountOfNotifications()
         {
-            _notifications = Notification.Load("user_id=" + Session.ID);
+            _notifications = Notification.Load("user_id=" + _session.ID);
             notificationAmountLabel.Text = "";
             if (_notifications.Count == 0)
             {
@@ -891,7 +891,7 @@ namespace ChoreApplication.UI
         private void UserButton_Click(object sender, EventArgs e)
         {
             var loginInterface = new LoginInterface();
-            Session = default;
+            _session = default;
             loginInterface.Show();
             this.Close();
         }

@@ -6,7 +6,7 @@ namespace ChoreApplication.UI
 {
     public partial class PinCodeInterface : Form
     {
-        public User Session;
+        private User _session;
 
         public PinCodeInterface()
         {
@@ -16,7 +16,7 @@ namespace ChoreApplication.UI
         private void OneButton_Click(object sender, EventArgs e)
         {
             Button button = (Button)sender;
-            enterpinTextBox.Text = enterpinTextBox.Text + button.Text;
+            enterpinTextBox.Text += button.Text;
         }
 
         private void DeleteButton_Click(object sender, EventArgs e)
@@ -62,7 +62,7 @@ namespace ChoreApplication.UI
                 if (ChooseProfileInterface.ActiveID == 1)
                 {
                     var sessionList = ParentUser.Load("");
-                    Session = sessionList[0];
+                    _session = sessionList[0];
                     var parentUI = new ParentInterface(sessionList[0]);//måske ok
                     parentUI.Show();
                     this.Close();
@@ -70,7 +70,7 @@ namespace ChoreApplication.UI
                 else
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.ActiveID.ToString());
-                    Session = sessionList[0];
+                    _session = sessionList[0];
                     var childUI = new ChildInterface(sessionList[0]);//sikkert ikke done
                     childUI.Show();
                     this.Close();

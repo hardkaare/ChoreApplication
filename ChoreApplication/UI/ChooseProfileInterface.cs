@@ -10,7 +10,7 @@ namespace ChoreApplication.UI
     {
         public static int ActiveID;
 
-        public string Surname { get; set; }
+        private string Surname { get; set; }
 
         public ChooseProfileInterface()
         {
