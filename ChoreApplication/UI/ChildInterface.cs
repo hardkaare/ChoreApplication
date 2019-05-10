@@ -48,22 +48,22 @@ namespace ChoreApplication.UI
             }
         }
 
-        private Control AddLabel(string labelText, bool bold, int posX, int posY)
+        private Control AddLabel(string labelText, bool isBold, int locationX, int locationY)
         {
             var label = new Label
             {
                 Text = labelText,
-                Location = new Point(posX, posY),
+                Location = new Point(locationX, locationY),
                 MaximumSize = new Size(295, 20),
                 AutoSize = true,
                 AutoEllipsis = true,
             };
-            if (!bold)
+            if (!isBold)
             {
                 label.Font = Properties.Settings.Default.StandardFont;
                 return label;
             }
-            if (bold)
+            if (isBold)
             {
                 label.Font = Properties.Settings.Default.StandardFontBold;
                 return label;
@@ -275,15 +275,15 @@ namespace ChoreApplication.UI
         {
             Rewards = Reward.Load("child_id=" + Session.ChildId);
             RewardPanel.Controls.Clear();
-            int i = 0;
+            int distanceCounter = 0;
             int panelDistance = 72;
 
             foreach (Reward reward in Rewards)
             {
                 var rewardName = reward.Name.ToString();
-                var rewardPointsRequired = "Points required: " + reward.PointsReq.ToString();
+                var rewardPointsRequired = "Points required: " + reward.PointsRequired.ToString();
                 var childPoints = (double)Session.Points;
-                var requiredPoints = (double)reward.PointsReq;
+                var requiredPoints = (double)reward.PointsRequired;
                 var progressBarValue = (childPoints / requiredPoints) * 100;
 
                 var rewardNameLabel = AddLabel(rewardName, true, 5, 5);
@@ -305,7 +305,7 @@ namespace ChoreApplication.UI
                 var panelHeight = rewardNameLabel.Height + rewardPointsRequiredLabel.Height + rewardProgressBar.Height;
                 var individualRewardPanel = new Panel
                 {
-                    Location = new Point(1, i * panelDistance),
+                    Location = new Point(1, distanceCounter * panelDistance),
                     BorderStyle = BorderStyle.FixedSingle,
                     Size = new Size(RewardPanel.Width - 25, panelHeight),
                     AutoSize = true,
@@ -319,13 +319,13 @@ namespace ChoreApplication.UI
                     individualRewardPanel.Controls.Add(AddClaimRewardButton(335, individualRewardPanel.Height / 2, reward));
                     individualRewardPanel.Controls.Add(AddLabel("Claim reward", false, 305, individualRewardPanel.Height / 2 + 20));
                 }
-                i++;
+                distanceCounter++;
             }
         }
 
         private Control AddClaimRewardButton(int x, int y, Reward reward)
         {
-            var ClaimButton = new Button
+            var claimButton = new Button
             {
                 Location = new Point(x, y - 15),
                 Size = new Size(30, 30),
@@ -335,12 +335,12 @@ namespace ChoreApplication.UI
                 BackgroundImageLayout = ImageLayout.Zoom,
                 AutoSize = true,
             };
-            ClaimButton.Cursor = Cursors.Hand;
-            ClaimButton.FlatAppearance.BorderSize = 0;
-            ClaimButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            ClaimButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            ClaimButton.Click += new EventHandler(ClaimButton_Click);
-            return ClaimButton;
+            claimButton.Cursor = Cursors.Hand;
+            claimButton.FlatAppearance.BorderSize = 0;
+            claimButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            claimButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            claimButton.Click += new EventHandler(ClaimButton_Click);
+            return claimButton;
         }
 
         private void ClaimButton_Click(object sender, EventArgs e)
@@ -351,13 +351,13 @@ namespace ChoreApplication.UI
             var confirmDelete = MessageBox.Show("Are you sure you want to claim this reward?", "Claim Reward", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
             {
-                Session.Points -= currentReward.PointsReq;
+                Session.Points -= currentReward.PointsRequired;
                 Session.Update();
                 currentReward.Delete();
                 LoadPoints();
                 LoadRewards();
                 Notification.Insert(1, "Reward has been claimed.", $"The reward {currentReward.Name}: {currentReward.Description} " +
-                    $"has been claimed by {ChildrenNames[currentReward.ChildId]}");
+                    $"has been claimed by {ChildrenNames[currentReward.ChildID]}");
                 LoadAmountOfNotifications();
             }
         }
@@ -368,59 +368,59 @@ namespace ChoreApplication.UI
         {
             UI = 3;
             titleText.Text = "Leaderboard";
-            this.LeaderboardPanel.Visible = true;
-            this.LeaderboardPanel.BringToFront();
+            this.leaderboardPanel.Visible = true;
+            this.leaderboardPanel.BringToFront();
             LoadLeaderboard();
         }
 
         private void LoadLeaderboard()
         {
-            LeaderboardPanel.Controls.Clear();
-            int PanelDist = 20;
-            int yLocLeaderboard = 10;
+            leaderboardPanel.Controls.Clear();
+            int panelDistance = 20;
+            int leaderBoardLocationY = 10;
 
             //Add Total Points title
-            var Title1 = AddLabel("Total Points Earned", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title1);
-            yLocLeaderboard += Title1.Height + PanelDist;
+            var totalPointsEarnedLabel = AddLabel("Total Points Earned", true, 140, leaderBoardLocationY);
+            this.leaderboardPanel.Controls.Add(totalPointsEarnedLabel);
+            leaderBoardLocationY += totalPointsEarnedLabel.Height + panelDistance;
 
             //Add Total Points panel
-            Panel TotalPointsStatistic = SystemFunctions.LoadTotalPoints(new Point(0, yLocLeaderboard),
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(TotalPointsStatistic);
-            yLocLeaderboard += TotalPointsStatistic.Height + PanelDist;
+            Panel totalPointsStatistic = SystemFunctions.LoadTotalPoints(new Point(0, leaderBoardLocationY),
+                leaderboardPanel.Width, ChildrenNames, ChildUsers);
+            this.leaderboardPanel.Controls.Add(totalPointsStatistic);
+            leaderBoardLocationY += totalPointsStatistic.Height + panelDistance;
 
             //Add Total Chores Approved title
-            var Title2 = AddLabel("Total Chores Approved", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title2);
-            yLocLeaderboard += Title2.Height + PanelDist;
+            var totalChoresApprovedLabel = AddLabel("Total Chores Approved", true, 140, leaderBoardLocationY);
+            this.leaderboardPanel.Controls.Add(totalChoresApprovedLabel);
+            leaderBoardLocationY += totalChoresApprovedLabel.Height + panelDistance;
 
             //Add Total Chores Approved panel
-            Panel TotalChoresApprovedStatistic = SystemFunctions.LoadTotalChoresApproved(new Point(0, yLocLeaderboard),
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(TotalChoresApprovedStatistic);
-            yLocLeaderboard += TotalChoresApprovedStatistic.Height + PanelDist;
+            Panel TotalChoresApprovedStatistic = SystemFunctions.LoadTotalChoresApproved(new Point(0, leaderBoardLocationY),
+                leaderboardPanel.Width, ChildrenNames, ChildUsers);
+            this.leaderboardPanel.Controls.Add(TotalChoresApprovedStatistic);
+            leaderBoardLocationY += TotalChoresApprovedStatistic.Height + panelDistance;
 
             //Add Completion Rate title
-            var Title3 = AddLabel("Completion Rate", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title3);
-            yLocLeaderboard += Title3.Height + PanelDist;
+            var Title3 = AddLabel("Completion Rate", true, 140, leaderBoardLocationY);
+            this.leaderboardPanel.Controls.Add(Title3);
+            leaderBoardLocationY += Title3.Height + panelDistance;
 
             //Add Completion Rate panel
-            Panel CompletionRateStatistic = SystemFunctions.LoadCompletionRate(new Point(0, yLocLeaderboard),
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(CompletionRateStatistic);
-            yLocLeaderboard += CompletionRateStatistic.Height + PanelDist;
+            Panel CompletionRateStatistic = SystemFunctions.LoadCompletionRate(new Point(0, leaderBoardLocationY),
+                leaderboardPanel.Width, ChildrenNames, ChildUsers);
+            this.leaderboardPanel.Controls.Add(CompletionRateStatistic);
+            leaderBoardLocationY += CompletionRateStatistic.Height + panelDistance;
 
             //Add Longest streak title
-            var Title4 = AddLabel("Longest Streak", true, 140, yLocLeaderboard);
-            this.LeaderboardPanel.Controls.Add(Title4);
-            yLocLeaderboard += Title4.Height + PanelDist;
+            var Title4 = AddLabel("Longest Streak", true, 140, leaderBoardLocationY);
+            this.leaderboardPanel.Controls.Add(Title4);
+            leaderBoardLocationY += Title4.Height + panelDistance;
 
             //Add Longest Strea panel
-            Panel LongestStreakStatistic = SystemFunctions.LoadLongestStreak(new Point(0, yLocLeaderboard),
-                LeaderboardPanel.Width, ChildrenNames, ChildUsers);
-            this.LeaderboardPanel.Controls.Add(LongestStreakStatistic);
+            Panel LongestStreakStatistic = SystemFunctions.LoadLongestStreak(new Point(0, leaderBoardLocationY),
+                leaderboardPanel.Width, ChildrenNames, ChildUsers);
+            this.leaderboardPanel.Controls.Add(LongestStreakStatistic);
         }
 
         #endregion LeaderBoardUI
@@ -438,7 +438,7 @@ namespace ChoreApplication.UI
 
         private void LoadNotification()
         {
-            Notifications = Notification.Load("user_id=" + Session.Id);
+            Notifications = Notification.Load("user_id=" + Session.ID);
             NotificationPanel.Controls.Clear();
             int i = 0;
             int panelDistance = 50;
@@ -496,7 +496,7 @@ namespace ChoreApplication.UI
 
         private void LoadAmountOfNotifications()
         {
-            Notifications = Notification.Load("user_id=" + Session.Id);
+            Notifications = Notification.Load("user_id=" + Session.ID);
             NotificationAmount.Text = "";
             if (Notifications.Count == 0)
             {

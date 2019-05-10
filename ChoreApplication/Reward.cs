@@ -7,7 +7,7 @@ namespace ChoreApplication
     {
         #region Properties
 
-        public int RewardId { get; set; }
+        public int RewardID { get; set; }
 
         // The name of the reward.
         public string Name { get; set; }
@@ -15,22 +15,22 @@ namespace ChoreApplication
         // The points required to earn the reward.
         public string Description { get; set; }
 
-        public int PointsReq { get; set; }
+        public int PointsRequired { get; set; }
 
         // Who the reward is assigned to.
-        public int ChildId { get; set; }
+        public int ChildID { get; set; }
 
         #endregion Properties
 
         #region Constructors
 
         // Creates an object of the class Reward with the specified information.
-        public Reward(int rewardId, string name, string description, int pointsReq, int childId)
+        public Reward(int rewardID, string name, string description, int pointsReq, int childID)
         {
-            RewardId = rewardId;
+            RewardID = rewardID;
             Name = name;
-            PointsReq = pointsReq;
-            ChildId = childId;
+            PointsRequired = pointsReq;
+            ChildID = childID;
             Description = description;
         }
 
@@ -41,15 +41,15 @@ namespace ChoreApplication
         /// <summary>
         /// Creates a reward based on the values of this class' properties.
         /// </summary>
-        /// <param name="childId"></param>
+        /// <param name="childID"></param>
         /// <param name="name"></param>
-        /// <param name="pointsReq"></param>
-        public static void Insert(int childId, string name, string description, int pointsReq)
+        /// <param name="pointsRequired"></param>
+        public static void Insert(int childID, string name, string description, int pointsRequired)
         {
-            string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}','{2}',{3} )", childId, name, description, pointsReq);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}','{2}',{3} )", childID, name, description, pointsRequired);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -59,10 +59,10 @@ namespace ChoreApplication
         public void Update()
         {
             //Formatting the query to reward table and creating the SqlCommand.
-            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildId, Name, Description, PointsReq, RewardId);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildID, Name, Description, PointsRequired, RewardID);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -79,17 +79,17 @@ namespace ChoreApplication
             }
             List<Reward> rewards = new List<Reward>();
             string query = string.Format("SELECT * FROM dbo.reward{0}", whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
-                int rewardId = (int)reader["reward_id"];
+                int rewardID = (int)reader["reward_id"];
                 string name = reader["name"].ToString();
                 string description = reader["description"].ToString();
-                int pointsReq = (int)reader["points"];
-                int childId = (int)reader["child_id"];
-                Reward reward = new Reward(rewardId, name, description, pointsReq, childId);
+                int pointsRequired = (int)reader["points"];
+                int childID = (int)reader["child_id"];
+                Reward reward = new Reward(rewardID, name, description, pointsRequired, childID);
                 rewards.Add(reward);
             }
             reader.Close();
@@ -102,10 +102,10 @@ namespace ChoreApplication
         /// </summary>
         public void Delete()
         {
-            string query = string.Format("DELETE FROM dbo.reward WHERE reward_id={0}", RewardId);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            string query = string.Format("DELETE FROM dbo.reward WHERE reward_id={0}", RewardID);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -115,7 +115,7 @@ namespace ChoreApplication
         /// <returns></returns>
         public override string ToString()
         {
-            return $"{ChildId} must get {PointsReq} points to earn {Name}.";
+            return $"{ChildID} must get {PointsRequired} points to earn {Name}.";
         }
 
         #endregion Public Helpers

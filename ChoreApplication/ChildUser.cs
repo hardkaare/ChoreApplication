@@ -48,8 +48,8 @@ namespace ChoreApplication
         /// </summary>
         public void Update()
         {
-            string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, Id);
-            string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}", Points, Id);
+            string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, ID);
+            string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}", Points, ID);
             SqlCommand cmd = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
             cmd.ExecuteNonQuery();
@@ -97,7 +97,7 @@ namespace ChoreApplication
         /// </summary>
         public void Delete()
         {
-            string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", Id);
+            string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", ID);
             SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();

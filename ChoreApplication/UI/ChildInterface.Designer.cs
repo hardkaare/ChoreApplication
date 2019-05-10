@@ -45,7 +45,7 @@
             this.leadboardNavButton = new System.Windows.Forms.Button();
             this.rewardNavButton = new System.Windows.Forms.Button();
             this.RewardPanel = new System.Windows.Forms.Panel();
-            this.LeaderboardPanel = new System.Windows.Forms.Panel();
+            this.leaderboardPanel = new System.Windows.Forms.Panel();
             this.NotificationPanel = new System.Windows.Forms.Panel();
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.upperPanel.SuspendLayout();
@@ -279,14 +279,14 @@
             // 
             // LeaderboardPanel
             // 
-            this.LeaderboardPanel.AutoScroll = true;
-            this.LeaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.LeaderboardPanel.Location = new System.Drawing.Point(12, 49);
-            this.LeaderboardPanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.LeaderboardPanel.Name = "LeaderboardPanel";
-            this.LeaderboardPanel.Size = new System.Drawing.Size(420, 415);
-            this.LeaderboardPanel.TabIndex = 3;
-            this.LeaderboardPanel.Visible = false;
+            this.leaderboardPanel.AutoScroll = true;
+            this.leaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.leaderboardPanel.Location = new System.Drawing.Point(12, 49);
+            this.leaderboardPanel.MaximumSize = new System.Drawing.Size(420, 415);
+            this.leaderboardPanel.Name = "LeaderboardPanel";
+            this.leaderboardPanel.Size = new System.Drawing.Size(420, 415);
+            this.leaderboardPanel.TabIndex = 3;
+            this.leaderboardPanel.Visible = false;
             // 
             // NotificationPanel
             // 
@@ -311,7 +311,7 @@
             this.ClientSize = new System.Drawing.Size(444, 561);
             this.Controls.Add(this.upperPanel);
             this.Controls.Add(this.NotificationPanel);
-            this.Controls.Add(this.LeaderboardPanel);
+            this.Controls.Add(this.leaderboardPanel);
             this.Controls.Add(this.ChorePanel);
             this.Controls.Add(this.RewardPanel);
             this.Controls.Add(this.navigationPanel);
@@ -345,7 +345,7 @@
         private System.Windows.Forms.Button leadboardNavButton;
         private System.Windows.Forms.Button rewardNavButton;
         private System.Windows.Forms.Label ChildPointsLabel;
-        private System.Windows.Forms.Panel LeaderboardPanel;
+        private System.Windows.Forms.Panel leaderboardPanel;
         private System.Windows.Forms.Panel NotificationPanel;
         private RoundButton NotificationAmount;
         private System.Windows.Forms.ToolTip toolTip1;

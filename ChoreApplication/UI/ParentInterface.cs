@@ -343,7 +343,7 @@ namespace ChoreApplication.UI
             var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
             currentChild[0].Points += currentChore.Points;
             currentChild[0].Update();
-            Notification.Insert(currentChild[0].Id, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
+            Notification.Insert(currentChild[0].ID, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
                 $"\n{currentChore.Points.ToString()} points has been added to your account");
             LoadAmountOfNotifications();
             LoadChores();
@@ -365,7 +365,7 @@ namespace ChoreApplication.UI
                 currentChore.Status = 1;
                 currentChore.Update();
             }
-            Notification.Insert(currentChild[0].Id, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
+            Notification.Insert(currentChild[0].ID, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
             LoadAmountOfNotifications();
             LoadChores();
         }
@@ -469,7 +469,7 @@ namespace ChoreApplication.UI
             foreach (Reward reward in Rewards)
             {
                 var rewardName = reward.Name.ToString();
-                var rewardAssignment = "Assigned to: " + ChildrenNames[reward.ChildId];
+                var rewardAssignment = "Assigned to: " + ChildrenNames[reward.ChildID];
                 var rewardStatus = "Status: Active";
 
                 var rewardNameLabel = AddLabel(rewardName, true, 5, 5);
@@ -815,7 +815,7 @@ namespace ChoreApplication.UI
 
         private void LoadNotification()
         {
-            Notifications = Notification.Load("user_id=" + Session.Id);
+            Notifications = Notification.Load("user_id=" + Session.ID);
             NotificationPanel.Controls.Clear();
             int i = 0;
             int panelDistance = 50;
@@ -872,7 +872,7 @@ namespace ChoreApplication.UI
 
         private void LoadAmountOfNotifications()
         {
-            Notifications = Notification.Load("user_id=" + Session.Id);
+            Notifications = Notification.Load("user_id=" + Session.ID);
             NotificationAmount.Text = "";
             if (Notifications.Count == 0)
             {

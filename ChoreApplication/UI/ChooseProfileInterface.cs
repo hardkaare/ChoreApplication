@@ -72,7 +72,7 @@ namespace ChoreApplication.UI
                 {
                     Location = new Point(x * 120, y * 100 - 90),
                     Size = new Size(60, 60),
-                    Tag = parent.Id,
+                    Tag = parent.ID,
                     FlatStyle = FlatStyle.Flat,
                     BackgroundImage = global::ChoreApplication.Properties.Resources.user,
                     BackgroundImageLayout = ImageLayout.Zoom,
@@ -102,7 +102,7 @@ namespace ChoreApplication.UI
                 {
                     Location = new Point(x * 120, y * 100 - 90),
                     Size = new Size(60, 60),
-                    Tag = child.Id,
+                    Tag = child.ID,
                     FlatStyle = FlatStyle.Flat,
                     BackgroundImage = global::ChoreApplication.Properties.Resources.useregular,
                     BackgroundImageLayout = ImageLayout.Zoom,

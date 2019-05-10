@@ -43,11 +43,11 @@ namespace ChoreApplication
                                 chore.Status = 4;
                                 chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
                                 chore.Update();
-                                Notification.Insert(child.Id, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
+                                Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
                             }
                             else if (CheckDueTime(_timeNow, chore.DueDate))
                             {
-                                Notification.Insert(child.Id, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
+                                Notification.Insert(child.ID, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
                             }
                         }
                     }

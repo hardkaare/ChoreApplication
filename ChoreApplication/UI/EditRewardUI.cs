@@ -14,8 +14,8 @@ namespace ChoreApplication.UI
             _reward = reward;
             rewardName.Text = _reward.Name;
             description.Text = _reward.Description;
-            pointsRequired.Value = _reward.PointsReq;
-            foreach (var child in ChildUser.Load($"c.child_id = {_reward.ChildId}"))
+            pointsRequired.Value = _reward.PointsRequired;
+            foreach (var child in ChildUser.Load($"c.child_id = {_reward.ChildID}"))
             {
                 assignment.Text = child.FirstName;
             }
@@ -38,13 +38,13 @@ namespace ChoreApplication.UI
         {
             _reward.Name = rewardName.Text;
             _reward.Description = description.Text;
-            _reward.PointsReq = (int)pointsRequired.Value;
+            _reward.PointsRequired = (int)pointsRequired.Value;
             int id = 0;
             foreach (var child in ChildUser.Load($"u.first_name = '{assignment.Text}'"))
             {
                 id = child.ChildId;
             }
-            _reward.ChildId = id;
+            _reward.ChildID = id;
             _reward.Update();
             this.Close();
             MessageBox.Show("The reward has been updated.");
