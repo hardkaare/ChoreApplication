@@ -41,9 +41,21 @@ namespace ChoreApplication
             foreach (ChildUser child in _childList)
             {
                 _concreteList = Concrete.Load($"child_id={child.ChildID}");
-                foreach (Chore chore in _concreteList)
+                foreach (Concrete chore in _concreteList)
                 {
-
+                    if (chore.DueDate < DateTime.Now)
+                    {
+                        child.Points -= chore.Points;
+                        child.Update();
+                        chore.Status = 4;
+                        chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
+                        chore.Update();
+                        Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
+                    }
+                    else if (CheckDueTime(DateTime.Now, chore.DueDate))
+                    {
+                        Notification.Insert(child.ID, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
+                    }
                 }
             }
 
@@ -99,7 +111,7 @@ namespace ChoreApplication
                     UpdateLastTick();
                     foreach (ChildUser child in childList)
                     {
-                        foreach (var chore in Concrete.Load($"ch.child_id ={child.ChildId} AND co.status = 1"))
+                        foreach (var chore in Concrete.Load($"ch.child_id ={child.ChildID} AND co.status = 1"))
                         {
                             if (chore.DueDate < _timeNow)
                             {
