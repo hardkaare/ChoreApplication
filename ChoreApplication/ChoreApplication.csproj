@@ -50,6 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CheckTime.cs" />
     <Compile Include="ChildFunctions.cs" />
     <Compile Include="ChildUser.cs" />
     <Compile Include="Chore.cs" />

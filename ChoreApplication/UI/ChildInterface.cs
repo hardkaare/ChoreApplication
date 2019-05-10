@@ -25,7 +25,6 @@ namespace ChoreApplication.UI
             LoadPoints();
             LoadAmountOfNotifications();
             ChoresUI();
-            SystemFunctions.CheckTime(_childUsers);
         }
 
         private void LoadPoints()
