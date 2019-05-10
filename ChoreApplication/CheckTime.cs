@@ -34,7 +34,6 @@ namespace ChoreApplication
                 UpdateDailyTick();
                 ResetChores();
                 GenerateConcreteChore();
-                MessageBox.Show("It's a new day. Repeatable chores are reset and reocurring chores are generated");
             }
 
             //Check concrete chores
@@ -53,18 +52,17 @@ namespace ChoreApplication
                         chore.Update();
                         Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
                     }
-                    //If theres less than an hour to the chore being due
                     
+                    //If theres less than an hour to the chore being due
                     else if (CheckDueTime(chore.DueDate) && (chore.Reminder == 0))
                     {
                         Notification.Insert(child.ID, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
                         chore.Reminder = 1;
                         chore.Update();
-                        MessageBox.Show("A notification was created for because the following chore is due within 1 hour: " + chore.ToString());
                     }
                 }
             }
-            Thread.Sleep(60000); //Lav om til 60 eller 360
+            Thread.Sleep(60000); //Lav om til 60
             CheckDB();
         }
 
