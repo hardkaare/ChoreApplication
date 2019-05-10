@@ -53,7 +53,7 @@ namespace ChoreApplication.UI
             {
                 Text = labelText,
                 Location = new Point(locationX, locationY),
-                MaximumSize = new Size(295, 20),
+                MaximumSize = new Size(300, 19),
                 AutoSize = true,
                 AutoEllipsis = true,
             };

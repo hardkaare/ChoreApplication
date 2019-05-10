@@ -316,7 +316,6 @@
             this.Controls.Add(this.RewardPanel);
             this.Controls.Add(this.navigationPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.HelpButton = true;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "ChildInterface";
