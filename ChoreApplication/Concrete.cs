@@ -32,6 +32,8 @@ namespace ChoreApplication
 
         public string Type { get; set; }
 
+        public int Reminder { get; set; }
+
         #endregion Properties
 
         #region Constructor
@@ -47,13 +49,14 @@ namespace ChoreApplication
         /// <param name="status">What state the chore is in. Can be active, approval pending, approved and overdue</param>
         /// <param name="approvalDate">What date the chore is approved. Empty string if not approved</param>
         public Concrete(int id, string name, string description, int points, int assignment,
-            DateTime dueDate, int status, DateTime approvalDate, string type) :
+            DateTime dueDate, int status, DateTime approvalDate, string type, int reminder) :
             base(id, name, description, points, assignment)
         {
             DueDate = dueDate;
             Status = status;
             ApprovalDate = approvalDate;
             Type = type;
+            Reminder = reminder;
         }
 
         #endregion Constructor
@@ -68,8 +71,8 @@ namespace ChoreApplication
         public override string ToString()
         {
             return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
-                "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}",
-                Name, Description, Points, Assignment, DueDate, Status, ApprovalDate);
+                "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}\nReminder sent: {7}",
+                Name, Description, Points, Assignment, DueDate, Status, ApprovalDate, Reminder);
         }
 
         /// <summary>
@@ -111,7 +114,7 @@ namespace ChoreApplication
 
             //Formatting the query to concrete_chore table, creating the SqlCommand and executing it
             string query2 = string.Format("INSERT INTO dbo.concrete_chore " +
-                "VALUES ({0}, '{1}', '{2}', NULL, '{3}')", id, dueDate.ToString(Properties.Settings.Default.LongDateFormat), status, type);
+                "VALUES ({0}, '{1}', '{2}', NULL, '{3}', 0)", id, dueDate.ToString(Properties.Settings.Default.LongDateFormat), status, type);
             SqlCommand command2 = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
             command2.ExecuteNonQuery();
 
@@ -126,8 +129,8 @@ namespace ChoreApplication
         {
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("UPDATE concrete_chore SET " +
-                "due_date='{0}', status={1}, approval_date='{2}' WHERE chore_id={3}",
-                DueDate.ToString(Properties.Settings.Default.LongDateFormat), Status, ApprovalDate.ToString(Properties.Settings.Default.LongDateFormat), ID);
+                "due_date='{0}', status={1}, approval_date='{2}', reminder={3} WHERE chore_id={4}",
+                DueDate.ToString(Properties.Settings.Default.LongDateFormat), Status, ApprovalDate.ToString(Properties.Settings.Default.LongDateFormat), Reminder, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
                 Assignment, Name, Description, Points, ID);
@@ -165,7 +168,7 @@ namespace ChoreApplication
             //Makes a string query and opens the connection to DB
             string query = string.Format(
                 "SELECT ch.chore_id, ch.name, ch.description, ch.points, ch.child_id, co.due_date, " +
-                "co.status, co.approval_date, co.type FROM chore AS ch INNER JOIN concrete_chore AS co ON " +
+                "co.status, co.approval_date, co.type, co.reminder FROM chore AS ch INNER JOIN concrete_chore AS co ON " +
                 "ch.chore_id=co.chore_id{0}", whereClause);
             DatabaseFunctions.DatabaseConnection.Open();
 
@@ -187,6 +190,7 @@ namespace ChoreApplication
                 int status = (int)reader[6];
                 DateTime approvalDate;
                 string type = reader[8].ToString();
+                int reminder = (int)reader[9];
 
                 //Checks if approval date is null in DB and sets the time to a predefined date if so
                 if (!reader.IsDBNull(7))
@@ -199,7 +203,7 @@ namespace ChoreApplication
                 }
 
                 //Initializes the choreobject with the parameters and adds it to the list
-                currentChore = new Concrete(choreID, name, description, points, assignment, dueTime, status, approvalDate, type);
+                currentChore = new Concrete(choreID, name, description, points, assignment, dueTime, status, approvalDate, type, reminder);
                 result.Add(currentChore);
             }
             reader.Close();
