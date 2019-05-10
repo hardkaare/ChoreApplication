@@ -183,6 +183,7 @@ namespace ChoreApplication.UI
             // 
             this.chorePointsTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.chorePointsTextBox.Location = new System.Drawing.Point(65, 106);
+            this.chorePointsTextBox.MaxLength = 50;
             this.chorePointsTextBox.Name = "chorePointsTextBox";
             this.chorePointsTextBox.Size = new System.Drawing.Size(200, 22);
             this.chorePointsTextBox.TabIndex = 2;

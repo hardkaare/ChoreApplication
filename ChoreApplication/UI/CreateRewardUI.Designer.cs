@@ -41,13 +41,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.pointsRequiredNumericUpDown)).BeginInit();
             this.SuspendLayout();
             // 
-            // rewardName
+            // rewardNameTextBox
             // 
             this.rewardNameTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.rewardNameTextBox.Location = new System.Drawing.Point(70, 77);
-            this.rewardNameTextBox.Name = "rewardName";
+            this.rewardNameTextBox.MaxLength = 50;
+            this.rewardNameTextBox.Name = "rewardNameTextBox";
             this.rewardNameTextBox.Size = new System.Drawing.Size(200, 22);
             this.rewardNameTextBox.TabIndex = 1;
+            this.rewardNameTextBox.Text = "Enter reward name";
             // 
             // rewardNameLabel
             // 
@@ -79,7 +81,7 @@
             this.pointsRequiredLabel.TabIndex = 0;
             this.pointsRequiredLabel.Text = "Points required";
             // 
-            // pointsRequired
+            // pointsRequiredNumericUpDown
             // 
             this.pointsRequiredNumericUpDown.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.pointsRequiredNumericUpDown.Location = new System.Drawing.Point(70, 243);
@@ -93,7 +95,7 @@
             0,
             0,
             0});
-            this.pointsRequiredNumericUpDown.Name = "pointsRequired";
+            this.pointsRequiredNumericUpDown.Name = "pointsRequiredNumericUpDown";
             this.pointsRequiredNumericUpDown.Size = new System.Drawing.Size(200, 22);
             this.pointsRequiredNumericUpDown.TabIndex = 3;
             this.pointsRequiredNumericUpDown.Value = new decimal(new int[] {
@@ -112,41 +114,42 @@
             this.assignmentLabel.TabIndex = 0;
             this.assignmentLabel.Text = "Assignment";
             // 
-            // assignment
+            // assignmentComboBox
             // 
             this.assignmentComboBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.assignmentComboBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.assignmentComboBox.FormattingEnabled = true;
             this.assignmentComboBox.Location = new System.Drawing.Point(69, 287);
-            this.assignmentComboBox.Name = "assignment";
+            this.assignmentComboBox.Name = "assignmentComboBox";
             this.assignmentComboBox.Size = new System.Drawing.Size(200, 24);
             this.assignmentComboBox.TabIndex = 4;
             // 
-            // createReward
+            // createRewardButton
             // 
             this.createRewardButton.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.createRewardButton.Location = new System.Drawing.Point(69, 317);
-            this.createRewardButton.Name = "createReward";
+            this.createRewardButton.Name = "createRewardButton";
             this.createRewardButton.Size = new System.Drawing.Size(200, 25);
             this.createRewardButton.TabIndex = 5;
             this.createRewardButton.Text = "Create reward";
             this.createRewardButton.UseVisualStyleBackColor = true;
             this.createRewardButton.Click += new System.EventHandler(this.CreateReward_Click);
             // 
-            // description
+            // descriptionRichTextBox
             // 
             this.descriptionRichTextBox.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.descriptionRichTextBox.Location = new System.Drawing.Point(69, 121);
-            this.descriptionRichTextBox.Name = "description";
+            this.descriptionRichTextBox.MaxLength = 255;
+            this.descriptionRichTextBox.Name = "descriptionRichTextBox";
             this.descriptionRichTextBox.Size = new System.Drawing.Size(200, 100);
             this.descriptionRichTextBox.TabIndex = 2;
-            this.descriptionRichTextBox.Text = "";
+            this.descriptionRichTextBox.Text = "Enter reward description";
             // 
-            // WelcomeLabel
+            // welcomeLabel
             // 
             this.welcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.welcomeLabel.Location = new System.Drawing.Point(12, 10);
-            this.welcomeLabel.Name = "WelcomeLabel";
+            this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(310, 24);
             this.welcomeLabel.TabIndex = 6;
             this.welcomeLabel.Text = "Create Reward";
