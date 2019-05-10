@@ -23,19 +23,23 @@ namespace ChoreApplication.UI
         {
             _session = currentUser;
             InitializeComponent();
-            InitializeDictionaries();
-            ChoresUI();
+            InitializeStatusValues();
+            LoadChildrenNames();
             LoadAmountOfNotifications();
+            ChoresUI();
         }
 
-        private void InitializeDictionaries()
+        private void InitializeStatusValues()
         {
             _statusValues = new Dictionary<int, string>
             {
                 { 1, "Active" },
                 { 2, "Approval pending" },
             };
+        }
 
+        private void LoadChildrenNames()
+        {
             _childUsers = ChildUser.Load("");
             _childrenNames = new Dictionary<int, string>();
             foreach (var child in _childUsers)
@@ -147,6 +151,7 @@ namespace ChoreApplication.UI
 
         public void LoadChores()
         {
+            LoadChildrenNames();
             _concreteChoresApprovalPending = Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
             _reoccurringChores = Reocurring.Load("");
             _repeatableChores = Repeatable.Load("");
