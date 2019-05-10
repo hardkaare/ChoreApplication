@@ -37,12 +37,13 @@ namespace ChoreApplication
                 MessageBox.Show("It's a new day. Repeatable chores are reset and reocurring chores are generated");
             }
 
-            //Check overdue chores
+            //Check concrete chores
             foreach (ChildUser child in _childList)
             {
                 _concreteList = Concrete.Load($"child_id={child.ChildID} AND [status]=1");
                 foreach (Concrete chore in _concreteList)
                 {
+                    //If it's past it's due date
                     if (chore.DueDate < DateTime.Now)
                     {
                         child.Points -= chore.Points;
@@ -51,19 +52,19 @@ namespace ChoreApplication
                         chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
                         chore.Update();
                         Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
-
-                        MessageBox.Show("Following chore was updated: " + chore.ToString());
                     }
-                    else if (CheckDueTime(DateTime.Now, chore.DueDate))
+                    //If theres less than an hour to the chore being due
+                    
+                    else if (CheckDueTime(chore.DueDate) && (chore.Reminder == 0))
                     {
                         Notification.Insert(child.ID, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
+                        chore.Reminder = 1;
+                        chore.Update();
                         MessageBox.Show("A notification was created for because the following chore is due within 1 hour: " + chore.ToString());
                     }
                 }
             }
-
-            MessageBox.Show("I am sleeping now");
-            Thread.Sleep(5000); //Lav om til 60 eller 360
+            Thread.Sleep(60000); //Lav om til 60 eller 360
             CheckDB();
         }
 
@@ -105,11 +106,15 @@ namespace ChoreApplication
             return dailyTick;
         }
 
-        private bool CheckDueTime(DateTime timeNow, DateTime dueTime)
+        private bool CheckDueTime(DateTime dueTime)
         {
-            TimeSpan elapsedTime = dueTime - timeNow;
-            return (elapsedTime.TotalSeconds > -1 && elapsedTime.TotalSeconds < 0) // up to 1 second before
-                   || (elapsedTime.TotalSeconds >= 0 && Math.Floor(elapsedTime.TotalSeconds) <=360); // up to 15 minutes later
+            bool due = false;
+            TimeSpan elapsedTime = dueTime - DateTime.Now;
+            if (elapsedTime.TotalHours < 1)
+            {
+                due = true;
+            }
+            return due;
         }
 
         private static void UpdateDailyTick()

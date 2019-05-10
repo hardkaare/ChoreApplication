@@ -363,6 +363,7 @@ namespace ChoreApplication.UI
             {
                 currentChore.DueDate = DateTime.Now.AddDays(1);
                 currentChore.Status = 1;
+                currentChore.Reminder = 0;
                 currentChore.Update();
             }
             Notification.Insert(currentChild[0].ID, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
