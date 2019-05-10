@@ -32,17 +32,17 @@ namespace ChoreApplication
         /// <summary>
         /// Constructor that sets all properties for the class
         /// </summary>
-        /// <param name="_name">Name of the chore</param>
-        /// <param name="_desc">Description of the chore</param>
-        /// <param name="_points">Points earned by completing the chore</param>
-        /// <param name="_assignment">Who the chore is assigned to</param>
-        public Chore(int _id, string _name, string _desc, int _points, int _assignment)
+        /// <param name="name">Name of the chore</param>
+        /// <param name="description">Description of the chore</param>
+        /// <param name="points">Points earned by completing the chore</param>
+        /// <param name="assignment">Who the chore is assigned to</param>
+        public Chore(int id, string name, string description, int points, int assignment)
         {
-            ID = _id;
-            Name = _name;
-            Description = _desc;
-            Points = _points;
-            Assignment = _assignment;
+            ID = id;
+            Name = name;
+            Description = description;
+            Points = points;
+            Assignment = assignment;
         }
 
         #endregion Constructor
