@@ -31,7 +31,7 @@ namespace ChoreApplication.UI
                             string email = emailTextBox.Text;
 
                             //Validate password text
-                            if ((password1TextBox.Text.Length < 20) && Regex.IsMatch(password1TextBox.Text, @"^[ÆØÅæøåa-zA-Z0-9]+$") && Regex.IsMatch(password1TextBox.Text, @"^\d{6}$"))
+                            if ((password1TextBox.Text.Length < 20) && Regex.IsMatch(password1TextBox.Text, @"^[ÆØÅæøåa-zA-Z0-9]+$") && (password1TextBox.Text.Length > 6))
                             {
                                 string password = password1TextBox.Text;
 
