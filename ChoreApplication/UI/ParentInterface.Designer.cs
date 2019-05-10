@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.notificationAmountLabel = new ChoreApplication.UI.RoundButton();
+            this.notificationAmountLabel = new RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();

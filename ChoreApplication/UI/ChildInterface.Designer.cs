@@ -35,7 +35,7 @@
             this.titleText = new System.Windows.Forms.Label();
             this.chorePanel = new System.Windows.Forms.Panel();
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.notificationAmount = new ChoreApplication.UI.RoundButton();
+            this.notificationAmount = new RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
             this.rewardsLabel = new System.Windows.Forms.Label();
