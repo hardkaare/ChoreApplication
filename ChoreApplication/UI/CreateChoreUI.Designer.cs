@@ -140,7 +140,7 @@ namespace ChoreApplication.UI
             this.childAssignedCombobox.Location = new System.Drawing.Point(65, 310);
             this.childAssignedCombobox.Name = "childAssignedCombobox";
             this.childAssignedCombobox.Size = new System.Drawing.Size(200, 24);
-            this.childAssignedCombobox.TabIndex = 13;
+            this.childAssignedCombobox.TabIndex = 6;
             // 
             // dueDateTimePicker
             // 

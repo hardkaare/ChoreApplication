@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.notificationAmountLabel = new RoundButton();
+            this.notificationAmountLabel = new ChoreApplication.UI.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -74,7 +74,7 @@
             this.navigationPanel.Size = new System.Drawing.Size(420, 79);
             this.navigationPanel.TabIndex = 0;
             // 
-            // NotificationAmount
+            // notificationAmountLabel
             // 
             this.notificationAmountLabel.Enabled = false;
             this.notificationAmountLabel.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -82,7 +82,7 @@
             this.notificationAmountLabel.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.notificationAmountLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.notificationAmountLabel.Location = new System.Drawing.Point(374, 1);
-            this.notificationAmountLabel.Name = "NotificationAmount";
+            this.notificationAmountLabel.Name = "notificationAmountLabel";
             this.notificationAmountLabel.Size = new System.Drawing.Size(35, 35);
             this.notificationAmountLabel.TabIndex = 0;
             this.notificationAmountLabel.TabStop = false;
@@ -139,7 +139,7 @@
             this.choresLabel.TabIndex = 0;
             this.choresLabel.Text = "Chores";
             // 
-            // choreNavButton
+            // choreNavigationButton
             // 
             this.choreNavigationButton.AccessibleName = "Chores";
             this.choreNavigationButton.BackgroundImage = global::ChoreApplication.Properties.Resources.chores;
@@ -151,16 +151,16 @@
             this.choreNavigationButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.choreNavigationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.choreNavigationButton.Location = new System.Drawing.Point(6, 13);
-            this.choreNavigationButton.Name = "choreNavButton";
+            this.choreNavigationButton.Name = "choreNavigationButton";
             this.choreNavigationButton.Size = new System.Drawing.Size(75, 35);
-            this.choreNavigationButton.TabIndex = 0;
+            this.choreNavigationButton.TabIndex = 1;
             this.choreNavigationButton.Tag = "Chores";
             this.choreNavigationButton.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.choreNavigationButton.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
             this.choreNavigationButton.UseVisualStyleBackColor = true;
             this.choreNavigationButton.Click += new System.EventHandler(this.ChoreNavigationButton_Click);
             // 
-            // notificationsNavButton
+            // notificationsNavigationButton
             // 
             this.notificationsNavigationButton.BackgroundImage = global::ChoreApplication.Properties.Resources.notifications;
             this.notificationsNavigationButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -172,14 +172,14 @@
             this.notificationsNavigationButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.notificationsNavigationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.notificationsNavigationButton.Location = new System.Drawing.Point(337, 13);
-            this.notificationsNavigationButton.Name = "notificationsNavButton";
+            this.notificationsNavigationButton.Name = "notificationsNavigationButton";
             this.notificationsNavigationButton.Size = new System.Drawing.Size(75, 35);
-            this.notificationsNavigationButton.TabIndex = 0;
+            this.notificationsNavigationButton.TabIndex = 5;
             this.notificationsNavigationButton.Tag = "Notifications";
             this.notificationsNavigationButton.UseVisualStyleBackColor = true;
             this.notificationsNavigationButton.Click += new System.EventHandler(this.NotificationsNavigationButton_Click);
             // 
-            // usersNavButton
+            // usersNavigationButton
             // 
             this.usersNavigationButton.BackgroundImage = global::ChoreApplication.Properties.Resources.users;
             this.usersNavigationButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -191,14 +191,14 @@
             this.usersNavigationButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.usersNavigationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.usersNavigationButton.Location = new System.Drawing.Point(254, 13);
-            this.usersNavigationButton.Name = "usersNavButton";
+            this.usersNavigationButton.Name = "usersNavigationButton";
             this.usersNavigationButton.Size = new System.Drawing.Size(75, 35);
-            this.usersNavigationButton.TabIndex = 0;
+            this.usersNavigationButton.TabIndex = 4;
             this.usersNavigationButton.Tag = "Users";
             this.usersNavigationButton.UseVisualStyleBackColor = true;
             this.usersNavigationButton.Click += new System.EventHandler(this.UsersNavigationButton_Click);
             // 
-            // leadboardNavButton
+            // leadboardNavigationButton
             // 
             this.leadboardNavigationButton.BackgroundImage = global::ChoreApplication.Properties.Resources.leaderboardPlaceholder;
             this.leadboardNavigationButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -210,14 +210,14 @@
             this.leadboardNavigationButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.leadboardNavigationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.leadboardNavigationButton.Location = new System.Drawing.Point(171, 13);
-            this.leadboardNavigationButton.Name = "leadboardNavButton";
+            this.leadboardNavigationButton.Name = "leadboardNavigationButton";
             this.leadboardNavigationButton.Size = new System.Drawing.Size(75, 35);
-            this.leadboardNavigationButton.TabIndex = 0;
+            this.leadboardNavigationButton.TabIndex = 3;
             this.leadboardNavigationButton.Tag = "Leaderboards";
             this.leadboardNavigationButton.UseVisualStyleBackColor = true;
             this.leadboardNavigationButton.Click += new System.EventHandler(this.LeadboardNavigationButton_Click);
             // 
-            // rewardNavButton
+            // rewardNavigationButton
             // 
             this.rewardNavigationButton.BackgroundImage = global::ChoreApplication.Properties.Resources.reward;
             this.rewardNavigationButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
@@ -229,14 +229,14 @@
             this.rewardNavigationButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.rewardNavigationButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.rewardNavigationButton.Location = new System.Drawing.Point(79, 13);
-            this.rewardNavigationButton.Name = "rewardNavButton";
+            this.rewardNavigationButton.Name = "rewardNavigationButton";
             this.rewardNavigationButton.Size = new System.Drawing.Size(75, 35);
-            this.rewardNavigationButton.TabIndex = 0;
+            this.rewardNavigationButton.TabIndex = 2;
             this.rewardNavigationButton.Tag = "Rewards";
             this.rewardNavigationButton.UseVisualStyleBackColor = true;
             this.rewardNavigationButton.Click += new System.EventHandler(this.RewardNavigationButton_Click);
             // 
-            // OptionButton
+            // optionButton
             // 
             this.optionButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.optionButton.BackgroundImage = global::ChoreApplication.Properties.Resources.add;
@@ -248,9 +248,9 @@
             this.optionButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.optionButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.optionButton.Location = new System.Drawing.Point(390, 3);
-            this.optionButton.Name = "OptionButton";
+            this.optionButton.Name = "optionButton";
             this.optionButton.Size = new System.Drawing.Size(25, 25);
-            this.optionButton.TabIndex = 0;
+            this.optionButton.TabIndex = 6;
             this.optionButton.UseVisualStyleBackColor = true;
             this.optionButton.Click += new System.EventHandler(this.OptionButton_Click);
             // 
@@ -276,7 +276,7 @@
             this.upperPanel.Size = new System.Drawing.Size(420, 33);
             this.upperPanel.TabIndex = 1;
             // 
-            // UserButton
+            // userButton
             // 
             this.userButton.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.userButton.BackgroundImage = global::ChoreApplication.Properties.Resources.user;
@@ -288,69 +288,69 @@
             this.userButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.userButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.userButton.Location = new System.Drawing.Point(3, 3);
-            this.userButton.Name = "UserButton";
+            this.userButton.Name = "userButton";
             this.userButton.Size = new System.Drawing.Size(25, 25);
-            this.userButton.TabIndex = 0;
+            this.userButton.TabIndex = 7;
             this.toolTip.SetToolTip(this.userButton, "Click here to log out.");
             this.userButton.UseVisualStyleBackColor = true;
             this.userButton.Click += new System.EventHandler(this.UserButton_Click);
             // 
-            // ChorePanel
+            // chorePanel
             // 
             this.chorePanel.AutoScroll = true;
             this.chorePanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.chorePanel.Location = new System.Drawing.Point(12, 49);
             this.chorePanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.chorePanel.Name = "ChorePanel";
+            this.chorePanel.Name = "chorePanel";
             this.chorePanel.Size = new System.Drawing.Size(420, 415);
             this.chorePanel.TabIndex = 6;
             this.chorePanel.Visible = false;
             // 
-            // RewardPanel
+            // rewardPanel
             // 
             this.rewardPanel.AutoScroll = true;
             this.rewardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rewardPanel.Location = new System.Drawing.Point(12, 49);
             this.rewardPanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.rewardPanel.Name = "RewardPanel";
+            this.rewardPanel.Name = "rewardPanel";
             this.rewardPanel.Size = new System.Drawing.Size(420, 415);
             this.rewardPanel.TabIndex = 2;
             this.rewardPanel.Visible = false;
             // 
-            // UserPanel
+            // userPanel
             // 
             this.userPanel.AutoScroll = true;
             this.userPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.userPanel.Location = new System.Drawing.Point(12, 49);
             this.userPanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.userPanel.Name = "UserPanel";
+            this.userPanel.Name = "userPanel";
             this.userPanel.Size = new System.Drawing.Size(420, 415);
             this.userPanel.TabIndex = 3;
             this.userPanel.Visible = false;
             // 
-            // NotificationPanel
+            // notificationPanel
             // 
             this.notificationPanel.AutoScroll = true;
             this.notificationPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.notificationPanel.Location = new System.Drawing.Point(12, 50);
             this.notificationPanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.notificationPanel.Name = "NotificationPanel";
+            this.notificationPanel.Name = "notificationPanel";
             this.notificationPanel.Size = new System.Drawing.Size(420, 415);
             this.notificationPanel.TabIndex = 4;
             this.notificationPanel.Visible = false;
             // 
-            // LeaderboardPanel
+            // leaderboardPanel
             // 
             this.leaderboardPanel.AutoScroll = true;
             this.leaderboardPanel.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.leaderboardPanel.Location = new System.Drawing.Point(12, 49);
             this.leaderboardPanel.MaximumSize = new System.Drawing.Size(420, 415);
-            this.leaderboardPanel.Name = "LeaderboardPanel";
+            this.leaderboardPanel.Name = "leaderboardPanel";
             this.leaderboardPanel.Size = new System.Drawing.Size(420, 415);
             this.leaderboardPanel.TabIndex = 5;
             this.leaderboardPanel.Visible = false;
             // 
-            // toolTip1
+            // toolTip
             // 
             this.toolTip.IsBalloon = true;
             // 

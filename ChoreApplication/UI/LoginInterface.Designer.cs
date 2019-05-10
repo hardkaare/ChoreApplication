@@ -57,7 +57,7 @@
             this.loginLabel.Location = new System.Drawing.Point(3, 17);
             this.loginLabel.Name = "loginLabel";
             this.loginLabel.Size = new System.Drawing.Size(304, 40);
-            this.loginLabel.TabIndex = 1;
+            this.loginLabel.TabIndex = 0;
             this.loginLabel.Text = "Login";
             this.loginLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -69,7 +69,7 @@
             this.emailTextBox.MaxLength = 50;
             this.emailTextBox.Name = "emailTextBox";
             this.emailTextBox.Size = new System.Drawing.Size(200, 22);
-            this.emailTextBox.TabIndex = 2;
+            this.emailTextBox.TabIndex = 1;
             this.emailTextBox.Text = "Enter email";
             this.emailTextBox.Click += new System.EventHandler(this.EmailTextbox_Click);
             // 
@@ -82,7 +82,7 @@
             this.passwordTextBox.Name = "passwordTextBox";
             this.passwordTextBox.PasswordChar = '*';
             this.passwordTextBox.Size = new System.Drawing.Size(200, 22);
-            this.passwordTextBox.TabIndex = 3;
+            this.passwordTextBox.TabIndex = 2;
             this.passwordTextBox.Text = "Password";
             this.passwordTextBox.Click += new System.EventHandler(this.PasswordTextBox_Click);
             // 
@@ -93,7 +93,7 @@
             this.loginButton.Location = new System.Drawing.Point(60, 153);
             this.loginButton.Name = "loginButton";
             this.loginButton.Size = new System.Drawing.Size(200, 28);
-            this.loginButton.TabIndex = 4;
+            this.loginButton.TabIndex = 3;
             this.loginButton.Text = "Login";
             this.loginButton.UseVisualStyleBackColor = true;
             this.loginButton.Click += new System.EventHandler(this.LoginButton_Click);

@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             this.pincodePanel = new System.Windows.Forms.Panel();
-            this.roundButton0 = new RoundButton();
-            this.roundButtonDelete = new RoundButton();
-            this.roundButton9 = new RoundButton();
-            this.roundButton8 = new RoundButton();
-            this.roundButton7 = new RoundButton();
-            this.roundButton6 = new RoundButton();
-            this.roundButton5 = new RoundButton();
-            this.roundButton4 = new RoundButton();
-            this.roundButton3 = new RoundButton();
-            this.roundButton2 = new RoundButton();
-            this.roundButton1 = new RoundButton();
+            this.roundButtonAccept = new ChoreApplication.UI.RoundButton();
+            this.roundButton0 = new ChoreApplication.UI.RoundButton();
+            this.roundButtonDelete = new ChoreApplication.UI.RoundButton();
+            this.roundButton9 = new ChoreApplication.UI.RoundButton();
+            this.roundButton8 = new ChoreApplication.UI.RoundButton();
+            this.roundButton7 = new ChoreApplication.UI.RoundButton();
+            this.roundButton6 = new ChoreApplication.UI.RoundButton();
+            this.roundButton5 = new ChoreApplication.UI.RoundButton();
+            this.roundButton4 = new ChoreApplication.UI.RoundButton();
+            this.roundButton3 = new ChoreApplication.UI.RoundButton();
+            this.roundButton2 = new ChoreApplication.UI.RoundButton();
+            this.roundButton1 = new ChoreApplication.UI.RoundButton();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.enterpinTextBox = new System.Windows.Forms.TextBox();
-            this.roundButtonAccept = new RoundButton();
             this.welcomeLabel = new System.Windows.Forms.Label();
             this.backButton = new System.Windows.Forms.Button();
             this.pincodePanel.SuspendLayout();
@@ -83,12 +83,12 @@
             this.roundButtonAccept.Margin = new System.Windows.Forms.Padding(2);
             this.roundButtonAccept.Name = "roundButtonAccept";
             this.roundButtonAccept.Size = new System.Drawing.Size(66, 68);
-            this.roundButtonAccept.TabIndex = 15;
+            this.roundButtonAccept.TabIndex = 2;
             this.roundButtonAccept.Text = "Accept";
             this.roundButtonAccept.UseVisualStyleBackColor = true;
             this.roundButtonAccept.Click += new System.EventHandler(this.AcceptButton_click);
             // 
-            // rbZero
+            // roundButton0
             // 
             this.roundButton0.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton0.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -99,9 +99,10 @@
             this.roundButton0.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton0.Location = new System.Drawing.Point(120, 271);
             this.roundButton0.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton0.Name = "rbZero";
+            this.roundButton0.Name = "roundButton0";
             this.roundButton0.Size = new System.Drawing.Size(66, 68);
             this.roundButton0.TabIndex = 14;
+            this.roundButton0.TabStop = false;
             this.roundButton0.Text = "0";
             this.roundButton0.UseVisualStyleBackColor = true;
             this.roundButton0.Click += new System.EventHandler(this.OneButton_Click);
@@ -119,12 +120,12 @@
             this.roundButtonDelete.Margin = new System.Windows.Forms.Padding(2);
             this.roundButtonDelete.Name = "roundButtonDelete";
             this.roundButtonDelete.Size = new System.Drawing.Size(66, 68);
-            this.roundButtonDelete.TabIndex = 13;
+            this.roundButtonDelete.TabIndex = 3;
             this.roundButtonDelete.Text = "Delete";
             this.roundButtonDelete.UseVisualStyleBackColor = true;
             this.roundButtonDelete.Click += new System.EventHandler(this.DeleteButton_Click);
             // 
-            // rbNine
+            // roundButton9
             // 
             this.roundButton9.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton9.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -135,14 +136,15 @@
             this.roundButton9.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton9.Location = new System.Drawing.Point(191, 198);
             this.roundButton9.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton9.Name = "rbNine";
+            this.roundButton9.Name = "roundButton9";
             this.roundButton9.Size = new System.Drawing.Size(66, 68);
             this.roundButton9.TabIndex = 12;
+            this.roundButton9.TabStop = false;
             this.roundButton9.Text = "9";
             this.roundButton9.UseVisualStyleBackColor = true;
             this.roundButton9.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbEight
+            // roundButton8
             // 
             this.roundButton8.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton8.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -153,14 +155,15 @@
             this.roundButton8.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton8.Location = new System.Drawing.Point(120, 198);
             this.roundButton8.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton8.Name = "rbEight";
+            this.roundButton8.Name = "roundButton8";
             this.roundButton8.Size = new System.Drawing.Size(66, 68);
             this.roundButton8.TabIndex = 11;
+            this.roundButton8.TabStop = false;
             this.roundButton8.Text = "8";
             this.roundButton8.UseVisualStyleBackColor = true;
             this.roundButton8.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbSeven
+            // roundButton7
             // 
             this.roundButton7.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton7.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -171,14 +174,15 @@
             this.roundButton7.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton7.Location = new System.Drawing.Point(50, 198);
             this.roundButton7.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton7.Name = "rbSeven";
+            this.roundButton7.Name = "roundButton7";
             this.roundButton7.Size = new System.Drawing.Size(66, 68);
             this.roundButton7.TabIndex = 10;
+            this.roundButton7.TabStop = false;
             this.roundButton7.Text = "7";
             this.roundButton7.UseVisualStyleBackColor = true;
             this.roundButton7.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbSix
+            // roundButton6
             // 
             this.roundButton6.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton6.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -189,14 +193,15 @@
             this.roundButton6.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton6.Location = new System.Drawing.Point(191, 125);
             this.roundButton6.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton6.Name = "rbSix";
+            this.roundButton6.Name = "roundButton6";
             this.roundButton6.Size = new System.Drawing.Size(66, 68);
             this.roundButton6.TabIndex = 9;
+            this.roundButton6.TabStop = false;
             this.roundButton6.Text = "6";
             this.roundButton6.UseVisualStyleBackColor = true;
             this.roundButton6.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbFive
+            // roundButton5
             // 
             this.roundButton5.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton5.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -207,14 +212,15 @@
             this.roundButton5.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton5.Location = new System.Drawing.Point(120, 125);
             this.roundButton5.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton5.Name = "rbFive";
+            this.roundButton5.Name = "roundButton5";
             this.roundButton5.Size = new System.Drawing.Size(66, 68);
             this.roundButton5.TabIndex = 8;
+            this.roundButton5.TabStop = false;
             this.roundButton5.Text = "5";
             this.roundButton5.UseVisualStyleBackColor = true;
             this.roundButton5.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbFour
+            // roundButton4
             // 
             this.roundButton4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton4.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -225,14 +231,15 @@
             this.roundButton4.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton4.Location = new System.Drawing.Point(50, 125);
             this.roundButton4.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton4.Name = "rbFour";
+            this.roundButton4.Name = "roundButton4";
             this.roundButton4.Size = new System.Drawing.Size(66, 68);
             this.roundButton4.TabIndex = 7;
+            this.roundButton4.TabStop = false;
             this.roundButton4.Text = "4";
             this.roundButton4.UseVisualStyleBackColor = true;
             this.roundButton4.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbThree
+            // roundButton3
             // 
             this.roundButton3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton3.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -243,14 +250,15 @@
             this.roundButton3.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton3.Location = new System.Drawing.Point(191, 55);
             this.roundButton3.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton3.Name = "rbThree";
+            this.roundButton3.Name = "roundButton3";
             this.roundButton3.Size = new System.Drawing.Size(66, 68);
             this.roundButton3.TabIndex = 6;
+            this.roundButton3.TabStop = false;
             this.roundButton3.Text = "3";
             this.roundButton3.UseVisualStyleBackColor = true;
             this.roundButton3.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbTwo
+            // roundButton2
             // 
             this.roundButton2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton2.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -261,14 +269,15 @@
             this.roundButton2.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton2.Location = new System.Drawing.Point(120, 55);
             this.roundButton2.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton2.Name = "rbTwo";
+            this.roundButton2.Name = "roundButton2";
             this.roundButton2.Size = new System.Drawing.Size(66, 68);
-            this.roundButton2.TabIndex = 5;
+            this.roundButton2.TabIndex = 0;
+            this.roundButton2.TabStop = false;
             this.roundButton2.Text = "2";
             this.roundButton2.UseVisualStyleBackColor = true;
             this.roundButton2.Click += new System.EventHandler(this.OneButton_Click);
             // 
-            // rbOne
+            // roundButton1
             // 
             this.roundButton1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.roundButton1.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
@@ -279,9 +288,10 @@
             this.roundButton1.Font = global::ChoreApplication.Properties.Settings.Default.StandardFont;
             this.roundButton1.Location = new System.Drawing.Point(50, 55);
             this.roundButton1.Margin = new System.Windows.Forms.Padding(2);
-            this.roundButton1.Name = "rbOne";
+            this.roundButton1.Name = "roundButton1";
             this.roundButton1.Size = new System.Drawing.Size(66, 68);
-            this.roundButton1.TabIndex = 4;
+            this.roundButton1.TabIndex = 1;
+            this.roundButton1.TabStop = false;
             this.roundButton1.Text = "1";
             this.roundButton1.UseVisualStyleBackColor = true;
             this.roundButton1.Click += new System.EventHandler(this.OneButton_Click);
@@ -308,30 +318,31 @@
             this.enterpinTextBox.Size = new System.Drawing.Size(200, 22);
             this.enterpinTextBox.TabIndex = 1;
             // 
-            // WelcomeLabel
+            // welcomeLabel
             // 
             this.welcomeLabel.Font = global::ChoreApplication.Properties.Settings.Default.StandardFontTitle;
             this.welcomeLabel.Location = new System.Drawing.Point(11, 10);
-            this.welcomeLabel.Name = "WelcomeLabel";
+            this.welcomeLabel.Name = "welcomeLabel";
             this.welcomeLabel.Size = new System.Drawing.Size(310, 24);
             this.welcomeLabel.TabIndex = 9;
             this.welcomeLabel.Text = "Welcome";
             this.welcomeLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // BackButton
+            // backButton
             // 
             this.backButton.BackgroundImage = global::ChoreApplication.Properties.Resources.chevron_circle_left_solid;
             this.backButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.backButton.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.backButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.backButton.FlatAppearance.BorderColor = System.Drawing.SystemColors.Window;
             this.backButton.FlatAppearance.BorderSize = 0;
             this.backButton.FlatAppearance.MouseDownBackColor = System.Drawing.SystemColors.Window;
             this.backButton.FlatAppearance.MouseOverBackColor = System.Drawing.SystemColors.Window;
             this.backButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.backButton.Location = new System.Drawing.Point(12, 9);
-            this.backButton.Name = "BackButton";
+            this.backButton.Name = "backButton";
             this.backButton.Size = new System.Drawing.Size(25, 26);
-            this.backButton.TabIndex = 2;
+            this.backButton.TabIndex = 4;
             this.backButton.UseVisualStyleBackColor = true;
             this.backButton.Click += new System.EventHandler(this.BackButton_Click);
             // 
@@ -341,6 +352,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
+            this.CancelButton = this.backButton;
             this.ClientSize = new System.Drawing.Size(334, 404);
             this.Controls.Add(this.backButton);
             this.Controls.Add(this.welcomeLabel);
