@@ -29,7 +29,7 @@ namespace ChoreApplication.UI
             {
                 if (children[i].FirstName == assignmentComboBox.Text)
                 {
-                    id = children[i].ChildId;
+                    id = children[i].ChildID;
                 }
             }
             if (!string.IsNullOrEmpty(assignmentComboBox.Text))

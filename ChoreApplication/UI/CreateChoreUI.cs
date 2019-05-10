@@ -89,7 +89,7 @@ namespace ChoreApplication.UI
             {
                 if (children[i].FirstName == childAssignedCombobox.Text)
                 {
-                    id = children[i].ChildId;
+                    id = children[i].ChildID;
                 }
             }
             if (Regex.IsMatch(choreNameTextBox.Text, @"^[ÆØÅæøåa-zA-Z\s]+$"))

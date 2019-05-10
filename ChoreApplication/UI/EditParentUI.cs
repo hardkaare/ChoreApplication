@@ -13,7 +13,7 @@ namespace ChoreApplication.UI
             InitializeComponent();
             _parent = parent;
             firstNameTextBox.Text = parent.FirstName;
-            lastNameTextBox.Text = parent.Lastname;
+            lastNameTextBox.Text = parent.LastName;
             emailTextBox.Text = parent.Email;
             passwordTextBox.Text = parent.Password;
             pincodeTextBox.Text = parent.Pincode;
@@ -24,7 +24,7 @@ namespace ChoreApplication.UI
 
         {
             _parent.FirstName = firstNameTextBox.Text;
-            _parent.Lastname = lastNameTextBox.Text;
+            _parent.LastName = lastNameTextBox.Text;
             _parent.Password = passwordTextBox.Text;
             _parent.Pincode = pincodeTextBox.Text;
             _parent.Email = emailTextBox.Text;

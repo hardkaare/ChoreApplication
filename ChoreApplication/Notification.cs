@@ -41,9 +41,9 @@ namespace ChoreApplication
         {
             var fulltitle = DateTime.Now.ToString(Properties.Settings.Default.TextDateFormat) + " - " + title;
             string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userID, fulltitle, description);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -55,9 +55,9 @@ namespace ChoreApplication
             }
             List<Notification> notifications = new List<Notification>();
             string query = string.Format("SELECT * FROM dbo.notification{0}", whereClause);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 string title = reader["title"].ToString();
@@ -76,9 +76,9 @@ namespace ChoreApplication
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.notification WHERE notification_id={0}", NotificationID);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
             DatabaseFunctions.DatabaseConnection.Open();
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
             DatabaseFunctions.DatabaseConnection.Close();
         }
 

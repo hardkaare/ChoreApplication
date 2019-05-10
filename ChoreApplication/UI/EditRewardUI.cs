@@ -42,7 +42,7 @@ namespace ChoreApplication.UI
             int id = 0;
             foreach (var child in ChildUser.Load($"u.first_name = '{childAssignedComboBox.Text}'"))
             {
-                id = child.ChildId;
+                id = child.ChildID;
             }
             _reward.ChildID = id;
             _reward.Update();

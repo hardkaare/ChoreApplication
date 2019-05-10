@@ -64,30 +64,30 @@ namespace ChoreApplication
             string query = string.Format("INSERT INTO dbo.chore" +
                 "(child_id, name, description, points) OUTPUT inserted.chore_id VALUES " +
                 "('{0}', '{1}', '{2}', '{3}')", assignment, name, desc, points);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
 
             //Opens connection to the DB
             DatabaseFunctions.DatabaseConnection.Open();
 
             //Executes the query to chore table and returns the chore_id inserted
-            int id = (int)cmd.ExecuteScalar();
+            int id = (int)command.ExecuteScalar();
 
             //Formatting the query to concrete_chore table and creating the SqlCommand
             string query2 = string.Format("INSERT INTO dbo.reoccurring_chore (chore_id, due_time) " +
                 "OUTPUT inserted.reo_id VALUES ({0}, '{1}')", id, dueTime.ToString("T"));
-            SqlCommand cmd2 = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command2 = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
 
             //Executes the query to chore table and returns the chore_id inserted
-            id = (int)cmd2.ExecuteScalar();
+            id = (int)command2.ExecuteScalar();
 
             //Creates and executes an insert query for each day in the list
             string query3;
-            SqlCommand cmd3;
+            SqlCommand command3;
             foreach (string day in days)
             {
                 query3 = string.Format("INSERT INTO [days] (reo_id, day) VALUES ({0}, '{1}')", id, day);
-                cmd3 = new SqlCommand(query3, DatabaseFunctions.DatabaseConnection);
-                cmd3.ExecuteNonQuery();
+                command3 = new SqlCommand(query3, DatabaseFunctions.DatabaseConnection);
+                command3.ExecuteNonQuery();
             }
 
             //Closes connection to DB

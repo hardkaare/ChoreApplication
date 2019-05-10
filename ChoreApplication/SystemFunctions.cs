@@ -34,7 +34,7 @@ namespace ChoreApplication
                     UpdateLastTick();
                     foreach (ChildUser child in childList)
                     {
-                        foreach (var chore in Concrete.Load($"ch.child_id ={child.ChildId} AND co.status = 1"))
+                        foreach (var chore in Concrete.Load($"ch.child_id ={child.ChildID} AND co.status = 1"))
                         {
                             if (chore.DueDate < _timeNow)
                             {
@@ -167,7 +167,7 @@ namespace ChoreApplication
 
                 string query = string.Format("SELECT concrete_chore.status FROM chore INNER JOIN concrete_chore ON " +
                     "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND (concrete_chore.[status]=4 OR " +
-                    "concrete_chore.[status]=3) ORDER BY concrete_chore.approval_date ASC", c.ChildId);
+                    "concrete_chore.[status]=3) ORDER BY concrete_chore.approval_date ASC", c.ChildID);
                 DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
@@ -194,7 +194,7 @@ namespace ChoreApplication
                 reader.Close();
                 DatabaseFunctions.DatabaseConnection.Close();
 
-                result.Add(c.ChildId, longestStreak);
+                result.Add(c.ChildID, longestStreak);
             }
             result = SortIntDics(result);
             return result;
@@ -237,7 +237,7 @@ namespace ChoreApplication
                 int CRrounded;
 
                 string query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
-                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=4", c.ChildId);
+                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=4", c.ChildID);
                 DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
@@ -253,7 +253,7 @@ namespace ChoreApplication
                 reader.Close();
 
                 query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
-                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
+                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildID);
 
                 //Creates the SqlCommand and executes it
                 cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
@@ -280,7 +280,7 @@ namespace ChoreApplication
 
                 CRrounded = (int)CR;
 
-                result.Add(c.ChildId, CRrounded);
+                result.Add(c.ChildID, CRrounded);
             }
             result = SortIntDics(result);
             return result;
@@ -321,7 +321,7 @@ namespace ChoreApplication
             {
                 int sum = 0;
                 string query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
-                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
+                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildID);
                 DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
@@ -336,7 +336,7 @@ namespace ChoreApplication
                 }
                 reader.Close();
                 DatabaseFunctions.DatabaseConnection.Close();
-                result.Add(c.ChildId, sum);
+                result.Add(c.ChildID, sum);
             }
             result = SortIntDics(result);
             return result;
@@ -378,7 +378,7 @@ namespace ChoreApplication
             {
                 int sum = 0;
                 string query = string.Format("SELECT points FROM chore INNER JOIN concrete_chore ON " +
-                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildId);
+                    "chore.chore_id = concrete_chore.chore_id WHERE child_id={0} AND concrete_chore.[status]=3", c.ChildID);
                 DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
@@ -392,7 +392,7 @@ namespace ChoreApplication
                 }
                 reader.Close();
                 DatabaseFunctions.DatabaseConnection.Close();
-                result.Add(c.ChildId, sum);
+                result.Add(c.ChildID, sum);
             }
             result = SortIntDics(result);
             return result;

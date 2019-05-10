@@ -101,19 +101,19 @@ namespace ChoreApplication
             string query = string.Format("INSERT INTO dbo.chore" +
                 "(child_id, name, description, points) OUTPUT inserted.chore_id VALUES " +
                 "('{0}', '{1}', '{2}', '{3}')", assignment, name, desc, points);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
 
             //Opens connection to the DB
             DatabaseFunctions.DatabaseConnection.Open();
 
             //Executes the query to chore table and returns the chore_id inserted
-            int id = (int)cmd.ExecuteScalar();
+            int id = (int)command.ExecuteScalar();
 
             //Formatting the query to concrete_chore table, creating the SqlCommand and executing it
             string query2 = string.Format("INSERT INTO dbo.concrete_chore " +
                 "VALUES ({0}, '{1}', '{2}', NULL, '{3}')", id, dueDate.ToString(Properties.Settings.Default.LongDateFormat), status, type);
-            SqlCommand cmd2 = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
-            cmd2.ExecuteNonQuery();
+            SqlCommand command2 = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
+            command2.ExecuteNonQuery();
 
             //Closes connection to DB
             DatabaseFunctions.DatabaseConnection.Close();
@@ -131,15 +131,15 @@ namespace ChoreApplication
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
                 Assignment, Name, Description, Points, ID);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
 
             //Opens connection to the DB
             DatabaseFunctions.DatabaseConnection.Open();
 
             //Executes the SqlCommands
-            cmd.ExecuteNonQuery();
-            cmd = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
-            cmd.ExecuteNonQuery();
+            command.ExecuteNonQuery();
+            command = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
+            command.ExecuteNonQuery();
 
             //Closes connection to DB
             DatabaseFunctions.DatabaseConnection.Close();
@@ -170,8 +170,8 @@ namespace ChoreApplication
             DatabaseFunctions.DatabaseConnection.Open();
 
             //Creates the SqlCommand and executes it
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            SqlDataReader reader = cmd.ExecuteReader();
+            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlDataReader reader = command.ExecuteReader();
 
             //Reads all lines in the datareader
             while (reader.Read())
