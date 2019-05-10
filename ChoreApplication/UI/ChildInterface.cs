@@ -86,7 +86,7 @@ namespace ChoreApplication.UI
             _activeConcreteChores = Concrete.Load($"(status=1 OR status=2) AND ch.child_id={_session.ChildID} ORDER BY status ASC");
             _activeRepeatableChores = Repeatable.Load($"ch.child_id={_session.ChildID}");
             chorePanel.Controls.Clear();
-            int i = 0;
+            int distanceCounter = 0;
             int panelDistance = 95;
 
             foreach (var chore in _activeConcreteChores)
@@ -106,7 +106,7 @@ namespace ChoreApplication.UI
                 var individualChorePanel = new Panel
                 {
                     Name = "panel" + chore.ID.ToString(),
-                    Location = new Point(1, i * panelDistance),
+                    Location = new Point(1, distanceCounter * panelDistance),
                     BorderStyle = BorderStyle.FixedSingle,
                     Size = new Size(chorePanel.Width - 25, panelHeight),
                     AutoSize = true,
@@ -118,7 +118,7 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreDueDateLabel);
                 if (chore.Status == 1)
                 {
-                    individualChorePanel.Controls.Add(AddDoneChoreButton(330, individualChorePanel.Height / 2, chore));
+                    individualChorePanel.Controls.Add(AddConcreteChoreDoneButton(330, individualChorePanel.Height / 2, chore));
                     individualChorePanel.Controls.Add(AddLabel("Completed?", false, 305, individualChorePanel.Height / 2 + 20));
                 }
                 if (chore.Status == 2)
@@ -126,7 +126,7 @@ namespace ChoreApplication.UI
                     individualChorePanel.Controls.Remove(choreDueDateLabel);
                     individualChorePanel.Controls.Add(choreStatusLabel);
                 }
-                i++;
+                distanceCounter++;
             }
 
             foreach (var chore in _activeRepeatableChores)
@@ -154,7 +154,7 @@ namespace ChoreApplication.UI
                 var individualChorePanel = new Panel
                 {
                     Name = "panel" + chore.ID.ToString(),
-                    Location = new Point(1, i * panelDistance),
+                    Location = new Point(1, distanceCounter * panelDistance),
                     BorderStyle = BorderStyle.FixedSingle,
                     Size = new Size(chorePanel.Width - 25, panelHeight),
                     AutoSize = true,
@@ -165,7 +165,7 @@ namespace ChoreApplication.UI
                 individualChorePanel.Controls.Add(choreDescriptionLabel);
                 individualChorePanel.Controls.Add(choreLimitLabel);
                 individualChorePanel.Controls.Add(choreCompletionsLabel);
-                var repChoreDoneButton = AddRepDoneChoreButton(330, individualChorePanel.Height / 2, chore);
+                var repChoreDoneButton = AddRepeatableChoreDoneButton(330, individualChorePanel.Height / 2, chore);
                 individualChorePanel.Controls.Add(repChoreDoneButton);
                 if (chore.Completions >= chore.Limit)
                 {
@@ -181,11 +181,11 @@ namespace ChoreApplication.UI
             }
         }
 
-        private Button AddRepDoneChoreButton(int x, int y, Repeatable chore)
+        private Button AddRepeatableChoreDoneButton(int locationX, int locationY, Repeatable chore)
         {
-            var RepDoneButton = new Button
+            var reatableChoreDoneButton = new Button
             {
-                Location = new Point(x, y - 15),
+                Location = new Point(locationX, locationY - 15),
                 Size = new Size(30, 30),
                 Tag = chore,
                 FlatStyle = FlatStyle.Flat,
@@ -193,28 +193,28 @@ namespace ChoreApplication.UI
                 BackgroundImageLayout = ImageLayout.Zoom,
                 AutoSize = true,
             };
-            RepDoneButton.Cursor = Cursors.Hand;
-            RepDoneButton.FlatAppearance.BorderSize = 0;
-            RepDoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            RepDoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            reatableChoreDoneButton.Cursor = Cursors.Hand;
+            reatableChoreDoneButton.FlatAppearance.BorderSize = 0;
+            reatableChoreDoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            reatableChoreDoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
             if (chore.Completions >= chore.Limit)
             {
-                RepDoneButton.Enabled = false;
+                reatableChoreDoneButton.Enabled = false;
             }
-            RepDoneButton.Click += new EventHandler(RepDoneButton_Click);
-            return RepDoneButton;
+            reatableChoreDoneButton.Click += new EventHandler(RepeatableChoreDoneButton_Click);
+            return reatableChoreDoneButton;
         }
 
-        private void RepDoneButton_Click(object sender, EventArgs e)
+        private void RepeatableChoreDoneButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
             Repeatable currentChore = (Repeatable)clickedButton.Tag;
-            double calcDimishingReturn = currentChore.Points;
+            double calculateDiminishingReturn = currentChore.Points;
             for (int i = 0; i < currentChore.Completions; i++)
             {
-                calcDimishingReturn *= 0.75;
+                calculateDiminishingReturn *= 0.75;
             }
-            int diminishedPoints = (int)calcDimishingReturn;
+            int diminishedPoints = (int)calculateDiminishingReturn;
 
             Concrete.Insert(currentChore.Name, currentChore.Description, diminishedPoints, currentChore.Assignment, new DateTime(2000, 1, 1, 0, 0, 0), "rep");
             currentChore.Completions++;
@@ -223,12 +223,12 @@ namespace ChoreApplication.UI
             LoadAmountOfNotifications();
             LoadChores();
         }
-
-        private Control AddDoneChoreButton(int x, int y, Concrete chore)
+        
+        private Control AddConcreteChoreDoneButton(int locationX, int locationY, Concrete chore)
         {
-            var DoneButton = new Button
+            var concreteChoreDoneButton = new Button
             {
-                Location = new Point(x, y - 15),
+                Location = new Point(locationX, locationY - 15),
                 Size = new Size(30, 30),
                 Tag = chore,
                 FlatStyle = FlatStyle.Flat,
@@ -236,15 +236,15 @@ namespace ChoreApplication.UI
                 BackgroundImageLayout = ImageLayout.Zoom,
                 AutoSize = true,
             };
-            DoneButton.Cursor = Cursors.Hand;
-            DoneButton.FlatAppearance.BorderSize = 0;
-            DoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            DoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            DoneButton.Click += new EventHandler(DoneButton_Click);
-            return DoneButton;
+            concreteChoreDoneButton.Cursor = Cursors.Hand;
+            concreteChoreDoneButton.FlatAppearance.BorderSize = 0;
+            concreteChoreDoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            concreteChoreDoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            concreteChoreDoneButton.Click += new EventHandler(ConcreteChoreDoneButton_Click);
+            return concreteChoreDoneButton;
         }
 
-        private void DoneButton_Click(object sender, EventArgs e)
+        private void ConcreteChoreDoneButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
             Concrete currentChore = (Concrete)clickedButton.Tag;
