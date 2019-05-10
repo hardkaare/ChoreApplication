@@ -39,20 +39,20 @@ namespace ChoreApplication
         /// <summary>
         /// Sets the properties of the concrete chore and creates and constructs a chore
         /// </summary>
-        /// <param name="_name">Name of the chore</param>
-        /// <param name="_desc">Description of the chore</param>
-        /// <param name="_points">How many points are earned by completing the chore</param>
-        /// <param name="_assignment">Who the chore is assigned to</param>
-        /// <param name="_dueDate">When the chore is due</param>
-        /// <param name="_status">What state the chore is in. Can be active, approval pending, approved and overdue</param>
-        /// <param name="_approvalDate">What date the chore is approved. Empty string if not approved</param>
-        public Concrete(int _id, string _name, string _desc, int _points, int _assignment,
-            DateTime _dueDate, int _status, DateTime _approvalDate, string type) :
-            base(_id, _name, _desc, _points, _assignment)
+        /// <param name="name">Name of the chore</param>
+        /// <param name="description">Description of the chore</param>
+        /// <param name="points">How many points are earned by completing the chore</param>
+        /// <param name="assignment">Who the chore is assigned to</param>
+        /// <param name="dueDate">When the chore is due</param>
+        /// <param name="status">What state the chore is in. Can be active, approval pending, approved and overdue</param>
+        /// <param name="approvalDate">What date the chore is approved. Empty string if not approved</param>
+        public Concrete(int id, string name, string description, int points, int assignment,
+            DateTime dueDate, int status, DateTime approvalDate, string type) :
+            base(id, name, description, points, assignment)
         {
-            DueDate = _dueDate;
-            Status = _status;
-            ApprovalDate = _approvalDate;
+            DueDate = dueDate;
+            Status = status;
+            ApprovalDate = approvalDate;
             Type = type;
         }
 
