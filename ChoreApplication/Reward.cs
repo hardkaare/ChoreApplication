@@ -47,10 +47,10 @@ namespace ChoreApplication
         public static void Insert(int childID, string name, string description, int pointsRequired)
         {
             string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}','{2}',{3} )", childID, name, description, pointsRequired);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -60,10 +60,10 @@ namespace ChoreApplication
         {
             //Formatting the query to reward table and creating the SqlCommand.
             string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildID, Name, Description, PointsRequired, RewardID);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -79,8 +79,8 @@ namespace ChoreApplication
             }
             List<Reward> rewards = new List<Reward>();
             string query = string.Format("SELECT * FROM dbo.reward{0}", whereClause);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -93,7 +93,7 @@ namespace ChoreApplication
                 rewards.Add(reward);
             }
             reader.Close();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
             return rewards;
         }
 
@@ -103,10 +103,10 @@ namespace ChoreApplication
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.reward WHERE reward_id={0}", RewardID);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>

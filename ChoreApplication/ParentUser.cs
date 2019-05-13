@@ -39,14 +39,14 @@ namespace ChoreApplication
         public static void Insert(string firstname, string lastname, string email, string password, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}','{1}')", firstname, pincode);
-            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(userQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             //executes the query and return the first column of the first row in the result set returned by the query
             int id = (int)command.ExecuteScalar();
             string parentQuery = string.Format("INSERT INTO dbo.parent(user_id, last_name, email, password) VALUES ('{0}','{1}','{2}','{3}')", id, lastname, email, password);
-            command = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
+            command = new SqlCommand(parentQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -55,13 +55,13 @@ namespace ChoreApplication
         public void Update()
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id=1", FirstName, Pincode);
-            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(userQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
             string parentQuery = string.Format("UPDATE dbo.parent SET last_name='{0}', email='{1}', password='{2}' WHERE user_id=1", LastName, Email, Password);
-            command = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
+            command = new SqlCommand(parentQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -78,8 +78,8 @@ namespace ChoreApplication
             List<ParentUser> parents = new List<ParentUser>();
 
             string query = string.Format("SELECT u.user_id,u.first_name,p.last_name,p.email,p.[password],u.pincode FROM users AS u INNER JOIN parent AS p ON u.user_id = p.user_id{0};", whereClause);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -95,7 +95,7 @@ namespace ChoreApplication
                 parents.Add(user);
             }
             reader.Close();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
             return parents;
         }
 

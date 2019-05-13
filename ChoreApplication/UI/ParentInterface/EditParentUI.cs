@@ -79,7 +79,7 @@ namespace ChoreApplication.UI
             }
             finally
             {
-                DatabaseFunctions.DatabaseConnection.Close();
+                Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
             }
         }
     }

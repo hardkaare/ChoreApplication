@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ChoreApplication
+namespace ChoreApplication.Functions.SystemFunctions
 {
     internal abstract class SystemFunctions
     {

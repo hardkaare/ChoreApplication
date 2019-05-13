@@ -14,7 +14,7 @@ namespace ChoreApplication
         public ChoreApplication()
         {
             InitializeComponent();
-            DatabaseFunctions.InitializeDB();
+            Functions.SystemFunctions.DatabaseFunctions.InitializeDB();
             //_checkTime = new SystemFunctions();
         }
 
@@ -35,7 +35,7 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var checkTime = new CheckTime();
+            var checkTime = new Functions.SystemFunctions.CheckTime();
         }
 
         private void EditJoenler_Click(object sender, EventArgs e)
