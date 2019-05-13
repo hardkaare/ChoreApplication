@@ -1,7 +1,7 @@
 ﻿using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
-namespace ChoreApplication.UI
+namespace ChoreApplication.UI.UILibrary
 {
     public class RoundButton : Button
     {
