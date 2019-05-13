@@ -63,7 +63,7 @@ namespace ChoreApplication.UI.GeneralInterface
                 {
                     var sessionList = ParentUser.Load("");
                     _session = sessionList[0];
-                    var parentUI = new ParentMenu(sessionList[0]);//måske ok
+                    var parentUI = new ParentUI.ParentMenu(sessionList[0]);//måske ok
                     parentUI.Show();
                     this.Close();
                 }

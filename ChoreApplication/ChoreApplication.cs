@@ -43,8 +43,8 @@ namespace ChoreApplication
             var child = ChildUser.Load("u.user_id = 2");
             var chore = Reocurring.Load("ch.chore_id = 1");
             var reward = Reward.Load("");
-            var EditChild = new UI.EditChildUI(child[0]);
-            var editChore = new UI.EditChoreUI(chore[0]);
+            var EditChild = new UI.ParentUI.EditChildUI(child[0]);
+            var editChore = new UI.ParentUI.EditChoreUI(chore[0]);
             //var editReward = new UI.EditRewardUI(reward[0]);
 
             //EditChild.Show();
@@ -58,10 +58,10 @@ namespace ChoreApplication
             var LoginInterface = new UI.GeneralInterface.LoginInterface();
             var RegisterUser = new UI.GeneralInterface.RegisterUserInterface();
             var ChooseProfile = new UI.GeneralInterface.ChooseProfileInterface();
-            var ParentInterface = new UI.ParentMenu(DumbFuckParentUser);
+            var ParentInterface = new UI.ParentUI.ParentMenu(DumbFuckParentUser);
             //var createchore = new UI.CreateChoreUI();
-            var createreward = new UI.CreateRewardUI();
-            var createChild = new UI.CreateChildUI();
+            var createreward = new UI.ParentUI.CreateRewardUI();
+            var createChild = new UI.ParentUI.CreateChildUI();
 
             //createChild.Show();
             //createreward.Show();
@@ -90,7 +90,7 @@ namespace ChoreApplication
             var ChooseProfile = new UI.GeneralInterface.ChooseProfileInterface();
 
             var ChildInterface = new UI.ChildUI.ChildMenu(DumbFuckChildUser);
-            var editparent = new UI.EditParentUI(DumbFuckParentUser);
+            var editparent = new UI.ParentUI.EditParentUI(DumbFuckParentUser);
             //LoginInterface.Show();
             //RegisterUser.Show();
             //ChooseProfile.Show();
@@ -110,13 +110,13 @@ namespace ChoreApplication
         private void Button1_Click_1(object sender, EventArgs e)
         {
             var ChildInterface = new UI.ChildUI.ChildMenu(DumbFuckChildUser);
-            var ParentInterface = new UI.ParentMenu(DumbFuckParentUser);
+            var ParentInterface = new UI.ParentUI.ParentMenu(DumbFuckParentUser);
             ChildInterface.Show();
         }
 
         private void EditParentUI_Click(object sender, EventArgs e)
         {
-            var EditParentUI = new UI.EditParentUI(DumbFuckParentUser);
+            var EditParentUI = new UI.ParentUI.EditParentUI(DumbFuckParentUser);
             EditParentUI.Show();
         }
     }
