@@ -49,14 +49,15 @@ namespace ChoreApplication.UI
 
         private Control AddLabel(string labelText, bool isBold, int locationX, int locationY)
         {
+            var panel = new Panel();
             var label = new Label
             {
-                Text = labelText,
                 Location = new Point(locationX, locationY),
-                MaximumSize = new Size(300, 19),
+                MaximumSize = new Size(300, 0),
                 AutoSize = true,
-                AutoEllipsis = true,
+                Text = labelText,
             };
+
             if (!isBold)
             {
                 label.Font = Properties.Settings.Default.StandardFont;
@@ -91,17 +92,26 @@ namespace ChoreApplication.UI
 
             foreach (var chore in _activeConcreteChores)
             {
+                int yLoc = 5;
+                int labelDist = 20;
+
                 var choreName = chore.Name.ToString();
                 var chorePoints = "Points: " + chore.Points.ToString();
                 var choreDescription = "Description: " + chore.Description.ToString();
                 var choreStatus = "Status: " + _statusValues[chore.Status];
                 var choreDueDate = "Due date: " + chore.DueDate.ToString(Properties.Settings.Default.ShortDateFormat);
 
-                var choreNameLabel = AddLabel(choreName, true, 5, 5);
-                var chorePointsLabel = AddLabel(chorePoints, false, 10, choreNameLabel.Location.Y + 20);
-                var choreDescriptionLabel = AddLabel(choreDescription, false, 10, chorePointsLabel.Location.Y + 20);
-                var choreDueDateLabel = AddLabel(choreDueDate, false, 10, choreDescriptionLabel.Location.Y + 20);
-                var choreStatusLabel = AddLabel(choreStatus, false, 10, choreDescriptionLabel.Location.Y + 20);
+                var choreNameLabel = AddLabel(choreName, true, 5, yLoc);
+                yLoc += choreNameLabel.Height + labelDist;
+                var chorePointsLabel = AddLabel(chorePoints, false, 10, yLoc);
+                yLoc += chorePointsLabel.Height + labelDist;
+                var choreDescriptionLabel = AddLabel(choreDescription, false, 10, yLoc);
+                yLoc += choreDescriptionLabel.Height + labelDist;
+                var choreDueDateLabel = AddLabel(choreDueDate, false, 10, yLoc);
+                yLoc += choreDueDateLabel.Height + labelDist;
+                var choreStatusLabel = AddLabel(choreStatus, false, 10, yLoc);
+                yLoc += choreStatusLabel.Height + labelDist;
+
                 var panelHeight = choreNameLabel.Height + chorePointsLabel.Height + choreDescriptionLabel.Height + choreDueDateLabel.Height;
                 var individualChorePanel = new Panel
                 {
