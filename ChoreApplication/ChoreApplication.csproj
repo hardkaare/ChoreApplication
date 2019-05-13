@@ -50,6 +50,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Functions\ParentFunctions\RewardFunctions.cs" />
+    <Compile Include="Functions\ParentFunctions\UserFunctions.cs" />
     <Compile Include="Functions\SystemFunctions\CheckTime.cs" />
     <Compile Include="Functions\ChildFunctions\ChildFunctions.cs" />
     <Compile Include="Model\ChildUser.cs" />
@@ -60,14 +62,14 @@
     <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\ParentFunctions\ParentFunctions.cs" />
+    <Compile Include="Functions\ParentFunctions\ChoreFunctions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Functions\SystemFunctions\SystemFunctions.cs" />
+    <Compile Include="Functions\SystemFunctions\LeaderboardFunctions.cs" />
     <Compile Include="UI\ChildInterface\ChildMenu.cs">
       <SubType>Form</SubType>
     </Compile>

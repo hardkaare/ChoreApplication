@@ -7,7 +7,7 @@ using System.Windows.Forms;
 
 namespace ChoreApplication.Functions.SystemFunctions
 {
-    internal abstract class SystemFunctions
+    internal abstract class LeaderboardFunctions
     {
         #region Leaderboard
 
