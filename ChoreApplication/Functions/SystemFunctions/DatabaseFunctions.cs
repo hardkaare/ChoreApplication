@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ChoreApplication.Functions
+namespace ChoreApplication.Functions.SystemFunctions
 {
     /// <summary>
     /// Functions for interacting with the DB. Inkludes a function run once that initializes the connection

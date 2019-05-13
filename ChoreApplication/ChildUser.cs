@@ -33,14 +33,14 @@ namespace ChoreApplication
         public static void Insert(string firstName, string pincode)
         {
             string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}', '{1}')", firstName, pincode);
-            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(userQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             //executes the query and return the first column of the first row in the result set returned by the query
             int id = (int)command.ExecuteScalar();
             string parentQuery = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
-            command = new SqlCommand(parentQuery, DatabaseFunctions.DatabaseConnection);
+            command = new SqlCommand(parentQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -50,12 +50,12 @@ namespace ChoreApplication
         {
             string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, ID);
             string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}", Points, ID);
-            SqlCommand command = new SqlCommand(userQuery, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(userQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            command = new SqlCommand(childQuery, DatabaseFunctions.DatabaseConnection);
+            command = new SqlCommand(childQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -70,9 +70,9 @@ namespace ChoreApplication
                 whereClause = " WHERE " + whereClause;
             }
             List<ChildUser> children = new List<ChildUser>();
-            DatabaseFunctions.DatabaseConnection.Open();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             string query = string.Format("SELECT u.user_id,c.child_id,u.first_name,c.points,u.pincode FROM users AS u INNER JOIN child AS c ON u.user_id = c.user_id{0}", whereClause);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -87,7 +87,7 @@ namespace ChoreApplication
                 children.Add(user);
             }
             reader.Close();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
             return children;
         }
 
@@ -97,10 +97,10 @@ namespace ChoreApplication
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", ID);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
-            DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>

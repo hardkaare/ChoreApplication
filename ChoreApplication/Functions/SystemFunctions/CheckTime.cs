@@ -4,7 +4,7 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ChoreApplication
+namespace ChoreApplication.Functions.SystemFunctions
 {
     class CheckTime
     {
@@ -93,14 +93,14 @@ namespace ChoreApplication
         {
             string query = $"SELECT * FROM dbo.checkTime";
             DateTime dailyTick = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
-            DatabaseFunctions.DatabaseConnection.Open();
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand cmd = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 dailyTick = DateTime.ParseExact(reader["dailyTick"].ToString(), Properties.Settings.Default.LongDateFormat, null);
             }
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
             return dailyTick;
         }
 
@@ -118,10 +118,10 @@ namespace ChoreApplication
         private static void UpdateDailyTick()
         {
             string query = $"UPDATE dbo.checkTime SET dailyTick = '{DateTime.Now.Date.ToShortDateString() + " 05:00"}'";
-            DatabaseFunctions.DatabaseConnection.Open();
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand cmd = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             cmd.ExecuteNonQuery();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
     }
 }

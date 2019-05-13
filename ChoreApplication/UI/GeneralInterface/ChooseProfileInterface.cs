@@ -44,15 +44,15 @@ namespace ChoreApplication.UI
             #region Load last name
 
             string query = "SELECT last_name FROM parent";
-            DatabaseFunctions.DatabaseConnection.Open();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
             //Creates the SqlCommand and executes it
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Surname = reader["last_name"].ToString();
             }
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
             surnameLabel.Text = "The " + Surname + "'s";
 
             #endregion Load last name

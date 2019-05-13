@@ -104,10 +104,10 @@ namespace ChoreApplication
             string query = string.Format("INSERT INTO dbo.chore" +
                 "(child_id, name, description, points) OUTPUT inserted.chore_id VALUES " +
                 "('{0}', '{1}', '{2}', '{3}')", assignment, name, desc, points);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
 
             //Opens connection to the DB
-            DatabaseFunctions.DatabaseConnection.Open();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
 
             //Executes the query to chore table and returns the chore_id inserted
             int id = (int)command.ExecuteScalar();
@@ -115,11 +115,11 @@ namespace ChoreApplication
             //Formatting the query to concrete_chore table, creating the SqlCommand and executing it
             string query2 = string.Format("INSERT INTO dbo.concrete_chore " +
                 "VALUES ({0}, '{1}', '{2}', NULL, '{3}', 0)", id, dueDate.ToString(Properties.Settings.Default.LongDateFormat), status, type);
-            SqlCommand command2 = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command2 = new SqlCommand(query2, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             command2.ExecuteNonQuery();
 
             //Closes connection to DB
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -134,18 +134,18 @@ namespace ChoreApplication
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
                 Assignment, Name, Description, Points, ID);
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
 
             //Opens connection to the DB
-            DatabaseFunctions.DatabaseConnection.Open();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
 
             //Executes the SqlCommands
             command.ExecuteNonQuery();
-            command = new SqlCommand(query2, DatabaseFunctions.DatabaseConnection);
+            command = new SqlCommand(query2, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
 
             //Closes connection to DB
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
@@ -170,10 +170,10 @@ namespace ChoreApplication
                 "SELECT ch.chore_id, ch.name, ch.description, ch.points, ch.child_id, co.due_date, " +
                 "co.status, co.approval_date, co.type, co.reminder FROM chore AS ch INNER JOIN concrete_chore AS co ON " +
                 "ch.chore_id=co.chore_id{0}", whereClause);
-            DatabaseFunctions.DatabaseConnection.Open();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
 
             //Creates the SqlCommand and executes it
-            SqlCommand command = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = command.ExecuteReader();
 
             //Reads all lines in the datareader
@@ -207,7 +207,7 @@ namespace ChoreApplication
                 result.Add(currentChore);
             }
             reader.Close();
-            DatabaseFunctions.DatabaseConnection.Close();
+            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
             return result;
         }
 
