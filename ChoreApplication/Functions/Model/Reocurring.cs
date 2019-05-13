@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace ChoreApplication
+namespace ChoreApplication.Model
 {
     /// <summary>
     /// Reocurring Chore. Inherits from the Chore class. Contains what time it's due and what days

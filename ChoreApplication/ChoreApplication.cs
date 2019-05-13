@@ -7,9 +7,9 @@ namespace ChoreApplication
     public partial class ChoreApplication : Form
     {
         //private SystemFunctions _checkTime;
-        public ChildUser DumbFuckChildUser = new ChildUser(1, 1, "child", 100, "1234");
+        public Model.ChildUser DumbFuckChildUser = new Model.ChildUser(1, 1, "child", 100, "1234");
 
-        public ParentUser DumbFuckParentUser = new ParentUser(1, "admin", "1234", "adminsen", "admin", "1234");
+        public Model.ParentUser DumbFuckParentUser = new Model.ParentUser(1, "admin", "1234", "adminsen", "admin", "1234");
 
         public ChoreApplication()
         {
@@ -20,8 +20,8 @@ namespace ChoreApplication
 
         private static void LoadAllUsers()
         {
-            List<ParentUser> parents = ParentUser.Load("");
-            List<ChildUser> children = ChildUser.Load("");
+            List<Model.ParentUser> parents = Model.ParentUser.Load("");
+            List<Model.ChildUser> children = Model.ChildUser.Load("");
 
             foreach (var parent in parents)
             {
@@ -40,9 +40,9 @@ namespace ChoreApplication
 
         private void EditJoenler_Click(object sender, EventArgs e)
         {
-            var child = ChildUser.Load("u.user_id = 2");
-            var chore = Reocurring.Load("ch.chore_id = 1");
-            var reward = Reward.Load("");
+            var child = Model.ChildUser.Load("u.user_id = 2");
+            var chore = Model.Reocurring.Load("ch.chore_id = 1");
+            var reward = Model.Reward.Load("");
             var EditChild = new UI.ParentUI.EditChildUI(child[0]);
             var editChore = new UI.ParentUI.EditChoreUI(chore[0]);
             //var editReward = new UI.EditRewardUI(reward[0]);

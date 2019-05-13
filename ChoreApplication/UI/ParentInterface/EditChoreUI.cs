@@ -8,12 +8,12 @@ namespace ChoreApplication.UI.ParentUI
 {
     public partial class EditChoreUI : Form
     {
-        private Concrete _concrete;
-        private Repeatable _repeatable;
-        private Reocurring _reoccurring;
+        private Model.Concrete _concrete;
+        private Model.Repeatable _repeatable;
+        private Model.Reocurring _reoccurring;
         private int _choreType = 0;
 
-        public EditChoreUI(Concrete chore)
+        public EditChoreUI(Model.Concrete chore)
         {
             InitializeComponent();
             LoadChildren();
@@ -21,7 +21,7 @@ namespace ChoreApplication.UI.ParentUI
             choreNameTextBox.Text = _concrete.Name;
             chorePointsTextBox.Text = _concrete.Points.ToString();
             choreDescriptionRichTextBox.Text = _concrete.Description;
-            foreach (var child in ChildUser.Load($"c.child_id = {_concrete.Assignment}"))
+            foreach (var child in Model.ChildUser.Load($"c.child_id = {_concrete.Assignment}"))
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
@@ -33,7 +33,7 @@ namespace ChoreApplication.UI.ParentUI
             _choreType = 1;
         }
 
-        public EditChoreUI(Repeatable chore)
+        public EditChoreUI(Model.Repeatable chore)
         {
             InitializeComponent();
             LoadChildren();
@@ -42,7 +42,7 @@ namespace ChoreApplication.UI.ParentUI
             chorePointsTextBox.Text = _repeatable.Points.ToString();
             choreDescriptionRichTextBox.Text = _repeatable.Description;
             this.Controls.Add(this.childAssignedComboBox);
-            foreach (var child in ChildUser.Load($"c.child_id = {_repeatable.Assignment}"))
+            foreach (var child in Model.ChildUser.Load($"c.child_id = {_repeatable.Assignment}"))
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
@@ -54,7 +54,7 @@ namespace ChoreApplication.UI.ParentUI
             _choreType = 2;
         }
 
-        public EditChoreUI(Reocurring chore)
+        public EditChoreUI(Model.Reocurring chore)
         {
             InitializeComponent();
             LoadChildren();
@@ -63,7 +63,7 @@ namespace ChoreApplication.UI.ParentUI
             chorePointsTextBox.Text = _reoccurring.Points.ToString();
             choreDescriptionRichTextBox.Text = _reoccurring.Description;
             this.Controls.Add(this.childAssignedComboBox);
-            foreach (var child in ChildUser.Load($"c.child_id = {_reoccurring.Assignment}"))
+            foreach (var child in Model.ChildUser.Load($"c.child_id = {_reoccurring.Assignment}"))
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
@@ -96,7 +96,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void LoadChildren()
         {
-            var children = ChildUser.Load("");
+            var children = Model.ChildUser.Load("");
             var childrenArray = new string[children.Count];
             var i = 0;
             foreach (var name in children)
@@ -110,7 +110,7 @@ namespace ChoreApplication.UI.ParentUI
         private void CreateChoreButton_Click(object sender, EventArgs e)
         {
             int id = 0;
-            foreach (var child in ChildUser.Load($"u.first_name = '{childAssignedComboBox.Text}'"))
+            foreach (var child in Model.ChildUser.Load($"u.first_name = '{childAssignedComboBox.Text}'"))
             {
                 id = child.ChildID;
             }

@@ -42,7 +42,7 @@ namespace ChoreApplication.UI.GeneralInterface
                                     if (Regex.IsMatch(pincodeTextBox.Text, @"^\d{4}$"))
                                     {
                                         string pincode = pincodeTextBox.Text;
-                                        ParentUser.Insert(firstName, lastName, email, password, pincode);
+                                        Model.ParentUser.Insert(firstName, lastName, email, password, pincode);
                                         var loginInterface = new LoginInterface();
                                         loginInterface.Show();
                                         this.Close();

@@ -6,9 +6,9 @@ namespace ChoreApplication.UI.ParentUI
 {
     public partial class EditChildUI : Form
     {
-        private ChildUser _child;
+        private Model.ChildUser _child;
 
-        public EditChildUI(ChildUser child)
+        public EditChildUI(Model.ChildUser child)
         {
             InitializeComponent();
             _child = child;

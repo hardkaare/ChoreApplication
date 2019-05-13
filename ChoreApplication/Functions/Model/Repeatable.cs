@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace ChoreApplication
+namespace ChoreApplication.Model
 {
     /// <summary>
     /// Repeatable chores. Inherits from the Chore class. Contains the limit of times the chore can be completed

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace ChoreApplication
+namespace ChoreApplication.Model
 {
     internal class Notification
     {

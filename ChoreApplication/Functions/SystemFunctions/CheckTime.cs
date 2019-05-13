@@ -8,10 +8,10 @@ namespace ChoreApplication.Functions.SystemFunctions
 {
     class CheckTime
     {
-        private List<ChildUser> _childList { get; set; }
-        private List<Concrete> _concreteList { get; set; }
-        private List<Repeatable> _repeatableList { get; set; }
-        private List<Reocurring> _reocurringList { get; set; }
+        private List<Model.ChildUser> _childList { get; set; }
+        private List<Model.Concrete> _concreteList { get; set; }
+        private List<Model.Repeatable> _repeatableList { get; set; }
+        private List<Model.Reocurring> _reocurringList { get; set; }
         private DateTime _tick { get; set; }
 
         public CheckTime()
@@ -22,9 +22,9 @@ namespace ChoreApplication.Functions.SystemFunctions
         private void CheckDB()
         {
             //Initialize Lists
-            _childList = ChildUser.Load("");
-            _repeatableList = Repeatable.Load("");
-            _reocurringList = Reocurring.Load("");
+            _childList = Model.ChildUser.Load("");
+            _repeatableList = Model.Repeatable.Load("");
+            _reocurringList = Model.Reocurring.Load("");
             _tick = LoadTick();
 
             //When it's a new day
@@ -37,10 +37,10 @@ namespace ChoreApplication.Functions.SystemFunctions
             }
 
             //Check concrete chores
-            foreach (ChildUser child in _childList)
+            foreach (Model.ChildUser child in _childList)
             {
-                _concreteList = Concrete.Load($"child_id={child.ChildID} AND [status]=1");
-                foreach (Concrete chore in _concreteList)
+                _concreteList = Model.Concrete.Load($"child_id={child.ChildID} AND [status]=1");
+                foreach (Model.Concrete chore in _concreteList)
                 {
                     //If it's past it's due date
                     if (chore.DueDate < DateTime.Now)
@@ -50,13 +50,13 @@ namespace ChoreApplication.Functions.SystemFunctions
                         chore.Status = 4;
                         chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
                         chore.Update();
-                        Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
+                        Model.Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
                     }
                     
                     //If theres less than an hour to the chore being due
                     else if (CheckDueTime(chore.DueDate) && (chore.Reminder == 0))
                     {
-                        Notification.Insert(child.ID, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
+                        Model.Notification.Insert(child.ID, $"A chore is due within the hour", $"{chore.Name}. Due today at {chore.DueDate.TimeOfDay}");
                         chore.Reminder = 1;
                         chore.Update();
                     }
@@ -83,7 +83,7 @@ namespace ChoreApplication.Functions.SystemFunctions
                 {
                     if (day == DateTime.Now.DayOfWeek.ToString())
                     {
-                        Concrete.Insert(chore.Name, chore.Description, chore.Points, chore.Assignment, chore.DueTime, "reoc");
+                        Model.Concrete.Insert(chore.Name, chore.Description, chore.Points, chore.Assignment, chore.DueTime, "reoc");
                     }
                 }
             }

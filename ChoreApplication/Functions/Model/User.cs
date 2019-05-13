@@ -1,4 +1,4 @@
-﻿namespace ChoreApplication
+﻿namespace ChoreApplication.Model
 {
     public abstract class User
     {

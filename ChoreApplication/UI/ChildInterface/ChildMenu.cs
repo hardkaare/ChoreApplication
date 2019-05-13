@@ -8,16 +8,16 @@ namespace ChoreApplication.UI.ChildUI
     public partial class ChildMenu : Form
     {
         public int UI = 0;
-        private ChildUser _session;
+        private Model.ChildUser _session;
         private Dictionary<int, string> _statusValues;
         private Dictionary<int, string> _childrenNames;
-        private List<ChildUser> _childUsers;
-        private List<Concrete> _activeConcreteChores;
-        private List<Repeatable> _activeRepeatableChores;
-        private List<Reward> _rewards;
-        private List<Notification> _notifications;
+        private List<Model.ChildUser> _childUsers;
+        private List<Model.Concrete> _activeConcreteChores;
+        private List<Model.Repeatable> _activeRepeatableChores;
+        private List<Model.Reward> _rewards;
+        private List<Model.Notification> _notifications;
 
-        public ChildMenu(ChildUser child)
+        public ChildMenu(Model.ChildUser child)
         {
             _session = child;
             InitializeComponent();
@@ -39,7 +39,7 @@ namespace ChoreApplication.UI.ChildUI
                 { 1, "Active" },
                 { 2, "Approval pending" },
             };
-            _childUsers = ChildUser.Load("");
+            _childUsers = Model.ChildUser.Load("");
             _childrenNames = new Dictionary<int, string>();
             foreach (var child in _childUsers)
             {
@@ -84,8 +84,8 @@ namespace ChoreApplication.UI.ChildUI
 
         public void LoadChores()
         {
-            _activeConcreteChores = Concrete.Load($"(status=1 OR status=2) AND ch.child_id={_session.ChildID} ORDER BY status ASC");
-            _activeRepeatableChores = Repeatable.Load($"ch.child_id={_session.ChildID}");
+            _activeConcreteChores = Model.Concrete.Load($"(status=1 OR status=2) AND ch.child_id={_session.ChildID} ORDER BY status ASC");
+            _activeRepeatableChores = Model.Repeatable.Load($"ch.child_id={_session.ChildID}");
             chorePanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 95;
@@ -191,7 +191,7 @@ namespace ChoreApplication.UI.ChildUI
             }
         }
 
-        private Button AddRepeatableChoreDoneButton(int locationX, int locationY, Repeatable chore)
+        private Button AddRepeatableChoreDoneButton(int locationX, int locationY, Model.Repeatable chore)
         {
             var reatableChoreDoneButton = new Button
             {
@@ -218,7 +218,7 @@ namespace ChoreApplication.UI.ChildUI
         private void RepeatableChoreDoneButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Repeatable currentChore = (Repeatable)clickedButton.Tag;
+            Model.Repeatable currentChore = (Model.Repeatable)clickedButton.Tag;
             double calculateDiminishingReturn = currentChore.Points;
             for (int i = 0; i < currentChore.Completions; i++)
             {
@@ -226,15 +226,15 @@ namespace ChoreApplication.UI.ChildUI
             }
             int diminishedPoints = (int)calculateDiminishingReturn;
 
-            Concrete.Insert(currentChore.Name, currentChore.Description, diminishedPoints, currentChore.Assignment, new DateTime(2000, 1, 1, 0, 0, 0), "rep");
+            Model.Concrete.Insert(currentChore.Name, currentChore.Description, diminishedPoints, currentChore.Assignment, new DateTime(2000, 1, 1, 0, 0, 0), "rep");
             currentChore.Completions++;
             currentChore.Update();
-            Notification.Insert(1, $"{_childrenNames[currentChore.Assignment]} completed a chore.", $"{_childrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
+            Model.Notification.Insert(1, $"{_childrenNames[currentChore.Assignment]} completed a chore.", $"{_childrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
             LoadAmountOfNotifications();
             LoadChores();
         }
         
-        private Control AddConcreteChoreDoneButton(int locationX, int locationY, Concrete chore)
+        private Control AddConcreteChoreDoneButton(int locationX, int locationY, Model.Concrete chore)
         {
             var concreteChoreDoneButton = new Button
             {
@@ -257,10 +257,10 @@ namespace ChoreApplication.UI.ChildUI
         private void ConcreteChoreDoneButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Concrete currentChore = (Concrete)clickedButton.Tag;
+            Model.Concrete currentChore = (Model.Concrete)clickedButton.Tag;
             currentChore.Status = 2;
             currentChore.Update();
-            Notification.Insert(1, $"{_childrenNames[currentChore.Assignment]} completed a chore.", $"{_childrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
+            Model.Notification.Insert(1, $"{_childrenNames[currentChore.Assignment]} completed a chore.", $"{_childrenNames[currentChore.Assignment]} completed the chore {currentChore.Name}.");
             LoadAmountOfNotifications();
             LoadChores();
         }
@@ -282,12 +282,12 @@ namespace ChoreApplication.UI.ChildUI
 
         private void LoadRewards()
         {
-            _rewards = Reward.Load("child_id=" + _session.ChildID);
+            _rewards = Model.Reward.Load("child_id=" + _session.ChildID);
             RewardPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 72;
 
-            foreach (Reward reward in _rewards)
+            foreach (Model.Reward reward in _rewards)
             {
                 var rewardName = reward.Name.ToString();
                 var rewardPointsRequired = "Points required: " + reward.PointsRequired.ToString();
@@ -332,7 +332,7 @@ namespace ChoreApplication.UI.ChildUI
             }
         }
 
-        private Control AddClaimRewardButton(int locationX, int locationY, Reward reward)
+        private Control AddClaimRewardButton(int locationX, int locationY, Model.Reward reward)
         {
             var claimButton = new Button
             {
@@ -355,7 +355,7 @@ namespace ChoreApplication.UI.ChildUI
         private void ClaimRewardButton_Click(object sender, EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Reward currentReward = (Reward)clickedButton.Tag;
+            Model.Reward currentReward = (Model.Reward)clickedButton.Tag;
 
             var confirmDelete = MessageBox.Show("Are you sure you want to claim this reward?", "Claim Reward", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
@@ -365,7 +365,7 @@ namespace ChoreApplication.UI.ChildUI
                 currentReward.Delete();
                 LoadPoints();
                 LoadRewards();
-                Notification.Insert(1, "Reward has been claimed.", $"The reward {currentReward.Name}: {currentReward.Description} " +
+                Model.Notification.Insert(1, "Reward has been claimed.", $"The reward {currentReward.Name}: {currentReward.Description} " +
                     $"has been claimed by {_childrenNames[currentReward.ChildID]}");
                 LoadAmountOfNotifications();
             }
@@ -447,12 +447,12 @@ namespace ChoreApplication.UI.ChildUI
 
         private void LoadNotification()
         {
-            _notifications = Notification.Load("user_id=" + _session.ID);
+            _notifications = Model.Notification.Load("user_id=" + _session.ID);
             notificationPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 50;
 
-            foreach (Notification notification in _notifications)
+            foreach (Model.Notification notification in _notifications)
             {
                 var notificationTitle = notification.Title;
                 var notificationDescription = notification.Description;
@@ -475,7 +475,7 @@ namespace ChoreApplication.UI.ChildUI
             }
         }
 
-        private Control AddNotificationDeleteButton(int locationX, int locationY, Notification notification)
+        private Control AddNotificationDeleteButton(int locationX, int locationY, Model.Notification notification)
         {
             var deleteButton = new Button
             {
@@ -497,7 +497,7 @@ namespace ChoreApplication.UI.ChildUI
         private void NotificationDeleteButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Notification currentNotification = (Notification)clickedButton.Tag;
+            Model.Notification currentNotification = (Model.Notification)clickedButton.Tag;
             currentNotification.Delete();
             LoadNotification();
             LoadAmountOfNotifications();
@@ -505,7 +505,7 @@ namespace ChoreApplication.UI.ChildUI
 
         private void LoadAmountOfNotifications()
         {
-            _notifications = Notification.Load("user_id=" + _session.ID);
+            _notifications = Model.Notification.Load("user_id=" + _session.ID);
             notificationAmount.Text = "";
             if (_notifications.Count == 0)
             {
