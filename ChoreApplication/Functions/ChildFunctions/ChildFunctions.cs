@@ -1,4 +1,4 @@
-﻿namespace ChoreApplication
+﻿namespace ChoreApplication.ChildFunctions
 {
     internal class ChildFunctions
     {
