@@ -59,14 +59,14 @@ namespace ChoreApplication.UI.GeneralInterface
 
             #region Load Users
 
-            var parentUsers = ParentUser.Load("");
-            var childUsers = ChildUser.Load("");
+            var parentUsers = Model.ParentUser.Load("");
+            var childUsers = Model.ChildUser.Load("");
 
             #endregion Load Users
 
             int locationCounter1 = 1;
             int locationCounter2 = 1;
-            foreach (ParentUser parent in parentUsers)
+            foreach (Model.ParentUser parent in parentUsers)
             {
                 Button userButton = new Button
                 {
@@ -96,7 +96,7 @@ namespace ChoreApplication.UI.GeneralInterface
                     locationCounter1++;
                 }
             }
-            foreach (ChildUser child in childUsers)
+            foreach (Model.ChildUser child in childUsers)
             {
                 Button userButton = new Button
                 {

@@ -1,6 +1,6 @@
 ﻿using System.Data.SqlClient;
 
-namespace ChoreApplication
+namespace ChoreApplication.Model
 {
     /// <summary>
     /// Class for chore objects. Contains name of the chore, description of it, how many points it gives and

@@ -5,9 +5,9 @@ namespace ChoreApplication.UI.ParentUI
 {
     public partial class EditRewardUI : Form
     {
-        private Reward _reward;
+        private Model.Reward _reward;
 
-        public EditRewardUI(Reward reward)
+        public EditRewardUI(Model.Reward reward)
         {
             InitializeComponent();
             LoadChildren();
@@ -15,7 +15,7 @@ namespace ChoreApplication.UI.ParentUI
             rewardNameTextBox.Text = _reward.Name;
             descriptionRichTextBox.Text = _reward.Description;
             pointsRequiredNumericUpDown.Value = _reward.PointsRequired;
-            foreach (var child in ChildUser.Load($"c.child_id = {_reward.ChildID}"))
+            foreach (var child in Model.ChildUser.Load($"c.child_id = {_reward.ChildID}"))
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
@@ -23,7 +23,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void LoadChildren()
         {
-            var children = ChildUser.Load("");
+            var children = Model.ChildUser.Load("");
             var childrenarray = new string[children.Count];
             var i = 0;
             foreach (var name in children)
@@ -40,7 +40,7 @@ namespace ChoreApplication.UI.ParentUI
             _reward.Description = descriptionRichTextBox.Text;
             _reward.PointsRequired = (int)pointsRequiredNumericUpDown.Value;
             int id = 0;
-            foreach (var child in ChildUser.Load($"u.first_name = '{childAssignedComboBox.Text}'"))
+            foreach (var child in Model.ChildUser.Load($"u.first_name = '{childAssignedComboBox.Text}'"))
             {
                 id = child.ChildID;
             }

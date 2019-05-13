@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 
-namespace ChoreApplication
+namespace ChoreApplication.Model
 {
     /// <summary>
     /// Concrete chores. Inherits from the Chore class. Contains due date of the chore,

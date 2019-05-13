@@ -13,7 +13,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void LoadChildren()
         {
-            var children = ChildUser.Load("");
+            var children = Model.ChildUser.Load("");
 
             foreach (var name in children)
             {
@@ -23,7 +23,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void CreateReward_Click(object sender, EventArgs e)
         {
-            var children = ChildUser.Load("");
+            var children = Model.ChildUser.Load("");
             int id = 0;
             for (int i = 0; i < children.Count; i++)
             {
@@ -34,7 +34,7 @@ namespace ChoreApplication.UI.ParentUI
             }
             if (!string.IsNullOrEmpty(assignmentComboBox.Text))
             {
-                Reward.Insert(id, rewardNameTextBox.Text, descriptionRichTextBox.Text, Convert.ToInt32(pointsRequiredNumericUpDown.Text));
+                Model.Reward.Insert(id, rewardNameTextBox.Text, descriptionRichTextBox.Text, Convert.ToInt32(pointsRequiredNumericUpDown.Text));
                 this.Close();
                 MessageBox.Show("A reward has been created", "Reward Created");
             }

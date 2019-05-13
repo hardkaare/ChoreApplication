@@ -8,18 +8,18 @@ namespace ChoreApplication.UI.ParentUI
     public partial class ParentMenu : Form
     {
         public int UI = 0;
-        private ParentUser _session;
+        private Model.ParentUser _session;
         private Dictionary<int, string> _statusValues;
         private Dictionary<int, string> _childrenNames;
-        private List<Reocurring> _reoccurringChores;
-        private List<Repeatable> _repeatableChores;
-        private List<Concrete> _concreteChoresApprovalPending;
-        private List<Reward> _rewards;
-        private List<ParentUser> _parentUsers;
-        private List<ChildUser> _childUsers;
-        private List<Notification> _notifications;
+        private List<Model.Reocurring> _reoccurringChores;
+        private List<Model.Repeatable> _repeatableChores;
+        private List<Model.Concrete> _concreteChoresApprovalPending;
+        private List<Model.Reward> _rewards;
+        private List<Model.ParentUser> _parentUsers;
+        private List<Model.ChildUser> _childUsers;
+        private List<Model.Notification> _notifications;
 
-        public ParentMenu(ParentUser currentUser)
+        public ParentMenu(Model.ParentUser currentUser)
         {
             _session = currentUser;
             InitializeComponent();
@@ -40,7 +40,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void LoadChildrenNames()
         {
-            _childUsers = ChildUser.Load("");
+            _childUsers = Model.ChildUser.Load("");
             _childrenNames = new Dictionary<int, string>();
             foreach (var child in _childUsers)
             {
@@ -152,9 +152,9 @@ namespace ChoreApplication.UI.ParentUI
         public void LoadChores()
         {
             LoadChildrenNames();
-            _concreteChoresApprovalPending = Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
-            _reoccurringChores = Reocurring.Load("");
-            _repeatableChores = Repeatable.Load("");
+            _concreteChoresApprovalPending = Model.Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
+            _reoccurringChores = Model.Reocurring.Load("");
+            _repeatableChores = Model.Repeatable.Load("");
             chorePanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 95;
@@ -257,7 +257,7 @@ namespace ChoreApplication.UI.ParentUI
             }
         }
 
-        private Control AddApproveChoreButton(int locationX, int locationY, Chore chore)
+        private Control AddApproveChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             var approveButton = new Button
             {
@@ -277,7 +277,7 @@ namespace ChoreApplication.UI.ParentUI
             return approveButton;
         }
 
-        private Control AddDenyChoreButton(int locationX, int locationY, Chore chore)
+        private Control AddDenyChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             var denyButton = new Button
             {
@@ -297,7 +297,7 @@ namespace ChoreApplication.UI.ParentUI
             return denyButton;
         }
 
-        private Control AddEditChoreButton(int locationX, int locationY, Chore chore)
+        private Control AddEditChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             var editChoreButton = new Button
             {
@@ -317,7 +317,7 @@ namespace ChoreApplication.UI.ParentUI
             return editChoreButton;
         }
 
-        private Control AddDeleteChoreButton(int locationX, int locationY, Chore chore)
+        private Control AddDeleteChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             var deleteChoreButton = new Button
             {
@@ -340,15 +340,15 @@ namespace ChoreApplication.UI.ParentUI
         private void ApproveChoreButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Concrete currentChore = (Concrete)clickedButton.Tag;
+            Model.Concrete currentChore = (Model.Concrete)clickedButton.Tag;
             currentChore.Status = 3;
             currentChore.ApprovalDate = DateTime.Now;
             currentChore.Update();
 
-            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
+            var currentChild = Model.ChildUser.Load("child_id=" + currentChore.Assignment);
             currentChild[0].Points += currentChore.Points;
             currentChild[0].Update();
-            Notification.Insert(currentChild[0].ID, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
+            Model.Notification.Insert(currentChild[0].ID, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
                 $"\n{currentChore.Points.ToString()} points has been added to your account");
             LoadAmountOfNotifications();
             LoadChores();
@@ -357,8 +357,8 @@ namespace ChoreApplication.UI.ParentUI
         private void DenyChoreButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Concrete currentChore = (Concrete)clickedButton.Tag;
-            var currentChild = ChildUser.Load("child_id=" + currentChore.Assignment);
+            Model.Concrete currentChore = (Model.Concrete)clickedButton.Tag;
+            var currentChild = Model.ChildUser.Load("child_id=" + currentChore.Assignment);
 
             if (currentChore.Type == "rep")
             {
@@ -371,7 +371,7 @@ namespace ChoreApplication.UI.ParentUI
                 currentChore.Reminder = 0;
                 currentChore.Update();
             }
-            Notification.Insert(currentChild[0].ID, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
+            Model.Notification.Insert(currentChild[0].ID, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
             LoadAmountOfNotifications();
             LoadChores();
         }
@@ -382,7 +382,7 @@ namespace ChoreApplication.UI.ParentUI
             Button clickedButton = (Button)sender;
             try
             {
-                Concrete selectedChore = (Concrete)clickedButton.Tag;
+                Model.Concrete selectedChore = (Model.Concrete)clickedButton.Tag;
                 var editSelectedChoreUI = new EditChoreUI(selectedChore);
                 editSelectedChoreUI.Show();
                 editSelectedChoreUI.FormClosing += ChoreNavigationButton_Click;
@@ -391,7 +391,7 @@ namespace ChoreApplication.UI.ParentUI
             {
                 try
                 {
-                    Reocurring selectedChore = (Reocurring)clickedButton.Tag;
+                    Model.Reocurring selectedChore = (Model.Reocurring)clickedButton.Tag;
                     var editSelectedChoreUI = new EditChoreUI(selectedChore);
                     editSelectedChoreUI.Show();
                     editSelectedChoreUI.FormClosing += ChoreNavigationButton_Click;
@@ -400,7 +400,7 @@ namespace ChoreApplication.UI.ParentUI
                 {
                     try
                     {
-                        Repeatable selectedChore = (Repeatable)clickedButton.Tag;
+                        Model.Repeatable selectedChore = (Model.Repeatable)clickedButton.Tag;
                         var editSelectedChoreUI = new EditChoreUI(selectedChore);
                         editSelectedChoreUI.Show();
                         editSelectedChoreUI.FormClosing += ChoreNavigationButton_Click;
@@ -421,7 +421,7 @@ namespace ChoreApplication.UI.ParentUI
             {
                 try
                 {
-                    Concrete selectedChore = (Concrete)clickedButton.Tag;
+                    Model.Concrete selectedChore = (Model.Concrete)clickedButton.Tag;
                     selectedChore.Delete();
                     LoadChores();
                 }
@@ -429,7 +429,7 @@ namespace ChoreApplication.UI.ParentUI
                 {
                     try
                     {
-                        Reocurring selectedChore = (Reocurring)clickedButton.Tag;
+                        Model.Reocurring selectedChore = (Model.Reocurring)clickedButton.Tag;
                         selectedChore.Delete();
                         LoadChores();
                     }
@@ -437,7 +437,7 @@ namespace ChoreApplication.UI.ParentUI
                     {
                         try
                         {
-                            Repeatable selectedChore = (Repeatable)clickedButton.Tag;
+                            Model.Repeatable selectedChore = (Model.Repeatable)clickedButton.Tag;
                             selectedChore.Delete();
                             LoadChores();
                         }
@@ -467,12 +467,12 @@ namespace ChoreApplication.UI.ParentUI
 
         private void LoadRewards()
         {
-            _rewards = Reward.Load("");
+            _rewards = Model.Reward.Load("");
             rewardPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 72;
 
-            foreach (Reward reward in _rewards)
+            foreach (Model.Reward reward in _rewards)
             {
                 var rewardName = reward.Name.ToString();
                 var rewardAssignment = "Assigned to: " + _childrenNames[reward.ChildID];
@@ -499,7 +499,7 @@ namespace ChoreApplication.UI.ParentUI
             }
         }
 
-        private Control AddEditRewardButton(int locationX, int locationY, Reward reward)
+        private Control AddEditRewardButton(int locationX, int locationY, Model.Reward reward)
         {
             var editRewardButton = new Button
             {
@@ -519,7 +519,7 @@ namespace ChoreApplication.UI.ParentUI
             return editRewardButton;
         }
 
-        private Control AddDeleteRewardButton(int locationX, int locationY, Reward reward)
+        private Control AddDeleteRewardButton(int locationX, int locationY, Model.Reward reward)
         {
             var deleteRewardButton = new Button
             {
@@ -545,7 +545,7 @@ namespace ChoreApplication.UI.ParentUI
             Button clickedButton = (Button)sender;
             try
             {
-                Reward selectedReward = (Reward)clickedButton.Tag;
+                Model.Reward selectedReward = (Model.Reward)clickedButton.Tag;
                 var editSelectedRewardUI = new EditRewardUI(selectedReward);
                 editSelectedRewardUI.Show();
                 editSelectedRewardUI.FormClosing += RewardNavigationButton_Click;
@@ -559,7 +559,7 @@ namespace ChoreApplication.UI.ParentUI
         private void DeleteRewardButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Reward selectedReward = (Reward)clickedButton.Tag;
+            Model.Reward selectedReward = (Model.Reward)clickedButton.Tag;
 
             var confirmDelete = MessageBox.Show("Are you sure you want to delete this reward?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
@@ -654,13 +654,13 @@ namespace ChoreApplication.UI.ParentUI
 
         public void LoadUsers()
         {
-            _childUsers = ChildUser.Load("");
-            _parentUsers = ParentUser.Load("");
+            _childUsers = Model.ChildUser.Load("");
+            _parentUsers = Model.ParentUser.Load("");
             userPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 65;
 
-            foreach (ParentUser parent in _parentUsers)
+            foreach (Model.ParentUser parent in _parentUsers)
             {
                 var userFirstName = parent.FirstName.ToString();
 
@@ -679,7 +679,7 @@ namespace ChoreApplication.UI.ParentUI
                 distanceCounter++;
             }
 
-            foreach (ChildUser child in _childUsers)
+            foreach (Model.ChildUser child in _childUsers)
             {
                 var userFirstName = child.FirstName.ToString();
 
@@ -700,7 +700,7 @@ namespace ChoreApplication.UI.ParentUI
             }
         }
 
-        private Control AddEditChildButton(int locationX, int locationY, ChildUser childUser)
+        private Control AddEditChildButton(int locationX, int locationY, Model.ChildUser childUser)
         {
             var editChildButton = new Button
             {
@@ -719,7 +719,7 @@ namespace ChoreApplication.UI.ParentUI
             return editChildButton;
         }
 
-        private Control AddEditParentButton(int locationX, int locationY, ParentUser parentUser)
+        private Control AddEditParentButton(int locationX, int locationY, Model.ParentUser parentUser)
         {
             var editParentButton = new Button
             {
@@ -738,7 +738,7 @@ namespace ChoreApplication.UI.ParentUI
             return editParentButton;
         }
 
-        private Control AddDeleteChildButton(int locationX, int locationY, ChildUser childUser)
+        private Control AddDeleteChildButton(int locationX, int locationY, Model.ChildUser childUser)
         {
             var deleteChildButton = new Button
             {
@@ -760,7 +760,7 @@ namespace ChoreApplication.UI.ParentUI
         private void DeleteChildButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            ChildUser selectedUser = (ChildUser)clickedButton.Tag;
+            Model.ChildUser selectedUser = (Model.ChildUser)clickedButton.Tag;
 
             var confirmDelete = MessageBox.Show("Are you sure you want to delete this user?", "Confirm Deletion", MessageBoxButtons.YesNo);
             if (confirmDelete == DialogResult.Yes)
@@ -776,7 +776,7 @@ namespace ChoreApplication.UI.ParentUI
             Button clickedButton = (Button)sender;
             try
             {
-                ParentUser selectedParent = (ParentUser)clickedButton.Tag;
+                Model.ParentUser selectedParent = (Model.ParentUser)clickedButton.Tag;
                 var editSelectedParentUI = new EditParentUI(selectedParent);
                 editSelectedParentUI.Show();
                 editSelectedParentUI.FormClosing += UsersNavigationButton_Click;
@@ -793,7 +793,7 @@ namespace ChoreApplication.UI.ParentUI
             Button clickedButton = (Button)sender;
             try
             {
-                ChildUser selectedChild = (ChildUser)clickedButton.Tag;
+                Model.ChildUser selectedChild = (Model.ChildUser)clickedButton.Tag;
                 var editSelectedChildUI = new EditChildUI(selectedChild);
                 editSelectedChildUI.Show();
                 editSelectedChildUI.FormClosing += UsersNavigationButton_Click;
@@ -821,12 +821,12 @@ namespace ChoreApplication.UI.ParentUI
 
         private void LoadNotification()
         {
-            _notifications = Notification.Load("user_id=" + _session.ID);
+            _notifications = Model.Notification.Load("user_id=" + _session.ID);
             notificationPanel.Controls.Clear();
             int distanceCounter = 0;
             int panelDistance = 50;
 
-            foreach (Notification notification in _notifications)
+            foreach (Model.Notification notification in _notifications)
             {
                 var notificationTitle = notification.Title;
                 var notificationDescription = notification.Description;
@@ -849,7 +849,7 @@ namespace ChoreApplication.UI.ParentUI
             }
         }
 
-        private Control AddDeleteNotificationButton(int locationX, int locationY, Notification notification)
+        private Control AddDeleteNotificationButton(int locationX, int locationY, Model.Notification notification)
         {
             var deleteNotificationButton = new Button
             {
@@ -871,14 +871,14 @@ namespace ChoreApplication.UI.ParentUI
         private void NotificationDeleteButton_Click(object sender, System.EventArgs e)
         {
             Button clickedButton = (Button)sender;
-            Notification currentNotification = (Notification)clickedButton.Tag;
+            Model.Notification currentNotification = (Model.Notification)clickedButton.Tag;
             currentNotification.Delete();
             NotificationsUI();
         }
 
         private void LoadAmountOfNotifications()
         {
-            _notifications = Notification.Load("user_id=" + _session.ID);
+            _notifications = Model.Notification.Load("user_id=" + _session.ID);
             notificationAmountLabel.Text = "";
             if (_notifications.Count == 0)
             {

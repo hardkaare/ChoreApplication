@@ -68,7 +68,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void LoadChildren()
         {
-            var children = ChildUser.Load("");
+            var children = Model.ChildUser.Load("");
             var childrenarray = new string[children.Count];
             var i = 0;
             foreach (var name in children)
@@ -81,7 +81,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void CreateChoreButton_Click(object sender, EventArgs e)
         {
-            var children = ChildUser.Load("");
+            var children = Model.ChildUser.Load("");
             int id = 0;
             var choreType = "";
 
@@ -100,7 +100,7 @@ namespace ChoreApplication.UI.ParentUI
                         choreType = "conc";
                         try
                         {
-                            Concrete.Insert(choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), id, Convert.ToDateTime(dueDateTimePicker.Text), choreType);
+                            Model.Concrete.Insert(choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), id, Convert.ToDateTime(dueDateTimePicker.Text), choreType);
                             this.Close();
                             MessageBox.Show("A chore has been created", "Chore Created");
                         }
@@ -114,7 +114,7 @@ namespace ChoreApplication.UI.ParentUI
                         choreType = "rep";
                         try
                         {
-                            Repeatable.Insert(id, choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), (Int32)completionsLimitNumericUpDown.Value);
+                            Model.Repeatable.Insert(id, choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), (Int32)completionsLimitNumericUpDown.Value);
                             this.Close();
                             MessageBox.Show("A chore has been created", "Chore Created");
                         }
@@ -136,7 +136,7 @@ namespace ChoreApplication.UI.ParentUI
                             }
                             if (dayChecked > 0)
                             {
-                                Reocurring.Insert(id, choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), Convert.ToDateTime(dueTimeDateTimePicker.Text), DaysChecked);
+                                Model.Reocurring.Insert(id, choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), Convert.ToDateTime(dueTimeDateTimePicker.Text), DaysChecked);
                                 this.Close();
                                 MessageBox.Show("A chore has been created", "Chore Created");
                             }

@@ -11,7 +11,7 @@ namespace ChoreApplication.Functions.SystemFunctions
     {
         #region Leaderboard
 
-        public static Panel LoadLongestStreak(Point location, int width, Dictionary<int, string> ChildrenNames, List<ChildUser> ChildUsers)
+        public static Panel LoadLongestStreak(Point location, int width, Dictionary<int, string> ChildrenNames, List<Model.ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel
             {
@@ -40,11 +40,11 @@ namespace ChoreApplication.Functions.SystemFunctions
             return currentPanel;
         }
 
-        private static Dictionary<int, int> LongestStreak(List<ChildUser> ChildUsers)
+        private static Dictionary<int, int> LongestStreak(List<Model.ChildUser> ChildUsers)
         {
             var result = new Dictionary<int, int>();
 
-            foreach (ChildUser child in ChildUsers)
+            foreach (Model.ChildUser child in ChildUsers)
             {
                 int longestStreak = 0;
                 int currentStreak = 0;
@@ -84,7 +84,7 @@ namespace ChoreApplication.Functions.SystemFunctions
             return result;
         }
 
-        public static Panel LoadCompletionRate(Point location, int width, Dictionary<int, string> ChildrenNames, List<ChildUser> ChildUsers)
+        public static Panel LoadCompletionRate(Point location, int width, Dictionary<int, string> ChildrenNames, List<Model.ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel
             {
@@ -111,11 +111,11 @@ namespace ChoreApplication.Functions.SystemFunctions
             return currentPanel;
         }
 
-        private static Dictionary<int, int> CompletionRateApproved(List<ChildUser> ChildUsers)
+        private static Dictionary<int, int> CompletionRateApproved(List<Model.ChildUser> ChildUsers)
         {
             var result = new Dictionary<int, int>();
 
-            foreach (ChildUser c in ChildUsers)
+            foreach (Model.ChildUser c in ChildUsers)
             {
                 double CR;
                 int sumOverdue = 0;
@@ -172,7 +172,7 @@ namespace ChoreApplication.Functions.SystemFunctions
             return result;
         }
 
-        public static Panel LoadTotalChoresApproved(Point location, int width, Dictionary<int, string> ChildrenNames, List<ChildUser> ChildUsers)
+        public static Panel LoadTotalChoresApproved(Point location, int width, Dictionary<int, string> ChildrenNames, List<Model.ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel
             {
@@ -201,11 +201,11 @@ namespace ChoreApplication.Functions.SystemFunctions
             return currentPanel;
         }
 
-        private static Dictionary<int, int> TotalChoresApproved(List<ChildUser> ChildUsers)
+        private static Dictionary<int, int> TotalChoresApproved(List<Model.ChildUser> ChildUsers)
         {
             var result = new Dictionary<int, int>();
 
-            foreach (ChildUser c in ChildUsers)
+            foreach (Model.ChildUser c in ChildUsers)
             {
                 int sum = 0;
                 string query = string.Format("SELECT chore.chore_id FROM chore INNER JOIN concrete_chore ON " +
@@ -230,7 +230,7 @@ namespace ChoreApplication.Functions.SystemFunctions
             return result;
         }
 
-        public static Panel LoadTotalPoints(Point location, int width, Dictionary<int, string> ChildrenNames, List<ChildUser> ChildUsers)
+        public static Panel LoadTotalPoints(Point location, int width, Dictionary<int, string> ChildrenNames, List<Model.ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel
             {
@@ -260,11 +260,11 @@ namespace ChoreApplication.Functions.SystemFunctions
             return currentPanel;
         }
 
-        private static Dictionary<int, int> TotalPoints(List<ChildUser> ChildUsers)
+        private static Dictionary<int, int> TotalPoints(List<Model.ChildUser> ChildUsers)
         {
             var result = new Dictionary<int, int>();
 
-            foreach (ChildUser child in ChildUsers)
+            foreach (Model.ChildUser child in ChildUsers)
             {
                 int sum = 0;
                 string query = string.Format("SELECT points FROM chore INNER JOIN concrete_chore ON " +
