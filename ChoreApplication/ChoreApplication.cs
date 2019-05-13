@@ -55,9 +55,9 @@ namespace ChoreApplication
         //public UI.CreateChoreUI createchore = new UI.CreateChoreUI();
         private void TestButtonJoenler_Click(object sender, EventArgs e)
         {
-            var LoginInterface = new UI.LoginInterface();
-            var RegisterUser = new UI.RegisterUserInterface();
-            var ChooseProfile = new UI.ChooseProfileInterface();
+            var LoginInterface = new UI.GeneralInterface.LoginInterface();
+            var RegisterUser = new UI.GeneralInterface.RegisterUserInterface();
+            var ChooseProfile = new UI.GeneralInterface.ChooseProfileInterface();
             var ParentInterface = new UI.ParentMenu(DumbFuckParentUser);
             //var createchore = new UI.CreateChoreUI();
             var createreward = new UI.CreateRewardUI();
@@ -85,11 +85,11 @@ namespace ChoreApplication
 
         private void Interface1_Click(object sender, EventArgs e)
         {
-            var LoginInterface = new UI.LoginInterface();
-            var RegisterUser = new UI.RegisterUserInterface();
-            var ChooseProfile = new UI.ChooseProfileInterface();
+            var LoginInterface = new UI.GeneralInterface.LoginInterface();
+            var RegisterUser = new UI.GeneralInterface.RegisterUserInterface();
+            var ChooseProfile = new UI.GeneralInterface.ChooseProfileInterface();
 
-            var ChildInterface = new UI.ChildMenu(DumbFuckChildUser);
+            var ChildInterface = new UI.ChildUI.ChildMenu(DumbFuckChildUser);
             var editparent = new UI.EditParentUI(DumbFuckParentUser);
             //LoginInterface.Show();
             //RegisterUser.Show();
@@ -103,13 +103,13 @@ namespace ChoreApplication
 
         private void AlexogLuten_Click(object sender, EventArgs e)
         {
-            var LoginInterface = new UI.LoginInterface();
+            var LoginInterface = new UI.GeneralInterface.LoginInterface();
             this.Hide();
         }
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            var ChildInterface = new UI.ChildMenu(DumbFuckChildUser);
+            var ChildInterface = new UI.ChildUI.ChildMenu(DumbFuckChildUser);
             var ParentInterface = new UI.ParentMenu(DumbFuckParentUser);
             ChildInterface.Show();
         }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ChoreApplication.UI
+namespace ChoreApplication.UI.ChildUI
 {
     public partial class ChildMenu : Form
     {
@@ -547,7 +547,7 @@ namespace ChoreApplication.UI
 
         private void UserButton_Click(object sender, EventArgs e)
         {
-            var loginInterface = new LoginInterface();
+            var loginInterface = new GeneralInterface.LoginInterface();
             _session = default;
             loginInterface.Show();
             this.Close();
