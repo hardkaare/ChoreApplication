@@ -9,8 +9,6 @@ namespace ChoreApplication.Functions.SystemFunctions
 {
     internal abstract class LeaderboardFunctions
     {
-        #region Leaderboard
-
         public static Panel LoadLongestStreak(Point location, int width, Dictionary<int, string> ChildrenNames, List<Model.ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel
@@ -331,7 +329,5 @@ namespace ChoreApplication.Functions.SystemFunctions
             }
             return label;
         }
-
-        #endregion Leaderboard
     }
 }
