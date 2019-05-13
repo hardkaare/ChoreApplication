@@ -598,7 +598,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalPointsEarnedLabel.Height + panelDistance;
 
                 //Add Total Points panel
-                var totalPointsStatisticPanel = Functions.SystemFunctions.SystemFunctions.LoadTotalPoints(new Point(0, leaderboardLocationY),
+                var totalPointsStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadTotalPoints(new Point(0, leaderboardLocationY),
                     leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(totalPointsStatisticPanel);
                 leaderboardLocationY += totalPointsStatisticPanel.Height + panelDistance;
@@ -609,7 +609,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalChoresApprovedLabel.Height + panelDistance;
 
                 //Add Total Chores Approved panel
-                var totalChoresApprovedStatisticPanel = Functions.SystemFunctions.SystemFunctions.LoadTotalChoresApproved(new Point(0, leaderboardLocationY),
+                var totalChoresApprovedStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadTotalChoresApproved(new Point(0, leaderboardLocationY),
                     leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(totalChoresApprovedStatisticPanel);
                 leaderboardLocationY += totalChoresApprovedStatisticPanel.Height + panelDistance;
@@ -620,7 +620,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += completionRateLabel.Height + panelDistance;
 
                 //Add Completion Rate panel
-                var completionRateStatisticPanel = Functions.SystemFunctions.SystemFunctions.LoadCompletionRate(new Point(0, leaderboardLocationY),
+                var completionRateStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadCompletionRate(new Point(0, leaderboardLocationY),
                     leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(completionRateStatisticPanel);
                 leaderboardLocationY += completionRateStatisticPanel.Height + panelDistance;
@@ -631,7 +631,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += longestStreakLabel.Height + panelDistance;
 
                 //Add Longest Strea panel
-                var longestStreakStatisticPanel = Functions.SystemFunctions.SystemFunctions.LoadLongestStreak(new Point(0, leaderboardLocationY),
+                var longestStreakStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadLongestStreak(new Point(0, leaderboardLocationY),
                 leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(longestStreakStatisticPanel);
             }
