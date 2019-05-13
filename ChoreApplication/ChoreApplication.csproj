@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CheckTime.cs" />
+    <Compile Include="Functions\SystemFunctions\CheckTime.cs" />
     <Compile Include="ChildFunctions.cs" />
     <Compile Include="ChildUser.cs" />
     <Compile Include="Chore.cs" />
@@ -67,91 +67,91 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="SystemFunctions.cs" />
-    <Compile Include="UI\ChildInterface.cs">
+    <Compile Include="Functions\SystemFunctions\SystemFunctions.cs" />
+    <Compile Include="UI\ChildInterface\ChildMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ChildInterface.Designer.cs">
-      <DependentUpon>ChildInterface.cs</DependentUpon>
+    <Compile Include="UI\ChildInterface\ChildMenu.Designer.cs">
+      <DependentUpon>ChildMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\ChooseProfileInterface.cs">
+    <Compile Include="UI\GeneralInterface\ChooseProfileInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ChooseProfileInterface.Designer.cs">
+    <Compile Include="UI\GeneralInterface\ChooseProfileInterface.Designer.cs">
       <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CreateChildUI.cs">
+    <Compile Include="UI\ParentInterface\CreateChildUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CreateChildUI.Designer.cs">
+    <Compile Include="UI\ParentInterface\CreateChildUI.Designer.cs">
       <DependentUpon>CreateChildUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CreateChoreUI.cs">
+    <Compile Include="UI\ParentInterface\CreateChoreUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CreateChoreUI.Designer.cs">
+    <Compile Include="UI\ParentInterface\CreateChoreUI.Designer.cs">
       <DependentUpon>CreateChoreUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\CreateRewardUI.cs">
+    <Compile Include="UI\ParentInterface\CreateRewardUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\CreateRewardUI.Designer.cs">
+    <Compile Include="UI\ParentInterface\CreateRewardUI.Designer.cs">
       <DependentUpon>CreateRewardUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\EditChildUI.cs">
+    <Compile Include="UI\ParentInterface\EditChildUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EditChildUI.Designer.cs">
+    <Compile Include="UI\ParentInterface\EditChildUI.Designer.cs">
       <DependentUpon>EditChildUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\EditChoreUI.cs">
+    <Compile Include="UI\ParentInterface\EditChoreUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EditChoreUI.Designer.cs">
+    <Compile Include="UI\ParentInterface\EditChoreUI.Designer.cs">
       <DependentUpon>EditChoreUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\EditParentUI.cs">
+    <Compile Include="UI\ParentInterface\EditParentUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EditParentUI.Designer.cs">
+    <Compile Include="UI\ParentInterface\EditParentUI.Designer.cs">
       <DependentUpon>EditParentUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\EditRewardUI.cs">
+    <Compile Include="UI\ParentInterface\EditRewardUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\EditRewardUI.Designer.cs">
+    <Compile Include="UI\ParentInterface\EditRewardUI.Designer.cs">
       <DependentUpon>EditRewardUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\LoginInterface.cs">
+    <Compile Include="UI\GeneralInterface\LoginInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\LoginInterface.Designer.cs">
+    <Compile Include="UI\GeneralInterface\LoginInterface.Designer.cs">
       <DependentUpon>LoginInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Notification.cs" />
-    <Compile Include="UI\ParentInterface.cs">
+    <Compile Include="UI\ParentInterface\ParentMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ParentInterface.Designer.cs">
-      <DependentUpon>ParentInterface.cs</DependentUpon>
+    <Compile Include="UI\ParentInterface\ParentMenu.Designer.cs">
+      <DependentUpon>ParentMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="ParentUser.cs" />
-    <Compile Include="UI\PinCodeInterface.cs">
+    <Compile Include="UI\GeneralInterface\PinCodeInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\PinCodeInterface.Designer.cs">
+    <Compile Include="UI\GeneralInterface\PinCodeInterface.Designer.cs">
       <DependentUpon>PinCodeInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\RegisterUserInterface.cs">
+    <Compile Include="UI\GeneralInterface\RegisterUserInterface.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\RegisterUserInterface.Designer.cs">
+    <Compile Include="UI\GeneralInterface\RegisterUserInterface.Designer.cs">
       <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </Compile>
     <Compile Include="Reocurring.cs" />
     <Compile Include="Repeatable.cs" />
     <Compile Include="Reward.cs" />
-    <Compile Include="DatabaseFunctions.cs" />
+    <Compile Include="Functions\SystemFunctions\DatabaseFunctions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Concrete.cs" />
@@ -162,48 +162,48 @@
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ChildInterface.resx">
-      <DependentUpon>ChildInterface.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ChildInterface\ChildMenu.resx">
+      <DependentUpon>ChildMenu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ChooseProfileInterface.resx">
+    <EmbeddedResource Include="UI\GeneralInterface\ChooseProfileInterface.resx">
       <DependentUpon>ChooseProfileInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CreateChildUI.resx">
+    <EmbeddedResource Include="UI\ParentInterface\CreateChildUI.resx">
       <DependentUpon>CreateChildUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CreateChoreUI.resx">
+    <EmbeddedResource Include="UI\ParentInterface\CreateChoreUI.resx">
       <DependentUpon>CreateChoreUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\CreateRewardUI.resx">
+    <EmbeddedResource Include="UI\ParentInterface\CreateRewardUI.resx">
       <DependentUpon>CreateRewardUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EditChildUI.resx">
+    <EmbeddedResource Include="UI\ParentInterface\EditChildUI.resx">
       <DependentUpon>EditChildUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EditChoreUI.resx">
+    <EmbeddedResource Include="UI\ParentInterface\EditChoreUI.resx">
       <DependentUpon>EditChoreUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EditParentUI.resx">
+    <EmbeddedResource Include="UI\ParentInterface\EditParentUI.resx">
       <DependentUpon>EditParentUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\EditRewardUI.resx">
+    <EmbeddedResource Include="UI\ParentInterface\EditRewardUI.resx">
       <DependentUpon>EditRewardUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\LoginInterface.resx">
+    <EmbeddedResource Include="UI\GeneralInterface\LoginInterface.resx">
       <DependentUpon>LoginInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ParentInterface.resx">
-      <DependentUpon>ParentInterface.cs</DependentUpon>
+    <EmbeddedResource Include="UI\ParentInterface\ParentMenu.resx">
+      <DependentUpon>ParentMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\PinCodeInterface.resx">
+    <EmbeddedResource Include="UI\GeneralInterface\PinCodeInterface.resx">
       <DependentUpon>PinCodeInterface.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\RegisterUserInterface.resx">
+    <EmbeddedResource Include="UI\GeneralInterface\RegisterUserInterface.resx">
       <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
@@ -312,6 +312,10 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\chevron-left-solid.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Functions\ChildFunctions\" />
+    <Folder Include="Functions\ParentFunctions\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

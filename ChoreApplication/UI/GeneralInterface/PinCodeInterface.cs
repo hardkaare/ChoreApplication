@@ -63,7 +63,7 @@ namespace ChoreApplication.UI
                 {
                     var sessionList = ParentUser.Load("");
                     _session = sessionList[0];
-                    var parentUI = new ParentInterface(sessionList[0]);//måske ok
+                    var parentUI = new ParentMenu(sessionList[0]);//måske ok
                     parentUI.Show();
                     this.Close();
                 }
@@ -71,7 +71,7 @@ namespace ChoreApplication.UI
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.ActiveID.ToString());
                     _session = sessionList[0];
-                    var childUI = new ChildInterface(sessionList[0]);//sikkert ikke done
+                    var childUI = new ChildMenu(sessionList[0]);//sikkert ikke done
                     childUI.Show();
                     this.Close();
                 }

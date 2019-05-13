@@ -60,7 +60,7 @@ namespace ChoreApplication
         {
             //Formatting the queries to chore table and creating the SqlCommand for the first query
             string query = string.Format("DELETE FROM chore WHERE chore_id={0}", ID);
-            SqlCommand cmd = new SqlCommand(query, DatabaseFunctions.DatabaseConnection);
+            SqlCommand cmd = new SqlCommand(query, ChoreApplication.Functions.DatabaseConnection);
 
             //Opens connection to the DB
             DatabaseFunctions.DatabaseConnection.Open();

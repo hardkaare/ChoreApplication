@@ -1,6 +1,6 @@
 ﻿namespace ChoreApplication.UI
 {
-    partial class ParentInterface
+    partial class ParentMenu
     {
         /// <summary>
         /// Required designer variable.

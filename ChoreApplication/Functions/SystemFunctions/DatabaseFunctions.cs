@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ChoreApplication
+namespace ChoreApplication.Functions
 {
     /// <summary>
     /// Functions for interacting with the DB. Inkludes a function run once that initializes the connection
@@ -16,10 +16,11 @@ namespace ChoreApplication
         private const String DataSource = "choreapplication1.database.windows.net";
 
         //Name of DB
-        private const String InitialCatalog = "ChoreApplication";
+        private const String InitialCatalog = "Structure";
 
         //Username
         private const String UID = "bi408f19";
+
 
         //Password
         private const String Password = "Tuborg123";
