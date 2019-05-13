@@ -5,7 +5,7 @@ using System.Windows.Forms;
 
 namespace ChoreApplication.UI
 {
-    public partial class ChildInterface : Form
+    public partial class ChildMenu : Form
     {
         public int UI = 0;
         private ChildUser _session;
@@ -17,7 +17,7 @@ namespace ChoreApplication.UI
         private List<Reward> _rewards;
         private List<Notification> _notifications;
 
-        public ChildInterface(ChildUser child)
+        public ChildMenu(ChildUser child)
         {
             _session = child;
             InitializeComponent();

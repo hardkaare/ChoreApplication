@@ -58,7 +58,7 @@ namespace ChoreApplication
             var LoginInterface = new UI.LoginInterface();
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
-            var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
+            var ParentInterface = new UI.ParentMenu(DumbFuckParentUser);
             //var createchore = new UI.CreateChoreUI();
             var createreward = new UI.CreateRewardUI();
             var createChild = new UI.CreateChildUI();
@@ -89,7 +89,7 @@ namespace ChoreApplication
             var RegisterUser = new UI.RegisterUserInterface();
             var ChooseProfile = new UI.ChooseProfileInterface();
 
-            var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
+            var ChildInterface = new UI.ChildMenu(DumbFuckChildUser);
             var editparent = new UI.EditParentUI(DumbFuckParentUser);
             //LoginInterface.Show();
             //RegisterUser.Show();
@@ -109,8 +109,8 @@ namespace ChoreApplication
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            var ChildInterface = new UI.ChildInterface(DumbFuckChildUser);
-            var ParentInterface = new UI.ParentInterface(DumbFuckParentUser);
+            var ChildInterface = new UI.ChildMenu(DumbFuckChildUser);
+            var ParentInterface = new UI.ParentMenu(DumbFuckParentUser);
             ChildInterface.Show();
         }
 
