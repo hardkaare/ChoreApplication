@@ -1,4 +1,4 @@
-﻿namespace ChoreApplication.UI
+﻿namespace ChoreApplication.UI.ParentUI
 {
     partial class CreateRewardUI
     {

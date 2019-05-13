@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-namespace ChoreApplication.UI
+namespace ChoreApplication.UI.ParentUI
 
 {
     partial class CreateChoreUI
