@@ -2,7 +2,7 @@
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ChoreApplication.UI
+namespace ChoreApplication.UI.GeneralInterface
 {
     public partial class PinCodeInterface : Form
     {
@@ -71,7 +71,7 @@ namespace ChoreApplication.UI
                 {
                     var sessionList = ChildUser.Load("u.user_id=" + ChooseProfileInterface.ActiveID.ToString());
                     _session = sessionList[0];
-                    var childUI = new ChildMenu(sessionList[0]);//sikkert ikke done
+                    var childUI = new ChildUI.ChildMenu(sessionList[0]);//sikkert ikke done
                     childUI.Show();
                     this.Close();
                 }

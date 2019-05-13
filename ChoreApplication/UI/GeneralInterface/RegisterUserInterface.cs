@@ -2,7 +2,7 @@
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace ChoreApplication.UI
+namespace ChoreApplication.UI.GeneralInterface
 {
     public partial class RegisterUserInterface : Form
     {

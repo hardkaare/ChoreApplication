@@ -52,8 +52,8 @@
   <ItemGroup>
     <Compile Include="Functions\SystemFunctions\CheckTime.cs" />
     <Compile Include="ChildFunctions.cs" />
-    <Compile Include="ChildUser.cs" />
-    <Compile Include="Chore.cs" />
+    <Compile Include="Functions\Model\ChildUser.cs" />
+    <Compile Include="Functions\Model\Chore.cs" />
     <Compile Include="ChoreApplication.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,14 +128,14 @@
     <Compile Include="UI\GeneralInterface\LoginInterface.Designer.cs">
       <DependentUpon>LoginInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="Notification.cs" />
+    <Compile Include="Functions\Model\Notification.cs" />
     <Compile Include="UI\ParentInterface\ParentMenu.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\ParentInterface\ParentMenu.Designer.cs">
       <DependentUpon>ParentMenu.cs</DependentUpon>
     </Compile>
-    <Compile Include="ParentUser.cs" />
+    <Compile Include="Functions\Model\ParentUser.cs" />
     <Compile Include="UI\GeneralInterface\PinCodeInterface.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -148,17 +148,17 @@
     <Compile Include="UI\GeneralInterface\RegisterUserInterface.Designer.cs">
       <DependentUpon>RegisterUserInterface.cs</DependentUpon>
     </Compile>
-    <Compile Include="Reocurring.cs" />
-    <Compile Include="Repeatable.cs" />
-    <Compile Include="Reward.cs" />
+    <Compile Include="Functions\Model\Reocurring.cs" />
+    <Compile Include="Functions\Model\Repeatable.cs" />
+    <Compile Include="Functions\Model\Reward.cs" />
     <Compile Include="Functions\SystemFunctions\DatabaseFunctions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Concrete.cs" />
+    <Compile Include="Functions\Model\Concrete.cs" />
     <Compile Include="UI\RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="User.cs" />
+    <Compile Include="Functions\Model\User.cs" />
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
