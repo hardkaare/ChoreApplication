@@ -30,7 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.notificationAmountLabel = new RoundButton();
+            this.notificationAmountLabel = new global::ChoreApplication.UI.UILibrary.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.usersLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
@@ -401,7 +401,7 @@
         private System.Windows.Forms.Panel rewardPanel;
         private System.Windows.Forms.Panel userPanel;
         private System.Windows.Forms.Panel notificationPanel;
-        private RoundButton notificationAmountLabel;
+        private global::ChoreApplication.UI.UILibrary.RoundButton notificationAmountLabel;
         private System.Windows.Forms.Panel leaderboardPanel;
         private System.Windows.Forms.ToolTip toolTip;
     }
