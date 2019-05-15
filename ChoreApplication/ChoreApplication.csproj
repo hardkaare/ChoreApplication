@@ -66,10 +66,10 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Functions\UIFunctions.cs" />
-    <Compile Include="UI\ChildInterface\ChildMenu.cs">
+    <Compile Include="UI\ChildMenu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\ChildInterface\ChildMenu.Designer.cs">
+    <Compile Include="UI\ChildMenu.Designer.cs">
       <DependentUpon>ChildMenu.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\GeneralInterface\ChooseProfileInterface.cs">
@@ -161,7 +161,7 @@
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\ChildInterface\ChildMenu.resx">
+    <EmbeddedResource Include="UI\ChildMenu.resx">
       <DependentUpon>ChildMenu.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\GeneralInterface\ChooseProfileInterface.resx">

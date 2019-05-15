@@ -70,7 +70,7 @@ namespace ChoreApplication.UI.GeneralInterface
                 {
                     var sessionList = Model.ChildUser.Load("u.user_id=" + ChooseProfileInterface.ActiveID.ToString());
                     _session = sessionList[0];
-                    var childUI = new ChildUI.ChildMenu(sessionList[0]);
+                    var childUI = new UI.ChildMenu(sessionList[0]);
                     childUI.Show();
                     this.Close();
                 }
