@@ -50,29 +50,6 @@ namespace ChoreApplication.UI.ParentUI
 
         #region General Controls
 
-        private Control AddLabel(string labelText, bool isBold, int locationX, int locationY)
-        {
-            var label = new Label
-            {
-                Text = labelText,
-                MaximumSize = new Size(310, 20),
-                AutoEllipsis = true,
-                AutoSize = true,
-            };
-            label.Location = new Point(locationX, locationY);
-            if (!isBold)
-            {
-                label.Font = Properties.Settings.Default.StandardFont;
-                return label;
-            }
-            if (isBold)
-            {
-                label.Font = Properties.Settings.Default.StandardFontBold;
-                return label;
-            }
-            return label;
-        }
-
         private void OptionButton_Click(object sender, EventArgs e)
         {
             switch (UI)
@@ -156,34 +133,274 @@ namespace ChoreApplication.UI.ParentUI
             _concreteChoresApprovalPending = Model.Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
             _reoccurringChores = Model.Reocurring.Load("");
             _repeatableChores = Model.Repeatable.Load("");
-            int panelDistance = 10;
+            int panelDistance = 5;
             int choreLocationY = 0;
 
             foreach (var chore in _concreteChoresApprovalPending)
             {
-                Panel currentPanel = Functions.ParentFunctions.ChoreFunctions.LoadConcreteChore(chore, _childrenNames, chorePanel.Width - 20, choreLocationY);
+                Panel currentPanel = LoadConcreteChore(chore, chorePanel.Width - 20, choreLocationY);
                 chorePanel.Controls.Add(currentPanel);
                 choreLocationY += currentPanel.Height + panelDistance;
             }
             foreach (var chore in _reoccurringChores)
             {
-                Panel currentPanel = Functions.ParentFunctions.ChoreFunctions.LoadReocurringChore(chore, _childrenNames, chorePanel.Width - 20, choreLocationY);
+                Panel currentPanel = LoadReocurringChore(chore, chorePanel.Width - 20, choreLocationY);
                 chorePanel.Controls.Add(currentPanel);
                 choreLocationY += currentPanel.Height + panelDistance;
             }
             foreach (var chore in _repeatableChores)
             {
-                Panel currentPanel = Functions.ParentFunctions.ChoreFunctions.LoadRepeatableChore(chore, _childrenNames, chorePanel.Width - 20, choreLocationY);
+                Panel currentPanel = LoadRepeatableChore(chore, chorePanel.Width - 20, choreLocationY);
                 chorePanel.Controls.Add(currentPanel);
                 choreLocationY += currentPanel.Height + panelDistance;
             }
         }
 
-        #endregion ChoreUI
+        private Panel LoadChore(Model.Chore chore, int width, int yLocation, string status, string type)
+        {
+            int yLoc = 5;
+            int LabelDistance = 2;
+
+            string choreName = chore.Name;
+            string choreAssignment = "Assigned to: " + _childrenNames[chore.Assignment];
+            string choreStatus = "Status: " + status;
+            string choreType = "Type: " + type;
+
+            var choreNameLabel = UILibrary.StandardElements.AddLabel(choreName, true, new Point(5, yLoc));
+            yLoc += choreNameLabel.Height + LabelDistance;
+            var choreAssignmentLabel = UILibrary.StandardElements.AddLabel(choreAssignment, false, new Point(10, yLoc));
+            yLoc += choreNameLabel.Height + LabelDistance;
+            var choreStatusLabel = UILibrary.StandardElements.AddLabel(choreStatus, false, new Point(10, yLoc));
+            yLoc += choreNameLabel.Height + LabelDistance;
+            var choreTypeLabel = UILibrary.StandardElements.AddLabel(choreType, false, new Point(10, yLoc));
+            yLoc += choreNameLabel.Height + LabelDistance;
+            var panelHeight = choreNameLabel.Height + choreAssignmentLabel.Height + choreStatusLabel.Height + choreTypeLabel.Height;
+
+            var currentPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), width, panelHeight);
+
+            currentPanel.Controls.Add(choreNameLabel);
+            currentPanel.Controls.Add(choreAssignmentLabel);
+            currentPanel.Controls.Add(choreStatusLabel);
+            currentPanel.Controls.Add(choreTypeLabel);
+
+            return currentPanel;
+        }
+
+        public Panel LoadRepeatableChore(Model.Repeatable chore, int width, int yLocation)
+        {
+            string status = "Active";
+            string type = "Repeatable";
+
+            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
+            currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
+            currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
+
+            return currentPanel;
+        }
+
+        public Panel LoadReocurringChore(Model.Reocurring chore, int width, int yLocation)
+        {
+            string status = "Active";
+            string type = "Reocurring";
+
+            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
+            currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
+            currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
+
+            return currentPanel;
+        }
+
+        public Panel LoadConcreteChore(Model.Concrete chore, int width, int yLocation)
+        {
+            string status = _statusValues[chore.Status];
+            string type = "Concrete";
+
+            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
+            if (chore.Status == 1)
+            {
+                currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
+                currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
+            }
+            else if (chore.Status == 2)
+            {
+                currentPanel.Controls.Add(AddApproveChoreButton(330, currentPanel.Height / 2, chore));
+                currentPanel.Controls.Add(AddDenyChoreButton(365, currentPanel.Height / 2, chore));
+            }
+            return currentPanel;
+        }
+
+        private Control AddApproveChoreButton(int locationX, int locationY, Model.Chore chore)
+        {
+            var approveButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumbs_up);
+            approveButton.Click += new EventHandler(ApproveChoreButton_Click);
+            return approveButton;
+        }
+
+        private Control AddDenyChoreButton(int locationX, int locationY, Model.Chore chore)
+        {
+            var denyButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumb_down);
+            denyButton.Click += new EventHandler(DenyChoreButton_Click);
+            return denyButton;
+        }
+
+        private Control AddEditChoreButton(int locationX, int locationY, Model.Chore chore)
+        {
+            var editChoreButton = new Button
+            {
+                Location = new Point(locationX, locationY - 15),
+                Size = new Size(30, 30),
+                Tag = chore,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            editChoreButton.Cursor = Cursors.Hand;
+            editChoreButton.FlatAppearance.BorderSize = 0;
+            editChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            editChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            editChoreButton.Click += new EventHandler(EditChoreButton_Click);
+            return editChoreButton;
+        }
+
+        private Control AddDeleteChoreButton(int locationX, int locationY, Model.Chore chore)
+        {
+            var deleteChoreButton = new Button
+            {
+                Location = new Point(locationX, locationY - 15),
+                Size = new Size(30, 30),
+                Tag = chore,
+                FlatStyle = FlatStyle.Flat,
+                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
+                BackgroundImageLayout = ImageLayout.Zoom,
+                AutoSize = true,
+            };
+            deleteChoreButton.Cursor = Cursors.Hand;
+            deleteChoreButton.FlatAppearance.BorderSize = 0;
+            deleteChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            deleteChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            deleteChoreButton.Click += new EventHandler(DeleteChoreButton_Click);
+            return deleteChoreButton;
+        }
+
+        private void ApproveChoreButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Model.Concrete currentChore = (Model.Concrete)clickedButton.Tag;
+            currentChore.Status = 3;
+            currentChore.ApprovalDate = DateTime.Now;
+            currentChore.Update();
+
+            var currentChild = Model.ChildUser.Load("child_id=" + currentChore.Assignment);
+            currentChild[0].Points += currentChore.Points;
+            currentChild[0].Update();
+            Model.Notification.Insert(currentChild[0].ID, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
+                $"\n{currentChore.Points.ToString()} points has been added to your account");
+            LoadAmountOfNotifications();
+            LoadChores();
+        }
+
+        private void DenyChoreButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            Model.Concrete currentChore = (Model.Concrete)clickedButton.Tag;
+            var currentChild = Model.ChildUser.Load("child_id=" + currentChore.Assignment);
+
+            if (currentChore.Type == "rep")
+            {
+                currentChore.Delete();
+            }
+            else
+            {
+                currentChore.DueDate = DateTime.Now.AddDays(1);
+                currentChore.Status = 1;
+                currentChore.Reminder = 0;
+                currentChore.Update();
+            }
+            Model.Notification.Insert(currentChild[0].ID, "Chore Denied", $"The chore {currentChore.Name} has been denied.");
+            LoadAmountOfNotifications();
+            LoadChores();
+        }
+
+        private void EditChoreButton_Click(object sender, System.EventArgs e)
+        {
+            this.Enabled = false; //Disable ParentUI
+            Button clickedButton = (Button)sender;
+            try
+            {
+                Model.Concrete selectedChore = (Model.Concrete)clickedButton.Tag;
+                var editSelectedChoreUI = new UI.ParentUI.EditChoreUI(selectedChore);
+                editSelectedChoreUI.Show();
+                editSelectedChoreUI.FormClosing += ChoreNavigationButton_Click;
+            }
+            catch
+            {
+                try
+                {
+                    Model.Reocurring selectedChore = (Model.Reocurring)clickedButton.Tag;
+                    var editSelectedChoreUI = new UI.ParentUI.EditChoreUI(selectedChore);
+                    editSelectedChoreUI.Show();
+                    editSelectedChoreUI.FormClosing += ChoreNavigationButton_Click;
+                }
+                catch
+                {
+                    try
+                    {
+                        Model.Repeatable selectedChore = (Model.Repeatable)clickedButton.Tag;
+                        var editSelectedChoreUI = new UI.ParentUI.EditChoreUI(selectedChore);
+                        editSelectedChoreUI.Show();
+                        editSelectedChoreUI.FormClosing += ChoreNavigationButton_Click;
+                    }
+                    catch
+                    {
+                        MessageBox.Show("Could not edit chore: Conversion failed", "Error");
+                    }
+                }
+            }
+        }
+
+        private void DeleteChoreButton_Click(object sender, System.EventArgs e)
+        {
+            Button clickedButton = (Button)sender;
+            var confirmDelete = MessageBox.Show("Are you sure you want to delete this chore?", "Confirm Deletion", MessageBoxButtons.YesNo);
+            if (confirmDelete == DialogResult.Yes)
+            {
+                try
+                {
+                    Model.Concrete selectedChore = (Model.Concrete)clickedButton.Tag;
+                    selectedChore.Delete();
+                    LoadChores();
+                }
+                catch
+                {
+                    try
+                    {
+                        Model.Reocurring selectedChore = (Model.Reocurring)clickedButton.Tag;
+                        selectedChore.Delete();
+                        LoadChores();
+                    }
+                    catch
+                    {
+                        try
+                        {
+                            Model.Repeatable selectedChore = (Model.Repeatable)clickedButton.Tag;
+                            selectedChore.Delete();
+                            LoadChores();
+                        }
+                        catch
+                        {
+                            MessageBox.Show("Could not delete selected chore: Conversion failed", "Error");
+                        }
+                    }
+                }
+            }
+        }
+
+    #endregion ChoreUI
 
         #region RewardUI
 
-        private void RewardsUI()
+    private void RewardsUI()
         {
             LoadAmountOfNotifications();
             UI = 2;
@@ -198,72 +415,55 @@ namespace ChoreApplication.UI.ParentUI
         {
             _rewards = Model.Reward.Load("");
             rewardPanel.Controls.Clear();
-            int distanceCounter = 0;
-            int panelDistance = 72;
+            int panelDistance = 5;
+            int rewardLocationY = 0;
 
             foreach (Model.Reward reward in _rewards)
             {
-                var rewardName = reward.Name.ToString();
-                var rewardAssignment = "Assigned to: " + _childrenNames[reward.ChildID];
-                var rewardStatus = "Status: Active";
-
-                var rewardNameLabel = AddLabel(rewardName, true, 5, 5);
-                var rewardAssignmentLabel = AddLabel(rewardAssignment, false, 10, rewardNameLabel.Location.Y + 20);
-                var rewardStatusLabel = AddLabel(rewardStatus, false, 10, rewardAssignmentLabel.Location.Y + 20);
-                var panelHeight = rewardNameLabel.Height + rewardAssignmentLabel.Height + rewardStatusLabel.Height;
-                var individualRewardPanel = new Panel
-                {
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(chorePanel.Width - 20, panelHeight),
-                    AutoSize = true,
-                };
-                individualRewardPanel.Controls.Add(rewardNameLabel);
-                individualRewardPanel.Controls.Add(rewardAssignmentLabel);
-                individualRewardPanel.Controls.Add(rewardStatusLabel);
-                individualRewardPanel.Controls.Add(AddEditRewardButton(330, individualRewardPanel.Height / 2, reward));
-                individualRewardPanel.Controls.Add(AddDeleteRewardButton(365, individualRewardPanel.Height / 2, reward));
-                rewardPanel.Controls.Add(individualRewardPanel);
-                distanceCounter++;
+                Panel currentReward = LoadReward(reward, rewardLocationY);
+                rewardPanel.Controls.Add(currentReward);
+                rewardLocationY += currentReward.Height + panelDistance;
             }
+        }
+
+        private Panel LoadReward(Model.Reward reward, int yLocation)
+        {
+            int yLoc = 5;
+            int labelDist = 0;
+
+            var rewardName = reward.Name;
+            var rewardAssignment = "Assigned to: " + _childrenNames[reward.ChildID];
+            var rewardStatus = "Status: Active";
+
+            var rewardNameLabel = UILibrary.StandardElements.AddLabel(rewardName, true, new Point(5, yLoc));
+            yLoc += rewardNameLabel.Height + labelDist;
+            var rewardAssignmentLabel = UILibrary.StandardElements.AddLabel(rewardAssignment, false, new Point(10, yLoc));
+            yLoc += rewardNameLabel.Height + labelDist;
+            var rewardStatusLabel = UILibrary.StandardElements.AddLabel(rewardStatus, false, new Point(10, yLoc));
+            yLoc += rewardNameLabel.Height + labelDist;
+
+            var panelHeight = rewardNameLabel.Height + rewardAssignmentLabel.Height + rewardStatusLabel.Height;
+            var individualRewardPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
+
+            individualRewardPanel.Controls.Add(rewardNameLabel);
+            individualRewardPanel.Controls.Add(rewardAssignmentLabel);
+            individualRewardPanel.Controls.Add(rewardStatusLabel);
+            individualRewardPanel.Controls.Add(AddEditRewardButton(330, individualRewardPanel.Height / 2, reward));
+            individualRewardPanel.Controls.Add(AddDeleteRewardButton(365, individualRewardPanel.Height / 2, reward));
+
+            return individualRewardPanel;
         }
 
         private Control AddEditRewardButton(int locationX, int locationY, Model.Reward reward)
         {
-            var editRewardButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = reward,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            editRewardButton.Cursor = Cursors.Hand;
-            editRewardButton.FlatAppearance.BorderSize = 0;
-            editRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            editRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            var editRewardButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), reward, global::ChoreApplication.Properties.Resources.pencil);
             editRewardButton.Click += new EventHandler(EditRewardButton_Click);
             return editRewardButton;
         }
 
         private Control AddDeleteRewardButton(int locationX, int locationY, Model.Reward reward)
         {
-            var deleteRewardButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = reward,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            deleteRewardButton.Cursor = Cursors.Hand;
-            deleteRewardButton.FlatAppearance.BorderSize = 0;
-            deleteRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            deleteRewardButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            var deleteRewardButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), reward, global::ChoreApplication.Properties.Resources.delete);
             deleteRewardButton.Click += new EventHandler(DeleteRewardButton_Click);
             return deleteRewardButton;
         }
@@ -322,7 +522,7 @@ namespace ChoreApplication.UI.ParentUI
                 int leaderboardLocationY = 10;
 
                 //Add Total Points title
-                var totalPointsEarnedLabel = AddLabel("Total Points Earned", true, 140, leaderboardLocationY);
+                var totalPointsEarnedLabel = UILibrary.StandardElements.AddLabel("Total Points Earned", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(totalPointsEarnedLabel);
                 leaderboardLocationY += totalPointsEarnedLabel.Height + panelDistance;
 
@@ -333,7 +533,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalPointsStatisticPanel.Height + panelDistance;
 
                 //Add Total Chores Approved title
-                var totalChoresApprovedLabel = AddLabel("Total Chores Approved", true, 140, leaderboardLocationY);
+                var totalChoresApprovedLabel = UILibrary.StandardElements.AddLabel("Total Chores Approved", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(totalChoresApprovedLabel);
                 leaderboardLocationY += totalChoresApprovedLabel.Height + panelDistance;
 
@@ -344,7 +544,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalChoresApprovedStatisticPanel.Height + panelDistance;
 
                 //Add Completion Rate title
-                var completionRateLabel = AddLabel("Completion Rate", true, 140, leaderboardLocationY);
+                var completionRateLabel = UILibrary.StandardElements.AddLabel("Completion Rate", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(completionRateLabel);
                 leaderboardLocationY += completionRateLabel.Height + panelDistance;
 
@@ -355,7 +555,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += completionRateStatisticPanel.Height + panelDistance;
 
                 //Add Longest streak title
-                var longestStreakLabel = AddLabel("Longest Streak", true, 140, leaderboardLocationY);
+                var longestStreakLabel = UILibrary.StandardElements.AddLabel("Longest Streak", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(longestStreakLabel);
                 leaderboardLocationY += longestStreakLabel.Height + panelDistance;
 
@@ -386,102 +586,68 @@ namespace ChoreApplication.UI.ParentUI
             _childUsers = Model.ChildUser.Load("");
             _parentUsers = Model.ParentUser.Load("");
             userPanel.Controls.Clear();
-            int distanceCounter = 0;
-            int panelDistance = 65;
+            int panelDistance = 5;
+            int userLocationY = 0;
 
             foreach (Model.ParentUser parent in _parentUsers)
             {
-                var userFirstName = parent.FirstName.ToString();
-
-                var userFirstNameLabel = AddLabel(userFirstName, true, 5, 5);
-                var panelHeight = userFirstNameLabel.Height + 40;
-                var individualUserPanel = new Panel
-                {
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(chorePanel.Width - 20, panelHeight),
-                    AutoSize = true,
-                };
-                individualUserPanel.Controls.Add(userFirstNameLabel);
-                userPanel.Controls.Add(individualUserPanel);
-                individualUserPanel.Controls.Add(AddEditParentButton(365, individualUserPanel.Height / 2, parent));
-                distanceCounter++;
+                Panel currentPanel = LoadParent(parent, userLocationY);
+                userPanel.Controls.Add(currentPanel);
+                userLocationY += currentPanel.Height + panelDistance;
             }
 
             foreach (Model.ChildUser child in _childUsers)
             {
-                var userFirstName = child.FirstName.ToString();
-
-                var userFirstNameLabel = AddLabel(userFirstName, false, 5, 5);
-                var panelHeight = userFirstNameLabel.Height + 40;
-                var individualUserPanel = new Panel
-                {
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(chorePanel.Width - 20, panelHeight),
-                    AutoSize = true,
-                };
-                individualUserPanel.Controls.Add(userFirstNameLabel);
-                userPanel.Controls.Add(individualUserPanel);
-                individualUserPanel.Controls.Add(AddEditChildButton(330, individualUserPanel.Height / 2, child));
-                individualUserPanel.Controls.Add(AddDeleteChildButton(365, individualUserPanel.Height / 2, child));
-                distanceCounter++;
+                Panel currentPanel = LoadChild(child, userLocationY);
+                userPanel.Controls.Add(currentPanel);
+                userLocationY += currentPanel.Height + panelDistance;
             }
+        }
+
+        private Panel LoadChild(Model.ChildUser child, int yLocation)
+        {
+            var individualUserPanel = LoadUser(child, yLocation);
+            individualUserPanel.Controls.Add(AddEditChildButton(330, individualUserPanel.Height / 2, child));
+            individualUserPanel.Controls.Add(AddDeleteChildButton(365, individualUserPanel.Height / 2, child));
+            return individualUserPanel;
+        }
+
+        private Panel LoadParent(Model.ParentUser parent, int yLocation)
+        {
+            var individualUserPanel = LoadUser(parent, yLocation);
+            individualUserPanel.Controls.Add(AddEditParentButton(365, individualUserPanel.Height / 2, parent));
+            return individualUserPanel;
+        }
+
+        private Panel LoadUser(Model.User user, int yLocation)
+        {
+            var userFirstName = user.FirstName.ToString();
+
+            var userFirstNameLabel = UILibrary.StandardElements.AddLabel(userFirstName, true, new Point(5, 5));
+            var panelHeight = userFirstNameLabel.Height + 40;
+            var individualUserPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
+            individualUserPanel.Controls.Add(userFirstNameLabel);
+
+            return individualUserPanel;
         }
 
         private Control AddEditChildButton(int locationX, int locationY, Model.ChildUser childUser)
         {
-            var editChildButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = childUser,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            editChildButton.Cursor = Cursors.Hand;
-            editChildButton.FlatAppearance.BorderSize = 0;
-            editChildButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            var editChildButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), childUser, global::ChoreApplication.Properties.Resources.pencil);
             editChildButton.Click += new EventHandler(EditChildButton_Click);
             return editChildButton;
         }
 
         private Control AddEditParentButton(int locationX, int locationY, Model.ParentUser parentUser)
         {
-            var editParentButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = parentUser,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            editParentButton.Cursor = Cursors.Hand;
-            editParentButton.FlatAppearance.BorderSize = 0;
-            editParentButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            var editParentButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), parentUser, global::ChoreApplication.Properties.Resources.pencil);
             editParentButton.Click += new EventHandler(EditParentButton_Click);
             return editParentButton;
         }
 
         private Control AddDeleteChildButton(int locationX, int locationY, Model.ChildUser childUser)
         {
-            var deleteChildButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = childUser,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            deleteChildButton.Cursor = Cursors.Hand;
-            deleteChildButton.FlatAppearance.BorderSize = 0;
-            deleteChildButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            var deleteChildButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), childUser, global::ChoreApplication.Properties.Resources.delete);
             deleteChildButton.Click += new EventHandler(DeleteChildButton_Click);
             return deleteChildButton;
         }
@@ -544,55 +710,49 @@ namespace ChoreApplication.UI.ParentUI
             this.notificationPanel.Visible = true;
             this.notificationPanel.BringToFront();
             this.optionButton.Visible = false;
-            LoadNotification();
+            LoadNotifications();
             LoadAmountOfNotifications();
         }
 
-        private void LoadNotification()
+        private void LoadNotifications()
         {
             _notifications = Model.Notification.Load("user_id=" + _session.ID);
             notificationPanel.Controls.Clear();
-            int distanceCounter = 0;
-            int panelDistance = 50;
+            int panelDistance = 5;
+            int notificationLocationY = 0;
 
             foreach (Model.Notification notification in _notifications)
             {
-                var notificationTitle = notification.Title;
-                var notificationDescription = notification.Description;
-
-                var notificationTitleLabel = AddLabel(notificationTitle, true, 5, 5);
-                var notificationDescriptionLabel = AddLabel(notificationDescription, false, 10, notificationTitleLabel.Location.Y + 20);
-                var panelHeight = notificationTitleLabel.Height + notificationDescriptionLabel.Height;
-                var individualNotificationPanel = new Panel
-                {
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(chorePanel.Width - 20, panelHeight),
-                    AutoSize = true,
-                };
-                individualNotificationPanel.Controls.Add(notificationTitleLabel);
-                individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
-                individualNotificationPanel.Controls.Add(AddDeleteNotificationButton(365, individualNotificationPanel.Height / 2, notification));
+                var individualNotificationPanel = LoadNotification(notification, notificationLocationY);
                 notificationPanel.Controls.Add(individualNotificationPanel);
-                distanceCounter++;
+                notificationLocationY += individualNotificationPanel.Height + panelDistance;
             }
+        }
+
+        private Panel LoadNotification(Model.Notification notification, int yLocation)
+        {
+            int labelDistance = 0;
+            int yLoc = 5;
+
+            var notificationTitle = notification.Title;
+            var notificationDescription = notification.Description;
+
+            var notificationTitleLabel = UILibrary.StandardElements.AddLabel(notificationTitle, true, new Point(5, yLoc));
+            yLoc += notificationTitleLabel.Height + labelDistance;
+            var notificationDescriptionLabel = UILibrary.StandardElements.AddLabel(notificationDescription, false, new Point(10, yLoc));
+            var panelHeight = notificationTitleLabel.Height + notificationDescriptionLabel.Height;
+            var individualNotificationPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
+
+            individualNotificationPanel.Controls.Add(notificationTitleLabel);
+            individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
+            individualNotificationPanel.Controls.Add(AddDeleteNotificationButton(365, individualNotificationPanel.Height / 2, notification));
+
+            return individualNotificationPanel;
         }
 
         private Control AddDeleteNotificationButton(int locationX, int locationY, Model.Notification notification)
         {
-            var deleteNotificationButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = notification,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            deleteNotificationButton.Cursor = Cursors.Hand;
-            deleteNotificationButton.FlatAppearance.BorderSize = 0;
-            deleteNotificationButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
+            var deleteNotificationButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), notification, global::ChoreApplication.Properties.Resources.delete);
             deleteNotificationButton.Click += new EventHandler(NotificationDeleteButton_Click);
             return deleteNotificationButton;
         }

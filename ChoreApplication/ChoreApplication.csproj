@@ -161,6 +161,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\User.cs" />
+    <Compile Include="UI\UILibrary\StandardElements.cs" />
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>
