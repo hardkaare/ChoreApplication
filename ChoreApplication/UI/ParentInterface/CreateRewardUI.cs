@@ -14,7 +14,6 @@ namespace ChoreApplication.UI.ParentUI
         private void LoadChildren()
         {
             var children = Model.ChildUser.Load("");
-
             foreach (var name in children)
             {
                 this.assignmentComboBox.Items.Add(name.FirstName);

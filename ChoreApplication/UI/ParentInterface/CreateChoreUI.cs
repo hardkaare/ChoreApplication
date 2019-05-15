@@ -22,12 +22,12 @@ namespace ChoreApplication.UI.ParentUI
             switch (choreTypesComboBox.Text)
             {
                 case "Reoccurring":
-                    this.Controls.Add(this.daysCheckedListBox);
+                    this.Controls.Add(daysCheckedListBox);
                     daysCheckedListBox.Visible = true;
                     dueDateLabel.Text = "Days";
-                    this.Controls.Add(this.dueTimeDateTimePicker);
+                    this.Controls.Add(dueTimeDateTimePicker);
                     dueTimeDateTimePicker.Visible = true;
-                    this.Controls.Add(this.dueTimeLabel);
+                    this.Controls.Add(dueTimeLabel);
                     dueTimeLabel.Visible = true;
                     dueDateTimePicker.Visible = false;
                     assignmentLabel.Location = new System.Drawing.Point(62, 420);
@@ -51,7 +51,7 @@ namespace ChoreApplication.UI.ParentUI
                     break;
 
                 case "Repeatable":
-                    this.Controls.Add(this.completionsLimitNumericUpDown);
+                    this.Controls.Add(completionsLimitNumericUpDown);
                     dueDateLabel.Text = "Completion limit";
                     dueDateTimePicker.Visible = false;
                     completionsLimitNumericUpDown.Visible = true;
@@ -84,7 +84,6 @@ namespace ChoreApplication.UI.ParentUI
             var children = Model.ChildUser.Load("");
             int id = 0;
             var choreType = "";
-
             for (int i = 0; i < children.Count; i++)
             {
                 if (children[i].FirstName == childAssignedCombobox.Text)
