@@ -20,7 +20,7 @@ namespace ChoreApplication
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            var checkTime = new Functions.CheckTime();
+            var checkTime = new TechnicalPlatform.CheckTime();
         }
 
         private void EditJoenler_Click(object sender, EventArgs e)
