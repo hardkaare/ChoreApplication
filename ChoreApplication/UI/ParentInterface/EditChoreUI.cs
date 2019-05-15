@@ -25,10 +25,10 @@ namespace ChoreApplication.UI.ParentUI
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
-            this.Controls.Add(this.dueDateLabel);
+            this.Controls.Add(dueDateLabel);
             this.Size = new Size(350, 385);
             dueDateLabel.Text = "Due date";
-            this.Controls.Add(this.dueDateDateTimePicker);
+            this.Controls.Add(dueDateDateTimePicker);
             dueDateDateTimePicker.Text = _concrete.DueDate.ToString();
             _choreType = 1;
         }
@@ -41,15 +41,15 @@ namespace ChoreApplication.UI.ParentUI
             choreNameTextBox.Text = _repeatable.Name;
             chorePointsTextBox.Text = _repeatable.Points.ToString();
             choreDescriptionRichTextBox.Text = _repeatable.Description;
-            this.Controls.Add(this.childAssignedComboBox);
+            this.Controls.Add(childAssignedComboBox);
             foreach (var child in Model.ChildUser.Load($"c.child_id = {_repeatable.Assignment}"))
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
             this.Size = new Size(350, 385);
-            this.Controls.Add(this.dueDateLabel);
+            this.Controls.Add(dueDateLabel);
             dueDateLabel.Text = "Limit";
-            this.Controls.Add(this.completionLimitUpDown);
+            this.Controls.Add(completionLimitUpDown);
             completionLimitUpDown.Value = _repeatable.Limit;
             _choreType = 2;
         }
@@ -67,12 +67,12 @@ namespace ChoreApplication.UI.ParentUI
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
-            this.Controls.Add(this.dueDateLabel);
+            this.Controls.Add(dueDateLabel);
             dueDateLabel.Text = "Due time";
-            this.Controls.Add(this.dueTimeDateTimePicker);
+            this.Controls.Add(dueTimeDateTimePicker);
             dueTimeDateTimePicker.Text = _reoccurring.DueTime.ToString();
-            this.Controls.Add(this.daysLabel);
-            this.Controls.Add(this.daysCheckedListBox);
+            this.Controls.Add(daysLabel);
+            this.Controls.Add(daysCheckedListBox);
             this.Size = new Size(350, 525);
             for (int i = 0; i < daysCheckedListBox.Items.Count; i++)
             {
@@ -102,7 +102,7 @@ namespace ChoreApplication.UI.ParentUI
             foreach (var name in children)
             {
                 childrenArray[i] = name.FirstName;
-                this.childAssignedComboBox.Items.Add(childrenArray[i]);
+                childAssignedComboBox.Items.Add(childrenArray[i]);
                 i++;
             }
         }
