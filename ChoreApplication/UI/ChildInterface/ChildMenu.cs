@@ -47,30 +47,6 @@ namespace ChoreApplication.UI.ChildUI
             }
         }
 
-        private Control AddLabel(string labelText, bool isBold, int locationX, int locationY)
-        {
-            var panel = new Panel();
-            var label = new Label
-            {
-                Location = new Point(locationX, locationY),
-                MaximumSize = new Size(300, 0),
-                AutoSize = true,
-                Text = labelText,
-            };
-
-            if (!isBold)
-            {
-                label.Font = Properties.Settings.Default.StandardFont;
-                return label;
-            }
-            if (isBold)
-            {
-                label.Font = Properties.Settings.Default.StandardFontBold;
-                return label;
-            }
-            return label;
-        }
-
         #region ChoreUI
 
         public void ChoresUI()
@@ -87,126 +63,106 @@ namespace ChoreApplication.UI.ChildUI
             _activeConcreteChores = Model.Concrete.Load($"(status=1 OR status=2) AND ch.child_id={_session.ChildID} ORDER BY status ASC");
             _activeRepeatableChores = Model.Repeatable.Load($"ch.child_id={_session.ChildID}");
             chorePanel.Controls.Clear();
-            int distanceCounter = 0;
-            int panelDistance = 95;
+            int choreLocationY = 0;
+            int panelDistance = 5;
 
             foreach (var chore in _activeConcreteChores)
             {
-                int yLoc = 5;
-                int labelDist = 20;
-
-                var choreName = chore.Name.ToString();
-                var chorePoints = "Points: " + chore.Points.ToString();
-                var choreDescription = "Description: " + chore.Description.ToString();
-                var choreStatus = "Status: " + _statusValues[chore.Status];
-                var choreDueDate = "Due date: " + chore.DueDate.ToString(Properties.Settings.Default.ShortDateFormat);
-
-                var choreNameLabel = AddLabel(choreName, true, 5, yLoc);
-                yLoc += choreNameLabel.Height + labelDist;
-                var chorePointsLabel = AddLabel(chorePoints, false, 10, yLoc);
-                yLoc += chorePointsLabel.Height + labelDist;
-                var choreDescriptionLabel = AddLabel(choreDescription, false, 10, yLoc);
-                yLoc += choreDescriptionLabel.Height + labelDist;
-                var choreDueDateLabel = AddLabel(choreDueDate, false, 10, yLoc);
-                yLoc += choreDueDateLabel.Height + labelDist;
-                var choreStatusLabel = AddLabel(choreStatus, false, 10, yLoc);
-                yLoc += choreStatusLabel.Height + labelDist;
-
-                var panelHeight = choreNameLabel.Height + chorePointsLabel.Height + choreDescriptionLabel.Height + choreDueDateLabel.Height;
-                var individualChorePanel = new Panel
-                {
-                    Name = "panel" + chore.ID.ToString(),
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(chorePanel.Width - 25, panelHeight),
-                    AutoSize = true,
-                };
-                chorePanel.Controls.Add(individualChorePanel);
-                individualChorePanel.Controls.Add(choreNameLabel);
-                individualChorePanel.Controls.Add(chorePointsLabel);
-                individualChorePanel.Controls.Add(choreDescriptionLabel);
-                individualChorePanel.Controls.Add(choreDueDateLabel);
-                if (chore.Status == 1)
-                {
-                    individualChorePanel.Controls.Add(AddConcreteChoreDoneButton(330, individualChorePanel.Height / 2, chore));
-                    individualChorePanel.Controls.Add(AddLabel("Completed?", false, 305, individualChorePanel.Height / 2 + 20));
-                }
-                if (chore.Status == 2)
-                {
-                    individualChorePanel.Controls.Remove(choreDueDateLabel);
-                    individualChorePanel.Controls.Add(choreStatusLabel);
-                }
-                distanceCounter++;
+                Panel currentPanel = LoadConcreteChore(chore, chorePanel.Width - 20, choreLocationY);
+                chorePanel.Controls.Add(currentPanel);
+                choreLocationY += currentPanel.Height + panelDistance;
             }
 
             foreach (var chore in _activeRepeatableChores)
             {
-                double calcDimishingReturn = chore.Points;
-                for (int j = 0; j < chore.Completions; j++)
-                {
-                    calcDimishingReturn *= 0.75;
-                }
-                int diminishedPoints = (int)calcDimishingReturn;
-
-                var choreName = chore.Name.ToString();
-                var chorePoints = "Points: " + diminishedPoints.ToString();
-                var choreDescription = "Description: " + chore.Description.ToString();
-                var choreLimit = "Completion limit: " + chore.Limit.ToString();
-                var choreCompletions = "Amount completed today: " + chore.Completions.ToString();
-
-                var choreNameLabel = AddLabel(choreName, true, 5, 5);
-                var chorePointsLabel = AddLabel(chorePoints, false, 10, choreNameLabel.Location.Y + 20);
-                var choreDescriptionLabel = AddLabel(choreDescription, false, 10, chorePointsLabel.Location.Y + 20);
-                var choreLimitLabel = AddLabel(choreLimit, false, 10, choreDescriptionLabel.Location.Y + 20);
-                var choreCompletionsLabel = AddLabel(choreCompletions, false, 10, choreLimitLabel.Location.Y + 20);
-                var panelHeight = choreNameLabel.Height + chorePointsLabel.Height + choreDescriptionLabel.Height + choreLimitLabel.Height + choreCompletionsLabel.Height;
-
-                var individualChorePanel = new Panel
-                {
-                    Name = "panel" + chore.ID.ToString(),
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(chorePanel.Width - 25, panelHeight),
-                    AutoSize = true,
-                };
-                chorePanel.Controls.Add(individualChorePanel);
-                individualChorePanel.Controls.Add(choreNameLabel);
-                individualChorePanel.Controls.Add(chorePointsLabel);
-                individualChorePanel.Controls.Add(choreDescriptionLabel);
-                individualChorePanel.Controls.Add(choreLimitLabel);
-                individualChorePanel.Controls.Add(choreCompletionsLabel);
-                var repChoreDoneButton = AddRepeatableChoreDoneButton(330, individualChorePanel.Height / 2, chore);
-                individualChorePanel.Controls.Add(repChoreDoneButton);
-                if (chore.Completions >= chore.Limit)
-                {
-                    var limitReachedLabel = AddLabel("Limit reached", false, 290, individualChorePanel.Height / 2);
-                    limitReachedLabel.Enabled = false;
-                    individualChorePanel.Controls.Add(limitReachedLabel);
-                    individualChorePanel.Controls.Remove(repChoreDoneButton);
-                }
-                else
-                {
-                    individualChorePanel.Controls.Add(AddLabel("Completed?", false, 305, individualChorePanel.Height / 2 + 20));
-                }
+                Panel currentPanel = LoadRepeatableChore(chore, chorePanel.Width - 20, choreLocationY);
+                chorePanel.Controls.Add(currentPanel);
+                choreLocationY += currentPanel.Height + panelDistance;
             }
+        }
+
+        private Panel LoadChore(Model.Chore chore, Point location, int points, string label1, string label2)
+        {
+            int yLoc = 5;
+            int labelDist = 0;
+
+            var choreName = chore.Name;
+            var choreDescription = "Description: " + chore.Description;
+            var chorePoints = "Points: " + points.ToString();
+
+            var choreNameLabel = UILibrary.StandardElements.AddLabel(choreName, true, new Point(5, yLoc));
+            yLoc += choreNameLabel.Height + labelDist;
+            var choreDescriptionLabel = UILibrary.StandardElements.AddLabel(choreDescription, false, new Point(10, yLoc));
+            yLoc += choreNameLabel.Height + labelDist;
+            var chorePointsLabel = UILibrary.StandardElements.AddLabel(chorePoints, false, new Point(10, yLoc));
+            yLoc += choreNameLabel.Height + labelDist;
+            var choreLimitLabel = UILibrary.StandardElements.AddLabel(label1, false, new Point(10, yLoc));
+            yLoc += choreNameLabel.Height + labelDist;
+            var choreCompletionsLabel = UILibrary.StandardElements.AddLabel(label2, false, new Point(10, yLoc));
+            var panelHeight = choreNameLabel.Height + chorePointsLabel.Height + choreDescriptionLabel.Height + choreLimitLabel.Height + choreCompletionsLabel.Height;
+
+            var individualChorePanel = UILibrary.StandardElements.AddPanel(location, chorePanel.Width - 25, panelHeight);
+
+            chorePanel.Controls.Add(individualChorePanel);
+            individualChorePanel.Controls.Add(choreNameLabel);
+            individualChorePanel.Controls.Add(chorePointsLabel);
+            individualChorePanel.Controls.Add(choreDescriptionLabel);
+            individualChorePanel.Controls.Add(choreLimitLabel);
+            individualChorePanel.Controls.Add(choreCompletionsLabel);
+
+            return individualChorePanel;
+        }
+
+        private Panel LoadRepeatableChore(Model.Repeatable chore, int width, int yLocation)
+        {
+            double calcDimishingReturn = chore.Points;
+            for (int j = 0; j < chore.Completions; j++)
+            {
+                calcDimishingReturn *= 0.75;
+            }
+            int diminishedPoints = (int)calcDimishingReturn;
+
+            var chorePoints = "Points: " + diminishedPoints.ToString();
+            var choreLimit = "Completion limit: " + chore.Limit.ToString();
+            var choreCompletions = "Amount completed today: " + chore.Completions.ToString();
+
+            var individualChorePanel = LoadChore(chore, new Point(1, yLocation), diminishedPoints, choreLimit, choreCompletions);
+
+            var repChoreDoneButton = AddRepeatableChoreDoneButton(330, individualChorePanel.Height / 2, chore);
+            if (chore.Completions >= chore.Limit)
+            {
+                var limitReachedLabel = UILibrary.StandardElements.AddLabel("Limit reached", false, new Point(290, individualChorePanel.Height / 2));
+                limitReachedLabel.Enabled = false;
+                individualChorePanel.Controls.Add(limitReachedLabel);
+            }
+            else
+            {
+                individualChorePanel.Controls.Add(repChoreDoneButton);
+                individualChorePanel.Controls.Add(UILibrary.StandardElements.AddLabel("Completed?", false, new Point(305, individualChorePanel.Height / 2 + 20)));
+            }
+
+            return individualChorePanel;
+        }
+
+        private Panel LoadConcreteChore(Model.Concrete chore, int width, int yLocation)
+        {
+            var choreStatus = "Status: " + _statusValues[chore.Status];
+            var choreDueDate = "Due date: " + chore.DueDate.ToString(Properties.Settings.Default.ShortDateFormat);
+
+            var individualChorePanel = LoadChore(chore, new Point(1, yLocation), chore.Points, choreStatus, choreDueDate);
+
+            if (chore.Status == 1)
+            {
+                individualChorePanel.Controls.Add(AddConcreteChoreDoneButton(330, individualChorePanel.Height / 2, chore));
+                individualChorePanel.Controls.Add(UILibrary.StandardElements.AddLabel("Completed?", false, new Point(305, individualChorePanel.Height / 2 + 20)));
+            }
+
+            return individualChorePanel;
         }
 
         private Button AddRepeatableChoreDoneButton(int locationX, int locationY, Model.Repeatable chore)
         {
-            var reatableChoreDoneButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = chore,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.thumbs_up,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            reatableChoreDoneButton.Cursor = Cursors.Hand;
-            reatableChoreDoneButton.FlatAppearance.BorderSize = 0;
-            reatableChoreDoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            reatableChoreDoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            var reatableChoreDoneButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumbs_up);
             if (chore.Completions >= chore.Limit)
             {
                 reatableChoreDoneButton.Enabled = false;
@@ -236,20 +192,7 @@ namespace ChoreApplication.UI.ChildUI
         
         private Control AddConcreteChoreDoneButton(int locationX, int locationY, Model.Concrete chore)
         {
-            var concreteChoreDoneButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = chore,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.thumbs_up,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            concreteChoreDoneButton.Cursor = Cursors.Hand;
-            concreteChoreDoneButton.FlatAppearance.BorderSize = 0;
-            concreteChoreDoneButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            concreteChoreDoneButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            var concreteChoreDoneButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumbs_up);
             concreteChoreDoneButton.Click += new EventHandler(ConcreteChoreDoneButton_Click);
             return concreteChoreDoneButton;
         }
@@ -278,76 +221,63 @@ namespace ChoreApplication.UI.ChildUI
             LoadRewards();
         }
 
-        #endregion RewardUI
-
         private void LoadRewards()
         {
             _rewards = Model.Reward.Load("child_id=" + _session.ChildID);
             RewardPanel.Controls.Clear();
-            int distanceCounter = 0;
-            int panelDistance = 72;
+            int yLoc = 0;
+            int panelDist = 5;
 
             foreach (Model.Reward reward in _rewards)
             {
-                var rewardName = reward.Name.ToString();
-                var rewardPointsRequired = "Points required: " + reward.PointsRequired.ToString();
-                var childPoints = (double)_session.Points;
-                var requiredPoints = (double)reward.PointsRequired;
-                var progressBarValue = (childPoints / requiredPoints) * 100;
-
-                var rewardNameLabel = AddLabel(rewardName, true, 5, 5);
-                var rewardPointsRequiredLabel = AddLabel(rewardPointsRequired, false, 10, rewardNameLabel.Location.Y + 20);
-                var rewardProgressBar = new ProgressBar
-                {
-                    Location = new Point(10, rewardPointsRequiredLabel.Location.Y + 20),
-                    Size = new Size(250, 25),
-                    Tag = reward,
-                };
-                if (progressBarValue > 100)
-                {
-                    rewardProgressBar.Value = 100;
-                }
-                else
-                {
-                    rewardProgressBar.Value = (int)progressBarValue;
-                }
-                var panelHeight = rewardNameLabel.Height + rewardPointsRequiredLabel.Height + rewardProgressBar.Height;
-                var individualRewardPanel = new Panel
-                {
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(RewardPanel.Width - 25, panelHeight),
-                    AutoSize = true,
-                };
-                RewardPanel.Controls.Add(individualRewardPanel);
-                individualRewardPanel.Controls.Add(rewardNameLabel);
-                individualRewardPanel.Controls.Add(rewardPointsRequiredLabel);
-                individualRewardPanel.Controls.Add(rewardProgressBar);
-                if (rewardProgressBar.Value == 100)
-                {
-                    individualRewardPanel.Controls.Add(AddClaimRewardButton(335, individualRewardPanel.Height / 2, reward));
-                    individualRewardPanel.Controls.Add(AddLabel("Claim reward", false, 305, individualRewardPanel.Height / 2 + 20));
-                }
-                distanceCounter++;
+                Panel currentPanel = LoadReward(reward, yLoc);
+                RewardPanel.Controls.Add(currentPanel);
+                yLoc += currentPanel.Height + panelDist;
             }
+        }
+
+        private Panel LoadReward(Model.Reward reward, int yLocation)
+        {
+            var rewardName = reward.Name;
+            var rewardPointsRequired = "Points required: " + reward.PointsRequired.ToString();
+            var childPoints = (double)_session.Points;
+            var requiredPoints = (double)reward.PointsRequired;
+            var progressBarValue = (childPoints / requiredPoints) * 100;
+
+            var rewardNameLabel = UILibrary.StandardElements.AddLabel(rewardName, true, new Point(5, 5));
+            var rewardPointsRequiredLabel = UILibrary.StandardElements.AddLabel(rewardPointsRequired, false, new Point(10, rewardNameLabel.Location.Y + 20));
+            var rewardProgressBar = new ProgressBar
+            {
+                Location = new Point(10, rewardPointsRequiredLabel.Location.Y + 20),
+                Size = new Size(250, 25),
+                Tag = reward,
+            };
+            if (progressBarValue > 100)
+            {
+                rewardProgressBar.Value = 100;
+            }
+            else
+            {
+                rewardProgressBar.Value = (int)progressBarValue;
+            }
+            var panelHeight = rewardNameLabel.Height + rewardPointsRequiredLabel.Height + rewardProgressBar.Height;
+            var individualRewardPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), RewardPanel.Width - 25, panelHeight);
+
+            individualRewardPanel.Controls.Add(rewardNameLabel);
+            individualRewardPanel.Controls.Add(rewardPointsRequiredLabel);
+            individualRewardPanel.Controls.Add(rewardProgressBar);
+            if (rewardProgressBar.Value == 100)
+            {
+                individualRewardPanel.Controls.Add(AddClaimRewardButton(335, individualRewardPanel.Height / 2, reward));
+                individualRewardPanel.Controls.Add(UILibrary.StandardElements.AddLabel("Claim reward", false, new Point(305, individualRewardPanel.Height / 2 + 20)));
+            }
+
+            return individualRewardPanel;
         }
 
         private Control AddClaimRewardButton(int locationX, int locationY, Model.Reward reward)
         {
-            var claimButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = reward,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.check,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            claimButton.Cursor = Cursors.Hand;
-            claimButton.FlatAppearance.BorderSize = 0;
-            claimButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            claimButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            var claimButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), reward, global::ChoreApplication.Properties.Resources.check);
             claimButton.Click += new EventHandler(ClaimRewardButton_Click);
             return claimButton;
         }
@@ -371,6 +301,8 @@ namespace ChoreApplication.UI.ChildUI
             }
         }
 
+        #endregion RewardUI
+
         #region LeaderBoardUI
 
         public void LeaderboardUI()
@@ -389,45 +321,45 @@ namespace ChoreApplication.UI.ChildUI
             int leaderboardLocationY = 10;
 
             //Add Total Points title
-            var totalPointsEarnedLabel = AddLabel("Total Points Earned", true, 140, leaderboardLocationY);
+            var totalPointsEarnedLabel = UILibrary.StandardElements.AddLabel("Total Points Earned", true, new Point(140, leaderboardLocationY));
             this.leaderboardPanel.Controls.Add(totalPointsEarnedLabel);
             leaderboardLocationY += totalPointsEarnedLabel.Height + panelDistance;
 
             //Add Total Points panel
-            var totalPointsStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadTotalPoints(new Point(0, leaderboardLocationY),
+            var totalPointsStatisticPanel = Functions.UIFunctions.LoadTotalPoints(new Point(0, leaderboardLocationY),
                 leaderboardPanel.Width, _childrenNames, _childUsers);
             this.leaderboardPanel.Controls.Add(totalPointsStatisticPanel);
             leaderboardLocationY += totalPointsStatisticPanel.Height + panelDistance;
 
             //Add Total Chores Approved title
-            var totalChoresApprovedLabel = AddLabel("Total Chores Approved", true, 140, leaderboardLocationY);
+            var totalChoresApprovedLabel = UILibrary.StandardElements.AddLabel("Total Chores Approved", true, new Point(140, leaderboardLocationY));
             this.leaderboardPanel.Controls.Add(totalChoresApprovedLabel);
             leaderboardLocationY += totalChoresApprovedLabel.Height + panelDistance;
 
             //Add Total Chores Approved panel
-            var totalChoresApprovedStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadTotalChoresApproved(new Point(0, leaderboardLocationY),
+            var totalChoresApprovedStatisticPanel = Functions.UIFunctions.LoadTotalChoresApproved(new Point(0, leaderboardLocationY),
                 leaderboardPanel.Width, _childrenNames, _childUsers);
             this.leaderboardPanel.Controls.Add(totalChoresApprovedStatisticPanel);
             leaderboardLocationY += totalChoresApprovedStatisticPanel.Height + panelDistance;
 
             //Add Completion Rate title
-            var completionRateLabel = AddLabel("Completion Rate", true, 140, leaderboardLocationY);
+            var completionRateLabel = UILibrary.StandardElements.AddLabel("Completion Rate", true, new Point(140, leaderboardLocationY));
             this.leaderboardPanel.Controls.Add(completionRateLabel);
             leaderboardLocationY += completionRateLabel.Height + panelDistance;
 
             //Add Completion Rate panel
-            var completionRateStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadCompletionRate(new Point(0, leaderboardLocationY),
+            var completionRateStatisticPanel = Functions.UIFunctions.LoadCompletionRate(new Point(0, leaderboardLocationY),
                 leaderboardPanel.Width, _childrenNames, _childUsers);
             this.leaderboardPanel.Controls.Add(completionRateStatisticPanel);
             leaderboardLocationY += completionRateStatisticPanel.Height + panelDistance;
 
             //Add Longest streak title
-            var longestStreakLabel = AddLabel("Longest Streak", true, 140, leaderboardLocationY);
+            var longestStreakLabel = UILibrary.StandardElements.AddLabel("Longest Streak", true, new Point(140, leaderboardLocationY));
             this.leaderboardPanel.Controls.Add(longestStreakLabel);
             leaderboardLocationY += longestStreakLabel.Height + panelDistance;
 
-            //Add Longest Strea panel
-            var longestStreakStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadLongestStreak(new Point(0, leaderboardLocationY),
+            //Add Longest Streak panel
+            var longestStreakStatisticPanel = Functions.UIFunctions.LoadLongestStreak(new Point(0, leaderboardLocationY),
                 leaderboardPanel.Width, _childrenNames, _childUsers);
             this.leaderboardPanel.Controls.Add(longestStreakStatisticPanel);
         }
@@ -442,56 +374,30 @@ namespace ChoreApplication.UI.ChildUI
             titleText.Text = "Notifications";
             this.notificationPanel.Visible = true;
             this.notificationPanel.BringToFront();
-            LoadNotification();
+            LoadNotifications();
         }
 
-        private void LoadNotification()
+        private void LoadNotifications()
         {
             _notifications = Model.Notification.Load("user_id=" + _session.ID);
             notificationPanel.Controls.Clear();
-            int distanceCounter = 0;
-            int panelDistance = 50;
+            int panelDistance = 5;
+            int notificationLocationY = 0;
 
             foreach (Model.Notification notification in _notifications)
             {
-                var notificationTitle = notification.Title;
-                var notificationDescription = notification.Description;
-
-                var notificationTitleLabel = AddLabel(notificationTitle, true, 5, 5);
-                var notificationDescriptionLabel = AddLabel(notificationDescription, false, 10, notificationTitleLabel.Location.Y + 20);
-                var panelHeight = notificationTitleLabel.Height + notificationDescriptionLabel.Height;
-                var individualNotificationPanel = new Panel
-                {
-                    Location = new Point(1, distanceCounter * panelDistance),
-                    BorderStyle = BorderStyle.FixedSingle,
-                    Size = new Size(chorePanel.Width - 25, panelHeight),
-                    AutoSize = true,
-                };
-                individualNotificationPanel.Controls.Add(notificationTitleLabel);
-                individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
-                individualNotificationPanel.Controls.Add(AddNotificationDeleteButton(365, individualNotificationPanel.Height / 2, notification));
+                var individualNotificationPanel = Functions.UIFunctions.LoadNotification(notification, chorePanel.Width - 20, notificationLocationY);
+                individualNotificationPanel.Controls.Add(AddDeleteNotificationButton(365, individualNotificationPanel.Height / 2, notification));
                 notificationPanel.Controls.Add(individualNotificationPanel);
-                distanceCounter++;
+                notificationLocationY += individualNotificationPanel.Height + panelDistance;
             }
         }
 
-        private Control AddNotificationDeleteButton(int locationX, int locationY, Model.Notification notification)
+        private Control AddDeleteNotificationButton(int locationX, int locationY, Model.Notification notification)
         {
-            var deleteButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = notification,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            deleteButton.Cursor = Cursors.Hand;
-            deleteButton.FlatAppearance.BorderSize = 0;
-            deleteButton.FlatAppearance.MouseOverBackColor = SystemColors.Window;
-            deleteButton.Click += new EventHandler(NotificationDeleteButton_Click);
-            return deleteButton;
+            var deleteNotificationButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), notification, global::ChoreApplication.Properties.Resources.delete);
+            deleteNotificationButton.Click += new EventHandler(NotificationDeleteButton_Click);
+            return deleteNotificationButton;
         }
 
         private void NotificationDeleteButton_Click(object sender, System.EventArgs e)
@@ -499,8 +405,7 @@ namespace ChoreApplication.UI.ChildUI
             Button clickedButton = (Button)sender;
             Model.Notification currentNotification = (Model.Notification)clickedButton.Tag;
             currentNotification.Delete();
-            LoadNotification();
-            LoadAmountOfNotifications();
+            NotificationUI();
         }
 
         private void LoadAmountOfNotifications()

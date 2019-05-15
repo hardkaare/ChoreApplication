@@ -50,10 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functions\ParentFunctions\RewardFunctions.cs" />
-    <Compile Include="Functions\ParentFunctions\UserFunctions.cs" />
-    <Compile Include="Functions\SystemFunctions\CheckTime.cs" />
-    <Compile Include="Functions\ChildFunctions\ChildFunctions.cs" />
+    <Compile Include="Functions\CheckTime.cs" />
     <Compile Include="Model\ChildUser.cs" />
     <Compile Include="Model\Chore.cs" />
     <Compile Include="ChoreApplication.cs">
@@ -62,14 +59,13 @@
     <Compile Include="ChoreApplication.Designer.cs">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </Compile>
-    <Compile Include="Functions\ParentFunctions\ChoreFunctions.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Settings.cs" />
-    <Compile Include="Functions\SystemFunctions\LeaderboardFunctions.cs" />
+    <Compile Include="Functions\UIFunctions.cs" />
     <Compile Include="UI\ChildInterface\ChildMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -153,7 +149,7 @@
     <Compile Include="Model\Reocurring.cs" />
     <Compile Include="Model\Repeatable.cs" />
     <Compile Include="Model\Reward.cs" />
-    <Compile Include="Functions\SystemFunctions\DatabaseFunctions.cs" />
+    <Compile Include="Functions\DatabaseFunctions.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Concrete.cs" />

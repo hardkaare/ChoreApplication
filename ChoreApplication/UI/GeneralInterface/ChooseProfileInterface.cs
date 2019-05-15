@@ -20,14 +20,14 @@ namespace ChoreApplication.UI.GeneralInterface
         private void ChooseProfile_Load(object sender, EventArgs e)
         {
             string query = "SELECT last_name FROM parent";
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
-            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
                 Surname = reader["last_name"].ToString();
             }
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
             surnameLabel.Text = "The " + Surname + "'s";
 
             var parentUsers = Model.ParentUser.Load("");

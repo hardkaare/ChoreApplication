@@ -32,10 +32,10 @@ namespace ChoreApplication.UI.GeneralInterface
             if (conversion)
             {
                 string query = string.Format("SELECT pincode FROM users WHERE user_id={0}", ChooseProfileInterface.ActiveID);
-                Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+                Functions.DatabaseFunctions.DatabaseConnection.Open();
 
                 //Creates the SqlCommand and executes it
-                SqlCommand cmd = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+                SqlCommand cmd = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
                 SqlDataReader reader = cmd.ExecuteReader();
 
                 while (reader.Read())
@@ -55,7 +55,7 @@ namespace ChoreApplication.UI.GeneralInterface
             {
                 MessageBox.Show("Please enter numbers in your pincode");
             }
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
             if (correctpin == true)
             {
                 if (ChooseProfileInterface.ActiveID == 1)

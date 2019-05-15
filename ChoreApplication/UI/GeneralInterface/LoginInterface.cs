@@ -16,15 +16,15 @@ namespace ChoreApplication.UI.GeneralInterface
         {
             bool users = true;
             string query = "SELECT user_id FROM users";
-            SqlCommand comd = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand comd = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = comd.ExecuteReader();
             if (!reader.HasRows)
             {
                 users = false;
             }
             reader.Close();
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
             if (!users)
             {
                 var registerUserInterface = new RegisterUserInterface();
@@ -61,8 +61,8 @@ namespace ChoreApplication.UI.GeneralInterface
             }
 
             string loginQuery = "SELECT email, password FROM dbo.parent";
-            SqlCommand command = new SqlCommand(loginQuery, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(loginQuery, Functions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -75,13 +75,13 @@ namespace ChoreApplication.UI.GeneralInterface
                 else
                 {
                     MessageBox.Show("Incorrect password or E-mail entered.");
-                    Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+                    Functions.DatabaseFunctions.DatabaseConnection.Close();
                     return;
                 }
             }
             if (isMatch == true)
             {
-                Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+                Functions.DatabaseFunctions.DatabaseConnection.Close();
                 var chooseProfileUI = new ChooseProfileInterface();
                 chooseProfileUI.Show();
                 this.Close();

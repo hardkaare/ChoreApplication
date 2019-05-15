@@ -41,10 +41,10 @@ namespace ChoreApplication.Model
         {
             var fulltitle = DateTime.Now.ToString(Properties.Settings.Default.TextDateFormat) + " - " + title;
             string query = string.Format("INSERT INTO dbo.notification VALUES ({0},'{1}','{2}')", userID, fulltitle, description);
-            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         public static List<Notification> Load(string whereClause)
@@ -55,8 +55,8 @@ namespace ChoreApplication.Model
             }
             List<Notification> notifications = new List<Notification>();
             string query = string.Format("SELECT * FROM dbo.notification{0}", whereClause);
-            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = command.ExecuteReader();
             while (reader.Read())
             {
@@ -69,17 +69,17 @@ namespace ChoreApplication.Model
                 notifications.Add(notification);
             }
             reader.Close();
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
             return notifications;
         }
 
         public void Delete()
         {
             string query = string.Format("DELETE FROM dbo.notification WHERE notification_id={0}", NotificationID);
-            SqlCommand command = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         public override string ToString()
