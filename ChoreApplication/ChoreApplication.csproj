@@ -50,7 +50,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Functions\CheckTime.cs" />
+    <Compile Include="TechnicalPlatform\CheckTime.cs" />
     <Compile Include="Model\ChildUser.cs" />
     <Compile Include="Model\Chore.cs" />
     <Compile Include="ChoreApplication.cs">

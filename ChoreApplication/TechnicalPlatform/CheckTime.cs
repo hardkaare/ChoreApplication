@@ -2,9 +2,8 @@
 using System.Collections.Generic;
 using System.Threading;
 using System.Data.SqlClient;
-using System.Windows.Forms;
 
-namespace ChoreApplication.Functions
+namespace ChoreApplication.TechnicalPlatform
 {
     class CheckTime
     {
