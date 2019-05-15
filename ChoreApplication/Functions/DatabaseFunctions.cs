@@ -21,7 +21,6 @@ namespace ChoreApplication.Functions
         //Username
         private const String UID = "bi408f19";
 
-
         //Password
         private const String Password = "Tuborg123";
 
