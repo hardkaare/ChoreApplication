@@ -400,7 +400,7 @@ namespace ChoreApplication.UI.ParentUI
 
         #region RewardUI
 
-    private void RewardsUI()
+        private void RewardsUI()
         {
             LoadAmountOfNotifications();
             UI = 2;
