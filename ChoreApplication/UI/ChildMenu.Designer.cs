@@ -1,4 +1,4 @@
-﻿namespace ChoreApplication.UI.ChildUI
+﻿namespace ChoreApplication.UI
 {
     partial class ChildMenu
     {

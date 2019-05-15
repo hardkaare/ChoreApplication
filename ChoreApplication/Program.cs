@@ -13,7 +13,7 @@ namespace ChoreApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ChoreApplication());
+            Application.Run(new UI.GeneralInterface.LoginInterface());
         }
     }
 }

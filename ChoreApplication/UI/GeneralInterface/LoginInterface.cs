@@ -9,6 +9,7 @@ namespace ChoreApplication.UI.GeneralInterface
         public LoginInterface()
         {
             InitializeComponent();
+            Functions.DatabaseFunctions.InitializeDB();
             CheckIfUsersExist();
         }
 
@@ -29,7 +30,7 @@ namespace ChoreApplication.UI.GeneralInterface
             {
                 var registerUserInterface = new RegisterUserInterface();
                 registerUserInterface.Show();
-                this.Close();
+                this.Hide();
             }
             else
             {
@@ -84,7 +85,7 @@ namespace ChoreApplication.UI.GeneralInterface
                 Functions.DatabaseFunctions.DatabaseConnection.Close();
                 var chooseProfileUI = new ChooseProfileInterface();
                 chooseProfileUI.Show();
-                this.Close();
+                this.Hide();
             }
         }
     }

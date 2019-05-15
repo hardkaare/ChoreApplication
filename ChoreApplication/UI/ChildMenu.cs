@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
 
-namespace ChoreApplication.UI.ChildUI
+namespace ChoreApplication.UI
 {
     public partial class ChildMenu : Form
     {

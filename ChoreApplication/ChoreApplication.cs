@@ -15,22 +15,7 @@ namespace ChoreApplication
         {
             InitializeComponent();
             Functions.DatabaseFunctions.InitializeDB();
-            //_checkTime = new SystemFunctions();
-        }
-
-        private static void LoadAllUsers()
-        {
-            List<Model.ParentUser> parents = Model.ParentUser.Load("");
-            List<Model.ChildUser> children = Model.ChildUser.Load("");
-
-            foreach (var parent in parents)
-            {
-                MessageBox.Show(string.Format(parent.FirstName + parent.Pincode));
-            }
-            foreach (var child in children)
-            {
-                MessageBox.Show(string.Format(child.FirstName + child.Pincode));
-            }
+            var LoginUI = new UI.GeneralInterface.LoginInterface();
         }
 
         private void Button1_Click(object sender, EventArgs e)
@@ -89,7 +74,7 @@ namespace ChoreApplication
             var RegisterUser = new UI.GeneralInterface.RegisterUserInterface();
             var ChooseProfile = new UI.GeneralInterface.ChooseProfileInterface();
 
-            var ChildInterface = new UI.ChildUI.ChildMenu(DumbFuckChildUser);
+            var ChildInterface = new UI.ChildMenu(DumbFuckChildUser);
             var editparent = new UI.ParentUI.EditParentUI(DumbFuckParentUser);
             //LoginInterface.Show();
             //RegisterUser.Show();
@@ -109,7 +94,7 @@ namespace ChoreApplication
 
         private void Button1_Click_1(object sender, EventArgs e)
         {
-            var ChildInterface = new UI.ChildUI.ChildMenu(DumbFuckChildUser);
+            var ChildInterface = new UI.ChildMenu(DumbFuckChildUser);
             var ParentInterface = new UI.ParentUI.ParentMenu(DumbFuckParentUser);
             ChildInterface.Show();
         }
