@@ -53,7 +53,6 @@ namespace ChoreApplication.UI.GeneralInterface
             }
             else
             {
-                //Skrevet af Alexander Munk Petersen all rights reserved
                 MessageBox.Show("Please enter numbers in your pincode");
             }
             Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
@@ -63,7 +62,7 @@ namespace ChoreApplication.UI.GeneralInterface
                 {
                     var sessionList = Model.ParentUser.Load("");
                     _session = sessionList[0];
-                    var parentUI = new ParentUI.ParentMenu(sessionList[0]);//måske ok
+                    var parentUI = new ParentUI.ParentMenu(sessionList[0]);
                     parentUI.Show();
                     this.Close();
                 }
@@ -71,7 +70,7 @@ namespace ChoreApplication.UI.GeneralInterface
                 {
                     var sessionList = Model.ChildUser.Load("u.user_id=" + ChooseProfileInterface.ActiveID.ToString());
                     _session = sessionList[0];
-                    var childUI = new ChildUI.ChildMenu(sessionList[0]);//sikkert ikke done
+                    var childUI = new ChildUI.ChildMenu(sessionList[0]);
                     childUI.Show();
                     this.Close();
                 }
