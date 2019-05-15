@@ -4,7 +4,7 @@ using System.Threading;
 using System.Data.SqlClient;
 using System.Windows.Forms;
 
-namespace ChoreApplication.Functions.SystemFunctions
+namespace ChoreApplication.Functions
 {
     class CheckTime
     {
@@ -93,14 +93,14 @@ namespace ChoreApplication.Functions.SystemFunctions
         {
             string query = $"SELECT * FROM dbo.checkTime";
             DateTime dailyTick = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
-            SqlCommand cmd = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand cmd = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = cmd.ExecuteReader();
             while (reader.Read())
             {
                 dailyTick = DateTime.ParseExact(reader["dailyTick"].ToString(), Properties.Settings.Default.LongDateFormat, null);
             }
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
             return dailyTick;
         }
 
@@ -118,10 +118,10 @@ namespace ChoreApplication.Functions.SystemFunctions
         private static void UpdateDailyTick()
         {
             string query = $"UPDATE dbo.checkTime SET dailyTick = '{DateTime.Now.Date.ToShortDateString() + " 05:00"}'";
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Open();
-            SqlCommand cmd = new SqlCommand(query, Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection);
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
+            SqlCommand cmd = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             cmd.ExecuteNonQuery();
-            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+            Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
     }
 }

@@ -150,7 +150,7 @@ namespace ChoreApplication.UI.ParentUI
                         }
                         finally
                         {
-                            Functions.SystemFunctions.DatabaseFunctions.DatabaseConnection.Close();
+                            Functions.DatabaseFunctions.DatabaseConnection.Close();
                         }
                         break;
                 }

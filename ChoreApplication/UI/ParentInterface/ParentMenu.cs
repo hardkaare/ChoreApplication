@@ -159,7 +159,7 @@ namespace ChoreApplication.UI.ParentUI
         private Panel LoadChore(Model.Chore chore, int width, int yLocation, string status, string type)
         {
             int yLoc = 5;
-            int LabelDistance = 2;
+            int LabelDistance = 0;
 
             string choreName = chore.Name;
             string choreAssignment = "Assigned to: " + _childrenNames[chore.Assignment];
@@ -527,7 +527,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalPointsEarnedLabel.Height + panelDistance;
 
                 //Add Total Points panel
-                var totalPointsStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadTotalPoints(new Point(0, leaderboardLocationY),
+                var totalPointsStatisticPanel = Functions.UIFunctions.LoadTotalPoints(new Point(0, leaderboardLocationY),
                     leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(totalPointsStatisticPanel);
                 leaderboardLocationY += totalPointsStatisticPanel.Height + panelDistance;
@@ -538,7 +538,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalChoresApprovedLabel.Height + panelDistance;
 
                 //Add Total Chores Approved panel
-                var totalChoresApprovedStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadTotalChoresApproved(new Point(0, leaderboardLocationY),
+                var totalChoresApprovedStatisticPanel = Functions.UIFunctions.LoadTotalChoresApproved(new Point(0, leaderboardLocationY),
                     leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(totalChoresApprovedStatisticPanel);
                 leaderboardLocationY += totalChoresApprovedStatisticPanel.Height + panelDistance;
@@ -549,7 +549,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += completionRateLabel.Height + panelDistance;
 
                 //Add Completion Rate panel
-                var completionRateStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadCompletionRate(new Point(0, leaderboardLocationY),
+                var completionRateStatisticPanel = Functions.UIFunctions.LoadCompletionRate(new Point(0, leaderboardLocationY),
                     leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(completionRateStatisticPanel);
                 leaderboardLocationY += completionRateStatisticPanel.Height + panelDistance;
@@ -560,7 +560,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += longestStreakLabel.Height + panelDistance;
 
                 //Add Longest Strea panel
-                var longestStreakStatisticPanel = Functions.SystemFunctions.LeaderboardFunctions.LoadLongestStreak(new Point(0, leaderboardLocationY),
+                var longestStreakStatisticPanel = Functions.UIFunctions.LoadLongestStreak(new Point(0, leaderboardLocationY),
                 leaderboardPanel.Width, _childrenNames, _childUsers);
                 this.leaderboardPanel.Controls.Add(longestStreakStatisticPanel);
             }
@@ -723,31 +723,11 @@ namespace ChoreApplication.UI.ParentUI
 
             foreach (Model.Notification notification in _notifications)
             {
-                var individualNotificationPanel = LoadNotification(notification, notificationLocationY);
+                var individualNotificationPanel = Functions.UIFunctions.LoadNotification(notification, chorePanel.Width - 20, notificationLocationY);
+                individualNotificationPanel.Controls.Add(AddDeleteNotificationButton(365, individualNotificationPanel.Height / 2, notification));
                 notificationPanel.Controls.Add(individualNotificationPanel);
                 notificationLocationY += individualNotificationPanel.Height + panelDistance;
             }
-        }
-
-        private Panel LoadNotification(Model.Notification notification, int yLocation)
-        {
-            int labelDistance = 0;
-            int yLoc = 5;
-
-            var notificationTitle = notification.Title;
-            var notificationDescription = notification.Description;
-
-            var notificationTitleLabel = UILibrary.StandardElements.AddLabel(notificationTitle, true, new Point(5, yLoc));
-            yLoc += notificationTitleLabel.Height + labelDistance;
-            var notificationDescriptionLabel = UILibrary.StandardElements.AddLabel(notificationDescription, false, new Point(10, yLoc));
-            var panelHeight = notificationTitleLabel.Height + notificationDescriptionLabel.Height;
-            var individualNotificationPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
-
-            individualNotificationPanel.Controls.Add(notificationTitleLabel);
-            individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
-            individualNotificationPanel.Controls.Add(AddDeleteNotificationButton(365, individualNotificationPanel.Height / 2, notification));
-
-            return individualNotificationPanel;
         }
 
         private Control AddDeleteNotificationButton(int locationX, int locationY, Model.Notification notification)

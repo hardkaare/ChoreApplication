@@ -5,10 +5,30 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 
-namespace ChoreApplication.Functions.SystemFunctions
+namespace ChoreApplication.Functions
 {
-    internal abstract class LeaderboardFunctions
+    internal abstract class UIFunctions
     {
+        public static Panel LoadNotification(Model.Notification notification, int width, int yLocation)
+        {
+            int labelDistance = 0;
+            int yLoc = 5;
+
+            var notificationTitle = notification.Title;
+            var notificationDescription = notification.Description;
+
+            var notificationTitleLabel = UI.UILibrary.StandardElements.AddLabel(notificationTitle, true, new Point(5, yLoc));
+            yLoc += notificationTitleLabel.Height + labelDistance;
+            var notificationDescriptionLabel = UI.UILibrary.StandardElements.AddLabel(notificationDescription, false, new Point(10, yLoc));
+            var panelHeight = notificationTitleLabel.Height + notificationDescriptionLabel.Height;
+            var individualNotificationPanel = UI.UILibrary.StandardElements.AddPanel(new Point(1, yLocation), width, panelHeight);
+
+            individualNotificationPanel.Controls.Add(notificationTitleLabel);
+            individualNotificationPanel.Controls.Add(notificationDescriptionLabel);
+
+            return individualNotificationPanel;
+        }
+
         public static Panel LoadLongestStreak(Point location, int width, Dictionary<int, string> ChildrenNames, List<Model.ChildUser> ChildUsers)
         {
             Panel currentPanel = new Panel
