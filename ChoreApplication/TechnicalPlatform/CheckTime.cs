@@ -10,7 +10,7 @@ namespace ChoreApplication.TechnicalPlatform
         private List<Model.ChildUser> _childList { get; set; }
         private List<Model.Concrete> _concreteList { get; set; }
         private List<Model.Repeatable> _repeatableList { get; set; }
-        private List<Model.Reocurring> _reocurringList { get; set; }
+        private List<Model.Reoccurring> _reocurringList { get; set; }
         private DateTime _tick { get; set; }
 
         public CheckTime()
@@ -23,7 +23,7 @@ namespace ChoreApplication.TechnicalPlatform
             //Initialize Lists
             _childList = Model.ChildUser.Load("");
             _repeatableList = Model.Repeatable.Load("");
-            _reocurringList = Model.Reocurring.Load("");
+            _reocurringList = Model.Reoccurring.Load("");
             _tick = LoadTick();
 
             //When it's a new day

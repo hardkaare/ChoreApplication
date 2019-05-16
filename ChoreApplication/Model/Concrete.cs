@@ -5,8 +5,8 @@ using System.Data.SqlClient;
 namespace ChoreApplication.Model
 {
     /// <summary>
-    /// Concrete chores. Inherits from the Chore class. Contains due date of the chore,
-    /// the status of the chore and the date of approval
+    /// Inherits from the Chore class. Adds properties DueDate, Status and ApprovalDate. 
+    /// Contains methods for inserting, loading and updating the chore in DB.
     /// </summary>
     public class Concrete : Chore
     {
@@ -20,9 +20,9 @@ namespace ChoreApplication.Model
 
         /// <summary>
         /// Status of the chore:
-        /// 1 = active
-        /// 2 = approval pending
-        /// 3 = approved
+        /// 1 = active, 
+        /// 2 = approval pending, 
+        /// 3 = approved, 
         /// 4 = overdue
         /// </summary>
         public int Status { get; set; }
@@ -30,8 +30,18 @@ namespace ChoreApplication.Model
         //Date of approval. Empty if not approved yet
         public DateTime ApprovalDate { get; set; }
 
-        public string Type { get; set; }
+        /// <summary>
+        /// Tells what has created the chore: 
+        /// Reoc = Generated from reocurring chore, 
+        /// Rep = Generated from repeatable chore, 
+        /// Conc = Created by a ParentUser
+        /// </summary>
+        public string Type { get; private set; }
 
+        /// <summary>
+        /// Binary notation of wether there has been sent a reminder to the child 
+        /// an hour before it's due date.
+        /// </summary>
         public int Reminder { get; set; }
 
         #endregion Properties
@@ -39,15 +49,9 @@ namespace ChoreApplication.Model
         #region Constructor
 
         /// <summary>
-        /// Sets the properties of the concrete chore and creates and constructs a chore
+        /// Sets the properties of the concrete chore and constructs a chore. 
+        /// Passes id, name, description, points and assignment to base.
         /// </summary>
-        /// <param name="name">Name of the chore</param>
-        /// <param name="description">Description of the chore</param>
-        /// <param name="points">How many points are earned by completing the chore</param>
-        /// <param name="assignment">Who the chore is assigned to</param>
-        /// <param name="dueDate">When the chore is due</param>
-        /// <param name="status">What state the chore is in. Can be active, approval pending, approved and overdue</param>
-        /// <param name="approvalDate">What date the chore is approved. Empty string if not approved</param>
         public Concrete(int id, string name, string description, int points, int assignment,
             DateTime dueDate, int status, DateTime approvalDate, string type, int reminder) :
             base(id, name, description, points, assignment)
@@ -64,28 +68,8 @@ namespace ChoreApplication.Model
         #region Public methods
 
         /// <summary>
-        /// Override of ToString.
+        /// Inserts a new chore into the DB. Inserts into chore table and concrete_chore with the foreign key inserted into chore table
         /// </summary>
-        /// <returns>Returns a string representation of the properties of the object
-        /// and the associated Chore object</returns>
-        public override string ToString()
-        {
-            return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
-                "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}\nReminder sent: {7}",
-                Name, Description, Points, Assignment, DueDate, Status, ApprovalDate, Reminder);
-        }
-
-        /// <summary>
-        /// Inserts a new chore into the DB. Inserts into chore table and concrete_chore with the
-        /// foreign key inserted into chore table
-        /// </summary>
-        /// <param name="name">Name of the chore</param>
-        /// <param name="desc">Description of the chore</param>
-        /// <param name="points">Points of the chore</param>
-        /// <param name="assignment">The ID of child the chore is assigned to</param>
-        /// <param name="dueDate">When the chore is due</param>
-        /// <param name="type">Which type of chore the concrete chore is generated as. Can be
-        /// reoc, rep or conc</param>
         public static void Insert(string name, string desc, int points,
             int assignment, DateTime dueDate, string type)
         {
@@ -95,30 +79,30 @@ namespace ChoreApplication.Model
             {
                 status = 2;
             }
+
+            //If not it starts as active
             else
             {
                 status = 1;
             }
 
-            //Formatting the query to chore table and creating the SqlCommand
+            //Creates a query that inserts data into chore and returns the inserted chore_id
             string query = string.Format("INSERT INTO dbo.chore" +
                 "(child_id, name, description, points) OUTPUT inserted.chore_id VALUES " +
                 "('{0}', '{1}', '{2}', '{3}')", assignment, name, desc, points);
+
+            //Executes the query to chore table and sets id to the inserted chore_id
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
-
-            //Opens connection to the DB
             Functions.DatabaseFunctions.DatabaseConnection.Open();
-
-            //Executes the query to chore table and returns the chore_id inserted
             int id = (int)command.ExecuteScalar();
 
-            //Formatting the query to concrete_chore table, creating the SqlCommand and executing it
+            //Creates a query that inserts data into concrete_chore
             string query2 = string.Format("INSERT INTO dbo.concrete_chore " +
                 "VALUES ({0}, '{1}', '{2}', NULL, '{3}', 0)", id, dueDate.ToString(Properties.Settings.Default.LongDateFormat), status, type);
+
+            //Executes the command
             SqlCommand command2 = new SqlCommand(query2, Functions.DatabaseFunctions.DatabaseConnection);
             command2.ExecuteNonQuery();
-
-            //Closes connection to DB
             Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
@@ -127,52 +111,49 @@ namespace ChoreApplication.Model
         /// </summary>
         public void Update()
         {
-            //Formatting the queries to chore table and creating the SqlCommand for the first query
+            //Creates queries that updates the concrete_chore and chore entries with this chore's ID
             string query = string.Format("UPDATE concrete_chore SET " +
                 "due_date='{0}', status={1}, approval_date='{2}', reminder={3} WHERE chore_id={4}",
-                DueDate.ToString(Properties.Settings.Default.LongDateFormat), Status, ApprovalDate.ToString(Properties.Settings.Default.LongDateFormat), Reminder, ID);
+                DueDate.ToString(Properties.Settings.Default.LongDateFormat), 
+                Status, ApprovalDate.ToString(Properties.Settings.Default.LongDateFormat), Reminder, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
                 Assignment, Name, Description, Points, ID);
+
+            //Executes the queries
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
-
-            //Opens connection to the DB
             Functions.DatabaseFunctions.DatabaseConnection.Open();
-
-            //Executes the SqlCommands
             command.ExecuteNonQuery();
             command = new SqlCommand(query2, Functions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
-
-            //Closes connection to DB
             Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
-        /// Loads concrete chores from the DB. Can load with a where clause in the query
+        /// Loads Concrete Chores from the DB. Can load with a where clause in the query
         /// </summary>
         /// <param name="whereClause">String with the where clause. If empty the method loads
         /// all concrete chores</param>
-        /// <returns></returns>
+        /// <returns>List of loaded Concrete Chores</returns>
         public static List<Concrete> Load(string whereClause)
         {
-            //Checks if string is empty. If not adds where in front
+            //Checks if string is empty. If not adds WHERE in front if it
             if (whereClause != "")
             {
                 whereClause = " WHERE " + whereClause;
             }
 
-            //Initializes a list of concrete chores
+            //Declares a list of Concrete Chores
             List<Concrete> result = new List<Concrete>();
 
-            //Makes a string query and opens the connection to DB
+            //Creates a query that selects columns from concrete_chore inner joined with chore based on chore_id
             string query = string.Format(
                 "SELECT ch.chore_id, ch.name, ch.description, ch.points, ch.child_id, co.due_date, " +
                 "co.status, co.approval_date, co.type, co.reminder FROM chore AS ch INNER JOIN concrete_chore AS co ON " +
                 "ch.chore_id=co.chore_id{0}", whereClause);
-            Functions.DatabaseFunctions.DatabaseConnection.Open();
 
-            //Creates the SqlCommand and executes it
+            //Executes the query
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = command.ExecuteReader();
 
@@ -202,13 +183,26 @@ namespace ChoreApplication.Model
                     approvalDate = DateTime.ParseExact("01-01-2000 00:00", Properties.Settings.Default.LongDateFormat, null);
                 }
 
-                //Initializes the choreobject with the parameters and adds it to the list
+                //Initializes the Concrete object with the parameters and adds it to the list
                 currentChore = new Concrete(choreID, name, description, points, assignment, dueTime, status, approvalDate, type, reminder);
                 result.Add(currentChore);
             }
+
+            //Clean up and return
             reader.Close();
             Functions.DatabaseFunctions.DatabaseConnection.Close();
             return result;
+        }
+
+        /// <summary>
+        /// Override of ToString. Mainly used for testing purposes
+        /// </summary>
+        /// <returns>Returns a string representation of the properties of the object and the associated Chore object</returns>
+        public override string ToString()
+        {
+            return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
+                "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}\nReminder sent: {7}",
+                Name, Description, Points, Assignment, DueDate, Status, ApprovalDate, Reminder);
         }
 
         #endregion Public methods

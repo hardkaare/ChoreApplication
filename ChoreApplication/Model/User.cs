@@ -1,22 +1,28 @@
 ﻿namespace ChoreApplication.Model
 {
+    /// <summary>
+    /// Abstract class for User objects. Contains ID, FirstName and Pincode. 
+    /// </summary>
     public abstract class User
     {
         #region Properties
 
+        //ID of the User given by DB
         public int ID { get; private set; }
 
-        // Derived classes can set the firstname and the public can get it.
+        // First name of the User
         public string FirstName { get; set; }
 
-        // Everyone can get the pincode (reconsider this later). Derived classes can set it.
+        // Pincode used to log in with ChooseProfileUI
         public string Pincode { get; set; }
 
         #endregion Properties
 
         #region Constructors
 
-        // The base constructor for ParentUser and ChildUser. Makes sure every object of ParentUser and ChildUser has a firstname and pincode.
+        /// <summary>
+        /// Constructor that sets all properties for the class
+        /// </summary>
         public User(int id, string firstName, string pincode)
         {
             ID = id;
