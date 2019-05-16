@@ -10,7 +10,7 @@ namespace ChoreApplication.UI.ParentUI
     {
         private Model.Concrete _concrete;
         private Model.Repeatable _repeatable;
-        private Model.Reocurring _reoccurring;
+        private Model.Reoccurring _reoccurring;
         private int _choreType = 0;
 
         public EditChoreUI(Model.Concrete chore)
@@ -54,7 +54,7 @@ namespace ChoreApplication.UI.ParentUI
             _choreType = 2;
         }
 
-        public EditChoreUI(Model.Reocurring chore)
+        public EditChoreUI(Model.Reoccurring chore)
         {
             InitializeComponent();
             LoadChildren();

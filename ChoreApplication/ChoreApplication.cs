@@ -26,7 +26,7 @@ namespace ChoreApplication
         private void EditJoenler_Click(object sender, EventArgs e)
         {
             var child = Model.ChildUser.Load("u.user_id = 2");
-            var chore = Model.Reocurring.Load("ch.chore_id = 1");
+            var chore = Model.Reoccurring.Load("ch.chore_id = 1");
             var reward = Model.Reward.Load("");
             var EditChild = new UI.ParentUI.EditChildUI(child[0]);
             var editChore = new UI.ParentUI.EditChoreUI(chore[0]);

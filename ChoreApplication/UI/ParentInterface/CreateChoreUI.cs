@@ -135,7 +135,7 @@ namespace ChoreApplication.UI.ParentUI
                             }
                             if (dayChecked > 0)
                             {
-                                Model.Reocurring.Insert(id, choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), Convert.ToDateTime(dueTimeDateTimePicker.Text), DaysChecked);
+                                Model.Reoccurring.Insert(id, choreNameTextBox.Text, choreDescriptionRichTextBox.Text, Convert.ToInt32(chorePointsTextBox.Text), Convert.ToDateTime(dueTimeDateTimePicker.Text), DaysChecked);
                                 this.Close();
                                 MessageBox.Show("A chore has been created", "Chore Created");
                             }

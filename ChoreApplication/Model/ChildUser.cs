@@ -3,19 +3,27 @@ using System.Data.SqlClient;
 
 namespace ChoreApplication.Model
 {
+    /// <summary>
+    /// This class manages information about child users. It inherits from User, and adds the properties Points and ChildID.
+    /// It contains methods for loading, inserting, updating and deleting child users from the DB.
+    /// </summary>
     public class ChildUser : User
     {
         #region Properties
 
-        // Gets and sets the points for the ChildUser
+        // Amount points the child has earned by doing chores
         public int Points { get; set; }
 
+        // ID from the DB
         public int ChildID { get; private set; }
 
         #endregion Properties
 
         #region Constructors
 
+        /// <summary>
+        /// Creates a User and a Child User. Id, firstname and pincode parameters are passed to base constructor.
+        /// </summary>
         public ChildUser(int id, int childId, string firstName, int points, string pincode) : base(id, firstName, pincode)
         {
             Points = points;
@@ -24,56 +32,73 @@ namespace ChoreApplication.Model
 
         #endregion Constructors
 
-        #region Public Helpers
+        #region Public Methods
 
         /// <summary>
-        /// Inserts a child user with the firstName specified in the <param>firstName</param>
+        /// Inserts a child user in the DB.
         /// </summary>
-        /// <param name="firstName"></param>
         public static void Insert(string firstName, string pincode)
         {
-            string userQuery = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}', '{1}')", firstName, pincode);
-            SqlCommand command = new SqlCommand(userQuery, Functions.DatabaseFunctions.DatabaseConnection);
+            //Creates query that inserts firstname and pincode to users and returns the inserted user_id
+            string query = string.Format("INSERT INTO dbo.users(first_name, pincode) OUTPUT inserted.user_id VALUES ('{0}', '{1}')", firstName, pincode);
+
+            //Creates command and opens connection to DB
+            SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             Functions.DatabaseFunctions.DatabaseConnection.Open();
-            //executes the query and return the first column of the first row in the result set returned by the query
+            
+            //Executes the query and sets id to returned user_id
             int id = (int)command.ExecuteScalar();
-            string parentQuery = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
-            command = new SqlCommand(parentQuery, Functions.DatabaseFunctions.DatabaseConnection);
+
+            //Creates query to insert to child table, executes it and closes connection to DB
+            query = string.Format("INSERT INTO dbo.child(user_id, points) VALUES ('{0}',0)", id);
+            command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
             Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
-        /// Updates a specific child object based on the input from the user.
+        /// Updates a child in DB with properties from User and ChildUser
         /// </summary>
         public void Update()
         {
-            string userQuery = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, ID);
-            string childQuery = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}", Points, ID);
-            SqlCommand command = new SqlCommand(userQuery, Functions.DatabaseFunctions.DatabaseConnection);
+            //Creates a query that updates users with this child's user_id and executes it
+            string query = string.Format("UPDATE dbo.users SET first_name='{0}', pincode={1} WHERE user_id={2}", FirstName, Pincode, ID);
+            SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             Functions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
-            command = new SqlCommand(childQuery, Functions.DatabaseFunctions.DatabaseConnection);
+
+            //Creates a query that updates child with  this child's user_id and executes it
+            query = string.Format("UPDATE dbo.child SET points={0} WHERE user_id={1}", Points, ID);
+            command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             command.ExecuteNonQuery();
             Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
-        /// Loads children from the database. the <paramref name="whereClause"/> can be specified to narrow the results.
+        /// Loads all children from the database. Can be modified to only return children that fits defined parameters.
         /// </summary>
-        /// <param name="whereClause"></param>
-        /// <returns></returns>
+        /// <param name="whereClause">String with a where clause in SQL. The method adds WHERE on it's own</param>
+        /// <returns>A list of all found ChildUsers</returns>
         public static List<ChildUser> Load(string whereClause)
         {
+            //Checks if string is empty, and if not adds a WHERE in front of it
             if (whereClause != "")
             {
                 whereClause = " WHERE " + whereClause;
             }
+
+            //Defines list to return
             List<ChildUser> children = new List<ChildUser>();
-            Functions.DatabaseFunctions.DatabaseConnection.Open();
+
+            //Creates query that selects all columns from users inner joined with child. Adds the optional where clause.
             string query = string.Format("SELECT u.user_id,c.child_id,u.first_name,c.points,u.pincode FROM users AS u INNER JOIN child AS c ON u.user_id = c.user_id{0}", whereClause);
+
+            //Executes the query
+            Functions.DatabaseFunctions.DatabaseConnection.Open();
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             SqlDataReader reader = command.ExecuteReader();
+
+            //Reads queried data, creates a ChildUser with it and adds it to the list
             while (reader.Read())
             {
                 int id = (int)reader["user_id"];
@@ -86,17 +111,22 @@ namespace ChoreApplication.Model
 
                 children.Add(user);
             }
+
+            //Clean up and return
             reader.Close();
             Functions.DatabaseFunctions.DatabaseConnection.Close();
             return children;
         }
 
         /// <summary>
-        /// Deletes an instance of the ChildUser class based on the object interacted with.
+        /// Deletes this ChildUser from DB
         /// </summary>
         public void Delete()
         {
+            //Creates query that deletes from users with this ChildUser's ID. Table has cascading constraint in DB so it deletes from child by itself
             string query = string.Format("DELETE FROM dbo.users WHERE user_id={0}", ID);
+
+            //Executes the query
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
             Functions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
@@ -104,9 +134,8 @@ namespace ChoreApplication.Model
         }
 
         /// <summary>
-        /// Provides a representation of an object of this class.
+        /// Provides a string representation of an object of this class. Used for testing purposes.
         /// </summary>
-        /// <returns>A string describing the object.</returns>
         public override string ToString()
         {
             return $"{FirstName} has {Points} points.";

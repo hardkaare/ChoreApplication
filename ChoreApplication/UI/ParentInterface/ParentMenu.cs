@@ -11,7 +11,7 @@ namespace ChoreApplication.UI.ParentUI
         private Model.ParentUser _session;
         private Dictionary<int, string> _statusValues;
         private Dictionary<int, string> _childrenNames;
-        private List<Model.Reocurring> _reoccurringChores;
+        private List<Model.Reoccurring> _reoccurringChores;
         private List<Model.Repeatable> _repeatableChores;
         private List<Model.Concrete> _concreteChoresApprovalPending;
         private List<Model.Reward> _rewards;
@@ -131,7 +131,7 @@ namespace ChoreApplication.UI.ParentUI
             LoadChildrenNames();
             chorePanel.Controls.Clear();
             _concreteChoresApprovalPending = Model.Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
-            _reoccurringChores = Model.Reocurring.Load("");
+            _reoccurringChores = Model.Reoccurring.Load("");
             _repeatableChores = Model.Repeatable.Load("");
             int panelDistance = 5;
             int choreLocationY = 0;
@@ -198,7 +198,7 @@ namespace ChoreApplication.UI.ParentUI
             return currentPanel;
         }
 
-        public Panel LoadReocurringChore(Model.Reocurring chore, int width, int yLocation)
+        public Panel LoadReocurringChore(Model.Reoccurring chore, int width, int yLocation)
         {
             string status = "Active";
             string type = "Reocurring";
@@ -337,7 +337,7 @@ namespace ChoreApplication.UI.ParentUI
             {
                 try
                 {
-                    Model.Reocurring selectedChore = (Model.Reocurring)clickedButton.Tag;
+                    Model.Reoccurring selectedChore = (Model.Reoccurring)clickedButton.Tag;
                     var editSelectedChoreUI = new UI.ParentUI.EditChoreUI(selectedChore);
                     editSelectedChoreUI.Show();
                     editSelectedChoreUI.FormClosing += ChoreNavigationButton_Click;
@@ -375,7 +375,7 @@ namespace ChoreApplication.UI.ParentUI
                 {
                     try
                     {
-                        Model.Reocurring selectedChore = (Model.Reocurring)clickedButton.Tag;
+                        Model.Reoccurring selectedChore = (Model.Reoccurring)clickedButton.Tag;
                         selectedChore.Delete();
                         LoadChores();
                     }

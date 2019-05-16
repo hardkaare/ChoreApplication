@@ -3,11 +3,16 @@ using System.Data.SqlClient;
 
 namespace ChoreApplication.Model
 {
+    /// <summary>
+    /// Rewards that a ParentUser can set for a ChildUser. Contains a RewardID, Name, Description, PointsRequired and ChildID.
+    /// Contains methods for inserting, loading, updating and deleting the reward in DB. 
+    /// </summary>
     public class Reward
     {
         #region Properties
 
-        public int RewardID { get; set; }
+        // ID for the reward given by DB
+        private int RewardID { get; set; }
 
         // The name of the reward.
         public string Name { get; set; }
@@ -17,14 +22,16 @@ namespace ChoreApplication.Model
 
         public int PointsRequired { get; set; }
 
-        // Who the reward is assigned to.
+        // To which ChildUser the reward is assigned to.
         public int ChildID { get; set; }
 
         #endregion Properties
 
         #region Constructors
 
-        // Creates an object of the class Reward with the specified information.
+        /// <summary>
+        /// Sets the properties of the reward.
+        /// </summary>
         public Reward(int rewardID, string name, string description, int pointsReq, int childID)
         {
             RewardID = rewardID;
@@ -36,62 +43,80 @@ namespace ChoreApplication.Model
 
         #endregion Constructors
 
-        #region Public Helpers
+        #region Public Methods
 
         /// <summary>
-        /// Creates a reward based on the values of this class' properties.
+        /// Inserts a new reward into the DB. Inserts into reward table
         /// </summary>
-        /// <param name="childID"></param>
-        /// <param name="name"></param>
-        /// <param name="pointsRequired"></param>
         public static void Insert(int childID, string name, string description, int pointsRequired)
         {
+            //Creates a query that inserts data into reward
             string query = string.Format("INSERT INTO dbo.reward VALUES ({0},'{1}','{2}',{3} )", childID, name, description, pointsRequired);
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
+
+            //Executes the query
             Functions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
             Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
-        /// Updates a specific reward object based on the input from the user.
+        /// Updates the DB with the information in the Reward targeted by the method
         /// </summary>
         public void Update()
         {
-            //Formatting the query to reward table and creating the SqlCommand.
+            //Creates queries that updates the reward entry with this reward's ID
             string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildID, Name, Description, PointsRequired, RewardID);
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
+
+            //Executes the query
             Functions.DatabaseFunctions.DatabaseConnection.Open();
             command.ExecuteNonQuery();
             Functions.DatabaseFunctions.DatabaseConnection.Close();
         }
 
         /// <summary>
-        /// Loads rewards from the database. the <paramref name="whereClause"/> can be specified to narrow the results.
+        /// Loads Rewards from the DB. Can load with a where clause in the query
         /// </summary>
-        /// <param name="whereClause"></param>
-        /// <returns></returns>
+        /// <param name="whereClause">String with the where clause. If empty the method loads
+        /// all concrete chores</param>
+        /// <returns>List of loaded Concrete Chores</returns>
         public static List<Reward> Load(string whereClause)
         {
+            //Checks if string is empty. If not adds WHERE in front if it
             if (whereClause != "")
             {
                 whereClause = " WHERE " + whereClause;
             }
+
+            //Declares a list of Rewards
             List<Reward> rewards = new List<Reward>();
+
+            //Creates a query that selects all from the reward table
             string query = string.Format("SELECT * FROM dbo.reward{0}", whereClause);
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
+
+            //Executes the query
             Functions.DatabaseFunctions.DatabaseConnection.Open();
             SqlDataReader reader = command.ExecuteReader();
+
+            //Reads all lines in the datareader
             while (reader.Read())
             {
+                //Declares a Reward object and casts the data from the datareader into variables
+                Reward reward;
                 int rewardID = (int)reader["reward_id"];
                 string name = reader["name"].ToString();
                 string description = reader["description"].ToString();
                 int pointsRequired = (int)reader["points"];
                 int childID = (int)reader["child_id"];
-                Reward reward = new Reward(rewardID, name, description, pointsRequired, childID);
+
+                //Initializes the Reward object with the parameters and adds it to the list
+                reward = new Reward(rewardID, name, description, pointsRequired, childID);
                 rewards.Add(reward);
             }
+
+            //Clean up and return
             reader.Close();
             Functions.DatabaseFunctions.DatabaseConnection.Close();
             return rewards;
@@ -110,9 +135,9 @@ namespace ChoreApplication.Model
         }
 
         /// <summary>
-        /// Provides a string representation for objects of this class.
+        /// Override of ToString. Mainly used for testing purposes
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Returns a string representation of the properties of the object</returns>
         public override string ToString()
         {
             return $"{ChildID} must get {PointsRequired} points to earn {Name}.";

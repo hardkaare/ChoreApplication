@@ -13,7 +13,6 @@ namespace ChoreApplication.Functions
     /// </summary>
     internal abstract class UIFunctions
     {
-
         #region Notification
 
         /// <summary>
@@ -489,6 +488,5 @@ namespace ChoreApplication.Functions
         }
 
         #endregion
-
     }
 }
