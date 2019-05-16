@@ -15,7 +15,7 @@ namespace ChoreApplication.Model
         public int Limit { get; set; }
 
         //How many times it has been completed currently
-        public int Completions { get; private set; }
+        public int Completions { get; set; }
 
         #endregion Properties
 
