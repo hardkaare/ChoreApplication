@@ -26,6 +26,9 @@ namespace ChoreApplication.UI.GeneralInterface
 
         #region Event Handlers
 
+        /// <summary>
+        /// Validates user input and inserts a ParentUser in DB
+        /// </summary>
         private void RegisterUserButton_Click(object sender, EventArgs e)
         {
             try
