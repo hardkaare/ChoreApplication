@@ -5,30 +5,95 @@ using System.Windows.Forms;
 
 namespace ChoreApplication.UI.ParentUI
 {
+    /// <summary>
+    /// Displays the ParentMenu. 
+    /// Designer adds upper panel with a log out button and option button (used for creating new Chores, ChildUsers or Rewards depending on selected UI).
+    /// Designer adds the navigation panel which is a menu bar.
+    /// Designer adds one panel for each button in the menu. All are hidden except the panel corresponding to the last menu option clicked.
+    /// The region for private helpers contains a method for initializing dictionaries and status values.
+    /// The region for general controls contains the even handling of the option button.
+    /// Forthermore the class contains a region handling the upper panel, the navigation panel and each of the 5 menu options.
+    /// </summary>
     public partial class ParentMenu : Form
     {
-        public int UI = 0;
-        private Model.ParentUser _session;
-        private Dictionary<int, string> _statusValues;
-        private Dictionary<int, string> _childrenNames;
-        private List<Model.Reoccurring> _reoccurringChores;
-        private List<Model.Repeatable> _repeatableChores;
-        private List<Model.Concrete> _concreteChoresApprovalPending;
-        private List<Model.Reward> _rewards;
-        private List<Model.ParentUser> _parentUsers;
-        private List<Model.ChildUser> _childUsers;
-        private List<Model.Notification> _notifications;
+        #region Properties
 
+        /// <summary>
+        /// Which UI is currently selected: 
+        /// 1 = ChoreUI, 
+        /// 2 = RewardUI, 
+        /// 3 = LeaderboardUI, 
+        /// 4 = UsersUI, 
+        /// 5 = NotificationUI
+        /// </summary>
+        public int UI = 0;
+
+        //The logged in User
+        private Model.ParentUser _session { get; set; }
+
+        //Dictionary for int status value and string status name
+        private Dictionary<int, string> _statusValues { get; set; }
+
+        //Dictionary for child ID's and names
+        private Dictionary<int, string> _childrenNames { get; set; }
+
+        //List of Reoccurring Chores. Used for displaying Chores
+        private List<Model.Reoccurring> _reoccurringChores { get; set; }
+
+        //List of Repeatable Chores. Used for displaying Chores
+        private List<Model.Repeatable> _repeatableChores { get; set; }
+
+        //List of Concrete Chores. Used for displaying Chores
+        private List<Model.Concrete> _concreteChoresApprovalPending { get; set; }
+
+        //List of Concrete Reward. Used for displaying Rewards
+        private List<Model.Reward> _rewards { get; set; }
+
+        //List of Concrete ParentUser. Used for displaying Users
+        private List<Model.ParentUser> _parentUsers { get; set; }
+
+        //List of Concrete ChildUser. Used for displaying Users
+        private List<Model.ChildUser> _childUsers { get; set; }
+
+        //List of Concrete Notification. Used for displaying Notifications
+        private List<Model.Notification> _notifications { get; set; }
+
+        #endregion
+
+        #region Constructor
+
+        /// <summary>
+        /// Creates and displays elements in the designer.
+        /// Initializes helpers and sets UI to ChoresUI by default.
+        /// </summary>
         public ParentMenu(Model.ParentUser currentUser)
         {
+            //Creates session
             _session = currentUser;
+
+            //Creates and displays elements in designer
             InitializeComponent();
+
+            //Initializes _statusValues dictionary
             InitializeStatusValues();
+
+            //Initializes _childrenNames dictionary
             LoadChildrenNames();
+
+            //Displays amount of notifications for _session
             LoadAmountOfNotifications();
+
+            //Loads ChoresUI
             ChoresUI();
         }
 
+        #endregion
+
+        #region Private Helpers
+
+        /// <summary>
+        /// Initializes _statusValues dictionary. Sets value in DB and readable name to display for Users
+        /// </summary>
         private void InitializeStatusValues()
         {
             _statusValues = new Dictionary<int, string>
@@ -38,6 +103,9 @@ namespace ChoreApplication.UI.ParentUI
             };
         }
 
+        /// <summary>
+        /// Initializes _childrenNames dictionary. Sets ChildID and corresponding FirstName.
+        /// </summary>
         private void LoadChildrenNames()
         {
             _childUsers = Model.ChildUser.Load("");
@@ -48,30 +116,50 @@ namespace ChoreApplication.UI.ParentUI
             }
         }
 
+        #endregion
+
         #region General Controls
 
+        /// <summary>
+        /// Opens new Create form based on selected UI.
+        /// </summary>
         private void OptionButton_Click(object sender, EventArgs e)
         {
             switch (UI)
             {
                 case 1:
+                    //Disable this form
                     this.Enabled = false;
+
+                    //Open CreateChoreUI
                     var createChore = new CreateChoreUI();
                     createChore.Show();
+
+                    //Enable this form when createChore is closed
                     createChore.FormClosing += ChoreNavigationButton_Click;
                     break;
 
                 case 2:
+                    //Disable this form
                     this.Enabled = false;
+
+                    //Open CreateRewardUI
                     var createReward = new CreateRewardUI();
                     createReward.Show();
+
+                    //Enable this form when createReward is closed
                     createReward.FormClosing += RewardNavigationButton_Click;
                     break;
 
                 case 4:
+                    //Disable this form
                     this.Enabled = false;
+
+                    //Open CreateChildUI
                     var createChild = new CreateChildUI();
                     createChild.Show();
+
+                    //Enable this form when createChild is closed
                     createChild.FormClosing += UsersNavigationButton_Click;
                     break;
             }
@@ -79,32 +167,65 @@ namespace ChoreApplication.UI.ParentUI
 
         #endregion General Controls
 
+        #region UpperPanel
+
+        /// <summary>
+        /// Logs out.
+        /// </summary>
+        private void UserButton_Click(object sender, EventArgs e)
+        {
+            //Clears _session
+            _session = default;
+
+            //Proceeds to LoginInterface and closes this form
+            var loginInterface = new GeneralInterface.LoginInterface();
+            loginInterface.Show();
+            this.Close();
+        }
+
+        #endregion UpperPanel
+
         #region NavigationPanel
 
+        /// <summary>
+        /// Enables ParentMenu and switches to ChoresUI
+        /// </summary>
         private void ChoreNavigationButton_Click(object sender, EventArgs e)
         {
             this.Enabled = true;
             ChoresUI();
         }
 
+        /// <summary>
+        /// Enables ParentMenu and switches to RewardUI
+        /// </summary>
         private void RewardNavigationButton_Click(object sender, EventArgs e)
         {
             this.Enabled = true;
             RewardsUI();
         }
 
+        /// <summary>
+        /// Enables ParentMenu and switches to LeaderboardUI
+        /// </summary>
         private void LeadboardNavigationButton_Click(object sender, EventArgs e)
         {
             this.Enabled = true;
             LeaderboardsUI();
         }
 
+        /// <summary>
+        /// Enables ParentMenu and switches to UsersUI
+        /// </summary>
         private void UsersNavigationButton_Click(object sender, EventArgs e)
         {
             this.Enabled = true;
             UsersUI();
         }
 
+        /// <summary>
+        /// Enables ParentMenu and switches to NotificationsUI
+        /// </summary>
         private void NotificationsNavigationButton_Click(object sender, EventArgs e)
         {
             this.Enabled = true;
@@ -115,57 +236,187 @@ namespace ChoreApplication.UI.ParentUI
 
         #region ChoreUI
 
+        /// <summary>
+        /// Loads the ChoresUI and changes title
+        /// </summary>
         public void ChoresUI()
         {
+            //Updates amount of notifications on notification icon
             LoadAmountOfNotifications();
+
             UI = 1;
+
+            //Displays chorePanel
             this.chorePanel.Visible = true;
             this.chorePanel.BringToFront();
+
+            //Displays optionButton
             this.optionButton.Visible = true;
             titleText.Text = "Chores";
+
+            //Loads Chores and displays them in chorePanel
             LoadChores();
         }
 
+
+        /// <summary>
+        /// Loads all Chores and displays them in chorePanel
+        /// </summary>
         public void LoadChores()
         {
+            //Refresh childrenNames
             LoadChildrenNames();
+
+            //Clears chorePanel
             chorePanel.Controls.Clear();
+
+            //Loads all Reoccurring Chores, Repeatable and Concrete Chores that are either in approval pending or created by the ParentUser directly
             _concreteChoresApprovalPending = Model.Concrete.Load("status=2 OR (type='conc' AND status=1) ORDER BY status DESC");
             _reoccurringChores = Model.Reoccurring.Load("");
             _repeatableChores = Model.Repeatable.Load("");
+
+            //Sets starting location for Chores. Updated when each Chore is displayed
             int panelDistance = 5;
             int choreLocationY = 0;
 
+            //Displays Concrete Chores
             foreach (var chore in _concreteChoresApprovalPending)
             {
+                //Adds a panel with current Chore
                 Panel currentPanel = LoadConcreteChore(chore, chorePanel.Width - 20, choreLocationY);
                 chorePanel.Controls.Add(currentPanel);
+
+                //Updates location for next Chore
                 choreLocationY += currentPanel.Height + panelDistance;
             }
+
+            //Displays Reoccurring Chores
             foreach (var chore in _reoccurringChores)
             {
+                //Adds a panel with current Chore
                 Panel currentPanel = LoadReocurringChore(chore, chorePanel.Width - 20, choreLocationY);
                 chorePanel.Controls.Add(currentPanel);
+
+                //Updates location for next Chore
                 choreLocationY += currentPanel.Height + panelDistance;
             }
+
+            //Displays repeatable Chores
             foreach (var chore in _repeatableChores)
             {
+                //Adds a panel with current Chore
                 Panel currentPanel = LoadRepeatableChore(chore, chorePanel.Width - 20, choreLocationY);
                 chorePanel.Controls.Add(currentPanel);
+
+                //Updates location for next Chore
                 choreLocationY += currentPanel.Height + panelDistance;
             }
         }
 
+        #region Load Methods
+
+        /// <summary>
+        /// Creates an individual panel for a single Repeatable Chore. Adds buttons for editting and deleting the Chore.
+        /// </summary>
+        /// <param name="chore">Chore to display</param>
+        /// <param name="width">Width of the panel</param>
+        /// <param name="yLocation">Location in chorePanel</param>
+        /// <returns>Panel with Chore info, edit button and delete button</returns>
+        public Panel LoadRepeatableChore(Model.Repeatable chore, int width, int yLocation)
+        {
+            //Sets type specific info
+            string status = "Active";
+            string type = "Repeatable";
+
+            //Creates the panel
+            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
+
+            //Adds status specific buttons
+            currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
+            currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
+
+            return currentPanel;
+        }
+
+        /// <summary>
+        /// Creates an individual panel for a single Repeatable Chore. Adds buttons for editting and deleting the Chore.
+        /// </summary>
+        /// <param name="chore">Chore to display</param>
+        /// <param name="width">Width of the panel</param>
+        /// <param name="yLocation">Location in chorePanel</param>
+        /// <returns>Panel with Chore info and buttons</returns>
+        public Panel LoadReocurringChore(Model.Reoccurring chore, int width, int yLocation)
+        {
+            //Sets type specific info
+            string status = "Active";
+            string type = "Reocurring";
+
+            //Creates the panel
+            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
+
+            //Adds status specific buttons
+            currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
+            currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
+
+            return currentPanel;
+        }
+
+        /// <summary>
+        /// Creates an individual panel for a single Concrete Chore. Adds buttons for approving, denying, 
+        /// editting or deleting the Chore depending on status.
+        /// </summary>
+        /// <param name="chore">Chore to display</param>
+        /// <param name="width">Width of the panel</param>
+        /// <param name="yLocation">Location in chorePanel</param>
+        /// <returns>Panel with Chore info and buttons</returns>
+        public Panel LoadConcreteChore(Model.Concrete chore, int width, int yLocation)
+        {
+            //Sets type specific info
+            string status = _statusValues[chore.Status];
+            string type = "Concrete";
+
+            //Creates the panel
+            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
+
+            //Adds status specific buttons.
+            //If the Chore is active add edit and delete buttons
+            if (chore.Status == 1)
+            {
+                currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
+                currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
+            }
+
+            //If the Chore is approval pending add approve and deny buttons
+            else if (chore.Status == 2)
+            {
+                currentPanel.Controls.Add(AddApproveChoreButton(330, currentPanel.Height / 2, chore));
+                currentPanel.Controls.Add(AddDenyChoreButton(365, currentPanel.Height / 2, chore));
+            }
+            return currentPanel;
+        }
+
+        /// <summary>
+        /// Creates the panel with the Chore. Name, assignment, status and type are displayed for all chores.
+        /// </summary>
+        /// <param name="chore">Chore to be displayed</param>
+        /// <param name="width">Width of the panel</param>
+        /// <param name="yLocation">Location in chorePanel</param>
+        /// <param name="status">Status of the chore</param>
+        /// <param name="type">Chore type</param>
+        /// <returns>Panel with labes for each info</returns>
         private Panel LoadChore(Model.Chore chore, int width, int yLocation, string status, string type)
         {
+            //Sets stating location for labels and distance between
             int yLoc = 5;
             int LabelDistance = 0;
 
+            //Sets the 4 info texts
             string choreName = chore.Name;
             string choreAssignment = "Assigned to: " + _childrenNames[chore.Assignment];
             string choreStatus = "Status: " + status;
             string choreType = "Type: " + type;
 
+            //Creates the labels and updates yLoc for each
             var choreNameLabel = UILibrary.StandardElements.AddLabel(choreName, true, new Point(5, yLoc));
             yLoc += choreNameLabel.Height + LabelDistance;
             var choreAssignmentLabel = UILibrary.StandardElements.AddLabel(choreAssignment, false, new Point(10, yLoc));
@@ -176,8 +427,10 @@ namespace ChoreApplication.UI.ParentUI
             yLoc += choreNameLabel.Height + LabelDistance;
             var panelHeight = choreNameLabel.Height + choreAssignmentLabel.Height + choreStatusLabel.Height + choreTypeLabel.Height;
 
+            //Creates panel to return
             var currentPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), width, panelHeight);
 
+            //Adds labels to panel
             currentPanel.Controls.Add(choreNameLabel);
             currentPanel.Controls.Add(choreAssignmentLabel);
             currentPanel.Controls.Add(choreStatusLabel);
@@ -186,116 +439,93 @@ namespace ChoreApplication.UI.ParentUI
             return currentPanel;
         }
 
-        public Panel LoadRepeatableChore(Model.Repeatable chore, int width, int yLocation)
-        {
-            string status = "Active";
-            string type = "Repeatable";
+        #endregion
 
-            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
-            currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
-            currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
+        #region Create Button Methods
 
-            return currentPanel;
-        }
-
-        public Panel LoadReocurringChore(Model.Reoccurring chore, int width, int yLocation)
-        {
-            string status = "Active";
-            string type = "Reocurring";
-
-            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
-            currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
-            currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
-
-            return currentPanel;
-        }
-
-        public Panel LoadConcreteChore(Model.Concrete chore, int width, int yLocation)
-        {
-            string status = _statusValues[chore.Status];
-            string type = "Concrete";
-
-            Panel currentPanel = LoadChore(chore, width, yLocation, status, type);
-            if (chore.Status == 1)
-            {
-                currentPanel.Controls.Add(AddEditChoreButton(330, currentPanel.Height / 2, chore));
-                currentPanel.Controls.Add(AddDeleteChoreButton(365, currentPanel.Height / 2, chore));
-            }
-            else if (chore.Status == 2)
-            {
-                currentPanel.Controls.Add(AddApproveChoreButton(330, currentPanel.Height / 2, chore));
-                currentPanel.Controls.Add(AddDenyChoreButton(365, currentPanel.Height / 2, chore));
-            }
-            return currentPanel;
-        }
-
+        /// <summary>
+        /// Creates an approve button
+        /// </summary>
         private Control AddApproveChoreButton(int locationX, int locationY, Model.Chore chore)
         {
+            //Creates a standard button from library
             var approveButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumbs_up);
+
+            //Adds event handler
             approveButton.Click += new EventHandler(ApproveChoreButton_Click);
+
             return approveButton;
         }
 
+        /// <summary>
+        /// Creates a deny button
+        /// </summary>
         private Control AddDenyChoreButton(int locationX, int locationY, Model.Chore chore)
         {
+            //Creates a standard button from library
             var denyButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumb_down);
+            
+            //Adds event handler
             denyButton.Click += new EventHandler(DenyChoreButton_Click);
             return denyButton;
         }
 
+        /// <summary>
+        /// Creates a edit button
+        /// </summary>
         private Control AddEditChoreButton(int locationX, int locationY, Model.Chore chore)
         {
-            var editChoreButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = chore,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.pencil,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            editChoreButton.Cursor = Cursors.Hand;
-            editChoreButton.FlatAppearance.BorderSize = 0;
-            editChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            editChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            //Creates a standard button from library
+            var editChoreButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.pencil);
+            
+            //Adds event handler
             editChoreButton.Click += new EventHandler(EditChoreButton_Click);
             return editChoreButton;
         }
 
+        /// <summary>
+        /// Creates a edit button
+        /// </summary>
         private Control AddDeleteChoreButton(int locationX, int locationY, Model.Chore chore)
         {
-            var deleteChoreButton = new Button
-            {
-                Location = new Point(locationX, locationY - 15),
-                Size = new Size(30, 30),
-                Tag = chore,
-                FlatStyle = FlatStyle.Flat,
-                BackgroundImage = global::ChoreApplication.Properties.Resources.delete,
-                BackgroundImageLayout = ImageLayout.Zoom,
-                AutoSize = true,
-            };
-            deleteChoreButton.Cursor = Cursors.Hand;
-            deleteChoreButton.FlatAppearance.BorderSize = 0;
-            deleteChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
-            deleteChoreButton.FlatAppearance.MouseDownBackColor = SystemColors.Window;
+            //Creates a standard button from library
+            var deleteChoreButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.delete);
+
+            //Adds event handler
             deleteChoreButton.Click += new EventHandler(DeleteChoreButton_Click);
             return deleteChoreButton;
         }
 
+        #endregion
+
+        #region Event Handlers
+
+        /// <summary>
+        /// Approves a Chore and reloads ChoreUI
+        /// </summary>
         private void ApproveChoreButton_Click(object sender, System.EventArgs e)
         {
+            //Sets currentChore to the clicked button's tag
             Button clickedButton = (Button)sender;
             Model.Concrete currentChore = (Model.Concrete)clickedButton.Tag;
+
+            //Update the Chore's properties and update DB
             currentChore.Status = 3;
             currentChore.ApprovalDate = DateTime.Now;
             currentChore.Update();
 
+            //Load the ChildUser the Chore is assigned to
             var currentChild = Model.ChildUser.Load("child_id=" + currentChore.Assignment);
+
+            //Update the ChildUser's points and update DB
             currentChild[0].Points += currentChore.Points;
             currentChild[0].Update();
+
+            //Create a notification to the ChildUser
             Model.Notification.Insert(currentChild[0].ID, "Chore Approved", $"The chore {currentChore.Name} has been approved." +
                 $"\n{currentChore.Points.ToString()} points has been added to your account");
+
+            //Reload ChoresUI
             LoadAmountOfNotifications();
             LoadChores();
         }
@@ -324,7 +554,7 @@ namespace ChoreApplication.UI.ParentUI
 
         private void EditChoreButton_Click(object sender, System.EventArgs e)
         {
-            this.Enabled = false; //Disable ParentUI
+            this.Enabled = false;
             Button clickedButton = (Button)sender;
             try
             {
@@ -396,7 +626,9 @@ namespace ChoreApplication.UI.ParentUI
             }
         }
 
-    #endregion ChoreUI
+        #endregion
+
+        #endregion ChoreUI
 
         #region RewardUI
 
@@ -760,17 +992,5 @@ namespace ChoreApplication.UI.ParentUI
         }
 
         #endregion NotificationsUI
-
-        #region UpperPanel
-
-        private void UserButton_Click(object sender, EventArgs e)
-        {
-            var loginInterface = new GeneralInterface.LoginInterface();
-            _session = default;
-            loginInterface.Show();
-            this.Close();
-        }
-
-        #endregion UpperPanel
     }
 }
