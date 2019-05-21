@@ -53,12 +53,6 @@
     <Compile Include="TechnicalPlatform\CheckTime.cs" />
     <Compile Include="Model\ChildUser.cs" />
     <Compile Include="Model\Chore.cs" />
-    <Compile Include="ChoreApplication.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ChoreApplication.Designer.cs">
-      <DependentUpon>ChoreApplication.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -158,9 +152,6 @@
     </Compile>
     <Compile Include="Model\User.cs" />
     <Compile Include="TechnicalPlatform\UILibrary\StandardElements.cs" />
-    <EmbeddedResource Include="ChoreApplication.resx">
-      <DependentUpon>ChoreApplication.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\ChildMenu.resx">
       <DependentUpon>ChildMenu.cs</DependentUpon>
     </EmbeddedResource>
