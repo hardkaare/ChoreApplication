@@ -65,15 +65,15 @@ namespace ChoreApplication.UI.GeneralInterface
             //Displays name and a button for each ParentUser
             foreach (Model.ParentUser parent in parentUsers)
             {
-                //Creates a standard button from UILibrary with ID as tag. 
-                Button userButton = UILibrary.StandardElements.AddImageButton(new Point(locationCounter2 * 120, locationCounter1 * 100 - 90), parent.ID, global::ChoreApplication.Properties.Resources.user);
+                //Creates a standard button from TechnicalPlatform.UILibrary with ID as tag. 
+                Button userButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationCounter2 * 120, locationCounter1 * 100 - 90), parent.ID, global::ChoreApplication.Properties.Resources.user);
 
                 //Resizes and adds even handler
                 userButton.Size = new Size(60, 60);
                 userButton.Click += new EventHandler(UserButton_Click);
 
                 //Creates a standard label with the User's first name
-                var nameLabel = UILibrary.StandardElements.AddLabel(parent.FirstName, true, new Point(userButton.Location.X - 7, userButton.Location.Y + userButton.Height));
+                var nameLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(parent.FirstName, true, new Point(userButton.Location.X - 7, userButton.Location.Y + userButton.Height));
 
                 //Adds the button and label to UI
                 profilesPanel.Controls.Add(userButton);
@@ -96,15 +96,15 @@ namespace ChoreApplication.UI.GeneralInterface
             //Displays a name and button for each ChildUser
             foreach (Model.ChildUser child in childUsers)
             {
-                //Creates a standard button from UILibrary with ID as tag. 
-                Button userButton = UILibrary.StandardElements.AddImageButton(new Point(locationCounter2 * 120, locationCounter1 * 100 - 90), child.ID, global::ChoreApplication.Properties.Resources.user);
+                //Creates a standard button from TechnicalPlatform.UILibrary with ID as tag. 
+                Button userButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationCounter2 * 120, locationCounter1 * 100 - 90), child.ID, global::ChoreApplication.Properties.Resources.user);
 
                 //Resizes and adds even handler
                 userButton.Size = new Size(60, 60);
                 userButton.Click += new EventHandler(UserButton_Click);
 
                 //Creates a standard label with the User's first name
-                var nameLabel = UILibrary.StandardElements.AddLabel(child.FirstName, false, new Point(userButton.Location.X - 7, userButton.Location.Y + userButton.Height));
+                var nameLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(child.FirstName, false, new Point(userButton.Location.X - 7, userButton.Location.Y + userButton.Height));
 
                 //Adds the button and label to UI
                 profilesPanel.Controls.Add(userButton);

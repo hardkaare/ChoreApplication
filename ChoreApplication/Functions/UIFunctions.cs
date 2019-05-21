@@ -32,13 +32,13 @@ namespace ChoreApplication.Functions
             var notificationDescription = notification.Description;
 
             //Makes a label for title and description
-            var notificationTitleLabel = UI.UILibrary.StandardElements.AddLabel(notificationTitle, true, new Point(5, yLoc));
+            var notificationTitleLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(notificationTitle, true, new Point(5, yLoc));
             yLoc += notificationTitleLabel.Height + labelDistance;
-            var notificationDescriptionLabel = UI.UILibrary.StandardElements.AddLabel(notificationDescription, false, new Point(10, yLoc));
+            var notificationDescriptionLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(notificationDescription, false, new Point(10, yLoc));
 
             //Creates the panel
             var panelHeight = notificationTitleLabel.Height + notificationDescriptionLabel.Height;
-            var individualNotificationPanel = UI.UILibrary.StandardElements.AddPanel(new Point(1, yLocation), width, panelHeight);
+            var individualNotificationPanel = TechnicalPlatform.UILibrary.StandardElements.AddPanel(new Point(1, yLocation), width, panelHeight);
 
             //Adds labels to panel
             individualNotificationPanel.Controls.Add(notificationTitleLabel);
@@ -50,6 +50,8 @@ namespace ChoreApplication.Functions
         #endregion
 
         #region Leaderboard
+
+        #region Longest Streak
 
         /// <summary>
         /// Creates a panel for the longest streak statistic with a progress bar and each child displayed.
@@ -87,8 +89,8 @@ namespace ChoreApplication.Functions
                 currentPanel.Controls.Add(bar);
 
                 //The child's score and name are added as labels
-                var label1 = UI.UILibrary.StandardElements.AddLabel(score.Value.ToString(), false, new Point(bar.Width, locationY + 5));
-                var label2 = UI.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
+                var label1 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(score.Value.ToString(), false, new Point(bar.Width, locationY + 5));
+                var label2 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
                 currentPanel.Controls.Add(label1);
                 currentPanel.Controls.Add(label2);
                 locationY += bar.Height + barDistance;
@@ -158,6 +160,10 @@ namespace ChoreApplication.Functions
             return result;
         }
 
+        #endregion
+
+        #region Completion Rate
+
         /// <summary>
         /// Creates a panel for the completion rate statistic with a progress bar and each child displayed.
         /// </summary>
@@ -190,8 +196,8 @@ namespace ChoreApplication.Functions
                 currentPanel.Controls.Add(bar);
 
                 //Adds labels with the current childs name and completion rate
-                var label1 = UI.UILibrary.StandardElements.AddLabel(score.Value.ToString() + "%", false, new Point(bar.Width, locationY + 5));
-                var label2 = UI.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
+                var label1 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(score.Value.ToString() + "%", false, new Point(bar.Width, locationY + 5));
+                var label2 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
                 currentPanel.Controls.Add(label1);
                 currentPanel.Controls.Add(label2);
                 locationY += bar.Height + barDistance;
@@ -277,6 +283,10 @@ namespace ChoreApplication.Functions
             return result;
         }
 
+        #endregion
+
+        #region Total Chores Approved
+
         /// <summary>
         /// Creates a panel for the total chores approved statistic with a progress bar and each child displayed.
         /// </summary>
@@ -313,8 +323,8 @@ namespace ChoreApplication.Functions
                 currentPanel.Controls.Add(bar);
 
                 //Adds a label with the child's TCA and name
-                var label1 = UI.UILibrary.StandardElements.AddLabel(score.Value.ToString(), false, new Point(bar.Width, locationY + 5));
-                var label2 = UI.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
+                var label1 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(score.Value.ToString(), false, new Point(bar.Width, locationY + 5));
+                var label2 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
                 currentPanel.Controls.Add(label1);
                 currentPanel.Controls.Add(label2);
                 locationY += bar.Height + barDistance;
@@ -364,6 +374,10 @@ namespace ChoreApplication.Functions
             return result;
         }
 
+        #endregion
+
+        #region Total Points Earned
+
         /// <summary>
         /// Creates a panel for the total points earned statistic with a progress bar and each child displayed.
         /// </summary>
@@ -400,8 +414,8 @@ namespace ChoreApplication.Functions
                 currentPanel.Controls.Add(bar);
 
                 //Adds a label with the childs TPE and name
-                var label1 = UI.UILibrary.StandardElements.AddLabel(score.Value.ToString(), false, new Point(bar.Width, locationY + 5));
-                var label2 = UI.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
+                var label1 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(score.Value.ToString(), false, new Point(bar.Width, locationY + 5));
+                var label2 = TechnicalPlatform.UILibrary.StandardElements.AddLabel(ChildrenNames[score.Key], false, new Point(bar.Width + 50, locationY + 5));
                 currentPanel.Controls.Add(label1);
                 currentPanel.Controls.Add(label2);
                 locationY += bar.Height + barDistance;
@@ -450,6 +464,10 @@ namespace ChoreApplication.Functions
             return result;
         }
 
+        #endregion
+
+        #region Private Helpers
+
         /// <summary>
         /// Method that sorts a dictionary<int, int> by value
         /// </summary>
@@ -486,6 +504,8 @@ namespace ChoreApplication.Functions
         };
             return pb;
         }
+
+        #endregion
 
         #endregion
     }
