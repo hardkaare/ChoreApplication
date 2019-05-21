@@ -16,7 +16,7 @@ namespace ChoreApplication.Functions
         private const String DataSource = "choreapplication1.database.windows.net";
 
         //Name of DB
-        private const String InitialCatalog = "choreapplication";
+        private const String InitialCatalog = "Structure";
 
         //Username
         private const String UID = "bi408f19";
@@ -38,13 +38,11 @@ namespace ChoreApplication.Functions
         public static void InitializeDB()
         {
             //Builds a connection string from the connection string constants
-            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder
-            {
-                DataSource = DataSource,
-                UserID = UID,
-                Password = Password,
-                InitialCatalog = InitialCatalog
-            };
+            SqlConnectionStringBuilder builder = new SqlConnectionStringBuilder();
+            builder.DataSource = DataSource;
+            builder.UserID = UID;
+            builder.Password = Password;
+            builder.InitialCatalog = InitialCatalog;
 
             //Clears the string builder
             String connString = builder.ToString();

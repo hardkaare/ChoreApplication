@@ -29,18 +29,18 @@
         private void InitializeComponent()
         {
             this.pincodePanel = new System.Windows.Forms.Panel();
-            this.roundButtonAccept = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton0 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButtonDelete = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton9 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton8 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton7 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton6 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton5 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton4 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton3 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton2 = new global::ChoreApplication.UI.UILibrary.RoundButton();
-            this.roundButton1 = new global::ChoreApplication.UI.UILibrary.RoundButton();
+            this.roundButtonAccept = new UI.UILibrary.RoundButton();
+            this.roundButton0 = new UI.UILibrary.RoundButton();
+            this.roundButtonDelete = new UI.UILibrary.RoundButton();
+            this.roundButton9 = new UI.UILibrary.RoundButton();
+            this.roundButton8 = new UI.UILibrary.RoundButton();
+            this.roundButton7 = new UI.UILibrary.RoundButton();
+            this.roundButton6 = new UI.UILibrary.RoundButton();
+            this.roundButton5 = new UI.UILibrary.RoundButton();
+            this.roundButton4 = new UI.UILibrary.RoundButton();
+            this.roundButton3 = new UI.UILibrary.RoundButton();
+            this.roundButton2 = new UI.UILibrary.RoundButton();
+            this.roundButton1 = new UI.UILibrary.RoundButton();
             this.pincodeLabel = new System.Windows.Forms.Label();
             this.enterpinTextBox = new System.Windows.Forms.TextBox();
             this.welcomeLabel = new System.Windows.Forms.Label();
@@ -376,18 +376,18 @@
         private System.Windows.Forms.Label pincodeLabel;
         private System.Windows.Forms.TextBox enterpinTextBox;
 
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton1;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton2;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton3;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton4;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton5;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton6;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton7;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton8;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton9;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButton0;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButtonDelete;
-        private global::ChoreApplication.UI.UILibrary.RoundButton roundButtonAccept;
+        private UI.UILibrary.RoundButton roundButton1;
+        private UI.UILibrary.RoundButton roundButton2;
+        private UI.UILibrary.RoundButton roundButton3;
+        private UI.UILibrary.RoundButton roundButton4;
+        private UI.UILibrary.RoundButton roundButton5;
+        private UI.UILibrary.RoundButton roundButton6;
+        private UI.UILibrary.RoundButton roundButton7;
+        private UI.UILibrary.RoundButton roundButton8;
+        private UI.UILibrary.RoundButton roundButton9;
+        private UI.UILibrary.RoundButton roundButton0;
+        private UI.UILibrary.RoundButton roundButtonDelete;
+        private UI.UILibrary.RoundButton roundButtonAccept;
         private System.Windows.Forms.Label welcomeLabel;
         private System.Windows.Forms.Button backButton;
     }

@@ -35,7 +35,7 @@
             this.titleText = new System.Windows.Forms.Label();
             this.chorePanel = new System.Windows.Forms.Panel();
             this.navigationPanel = new System.Windows.Forms.Panel();
-            this.notificationAmount = new global::ChoreApplication.UI.UILibrary.RoundButton();
+            this.notificationAmount = new UI.UILibrary.RoundButton();
             this.notificationsLabel = new System.Windows.Forms.Label();
             this.leaderboardsLabel = new System.Windows.Forms.Label();
             this.rewardsLabel = new System.Windows.Forms.Label();
@@ -347,7 +347,7 @@
         private System.Windows.Forms.Label childPointsLabel;
         private System.Windows.Forms.Panel leaderboardPanel;
         private System.Windows.Forms.Panel notificationPanel;
-        private global::ChoreApplication.UI.UILibrary.RoundButton notificationAmount;
+        private UI.UILibrary.RoundButton notificationAmount;
         private System.Windows.Forms.ToolTip toolTip;
     }
 }

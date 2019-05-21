@@ -32,9 +32,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-  <PropertyGroup>
-    <StartupObject>ChoreApplication.Program</StartupObject>
-  </PropertyGroup>
   <ItemGroup>
     <Reference Include="MySql.Data, Version=8.0.15.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL" />
     <Reference Include="System" />
@@ -63,12 +60,6 @@
     </Compile>
     <Compile Include="Settings.cs" />
     <Compile Include="Functions\UIFunctions.cs" />
-    <Compile Include="TestForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="TestForm.Designer.cs">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="UI\ChildMenu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -161,9 +152,6 @@
     </Compile>
     <Compile Include="Model\User.cs" />
     <Compile Include="TechnicalPlatform\UILibrary\StandardElements.cs" />
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\ChildMenu.resx">
       <DependentUpon>ChildMenu.cs</DependentUpon>
     </EmbeddedResource>
@@ -315,5 +303,6 @@
   <ItemGroup>
     <None Include="Resources\chevron-left-solid.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
