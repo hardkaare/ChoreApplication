@@ -161,9 +161,6 @@
     </Compile>
     <Compile Include="Model\User.cs" />
     <Compile Include="TechnicalPlatform\UILibrary\StandardElements.cs" />
-    <EmbeddedResource Include="TestForm.resx">
-      <DependentUpon>TestForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\ChildMenu.resx">
       <DependentUpon>ChildMenu.cs</DependentUpon>
     </EmbeddedResource>
