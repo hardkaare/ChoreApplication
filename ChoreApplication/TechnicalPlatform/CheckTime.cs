@@ -111,10 +111,6 @@ namespace ChoreApplication.TechnicalPlatform
                     }
                 }
             }
-
-            //Sleeps for 1 minute and calls this method
-            Thread.Sleep(60000);
-            CheckDB();
         }
 
         /// <summary>
