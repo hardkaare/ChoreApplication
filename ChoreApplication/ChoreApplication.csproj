@@ -153,11 +153,11 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Model\Concrete.cs" />
-    <Compile Include="UI\UILibrary\RoundButton.cs">
+    <Compile Include="TechnicalPlatform\UILibrary\RoundButton.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Model\User.cs" />
-    <Compile Include="UI\UILibrary\StandardElements.cs" />
+    <Compile Include="TechnicalPlatform\UILibrary\StandardElements.cs" />
     <EmbeddedResource Include="ChoreApplication.resx">
       <DependentUpon>ChoreApplication.cs</DependentUpon>
     </EmbeddedResource>

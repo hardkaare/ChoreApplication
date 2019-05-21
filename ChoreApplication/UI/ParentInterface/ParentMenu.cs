@@ -415,18 +415,18 @@ namespace ChoreApplication.UI.ParentUI
             string choreType = "Type: " + type;
 
             //Creates the labels and updates yLoc for each
-            var choreNameLabel = UILibrary.StandardElements.AddLabel(choreName, true, new Point(5, yLoc));
+            var choreNameLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(choreName, true, new Point(5, yLoc));
             yLoc += choreNameLabel.Height + LabelDistance;
-            var choreAssignmentLabel = UILibrary.StandardElements.AddLabel(choreAssignment, false, new Point(10, yLoc));
+            var choreAssignmentLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(choreAssignment, false, new Point(10, yLoc));
             yLoc += choreNameLabel.Height + LabelDistance;
-            var choreStatusLabel = UILibrary.StandardElements.AddLabel(choreStatus, false, new Point(10, yLoc));
+            var choreStatusLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(choreStatus, false, new Point(10, yLoc));
             yLoc += choreNameLabel.Height + LabelDistance;
-            var choreTypeLabel = UILibrary.StandardElements.AddLabel(choreType, false, new Point(10, yLoc));
+            var choreTypeLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(choreType, false, new Point(10, yLoc));
             yLoc += choreNameLabel.Height + LabelDistance;
             var panelHeight = choreNameLabel.Height + choreAssignmentLabel.Height + choreStatusLabel.Height + choreTypeLabel.Height;
 
             //Creates panel to return
-            var currentPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), width, panelHeight);
+            var currentPanel = TechnicalPlatform.UILibrary.StandardElements.AddPanel(new Point(1, yLocation), width, panelHeight);
 
             //Adds labels to panel
             currentPanel.Controls.Add(choreNameLabel);
@@ -447,7 +447,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddApproveChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             //Creates a standard button from library
-            var approveButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumbs_up);
+            var approveButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumbs_up);
 
             //Adds event handler
             approveButton.Click += new EventHandler(ApproveChoreButton_Click);
@@ -461,7 +461,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddDenyChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             //Creates a standard button from library
-            var denyButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumb_down);
+            var denyButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.thumb_down);
             
             //Adds event handler
             denyButton.Click += new EventHandler(DenyChoreButton_Click);
@@ -474,7 +474,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddEditChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             //Creates a standard button from library
-            var editChoreButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.pencil);
+            var editChoreButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.pencil);
             
             //Adds event handler
             editChoreButton.Click += new EventHandler(EditChoreButton_Click);
@@ -487,7 +487,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddDeleteChoreButton(int locationX, int locationY, Model.Chore chore)
         {
             //Creates a standard button from library
-            var deleteChoreButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.delete);
+            var deleteChoreButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), chore, global::ChoreApplication.Properties.Resources.delete);
 
             //Adds event handler
             deleteChoreButton.Click += new EventHandler(DeleteChoreButton_Click);
@@ -720,17 +720,17 @@ namespace ChoreApplication.UI.ParentUI
             var rewardStatus = "Status: Active";
 
             //Creates a label with the label text. Updates y location for next label each time
-            var rewardNameLabel = UILibrary.StandardElements.AddLabel(rewardName, true, new Point(5, yLoc));
+            var rewardNameLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(rewardName, true, new Point(5, yLoc));
             yLoc += rewardNameLabel.Height + labelDist;
-            var rewardAssignmentLabel = UILibrary.StandardElements.AddLabel(rewardAssignment, false, new Point(10, yLoc));
+            var rewardAssignmentLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(rewardAssignment, false, new Point(10, yLoc));
             yLoc += rewardNameLabel.Height + labelDist;
-            var rewardStatusLabel = UILibrary.StandardElements.AddLabel(rewardStatus, false, new Point(10, yLoc));
+            var rewardStatusLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(rewardStatus, false, new Point(10, yLoc));
             yLoc += rewardNameLabel.Height + labelDist;
 
             var panelHeight = rewardNameLabel.Height + rewardAssignmentLabel.Height + rewardStatusLabel.Height;
 
             //Creates panel from library
-            var individualRewardPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
+            var individualRewardPanel = TechnicalPlatform.UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
 
             //Adds labels and returns panel
             individualRewardPanel.Controls.Add(rewardNameLabel);
@@ -752,7 +752,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddEditRewardButton(int locationX, int locationY, Model.Reward reward)
         {
             //Creates a standard button from library
-            var editRewardButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), reward, global::ChoreApplication.Properties.Resources.pencil);
+            var editRewardButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), reward, global::ChoreApplication.Properties.Resources.pencil);
 
             //Adds event handler
             editRewardButton.Click += new EventHandler(EditRewardButton_Click);
@@ -765,7 +765,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddDeleteRewardButton(int locationX, int locationY, Model.Reward reward)
         {
             //Creates a standard button from library
-            var deleteRewardButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), reward, global::ChoreApplication.Properties.Resources.delete);
+            var deleteRewardButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), reward, global::ChoreApplication.Properties.Resources.delete);
 
             //Adds event handler
             deleteRewardButton.Click += new EventHandler(DeleteRewardButton_Click);
@@ -870,7 +870,7 @@ namespace ChoreApplication.UI.ParentUI
                 int leaderboardLocationY = 10;
 
                 //Add Total Points title
-                var totalPointsEarnedLabel = UILibrary.StandardElements.AddLabel("Total Points Earned", true, new Point(140, leaderboardLocationY));
+                var totalPointsEarnedLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel("Total Points Earned", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(totalPointsEarnedLabel);
                 leaderboardLocationY += totalPointsEarnedLabel.Height + panelDistance;
 
@@ -881,7 +881,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalPointsStatisticPanel.Height + panelDistance;
 
                 //Add Total Chores Approved title
-                var totalChoresApprovedLabel = UILibrary.StandardElements.AddLabel("Total Chores Approved", true, new Point(140, leaderboardLocationY));
+                var totalChoresApprovedLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel("Total Chores Approved", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(totalChoresApprovedLabel);
                 leaderboardLocationY += totalChoresApprovedLabel.Height + panelDistance;
 
@@ -892,7 +892,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += totalChoresApprovedStatisticPanel.Height + panelDistance;
 
                 //Add Completion Rate title
-                var completionRateLabel = UILibrary.StandardElements.AddLabel("Completion Rate", true, new Point(140, leaderboardLocationY));
+                var completionRateLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel("Completion Rate", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(completionRateLabel);
                 leaderboardLocationY += completionRateLabel.Height + panelDistance;
 
@@ -903,7 +903,7 @@ namespace ChoreApplication.UI.ParentUI
                 leaderboardLocationY += completionRateStatisticPanel.Height + panelDistance;
 
                 //Add Longest streak title
-                var longestStreakLabel = UILibrary.StandardElements.AddLabel("Longest Streak", true, new Point(140, leaderboardLocationY));
+                var longestStreakLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel("Longest Streak", true, new Point(140, leaderboardLocationY));
                 this.leaderboardPanel.Controls.Add(longestStreakLabel);
                 leaderboardLocationY += longestStreakLabel.Height + panelDistance;
 
@@ -1012,9 +1012,9 @@ namespace ChoreApplication.UI.ParentUI
             var userFirstName = user.FirstName.ToString();
 
             //Creates label and panel from library
-            var userFirstNameLabel = UILibrary.StandardElements.AddLabel(userFirstName, true, new Point(5, 5));
+            var userFirstNameLabel = TechnicalPlatform.UILibrary.StandardElements.AddLabel(userFirstName, true, new Point(5, 5));
             var panelHeight = userFirstNameLabel.Height + 40;
-            var individualUserPanel = UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
+            var individualUserPanel = TechnicalPlatform.UILibrary.StandardElements.AddPanel(new Point(1, yLocation), chorePanel.Width - 20, panelHeight);
 
             //Adds label to panel and returns
             individualUserPanel.Controls.Add(userFirstNameLabel);
@@ -1031,7 +1031,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddEditChildButton(int locationX, int locationY, Model.ChildUser childUser)
         {
             //Creates a standard button from library
-            var editChildButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), childUser, global::ChoreApplication.Properties.Resources.pencil);
+            var editChildButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), childUser, global::ChoreApplication.Properties.Resources.pencil);
 
             //Adds event handler
             editChildButton.Click += new EventHandler(EditChildButton_Click);
@@ -1044,7 +1044,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddEditParentButton(int locationX, int locationY, Model.ParentUser parentUser)
         {
             //Creates a standard button from library
-            var editParentButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), parentUser, global::ChoreApplication.Properties.Resources.pencil);
+            var editParentButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), parentUser, global::ChoreApplication.Properties.Resources.pencil);
 
             //Adds event handler
             editParentButton.Click += new EventHandler(EditParentButton_Click);
@@ -1057,7 +1057,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddDeleteChildButton(int locationX, int locationY, Model.ChildUser childUser)
         {
             //Creates a standard button from library
-            var deleteChildButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), childUser, global::ChoreApplication.Properties.Resources.delete);
+            var deleteChildButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), childUser, global::ChoreApplication.Properties.Resources.delete);
 
             //Adds event handler
             deleteChildButton.Click += new EventHandler(DeleteChildButton_Click);
@@ -1149,7 +1149,7 @@ namespace ChoreApplication.UI.ParentUI
         #region NotificationsUI
 
         /// <summary>
-        /// Loads UsersUI and changes title.
+        /// Loads NotificationsUI and changes title.
         /// </summary>
         private void NotificationsUI()
         {
@@ -1196,7 +1196,7 @@ namespace ChoreApplication.UI.ParentUI
                 //Add delete button
                 individualNotificationPanel.Controls.Add(AddDeleteNotificationButton(365, individualNotificationPanel.Height / 2, notification));
 
-                //Add notofication to notificationPanel and update location
+                //Add notification to notificationPanel and update location
                 notificationPanel.Controls.Add(individualNotificationPanel);
                 notificationLocationY += individualNotificationPanel.Height + panelDistance;
             }
@@ -1212,7 +1212,7 @@ namespace ChoreApplication.UI.ParentUI
         private Control AddDeleteNotificationButton(int locationX, int locationY, Model.Notification notification)
         {
             //Create standard button from library
-            var deleteNotificationButton = UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), notification, global::ChoreApplication.Properties.Resources.delete);
+            var deleteNotificationButton = TechnicalPlatform.UILibrary.StandardElements.AddImageButton(new Point(locationX, locationY - 15), notification, global::ChoreApplication.Properties.Resources.delete);
 
             //Add event handler
             deleteNotificationButton.Click += new EventHandler(NotificationDeleteButton_Click);
