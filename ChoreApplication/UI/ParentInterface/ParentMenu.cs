@@ -254,7 +254,7 @@ namespace ChoreApplication.UI.ParentUI
             titleText.Text = "Chores";
 
             //Loads Chores and displays them in chorePanel
-            LoadChores();
+            DisplayChores();
         }
 
         #region Load Methods
@@ -262,7 +262,7 @@ namespace ChoreApplication.UI.ParentUI
         /// <summary>
         /// Loads all Chores and displays them in chorePanel
         /// </summary>
-        public void LoadChores()
+        public void DisplayChores()
         {
             //Refresh childrenNames
             LoadChildrenNames();
@@ -525,7 +525,7 @@ namespace ChoreApplication.UI.ParentUI
 
             //Reload ChoresUI
             LoadAmountOfNotifications();
-            LoadChores();
+            DisplayChores();
         }
 
         /// <summary>
@@ -561,7 +561,7 @@ namespace ChoreApplication.UI.ParentUI
 
             //Reload ChoreUI
             LoadAmountOfNotifications();
-            LoadChores();
+            DisplayChores();
         }
 
         /// <summary>
@@ -634,7 +634,7 @@ namespace ChoreApplication.UI.ParentUI
                     selectedChore.Delete();
 
                     //Reloads ChoreUI
-                    LoadChores();
+                    DisplayChores();
                 }
                 
                 catch
@@ -670,7 +670,7 @@ namespace ChoreApplication.UI.ParentUI
             titleText.Text = "Rewards";
 
             //Loads Rewards and displays them in chorePanel
-            LoadRewards();
+            DisplayRewards();
         }
 
         #region Load Methods
@@ -678,7 +678,7 @@ namespace ChoreApplication.UI.ParentUI
         /// <summary>
         /// Loads Chores and displays them in chorePanel
         /// </summary>
-        private void LoadRewards()
+        private void DisplayRewards()
         {
             //Loads all Rewards to list
             _rewards = Model.Reward.Load("");
@@ -819,7 +819,7 @@ namespace ChoreApplication.UI.ParentUI
             {
                 //Deletes the Reward and reloads RewarUI
                 selectedReward.Delete();
-                LoadRewards();
+                DisplayRewards();
             }
         }
 
@@ -847,7 +847,7 @@ namespace ChoreApplication.UI.ParentUI
             this.optionButton.Visible = false;
 
             //Calculates and displays statistics
-            LoadLeaderboard();
+            DisplayLeaderboard();
         }
 
         /// <summary>
@@ -857,7 +857,7 @@ namespace ChoreApplication.UI.ParentUI
         /// Completion rate. (How many approved Chores compared to overdue Chores in percentage)
         /// Longest streak. (How many times in a row Chores have been completed in time without any going overdue)
         /// </summary>
-        private void LoadLeaderboard()
+        private void DisplayLeaderboard()
         {
             //Cleares leaderboardPanel
             leaderboardPanel.Controls.Clear();
@@ -936,7 +936,7 @@ namespace ChoreApplication.UI.ParentUI
             this.optionButton.Visible = true;
 
             //Loads and displays all users in their own panel
-            LoadUsers();
+            DisplayUsers();
         }
 
         #region Load Methods
@@ -946,7 +946,7 @@ namespace ChoreApplication.UI.ParentUI
         /// ParentUser has an edit button.
         /// ChildUsers have an edit button and a delete button.
         /// </summary>
-        public void LoadUsers()
+        public void DisplayUsers()
         {
             //Loads all Users
             _childUsers = Model.ChildUser.Load("");
@@ -1163,7 +1163,7 @@ namespace ChoreApplication.UI.ParentUI
             this.optionButton.Visible = false;
 
             //Loads each notification in an individual panel
-            LoadNotifications();
+            DisplayNotifications();
 
             //Updates amount of notifications on notification icon
             LoadAmountOfNotifications();
@@ -1175,7 +1175,7 @@ namespace ChoreApplication.UI.ParentUI
         /// Load all _session's notification, each in their own panel.
         /// Display the panels in notificationPanel
         /// </summary>
-        private void LoadNotifications()
+        private void DisplayNotifications()
         {
             //Loads all notifications assigned to _session
             _notifications = Model.Notification.Load("user_id=" + _session.ID);
