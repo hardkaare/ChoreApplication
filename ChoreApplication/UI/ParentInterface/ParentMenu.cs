@@ -26,7 +26,7 @@ namespace ChoreApplication.UI.ParentUI
         /// 4 = UsersUI, 
         /// 5 = NotificationUI
         /// </summary>
-        public int UI = 0;
+        public int UI { get; set; }
 
         //The logged in User
         private Model.ParentUser _session { get; set; }
