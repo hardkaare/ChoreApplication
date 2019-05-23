@@ -13,7 +13,8 @@ namespace ChoreApplication
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new UI.GeneralInterface.LoginInterface());
+            Functions.DatabaseFunctions.InitializeDB();
+            Application.Run(new TestForm());
         }
     }
 }

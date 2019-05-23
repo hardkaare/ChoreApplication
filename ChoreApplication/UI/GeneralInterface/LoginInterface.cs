@@ -21,7 +21,6 @@ namespace ChoreApplication.UI.GeneralInterface
         public LoginInterface()
         {
             InitializeComponent();
-            Functions.DatabaseFunctions.InitializeDB();
             CheckIfUsersExist();
         }
 

@@ -173,7 +173,7 @@ namespace ChoreApplication.UI
             titleText.Text = "Chores";
 
             //Loads Chores and displays them in chorePanel
-            LoadChores();
+            DisplayChores();
         }
 
         #region Load Methods
@@ -181,7 +181,7 @@ namespace ChoreApplication.UI
         /// <summary>
         /// Loads all Chores and displays them in chorePanel
         /// </summary
-        public void LoadChores()
+        public void DisplayChores()
         {
             //Reload points
             LoadPoints();
@@ -400,7 +400,7 @@ namespace ChoreApplication.UI
 
             //Reload ChoreUI
             LoadAmountOfNotifications();
-            LoadChores();
+            DisplayChores();
         }
 
         /// <summary>
@@ -421,7 +421,7 @@ namespace ChoreApplication.UI
 
             //Reload ChoreUI
             LoadAmountOfNotifications();
-            LoadChores();
+            DisplayChores();
         }
 
         #endregion
@@ -443,12 +443,12 @@ namespace ChoreApplication.UI
             titleText.Text = "Rewards";
 
             //Loads Rewards and displays them in rewardPanel
-            LoadRewards();
+            DisplayRewards();
         }
 
         #region Load Methods
 
-        private void LoadRewards()
+        private void DisplayRewards()
         {
             //Reload points
             LoadPoints();
@@ -578,7 +578,7 @@ namespace ChoreApplication.UI
 
                 //Reloads RewardUI
                 LoadPoints();
-                LoadRewards();
+                DisplayRewards();
 
                 //Creates notification to ParentUser that Reward has been claimed
                 Model.Notification.Insert(1, "Reward has been claimed.", $"The reward {currentReward.Name}: {currentReward.Description} " +
@@ -606,7 +606,7 @@ namespace ChoreApplication.UI
             this.leaderboardPanel.BringToFront();
 
             //Calculates and displays statistics
-            LoadLeaderboard();
+            DisplayLeaderboard();
         }
 
         /// <summary>
@@ -616,7 +616,7 @@ namespace ChoreApplication.UI
         /// Completion rate. (How many approved Chores compared to overdue Chores in percentage)
         /// Longest streak. (How many times in a row Chores have been completed in time without any going overdue)
         /// </summary>
-        private void LoadLeaderboard()
+        private void DisplayLeaderboard()
         {
             //Cleares leaderboardPanel
             leaderboardPanel.Controls.Clear();
@@ -684,7 +684,7 @@ namespace ChoreApplication.UI
             this.notificationPanel.BringToFront();
 
             //Loads each notification in an individual panel
-            LoadNotifications();
+            DisplayNotifications();
         }
 
         #region Load Methods
@@ -693,7 +693,7 @@ namespace ChoreApplication.UI
         /// Load all _session's notification, each in their own panel.
         /// Display the panels in notificationPanel
         /// </summary>
-        private void LoadNotifications()
+        private void DisplayNotifications()
         {
             //Loads all notifications assigned to _session
             _notifications = Model.Notification.Load("user_id=" + _session.ID);
