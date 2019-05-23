@@ -141,6 +141,6 @@ namespace ChoreApplication.Model
             return $"{FirstName} has {Points} points.";
         }
 
-        #endregion Public Helpers
+        #endregion
     }
 }

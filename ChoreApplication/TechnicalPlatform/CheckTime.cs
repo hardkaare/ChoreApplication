@@ -92,7 +92,7 @@ namespace ChoreApplication.TechnicalPlatform
 
                         //Sets the Chore to overdue and the ApprovalDate to now. Updates the DB
                         chore.Status = 4;
-                        chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
+                        chore.FinalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
                         chore.Update();
 
                         //Creates a notification for the ChildUser

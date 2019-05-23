@@ -28,7 +28,7 @@ namespace ChoreApplication.Model
         public int Status { get; set; }
 
         //Date of approval. Empty if not approved yet
-        public DateTime ApprovalDate { get; set; }
+        public DateTime FinalDate { get; set; }
 
         /// <summary>
         /// Tells what has created the chore: 
@@ -58,7 +58,7 @@ namespace ChoreApplication.Model
         {
             DueDate = dueDate;
             Status = status;
-            ApprovalDate = approvalDate;
+            FinalDate = approvalDate;
             Type = type;
             Reminder = reminder;
         }
@@ -115,7 +115,7 @@ namespace ChoreApplication.Model
             string query = string.Format("UPDATE concrete_chore SET " +
                 "due_date='{0}', status={1}, approval_date='{2}', reminder={3} WHERE chore_id={4}",
                 DueDate.ToString(Properties.Settings.Default.LongDateFormat), 
-                Status, ApprovalDate.ToString(Properties.Settings.Default.LongDateFormat), Reminder, ID);
+                Status, FinalDate.ToString(Properties.Settings.Default.LongDateFormat), Reminder, ID);
             string query2 = string.Format("UPDATE chore SET " +
                 "child_id={0}, name='{1}', description='{2}', points={3} WHERE chore_id={4}",
                 Assignment, Name, Description, Points, ID);
@@ -202,7 +202,7 @@ namespace ChoreApplication.Model
         {
             return string.Format("Chore: {0} \nDescription: {1} \nPoints: {2} \nAssignment: {3} " +
                 "\nDue date: {4} \nStatus: {5} \nDate of approval: {6}\nReminder sent: {7}",
-                Name, Description, Points, Assignment, DueDate, Status, ApprovalDate, Reminder);
+                Name, Description, Points, Assignment, DueDate, Status, FinalDate, Reminder);
         }
 
         #endregion Public methods

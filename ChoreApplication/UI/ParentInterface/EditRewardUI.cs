@@ -32,8 +32,8 @@ namespace ChoreApplication.UI.ParentUI
             _reward = reward;
             rewardNameTextBox.Text = _reward.Name;
             descriptionRichTextBox.Text = _reward.Description;
-            pointsRequiredNumericUpDown.Value = _reward.PointsRequired;
-            foreach (var child in Model.ChildUser.Load($"c.child_id = {_reward.ChildID}"))
+            pointsRequiredNumericUpDown.Value = _reward.RequiredPoints;
+            foreach (var child in Model.ChildUser.Load($"c.child_id = {_reward.Assignment}"))
             {
                 childAssignedComboBox.Text = child.FirstName;
             }
@@ -81,10 +81,10 @@ namespace ChoreApplication.UI.ParentUI
             }
 
             //Sets properties for the Reward
-            _reward.ChildID = id;
+            _reward.Assignment = id;
             _reward.Name = rewardNameTextBox.Text;
             _reward.Description = descriptionRichTextBox.Text;
-            _reward.PointsRequired = (int)pointsRequiredNumericUpDown.Value;
+            _reward.RequiredPoints = (int)pointsRequiredNumericUpDown.Value;
 
             //Updates, closes form and displays confirmation message
             _reward.Update();

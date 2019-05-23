@@ -509,7 +509,7 @@ namespace ChoreApplication.UI.ParentUI
 
             //Update the Chore's properties and update DB
             currentChore.Status = 3;
-            currentChore.ApprovalDate = DateTime.Now;
+            currentChore.FinalDate = DateTime.Now;
             currentChore.Update();
 
             //Load the ChildUser the Chore is assigned to
@@ -716,7 +716,7 @@ namespace ChoreApplication.UI.ParentUI
 
             //Sets label text from Reward roperties
             var rewardName = reward.Name;
-            var rewardAssignment = "Assigned to: " + _childrenNames[reward.ChildID];
+            var rewardAssignment = "Assigned to: " + _childrenNames[reward.Assignment];
             var rewardStatus = "Status: Active";
 
             //Creates a label with the label text. Updates y location for next label each time
