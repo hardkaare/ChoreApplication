@@ -482,9 +482,9 @@ namespace ChoreApplication.UI
         {
             //Set label texts
             var rewardName = reward.Name;
-            var rewardPointsRequired = "Points required: " + reward.PointsRequired.ToString();
+            var rewardPointsRequired = "Points required: " + reward.RequiredPoints.ToString();
             var childPoints = (double)_session.Points;
-            var requiredPoints = (double)reward.PointsRequired;
+            var requiredPoints = (double)reward.RequiredPoints;
 
             //Set progress bar value in percentage
             var progressBarValue = (childPoints / requiredPoints) * 100;
@@ -570,7 +570,7 @@ namespace ChoreApplication.UI
             if (confirmDelete == DialogResult.Yes)
             {
                 //Subtracts points from _session and updates DB
-                _session.Points -= currentReward.PointsRequired;
+                _session.Points -= currentReward.RequiredPoints;
                 _session.Update();
 
                 //Deletes Reward from DB
@@ -582,7 +582,7 @@ namespace ChoreApplication.UI
 
                 //Creates notification to ParentUser that Reward has been claimed
                 Model.Notification.Insert(1, "Reward has been claimed.", $"The reward {currentReward.Name}: {currentReward.Description} " +
-                    $"has been claimed by {_childrenNames[currentReward.ChildID]}");
+                    $"has been claimed by {_childrenNames[currentReward.Assignment]}");
 
                 //Updates amount of notifications on icon in NavigationPanel
                 LoadAmountOfNotifications();

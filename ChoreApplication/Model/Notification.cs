@@ -18,7 +18,7 @@ namespace ChoreApplication.Model
         public string Description { get; private set; }
 
         // The user who will recieve the notification
-        private int UserID { get; set; }
+        private int Assignment { get; set; }
 
         // The id for a specific notification object
         private int NotificationID { get; set; }
@@ -32,7 +32,7 @@ namespace ChoreApplication.Model
         {
             Title = title;
             Description = description;
-            UserID = userID;
+            Assignment = userID;
             NotificationID = notificationID;
         }
 
@@ -119,9 +119,9 @@ namespace ChoreApplication.Model
         /// <returns>String representation of the notification</returns>
         public override string ToString()
         {
-            return $"{UserID} recieved an notification with the description: {Description}.";
+            return $"{Assignment} recieved an notification with the description: {Description}.";
         }
 
-        #endregion Public Helpers
+        #endregion
     }
 }

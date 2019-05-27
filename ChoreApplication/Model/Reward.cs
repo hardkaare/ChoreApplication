@@ -20,10 +20,10 @@ namespace ChoreApplication.Model
         // The points required to earn the reward.
         public string Description { get; set; }
 
-        public int PointsRequired { get; set; }
+        public int RequiredPoints { get; set; }
 
         // To which ChildUser the reward is assigned to.
-        public int ChildID { get; set; }
+        public int Assignment { get; set; }
 
         #endregion Properties
 
@@ -36,8 +36,8 @@ namespace ChoreApplication.Model
         {
             RewardID = rewardID;
             Name = name;
-            PointsRequired = pointsReq;
-            ChildID = childID;
+            RequiredPoints = pointsReq;
+            Assignment = childID;
             Description = description;
         }
 
@@ -66,7 +66,7 @@ namespace ChoreApplication.Model
         public void Update()
         {
             //Creates queries that updates the reward entry with this reward's ID
-            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", ChildID, Name, Description, PointsRequired, RewardID);
+            string query = string.Format("UPDATE dbo.reward SET child_id='{0}', name='{1}', description='{2}', points={3} WHERE reward_id={4}", Assignment, Name, Description, RequiredPoints, RewardID);
             SqlCommand command = new SqlCommand(query, Functions.DatabaseFunctions.DatabaseConnection);
 
             //Executes the query
@@ -140,7 +140,7 @@ namespace ChoreApplication.Model
         /// <returns>Returns a string representation of the properties of the object</returns>
         public override string ToString()
         {
-            return $"{ChildID} must get {PointsRequired} points to earn {Name}.";
+            return $"{Assignment} must get {RequiredPoints} points to earn {Name}.";
         }
 
         #endregion Public Helpers

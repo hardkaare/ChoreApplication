@@ -86,17 +86,7 @@ namespace ChoreApplication.TechnicalPlatform
                     // Checks if the Chore is past it's due date
                     if (chore.DueDate < DateTime.Now)
                     {
-                        //Subtracks the Chore's points from the ChildUser's account and updates DB
-                        child.Points -= chore.Points;
-                        child.Update();
-
-                        //Sets the Chore to overdue and the ApprovalDate to now. Updates the DB
-                        chore.Status = 4;
-                        chore.ApprovalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
-                        chore.Update();
-
-                        //Creates a notification for the ChildUser
-                        Model.Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
+                        UpdateOverdue(chore, child);
                     }
                     
                     //Checks if theres less than an hour to the Chore is due AND there hasn't been sent a notification to the ChildUser for it
@@ -111,6 +101,24 @@ namespace ChoreApplication.TechnicalPlatform
                     }
                 }
             }
+        }
+
+        /// <summary>
+        /// Updates overdue chore
+        /// </summary>
+        private void UpdateOverdue(Model.Concrete chore, Model.ChildUser child)
+        {
+            //Subtracks the Chore's points from the ChildUser's account and updates DB
+            child.Points -= chore.Points;
+            child.Update();
+
+            //Sets the Chore to overdue and the ApprovalDate to now. Updates the DB
+            chore.Status = 4;
+            chore.FinalDate = DateTime.ParseExact(DateTime.Now.ToString(Properties.Settings.Default.LongDateFormat), Properties.Settings.Default.LongDateFormat, null);
+            chore.Update();
+
+            //Creates a notification for the ChildUser
+            Model.Notification.Insert(child.ID, $"A chore has gone over due", $"You did not complete {chore.Name} in time.");
         }
 
         /// <summary>
