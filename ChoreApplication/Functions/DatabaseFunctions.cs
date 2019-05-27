@@ -13,10 +13,10 @@ namespace ChoreApplication.Functions
         #region Connection string constants
 
         //Server
-        private const String DataSource = "choreapplication1.database.windows.net";
+        private const String DataSource = "choreapplication2.database.windows.net";
 
         //Name of DB
-        private const String InitialCatalog = "choreapplication";
+        private const String InitialCatalog = "choresystem";
 
         //Username
         private const String UID = "bi408f19";
